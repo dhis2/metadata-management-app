@@ -213,16 +213,18 @@ export const SectionListWrapper = ({
                 )}
             </div>
             {sharingDialogId && (
-                <SharingDialog
-                    id={sharingDialogId}
-                    /* @TODO: Sharing dialog does not support metadata
-                    but it works if you pass the correct type*/
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    type={schema.singular as any}
-                    onClose={() => onSharingDialogClose()}
-                    dataSharing={schema.dataShareable}
-                    preventUsersFromRemovingMetadataWriteAccess={true}
-                />
+                <div onSubmit={(e) => e.stopPropagation()}>
+                    <SharingDialog
+                        id={sharingDialogId}
+                        /* @TODO: Sharing dialog does not support metadata
+                        but it works if you pass the correct type*/
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        type={schema.singular as any}
+                        onClose={() => onSharingDialogClose()}
+                        dataSharing={schema.dataShareable}
+                        preventUsersFromRemovingMetadataWriteAccess={true}
+                    />
+                </div>
             )}
             {translationDialogModel && (
                 <TranslationDialog

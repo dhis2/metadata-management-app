@@ -163,7 +163,7 @@ export const RoleAccess = ({
                 queryKey: [{ resource: 'programs', id: programId }],
             })
         }
-    }, [programId, dataEngine, queryClient, form, values.programStages])
+    }, [programId, queryClient, form, values.programStages])
 
     return (
         <>
@@ -211,16 +211,18 @@ export const RoleAccess = ({
             </div>
 
             {sharingDialog && (
-                <SharingDialog
-                    type={sharingDialog.type}
-                    id={sharingDialog.id}
-                    onClose={() => {
-                        setSharingDialog(null)
-                        handleSaveSharing()
-                    }}
-                    dataSharing
-                    metadataSharing={sharingDialog.type !== 'programStage'}
-                />
+                <div onSubmit={(e) => e.stopPropagation()}>
+                    <SharingDialog
+                        type={sharingDialog.type}
+                        id={sharingDialog.id}
+                        onClose={() => {
+                            setSharingDialog(null)
+                            handleSaveSharing()
+                        }}
+                        dataSharing
+                        metadataSharing={sharingDialog.type !== 'programStage'}
+                    />
+                </div>
             )}
         </>
     )
