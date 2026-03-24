@@ -15,6 +15,7 @@ type OwnProps<TModel extends PartialLoadedDisplayableModel> = {
     onChange?: ModelSingleSelectProps<TModel>['onChange']
     inputWidth?: string
     fullyOverrideOnChange?: boolean
+    inputWrapper?: (input: React.ReactElement) => React.ReactElement
 }
 
 type RelevantRenderProps<TModel extends PartialLoadedDisplayableModel> = {
@@ -57,8 +58,26 @@ export function ModelSingleSelectField<
     dataTest,
     inputWidth = '400px',
     fullyOverrideOnChange = false,
+    inputWrapper,
     ...modelSingleSelectProps
 }: ModelSingleSelectFieldProps<TModel> & RelevantRenderProps<TModel>) {
+    const selectElement = (
+        <Box width={inputWidth} minWidth="100px">
+            <ModelSingleSelect<TModel>
+                {...modelSingleSelectProps}
+                selected={input.value}
+                onChange={(selected) => {
+                    if (!fullyOverrideOnChange) {
+                        input.onChange(selected)
+                    }
+                    input.onBlur()
+                    onChange?.(selected)
+                }}
+                invalid={meta.touched && !!meta.error}
+            />
+        </Box>
+    )
+
     return (
         <Field
             dataTest={dataTest ?? `formfields-modelsingleselect-${input.name}`}
@@ -69,20 +88,7 @@ export function ModelSingleSelectField<
             helpText={helpText}
             required={required}
         >
-            <Box width={inputWidth} minWidth="100px">
-                <ModelSingleSelect<TModel>
-                    {...modelSingleSelectProps}
-                    selected={input.value}
-                    onChange={(selected) => {
-                        if (!fullyOverrideOnChange) {
-                            input.onChange(selected)
-                        }
-                        input.onBlur()
-                        onChange?.(selected)
-                    }}
-                    invalid={meta.touched && !!meta.error}
-                />
-            </Box>
+            {inputWrapper ? inputWrapper(selectElement) : selectElement}
         </Field>
     )
 }

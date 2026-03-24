@@ -1,13 +1,13 @@
 import i18n from '@dhis2/d2-i18n'
 import { CheckboxFieldFF, NoticeBox } from '@dhis2/ui'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Field as FieldRFF, useField } from 'react-final-form'
 import { useHref } from 'react-router'
 import { useParams } from 'react-router-dom'
 import {
     CodeField,
     DescriptionField,
-    EditableFieldWrapper,
+    EditableInputWrapper,
     ModelTransferField,
     NameField,
     ShortNameField,
@@ -34,6 +34,18 @@ function OptionGroupSetFormFields() {
         resource: 'optionSets',
     })
     const schemaSection = useSchemaSectionHandleOrThrow()
+
+    const inputWrapper = useCallback(
+        (select: React.ReactElement) => (
+            <EditableInputWrapper
+                onRefresh={() => refreshOptionSet()}
+                onAddNew={() => window.open(newOptionSetLink, '_blank')}
+            >
+                {select}
+            </EditableInputWrapper>
+        ),
+        [refreshOptionSet, newOptionSetLink]
+    )
 
     return (
         <>
@@ -88,28 +100,23 @@ function OptionGroupSetFormFields() {
                     )}
                 </StandardFormSectionDescription>
                 <StandardFormField>
-                    <EditableFieldWrapper
-                        onRefresh={() => refreshOptionSet()}
-                        onAddNew={() => window.open(newOptionSetLink, '_blank')}
-                    >
-                        <ModelSingleSelectFormField
-                            disabled={isEdit}
-                            inputWidth="400px"
-                            name="optionSet"
-                            label={i18n.t('Option set')}
-                            query={{
-                                resource: 'optionSets',
-                                params: {
-                                    fields: 'id,displayName',
-                                },
-                            }}
-                            onChange={() => {
-                                optionGroupsInput.onChange([])
-                                // option groups are cleared when option set is changed
-                            }}
-                            dataTest="formfields-optionSet"
-                        />
-                    </EditableFieldWrapper>
+                    <ModelSingleSelectFormField
+                        disabled={isEdit}
+                        inputWidth="400px"
+                        name="optionSet"
+                        label={i18n.t('Option set')}
+                        query={{
+                            resource: 'optionSets',
+                            params: {
+                                fields: 'id,displayName',
+                            },
+                        }}
+                        onChange={() => {
+                            optionGroupsInput.onChange([])
+                        }}
+                        dataTest="formfields-optionSet"
+                        inputWrapper={inputWrapper}
+                    />
                 </StandardFormField>
 
                 {optionSetId ? (

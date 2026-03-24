@@ -1,9 +1,9 @@
 import i18n from '@dhis2/d2-i18n'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useField } from 'react-final-form'
 import { useHref } from 'react-router'
 import {
-    EditableFieldWrapper,
+    EditableInputWrapper,
     ConfirmationModalWrapper,
 } from '../../../components'
 import {
@@ -18,35 +18,43 @@ export function OptionSetField() {
     const { input } = useField('optionSet')
     const { input: valueTypeInput } = useField('valueType')
 
+    const inputWrapper = useCallback(
+        (select: React.ReactElement) => (
+            <EditableInputWrapper
+                onRefresh={() => refresh()}
+                onAddNew={() => window.open(newOptionSetLink, '_blank')}
+            >
+                {select}
+            </EditableInputWrapper>
+        ),
+        [refresh, newOptionSetLink]
+    )
+
     const renderComponent = ({
         onChange,
     }: {
         onChange: (event: any) => void
     }) => (
-        <EditableFieldWrapper
-            onRefresh={() => refresh()}
-            onAddNew={() => window.open(newOptionSetLink, '_blank')}
-        >
-            <ModelSingleSelectFormField
-                fullyOverrideOnChange={true}
-                onChange={onChange}
-                showNoValueOption
-                inputWidth="400px"
-                dataTest="formfields-optionset"
-                name="optionSet"
-                label={i18n.t('Option set')}
-                query={{
-                    resource: 'optionSets',
-                    params: {
-                        fields: ['id', 'displayName', 'valueType'],
-                        order: ['displayName'],
-                    },
-                }}
-                helpText={i18n.t(
-                    'Limit data entry to a predefined list of options. Overrides value type selection to match the option set.'
-                )}
-            />
-        </EditableFieldWrapper>
+        <ModelSingleSelectFormField
+            fullyOverrideOnChange={true}
+            onChange={onChange}
+            showNoValueOption
+            inputWidth="400px"
+            dataTest="formfields-optionset"
+            name="optionSet"
+            label={i18n.t('Option set')}
+            query={{
+                resource: 'optionSets',
+                params: {
+                    fields: ['id', 'displayName', 'valueType'],
+                    order: ['displayName'],
+                },
+            }}
+            helpText={i18n.t(
+                'Limit data entry to a predefined list of options. Overrides value type selection to match the option set.'
+            )}
+            inputWrapper={inputWrapper}
+        />
     )
 
     return (

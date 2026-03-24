@@ -1,5 +1,6 @@
 export * from './ColorAndIconPicker'
 export * from './EditableFieldWrapper'
+export * from './EditableInputWrapper'
 export * from './form'
 export { HidePreventUnmount } from './HidePreventUnmount'
 export { Loader } from './loading'

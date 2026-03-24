@@ -1,7 +1,7 @@
 import { useTimeZoneConversion } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button, Field, IconAdd16, Input, InputFieldFF } from '@dhis2/ui'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import {
     Field as FieldRFF,
     useField,
@@ -13,7 +13,7 @@ import {
     CodeField,
     ColorAndIconField,
     DescriptionField,
-    EditableFieldWrapper,
+    EditableInputWrapper,
     FeatureTypeField,
     NameField,
     SectionedFormSection,
@@ -32,7 +32,6 @@ import {
     useSchemaSectionHandleOrThrow,
 } from '../../../../lib'
 import { DisplayableModel } from '../../../../types/models'
-import classes from '../../../dataElements/fields/CategoryComboField.module.css'
 import {
     CompleteEventsExpiryDaysField,
     DisplayFrontPageListField,
@@ -80,6 +79,18 @@ export const SetupFormContents = React.memo(function SetupFormContents({
             form.change('openDaysAfterCoEndDate', 0)
         }
     }, [values.categoryCombo, form])
+
+    const categoryComboInputWrapper = useCallback(
+        (select: React.ReactElement) => (
+            <EditableInputWrapper
+                onRefresh={() => refreshCategoryCombos()}
+                onAddNew={() => window.open(newCategoryComboLink, '_blank')}
+            >
+                {select}
+            </EditableInputWrapper>
+        ),
+        [refreshCategoryCombos, newCategoryComboLink]
+    )
 
     return (
         <SectionedFormSection name={name}>
@@ -166,21 +177,15 @@ export const SetupFormContents = React.memo(function SetupFormContents({
                 </StandardFormField>
             )}
             <StandardFormField>
-                <EditableFieldWrapper
-                    onRefresh={() => refreshCategoryCombos()}
-                    onAddNew={() => window.open(newCategoryComboLink, '_blank')}
-                >
-                    <div className={classes.categoryComboSelect}>
-                        <ModelSingleSelectFormField
-                            inputWidth={'400px'}
-                            name="categoryCombo"
-                            dataTest="formfields-categorycombo"
-                            label={i18n.t('Event category combination')}
-                            query={CATEGORY_COMBOS_QUERY}
-                            transform={addDefaultCategoryComboTransform}
-                        />
-                    </div>
-                </EditableFieldWrapper>
+                <ModelSingleSelectFormField
+                    inputWidth={'400px'}
+                    name="categoryCombo"
+                    dataTest="formfields-categorycombo"
+                    label={i18n.t('Event category combination')}
+                    query={CATEGORY_COMBOS_QUERY}
+                    transform={addDefaultCategoryComboTransform}
+                    inputWrapper={categoryComboInputWrapper}
+                />
             </StandardFormField>
 
             <StandardFormField>
