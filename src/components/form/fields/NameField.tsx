@@ -10,17 +10,20 @@ export function NameField({
     helpText,
     modelId,
     caseSensitiveUniqueness = false,
+    customFilterNameUniqueness,
 }: {
     helpText?: string
     schemaSection: SchemaSection
     modelId?: string
     caseSensitiveUniqueness?: boolean
+    customFilterNameUniqueness?: string
 }) {
     const validator = useValidator({
         schemaSection,
         property: 'name',
         modelId,
         caseSensitive: caseSensitiveUniqueness,
+        customFilterUniqueness: customFilterNameUniqueness,
     })
     const schema = useSchema(schemaSection.name)
     const propertyDetails = schema.properties['name']
@@ -34,9 +37,11 @@ export function NameField({
         ),
         caseSensitive: caseSensitiveUniqueness,
     })
-    const uniquenessWarner = propertyDetails.unique
-        ? undefined
-        : checkNameDuplicate
+
+    const uniquenessWarner =
+        propertyDetails.unique || customFilterNameUniqueness
+            ? undefined
+            : checkNameDuplicate
 
     return (
         <FieldRFF name="name" validate={validator}>

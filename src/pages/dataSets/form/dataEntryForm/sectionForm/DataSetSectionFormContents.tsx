@@ -16,6 +16,7 @@ import {
     useForm,
     useFormState,
 } from 'react-final-form'
+import { useParams } from 'react-router-dom'
 import {
     CodeField,
     DescriptionField,
@@ -66,6 +67,7 @@ export type DataSetDataElementsType = {
 export const DataSetSectionFormContents = ({
     onCancel,
 }: DataSetSectionFormProps) => {
+    const dataSetId = useParams()?.id
     const form = useForm<SectionFormValues>()
     const { submitting, values } = useFormState({
         subscription: { submitting: true, values: true },
@@ -150,6 +152,11 @@ export const DataSetSectionFormContents = ({
                         <NameField
                             schemaSection={dataSetSectionSchemaSection}
                             modelId={values.id}
+                            customFilterNameUniqueness={
+                                dataSetId
+                                    ? `dataSet.id:eq:${dataSetId}`
+                                    : undefined
+                            }
                         />
                     </StandardFormField>
                     <StandardFormField>
