@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm, useFormState } from 'react-final-form'
 import { To } from 'react-router-dom'
 import { createPortalToFooter } from '../../app/layout'
@@ -14,11 +14,21 @@ export const DefaultFormFooter = ({ cancelTo }: { cancelTo?: To }) => {
         subscription: { submitting: true },
     })
     const { setSubmitAction } = useFormBase()
+    const [activeAction, setActiveAction] = useState<
+        'saveAndExit' | 'save' | null
+    >(null)
 
     const handleSubmit = (type: SubmitAction) => {
+        setActiveAction(type)
         setSubmitAction(type)
         submit()
     }
+
+    useEffect(() => {
+        if (!submitting) {
+            setActiveAction(null)
+        }
+    }, [submitting])
 
     return createPortalToFooter(
         <FormFooterWrapper>
@@ -26,6 +36,7 @@ export const DefaultFormFooter = ({ cancelTo }: { cancelTo?: To }) => {
                 cancelLabel={i18n.t('Cancel')}
                 submitLabel={i18n.t('Save and close')}
                 submitting={submitting}
+                activeAction={activeAction}
                 onSubmitClick={handleSubmit.bind(null, 'saveAndExit')}
                 onSaveClick={handleSubmit.bind(null, 'save')}
                 cancelTo={cancelTo ?? '../'}

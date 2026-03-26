@@ -2,7 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import { Button, CircularLoader, NoticeBox } from '@dhis2/ui'
 import { useQuery } from '@tanstack/react-query'
 import arrayMutators from 'final-form-arrays'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Form as ReactFinalForm, useForm, useFormState } from 'react-final-form'
 import { To, useParams } from 'react-router-dom'
 import { createPortalToFooter } from '../../app/layout'
@@ -243,10 +243,23 @@ const ProgramDisaggregationFooter = ({
         subscription: { submitting: true },
     })
 
+    const [activeAction, setActiveAction] = useState<
+        'save' | 'saveAndExit' | null
+    >(null)
+
     const handleSubmit = (shouldClose: boolean) => {
+        const action = shouldClose ? 'saveAndExit' : 'save'
+
+        setActiveAction(action)
         setCloseOnSubmit(shouldClose)
         submit()
     }
+
+    useEffect(() => {
+        if (!submitting) {
+            setActiveAction(null)
+        }
+    }, [submitting])
 
     return createPortalToFooter(
         <FormFooterWrapper>
@@ -254,6 +267,7 @@ const ProgramDisaggregationFooter = ({
                 cancelLabel={i18n.t('Cancel')}
                 submitLabel={i18n.t('Save and close')}
                 submitting={submitting}
+                activeAction={activeAction}
                 onSubmitClick={() => handleSubmit(true)}
                 onSaveClick={() => handleSubmit(false)}
                 cancelTo={cancelTo}

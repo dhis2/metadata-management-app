@@ -9,6 +9,7 @@ export function StandardFormActions({
     submitLabel,
     saveLabel = i18n.t('Save'),
     submitting,
+    activeAction,
     onSubmitClick,
     onSaveClick,
     cancelTo,
@@ -18,18 +19,22 @@ export function StandardFormActions({
     submitLabel: string
     saveLabel?: string
     submitting: boolean
+    activeAction?: 'saveAndExit' | 'save' | null
     onSubmitClick: () => void
     onSaveClick?: () => void
     cancelTo?: To
     onCancelClick?: () => void
 }) {
+    const isSubmitting = submitting && activeAction === 'saveAndExit'
+    const isSaving = submitting && activeAction === 'save'
+
     return (
         <ButtonStrip>
             <Button
                 primary
                 small
                 disabled={submitting}
-                loading={submitting}
+                loading={isSubmitting}
                 type="submit"
                 onClick={onSubmitClick}
                 dataTest="form-submit-button"
@@ -41,7 +46,7 @@ export function StandardFormActions({
                     primary
                     small
                     disabled={submitting}
-                    loading={submitting}
+                    loading={isSaving}
                     type="button"
                     onClick={onSaveClick}
                     dataTest="form-save-button"
