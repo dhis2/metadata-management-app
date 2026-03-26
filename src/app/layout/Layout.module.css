@@ -16,13 +16,20 @@
 }
 
 .main {
-    padding: var(--spacers-dp16);
-    padding-bottom: 0px;
     grid-area: main;
     background-color: var(--colors-grey200);
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.mainContent {
+    padding: var(--spacers-dp12) var(--spacers-dp16);
+    padding-bottom: 0px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
 }
 
 .sidebar {

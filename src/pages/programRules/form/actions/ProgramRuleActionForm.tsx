@@ -63,7 +63,7 @@ export const actionsSchemaSection = {
     namePlural: 'programRuleActions',
     title: i18n.t('Action'),
     titlePlural: i18n.t('Actions'),
-    parentSectionKey: 'programsAndTracker',
+    parentSectionKey: 'programs',
 } satisfies SchemaSection
 
 export const ProgramRuleActionForm = ({

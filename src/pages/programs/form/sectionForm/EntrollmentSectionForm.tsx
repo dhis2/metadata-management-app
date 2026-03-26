@@ -37,7 +37,7 @@ export const enrollmentSectionSchemaSection = {
     namePlural: 'programSections',
     title: i18n.t('Section'),
     titlePlural: i18n.t('Sections'),
-    parentSectionKey: 'programsAndTracker',
+    parentSectionKey: 'programs',
 } satisfies SchemaSection
 
 export type SectionFormValues = PickWithFieldFilters<

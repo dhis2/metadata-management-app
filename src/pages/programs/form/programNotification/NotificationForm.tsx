@@ -61,7 +61,7 @@ export const notificationSchemaSection = {
     namePlural: 'programNotificationTemplates',
     title: i18n.t('Notification'),
     titlePlural: i18n.t('Notifications'),
-    parentSectionKey: 'programsAndTracker',
+    parentSectionKey: 'programs',
 } satisfies SchemaSection
 
 export type NotificationFormValues = PickWithFieldFilters<
@@ -152,7 +152,7 @@ export const NotificationForm = ({
                     ? {}
                     : { programStage: { id: programStageId } }),
             } as PartialNotificationFormValues
-        }, [notification, programId])
+        }, [notification, programId, isTrackerProgram, programStageId])
 
     const closeOnSubmitRef = React.useRef(false)
     const setCloseOnSubmit = (value: boolean) => {

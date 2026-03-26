@@ -21,7 +21,6 @@ import { SectionListLoader } from './SectionListLoader'
 import { SectionListEmpty, SectionListError } from './SectionListMessages'
 import { SectionListPagination } from './SectionListPagination'
 import { SectionListRow } from './SectionListRow'
-import { SectionListTitle } from './SectionListTitle'
 import { DefaultToolbar } from './toolbar'
 import { DefaultToolbarProps } from './toolbar/DefaultToolbar'
 import { TranslationDialog } from './translation'
@@ -177,7 +176,6 @@ export const SectionListWrapper = ({
 
     return (
         <div>
-            <SectionListTitle />
             <FilterWrapper />
             <div className={css.listDetailsWrapper}>
                 {RenderedToolbarComponent}

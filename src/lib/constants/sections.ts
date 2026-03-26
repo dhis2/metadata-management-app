@@ -159,21 +159,21 @@ export const SCHEMA_SECTIONS = {
         namePlural: 'trackedEntityAttributes',
         title: i18n.t('Tracked entity attribute'),
         titlePlural: i18n.t('Tracked entity attributes'),
-        parentSectionKey: 'programsAndTracker',
+        parentSectionKey: 'programs',
     },
     trackedEntityType: {
         name: SchemaName.trackedEntityType,
         namePlural: 'trackedEntityTypes',
         title: i18n.t('Tracked entity type'),
         titlePlural: i18n.t('Tracked entity types'),
-        parentSectionKey: 'programsAndTracker',
+        parentSectionKey: 'programs',
     },
     program: {
         name: SchemaName.program,
         namePlural: 'programs',
         title: i18n.t('Program'),
         titlePlural: i18n.t('Programs'),
-        parentSectionKey: 'programsAndTracker',
+        parentSectionKey: 'programs',
     },
     programIndicator: {
         name: SchemaName.programIndicator,
@@ -194,28 +194,28 @@ export const SCHEMA_SECTIONS = {
         namePlural: 'programRules',
         title: i18n.t('Program rule'),
         titlePlural: i18n.t('Program rules'),
-        parentSectionKey: 'programsAndTracker',
+        parentSectionKey: 'programs',
     },
     programRuleVariable: {
         name: SchemaName.programRuleVariable,
         namePlural: 'programRuleVariables',
         title: i18n.t('Program rule variable'),
         titlePlural: i18n.t('Program rule variables'),
-        parentSectionKey: 'programsAndTracker',
+        parentSectionKey: 'programs',
     },
     programStage: {
         name: SchemaName.programStage,
         namePlural: 'programStages',
         title: i18n.t('Program stage'),
         titlePlural: i18n.t('Program stages'),
-        parentSectionKey: 'programsAndTracker',
+        parentSectionKey: 'programs',
     },
     relationshipType: {
         name: SchemaName.relationshipType,
         namePlural: 'relationshipTypes',
         title: i18n.t('Relationship type'),
         titlePlural: i18n.t('Relationship types'),
-        parentSectionKey: 'programsAndTracker',
+        parentSectionKey: 'programs',
     },
 
     validationRule: {
@@ -354,6 +354,7 @@ export const OVERVIEW_SECTIONS = {
         namePlural: 'categories',
         title: i18n.t('Category'),
         titlePlural: i18n.t('Categories'),
+        breadcrumbLabel: i18n.t('Categories overview'),
         componentName: 'Categories',
     },
     dataElement: {
@@ -361,6 +362,7 @@ export const OVERVIEW_SECTIONS = {
         namePlural: 'dataElements',
         title: i18n.t('Data element'),
         titlePlural: i18n.t('Data elements'),
+        breadcrumbLabel: i18n.t('Data elements overview'),
         componentName: 'DataElements',
     },
     dataSet: {
@@ -368,6 +370,7 @@ export const OVERVIEW_SECTIONS = {
         namePlural: 'dataSets',
         title: i18n.t('Data set'),
         titlePlural: i18n.t('Data sets'),
+        breadcrumbLabel: i18n.t('Data sets overview'),
         componentName: 'DataSets',
     },
     indicator: {
@@ -382,20 +385,23 @@ export const OVERVIEW_SECTIONS = {
         namePlural: 'organisationUnits',
         title: i18n.t('Organisation unit'),
         titlePlural: i18n.t('Organisation units'),
+        breadcrumbLabel: i18n.t('Organisation units overview'),
         componentName: 'OrganisationUnits',
     },
-    programsAndTracker: {
-        name: 'programsAndTracker',
-        namePlural: 'programsAndTracker',
-        title: i18n.t('Programs and Tracker'),
-        titlePlural: i18n.t('Programs and Tracker'),
-        componentName: 'ProgramsAndTracker',
+    programs: {
+        name: 'programs',
+        namePlural: 'programs',
+        title: i18n.t('Programs'),
+        titlePlural: i18n.t('Programs'),
+        breadcrumbLabel: i18n.t('Programs overview'),
+        componentName: 'Programs',
     },
     optionSet: {
         name: SchemaName.optionSet,
         namePlural: 'optionSets',
         title: i18n.t('Option set'),
         titlePlural: i18n.t('Option sets'),
+        breadcrumbLabel: i18n.t('Option sets overview'),
         componentName: 'OptionSets',
     },
     validation: {
@@ -449,7 +455,7 @@ export const NON_SCHEMA_SECTION = {
         namePlural: 'programDisaggregations',
         title: i18n.t('Program disaggregation'),
         titlePlural: i18n.t('Program disaggregations'),
-        parentSectionKey: 'programsAndTracker',
+        parentSectionKey: 'programs',
         minApiVersion: 42,
         authorities: [
             {

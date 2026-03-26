@@ -45,7 +45,7 @@ export const stageSectionSchemaSection = {
     namePlural: 'programStageSections',
     title: i18n.t('Stage section'),
     titlePlural: i18n.t('Stage sections'),
-    parentSectionKey: 'programsAndTracker',
+    parentSectionKey: 'programs',
 } satisfies SchemaSection
 
 type OnFormSubmit = FormBaseProps<PartialSectionFormValues>['onSubmit']

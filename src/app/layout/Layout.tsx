@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom'
 import { Outlet, useMatches } from 'react-router-dom'
 import { MatchRouteHandle } from '../routes/types'
 import { Sidebar } from '../sidebar'
+import { Breadcrumbs } from './Breadcrumb'
 import css from './Layout.module.css'
 
 interface BaseLayoutProps {
@@ -16,7 +17,10 @@ export const BaseLayout = ({ children, sidebar }: BaseLayoutProps) => {
     return (
         <div className={css.wrapper}>
             {sidebar}
-            <div className={css.main}>{children}</div>
+            <div className={css.main}>
+                <Breadcrumbs />
+                <div className={css.mainContent}>{children}</div>
+            </div>
             <div id={FOOTER_ID} className={css.footer}></div>
         </div>
     )

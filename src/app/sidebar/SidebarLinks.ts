@@ -30,7 +30,7 @@ const getOverviewLinkItem = (section: Section): LinkItem => ({
 })
 
 const getSectionLinkItem = (section: Section): LinkItem => ({
-    label: i18n.t(section.title),
+    label: i18n.t(section.titlePlural),
     to: getSectionPath(section),
     section,
 })
@@ -89,10 +89,10 @@ export const sidebarLinks = {
             getSectionLinkItem(SECTIONS_MAP.organisationUnitLevel),
         ],
     },
-    programsAndTracker: {
-        label: OVERVIEW_SECTIONS.programsAndTracker.title,
+    programs: {
+        label: OVERVIEW_SECTIONS.programs.title,
         links: [
-            getOverviewLinkItem(OVERVIEW_SECTIONS.programsAndTracker),
+            getOverviewLinkItem(OVERVIEW_SECTIONS.programs),
             getSectionLinkItem(SECTIONS_MAP.program),
             getSectionLinkItem(SECTIONS_MAP.trackedEntityType),
             getSectionLinkItem(SECTIONS_MAP.trackedEntityAttribute),
@@ -161,5 +161,5 @@ export const useSidebarLinks = (): ParentLink[] => {
             }))
             .filter(({ links }) => links.length > 0)
         return authorizedSidebarLinks
-    }, [isSectionAuthorized])
+    }, [isSectionAuthorized, isSectionFeatureToggled])
 }

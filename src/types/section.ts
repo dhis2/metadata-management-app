@@ -25,6 +25,7 @@ export type NonSchemaSection = SectionBase & {
 
 export type OverviewSection = SectionBase & {
     componentName: string
+    breadcrumbLabel?: string
 }
 
 export type ModelSection = SchemaSection | NonSchemaSection

@@ -42,17 +42,21 @@ export const BreadCrumbEndItem = ({ label }: { label: string }) => (
 export const Breadcrumbs = () => {
     const matches = useMatches() as MatchRouteHandle[]
 
-    const crumbs = matches
-        .filter((match) => match.handle?.crumb)
-        .map((match) => (
-            <span key={match.id}>
-                {match.handle?.crumb?.({
-                    params: match.params,
-                    pathname: match.pathname,
-                })}
-                <BreadcrumbSeparator />
-            </span>
-        ))
+    const filtered = matches.filter((match) => match.handle?.crumb)
+
+    if (filtered.length === 0) {
+        return null
+    }
+
+    const crumbs = filtered.map((match, index) => (
+        <span key={match.id}>
+            {match.handle?.crumb?.({
+                params: match.params,
+                pathname: match.pathname,
+            })}
+            {index < filtered.length - 1 && <BreadcrumbSeparator />}
+        </span>
+    ))
 
     return <div className={css.breadcrumbWrapper}>{crumbs}</div>
 }

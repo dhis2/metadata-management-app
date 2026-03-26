@@ -9,7 +9,7 @@ import { IndicatorsCardGroup } from './Indicators'
 import { OptionSetsCardGroup } from './OptionSets'
 import { OrganisationUnitsCardGroup } from './OrganisationUnits'
 import { OtherCardGroup } from './Other'
-import { ProgramsAndTrackersCardGroup } from './ProgramsAndTracker'
+import { ProgramsCardGroup } from './Programs'
 import { ValidationsCardGroup } from './Validations'
 
 export const AllOverview = () => {
@@ -20,7 +20,7 @@ export const AllOverview = () => {
             <DataSetsCardGroup showTitle={true} />
             <IndicatorsCardGroup showTitle={true} />
             <OrganisationUnitsCardGroup showTitle={true} />
-            <ProgramsAndTrackersCardGroup showTitle={true} />
+            <ProgramsCardGroup showTitle={true} />
             <OptionSetsCardGroup showTitle={true} />
             <ValidationsCardGroup showTitle={true} />
             <DataApprovalCardGroup showTitle={true} />

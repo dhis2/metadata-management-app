@@ -62,7 +62,7 @@ describe('Sidebar', () => {
                     systemInfo: {
                         contextPath: 'www.test.com/path/somewhere',
                     },
-                } as any)
+                } as ReturnType<typeof useConfig>)
         )
         mockedUseCurrentUserAuthorities.mockReturnValue(new Set(['ALL']))
     })
@@ -76,7 +76,7 @@ describe('Sidebar', () => {
             'Data sets',
             'Indicators and Predictors',
             'Organisation units',
-            'Programs and Tracker',
+            'Programs',
             'Option sets',
             'Validations',
             'Data Approval',
@@ -122,9 +122,9 @@ describe('Sidebar', () => {
 
         const subCategories = [
             'Overview',
-            'Category option',
-            'Category combination',
-            'Category option combination',
+            'Category options',
+            'Category combinations',
+            'Category option combinations',
         ]
         subCategories.forEach((title) => expect(queryByText(title)).toBeNull())
 
@@ -138,7 +138,7 @@ describe('Sidebar', () => {
         it('should navigate to the target of the link', async () => {
             const { getByText } = renderSideBar()
             await userEvent.click(getByText('Categories'))
-            await userEvent.click(getByText('Category combination'))
+            await userEvent.click(getByText('Category combinations'))
             expect(window.location.href).toMatch('/categoryCombos')
             await userEvent.click(getByText('Overview'))
             expect(window.location.href).toMatch('/overview/categories')
@@ -148,30 +148,32 @@ describe('Sidebar', () => {
     describe('searching', () => {
         it('should filter the list when a search string is entered', async () => {
             const user = userEvent.setup()
-            const { getByPlaceholderText, getByText, queryByText } =
+            const { getByPlaceholderText, getByText, queryByText, getByRole } =
                 renderSideBar()
 
-            expect(queryByText('Data element group')).toBeNull()
+            expect(queryByText('Data element groups')).toBeNull()
 
             await user.type(getByPlaceholderText(/Search/), 'elements')
 
-            expect(getByText('Data elements')).toBeDefined()
+            expect(
+                getByRole('link', { name: 'Data elements' })
+            ).toBeInTheDocument()
             expect(getByText('Overview')).toBeDefined()
-            expect(getByText('Data element group')).toBeDefined()
-            expect(getByText('Data element group set')).toBeDefined()
+            expect(getByText('Data element groups')).toBeDefined()
+            expect(getByText('Data element group sets')).toBeDefined()
         })
         it('should allow searching for a match in a subcategory', async () => {
             const user = userEvent.setup()
             const { getByPlaceholderText, getByText, queryByText } =
                 renderSideBar()
 
-            expect(queryByText('Data element group')).toBeNull()
+            expect(queryByText('Data element groups')).toBeNull()
 
             await user.type(getByPlaceholderText(/Search/), 'group')
 
             expect(queryByText('Overview')).toBeNull()
-            expect(getByText('Data element group')).toBeDefined()
-            expect(getByText('Data element group set')).toBeDefined()
+            expect(getByText('Data element groups')).toBeDefined()
+            expect(getByText('Data element group sets')).toBeDefined()
         })
         describe('when no match', () => {
             it('should display an appropriate message', async () => {
@@ -179,7 +181,7 @@ describe('Sidebar', () => {
                 const { getByPlaceholderText, getByText, queryByText } =
                     renderSideBar()
 
-                expect(queryByText('Data element group')).toBeNull()
+                expect(queryByText('Data element groups')).toBeNull()
 
                 await user.type(
                     getByPlaceholderText(/Search/),
@@ -193,7 +195,7 @@ describe('Sidebar', () => {
                 const { getByPlaceholderText, getByText, queryByText } =
                     renderSideBar()
 
-                expect(queryByText('Data element group')).toBeNull()
+                expect(queryByText('Data element groups')).toBeNull()
 
                 await user.type(
                     getByPlaceholderText(/Search/),
@@ -232,8 +234,8 @@ describe('Sidebar', () => {
             const { queryByText, getByText } = renderSideBar()
             const expectedSubCategories = [
                 'Overview',
-                'Category option group',
-                'Category option group set',
+                'Category option groups',
+                'Category option group sets',
             ]
             expectedSubCategories.forEach((title) =>
                 expect(queryByText(title)).toBeNull()
@@ -242,9 +244,9 @@ describe('Sidebar', () => {
             expectedSubCategories.forEach((title) =>
                 expect(getByText(title)).not.toBeNull()
             )
-            expect(queryByText('Category option')).toBeNull()
-            expect(queryByText('Category combination')).toBeNull()
-            expect(queryByText('Category option combination')).toBeNull()
+            expect(queryByText('Category options')).toBeNull()
+            expect(queryByText('Category combinations')).toBeNull()
+            expect(queryByText('Category option combinations')).toBeNull()
         })
 
         it('should hide parent if all children are unauthorized', () => {
@@ -274,8 +276,8 @@ describe('Sidebar', () => {
             const { queryByText, getByText } = renderSideBar()
             const expectedSubCategories = [
                 'Overview',
-                'Category option group',
-                'Category option group set',
+                'Category option groups',
+                'Category option group sets',
             ]
             expectedSubCategories.forEach((title) =>
                 expect(queryByText(title)).toBeNull()
@@ -284,9 +286,9 @@ describe('Sidebar', () => {
             expectedSubCategories.forEach((title) =>
                 expect(getByText(title)).not.toBeNull()
             )
-            expect(queryByText('Category option')).toBeNull()
-            expect(queryByText('Category combination')).toBeNull()
-            expect(queryByText('Category option combination')).toBeNull()
+            expect(queryByText('Category options')).toBeNull()
+            expect(queryByText('Category combinations')).toBeNull()
+            expect(queryByText('Category option combinations')).toBeNull()
         })
 
         it('should hide parent if all children are unauthorized', () => {

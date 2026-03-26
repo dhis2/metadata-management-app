@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import css from '../../components/sectionList/SectionList.module.css'
-import { SectionListTitle } from '../../components/sectionList/SectionListTitle'
 import { DefaultToolbar } from '../../components/sectionList/toolbar'
 import { TranslationDialog } from '../../components/sectionList/translation'
 import { BaseListModel } from '../../lib'
@@ -12,7 +11,6 @@ export const Component = () => {
     >(undefined)
     return (
         <div>
-            <SectionListTitle />
             <div className={css.listDetailsWrapper}>
                 <DefaultToolbar
                     selectedModels={new Set()}

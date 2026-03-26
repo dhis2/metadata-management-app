@@ -16,7 +16,6 @@ import {
 } from '../../../components/sectionList/detailsPanel'
 import { useModelListView } from '../../../components/sectionList/listView'
 import { ModelValue } from '../../../components/sectionList/modelValue/ModelValue'
-import { SectionListTitle } from '../../../components/sectionList/SectionListTitle'
 import { DefaultToolbar } from '../../../components/sectionList/toolbar'
 import { TranslationDialog } from '../../../components/sectionList/translation'
 import {
@@ -287,7 +286,6 @@ export const OrganisationUnitList = () => {
 
     return (
         <div>
-            <SectionListTitle />
             <IdentifiableFilter />
             <div className={css.listDetailsWrapper}>
                 <DefaultToolbar

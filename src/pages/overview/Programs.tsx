@@ -4,9 +4,9 @@ import { OVERVIEW_SECTIONS, SECTIONS_MAP } from '../../lib'
 import { SummaryCard, SummaryCardGroup } from './card'
 import { OverviewGroup, OverviewGroupSummary } from './group'
 
-const TITLE = i18n.t('Programs and Tracker')
+const TITLE = i18n.t('Programs')
 
-export const ProgramsAndTrackerOverview = () => {
+export const ProgramsOverview = () => {
     return (
         <OverviewGroup title={TITLE}>
             <OverviewGroupSummary>
@@ -14,20 +14,16 @@ export const ProgramsAndTrackerOverview = () => {
                     'Programs are used to collect, manage, and analyze event-based and longitudinal data. They allow you to define program stages, track entities such as people or items over time, and apply rules and relationships to support flexible data capture and analysis.'
                 )}
             </OverviewGroupSummary>
-            <ProgramsAndTrackersCardGroup />
+            <ProgramsCardGroup />
         </OverviewGroup>
     )
 }
 
-export const ProgramsAndTrackersCardGroup = ({
-    showTitle,
-}: {
-    showTitle?: boolean
-}) => {
+export const ProgramsCardGroup = ({ showTitle }: { showTitle?: boolean }) => {
     return (
         <SummaryCardGroup
             title={showTitle ? TITLE : undefined}
-            section={OVERVIEW_SECTIONS.programsAndTracker}
+            section={OVERVIEW_SECTIONS.programs}
         >
             <SummaryCard section={SECTIONS_MAP.program}>
                 {i18n.t(
@@ -69,4 +65,4 @@ export const ProgramsAndTrackersCardGroup = ({
     )
 }
 
-export const Component = ProgramsAndTrackerOverview
+export const Component = ProgramsOverview

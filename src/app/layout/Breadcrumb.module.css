@@ -1,16 +1,24 @@
 .breadcrumbWrapper {
-    margin-bottom: 8px;
+    padding: var(--spacers-dp8) var(--spacers-dp16);
+    background: var(--colors-white);
+    box-shadow: 0 0 0 1px var(--colors-grey400),
+        0 1px 5px rgba(33, 41, 52, 0.05), 0 0 40px rgba(33, 41, 52, 0.015);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
-.breadCrumbItem {
+.breadcrumbItem {
     font-size: 14px;
     line-height: 18px;
+    font-weight: 500;
 }
 
 .breadcrumbItemLink {
-    composes: breadCrumbItem;
+    composes: breadcrumbItem;
     color: var(--colors-blue600);
     text-decoration: none;
+    font-weight: 400;
 }
 
 span.breadcrumbItemLink {

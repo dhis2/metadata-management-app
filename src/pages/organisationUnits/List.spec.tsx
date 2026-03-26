@@ -449,8 +449,6 @@ describe('Organisation unit list', () => {
             otherOrgUnits: [child1, child2],
         })
 
-        expect(screen.queryByText('Organisation unit management')).toBeVisible()
-
         const tableRows = screen.getAllByTestId('dhis2-uicore-datatablerow')
         expect(tableRows.length).toBe(4)
 
@@ -493,8 +491,6 @@ describe('Organisation unit list', () => {
             rootOrgUnits: [rootOrg],
             otherOrgUnits: [child1, child2],
         })
-
-        expect(screen.queryByText('Organisation unit management')).toBeVisible()
 
         const tableRows = screen.getAllByTestId('dhis2-uicore-datatablerow')
         expect(tableRows.length).toBe(4)

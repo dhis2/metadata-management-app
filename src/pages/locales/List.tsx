@@ -17,7 +17,6 @@ import {
 } from '../../components/sectionList/detailsPanel'
 import { useModelListView } from '../../components/sectionList/listView'
 import { ModelValueRenderer } from '../../components/sectionList/modelValue/ModelValueRenderer'
-import { SectionListTitle } from '../../components/sectionList/SectionListTitle'
 import { DefaultToolbar } from '../../components/sectionList/toolbar'
 import { useSelectedModels } from '../../components/sectionList/useSelectedModels'
 import {
@@ -121,7 +120,6 @@ every item when interacting with a row */
 
     return (
         <div>
-            <SectionListTitle />
             <div className={css.filterWrapper}>
                 <Input
                     className={css.identifiableSelectionFilter}

@@ -79,7 +79,7 @@ export const stageSchemaSection = {
     namePlural: 'programStages',
     title: i18n.t('Stage'),
     titlePlural: i18n.t('Stages'),
-    parentSectionKey: 'programsAndTracker',
+    parentSectionKey: 'programs',
 } satisfies SchemaSection
 
 export type StageFormValuesFromFilters = PickWithFieldFilters<
