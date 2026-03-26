@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { z, ZodObject, ZodRawShape } from 'zod'
 import { zodToJsonSchema } from 'zod-to-json-schema'
 import { categoryFormSchema } from '../pages/categories/form'
+import { indicatorGroupFormSchema } from '../pages/indicatorGroups/form/indicatorGroupSchema'
 
 const generateContract = <T extends ZodRawShape>({
     method,
@@ -53,6 +54,16 @@ describe('contracts', () => {
             name: 'category',
             expectedSchema: categoryFormSchema,
             usage: 'used to populate edit category form',
+        })
+    })
+
+    it('should generate get indicator group contracts', () => {
+        generateContract({
+            method: 'GET',
+            path: '/indicatorGroups/{id}',
+            name: 'indicator-group',
+            expectedSchema: indicatorGroupFormSchema,
+            usage: 'used to populate edit indicator group form',
         })
     })
 })
