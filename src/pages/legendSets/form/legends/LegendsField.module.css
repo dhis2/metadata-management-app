@@ -1,0 +1,156 @@
+.openGeneratorWrap {
+    margin-bottom: var(--spacers-dp16);
+}
+
+.emptyStateCell {
+    padding: var(--spacers-dp8) 0;
+}
+
+.emptyStateGenerator {
+    padding: var(--spacers-dp8);
+    border-bottom: 1px solid var(--colors-grey300);
+    padding-block-end: var(--spacers-dp24);
+}
+
+.emptyStateTitle {
+    margin-block-end: var(--spacers-dp12);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--colors-grey900);
+}
+
+.legendGeneratorWrench {
+    flex-shrink: 0;
+    color: var(--colors-grey700);
+}
+
+.manualAddRow {
+    padding: var(--spacers-dp8);
+    margin-block-start: var(--spacers-dp24);
+}
+
+.manualAddBody {
+    padding: 0 var(--spacers-dp24);
+}
+.modalGeneratorBody {
+    margin-top: var(--spacers-dp16);
+}
+
+.generateBody {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacers-dp12);
+    flex-wrap: wrap;
+    padding: 0 var(--spacers-dp24) var(--spacers-dp16);
+}
+
+.generateInputs {
+    display: flex;
+    gap: var(--spacers-dp12);
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.colorScaleSelector {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.colorScaleLabel {
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--colors-grey900);
+}
+
+.colorScaleButton {
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp8);
+    height: 40px;
+    padding: 0 var(--spacers-dp8);
+    border: 1px solid var(--colors-grey500);
+    border-radius: 3px;
+    background: var(--colors-white);
+    color: var(--colors-grey900);
+}
+
+.colorScaleButton:focus-visible {
+    outline: 3px solid var(--colors-teal400);
+    outline-offset: 0;
+}
+
+.colorScalePreview {
+    display: flex;
+    height: 20px;
+}
+
+.colorScalePreviewCell {
+    width: 20px;
+    height: 20px;
+}
+
+.colorScalePopover {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--colors-white);
+    padding: 0;
+    border-radius: 3px;
+    border: 1px solid var(--colors-grey400);
+    box-shadow: var(--elevations-e300);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.colorScaleOption {
+    display: flex;
+    cursor: pointer;
+    padding: var(--spacers-dp8) var(--spacers-dp12);
+    border-radius: 3px;
+    border: none;
+    background: none;
+}
+
+.colorScaleOption:hover {
+    background: var(--colors-grey200);
+}
+
+.legendItemRowOverlap td {
+    background-color: var(--colors-red050) !important;
+}
+
+.legendItemRowOverlap td:first-child {
+    box-shadow: inset 3px 0 0 var(--colors-red600);
+}
+
+.legendItemColorButton {
+    width: 28px;
+    height: 28px;
+    border-radius: 3px;
+    border: 1px solid var(--colors-grey400);
+    cursor: pointer;
+    padding: 0;
+}
+
+.legendItemColorButton:hover {
+    box-shadow: 0 0 0 2px var(--colors-grey400);
+}
+
+.inlineColorPicker {
+    background: var(--colors-white);
+    padding: var(--spacers-dp8);
+    border-radius: 3px;
+    border: 1px solid var(--colors-grey400);
+    box-shadow: var(--elevations-e300);
+}
+
+.inlineColorPicker > div > div {
+    box-shadow: none !important;
+}
+
+.validationError {
+    color: var(--colors-red700);
+    font-size: 13px;
+    margin-top: var(--spacers-dp8);
+}
