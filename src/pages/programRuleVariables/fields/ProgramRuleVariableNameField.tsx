@@ -1,8 +1,10 @@
 import { useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { InputFieldFF } from '@dhis2/ui'
+import memoize from 'lodash/memoize'
 import React, { useCallback, useMemo } from 'react'
-import { Field as FieldRFF } from 'react-final-form'
+import { Field as FieldRFF, useFormState } from 'react-final-form'
+import { useDebouncedCallback } from 'use-debounce'
 import { PROGRAM_RULE_VARIABLE_CONSTANTS } from '../../../constants/programRuleVariable'
 import { required } from '../../../lib/form'
 import {
@@ -67,47 +69,68 @@ const DUPLICATE_NAME_WITHIN_PROGRAM_MESSAGE = i18n.t(
     'A variable with this name already exists in this program.'
 )
 
-export function ProgramRuleVariableNameField() {
+export function useIsNameValueUniqueInProgram({
+    programId,
+    currentId,
+}: {
+    programId?: string
+    currentId?: string
+}) {
     const engine = useDataEngine()
-
-    const duplicateNameWithinProgramValidator = useCallback<
-        FormFieldValidator<string, ProgramRuleVariableFormValues>
-    >(
-        async (value, formValues) => {
-            const programId = formValues?.program?.id
-            const currentId = formValues?.id
-            if (!value?.trim() || !programId) {
-                return undefined
-            }
-            const filter = [
-                `program.id:eq:${programId}`,
-                `name:ieq:${value.trim()}`,
-            ]
-            if (currentId) {
-                filter.push(`id:ne:${currentId}`)
-            }
-            const data = (await engine.query({
-                programRuleVariables: {
-                    resource: 'programRuleVariables',
-                    params: {
-                        filter,
-                        pageSize: 1,
-                        fields: 'id',
-                    },
-                },
-            })) as {
-                programRuleVariables: {
-                    pager: { total: number }
+    const memoized = useMemo(
+        () =>
+            memoize(async (value?: string) => {
+                if (!value) {
+                    return undefined
                 }
-            }
-            const total = data?.programRuleVariables?.pager?.total ?? 0
-            if (total > 0) {
-                return DUPLICATE_NAME_WITHIN_PROGRAM_MESSAGE
-            }
-            return undefined
-        },
-        [engine]
+
+                const filter = [
+                    `program.id:eq:${programId}`,
+                    `name:ieq:${value.trim()}`,
+                ]
+                if (currentId) {
+                    filter.push(`id:ne:${currentId}`)
+                }
+
+                const data = (await engine.query({
+                    programRuleVariables: {
+                        resource: 'programRuleVariables',
+                        params: {
+                            filter,
+                            pageSize: 1,
+                            fields: 'id',
+                        },
+                    },
+                })) as {
+                    programRuleVariables: {
+                        pager: { total: number }
+                    }
+                }
+
+                const total = data?.programRuleVariables?.pager?.total ?? 0
+
+                if (total > 0) {
+                    return DUPLICATE_NAME_WITHIN_PROGRAM_MESSAGE
+                }
+                return undefined
+            }),
+        [engine, currentId, programId]
     )
+
+    const validate = useCallback(
+        (value?: string) => memoized(value),
+        [memoized]
+    )
+
+    return useDebouncedCallback(validate, 50, { leading: true })
+}
+
+export function ProgramRuleVariableNameField() {
+    const { values } = useFormState({ subscription: { values: true } })
+    const duplicateNameWithinProgramValidator = useIsNameValueUniqueInProgram({
+        programId: values?.program?.id,
+        currentId: values?.id,
+    })
 
     const validator = useMemo(
         () =>

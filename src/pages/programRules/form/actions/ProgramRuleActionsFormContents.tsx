@@ -160,6 +160,12 @@ const ProgramRuleActionListNewOrEdit = () => {
                                     templateNameById
                                 ),
                                 access: action.access,
+                                description: action.priority
+                                    ? i18n.t('Priority: {{priority}}', {
+                                          priority: action.priority,
+                                          nsSeparator: '~-~',
+                                      })
+                                    : undefined,
                             }
 
                             return (
