@@ -59,19 +59,19 @@ export const EventProgramFormDescriptor = {
         },
         {
             name: 'programSettings',
-            label: i18n.t('Settings'),
+            label: i18n.t('Program Settings'),
             fields: [
                 {
                     name: 'programStages[0].enableUserAssignment',
-                    label: i18n.t('Allow user assignment of events'),
+                    label: i18n.t('Allow events to be assigned to users'),
                 },
                 {
                     name: 'programStages[0].blockEntryForm',
-                    label: i18n.t('Block entry form after completed'),
+                    label: i18n.t('Block data entry after completion'),
                 },
                 {
                     name: 'programStages[0].preGenerateUID',
-                    label: i18n.t('Pre-generate event UID'),
+                    label: i18n.t('Generate offline event IDs'),
                 },
                 {
                     name: 'programStages[0].validationStrategy',

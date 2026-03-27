@@ -18,7 +18,9 @@ export const ProgramSettingsFormContents = React.memo(
                     {i18n.t('Program Settings')}
                 </StandardFormSectionTitle>
                 <StandardFormSectionDescription>
-                    {i18n.t('Set up advanced options for this program.')}
+                    {i18n.t(
+                        'Set up how data is collected for events in this program.'
+                    )}
                 </StandardFormSectionDescription>
 
                 <StandardFormField>
@@ -26,7 +28,7 @@ export const ProgramSettingsFormContents = React.memo(
                         name="programStages[0].enableUserAssignment"
                         type="checkbox"
                         component={CheckboxFieldFF}
-                        label={i18n.t('Allow user assignment of events')}
+                        label={i18n.t('Allow events to be assigned to users')}
                     />
                 </StandardFormField>
 
@@ -35,7 +37,7 @@ export const ProgramSettingsFormContents = React.memo(
                         name="programStages[0].blockEntryForm"
                         type="checkbox"
                         component={CheckboxFieldFF}
-                        label={i18n.t('Block entry form after completed')}
+                        label={i18n.t('Block data entry after completion')}
                     />
                 </StandardFormField>
 
@@ -44,7 +46,7 @@ export const ProgramSettingsFormContents = React.memo(
                         name="programStages[0].preGenerateUID"
                         type="checkbox"
                         component={CheckboxFieldFF}
-                        label={i18n.t('Pre-generate event UID')}
+                        label={i18n.t('Generate offline event IDs')}
                     />
                 </StandardFormField>
 
