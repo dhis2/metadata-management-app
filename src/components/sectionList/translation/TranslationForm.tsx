@@ -26,26 +26,52 @@ type TranslationValues = Record<string, string>
 type Locale = string
 export type TranslationFormValues = Record<Locale, TranslationValues>
 
-const standardTranslatableFields = [
+const orderedTranslatableFields = [
     'name',
     'shortName',
     'formName',
     'description',
+    'executionDateLabel',
+    'dueDateLabel',
+    'enrollmentDateLabel',
+    'incidentDateLabel',
+    'enrollmentLabel',
+    'enrollmentsLabel',
+    'programStageLabel',
+    'programStagesLabel',
+    'eventLabel',
+    'eventsLabel',
+    'orgUnitLabel',
+    'trackedEntityAttributeLabel',
+    'relationshipLabel',
+    'followUpLabel',
+    'noteLabel',
 ]
+
+const validEventFields: string[] = ['name', 'shortName', 'description']
 
 /**
  * Get the translateable fields for schemaa.
- * Merge with standardTranslatableFields fields for order and
+ * Merge with orderedTranslatableFields fields for order and
  * then filter based on the schema. */
 
-export const getTranslateableFieldsForSchema = (schema: Schema) =>
+export const getTranslateableFieldsForSchema = (
+    schema: Schema,
+    model: BaseListModel
+) =>
     [
         ...new Set([
-            ...standardTranslatableFields,
+            ...orderedTranslatableFields,
             ...Object.keys(schema.properties),
         ]),
     ]
         .filter((field) => schema.properties[field]?.translatable)
+        .filter((field) =>
+            (model as { programType?: string })?.programType !==
+            'WITHOUT_REGISTRATION'
+                ? true
+                : validEventFields.includes(field)
+        )
         .map((field) => schema.properties[field]?.fieldName)
         .filter((f) => f !== undefined)
 
@@ -70,7 +96,7 @@ export const TranslationForm = ({
         ({ isSuccess }) => (isSuccess ? { success: true } : { critical: true })
     )
 
-    const translatableFields = getTranslateableFieldsForSchema(schema)
+    const translatableFields = getTranslateableFieldsForSchema(schema, model)
 
     const { data: baseReferenceValues } = useBaseReferenceValues({
         modelNamePlural: schema.plural,

@@ -11,6 +11,7 @@ import {
     ModelPropertyConfig,
     Schema,
     toModelPropertyDescriptor,
+    BaseListModel,
 } from '../lib'
 import { camelCaseToConstantCase } from '../lib/utils'
 import {
@@ -620,7 +621,8 @@ export const generateDefaultListRowActionsTests = ({
                     value: string
                 }[]
                 const fields = getTranslateableFieldsForSchema(
-                    mockSchema as Schema
+                    mockSchema as Schema,
+                    {} as BaseListModel
                 )
 
                 for (const field of fields) {

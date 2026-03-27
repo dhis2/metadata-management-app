@@ -83,8 +83,8 @@ const TRANSLATED_PROPERTY: Record<string, string> = {
     subjectTemplate: i18n.t('Subject template'),
     messageTemplate: i18n.t('Message template'),
     programStageLabel: i18n.t('Program stage label'),
-    dueDateLabel: i18n.t('Due date label'),
-    executionDateLabel: i18n.t('Execution date label'),
+    dueDateLabel: i18n.t('Scheduled date label'),
+    executionDateLabel: i18n.t('Report date label'),
     eventLabel: i18n.t('Event label'),
     trackedEntityAttributeLabel: i18n.t('Tracked entity attribute label'),
     enrollmentDateLabel: i18n.t('Enrollment date label'),
@@ -94,6 +94,10 @@ const TRANSLATED_PROPERTY: Record<string, string> = {
     followUpLabel: i18n.t('Follow up label'),
     orgUnitLabel: i18n.t('Organisation unit label'),
     relationshipLabel: i18n.t('Relationship label'),
+    enrollmentsLabel: i18n.t('Enrollment label (Plural)'),
+    eventsLabel: i18n.t('Event label (Plural)'),
+    programStagesLabel: i18n.t('Program stage label (Plural)'),
+    trackedEntityTypesLabel: i18n.t('Names'),
 }
 
 const camelCaseToSentenceCase = (camelCase: string) =>

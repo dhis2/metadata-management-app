@@ -1,4 +1,4 @@
-import { Schema } from '../../../lib'
+import { BaseListModel, Schema } from '../../../lib'
 import { getTranslateableFieldsForSchema } from './TranslationForm'
 
 describe('getTranslateableFieldsForSchema', () => {
@@ -15,7 +15,8 @@ describe('getTranslateableFieldsForSchema', () => {
             },
         }
         const result = getTranslateableFieldsForSchema(
-            mockSchema as unknown as Schema
+            mockSchema as unknown as Schema,
+            {} as BaseListModel
         )
         const expected = [
             'name',
