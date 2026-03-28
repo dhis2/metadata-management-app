@@ -6,6 +6,7 @@ import {
     modelFormSchemas,
 } from '../../../lib'
 import { DataSetNotificationTemplate } from '../../../types/generated'
+import { DataSetNotificationResult } from '../Edit'
 
 const { identifiable, withDefaultListColumns, referenceCollection } =
     modelFormSchemas
@@ -59,11 +60,7 @@ export const dataSetNotificationTemplateListSchema =
 
 export const initialValues = getDefaultsOld(
     dataSetNotificationTemplateFormSchema
-)
-
-export type DataSetNotificationFormValues = z.infer<
-    typeof dataSetNotificationTemplateFormSchema
->
+) as DataSetNotificationResult
 
 export const validate = createFormValidate(
     dataSetNotificationTemplateBaseSchema
@@ -72,11 +69,25 @@ export const validate = createFormValidate(
 /**
  * Converts form values back to API payload
  */
+
+export type DataSetNotificationFormattedResult = Omit<
+    DataSetNotificationResult,
+    | 'relativeScheduledDays'
+    | 'recipientUserGroup'
+    | 'dataSets'
+    | 'notifyUsersInHierarchyOnly'
+> & {
+    relativeScheduledDays?: number
+    recipientUserGroup?: { id: string }
+    dataSets?: { id: string }[]
+    notifyUsersInHierarchyOnly?: DataSetNotificationResult['notifyUsersInHierarchyOnly']
+}
+
 export const transformFormValues = <
-    TValues extends Partial<DataSetNotificationFormValues>
+    TValues extends Partial<DataSetNotificationResult>
 >(
     values: TValues
-) => {
+): DataSetNotificationResult => {
     const {
         recipientUserGroup,
         relativeScheduledDays,
@@ -102,5 +113,5 @@ export const transformFormValues = <
                 ? Boolean(notifyUsersInHierarchyOnly)
                 : undefined,
         dataSets: dataSets.map(({ id }) => ({ id })),
-    }
+    } as unknown as DataSetNotificationResult
 }

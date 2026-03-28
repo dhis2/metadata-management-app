@@ -1,6 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import { SectionedFormDescriptor } from '../../../lib'
-import { DataSetNotificationFormValues } from './dataSetNotificationTemplateSchema'
+import { DataSetNotificationResult } from '../Edit'
 
 /**
  * Section data
@@ -63,4 +63,4 @@ export const formDescriptor = {
             ],
         },
     ],
-} satisfies SectionedFormDescriptor<DataSetNotificationFormValues>
+} satisfies SectionedFormDescriptor<DataSetNotificationResult>

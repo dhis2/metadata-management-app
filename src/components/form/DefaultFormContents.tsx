@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useForm } from 'react-final-form'
 import { getSectionPath } from '../../lib'
 import { ModelSection } from '../../types'
 import { StandardFormSection } from '../standardForm'
@@ -16,8 +17,10 @@ function DefaultFormContents({
     children,
     section,
     showTranslatedFieldsNotice = false,
+    description = undefined,
 }: DefaultFormContentsProps & {
     readonly showTranslatedFieldsNotice?: boolean
+    description?: string
 }) {
     const listPath = `/${getSectionPath(section)}`
 
@@ -25,6 +28,7 @@ function DefaultFormContents({
         <>
             <div className={classes.form}>
                 {showTranslatedFieldsNotice && <TranslatedFieldsNoticeBox />}
+                {description && <h2>{description}</h2>}
                 {children}
                 <StandardFormSection>
                     <DefaultFormErrorNotice />
@@ -45,4 +49,29 @@ export function DefaultNewFormContents(
     props: Readonly<DefaultFormContentsProps>
 ) {
     return <DefaultFormContents {...props} showTranslatedFieldsNotice={false} />
+}
+
+export function DefaultCloneFormContents(
+    props: Readonly<DefaultFormContentsProps> & {
+        modelId: string
+        name?: string
+    }
+) {
+    const form = useForm()
+    useEffect(() => {
+        form.getRegisteredFields().forEach((field) => {
+            form.focus(field)
+            form.blur(field)
+        })
+    }, [form])
+
+    return (
+        <div>
+            <DefaultFormContents
+                {...props}
+                showTranslatedFieldsNotice={false}
+                description={`Cloning ${props.name} (id: ${props.modelId})`}
+            />
+        </div>
+    )
 }

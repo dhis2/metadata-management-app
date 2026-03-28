@@ -5,6 +5,7 @@ import {
     getDefaultsOld,
     modelFormSchemas,
 } from '../../../lib'
+import { OrgUnitFormValues } from '../Edit'
 
 const {
     withAttributeValues,
@@ -120,7 +121,9 @@ export const organisationUnitListSchema = withDefaultListColumns
         childCount: z.number(),
     })
 
-export const initialValues = getDefaultsOld(organisationUnitFormSchema)
+export const initialValues = getDefaultsOld(
+    organisationUnitFormSchema
+) as Partial<OrgUnitFormValues>
 
 export type OrganisationUnitFormValues = typeof initialValues
 

@@ -2,6 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import { z } from 'zod'
 import { getDefaultsOld, modelFormSchemas } from '../../../lib'
 import { createFormValidate } from '../../../lib/form/validate'
+import { CategoryOptionFormValues } from '../Edit'
 
 const {
     withAttributeValues,
@@ -44,11 +45,11 @@ export const categoryOptionListSchema = withDefaultListColumns.extend({
     displayShortName: z.string(),
 })
 
-export const initialValues = getDefaultsOld(categoryOptionFormSchema)
+export const initialValues = getDefaultsOld(
+    categoryOptionFormSchema
+) as Partial<CategoryOptionFormValues>
 
 export const validate = createFormValidate(categoryOptionFormSchema)
-
-type CategoryOptionFormValues = z.infer<typeof categoryOptionFormSchema>
 
 export const transformFormValues = <
     TValues extends Partial<CategoryOptionFormValues>
