@@ -1,3 +1,11 @@
+.filterRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: var(--spacers-dp8);
+}
+
 .expandButton {
     border: 0 !important;
 }
