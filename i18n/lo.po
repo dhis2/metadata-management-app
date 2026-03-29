@@ -1,17 +1,18 @@
 # Translators:
 # Somkhit Bouavong <bouavongk@gmail.com>, 2025
-# Thuy Nguyen <thuynguyen@hispvietnam.org>, 2025
-# Philip Larsen Donnelly, 2025
-# Viktor Varland <viktor@dhis2.org>, 2025
-# Namwan Chanthavisouk, 2025
+# Phouthasinh PHEUAYSITHIPHONE, 2026
+# Thuy Nguyen <thuynguyen@hispvietnam.org>, 2026
+# Philip Larsen Donnelly, 2026
+# Namwan Chanthavisouk, 2026
 # Saysamone Sibounma, 2026
+# Viktor Varland <viktor@dhis2.org>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Saysamone Sibounma, 2026\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
 "Language-Team: Lao (https://app.transifex.com/hisp-uio/teams/100509/lo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -83,7 +84,7 @@ msgid "Color and icon"
 msgstr ""
 
 msgid "Color"
-msgstr ""
+msgstr "ສີ"
 
 msgid "Remove color"
 msgstr ""
@@ -125,7 +126,7 @@ msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Refresh"
 
 msgid "Add new"
 msgstr "ເພີ່ມໃໝ່"
@@ -137,7 +138,7 @@ msgid "Expression not yet validated"
 msgstr ""
 
 msgid "Validate"
-msgstr ""
+msgstr "ກວດສອບ"
 
 msgid "Invalid expression"
 msgstr ""
@@ -154,7 +155,7 @@ msgid "Apply"
 msgstr "ນຳໃຊ້"
 
 msgid "Clear expression"
-msgstr ""
+msgstr "ລຶບຂັ້ນຕອນອອກ"
 
 msgid "(No Value)"
 msgstr ""
@@ -352,13 +353,13 @@ msgid "Program data"
 msgstr ""
 
 msgid "Org unit counts"
-msgstr ""
+msgstr "Org unit counts"
 
 msgid "Constants"
 msgstr "ຄົງຄ່າ"
 
 msgid "Reporting rates"
-msgstr ""
+msgstr "ອັດຕາການລາຍງານ"
 
 msgid "Operators"
 msgstr ""
@@ -370,7 +371,7 @@ msgid "Analytics period start"
 msgstr ""
 
 msgid "Completed date"
-msgstr ""
+msgstr "ວັນທີ່ສຳເລັດ"
 
 msgid "Creation date"
 msgstr ""
@@ -379,46 +380,46 @@ msgid "Current date"
 msgstr "ວັນທີປັດຈຸບັນ"
 
 msgid "Due date"
-msgstr ""
+msgstr "ວັນທີຕ້ອງແລ້ວ"
 
 msgid "Enrollment status"
-msgstr ""
+msgstr "ສະຖານະການລົງທະບຽນ"
 
 msgid "Event date"
 msgstr "ວັນທີເຫດການ"
 
 msgid "Event status"
-msgstr ""
+msgstr "ສະຖານະຂອງເຫດການ"
 
 msgid "Program stage id"
-msgstr ""
+msgstr "ID ໄລຍະຂອງໂຄງການ"
 
 msgid "Program stage name"
-msgstr ""
+msgstr "Program stage name"
 
 msgid "Sync date"
 msgstr ""
 
 msgid "Value count"
-msgstr ""
+msgstr "ຈຳນວນຄ່າ (Value count)"
 
 msgid "Zero or positive value count"
-msgstr ""
+msgstr "ຈຳນວນຄ່າທີ່ເປັນສູນ ຫຼື ບວກ"
 
 msgid "Enrollment count"
-msgstr ""
+msgstr "ຈຳນວນການລົງທະບຽນ"
 
 msgid "Event count"
 msgstr ""
 
 msgid "Organisation unit count"
-msgstr ""
+msgstr "Organisation unit count"
 
 msgid "Tracked entity instance count"
-msgstr ""
+msgstr "ຈຳນວນຜູ້ຖືກຕິດຕາມ (TEI count)"
 
 msgid "Variables"
-msgstr ""
+msgstr "ຕົວແປ"
 
 msgid "Program stage data"
 msgstr ""
@@ -460,7 +461,7 @@ msgid "Are you sure you want to change this?"
 msgstr ""
 
 msgid "Change"
-msgstr ""
+msgstr "ປ່ຽນ"
 
 msgid "Custom form saved"
 msgstr ""
@@ -536,10 +537,10 @@ msgid "Insert grey (disabled) fields"
 msgstr ""
 
 msgid "Date of enrollment"
-msgstr ""
+msgstr "ວັນທີ່ລົງທະບຽນ"
 
 msgid "Date of incident"
-msgstr ""
+msgstr "Date of incident"
 
 msgid "Program"
 msgstr "ໂປແກຼມ"
@@ -551,7 +552,7 @@ msgid "Flags"
 msgstr ""
 
 msgid "Submit"
-msgstr ""
+msgstr "ສົ່ງໄປລະບົບ"
 
 msgid "Save"
 msgstr "ບັນທຶກ"
@@ -721,7 +722,7 @@ msgid "New section"
 msgstr ""
 
 msgid "Edit section"
-msgstr ""
+msgstr "Edit section"
 
 msgid "Sections"
 msgstr ""
@@ -1137,7 +1138,7 @@ msgid "None"
 msgstr "ບໍ່ແມນ"
 
 msgid "No value"
-msgstr ""
+msgstr "ບໍ່ມີຂໍ້ມູນ"
 
 msgid "Event"
 msgstr "ເຫດການ"
@@ -1146,7 +1147,7 @@ msgid "Enrollment"
 msgstr "ການລົງທະບຽນ"
 
 msgid "Tracked entity"
-msgstr ""
+msgstr "Tracked Entity"
 
 msgid "Public can edit"
 msgstr "ທຸກຄົນສາມາດແກ້ໄຂໄດ້"
@@ -1614,10 +1615,10 @@ msgid "Section Multi-org"
 msgstr ""
 
 msgid "Bi-monthly"
-msgstr ""
+msgstr "ທຸກໆສອງເດືອນ"
 
 msgid "Bi-weekly"
-msgstr ""
+msgstr "ສອງອາທິດຕໍ່ຄັ້ງ"
 
 msgid "Daily"
 msgstr "ທຸກໆມື້"
@@ -1650,16 +1651,16 @@ msgid "Quarterly"
 msgstr "ໄຕມາດ"
 
 msgid "Quarterly November"
-msgstr ""
+msgstr "ລາຍໄຕມາດ (ພະຈິກ)"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "ລາຍ 6 ເດືອນ ເລີ່ມເດືອນເມສາ"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "ລາຍ 6 ເດືອນ ເລີ່ມເດືອນພະຈິກ"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "ຫົກເດືອນຕໍ່ຄັ້ງ"
 
 msgid "Two-Yearly"
 msgstr ""
@@ -1671,52 +1672,52 @@ msgid "Weekly Friday"
 msgstr ""
 
 msgid "Weekly Saturday"
-msgstr ""
+msgstr "ລາຍອາທິດ ເລີ່ມວັນເສົາ"
 
 msgid "Weekly Sunday"
-msgstr ""
+msgstr "ລາຍອາທິດ ເລີ່ມວັນອາທິດ"
 
 msgid "Weekly Thursday"
-msgstr ""
+msgstr "ລາຍອາທິດ ເລີ່ມວັນພະຫັດ"
 
 msgid "Weekly Wednesday"
-msgstr ""
+msgstr "ລາຍອາທິດ ເລີ່ມວັນພຸດ"
 
 msgid "Yearly"
 msgstr "ລາຍປີ"
 
 msgid "Equal to"
-msgstr ""
+msgstr "ເທົ່າກັບ"
 
 msgid "Not equal to"
-msgstr ""
+msgstr "ບໍ່ເທົ່າ"
 
 msgid "Greater than"
-msgstr ""
+msgstr "ຫຼາຍກ່ວາ"
 
 msgid "Greater than or equal to"
-msgstr ""
+msgstr "ໃຫ່ຍກວ່າຫຼືເທົ່າກັບ"
 
 msgid "Less than"
-msgstr ""
+msgstr "<"
 
 msgid "Less than or equal to"
-msgstr ""
+msgstr "<\\="
 
 msgid "Compulsory pair"
-msgstr ""
+msgstr "Compulsory pair"
 
 msgid "Exclusive pair"
 msgstr ""
 
 msgid "High"
-msgstr ""
+msgstr "ສູງ"
 
 msgid "Medium"
-msgstr ""
+msgstr "ກາງ"
 
 msgid "Low"
-msgstr ""
+msgstr "ຕ່ຳ"
 
 msgid "Collective summary"
 msgstr ""
@@ -1734,7 +1735,7 @@ msgid "Program completion"
 msgstr ""
 
 msgid "Program enrollment"
-msgstr ""
+msgstr "Program enrollment"
 
 msgid "Days scheduled (due date)"
 msgstr ""
@@ -1752,7 +1753,7 @@ msgid "User group"
 msgstr "ກຸ່ມຜູ້ໃຊ້"
 
 msgid "Tracked entity instance"
-msgstr ""
+msgstr "ຕິດຕາມຂໍ້ມູນ"
 
 msgid "Users at Organisation Unit"
 msgstr ""
@@ -1815,19 +1816,19 @@ msgid "Canvas"
 msgstr ""
 
 msgid "Reporting rate"
-msgstr ""
+msgstr "ອັດຕາການລາຍງານ"
 
 msgid "Reporting rate on time"
-msgstr ""
+msgstr "ອັດຕາການລາຍງານຕົງເວລາ"
 
 msgid "Actual reports"
-msgstr ""
+msgstr "ລາຍງານຕົວຈິງ"
 
 msgid "Actual reports on time"
-msgstr ""
+msgstr "ລາຍງານຕົວຈິງຕົງເວລາ"
 
 msgid "Expected reports"
-msgstr ""
+msgstr "ລາຍງານທີ່ຄາດໄວ້"
 
 msgid "At selected level(s) only"
 msgstr ""
@@ -1923,10 +1924,10 @@ msgid "Priority"
 msgstr ""
 
 msgid "Condition"
-msgstr ""
+msgstr "Condition"
 
 msgid "Referral"
-msgstr ""
+msgstr "ການສົ່ງຕໍ່"
 
 msgid "Sharing"
 msgstr "ແບ່ງປັນ"
@@ -2097,19 +2098,19 @@ msgid "Unique"
 msgstr "Unique"
 
 msgid "Display in list"
-msgstr ""
+msgstr "Display in list"
 
 msgid "Trigram indexable"
 msgstr ""
 
 msgid "Version"
-msgstr ""
+msgstr "ລູ້ນ"
 
 msgid "Program Type"
 msgstr ""
 
 msgid "Access level"
-msgstr ""
+msgstr "ຂັ້ນການເຂົ້າເຖິງ"
 
 msgid "Completed events expiry days"
 msgstr ""
@@ -2229,7 +2230,7 @@ msgid "Importance"
 msgstr "ສຳຄັນ"
 
 msgid "Instruction"
-msgstr ""
+msgstr "ໂຄງລ່າງ"
 
 msgid "Operator"
 msgstr "ປະຕິບັດການ"
@@ -2244,10 +2245,10 @@ msgid "Output option combo"
 msgstr ""
 
 msgid "Sequential sample count"
-msgstr ""
+msgstr "​ນັບ​ຕົວ​ຢ່າງ​ຕາມ​ລຳ​ດັບ"
 
 msgid "Annual sample count"
-msgstr ""
+msgstr "​ນັບ​ຕົວ​ຢ່າງ​ປະ​ຈຳ​ປີ"
 
 msgid "Sequential skip count"
 msgstr ""
@@ -2732,10 +2733,10 @@ msgid "Number of days {{beforeOrAfter}} scheduled date to send notification"
 msgstr ""
 
 msgid "before"
-msgstr ""
+msgstr "ກ່ອນ"
 
 msgid "after"
-msgstr ""
+msgstr "ຫຼັງຈາກ"
 
 msgid "Recipient type"
 msgstr ""
@@ -2944,7 +2945,7 @@ msgid ""
 msgstr ""
 
 msgid "Number of days"
-msgstr ""
+msgstr "ຈຳນວນວັນ"
 
 msgid ""
 "Close data entry after \"{{categoryComboName}}\" category option end date "
@@ -3450,7 +3451,7 @@ msgid "Value type cannot be edited after an option set has been created."
 msgstr ""
 
 msgid "Option Set"
-msgstr ""
+msgstr "ຊຸດຕົວເລືອກ"
 
 msgid "Set up the information for this option."
 msgstr ""
@@ -3483,7 +3484,7 @@ msgid "Search by name or code"
 msgstr ""
 
 msgid "Add option"
-msgstr ""
+msgstr "Add Option"
 
 msgid "Sort by name (A-Z)"
 msgstr ""
@@ -3700,7 +3701,7 @@ msgid ""
 msgstr ""
 
 msgid "Data Approval"
-msgstr ""
+msgstr "ການອານຸມັດຂໍ້ມູນ"
 
 msgid ""
 "Data approval workflows create a process for authorized users to review and "
@@ -3804,6 +3805,8 @@ msgid ""
 "Create option sets which can be included in data elements and produce drop-"
 "down lists in data entry forms."
 msgstr ""
+"Create option sets which can be included in data elements and produce drop-"
+"down lists in data entry forms."
 
 msgid ""
 "Create a group of options from option sets that has a similar functional "
@@ -3857,6 +3860,8 @@ msgid ""
 "Create constants which can be included in expressions of indicator and "
 "validation rules."
 msgstr ""
+"Create constants which can be included in expressions of indicator and "
+"validation rules."
 
 msgid "Configure external map layers for use in GIS."
 msgstr ""
@@ -3870,6 +3875,8 @@ msgid ""
 "Create and manage locales for database content. A locale is a combination of"
 " language and country."
 msgstr ""
+"Create and manage locales for database content. A locale is a combination of"
+" language and country."
 
 msgid ""
 "Manage analytics to be emailed to specific user groups on a daily, weekly or"
@@ -3895,6 +3902,8 @@ msgid ""
 "Create, modify and view programs. A program has program stages and defines "
 "which actions should be taken at each stage."
 msgstr ""
+"Create, modify and view programs. A program has program stages and defines "
+"which actions should be taken at each stage."
 
 msgid ""
 "Create, modify and view tracked entity attributes. An attribute can be used "
@@ -3905,11 +3914,15 @@ msgid ""
 "Create, modify and view relationship types. A relationship is typically wife"
 " and husband or mother and child."
 msgstr ""
+"Create, modify and view relationship types. A relationship is typically wife"
+" and husband or mother and child."
 
 msgid ""
 "Define types of entities which can be tracked through the system, which can "
 "be anything from persons to commodities."
 msgstr ""
+"Define types of entities which can be tracked through the system, which can "
+"be anything from persons to commodities."
 
 msgid ""
 "Program rules allow you to create and control dynamic behavior of the user "
@@ -3933,11 +3946,16 @@ msgid ""
 "Add, modify, view and delete validation rules. Anomalies can be discovered "
 "by running validation rules against the data."
 msgstr ""
+"​ຕື່ມ, ດັດ​ແປງ, ວີວ​ເບີ່ງ ແລະ ລືບ​ຖີ້ມ ຫລັກ​ການຢັ້ງ​ຢືນ. "
+"ຄວາມ​ຜິດ​ປົກ​ກະ​ຕິ​ອາດ​ຈະ​ເຫັນ ດ້ວຍ​ການ​ເປີດ​ເບີ່ງ "
+"ຫລັກ​ການຢັ້ງ​ຢືນ​ຕໍ​ກັບ​ຂໍ້​ມູນ"
 
 msgid ""
 "Add, modify, view and delete validation rule groups. Provides the ability to"
 " group and run validation rules together."
 msgstr ""
+"​ຕື່ມ​ໃສ່, ດັດ​ແປງ, ວິວ​ເບີ່ງ ແລະ ລົບ​ຖື້ມ​ກຸ່ມ​ຂອງຫລັກ​ການຢັ້ງ​ຢືນ. "
+"ສະ​ໜອງ​ໃຫ້​ເຫັນ​ຄວາມ​ສາ​ມາດ​ໃນ​ການ​ເປີດ​ເອົາ​ຫລັກ​ການຢັ້ງ​ຢືນ​ພ້ອມ​ກັນ"
 
 msgid "Sends a notification when a validation rule failed."
 msgstr ""
@@ -3967,13 +3985,13 @@ msgid "Predictor run started successfully"
 msgstr ""
 
 msgid "Run predictor"
-msgstr ""
+msgstr "ດຳເນີນການຕົວຄາດການ"
 
 msgid "Start date"
-msgstr ""
+msgstr "ວັນທີເລີ່ມຕົ້ນ"
 
 msgid "End date"
-msgstr ""
+msgstr "ວັນທີສຸດທ້າຍ"
 
 msgid "Run now"
 msgstr ""
@@ -4266,7 +4284,7 @@ msgid "Choose the program and data types this program indicator applies to."
 msgstr ""
 
 msgid "Data source"
-msgstr ""
+msgstr "Data source"
 
 msgid "Uses data from all events within a program stage"
 msgstr ""
@@ -4289,7 +4307,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear filter"
-msgstr ""
+msgstr "ລ້າງການກັ່ນຕອງ"
 
 msgid "Period boundaries"
 msgstr ""
@@ -4403,7 +4421,7 @@ msgid "Set up the expression that checks when this program rule runs."
 msgstr ""
 
 msgid "Action"
-msgstr ""
+msgstr "ການດຳເນີນການ"
 
 msgid "Program rule action saved"
 msgstr ""
@@ -4529,7 +4547,7 @@ msgid "Schedule message"
 msgstr ""
 
 msgid "Send message"
-msgstr ""
+msgstr "ສົ່ງຂໍ້ຄວາມ"
 
 msgid "Set mandatory field"
 msgstr ""
@@ -4558,7 +4576,7 @@ msgid "Display widget is required"
 msgstr ""
 
 msgid "This field is required"
-msgstr ""
+msgstr "ຊ່ອງປ້ອນຂໍ້ມູນນີ້ຕ້ອງຕື່ມຂໍ້ມູນໃສ່"
 
 msgid ""
 "At least one of the data element or tracked entity attribute must be "
@@ -4566,7 +4584,7 @@ msgid ""
 msgstr ""
 
 msgid "Program stage is required"
-msgstr ""
+msgstr "ຕ້ອງຕື່ມຂັ້ນຕອນການຈັດລາຍການຂອງສາຍງານ"
 
 msgid "Program stage section to hide is required"
 msgstr ""
@@ -4644,7 +4662,7 @@ msgid "Unknown action type"
 msgstr ""
 
 msgid "Program Rule"
-msgstr ""
+msgstr "ກົດເກນສາຍງານ"
 
 msgid "Name (required)"
 msgstr ""
@@ -4667,7 +4685,7 @@ msgid "Choose how this program collects data. This cannot be changed later."
 msgstr ""
 
 msgid "Single event"
-msgstr ""
+msgstr "Single event"
 
 msgid "Collect standalone events with no person or entity attached."
 msgstr ""
@@ -4676,7 +4694,7 @@ msgid "Collect events for a person or other entity over time."
 msgstr ""
 
 msgid "Continue"
-msgstr ""
+msgstr "ດຳເນີນການຕໍ່"
 
 msgid "Access updated successfully"
 msgstr ""
@@ -4688,7 +4706,7 @@ msgid "Failed to apply program access rules"
 msgstr ""
 
 msgid "Untitled"
-msgstr ""
+msgstr "ບໍ່ໄດ້ຕັ້ງຊື່"
 
 msgid "No data access"
 msgstr ""
@@ -4727,13 +4745,13 @@ msgid "Public (All users)"
 msgstr ""
 
 msgid "External"
-msgstr ""
+msgstr "ພາຍນອກ"
 
 msgid "Group"
 msgstr "ກຸ່ມ"
 
 msgid "Organisation unit access"
-msgstr ""
+msgstr "ການເຂົ້າເຖິງຫົວໜ່ວຍການຈັດຕັ້ງ"
 
 msgid "Role access"
 msgstr ""
@@ -4820,7 +4838,7 @@ msgid "Allow user assignment of events"
 msgstr ""
 
 msgid "Block entry form after completed"
-msgstr ""
+msgstr "Block entry form after completed"
 
 msgid "Pre-generate event UID"
 msgstr ""
@@ -4839,7 +4857,7 @@ msgid ""
 msgstr ""
 
 msgid "Settings"
-msgstr ""
+msgstr "ຕັ້ງຄ່າ"
 
 msgid "Validation strategy"
 msgstr ""
@@ -4895,7 +4913,7 @@ msgid "Allow notification to be sent multiple times"
 msgstr ""
 
 msgid "Days since due date"
-msgstr ""
+msgstr "Days since due date"
 
 msgid "Days until due date"
 msgstr ""
@@ -4959,10 +4977,10 @@ msgid ""
 msgstr ""
 
 msgid "Allow provided elsewhere"
-msgstr ""
+msgstr "Allow provided elsewhere"
 
 msgid "Display in reports"
-msgstr ""
+msgstr "Display in reports"
 
 msgid "Skip in analytics"
 msgstr ""
@@ -4980,7 +4998,7 @@ msgid "Mobile Display"
 msgstr ""
 
 msgid "Stage"
-msgstr ""
+msgstr "ຂັ້ນຕອນ"
 
 msgid "Stages"
 msgstr ""
@@ -5057,7 +5075,7 @@ msgid "Auto-generate an event in this stage"
 msgstr ""
 
 msgid "Generate events based on enrollment date"
-msgstr ""
+msgstr "Generate events based on enrollment date"
 
 msgid "Show scheduled date"
 msgstr ""
@@ -5072,7 +5090,7 @@ msgid "Default next scheduled date"
 msgstr ""
 
 msgid "Open data entry form after enrollment"
-msgstr ""
+msgstr "Open data entry form after enrollment"
 
 msgid "On event completion, ask user to complete enrollment"
 msgstr ""
@@ -5081,10 +5099,10 @@ msgid "Allow multiple events in this stage (repeatable stage)"
 msgstr ""
 
 msgid "Report date to use"
-msgstr ""
+msgstr "Report Date to use"
 
 msgid "Standard interval days"
-msgstr ""
+msgstr "Standard interval days"
 
 msgid "Enter the number of days between repeated events."
 msgstr ""
@@ -5132,7 +5150,7 @@ msgid "Stage: Creation and Scheduling"
 msgstr ""
 
 msgid "Scheduled days from start"
-msgstr ""
+msgstr "Scheduled days from start"
 
 msgid "Stage: Data"
 msgstr ""
@@ -5383,7 +5401,7 @@ msgid ""
 msgstr ""
 
 msgid "Confidential"
-msgstr ""
+msgstr "Confidential"
 
 msgid ""
 "Prevent searching or viewing in analytics. Available only when system "
@@ -5402,7 +5420,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear"
-msgstr ""
+msgstr "ລຶບ"
 
 msgid "Pattern for automatically generated values"
 msgstr ""
@@ -5483,10 +5501,10 @@ msgid "Choose legends to visually categorize values in analytics apps."
 msgstr ""
 
 msgid "Tracked Entity Attribute"
-msgstr ""
+msgstr "ຄຸນລັກສະນະຂອງສິ່ງທີ່ຖືກຕິດຕາມ"
 
 msgid "Organisation unit scope"
-msgstr ""
+msgstr "ຂອບເຂດຂອງໜ່ວຍງານ"
 
 msgid "Generated"
 msgstr ""
@@ -5495,7 +5513,7 @@ msgid "Pattern"
 msgstr ""
 
 msgid "Inherit"
-msgstr ""
+msgstr "Inherit"
 
 msgid "Skip synchronization"
 msgstr ""
@@ -5587,7 +5605,7 @@ msgid "Set up the basic information for this validation rule group."
 msgstr ""
 
 msgid "Validation Rules"
-msgstr ""
+msgstr "ກົດເກນການກວດສອບ"
 
 msgid "Choose the validation rules to include in this validation rule group."
 msgstr ""
@@ -5605,7 +5623,7 @@ msgid "Configure the expressions and how they are compared."
 msgstr ""
 
 msgid "Left side expression"
-msgstr ""
+msgstr "Left side expression"
 
 msgid "Edit numerator expression"
 msgstr ""
@@ -5620,7 +5638,7 @@ msgid "Comparison operator"
 msgstr ""
 
 msgid "Right side expression"
-msgstr ""
+msgstr "Right side expression"
 
 msgid "Edit denominator expression"
 msgstr ""

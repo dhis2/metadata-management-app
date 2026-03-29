@@ -1,15 +1,16 @@
 # Translators:
-# Wanda <wanda@frontlineaids.org>, 2025
 # Aung Kyi Min <AungKyi.Min@savethechildren.org>, 2025
 # Viktor Varland <viktor@dhis2.org>, 2025
-# Philip Larsen Donnelly, 2025
+# Nang Thiri Htwe <nthtwe@psimyanmar.org>, 2026
+# Wanda <wanda@frontlineaids.org>, 2026
+# Philip Larsen Donnelly, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Philip Larsen Donnelly, 2025\n"
+"Last-Translator: Philip Larsen Donnelly, 2026\n"
 "Language-Team: Burmese (https://app.transifex.com/hisp-uio/teams/100509/my/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -368,7 +369,7 @@ msgid "Analytics period start"
 msgstr ""
 
 msgid "Completed date"
-msgstr ""
+msgstr "Дата завершения"
 
 msgid "Creation date"
 msgstr ""
@@ -377,7 +378,7 @@ msgid "Current date"
 msgstr "Current date"
 
 msgid "Due date"
-msgstr ""
+msgstr "Дата выполнения"
 
 msgid "Enrollment status"
 msgstr ""
@@ -398,16 +399,16 @@ msgid "Sync date"
 msgstr ""
 
 msgid "Value count"
-msgstr ""
+msgstr "Value count"
 
 msgid "Zero or positive value count"
-msgstr ""
+msgstr "Zero or positive value count"
 
 msgid "Enrollment count"
 msgstr ""
 
 msgid "Event count"
-msgstr ""
+msgstr "Event count"
 
 msgid "Organisation unit count"
 msgstr ""
@@ -416,7 +417,7 @@ msgid "Tracked entity instance count"
 msgstr ""
 
 msgid "Variables"
-msgstr ""
+msgstr "Variables"
 
 msgid "Program stage data"
 msgstr ""
@@ -1135,7 +1136,7 @@ msgid "None"
 msgstr "တစ်ခုမှမဟုတ်"
 
 msgid "No value"
-msgstr ""
+msgstr "တန်ဖိုးမရှိပါ။"
 
 msgid "Event"
 msgstr ""
@@ -1144,7 +1145,7 @@ msgid "Enrollment"
 msgstr ""
 
 msgid "Tracked entity"
-msgstr ""
+msgstr "Tracked entity"
 
 msgid "Public can edit"
 msgstr ""
@@ -1612,7 +1613,7 @@ msgid "Section Multi-org"
 msgstr ""
 
 msgid "Bi-monthly"
-msgstr ""
+msgstr "နှစ်လတစ်ကြိမ်"
 
 msgid "Bi-weekly"
 msgstr ""
@@ -1684,22 +1685,22 @@ msgid "Yearly"
 msgstr "နှစ်စဉ်"
 
 msgid "Equal to"
-msgstr ""
+msgstr "ညီမျှသည်။"
 
 msgid "Not equal to"
-msgstr ""
+msgstr "Not equal to"
 
 msgid "Greater than"
-msgstr ""
+msgstr "ထက်ကြီးသည်။"
 
 msgid "Greater than or equal to"
-msgstr ""
+msgstr "Greater Than or Equal"
 
 msgid "Less than"
-msgstr ""
+msgstr "အောက်ငယ်သည်။"
 
 msgid "Less than or equal to"
-msgstr ""
+msgstr "Less Than or Equal"
 
 msgid "Compulsory pair"
 msgstr ""
@@ -1924,7 +1925,7 @@ msgid "Condition"
 msgstr ""
 
 msgid "Referral"
-msgstr ""
+msgstr "ညွှန်းပို့ခြင်း"
 
 msgid "Sharing"
 msgstr ""
@@ -2101,7 +2102,7 @@ msgid "Trigram indexable"
 msgstr ""
 
 msgid "Version"
-msgstr ""
+msgstr "ထုတ်ဝေသည့်အကြိမ်"
 
 msgid "Program Type"
 msgstr ""
@@ -2942,7 +2943,7 @@ msgid ""
 msgstr ""
 
 msgid "Number of days"
-msgstr ""
+msgstr "နေ့စွဲအရေတွက်"
 
 msgid ""
 "Close data entry after \"{{categoryComboName}}\" category option end date "
@@ -3960,10 +3961,10 @@ msgid "Run predictor"
 msgstr ""
 
 msgid "Start date"
-msgstr ""
+msgstr "Start date"
 
 msgid "End date"
-msgstr ""
+msgstr "End date"
 
 msgid "Run now"
 msgstr ""
@@ -4393,7 +4394,7 @@ msgid "Set up the expression that checks when this program rule runs."
 msgstr ""
 
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 msgid "Program rule action saved"
 msgstr ""
@@ -4519,7 +4520,7 @@ msgid "Schedule message"
 msgstr ""
 
 msgid "Send message"
-msgstr ""
+msgstr "messagae ပို့ပါ။"
 
 msgid "Set mandatory field"
 msgstr ""
@@ -4829,7 +4830,7 @@ msgid ""
 msgstr ""
 
 msgid "Settings"
-msgstr ""
+msgstr "တည်ဆောက်ထားသည့်အနေအထား"
 
 msgid "Validation strategy"
 msgstr ""
@@ -5392,7 +5393,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear"
-msgstr ""
+msgstr "ရှင်းလင်းသည်"
 
 msgid "Pattern for automatically generated values"
 msgstr ""

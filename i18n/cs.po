@@ -1,12 +1,12 @@
 # Translators:
-# Jiří Podhorecký <jirka.p@volny.cz>, 2025
+# Jiří Podhorecký <jirka.p@volny.cz>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2025\n"
+"Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2026\n"
 "Language-Team: Czech (https://app.transifex.com/hisp-uio/teams/100509/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -81,13 +81,13 @@ msgid "Color and icon"
 msgstr "Barva a ikona"
 
 msgid "Color"
-msgstr ""
+msgstr "Barva"
 
 msgid "Remove color"
 msgstr ""
 
 msgid "Icon"
-msgstr ""
+msgstr "Ikona"
 
 msgid "Choose an icon"
 msgstr ""
@@ -123,7 +123,7 @@ msgid "Cancel"
 msgstr "Zrušit"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Obnovit"
 
 msgid "Add new"
 msgstr "Přidat nový"
@@ -135,7 +135,7 @@ msgid "Expression not yet validated"
 msgstr ""
 
 msgid "Validate"
-msgstr ""
+msgstr "Ověřit"
 
 msgid "Invalid expression"
 msgstr "Neplatný výraz"
@@ -152,7 +152,7 @@ msgid "Apply"
 msgstr "Použít"
 
 msgid "Clear expression"
-msgstr ""
+msgstr "Vymazat výraz"
 
 msgid "(No Value)"
 msgstr "(Bez hodnoty)"
@@ -167,16 +167,16 @@ msgid "Retry"
 msgstr "Opakovat"
 
 msgid "Missing value strategy"
-msgstr ""
+msgstr "Chybějící hodnotová strategie"
 
 msgid "Never skip"
-msgstr ""
+msgstr "Nikdy nepřeskočit"
 
 msgid "Skip if any value is missing"
-msgstr ""
+msgstr "Pokud nějaká hodnota chybí, přeskočit"
 
 msgid "Skip if all values are missing"
-msgstr ""
+msgstr "Pokud všechny hodnoty chybí, přeskočte"
 
 msgid "Program has not been selected"
 msgstr ""
@@ -185,7 +185,7 @@ msgid "Data elements"
 msgstr "Datové prvky"
 
 msgid "Program tracked entity attributes"
-msgstr ""
+msgstr "Programování atributů trasované entity"
 
 msgid "Indicators"
 msgstr "Indikátory"
@@ -350,73 +350,73 @@ msgid "Program data"
 msgstr ""
 
 msgid "Org unit counts"
-msgstr ""
+msgstr "Počet Organizačních jednotek"
 
 msgid "Constants"
 msgstr "Konstanty"
 
 msgid "Reporting rates"
-msgstr ""
+msgstr "Míry vykazování"
 
 msgid "Operators"
-msgstr ""
+msgstr "Operátoři"
 
 msgid "Analytics period end"
-msgstr ""
+msgstr "Konec analytického období"
 
 msgid "Analytics period start"
-msgstr ""
+msgstr "Začátek analytického období"
 
 msgid "Completed date"
-msgstr ""
+msgstr "Dokončené datum"
 
 msgid "Creation date"
-msgstr ""
+msgstr "Datum vzniku"
 
 msgid "Current date"
 msgstr "Dnešní datum"
 
 msgid "Due date"
-msgstr ""
+msgstr "Datum vypršení"
 
 msgid "Enrollment status"
-msgstr ""
+msgstr "Stav zápisu"
 
 msgid "Event date"
 msgstr "Datum události"
 
 msgid "Event status"
-msgstr ""
+msgstr "Stav události"
 
 msgid "Program stage id"
-msgstr ""
+msgstr "ID fáze Programu"
 
 msgid "Program stage name"
-msgstr ""
+msgstr "Název fáze programu"
 
 msgid "Sync date"
-msgstr ""
+msgstr "Datum synchronizace"
 
 msgid "Value count"
-msgstr ""
+msgstr "Počet hodnot"
 
 msgid "Zero or positive value count"
-msgstr ""
+msgstr "Počet nulových nebo kladných hodnot"
 
 msgid "Enrollment count"
-msgstr ""
+msgstr "Počet zápisů"
 
 msgid "Event count"
-msgstr ""
+msgstr "Počet událostí"
 
 msgid "Organisation unit count"
-msgstr ""
+msgstr "Počet organizačních jednotek"
 
 msgid "Tracked entity instance count"
-msgstr ""
+msgstr "Počet instancí trasované entity"
 
 msgid "Variables"
-msgstr ""
+msgstr "Proměnné"
 
 msgid "Program stage data"
 msgstr ""
@@ -428,7 +428,7 @@ msgid "Program rule variables"
 msgstr "Proměnné pravidla programu"
 
 msgid "Functions"
-msgstr ""
+msgstr "Funkce"
 
 msgid "Could not validate expression"
 msgstr "Nepodařilo se ověřit platnost výrazu"
@@ -458,7 +458,7 @@ msgid "Are you sure you want to change this?"
 msgstr ""
 
 msgid "Change"
-msgstr ""
+msgstr "Změna"
 
 msgid "Custom form saved"
 msgstr "Vlastní formulář uložen"
@@ -534,10 +534,10 @@ msgid "Insert grey (disabled) fields"
 msgstr "Vložit šedá (deaktivovaná) pole"
 
 msgid "Date of enrollment"
-msgstr ""
+msgstr "Datum zápisu"
 
 msgid "Date of incident"
-msgstr ""
+msgstr "Datum incidentu"
 
 msgid "Program"
 msgstr "Program"
@@ -549,7 +549,7 @@ msgid "Flags"
 msgstr "Vlajky"
 
 msgid "Submit"
-msgstr ""
+msgstr "Odeslat"
 
 msgid "Save"
 msgstr "Uložit"
@@ -723,7 +723,7 @@ msgid "New section"
 msgstr ""
 
 msgid "Edit section"
-msgstr ""
+msgstr "Upravit sekci"
 
 msgid "Sections"
 msgstr "Sekce"
@@ -1062,10 +1062,10 @@ msgid "All source types"
 msgstr ""
 
 msgid "Tracker program"
-msgstr ""
+msgstr "Trasovací program"
 
 msgid "Event program"
-msgstr ""
+msgstr "Program Události"
 
 msgid "Select program type"
 msgstr ""
@@ -1140,7 +1140,7 @@ msgid "None"
 msgstr "Žádný"
 
 msgid "No value"
-msgstr ""
+msgstr "Žádná hodnota"
 
 msgid "Event"
 msgstr "Událost"
@@ -1149,7 +1149,7 @@ msgid "Enrollment"
 msgstr "Zápis"
 
 msgid "Tracked entity"
-msgstr ""
+msgstr "Trasovaná entita"
 
 msgid "Public can edit"
 msgstr "Veřejnost může upravovat"
@@ -1395,16 +1395,16 @@ msgid "Analytics table hook"
 msgstr ""
 
 msgid "Analytics table hooks"
-msgstr ""
+msgstr "Hooks analytických tabulek"
 
 msgid "Icons"
 msgstr ""
 
 msgid "Predictor group"
-msgstr ""
+msgstr "Skupina prediktorů"
 
 msgid "Predictor groups"
-msgstr ""
+msgstr "Skupiny prediktorů"
 
 msgid "Indicators and Predictors"
 msgstr ""
@@ -1419,7 +1419,7 @@ msgid "Validations"
 msgstr "Ověření"
 
 msgid "Data approval"
-msgstr ""
+msgstr "Schválení údajů"
 
 msgid "Other"
 msgstr "jiný"
@@ -1465,6 +1465,7 @@ msgstr "Poslední hodnota v období (součet v hierarchii org. jednotek)"
 
 msgid "Last value in period (average in org unit hierarchy)"
 msgstr ""
+"Poslední hodnota v období (průměr v hierarchii organizačních jednotek)"
 
 msgid "First value (sum in org unit hierarchy)"
 msgstr "První hodnota (součet v hierarchii organizačních jednotek)"
@@ -1617,10 +1618,10 @@ msgid "Section Multi-org"
 msgstr "Sekce Multi-org"
 
 msgid "Bi-monthly"
-msgstr ""
+msgstr "Dva měsíce"
 
 msgid "Bi-weekly"
-msgstr ""
+msgstr "po 14ti dnech"
 
 msgid "Daily"
 msgstr "Denně"
@@ -1653,16 +1654,16 @@ msgid "Quarterly"
 msgstr "Čtvrtletně"
 
 msgid "Quarterly November"
-msgstr ""
+msgstr "Čtvrtletní listopad"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "Šestiměsíční Duben"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "Šestiměsíční Listopad"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "Šestiměsíční"
 
 msgid "Two-Yearly"
 msgstr ""
@@ -1674,52 +1675,52 @@ msgid "Weekly Friday"
 msgstr ""
 
 msgid "Weekly Saturday"
-msgstr ""
+msgstr "Každý týden v sobotu"
 
 msgid "Weekly Sunday"
-msgstr ""
+msgstr "Každý týden v neděli"
 
 msgid "Weekly Thursday"
-msgstr ""
+msgstr "Každý týden ve čtvrtek"
 
 msgid "Weekly Wednesday"
-msgstr ""
+msgstr "Každý týden ve středu"
 
 msgid "Yearly"
 msgstr "Ročně"
 
 msgid "Equal to"
-msgstr ""
+msgstr "Rovná"
 
 msgid "Not equal to"
-msgstr ""
+msgstr "Nerovná se"
 
 msgid "Greater than"
-msgstr ""
+msgstr "Větší než"
 
 msgid "Greater than or equal to"
-msgstr ""
+msgstr "Větší nebo rovno"
 
 msgid "Less than"
-msgstr ""
+msgstr "Méně než"
 
 msgid "Less than or equal to"
-msgstr ""
+msgstr "Méně nebo rovno"
 
 msgid "Compulsory pair"
-msgstr ""
+msgstr "Povinná dvojice"
 
 msgid "Exclusive pair"
-msgstr ""
+msgstr "Exkluzivní pár"
 
 msgid "High"
-msgstr ""
+msgstr "Vysoký"
 
 msgid "Medium"
-msgstr ""
+msgstr "Střední"
 
 msgid "Low"
-msgstr ""
+msgstr "Nízká"
 
 msgid "Collective summary"
 msgstr "Souhrnné shrnutí"
@@ -1734,19 +1735,19 @@ msgid "Data set completion"
 msgstr "Doplnění datové sady"
 
 msgid "Program completion"
-msgstr ""
+msgstr "Dokončení programu"
 
 msgid "Program enrollment"
-msgstr ""
+msgstr "Zápis programu"
 
 msgid "Days scheduled (due date)"
-msgstr ""
+msgstr "Naplánované dny (do data vypršení)"
 
 msgid "Days scheduled (incident date)"
-msgstr ""
+msgstr "Naplánované dny (datum incidentu)"
 
 msgid "Days scheduled (enrollment date)"
-msgstr ""
+msgstr "Naplánované dny (datum registrace)"
 
 msgid "Organisation unit contact"
 msgstr "Kontakt na organizační jednotku"
@@ -1755,10 +1756,10 @@ msgid "User group"
 msgstr "Uživatelská skupina"
 
 msgid "Tracked entity instance"
-msgstr ""
+msgstr "Sledovaná instance entity"
 
 msgid "Users at Organisation Unit"
-msgstr ""
+msgstr "Uživatelé v organizační jednotce"
 
 msgid "Program attribute"
 msgstr "Atribut programu"
@@ -1767,40 +1768,40 @@ msgid "Web hook"
 msgstr ""
 
 msgid "Dropdown"
-msgstr ""
+msgstr "Rozevírací seznam"
 
 msgid "Vertical radiobuttons"
-msgstr ""
+msgstr "Svislá rádiová tlačítka"
 
 msgid "Horizontal radiobuttons"
-msgstr ""
+msgstr "Horizontální rádiová tlačítka"
 
 msgid "Vertical checkboxes"
-msgstr ""
+msgstr "Svislá zaškrtávací políčka"
 
 msgid "Horizontal checkboxes"
-msgstr ""
+msgstr "Horizontální zaškrtávací políčka"
 
 msgid "Shared header radiobuttons"
-msgstr ""
+msgstr "Sdílená radiová tlačítka"
 
 msgid "Icons as buttons"
-msgstr ""
+msgstr "Ikony jako tlačítka"
 
 msgid "Spinner"
-msgstr ""
+msgstr "Spinner"
 
 msgid "Toggle"
-msgstr ""
+msgstr "Přepnout"
 
 msgid "Value"
 msgstr "Hodnota"
 
 msgid "Slider"
-msgstr ""
+msgstr "Posuvník"
 
 msgid "Linear scale"
-msgstr ""
+msgstr "Lineární měřítko"
 
 msgid "Autocomplete"
 msgstr ""
@@ -1809,7 +1810,7 @@ msgid "Qr code"
 msgstr ""
 
 msgid "Bar code"
-msgstr ""
+msgstr "Čárový kód"
 
 msgid "Gs1 datamatrix"
 msgstr ""
@@ -1818,31 +1819,31 @@ msgid "Canvas"
 msgstr ""
 
 msgid "Reporting rate"
-msgstr ""
+msgstr "Četnost hlášení"
 
 msgid "Reporting rate on time"
-msgstr ""
+msgstr "Četnost hlášení na čas"
 
 msgid "Actual reports"
-msgstr ""
+msgstr "Aktuální zprávy"
 
 msgid "Actual reports on time"
-msgstr ""
+msgstr "Aktuální zprávy včas"
 
 msgid "Expected reports"
-msgstr ""
+msgstr "Očekávané zprávy"
 
 msgid "At selected level(s) only"
-msgstr ""
+msgstr "Pouze na vybrané (vybraných) úrovních"
 
 msgid "At selected level(s) and all levels below"
-msgstr ""
+msgstr "Na vybrané (vybraných) úrovních a všech úrovních níže"
 
 msgid "On complete"
-msgstr ""
+msgstr "Po dokončení"
 
 msgid "On update and insert"
-msgstr ""
+msgstr "Při aktualizaci a vložení"
 
 msgid "Data element in newest event in program stage"
 msgstr ""
@@ -1854,10 +1855,10 @@ msgid "Data element from current event"
 msgstr ""
 
 msgid "Data element from previous event"
-msgstr ""
+msgstr "Datový prvek z předchozí události"
 
 msgid "Calculated value"
-msgstr ""
+msgstr "Vypočítaná hodnota"
 
 msgid "Category option combination for aggregate data export"
 msgstr "Kombinace možností kategorie pro export agregovaných dat"
@@ -1875,7 +1876,7 @@ msgid "Analytics type"
 msgstr "Typ analytiky"
 
 msgid "Bidirectional"
-msgstr ""
+msgstr "Obousměrný"
 
 msgid "Compulsory"
 msgstr "Povinný"
@@ -1887,13 +1888,13 @@ msgid "Data dimension type"
 msgstr "Typ datové dimenze"
 
 msgid "Name seen from initiating entity"
-msgstr ""
+msgstr "Název viděný od subjektu, který zahájil řízení"
 
 msgid "Display in form"
 msgstr "Zobrazit ve formuláři"
 
 msgid "Name seen from receiving entity"
-msgstr ""
+msgstr "Název viditelný z přijímající entity"
 
 msgid "Domain type"
 msgstr "Typ domény"
@@ -1914,31 +1915,31 @@ msgid "Form type"
 msgstr "Typ formuláře"
 
 msgid "Relationship name seen from initiating entity"
-msgstr ""
+msgstr "Název vztahu viděn od iniciační entity"
 
 msgid "Ignore data approval"
 msgstr "Ignorovat schválení dat"
 
 msgid "Source type"
-msgstr ""
+msgstr "Typ zdroje"
 
 msgid "Priority"
-msgstr ""
+msgstr "Priorita"
 
 msgid "Condition"
-msgstr ""
+msgstr "Stav"
 
 msgid "Referral"
-msgstr ""
+msgstr "Doporučení"
 
 msgid "Sharing"
 msgstr "Sdílení"
 
 msgid "Relationship name seen from receiving entity"
-msgstr ""
+msgstr "Název vztahu z přijímající entity"
 
 msgid "Use code for option set"
-msgstr ""
+msgstr "Použijte kód pro sadu možností"
 
 msgid "Owner"
 msgstr "Majitel"
@@ -1953,7 +1954,7 @@ msgid "Feature type"
 msgstr "Typ funkce"
 
 msgid "Program type"
-msgstr ""
+msgstr "Typ programu"
 
 msgid "Maximum number of tracked entity instances to return in search"
 msgstr ""
@@ -1972,10 +1973,10 @@ msgid "Program stage label"
 msgstr ""
 
 msgid "Due date label"
-msgstr ""
+msgstr "Štítek s termínem platnosti"
 
 msgid "Execution date label"
-msgstr ""
+msgstr "Štítek s datem provedení"
 
 msgid "Event label"
 msgstr ""
@@ -1984,10 +1985,10 @@ msgid "Tracked entity attribute label"
 msgstr ""
 
 msgid "Enrollment date label"
-msgstr ""
+msgstr "Štítek s datem zápisu"
 
 msgid "Incident date label"
-msgstr ""
+msgstr "Štítek s datem incidentu"
 
 msgid "Note label"
 msgstr ""
@@ -2101,25 +2102,25 @@ msgid "Unique"
 msgstr "Unikátní"
 
 msgid "Display in list"
-msgstr ""
+msgstr "Zobrazit v seznamu"
 
 msgid "Trigram indexable"
 msgstr ""
 
 msgid "Version"
-msgstr ""
+msgstr "Verze"
 
 msgid "Program Type"
 msgstr ""
 
 msgid "Access level"
-msgstr ""
+msgstr "Úroveň přístupu"
 
 msgid "Completed events expiry days"
-msgstr ""
+msgstr "Dny vypršení platnosti dokončených událostí"
 
 msgid "Display front page list"
-msgstr ""
+msgstr "Zobrazit seznam titulních stránek"
 
 msgid "Mandatory"
 msgstr "Povinné"
@@ -2233,28 +2234,28 @@ msgid "Importance"
 msgstr "Důležitost"
 
 msgid "Instruction"
-msgstr ""
+msgstr "Návod"
 
 msgid "Operator"
 msgstr "Operátor"
 
 msgid "Skip this rule during form validation"
-msgstr ""
+msgstr "Toto pravidlo při ověřování formuláře přeskočte"
 
 msgid "Output"
-msgstr ""
+msgstr "Výstup"
 
 msgid "Output option combo"
 msgstr ""
 
 msgid "Sequential sample count"
-msgstr ""
+msgstr "Sekvenční počet vzorků"
 
 msgid "Annual sample count"
-msgstr ""
+msgstr "Počet ročních vzorků"
 
 msgid "Sequential skip count"
-msgstr ""
+msgstr "Postupný počet přeskočení"
 
 msgid "Organisation unit providing data"
 msgstr ""
@@ -2762,10 +2763,10 @@ msgid "Number of days {{beforeOrAfter}} scheduled date to send notification"
 msgstr ""
 
 msgid "before"
-msgstr ""
+msgstr "před"
 
 msgid "after"
-msgstr ""
+msgstr "po"
 
 msgid "Recipient type"
 msgstr "Typ příjemce"
@@ -2980,7 +2981,7 @@ msgstr ""
 "Uzavřít zadávání dat určitý počet dní po skončení období (dny platnosti)."
 
 msgid "Number of days"
-msgstr ""
+msgstr "Počet dní"
 
 msgid ""
 "Close data entry after \"{{categoryComboName}}\" category option end date "
@@ -3428,7 +3429,7 @@ msgid "Failed to load languages"
 msgstr ""
 
 msgid "Select a language"
-msgstr ""
+msgstr "Výběr jazyka"
 
 msgid "Locale will not be editable after it has been created."
 msgstr ""
@@ -3490,7 +3491,7 @@ msgid "Value type cannot be edited after an option set has been created."
 msgstr ""
 
 msgid "Option Set"
-msgstr ""
+msgstr "Sada možností"
 
 msgid "Set up the information for this option."
 msgstr ""
@@ -3514,7 +3515,7 @@ msgid "New option"
 msgstr ""
 
 msgid "Edit option"
-msgstr ""
+msgstr "Upravit možnost"
 
 msgid "Create and manage options in this option set."
 msgstr ""
@@ -3523,7 +3524,7 @@ msgid "Search by name or code"
 msgstr ""
 
 msgid "Add option"
-msgstr ""
+msgstr "Přidat možnost"
 
 msgid "Sort by name (A-Z)"
 msgstr ""
@@ -3760,7 +3761,7 @@ msgstr ""
 "další dimenzionalitu pro účely analýzy."
 
 msgid "Data Approval"
-msgstr ""
+msgstr "Schválení dat"
 
 msgid ""
 "Data approval workflows create a process for authorized users to review and "
@@ -3876,6 +3877,8 @@ msgstr "Seskupte indikátory programu pro snadnější analýzu."
 
 msgid "Create predictors which can be used to predict future data values."
 msgstr ""
+"Vytvořte prediktory, které lze použít k předpovědi budoucích datových "
+"hodnot."
 
 msgid "Create predictor groups that contain several related predictors."
 msgstr ""
@@ -3887,6 +3890,8 @@ msgid ""
 "Create option sets which can be included in data elements and produce drop-"
 "down lists in data entry forms."
 msgstr ""
+"Vytvořte sady možností, které lze zahrnout do datových prvků, a vytvářejte "
+"rozevírací seznamy ve formulářích pro zadávání dat."
 
 msgid ""
 "Create a group of options from option sets that has a similar functional "
@@ -3955,24 +3960,32 @@ msgid ""
 "Create constants which can be included in expressions of indicator and "
 "validation rules."
 msgstr ""
+"Vytvořte konstanty, které lze zahrnout do výrazů indikátorových a "
+"ověřovacích pravidel."
 
 msgid "Configure external map layers for use in GIS."
-msgstr ""
+msgstr "Nakonfigurujte externí mapové vrstvy pro použití v GIS."
 
 msgid ""
 "Create, modify and view predefined legends for maps and other "
 "visualisations."
 msgstr ""
+"Vytvářejte, upravujte a zobrazujte předdefinované legendy pro mapy a další "
+"vizualizace."
 
 msgid ""
 "Create and manage locales for database content. A locale is a combination of"
 " language and country."
 msgstr ""
+"Vytvářejte a spravujte národní prostředí pro obsah databáze. Národní "
+"prostředí je kombinací jazyka a země."
 
 msgid ""
 "Manage analytics to be emailed to specific user groups on a daily, weekly or"
 " monthly basis."
 msgstr ""
+"Spravujte analytiku, která má být zasílána e-mailem konkrétním skupinám "
+"uživatelů, a to denně, týdně nebo měsíčně."
 
 msgid "Configure hooks in SQL that run during the analytics process."
 msgstr ""
@@ -3993,29 +4006,40 @@ msgid ""
 "Create, modify and view programs. A program has program stages and defines "
 "which actions should be taken at each stage."
 msgstr ""
+"Vytvářejte, upravujte a zobrazujte programy. Program má fáze programu a "
+"definuje, která opatření by měla být přijata v každé fázi."
 
 msgid ""
 "Create, modify and view tracked entity attributes. An attribute can be used "
 "to register extra information for a tracked entity."
 msgstr ""
+"Vytvářejte, upravujte a zobrazujte atributy sledovaných entit. Atribut lze "
+"použít k registraci dalších informací pro trasovanou entitu."
 
 msgid ""
 "Create, modify and view relationship types. A relationship is typically wife"
 " and husband or mother and child."
 msgstr ""
+"Vytvářejte, upravujte a zobrazujte typy vztahů. Vztahem je obvykle manželka "
+"a manžel nebo matka a dítě."
 
 msgid ""
 "Define types of entities which can be tracked through the system, which can "
 "be anything from persons to commodities."
 msgstr ""
+"Definujte typy entit, které lze v systému sledovat, což může být cokoli, od "
+"osob po komodity."
 
 msgid ""
 "Program rules allow you to create and control dynamic behavior of the user "
 "interface in the Tracker Capture and Event Capture apps."
 msgstr ""
+"Pravidla programu vám umožňují vytvářet a řídit dynamické chování "
+"uživatelského rozhraní v aplikacích Zachycení Trasování a Zachycení "
+"Události."
 
 msgid "Variables you use to create program rule expressions."
-msgstr ""
+msgstr "Proměnné, které používáte k vytváření výrazů pravidel programu."
 
 msgid "Set disaggregation mappings for program indicators."
 msgstr "Nastavení mapování členění pro indikátory programu."
@@ -4035,11 +4059,15 @@ msgid ""
 "Add, modify, view and delete validation rules. Anomalies can be discovered "
 "by running validation rules against the data."
 msgstr ""
+"Přidejte, upravte, zobrazte a odstraňte ověřovací pravidla. Anomálie lze "
+"zjistit spuštěním ověřovacích pravidel proti datům."
 
 msgid ""
 "Add, modify, view and delete validation rule groups. Provides the ability to"
 " group and run validation rules together."
 msgstr ""
+"Přidat, upravit, zobrazit a odstranit skupiny pravidel ověření. Poskytuje "
+"možnost seskupovat a spouštět ověřovací pravidla společně."
 
 msgid "Sends a notification when a validation rule failed."
 msgstr "Odešle oznámení, když pravidlo validace selže."
@@ -4069,19 +4097,19 @@ msgid "Predictor run started successfully"
 msgstr ""
 
 msgid "Run predictor"
-msgstr ""
+msgstr "Spustit prediktor"
 
 msgid "Start date"
-msgstr ""
+msgstr "Datum začátku"
 
 msgid "End date"
-msgstr ""
+msgstr "Datum ukončení"
 
 msgid "Run now"
-msgstr ""
+msgstr "Spustit hned"
 
 msgid "Output data element"
-msgstr ""
+msgstr "Výstupní datový prvek"
 
 msgid "Predict using input category option combination"
 msgstr ""
@@ -4099,7 +4127,7 @@ msgid "Configure how this predictor is calculated."
 msgstr ""
 
 msgid "Organisation units providing data"
-msgstr ""
+msgstr "Organizační jednotky poskytující data"
 
 msgid "Sequential sample count (required)"
 msgstr ""
@@ -4168,7 +4196,7 @@ msgid "Category mapping: "
 msgstr "Mapování kategorií: "
 
 msgid "Edit filter"
-msgstr ""
+msgstr "Upravit filtr"
 
 msgid "Set up filter"
 msgstr ""
@@ -4371,7 +4399,7 @@ msgid "Choose the program and data types this program indicator applies to."
 msgstr ""
 
 msgid "Data source"
-msgstr ""
+msgstr "Zdroj dat"
 
 msgid "Uses data from all events within a program stage"
 msgstr ""
@@ -4383,7 +4411,7 @@ msgid "Configure the program indicator expression."
 msgstr "Konfigurace výrazu indikátoru programu."
 
 msgid "Edit expression"
-msgstr ""
+msgstr "Upravit výraz"
 
 msgid "Set up expression"
 msgstr ""
@@ -4394,7 +4422,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear filter"
-msgstr ""
+msgstr "Vymazat filtr"
 
 msgid "Period boundaries"
 msgstr "Hranice období"
@@ -4463,10 +4491,10 @@ msgid "Expression (required) *"
 msgstr ""
 
 msgid "Feedback widget"
-msgstr ""
+msgstr "Widget zpětné vazby"
 
 msgid "Program indicator widget"
-msgstr ""
+msgstr "Widget indikátoru programu"
 
 msgid "Display widget (required)"
 msgstr ""
@@ -4481,7 +4509,7 @@ msgid "Can be 0 or negative. Leave empty if not needed."
 msgstr ""
 
 msgid "Program rule variable to assign to"
-msgstr ""
+msgstr "Proměnná pravidla programu, která se má přiřadit"
 
 msgid "Program stage to trigger rule"
 msgstr ""
@@ -4493,7 +4521,7 @@ msgid "Program stage section to hide (required)"
 msgstr ""
 
 msgid "Program stage section to hide"
-msgstr ""
+msgstr "Sekce fáze programu se skryje"
 
 msgid "Set up the basic information for this program rule."
 msgstr ""
@@ -4508,7 +4536,7 @@ msgid "Set up the expression that checks when this program rule runs."
 msgstr ""
 
 msgid "Action"
-msgstr ""
+msgstr "Akce"
 
 msgid "Program rule action saved"
 msgstr ""
@@ -4544,52 +4572,52 @@ msgid "Program rule must be saved before actions can be added"
 msgstr ""
 
 msgid "Data element to assign to"
-msgstr ""
+msgstr "Datový prvek k přiřazení"
 
 msgid "Tracked entity attribute to assign to"
-msgstr ""
+msgstr "Atribut trasované entity k přiřazení"
 
 msgid "Expression to evaluate and assign"
-msgstr ""
+msgstr "Výraz k vyhodnocení a přiřazení"
 
 msgid "Data element to display warning next to"
-msgstr ""
+msgstr "Datový prvek k zobrazení varování vedle"
 
 msgid "Data element to display error next to"
-msgstr ""
+msgstr "Datový prvek k zobrazení chyby vedle"
 
 msgid "Tracked entity attribute to display warning next to"
-msgstr ""
+msgstr "Atribut trasované entity k zobrazení varování vedle"
 
 msgid "Tracked entity attribute to display error next to"
-msgstr ""
+msgstr "Atribut trasované entity k zobrazení chyby vedle"
 
 msgid "Static text"
-msgstr ""
+msgstr "Statický text"
 
 msgid "Expression to evaluate and display after static text."
 msgstr ""
 
 msgid "Key label"
-msgstr ""
+msgstr "Štítek klíče"
 
 msgid "Expression to evaluate and display as value."
 msgstr ""
 
 msgid "Data element to hide"
-msgstr ""
+msgstr "Datový prvek ke skrytí"
 
 msgid "Tracked entity attribute to hide"
-msgstr ""
+msgstr "Atribut trasované entity se skryje"
 
 msgid "Custom message for blanked field"
-msgstr ""
+msgstr "Vlastní zpráva pro prázdné pole"
 
 msgid "Option to hide"
-msgstr ""
+msgstr "Možnost skrýt"
 
 msgid "Option group to hide"
-msgstr ""
+msgstr "Skupina možností ke skrytí"
 
 msgid "Program rule variable for scheduled date"
 msgstr ""
@@ -4598,58 +4626,58 @@ msgid "Date to send message."
 msgstr ""
 
 msgid "Option group to show"
-msgstr ""
+msgstr "Skupina možností k zobrazení"
 
 msgid "Assign value"
-msgstr ""
+msgstr "Přiřadit hodnotu"
 
 msgid "Display key-value pair"
 msgstr ""
 
 msgid "Display text"
-msgstr ""
+msgstr "Zobrazit text"
 
 msgid "Error on complete"
-msgstr ""
+msgstr "Chyba při dokončení"
 
 msgid "Hide field"
-msgstr ""
+msgstr "Skrýt pole"
 
 msgid "Hide option"
-msgstr ""
+msgstr "Skrýt možnost"
 
 msgid "Hide option group"
-msgstr ""
+msgstr "Skrýt skupinu možností"
 
 msgid "Hide program stage"
-msgstr ""
+msgstr "Skrýt programovou fázi"
 
 msgid "Hide section"
-msgstr ""
+msgstr "Skrýt sekci"
 
 msgid "Schedule event"
 msgstr ""
 
 msgid "Schedule message"
-msgstr ""
+msgstr "Naplánovat zprávu"
 
 msgid "Send message"
-msgstr ""
+msgstr "Poslat zprávu"
 
 msgid "Set mandatory field"
 msgstr ""
 
 msgid "Show error"
-msgstr ""
+msgstr "Zobrazit chybu"
 
 msgid "Show option group"
-msgstr ""
+msgstr "Zobrazit skupinu možností"
 
 msgid "Show warning"
-msgstr ""
+msgstr "Zobrazit varování"
 
 msgid "Warning on complete"
-msgstr ""
+msgstr "Varování při dokončení"
 
 msgid "Expression to evaluate and assign is required"
 msgstr ""
@@ -4663,7 +4691,7 @@ msgid "Display widget is required"
 msgstr ""
 
 msgid "This field is required"
-msgstr ""
+msgstr "Toto pole je povinné"
 
 msgid ""
 "At least one of the data element or tracked entity attribute must be "
@@ -4671,7 +4699,7 @@ msgid ""
 msgstr ""
 
 msgid "Program stage is required"
-msgstr ""
+msgstr "Vyžaduje se programová fáze"
 
 msgid "Program stage section to hide is required"
 msgstr ""
@@ -4749,7 +4777,7 @@ msgid "Unknown action type"
 msgstr ""
 
 msgid "Program Rule"
-msgstr ""
+msgstr "Pravidlo programu"
 
 msgid "Name (required)"
 msgstr ""
@@ -4772,7 +4800,7 @@ msgid "Choose how this program collects data. This cannot be changed later."
 msgstr ""
 
 msgid "Single event"
-msgstr ""
+msgstr "Jedna událost"
 
 msgid "Collect standalone events with no person or entity attached."
 msgstr ""
@@ -4781,7 +4809,7 @@ msgid "Collect events for a person or other entity over time."
 msgstr ""
 
 msgid "Continue"
-msgstr ""
+msgstr "Pokračovat"
 
 msgid "Access updated successfully"
 msgstr ""
@@ -4793,7 +4821,7 @@ msgid "Failed to apply program access rules"
 msgstr ""
 
 msgid "Untitled"
-msgstr ""
+msgstr "Nepojmenované"
 
 msgid "No data access"
 msgstr ""
@@ -4832,13 +4860,13 @@ msgid "Public (All users)"
 msgstr ""
 
 msgid "External"
-msgstr ""
+msgstr "Externí"
 
 msgid "Group"
 msgstr "Skupina"
 
 msgid "Organisation unit access"
-msgstr ""
+msgstr "Přístup k organizační jednotce"
 
 msgid "Role access"
 msgstr ""
@@ -4922,16 +4950,16 @@ msgid "Set up advanced options for this program."
 msgstr ""
 
 msgid "Allow user assignment of events"
-msgstr ""
+msgstr "Povolit přiřazování událostí uživateli"
 
 msgid "Block entry form after completed"
-msgstr ""
+msgstr "Po vyplnění zablokovat přihlašovací formulář"
 
 msgid "Pre-generate event UID"
-msgstr ""
+msgstr "Předgenerovat UID události"
 
 msgid "Related program"
-msgstr ""
+msgstr "Související program"
 
 msgid "Close data entry a number of days after a period ends"
 msgstr ""
@@ -4944,10 +4972,10 @@ msgid ""
 msgstr ""
 
 msgid "Settings"
-msgstr ""
+msgstr "Nastavení"
 
 msgid "Validation strategy"
-msgstr ""
+msgstr "Strategie ověřování"
 
 msgid "Access and Sharing"
 msgstr ""
@@ -4962,7 +4990,7 @@ msgid "List of enrolled tracked entities"
 msgstr ""
 
 msgid "Expiry period type"
-msgstr ""
+msgstr "Typ doby platnosti"
 
 msgid ""
 "Close data entry a number of days after end date of "
@@ -4994,28 +5022,28 @@ msgid "Notification form saved"
 msgstr ""
 
 msgid "Program stage completion"
-msgstr ""
+msgstr "Dokončení fáze programu"
 
 msgid "Allow notification to be sent multiple times"
-msgstr ""
+msgstr "Povolit zasílání oznámení vícekrát"
 
 msgid "Days since due date"
-msgstr ""
+msgstr "Dny od data vypršení platnosti"
 
 msgid "Days until due date"
-msgstr ""
+msgstr "Dny do data splatnosti"
 
 msgid "Set up the basic information for this program notification."
 msgstr ""
 
 msgid "Program attribute recipient"
-msgstr ""
+msgstr "Příjemce atributu programu"
 
 msgid "No program attributes of type email or phone number found."
 msgstr ""
 
 msgid "Data element recipient"
-msgstr ""
+msgstr "Příjemce datového prvku"
 
 msgid "No data elements of type email or phone number found."
 msgstr ""
@@ -5064,13 +5092,13 @@ msgid ""
 msgstr ""
 
 msgid "Allow provided elsewhere"
-msgstr ""
+msgstr "Povolit poskytované jinde"
 
 msgid "Display in reports"
-msgstr ""
+msgstr "Zobrazit ve Zprávách"
 
 msgid "Skip in analytics"
-msgstr ""
+msgstr "Přeskočit v analytice"
 
 msgid "Skip sync"
 msgstr ""
@@ -5085,7 +5113,7 @@ msgid "Mobile Display"
 msgstr ""
 
 msgid "Stage"
-msgstr ""
+msgstr "Fáze"
 
 msgid "Stages"
 msgstr ""
@@ -5121,16 +5149,16 @@ msgid "Customise the wording of labels for this stage."
 msgstr ""
 
 msgid "Custom label for report date"
-msgstr ""
+msgstr "Vlastní štítek pro datum hlášení"
 
 msgid "Custom label for due date"
-msgstr ""
+msgstr "Vlastní štítek pro datum vypršení"
 
 msgid "Custom label for program stage"
-msgstr ""
+msgstr "Vlastní štítek pro fázi programu"
 
 msgid "Custom label for event"
-msgstr ""
+msgstr "Vlastní štítek pro událost"
 
 msgid "Program stage form"
 msgstr ""
@@ -5162,7 +5190,7 @@ msgid "Auto-generate an event in this stage"
 msgstr ""
 
 msgid "Generate events based on enrollment date"
-msgstr ""
+msgstr "Generovat události na základě data registrace"
 
 msgid "Show scheduled date"
 msgstr ""
@@ -5174,10 +5202,10 @@ msgid "Days to add to the enrollment or incident date. 0 means same day. "
 msgstr ""
 
 msgid "Default next scheduled date"
-msgstr ""
+msgstr "Výchozí další naplánované datum"
 
 msgid "Open data entry form after enrollment"
-msgstr ""
+msgstr "Po zápisu otevřít formulář pro zadávání údajů"
 
 msgid "On event completion, ask user to complete enrollment"
 msgstr ""
@@ -5186,10 +5214,10 @@ msgid "Allow multiple events in this stage (repeatable stage)"
 msgstr ""
 
 msgid "Report date to use"
-msgstr ""
+msgstr "Datum k použití Zprávy"
 
 msgid "Standard interval days"
-msgstr ""
+msgstr "Standardní intervalové dny"
 
 msgid "Enter the number of days between repeated events."
 msgstr ""
@@ -5207,13 +5235,13 @@ msgid "Stage section form saved"
 msgstr ""
 
 msgid "Listing"
-msgstr ""
+msgstr "Výpis"
 
 msgid "Sequential"
-msgstr ""
+msgstr "Sekvenční"
 
 msgid "Matrix"
-msgstr ""
+msgstr "Matice"
 
 msgid "Explain the purpose of this section."
 msgstr ""
@@ -5237,7 +5265,7 @@ msgid "Stage: Creation and Scheduling"
 msgstr ""
 
 msgid "Scheduled days from start"
-msgstr ""
+msgstr "Naplánované dny od začátku"
 
 msgid "Stage: Data"
 msgstr ""
@@ -5279,7 +5307,7 @@ msgid "Manage how the chosen attributes are collected and displayed."
 msgstr ""
 
 msgid "Searchable"
-msgstr ""
+msgstr "Prohledávatelné"
 
 msgid "This attribute is defined at the tracked entity type level"
 msgstr ""
@@ -5288,7 +5316,7 @@ msgid "This attribute is marked as required at the tracked entity type level"
 msgstr ""
 
 msgid "Unique attributes are always searchable"
-msgstr ""
+msgstr "Unikátní atributy lze vždy prohledávat"
 
 msgid "Enrollment: Form"
 msgstr ""
@@ -5388,7 +5416,7 @@ msgid ""
 msgstr ""
 
 msgid "Program Stages"
-msgstr ""
+msgstr "Fáze programu"
 
 msgid "Set up stages in this program."
 msgstr ""
@@ -5457,7 +5485,7 @@ msgid "Receiving side constraint"
 msgstr ""
 
 msgid "Name is required"
-msgstr ""
+msgstr "Název je povinný"
 
 msgid "Relationship name seen from initiating entity is required"
 msgstr ""
@@ -5488,7 +5516,7 @@ msgid ""
 msgstr ""
 
 msgid "Confidential"
-msgstr ""
+msgstr "Důvěrné"
 
 msgid ""
 "Prevent searching or viewing in analytics. Available only when system "
@@ -5507,7 +5535,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear"
-msgstr ""
+msgstr "Vyčistit"
 
 msgid "Pattern for automatically generated values"
 msgstr ""
@@ -5588,22 +5616,22 @@ msgid "Choose legends to visually categorize values in analytics apps."
 msgstr ""
 
 msgid "Tracked Entity Attribute"
-msgstr ""
+msgstr "Atribut trasované entity"
 
 msgid "Organisation unit scope"
-msgstr ""
+msgstr "Rozsah organizační jednotky"
 
 msgid "Generated"
 msgstr ""
 
 msgid "Pattern"
-msgstr ""
+msgstr "Vzor"
 
 msgid "Inherit"
-msgstr ""
+msgstr "Zdědit"
 
 msgid "Skip synchronization"
-msgstr ""
+msgstr "Přeskočit synchronizaci"
 
 msgid "Minimum characters to search"
 msgstr ""
@@ -5692,7 +5720,7 @@ msgid "Set up the basic information for this validation rule group."
 msgstr ""
 
 msgid "Validation Rules"
-msgstr ""
+msgstr "Pravidla ověřování"
 
 msgid "Choose the validation rules to include in this validation rule group."
 msgstr ""
@@ -5710,7 +5738,7 @@ msgid "Configure the expressions and how they are compared."
 msgstr ""
 
 msgid "Left side expression"
-msgstr ""
+msgstr "Výraz na levé straně"
 
 msgid "Edit numerator expression"
 msgstr "Upravit výraz čitatele"
@@ -5725,7 +5753,7 @@ msgid "Comparison operator"
 msgstr ""
 
 msgid "Right side expression"
-msgstr ""
+msgstr "Výraz na pravé straně"
 
 msgid "Edit denominator expression"
 msgstr "Upravit výraz jmenovatele"
