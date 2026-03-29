@@ -1,26 +1,27 @@
 # Translators:
-# Bram Piot <bram.piot@gmail.com>, 2025
 # Jason Pickering <jason@dhis2.org>, 2025
-# Austin McGee <austin@dhis2.org>, 2025
-# Elise Desailly, 2025
-# Philip Larsen Donnelly, 2025
-# Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2025
-# Karoline Tufte Lien <karoline@dhis2.org>, 2025
-# tx_e2f_frfr r6 <tx_e2f_frfr_r661@ate2f.com>, 2025
-# tx_e2f_fr r25 <tx_e2f_fr_r25@ate2f.com>, 2025
-# Viktor Varland <viktor@dhis2.org>, 2025
-# Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2025
-# Esther Tokouli, 2025
-# Yayra Gomado <ygomado@hispwca.org>, 2025
-# Edem Kossi <ekossi@hispwca.org>, 2025
+# Bram Piot <bram.piot@gmail.com>, 2026
+# George McGuire, 2026
+# Austin McGee <austin@dhis2.org>, 2026
+# tx_e2f_fr r25 <tx_e2f_fr_r25@ate2f.com>, 2026
+# Elise Desailly, 2026
+# Esther Tokouli, 2026
 # Cyrille Kabrane, 2026
+# tx_e2f_frfr r6 <tx_e2f_frfr_r661@ate2f.com>, 2026
+# Philip Larsen Donnelly, 2026
+# Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2026
+# Karoline Tufte Lien <karoline@dhis2.org>, 2026
+# Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2026
+# Edem Kossi <ekossi@hispwca.org>, 2026
+# Yayra Gomado <ygomado@hispwca.org>, 2026
+# Viktor Varland <viktor@dhis2.org>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Cyrille Kabrane, 2026\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
 "Language-Team: French (https://app.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -98,13 +99,13 @@ msgid "Color and icon"
 msgstr "Couleur et icône"
 
 msgid "Color"
-msgstr ""
+msgstr "Couleur"
 
 msgid "Remove color"
 msgstr ""
 
 msgid "Icon"
-msgstr ""
+msgstr "Icône"
 
 msgid "Choose an icon"
 msgstr ""
@@ -140,7 +141,7 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Actualiser"
 
 msgid "Add new"
 msgstr "Ajouter nouveau"
@@ -152,7 +153,7 @@ msgid "Expression not yet validated"
 msgstr ""
 
 msgid "Validate"
-msgstr ""
+msgstr "Valider"
 
 msgid "Invalid expression"
 msgstr "Expression non valide"
@@ -169,7 +170,7 @@ msgid "Apply"
 msgstr "Appliquer"
 
 msgid "Clear expression"
-msgstr ""
+msgstr "Effacer l'expression"
 
 msgid "(No Value)"
 msgstr "(Sans valeur)"
@@ -184,16 +185,16 @@ msgid "Retry"
 msgstr "Réessayer"
 
 msgid "Missing value strategy"
-msgstr ""
+msgstr "Stratégie de valeur manquante"
 
 msgid "Never skip"
-msgstr ""
+msgstr "Jamais ignorer"
 
 msgid "Skip if any value is missing"
-msgstr ""
+msgstr "Ignorer si une des valeurs est manquante"
 
 msgid "Skip if all values are missing"
-msgstr ""
+msgstr "Ignorer si toutes les valeurs sont manquantes"
 
 msgid "Program has not been selected"
 msgstr ""
@@ -202,7 +203,7 @@ msgid "Data elements"
 msgstr "Éléments de données"
 
 msgid "Program tracked entity attributes"
-msgstr ""
+msgstr "Attributs de l'entité suivie du program"
 
 msgid "Indicators"
 msgstr "Indicateurs"
@@ -367,73 +368,73 @@ msgid "Program data"
 msgstr ""
 
 msgid "Org unit counts"
-msgstr ""
+msgstr "Org unit counts"
 
 msgid "Constants"
 msgstr "Constantes"
 
 msgid "Reporting rates"
-msgstr ""
+msgstr "Taux de déclaration"
 
 msgid "Operators"
-msgstr ""
+msgstr "Les opérateurs"
 
 msgid "Analytics period end"
-msgstr ""
+msgstr "Fin de la période d'analytique"
 
 msgid "Analytics period start"
-msgstr ""
+msgstr "Début de la période d'analytique"
 
 msgid "Completed date"
-msgstr ""
+msgstr "Date d'achèvement"
 
 msgid "Creation date"
-msgstr ""
+msgstr "Date de création"
 
 msgid "Current date"
 msgstr "Date actuelle"
 
 msgid "Due date"
-msgstr ""
+msgstr "Date d'échéance"
 
 msgid "Enrollment status"
-msgstr ""
+msgstr "Statut de l'inscription"
 
 msgid "Event date"
 msgstr "Date d'événement"
 
 msgid "Event status"
-msgstr ""
+msgstr "Statut de l'événement"
 
 msgid "Program stage id"
-msgstr ""
+msgstr "ID de l'étape de programme"
 
 msgid "Program stage name"
-msgstr ""
+msgstr "Nom du stade de programme"
 
 msgid "Sync date"
-msgstr ""
+msgstr "Date de synchronisation"
 
 msgid "Value count"
-msgstr ""
+msgstr "Compte de valeurs"
 
 msgid "Zero or positive value count"
-msgstr ""
+msgstr "Compte valeur zéro ou positif"
 
 msgid "Enrollment count"
-msgstr ""
+msgstr "Nombre d'inscriptions"
 
 msgid "Event count"
-msgstr ""
+msgstr "Nombre d'évènements"
 
 msgid "Organisation unit count"
-msgstr ""
+msgstr "Nombre d'unités d'organisation"
 
 msgid "Tracked entity instance count"
-msgstr ""
+msgstr "Nombre d'entités suivies"
 
 msgid "Variables"
-msgstr ""
+msgstr "Variables"
 
 msgid "Program stage data"
 msgstr ""
@@ -445,7 +446,7 @@ msgid "Program rule variables"
 msgstr "Variables de règle de programme"
 
 msgid "Functions"
-msgstr ""
+msgstr "Les fonctions"
 
 msgid "Could not validate expression"
 msgstr "Impossible de valider l'expression"
@@ -475,7 +476,7 @@ msgid "Are you sure you want to change this?"
 msgstr ""
 
 msgid "Change"
-msgstr ""
+msgstr "Modifier"
 
 msgid "Custom form saved"
 msgstr "Formulaire personnalisé enregistré"
@@ -553,10 +554,10 @@ msgid "Insert grey (disabled) fields"
 msgstr "Insérer les champs grisés (désactivés)"
 
 msgid "Date of enrollment"
-msgstr ""
+msgstr "Date d'inscription"
 
 msgid "Date of incident"
-msgstr ""
+msgstr "Date de l'incident"
 
 msgid "Program"
 msgstr "Programme"
@@ -568,7 +569,7 @@ msgid "Flags"
 msgstr "Drapeaux"
 
 msgid "Submit"
-msgstr ""
+msgstr "Soumettre"
 
 msgid "Save"
 msgstr "Enregistrer"
@@ -742,7 +743,7 @@ msgid "New section"
 msgstr ""
 
 msgid "Edit section"
-msgstr ""
+msgstr "Modifier la section"
 
 msgid "Sections"
 msgstr "Sections"
@@ -1082,10 +1083,10 @@ msgid "All source types"
 msgstr ""
 
 msgid "Tracker program"
-msgstr ""
+msgstr "Programme tracker"
 
 msgid "Event program"
-msgstr ""
+msgstr "Programme d'évènement"
 
 msgid "Select program type"
 msgstr ""
@@ -1161,7 +1162,7 @@ msgid "None"
 msgstr "Aucun"
 
 msgid "No value"
-msgstr ""
+msgstr "Pas de valeur"
 
 msgid "Event"
 msgstr "Événement"
@@ -1170,7 +1171,7 @@ msgid "Enrollment"
 msgstr "Inscription"
 
 msgid "Tracked entity"
-msgstr ""
+msgstr "Entité suivie"
 
 msgid "Public can edit"
 msgstr "Accès public à la modification"
@@ -1422,10 +1423,10 @@ msgid "Icons"
 msgstr ""
 
 msgid "Predictor group"
-msgstr ""
+msgstr "Groupe de prédicteurs"
 
 msgid "Predictor groups"
-msgstr ""
+msgstr "Groupes de prédicteurs"
 
 msgid "Indicators and Predictors"
 msgstr ""
@@ -1440,7 +1441,7 @@ msgid "Validations"
 msgstr "Validations"
 
 msgid "Data approval"
-msgstr ""
+msgstr "Approbation de données"
 
 msgid "Other"
 msgstr "Autre"
@@ -1487,7 +1488,7 @@ msgstr ""
 "Dernière valeur en période (somme dans la hiérarchie organisationnelle)"
 
 msgid "Last value in period (average in org unit hierarchy)"
-msgstr ""
+msgstr "Dernière valeur en période (moyenne dans la hiérarchie d'org unit)"
 
 msgid "First value (sum in org unit hierarchy)"
 msgstr "Première valeur (somme dans la hiérarchie organisationnelle)"
@@ -1641,10 +1642,10 @@ msgid "Section Multi-org"
 msgstr "Section multi-organisation"
 
 msgid "Bi-monthly"
-msgstr ""
+msgstr "Bimestriel"
 
 msgid "Bi-weekly"
-msgstr ""
+msgstr "Bimensuel"
 
 msgid "Daily"
 msgstr "Daily"
@@ -1677,16 +1678,16 @@ msgid "Quarterly"
 msgstr "Quarterly"
 
 msgid "Quarterly November"
-msgstr ""
+msgstr "Trimestrielle Novembre"
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "Avril Semestriel"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "Novembre semestriel"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "Semestriel"
 
 msgid "Two-Yearly"
 msgstr ""
@@ -1698,52 +1699,52 @@ msgid "Weekly Friday"
 msgstr ""
 
 msgid "Weekly Saturday"
-msgstr ""
+msgstr "Chaque semaine, le samedi"
 
 msgid "Weekly Sunday"
-msgstr ""
+msgstr "Chaque semaine, le dimanche"
 
 msgid "Weekly Thursday"
-msgstr ""
+msgstr "Chaque semaine, le jeudi"
 
 msgid "Weekly Wednesday"
-msgstr ""
+msgstr "Chaque semaine, le mercredi"
 
 msgid "Yearly"
 msgstr "Annuel"
 
 msgid "Equal to"
-msgstr ""
+msgstr "Égal à"
 
 msgid "Not equal to"
-msgstr ""
+msgstr "n'est pas égal à"
 
 msgid "Greater than"
-msgstr ""
+msgstr "Supérieur à"
 
 msgid "Greater than or equal to"
-msgstr ""
+msgstr "Supérieur ou égal à"
 
 msgid "Less than"
-msgstr ""
+msgstr "Inférieur à"
 
 msgid "Less than or equal to"
-msgstr ""
+msgstr "<\\="
 
 msgid "Compulsory pair"
-msgstr ""
+msgstr "Paire obligatoire"
 
 msgid "Exclusive pair"
-msgstr ""
+msgstr "Paire exclusive"
 
 msgid "High"
-msgstr ""
+msgstr "Elevé"
 
 msgid "Medium"
-msgstr ""
+msgstr "Moyen"
 
 msgid "Low"
-msgstr ""
+msgstr "Faible"
 
 msgid "Collective summary"
 msgstr "Résumé global"
@@ -1758,19 +1759,19 @@ msgid "Data set completion"
 msgstr "Achèvement de l'ensemble des données"
 
 msgid "Program completion"
-msgstr ""
+msgstr "Fin du programme"
 
 msgid "Program enrollment"
-msgstr ""
+msgstr "Inscription au programme"
 
 msgid "Days scheduled (due date)"
-msgstr ""
+msgstr "Jours planifiés (date d'échéance)"
 
 msgid "Days scheduled (incident date)"
-msgstr ""
+msgstr "Jours prévus (date d'incident)"
 
 msgid "Days scheduled (enrollment date)"
-msgstr ""
+msgstr "Jours prévus (date d'enrôlement)"
 
 msgid "Organisation unit contact"
 msgstr "Contact de l'unité d'organisation"
@@ -1779,10 +1780,10 @@ msgid "User group"
 msgstr "Groupe d'utilisateurs"
 
 msgid "Tracked entity instance"
-msgstr ""
+msgstr "Instance d'entité suivie"
 
 msgid "Users at Organisation Unit"
-msgstr ""
+msgstr "Utilisateurs de l'unité d'organisation"
 
 msgid "Program attribute"
 msgstr "Attribut de programme"
@@ -1791,40 +1792,40 @@ msgid "Web hook"
 msgstr ""
 
 msgid "Dropdown"
-msgstr ""
+msgstr "Menu déroulant"
 
 msgid "Vertical radiobuttons"
-msgstr ""
+msgstr "Boutons radio verticaux"
 
 msgid "Horizontal radiobuttons"
-msgstr ""
+msgstr "Boutons radio horizontaux"
 
 msgid "Vertical checkboxes"
-msgstr ""
+msgstr "Cases à cocher verticales"
 
 msgid "Horizontal checkboxes"
-msgstr ""
+msgstr "Cases à cocher horizontales"
 
 msgid "Shared header radiobuttons"
-msgstr ""
+msgstr "Boutons radio d'en-tête partagés"
 
 msgid "Icons as buttons"
-msgstr ""
+msgstr "Icônes en forme de boutons"
 
 msgid "Spinner"
-msgstr ""
+msgstr "Boucle de progression"
 
 msgid "Toggle"
-msgstr ""
+msgstr "Basculer"
 
 msgid "Value"
 msgstr "Valeur"
 
 msgid "Slider"
-msgstr ""
+msgstr "Curseur"
 
 msgid "Linear scale"
-msgstr ""
+msgstr "Échelle linéaire"
 
 msgid "Autocomplete"
 msgstr ""
@@ -1833,7 +1834,7 @@ msgid "Qr code"
 msgstr ""
 
 msgid "Bar code"
-msgstr ""
+msgstr "Code-barre"
 
 msgid "Gs1 datamatrix"
 msgstr ""
@@ -1842,31 +1843,31 @@ msgid "Canvas"
 msgstr ""
 
 msgid "Reporting rate"
-msgstr ""
+msgstr "Taux de notification"
 
 msgid "Reporting rate on time"
-msgstr ""
+msgstr "Taux de déclaration dans les délais"
 
 msgid "Actual reports"
-msgstr ""
+msgstr "Rapports effectifs"
 
 msgid "Actual reports on time"
-msgstr ""
+msgstr "Rapports effectifs dans les délais"
 
 msgid "Expected reports"
-msgstr ""
+msgstr "Rapports attendus"
 
 msgid "At selected level(s) only"
-msgstr ""
+msgstr "Au(x) niveau(x) sélectionné(s) uniquement"
 
 msgid "At selected level(s) and all levels below"
-msgstr ""
+msgstr "Au(x) niveau(x) sélectionné(s) et à tous les niveaux inférieurs"
 
 msgid "On complete"
-msgstr ""
+msgstr "Après achèvement"
 
 msgid "On update and insert"
-msgstr ""
+msgstr "Lors de la mise à jour et de l'insertion"
 
 msgid "Data element in newest event in program stage"
 msgstr ""
@@ -1878,10 +1879,10 @@ msgid "Data element from current event"
 msgstr ""
 
 msgid "Data element from previous event"
-msgstr ""
+msgstr "Elément de donnée dans l’événement précédent"
 
 msgid "Calculated value"
-msgstr ""
+msgstr "Valeur calculée"
 
 msgid "Category option combination for aggregate data export"
 msgstr ""
@@ -1901,7 +1902,7 @@ msgid "Analytics type"
 msgstr "Type d'analyse"
 
 msgid "Bidirectional"
-msgstr ""
+msgstr "Bidirectionnel"
 
 msgid "Compulsory"
 msgstr "Obligatoire"
@@ -1940,31 +1941,31 @@ msgid "Form type"
 msgstr "Type de formulaire"
 
 msgid "Relationship name seen from initiating entity"
-msgstr ""
+msgstr "Nom de la relation vu depuis l’entité responsable"
 
 msgid "Ignore data approval"
 msgstr "Ignorer l'approbation des données"
 
 msgid "Source type"
-msgstr ""
+msgstr "Type de source"
 
 msgid "Priority"
-msgstr ""
+msgstr "Priorité"
 
 msgid "Condition"
-msgstr ""
+msgstr "Condition"
 
 msgid "Referral"
-msgstr ""
+msgstr "Référence"
 
 msgid "Sharing"
 msgstr "Partage"
 
 msgid "Relationship name seen from receiving entity"
-msgstr ""
+msgstr "Nom de la relation vu depuis l’entité de réception"
 
 msgid "Use code for option set"
-msgstr ""
+msgstr "Utiliser le code pour l'ensemble d'options"
 
 msgid "Owner"
 msgstr "Propriétaire"
@@ -1979,7 +1980,7 @@ msgid "Feature type"
 msgstr "Type d'entité géographique"
 
 msgid "Program type"
-msgstr ""
+msgstr "Type de programme"
 
 msgid "Maximum number of tracked entity instances to return in search"
 msgstr ""
@@ -1998,10 +1999,10 @@ msgid "Program stage label"
 msgstr ""
 
 msgid "Due date label"
-msgstr ""
+msgstr "Étiquette de date d’échéance"
 
 msgid "Execution date label"
-msgstr ""
+msgstr "Étiquette de date d’exécution"
 
 msgid "Event label"
 msgstr ""
@@ -2010,10 +2011,10 @@ msgid "Tracked entity attribute label"
 msgstr ""
 
 msgid "Enrollment date label"
-msgstr ""
+msgstr "Étiquette de date d’inscription"
 
 msgid "Incident date label"
-msgstr ""
+msgstr "Étiquette de date d’incident"
 
 msgid "Note label"
 msgstr ""
@@ -2127,25 +2128,25 @@ msgid "Unique"
 msgstr "Unique"
 
 msgid "Display in list"
-msgstr ""
+msgstr "Afficher dans la liste"
 
 msgid "Trigram indexable"
 msgstr ""
 
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 msgid "Program Type"
 msgstr ""
 
 msgid "Access level"
-msgstr ""
+msgstr "Niveau d'accès"
 
 msgid "Completed events expiry days"
-msgstr ""
+msgstr "Jours d'expiration des événements terminés"
 
 msgid "Display front page list"
-msgstr ""
+msgstr "Display front page list"
 
 msgid "Mandatory"
 msgstr "Obligatoire"
@@ -2259,28 +2260,28 @@ msgid "Importance"
 msgstr "Importance"
 
 msgid "Instruction"
-msgstr ""
+msgstr "Instruction"
 
 msgid "Operator"
 msgstr "Opérateur"
 
 msgid "Skip this rule during form validation"
-msgstr ""
+msgstr "Ignorer cette règle lors de la validation du formulaire"
 
 msgid "Output"
-msgstr ""
+msgstr "Sortie"
 
 msgid "Output option combo"
 msgstr ""
 
 msgid "Sequential sample count"
-msgstr ""
+msgstr "Nombre d'échantillons séquentiels"
 
 msgid "Annual sample count"
-msgstr ""
+msgstr "Nombre d'échantillons annuels"
 
 msgid "Sequential skip count"
-msgstr ""
+msgstr "Nombre de sauts séquentiels"
 
 msgid "Organisation unit providing data"
 msgstr ""
@@ -2805,10 +2806,10 @@ msgid "Number of days {{beforeOrAfter}} scheduled date to send notification"
 msgstr ""
 
 msgid "before"
-msgstr ""
+msgstr "avant"
 
 msgid "after"
-msgstr ""
+msgstr "après"
 
 msgid "Recipient type"
 msgstr "Type de destinataire"
@@ -3024,7 +3025,7 @@ msgstr ""
 "(jours de validité restants)"
 
 msgid "Number of days"
-msgstr ""
+msgstr "Nombre de jours"
 
 msgid ""
 "Close data entry after \"{{categoryComboName}}\" category option end date "
@@ -3499,7 +3500,7 @@ msgid "Failed to load languages"
 msgstr ""
 
 msgid "Select a language"
-msgstr ""
+msgstr "Sélectionner une langue"
 
 msgid "Locale will not be editable after it has been created."
 msgstr ""
@@ -3562,7 +3563,7 @@ msgid "Value type cannot be edited after an option set has been created."
 msgstr ""
 
 msgid "Option Set"
-msgstr ""
+msgstr "Ensemble d'options"
 
 msgid "Set up the information for this option."
 msgstr ""
@@ -3586,7 +3587,7 @@ msgid "New option"
 msgstr ""
 
 msgid "Edit option"
-msgstr ""
+msgstr "Éditer l'option"
 
 msgid "Create and manage options in this option set."
 msgstr ""
@@ -3595,7 +3596,7 @@ msgid "Search by name or code"
 msgstr ""
 
 msgid "Add option"
-msgstr ""
+msgstr "Ajouter Option"
 
 msgid "Sort by name (A-Z)"
 msgstr ""
@@ -3841,7 +3842,7 @@ msgstr ""
 "dimensionnalité aux données saisie à des fins d'analyse."
 
 msgid "Data Approval"
-msgstr ""
+msgstr "Approbation de données"
 
 msgid ""
 "Data approval workflows create a process for authorized users to review and "
@@ -3962,6 +3963,8 @@ msgstr "Regrouper les indicateurs de programme pour faciliter l'analyse."
 
 msgid "Create predictors which can be used to predict future data values."
 msgstr ""
+"Créez des prédicteurs qui peuvent être utilisés pour prédire les valeurs de "
+"données futures."
 
 msgid "Create predictor groups that contain several related predictors."
 msgstr ""
@@ -3973,6 +3976,9 @@ msgid ""
 "Create option sets which can be included in data elements and produce drop-"
 "down lists in data entry forms."
 msgstr ""
+"Créer des ensembles d'option qui peuvent être intégrés dans élements de "
+"données et produire des listes déroulantes dans les formaulaires de saisie "
+"de données."
 
 msgid ""
 "Create a group of options from option sets that has a similar functional "
@@ -4044,24 +4050,32 @@ msgid ""
 "Create constants which can be included in expressions of indicator and "
 "validation rules."
 msgstr ""
+"Créer des constantes qui serait incluse dans les expressions de l'indicateur"
+" et des règles de validation"
 
 msgid "Configure external map layers for use in GIS."
-msgstr ""
+msgstr "Configurez les couches de carte externes à utiliser dans le SIG."
 
 msgid ""
 "Create, modify and view predefined legends for maps and other "
 "visualisations."
 msgstr ""
+"Créer, modifier et afficher les légendes prédéfinies pour les cartes et "
+"autres visualisations"
 
 msgid ""
 "Create and manage locales for database content. A locale is a combination of"
 " language and country."
 msgstr ""
+"Créer et gérer les paramètres régionaux pour le contenu de la base de "
+"données. Un paramètre régional est une combinaison de langue et de pays."
 
 msgid ""
 "Manage analytics to be emailed to specific user groups on a daily, weekly or"
 " monthly basis."
 msgstr ""
+"Gérez les analyses à être envoyer par e-mail à des groupes d'utilisateurs "
+"spécifiques sur une base quotidienne, hebdomadaire ou mensuelle."
 
 msgid "Configure hooks in SQL that run during the analytics process."
 msgstr ""
@@ -4082,29 +4096,43 @@ msgid ""
 "Create, modify and view programs. A program has program stages and defines "
 "which actions should be taken at each stage."
 msgstr ""
+"Créer, modifier et afficher les programmes. Un programme comporte des stades"
+" et définit les actions à mener à chaque stade."
 
 msgid ""
 "Create, modify and view tracked entity attributes. An attribute can be used "
 "to register extra information for a tracked entity."
 msgstr ""
+"Créez, modifiez et affichez les attributs d'entité suivis. Un attribut peut "
+"être utilisé pour enregistrer des informations supplémentaires pour une "
+"entité suivie."
 
 msgid ""
 "Create, modify and view relationship types. A relationship is typically wife"
 " and husband or mother and child."
 msgstr ""
+"Créer, modifier et afficher les types de relations. Une relation est "
+"généralement du genre mari et femme ou mère et enfant."
 
 msgid ""
 "Define types of entities which can be tracked through the system, which can "
 "be anything from persons to commodities."
 msgstr ""
+"Définir les types d'entités qui peuvent être suivies à travers le système, "
+"soit n'importe quel type (personnes, produits, etc.)"
 
 msgid ""
 "Program rules allow you to create and control dynamic behavior of the user "
 "interface in the Tracker Capture and Event Capture apps."
 msgstr ""
+"Les règles du programme vous permettent de créer et de contrôler le "
+"comportement dynamique de l'interface utilisateur dans les applications "
+"saisie Tracker  et saisie d'événement"
 
 msgid "Variables you use to create program rule expressions."
 msgstr ""
+"Les variables que vous utilisez pour créer des expressions de règle de "
+"programme."
 
 msgid "Set disaggregation mappings for program indicators."
 msgstr ""
@@ -4126,11 +4154,16 @@ msgid ""
 "Add, modify, view and delete validation rules. Anomalies can be discovered "
 "by running validation rules against the data."
 msgstr ""
+"Ajouter, modifier, voir et supprimer les règles de validation. Des "
+"incohérences de données peuvent être découvertes en exécutant les règles de "
+"validation"
 
 msgid ""
 "Add, modify, view and delete validation rule groups. Provides the ability to"
 " group and run validation rules together."
 msgstr ""
+"Ajouter, modifier, voir et supprimer les groupes de règles de validation. "
+"Permet de grouper et d'exécuter les règles de validation en groupe."
 
 msgid "Sends a notification when a validation rule failed."
 msgstr "Envoie une notification lorsqu'une règle de validation a échoué"
@@ -4160,19 +4193,19 @@ msgid "Predictor run started successfully"
 msgstr ""
 
 msgid "Run predictor"
-msgstr ""
+msgstr "Exécuter le prédicteur"
 
 msgid "Start date"
-msgstr ""
+msgstr "Date de début"
 
 msgid "End date"
-msgstr ""
+msgstr "Date de fin"
 
 msgid "Run now"
-msgstr ""
+msgstr "Cours maintenant"
 
 msgid "Output data element"
-msgstr ""
+msgstr "Élément de données de sortie"
 
 msgid "Predict using input category option combination"
 msgstr ""
@@ -4190,7 +4223,7 @@ msgid "Configure how this predictor is calculated."
 msgstr ""
 
 msgid "Organisation units providing data"
-msgstr ""
+msgstr "Unités d'organisation fournissant des données"
 
 msgid "Sequential sample count (required)"
 msgstr ""
@@ -4261,7 +4294,7 @@ msgid "Category mapping: "
 msgstr "Mapping des catégories : "
 
 msgid "Edit filter"
-msgstr ""
+msgstr "Modifier le filtre"
 
 msgid "Set up filter"
 msgstr ""
@@ -4479,7 +4512,7 @@ msgid "Choose the program and data types this program indicator applies to."
 msgstr ""
 
 msgid "Data source"
-msgstr ""
+msgstr "Source des données"
 
 msgid "Uses data from all events within a program stage"
 msgstr ""
@@ -4491,7 +4524,7 @@ msgid "Configure the program indicator expression."
 msgstr "Configurer l'expression de l'indicateur de programme."
 
 msgid "Edit expression"
-msgstr ""
+msgstr "Modifier l'expression"
 
 msgid "Set up expression"
 msgstr ""
@@ -4502,7 +4535,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear filter"
-msgstr ""
+msgstr "Effacer le filtre"
 
 msgid "Period boundaries"
 msgstr "Limites de période"
@@ -4573,10 +4606,10 @@ msgid "Expression (required) *"
 msgstr ""
 
 msgid "Feedback widget"
-msgstr ""
+msgstr "Widget d'information en retour"
 
 msgid "Program indicator widget"
-msgstr ""
+msgstr "Widget d'indicateur de programme"
 
 msgid "Display widget (required)"
 msgstr ""
@@ -4591,7 +4624,7 @@ msgid "Can be 0 or negative. Leave empty if not needed."
 msgstr ""
 
 msgid "Program rule variable to assign to"
-msgstr ""
+msgstr "Variable de règle de programme à affecter à"
 
 msgid "Program stage to trigger rule"
 msgstr ""
@@ -4603,7 +4636,7 @@ msgid "Program stage section to hide (required)"
 msgstr ""
 
 msgid "Program stage section to hide"
-msgstr ""
+msgstr "Section d'étape de programme à masquer"
 
 msgid "Set up the basic information for this program rule."
 msgstr ""
@@ -4618,7 +4651,7 @@ msgid "Set up the expression that checks when this program rule runs."
 msgstr ""
 
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 msgid "Program rule action saved"
 msgstr ""
@@ -4654,52 +4687,52 @@ msgid "Program rule must be saved before actions can be added"
 msgstr ""
 
 msgid "Data element to assign to"
-msgstr ""
+msgstr "Élément de données à attribuer à"
 
 msgid "Tracked entity attribute to assign to"
-msgstr ""
+msgstr "Attribut d'entité suivie à attribuer à"
 
 msgid "Expression to evaluate and assign"
-msgstr ""
+msgstr "Expression à évaluer et à assigner"
 
 msgid "Data element to display warning next to"
-msgstr ""
+msgstr "Élément de données à afficher un avertissement à côté"
 
 msgid "Data element to display error next to"
-msgstr ""
+msgstr "Élément de données pour afficher l'erreur à côté de"
 
 msgid "Tracked entity attribute to display warning next to"
-msgstr ""
+msgstr "Attribut d'entité suivie pour afficher l'avertissement à côté de"
 
 msgid "Tracked entity attribute to display error next to"
-msgstr ""
+msgstr "Attribut d'entité suivie pour afficher l'erreur à côté de"
 
 msgid "Static text"
-msgstr ""
+msgstr "Texte statique"
 
 msgid "Expression to evaluate and display after static text."
 msgstr ""
 
 msgid "Key label"
-msgstr ""
+msgstr "Étiquette de clé"
 
 msgid "Expression to evaluate and display as value."
 msgstr ""
 
 msgid "Data element to hide"
-msgstr ""
+msgstr "Élément de données à masquer"
 
 msgid "Tracked entity attribute to hide"
-msgstr ""
+msgstr "Attribut d'entité suivie à masquer"
 
 msgid "Custom message for blanked field"
-msgstr ""
+msgstr "Message personnalisé pour le champ vide"
 
 msgid "Option to hide"
-msgstr ""
+msgstr "Option à masquer"
 
 msgid "Option group to hide"
-msgstr ""
+msgstr "Groupe d'options à masquer"
 
 msgid "Program rule variable for scheduled date"
 msgstr ""
@@ -4708,58 +4741,58 @@ msgid "Date to send message."
 msgstr ""
 
 msgid "Option group to show"
-msgstr ""
+msgstr "Groupe d'options à afficher"
 
 msgid "Assign value"
-msgstr ""
+msgstr "Assigner une valeur"
 
 msgid "Display key-value pair"
 msgstr ""
 
 msgid "Display text"
-msgstr ""
+msgstr "Afficher texte"
 
 msgid "Error on complete"
-msgstr ""
+msgstr "Erreur à la fin"
 
 msgid "Hide field"
-msgstr ""
+msgstr "Masquer le champ"
 
 msgid "Hide option"
-msgstr ""
+msgstr "Masquer l'option"
 
 msgid "Hide option group"
-msgstr ""
+msgstr "Masquer le groupe d'options"
 
 msgid "Hide program stage"
-msgstr ""
+msgstr "Masquer l'étape du programme"
 
 msgid "Hide section"
-msgstr ""
+msgstr "Masquer la section"
 
 msgid "Schedule event"
 msgstr ""
 
 msgid "Schedule message"
-msgstr ""
+msgstr "Planifier un message"
 
 msgid "Send message"
-msgstr ""
+msgstr "Envoyer un message"
 
 msgid "Set mandatory field"
 msgstr ""
 
 msgid "Show error"
-msgstr ""
+msgstr "Afficher l'erreur"
 
 msgid "Show option group"
-msgstr ""
+msgstr "Afficher le groupe d'options"
 
 msgid "Show warning"
-msgstr ""
+msgstr "Afficher l'avertissement"
 
 msgid "Warning on complete"
-msgstr ""
+msgstr "Avertissement à la fin"
 
 msgid "Expression to evaluate and assign is required"
 msgstr ""
@@ -4773,7 +4806,7 @@ msgid "Display widget is required"
 msgstr ""
 
 msgid "This field is required"
-msgstr ""
+msgstr "Ce champ est obligatoire"
 
 msgid ""
 "At least one of the data element or tracked entity attribute must be "
@@ -4781,7 +4814,7 @@ msgid ""
 msgstr ""
 
 msgid "Program stage is required"
-msgstr ""
+msgstr "Un stade de programme est requis"
 
 msgid "Program stage section to hide is required"
 msgstr ""
@@ -4859,7 +4892,7 @@ msgid "Unknown action type"
 msgstr ""
 
 msgid "Program Rule"
-msgstr ""
+msgstr "Règle de programme"
 
 msgid "Name (required)"
 msgstr ""
@@ -4882,7 +4915,7 @@ msgid "Choose how this program collects data. This cannot be changed later."
 msgstr ""
 
 msgid "Single event"
-msgstr ""
+msgstr "Evènement unique"
 
 msgid "Collect standalone events with no person or entity attached."
 msgstr ""
@@ -4891,7 +4924,7 @@ msgid "Collect events for a person or other entity over time."
 msgstr ""
 
 msgid "Continue"
-msgstr ""
+msgstr "Continuer"
 
 msgid "Access updated successfully"
 msgstr ""
@@ -4903,7 +4936,7 @@ msgid "Failed to apply program access rules"
 msgstr ""
 
 msgid "Untitled"
-msgstr ""
+msgstr "Sans titre"
 
 msgid "No data access"
 msgstr ""
@@ -4942,13 +4975,13 @@ msgid "Public (All users)"
 msgstr ""
 
 msgid "External"
-msgstr ""
+msgstr "Externe"
 
 msgid "Group"
 msgstr "Groupe"
 
 msgid "Organisation unit access"
-msgstr ""
+msgstr "Accès à l'unité d'organisation"
 
 msgid "Role access"
 msgstr ""
@@ -5032,16 +5065,16 @@ msgid "Set up advanced options for this program."
 msgstr ""
 
 msgid "Allow user assignment of events"
-msgstr ""
+msgstr "Permettre l'assignation des évènements aux utilisateurs"
 
 msgid "Block entry form after completed"
-msgstr ""
+msgstr "Bloquer la saisie après complétion"
 
 msgid "Pre-generate event UID"
-msgstr ""
+msgstr "Pré-générer un UID d'événement"
 
 msgid "Related program"
-msgstr ""
+msgstr "Programme connexe"
 
 msgid "Close data entry a number of days after a period ends"
 msgstr ""
@@ -5054,10 +5087,10 @@ msgid ""
 msgstr ""
 
 msgid "Settings"
-msgstr ""
+msgstr "Paramètres"
 
 msgid "Validation strategy"
-msgstr ""
+msgstr "Stratégie de validation"
 
 msgid "Access and Sharing"
 msgstr ""
@@ -5072,7 +5105,7 @@ msgid "List of enrolled tracked entities"
 msgstr ""
 
 msgid "Expiry period type"
-msgstr ""
+msgstr "Type de période d'expiration"
 
 msgid ""
 "Close data entry a number of days after end date of "
@@ -5104,28 +5137,28 @@ msgid "Notification form saved"
 msgstr ""
 
 msgid "Program stage completion"
-msgstr ""
+msgstr "Fin du stade de programme"
 
 msgid "Allow notification to be sent multiple times"
-msgstr ""
+msgstr "Autoriser l'envoi multiple de la notification"
 
 msgid "Days since due date"
-msgstr ""
+msgstr "Jours depuis la date d'échéance"
 
 msgid "Days until due date"
-msgstr ""
+msgstr "Jours jusqu'à la date d'échéance"
 
 msgid "Set up the basic information for this program notification."
 msgstr ""
 
 msgid "Program attribute recipient"
-msgstr ""
+msgstr "Attribut de programme destinataire"
 
 msgid "No program attributes of type email or phone number found."
 msgstr ""
 
 msgid "Data element recipient"
-msgstr ""
+msgstr "Élément de donnée destinataire"
 
 msgid "No data elements of type email or phone number found."
 msgstr ""
@@ -5174,10 +5207,10 @@ msgid ""
 msgstr ""
 
 msgid "Allow provided elsewhere"
-msgstr ""
+msgstr "Autoriser fourni ailleurs"
 
 msgid "Display in reports"
-msgstr ""
+msgstr "Afficher dans les rapports"
 
 msgid "Skip in analytics"
 msgstr ""
@@ -5195,7 +5228,7 @@ msgid "Mobile Display"
 msgstr ""
 
 msgid "Stage"
-msgstr ""
+msgstr "Stade"
 
 msgid "Stages"
 msgstr ""
@@ -5237,10 +5270,10 @@ msgid "Custom label for due date"
 msgstr ""
 
 msgid "Custom label for program stage"
-msgstr ""
+msgstr "Étiquette personnalisée pour l'étape du programme"
 
 msgid "Custom label for event"
-msgstr ""
+msgstr "Étiquette personnalisée pour l'événement"
 
 msgid "Program stage form"
 msgstr ""
@@ -5272,7 +5305,7 @@ msgid "Auto-generate an event in this stage"
 msgstr ""
 
 msgid "Generate events based on enrollment date"
-msgstr ""
+msgstr "Générer les évènements sur la base de la date d'enrôlement"
 
 msgid "Show scheduled date"
 msgstr ""
@@ -5284,10 +5317,10 @@ msgid "Days to add to the enrollment or incident date. 0 means same day. "
 msgstr ""
 
 msgid "Default next scheduled date"
-msgstr ""
+msgstr "Date prévue suivante par défaut"
 
 msgid "Open data entry form after enrollment"
-msgstr ""
+msgstr "Ouvrir le formulaire de saisie après enrôlement"
 
 msgid "On event completion, ask user to complete enrollment"
 msgstr ""
@@ -5296,10 +5329,10 @@ msgid "Allow multiple events in this stage (repeatable stage)"
 msgstr ""
 
 msgid "Report date to use"
-msgstr ""
+msgstr "Date de rapport à utiliser"
 
 msgid "Standard interval days"
-msgstr ""
+msgstr "Jours d'intervalle standard"
 
 msgid "Enter the number of days between repeated events."
 msgstr ""
@@ -5317,13 +5350,13 @@ msgid "Stage section form saved"
 msgstr ""
 
 msgid "Listing"
-msgstr ""
+msgstr "Listage"
 
 msgid "Sequential"
-msgstr ""
+msgstr "Séquentiel"
 
 msgid "Matrix"
-msgstr ""
+msgstr "Matrice"
 
 msgid "Explain the purpose of this section."
 msgstr ""
@@ -5347,7 +5380,7 @@ msgid "Stage: Creation and Scheduling"
 msgstr ""
 
 msgid "Scheduled days from start"
-msgstr ""
+msgstr "Jours prévus à partir du début"
 
 msgid "Stage: Data"
 msgstr ""
@@ -5389,7 +5422,7 @@ msgid "Manage how the chosen attributes are collected and displayed."
 msgstr ""
 
 msgid "Searchable"
-msgstr ""
+msgstr "Cherchable"
 
 msgid "This attribute is defined at the tracked entity type level"
 msgstr ""
@@ -5398,7 +5431,7 @@ msgid "This attribute is marked as required at the tracked entity type level"
 msgstr ""
 
 msgid "Unique attributes are always searchable"
-msgstr ""
+msgstr "Les attributs uniques sont toujours recherchables"
 
 msgid "Enrollment: Form"
 msgstr ""
@@ -5498,7 +5531,7 @@ msgid ""
 msgstr ""
 
 msgid "Program Stages"
-msgstr ""
+msgstr "Étapes du programme"
 
 msgid "Set up stages in this program."
 msgstr ""
@@ -5567,7 +5600,7 @@ msgid "Receiving side constraint"
 msgstr ""
 
 msgid "Name is required"
-msgstr ""
+msgstr "Le nom est requis"
 
 msgid "Relationship name seen from initiating entity is required"
 msgstr ""
@@ -5598,7 +5631,7 @@ msgid ""
 msgstr ""
 
 msgid "Confidential"
-msgstr ""
+msgstr "Confidentiel"
 
 msgid ""
 "Prevent searching or viewing in analytics. Available only when system "
@@ -5617,7 +5650,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear"
-msgstr ""
+msgstr "Supprimer"
 
 msgid "Pattern for automatically generated values"
 msgstr ""
@@ -5698,22 +5731,22 @@ msgid "Choose legends to visually categorize values in analytics apps."
 msgstr ""
 
 msgid "Tracked Entity Attribute"
-msgstr ""
+msgstr "Attribut d'entité suivie"
 
 msgid "Organisation unit scope"
-msgstr ""
+msgstr "Champ d'application de l'unité d'organisation"
 
 msgid "Generated"
 msgstr ""
 
 msgid "Pattern"
-msgstr ""
+msgstr "Schéma"
 
 msgid "Inherit"
-msgstr ""
+msgstr "Hériter"
 
 msgid "Skip synchronization"
-msgstr ""
+msgstr "Passer la synchronisation"
 
 msgid "Minimum characters to search"
 msgstr ""
@@ -5803,7 +5836,7 @@ msgid "Set up the basic information for this validation rule group."
 msgstr ""
 
 msgid "Validation Rules"
-msgstr ""
+msgstr "Règles de validation"
 
 msgid "Choose the validation rules to include in this validation rule group."
 msgstr ""
@@ -5821,7 +5854,7 @@ msgid "Configure the expressions and how they are compared."
 msgstr ""
 
 msgid "Left side expression"
-msgstr ""
+msgstr "Côté gauche de l'expression"
 
 msgid "Edit numerator expression"
 msgstr "Éditer l'expression du numérateur"
@@ -5836,7 +5869,7 @@ msgid "Comparison operator"
 msgstr ""
 
 msgid "Right side expression"
-msgstr ""
+msgstr "Côté droite de l'expression"
 
 msgid "Edit denominator expression"
 msgstr "Éditer l'expression du dénominateur"

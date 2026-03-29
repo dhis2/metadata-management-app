@@ -1,20 +1,21 @@
 # Translators:
-# Carwoto Sa'an <carwoto@gmail.com>, 2025
-# Yusuf Setiawan <mohammadyusufsetiawan@gmail.com>, 2025
 # Farida Sibuea <farida_sibuea@yahoo.com>, 2025
-# Guardian Sanjaya <gysanjaya@ugm.ac.id>, 2025
-# Raja Fathurrahim, 2025
-# Philip Larsen Donnelly, 2025
-# Viktor Varland <viktor@dhis2.org>, 2025
-# Aprisa Chrysantina <aprisa.chrysantina@gmail.com>, 2025
-# Untoro Dwi Raharjo <untoro.dwi.raharjo@mail.ugm.ac.id>, 2025
+# Philip Larsen Donnelly, 2026
+# Yusuf Setiawan <mohammadyusufsetiawan@gmail.com>, 2026
+# Guardian Sanjaya <gysanjaya@ugm.ac.id>, 2026
+# Aprisa Chrysantina <aprisa.chrysantina@gmail.com>, 2026
+# Carwoto Sa'an <carwoto@gmail.com>, 2026
+# Transifex Bot <>, 2026
+# Untoro Dwi Raharjo <untoro.dwi.raharjo@mail.ugm.ac.id>, 2026
+# Raja Fathurrahim, 2026
+# Viktor Varland <viktor@dhis2.org>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Untoro Dwi Raharjo <untoro.dwi.raharjo@mail.ugm.ac.id>, 2025\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
 "Language-Team: Indonesian (https://app.transifex.com/hisp-uio/teams/100509/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -140,7 +141,7 @@ msgid "Expression not yet validated"
 msgstr ""
 
 msgid "Validate"
-msgstr ""
+msgstr "Memvalidasi"
 
 msgid "Invalid expression"
 msgstr ""
@@ -157,7 +158,7 @@ msgid "Apply"
 msgstr "Terapkan"
 
 msgid "Clear expression"
-msgstr ""
+msgstr "Hapus expression"
 
 msgid "(No Value)"
 msgstr ""
@@ -175,13 +176,13 @@ msgid "Missing value strategy"
 msgstr ""
 
 msgid "Never skip"
-msgstr ""
+msgstr "Jangan pernah skip"
 
 msgid "Skip if any value is missing"
-msgstr ""
+msgstr "Skip jika terdapat nilai yang missing"
 
 msgid "Skip if all values are missing"
-msgstr ""
+msgstr "Skip jika semua nilai missing"
 
 msgid "Program has not been selected"
 msgstr ""
@@ -361,7 +362,7 @@ msgid "Constants"
 msgstr ""
 
 msgid "Reporting rates"
-msgstr ""
+msgstr "Angka pelaporan"
 
 msgid "Operators"
 msgstr ""
@@ -373,7 +374,7 @@ msgid "Analytics period start"
 msgstr ""
 
 msgid "Completed date"
-msgstr ""
+msgstr "Tanggal selesai"
 
 msgid "Creation date"
 msgstr ""
@@ -382,22 +383,22 @@ msgid "Current date"
 msgstr ""
 
 msgid "Due date"
-msgstr ""
+msgstr "Tanggal jatuh tempo"
 
 msgid "Enrollment status"
-msgstr ""
+msgstr "Status pendaftaran"
 
 msgid "Event date"
 msgstr "Tanggal Even"
 
 msgid "Event status"
-msgstr ""
+msgstr "Status Even"
 
 msgid "Program stage id"
 msgstr ""
 
 msgid "Program stage name"
-msgstr ""
+msgstr "Nama tahapan program"
 
 msgid "Sync date"
 msgstr ""
@@ -415,7 +416,7 @@ msgid "Event count"
 msgstr ""
 
 msgid "Organisation unit count"
-msgstr ""
+msgstr "Hitung unit organisasi"
 
 msgid "Tracked entity instance count"
 msgstr ""
@@ -539,10 +540,10 @@ msgid "Insert grey (disabled) fields"
 msgstr ""
 
 msgid "Date of enrollment"
-msgstr ""
+msgstr "Tanggal pendaftaran"
 
 msgid "Date of incident"
-msgstr ""
+msgstr "Tanggal insidensi"
 
 msgid "Program"
 msgstr "Program"
@@ -554,7 +555,7 @@ msgid "Flags"
 msgstr ""
 
 msgid "Submit"
-msgstr ""
+msgstr "Kirim"
 
 msgid "Save"
 msgstr "Simpan"
@@ -1140,7 +1141,7 @@ msgid "None"
 msgstr "Tidak ada"
 
 msgid "No value"
-msgstr ""
+msgstr "NO_VALUE"
 
 msgid "Event"
 msgstr "Even"
@@ -1149,7 +1150,7 @@ msgid "Enrollment"
 msgstr "Pendaftaran"
 
 msgid "Tracked entity"
-msgstr ""
+msgstr "Entitas dilacak"
 
 msgid "Public can edit"
 msgstr ""
@@ -1617,10 +1618,10 @@ msgid "Section Multi-org"
 msgstr ""
 
 msgid "Bi-monthly"
-msgstr ""
+msgstr "Dua bulanan"
 
 msgid "Bi-weekly"
-msgstr ""
+msgstr "Dwiwulanan"
 
 msgid "Daily"
 msgstr "Harian"
@@ -1695,13 +1696,13 @@ msgid "Not equal to"
 msgstr ""
 
 msgid "Greater than"
-msgstr ""
+msgstr "Lebih besar dari"
 
 msgid "Greater than or equal to"
-msgstr ""
+msgstr "Lebih besar atau sama dengan"
 
 msgid "Less than"
-msgstr ""
+msgstr "Kurang dari"
 
 msgid "Less than or equal to"
 msgstr ""
@@ -1713,13 +1714,13 @@ msgid "Exclusive pair"
 msgstr ""
 
 msgid "High"
-msgstr ""
+msgstr "Tinggi"
 
 msgid "Medium"
-msgstr ""
+msgstr "Sedang"
 
 msgid "Low"
-msgstr ""
+msgstr "Rendah"
 
 msgid "Collective summary"
 msgstr ""
@@ -1737,7 +1738,7 @@ msgid "Program completion"
 msgstr ""
 
 msgid "Program enrollment"
-msgstr ""
+msgstr "Pendaftaran progran"
 
 msgid "Days scheduled (due date)"
 msgstr ""
@@ -1755,7 +1756,7 @@ msgid "User group"
 msgstr ""
 
 msgid "Tracked entity instance"
-msgstr ""
+msgstr "Tracked entity instance"
 
 msgid "Users at Organisation Unit"
 msgstr ""
@@ -1818,19 +1819,19 @@ msgid "Canvas"
 msgstr ""
 
 msgid "Reporting rate"
-msgstr ""
+msgstr "Tingkat pelaporan"
 
 msgid "Reporting rate on time"
-msgstr ""
+msgstr "Tingkat pelaporan tepat waktu"
 
 msgid "Actual reports"
-msgstr ""
+msgstr "Laporan sesungguhnya"
 
 msgid "Actual reports on time"
-msgstr ""
+msgstr "Laporan sesungguhnya yang tepat waktu"
 
 msgid "Expected reports"
-msgstr ""
+msgstr "Laporan yang diharapkan"
 
 msgid "At selected level(s) only"
 msgstr ""
@@ -1920,16 +1921,16 @@ msgid "Ignore data approval"
 msgstr ""
 
 msgid "Source type"
-msgstr ""
+msgstr "Tipe sumber"
 
 msgid "Priority"
-msgstr ""
+msgstr "Prioritas"
 
 msgid "Condition"
-msgstr ""
+msgstr "Kondisi"
 
 msgid "Referral"
-msgstr ""
+msgstr "Rujukan"
 
 msgid "Sharing"
 msgstr "Berbagi"
@@ -2100,13 +2101,13 @@ msgid "Unique"
 msgstr "Unik"
 
 msgid "Display in list"
-msgstr ""
+msgstr "Tampilkaan dalam daftar"
 
 msgid "Trigram indexable"
 msgstr ""
 
 msgid "Version"
-msgstr ""
+msgstr "Versi"
 
 msgid "Program Type"
 msgstr ""
@@ -2232,7 +2233,7 @@ msgid "Importance"
 msgstr "Kepentingan"
 
 msgid "Instruction"
-msgstr ""
+msgstr "Instruksi"
 
 msgid "Operator"
 msgstr "Operator"
@@ -2247,10 +2248,10 @@ msgid "Output option combo"
 msgstr ""
 
 msgid "Sequential sample count"
-msgstr ""
+msgstr "Jumlah sampel sekuensial"
 
 msgid "Annual sample count"
-msgstr ""
+msgstr "Jumlah sampel setiap tahun"
 
 msgid "Sequential skip count"
 msgstr ""
@@ -2735,10 +2736,10 @@ msgid "Number of days {{beforeOrAfter}} scheduled date to send notification"
 msgstr ""
 
 msgid "before"
-msgstr ""
+msgstr "Sebelum"
 
 msgid "after"
-msgstr ""
+msgstr "Setelah"
 
 msgid "Recipient type"
 msgstr ""
@@ -2947,7 +2948,7 @@ msgid ""
 msgstr ""
 
 msgid "Number of days"
-msgstr ""
+msgstr "Jumlah hari"
 
 msgid ""
 "Close data entry after \"{{categoryComboName}}\" category option end date "
@@ -3486,7 +3487,7 @@ msgid "Search by name or code"
 msgstr ""
 
 msgid "Add option"
-msgstr ""
+msgstr "Tambahkan Option"
 
 msgid "Sort by name (A-Z)"
 msgstr ""
@@ -3854,6 +3855,8 @@ msgid ""
 "Create constants which can be included in expressions of indicator and "
 "validation rules."
 msgstr ""
+"Buat konstanta yang dapat termasuk expressions dari indikator dan validation"
+" rules."
 
 msgid "Configure external map layers for use in GIS."
 msgstr ""
@@ -3867,6 +3870,8 @@ msgid ""
 "Create and manage locales for database content. A locale is a combination of"
 " language and country."
 msgstr ""
+"Buat dan atur locale untuk konten database. Locale merupakan kombinasi "
+"bahasa dan negara."
 
 msgid ""
 "Manage analytics to be emailed to specific user groups on a daily, weekly or"
@@ -3892,6 +3897,9 @@ msgid ""
 "Create, modify and view programs. A program has program stages and defines "
 "which actions should be taken at each stage."
 msgstr ""
+"Buat, modifikasi dan tampilkan program. Sebuah program memiliki tahapan "
+"program dan mendefinisikan aktivitas mana yang seharusnya dilakukan di "
+"setiap tahap."
 
 msgid ""
 "Create, modify and view tracked entity attributes. An attribute can be used "
@@ -3902,11 +3910,15 @@ msgid ""
 "Create, modify and view relationship types. A relationship is typically wife"
 " and husband or mother and child."
 msgstr ""
+"Buat, modifikasi dan tampilkan tipe hubungan. Hubungan seperti istri dan "
+"suami atau ibu dan anak"
 
 msgid ""
 "Define types of entities which can be tracked through the system, which can "
 "be anything from persons to commodities."
 msgstr ""
+"Definisikan tipe-tipe entity yang dapat diketahui melalui sistem, yang bisa "
+"apa saja dari orang sampai komoditas"
 
 msgid ""
 "Program rules allow you to create and control dynamic behavior of the user "
@@ -3930,11 +3942,15 @@ msgid ""
 "Add, modify, view and delete validation rules. Anomalies can be discovered "
 "by running validation rules against the data."
 msgstr ""
+"Tambahkan, modifikasi, tampilkan, dan hapus aturan validasi. Kesalahan dapat"
+" ditemukan setelah menjalankan aturan validasi data"
 
 msgid ""
 "Add, modify, view and delete validation rule groups. Provides the ability to"
 " group and run validation rules together."
 msgstr ""
+"Tambahkan, modifikasi, tampilkan, dan hapus grup aturan validasi. Sediakan "
+"kemampuan untuk mengelompokkan dan jalankan aturan validasi bersama."
 
 msgid "Sends a notification when a validation rule failed."
 msgstr ""
@@ -3967,10 +3983,10 @@ msgid "Run predictor"
 msgstr ""
 
 msgid "Start date"
-msgstr ""
+msgstr "Tanggal dimulai"
 
 msgid "End date"
-msgstr ""
+msgstr "Tanggal berakhir"
 
 msgid "Run now"
 msgstr ""
@@ -4263,7 +4279,7 @@ msgid "Choose the program and data types this program indicator applies to."
 msgstr ""
 
 msgid "Data source"
-msgstr ""
+msgstr "Sumber Data"
 
 msgid "Uses data from all events within a program stage"
 msgstr ""
@@ -4499,13 +4515,13 @@ msgid "Display key-value pair"
 msgstr ""
 
 msgid "Display text"
-msgstr ""
+msgstr "Tampilan teks"
 
 msgid "Error on complete"
 msgstr ""
 
 msgid "Hide field"
-msgstr ""
+msgstr "Sembunyikan field"
 
 msgid "Hide option"
 msgstr ""
@@ -4517,7 +4533,7 @@ msgid "Hide program stage"
 msgstr ""
 
 msgid "Hide section"
-msgstr ""
+msgstr "Sembunyikan section"
 
 msgid "Schedule event"
 msgstr ""
@@ -4526,19 +4542,19 @@ msgid "Schedule message"
 msgstr ""
 
 msgid "Send message"
-msgstr ""
+msgstr "Kirim pesan"
 
 msgid "Set mandatory field"
 msgstr ""
 
 msgid "Show error"
-msgstr ""
+msgstr "Tampilkan error"
 
 msgid "Show option group"
 msgstr ""
 
 msgid "Show warning"
-msgstr ""
+msgstr "Tampilkan peringatan"
 
 msgid "Warning on complete"
 msgstr ""
@@ -4555,7 +4571,7 @@ msgid "Display widget is required"
 msgstr ""
 
 msgid "This field is required"
-msgstr ""
+msgstr "Kolom ini harus terisi"
 
 msgid ""
 "At least one of the data element or tracked entity attribute must be "
@@ -4673,7 +4689,7 @@ msgid "Collect events for a person or other entity over time."
 msgstr ""
 
 msgid "Continue"
-msgstr ""
+msgstr "Terus"
 
 msgid "Access updated successfully"
 msgstr ""
@@ -4685,7 +4701,7 @@ msgid "Failed to apply program access rules"
 msgstr ""
 
 msgid "Untitled"
-msgstr ""
+msgstr "Tidak ada judul"
 
 msgid "No data access"
 msgstr ""
@@ -4817,7 +4833,7 @@ msgid "Allow user assignment of events"
 msgstr ""
 
 msgid "Block entry form after completed"
-msgstr ""
+msgstr "Blok formulir entri setelah lengkap"
 
 msgid "Pre-generate event UID"
 msgstr ""
@@ -4836,7 +4852,7 @@ msgid ""
 msgstr ""
 
 msgid "Settings"
-msgstr ""
+msgstr "Setting"
 
 msgid "Validation strategy"
 msgstr ""
@@ -4892,7 +4908,7 @@ msgid "Allow notification to be sent multiple times"
 msgstr ""
 
 msgid "Days since due date"
-msgstr ""
+msgstr "Hari sejak tanggal jatuh temo"
 
 msgid "Days until due date"
 msgstr ""
@@ -4959,7 +4975,7 @@ msgid "Allow provided elsewhere"
 msgstr ""
 
 msgid "Display in reports"
-msgstr ""
+msgstr "Tampilkan dalam laporan"
 
 msgid "Skip in analytics"
 msgstr ""
@@ -4977,7 +4993,7 @@ msgid "Mobile Display"
 msgstr ""
 
 msgid "Stage"
-msgstr ""
+msgstr "Stage"
 
 msgid "Stages"
 msgstr ""
@@ -5069,7 +5085,7 @@ msgid "Default next scheduled date"
 msgstr ""
 
 msgid "Open data entry form after enrollment"
-msgstr ""
+msgstr "Buka formulir data entri setelah pendaftaran"
 
 msgid "On event completion, ask user to complete enrollment"
 msgstr ""
@@ -5078,10 +5094,10 @@ msgid "Allow multiple events in this stage (repeatable stage)"
 msgstr ""
 
 msgid "Report date to use"
-msgstr ""
+msgstr "Laporkan tanggal yang akan digunakan"
 
 msgid "Standard interval days"
-msgstr ""
+msgstr "Interval hari-hari yang standar"
 
 msgid "Enter the number of days between repeated events."
 msgstr ""
@@ -5129,7 +5145,7 @@ msgid "Stage: Creation and Scheduling"
 msgstr ""
 
 msgid "Scheduled days from start"
-msgstr ""
+msgstr "Jadwalkan per hari dari awal"
 
 msgid "Stage: Data"
 msgstr ""
@@ -5280,7 +5296,7 @@ msgid ""
 msgstr ""
 
 msgid "Program Stages"
-msgstr ""
+msgstr "Tahapan Program"
 
 msgid "Set up stages in this program."
 msgstr ""
@@ -5380,7 +5396,7 @@ msgid ""
 msgstr ""
 
 msgid "Confidential"
-msgstr ""
+msgstr "Rahasia"
 
 msgid ""
 "Prevent searching or viewing in analytics. Available only when system "
@@ -5399,7 +5415,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear"
-msgstr ""
+msgstr "Hapus"
 
 msgid "Pattern for automatically generated values"
 msgstr ""
@@ -5483,7 +5499,7 @@ msgid "Tracked Entity Attribute"
 msgstr ""
 
 msgid "Organisation unit scope"
-msgstr ""
+msgstr "Cakupan unit organisasi"
 
 msgid "Generated"
 msgstr ""
@@ -5602,7 +5618,7 @@ msgid "Configure the expressions and how they are compared."
 msgstr ""
 
 msgid "Left side expression"
-msgstr ""
+msgstr "Expression sisi kiri"
 
 msgid "Edit numerator expression"
 msgstr ""
@@ -5617,7 +5633,7 @@ msgid "Comparison operator"
 msgstr ""
 
 msgid "Right side expression"
-msgstr ""
+msgstr "Expression sisi kanan"
 
 msgid "Edit denominator expression"
 msgstr ""

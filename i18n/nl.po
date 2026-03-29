@@ -1,17 +1,17 @@
 # Translators:
 # Yury Rogachev <yury@dhis2.org>, 2025
 # Enzo Nicolas Rossi <enzo@dhis2.org>, 2025
-# Cherise Beek <cherise.beek@gmail.com>, 2025
-# Charel van den Elsen <zobeadzorg@gmail.com>, 2025
 # Philip Larsen Donnelly, 2025
+# Cherise Beek <cherise.beek@gmail.com>, 2026
 # Rica, 2026
+# Charel van den Elsen <zobeadzorg@gmail.com>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Rica, 2026\n"
+"Last-Translator: Charel van den Elsen <zobeadzorg@gmail.com>, 2026\n"
 "Language-Team: Dutch (https://app.transifex.com/hisp-uio/teams/100509/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -83,7 +83,7 @@ msgid "Color and icon"
 msgstr ""
 
 msgid "Color"
-msgstr ""
+msgstr "Kleur"
 
 msgid "Remove color"
 msgstr ""
@@ -125,7 +125,7 @@ msgid "Cancel"
 msgstr "Annuleren"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Vernieuwen"
 
 msgid "Add new"
 msgstr "Nieuw toevoegen"
@@ -137,7 +137,7 @@ msgid "Expression not yet validated"
 msgstr ""
 
 msgid "Validate"
-msgstr ""
+msgstr "Valideren"
 
 msgid "Invalid expression"
 msgstr ""
@@ -358,7 +358,7 @@ msgid "Constants"
 msgstr ""
 
 msgid "Reporting rates"
-msgstr ""
+msgstr "Rapporteringsgraden"
 
 msgid "Operators"
 msgstr ""
@@ -379,16 +379,16 @@ msgid "Current date"
 msgstr ""
 
 msgid "Due date"
-msgstr ""
+msgstr "Deadline"
 
 msgid "Enrollment status"
-msgstr ""
+msgstr "Inschrijving Status"
 
 msgid "Event date"
 msgstr "Evenement datum"
 
 msgid "Event status"
-msgstr ""
+msgstr "Gebeurtenisstatus"
 
 msgid "Program stage id"
 msgstr ""
@@ -536,7 +536,7 @@ msgid "Insert grey (disabled) fields"
 msgstr ""
 
 msgid "Date of enrollment"
-msgstr ""
+msgstr "Datum van inschrijving"
 
 msgid "Date of incident"
 msgstr ""
@@ -1137,7 +1137,7 @@ msgid "None"
 msgstr "Geen"
 
 msgid "No value"
-msgstr ""
+msgstr "Geen waarde"
 
 msgid "Event"
 msgstr "Gebeurtenis"
@@ -1146,7 +1146,7 @@ msgid "Enrollment"
 msgstr "Inschrijving"
 
 msgid "Tracked entity"
-msgstr ""
+msgstr "Getraceerde entiteit"
 
 msgid "Public can edit"
 msgstr ""
@@ -1614,7 +1614,7 @@ msgid "Section Multi-org"
 msgstr ""
 
 msgid "Bi-monthly"
-msgstr ""
+msgstr "Tweemaandelijks"
 
 msgid "Bi-weekly"
 msgstr "Tweewekelijks"
@@ -1692,13 +1692,13 @@ msgid "Not equal to"
 msgstr ""
 
 msgid "Greater than"
-msgstr ""
+msgstr "Groter dan"
 
 msgid "Greater than or equal to"
-msgstr ""
+msgstr "Groter dan of gelijk aan"
 
 msgid "Less than"
-msgstr ""
+msgstr "Minder dan"
 
 msgid "Less than or equal to"
 msgstr ""
@@ -1710,13 +1710,13 @@ msgid "Exclusive pair"
 msgstr ""
 
 msgid "High"
-msgstr ""
+msgstr "Hoog"
 
 msgid "Medium"
-msgstr ""
+msgstr "Medium"
 
 msgid "Low"
-msgstr ""
+msgstr "Laag"
 
 msgid "Collective summary"
 msgstr ""
@@ -1752,7 +1752,7 @@ msgid "User group"
 msgstr ""
 
 msgid "Tracked entity instance"
-msgstr ""
+msgstr "Bijgehouden entiteitsinstantie"
 
 msgid "Users at Organisation Unit"
 msgstr ""
@@ -1926,7 +1926,7 @@ msgid "Condition"
 msgstr ""
 
 msgid "Referral"
-msgstr ""
+msgstr "Verwijzing"
 
 msgid "Sharing"
 msgstr ""
@@ -2103,13 +2103,13 @@ msgid "Trigram indexable"
 msgstr ""
 
 msgid "Version"
-msgstr ""
+msgstr "Versie"
 
 msgid "Program Type"
 msgstr ""
 
 msgid "Access level"
-msgstr ""
+msgstr "Toegangsniveau"
 
 msgid "Completed events expiry days"
 msgstr ""
@@ -2732,10 +2732,10 @@ msgid "Number of days {{beforeOrAfter}} scheduled date to send notification"
 msgstr ""
 
 msgid "before"
-msgstr ""
+msgstr "voor"
 
 msgid "after"
-msgstr ""
+msgstr "na"
 
 msgid "Recipient type"
 msgstr ""
@@ -3962,10 +3962,10 @@ msgid "Run predictor"
 msgstr ""
 
 msgid "Start date"
-msgstr ""
+msgstr "Startdatum"
 
 msgid "End date"
-msgstr ""
+msgstr "Einddatum"
 
 msgid "Run now"
 msgstr ""
@@ -4281,7 +4281,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear filter"
-msgstr ""
+msgstr "Filter wissen"
 
 msgid "Period boundaries"
 msgstr ""
@@ -4550,7 +4550,7 @@ msgid "Display widget is required"
 msgstr ""
 
 msgid "This field is required"
-msgstr ""
+msgstr "Dit veld is verplicht."
 
 msgid ""
 "At least one of the data element or tracked entity attribute must be "
@@ -4558,7 +4558,7 @@ msgid ""
 msgstr ""
 
 msgid "Program stage is required"
-msgstr ""
+msgstr "Programmastadium is verplicht"
 
 msgid "Program stage section to hide is required"
 msgstr ""
@@ -4668,7 +4668,7 @@ msgid "Collect events for a person or other entity over time."
 msgstr ""
 
 msgid "Continue"
-msgstr ""
+msgstr "Doorgaan"
 
 msgid "Access updated successfully"
 msgstr ""
@@ -4831,7 +4831,7 @@ msgid ""
 msgstr ""
 
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 msgid "Validation strategy"
 msgstr ""
@@ -4972,7 +4972,7 @@ msgid "Mobile Display"
 msgstr ""
 
 msgid "Stage"
-msgstr ""
+msgstr "Stadium"
 
 msgid "Stages"
 msgstr ""
@@ -5394,7 +5394,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear"
-msgstr ""
+msgstr "Verwijder"
 
 msgid "Pattern for automatically generated values"
 msgstr ""
@@ -5478,7 +5478,7 @@ msgid "Tracked Entity Attribute"
 msgstr ""
 
 msgid "Organisation unit scope"
-msgstr ""
+msgstr "Bereik organisatie-eenheid"
 
 msgid "Generated"
 msgstr ""

@@ -1,14 +1,15 @@
 # Translators:
 # Yury Rogachev <yury@dhis2.org>, 2025
-# Caroline Hesthagen Holen <caroline@devotta.no>, 2025
+# Merethe Wollan Blisten, 2026
 # Karoline Tufte Lien <karoline@dhis2.org>, 2026
+# Caroline Hesthagen Holen <caroline@devotta.no>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2026\n"
+"Last-Translator: Caroline Hesthagen Holen <caroline@devotta.no>, 2026\n"
 "Language-Team: Norwegian Bokmål (https://app.transifex.com/hisp-uio/teams/100509/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -80,13 +81,13 @@ msgid "Color and icon"
 msgstr ""
 
 msgid "Color"
-msgstr ""
+msgstr "Farge"
 
 msgid "Remove color"
 msgstr ""
 
 msgid "Icon"
-msgstr ""
+msgstr "Ikon"
 
 msgid "Choose an icon"
 msgstr ""
@@ -122,7 +123,7 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Oppdater"
 
 msgid "Add new"
 msgstr "Legg til ny"
@@ -134,7 +135,7 @@ msgid "Expression not yet validated"
 msgstr ""
 
 msgid "Validate"
-msgstr ""
+msgstr "Valider"
 
 msgid "Invalid expression"
 msgstr ""
@@ -151,7 +152,7 @@ msgid "Apply"
 msgstr "Bruk"
 
 msgid "Clear expression"
-msgstr ""
+msgstr "Fjern uttrykk"
 
 msgid "(No Value)"
 msgstr ""
@@ -166,16 +167,16 @@ msgid "Retry"
 msgstr ""
 
 msgid "Missing value strategy"
-msgstr ""
+msgstr "Mangler verdistrategi"
 
 msgid "Never skip"
-msgstr ""
+msgstr "Aldri hopp over"
 
 msgid "Skip if any value is missing"
-msgstr ""
+msgstr "Hopp over hvis noen verdier mangler"
 
 msgid "Skip if all values are missing"
-msgstr ""
+msgstr "Hopp over hvis alle verdier mangler"
 
 msgid "Program has not been selected"
 msgstr ""
@@ -184,7 +185,7 @@ msgid "Data elements"
 msgstr "Dataelementer"
 
 msgid "Program tracked entity attributes"
-msgstr ""
+msgstr "Programsporede attributter"
 
 msgid "Indicators"
 msgstr "Indikatorer"
@@ -349,16 +350,16 @@ msgid "Program data"
 msgstr ""
 
 msgid "Org unit counts"
-msgstr ""
+msgstr "Org enhet-antall"
 
 msgid "Constants"
 msgstr "Konstanter"
 
 msgid "Reporting rates"
-msgstr ""
+msgstr "Rapporteringsfrekvens"
 
 msgid "Operators"
-msgstr ""
+msgstr "Operatører"
 
 msgid "Analytics period end"
 msgstr ""
@@ -367,55 +368,55 @@ msgid "Analytics period start"
 msgstr ""
 
 msgid "Completed date"
-msgstr ""
+msgstr "Fullført dato"
 
 msgid "Creation date"
-msgstr ""
+msgstr "Dato opprettet"
 
 msgid "Current date"
 msgstr "Nåværende dato"
 
 msgid "Due date"
-msgstr ""
+msgstr "Forfallsdato"
 
 msgid "Enrollment status"
-msgstr ""
+msgstr "Registreringsstatus"
 
 msgid "Event date"
 msgstr "Hendelsesdato"
 
 msgid "Event status"
-msgstr ""
+msgstr "Hendelsesstatus"
 
 msgid "Program stage id"
-msgstr ""
+msgstr "Programfase-id"
 
 msgid "Program stage name"
-msgstr ""
+msgstr "Programfase navn"
 
 msgid "Sync date"
-msgstr ""
+msgstr "Synkdato"
 
 msgid "Value count"
-msgstr ""
+msgstr "Verdiantall"
 
 msgid "Zero or positive value count"
-msgstr ""
+msgstr "Null eller positiv verdiantall"
 
 msgid "Enrollment count"
-msgstr ""
+msgstr "Antall registreringer"
 
 msgid "Event count"
-msgstr ""
+msgstr "Hendelsesantall"
 
 msgid "Organisation unit count"
-msgstr ""
+msgstr "Antall organisasjonsenheter"
 
 msgid "Tracked entity instance count"
-msgstr ""
+msgstr "Antall sporet enhetsforekomster"
 
 msgid "Variables"
-msgstr ""
+msgstr "Variabler"
 
 msgid "Program stage data"
 msgstr ""
@@ -427,7 +428,7 @@ msgid "Program rule variables"
 msgstr "Programregelvariabler"
 
 msgid "Functions"
-msgstr ""
+msgstr "Funksjoner"
 
 msgid "Could not validate expression"
 msgstr ""
@@ -457,7 +458,7 @@ msgid "Are you sure you want to change this?"
 msgstr ""
 
 msgid "Change"
-msgstr ""
+msgstr "Endre"
 
 msgid "Custom form saved"
 msgstr ""
@@ -533,10 +534,10 @@ msgid "Insert grey (disabled) fields"
 msgstr "Sett inn grå (deaktiverte) felt"
 
 msgid "Date of enrollment"
-msgstr ""
+msgstr "Dato for registrering"
 
 msgid "Date of incident"
-msgstr ""
+msgstr "Dato for forekomst"
 
 msgid "Program"
 msgstr "Program"
@@ -548,7 +549,7 @@ msgid "Flags"
 msgstr "Flagger"
 
 msgid "Submit"
-msgstr ""
+msgstr "Send inn"
 
 msgid "Save"
 msgstr "Lagre"
@@ -718,7 +719,7 @@ msgid "New section"
 msgstr ""
 
 msgid "Edit section"
-msgstr ""
+msgstr "Rediger seksjon"
 
 msgid "Sections"
 msgstr ""
@@ -1056,10 +1057,10 @@ msgid "All source types"
 msgstr ""
 
 msgid "Tracker program"
-msgstr ""
+msgstr "Tracker-program"
 
 msgid "Event program"
-msgstr ""
+msgstr "Hendelsesprogram"
 
 msgid "Select program type"
 msgstr ""
@@ -1134,7 +1135,7 @@ msgid "None"
 msgstr "Ingen"
 
 msgid "No value"
-msgstr ""
+msgstr "Ingen verdi"
 
 msgid "Event"
 msgstr "Hendelse"
@@ -1143,7 +1144,7 @@ msgid "Enrollment"
 msgstr "Registrering"
 
 msgid "Tracked entity"
-msgstr ""
+msgstr "Sporet enhet"
 
 msgid "Public can edit"
 msgstr "Offentlig, kan redigeres"
@@ -1389,16 +1390,16 @@ msgid "Analytics table hook"
 msgstr ""
 
 msgid "Analytics table hooks"
-msgstr ""
+msgstr "Analysetabell-kroker"
 
 msgid "Icons"
-msgstr ""
+msgstr "Ikoner"
 
 msgid "Predictor group"
-msgstr ""
+msgstr "Prediktorgruppe"
 
 msgid "Predictor groups"
-msgstr ""
+msgstr "Prediktorgrupper"
 
 msgid "Indicators and Predictors"
 msgstr ""
@@ -1413,7 +1414,7 @@ msgid "Validations"
 msgstr ""
 
 msgid "Data approval"
-msgstr ""
+msgstr "Datagodkjenning"
 
 msgid "Other"
 msgstr "Annet"
@@ -1458,7 +1459,7 @@ msgid "Last value in period (sum in org unit hierarchy)"
 msgstr "Siste verdi i periode (sum i org enhetshierarki)"
 
 msgid "Last value in period (average in org unit hierarchy)"
-msgstr ""
+msgstr "Siste verdi i periode (gjennomsnitt i org enhetshierarki)"
 
 msgid "First value (sum in org unit hierarchy)"
 msgstr "Første verdi  (sum i org enhetshierarki)"
@@ -1611,10 +1612,10 @@ msgid "Section Multi-org"
 msgstr "Seksjon Multi-org"
 
 msgid "Bi-monthly"
-msgstr ""
+msgstr "Tomånedlig"
 
 msgid "Bi-weekly"
-msgstr ""
+msgstr "Toukentlig"
 
 msgid "Daily"
 msgstr "Daglig"
@@ -1650,13 +1651,13 @@ msgid "Quarterly November"
 msgstr ""
 
 msgid "Six-Monthly April"
-msgstr ""
+msgstr "Halvårig April"
 
 msgid "Six-Monthly November"
-msgstr ""
+msgstr "Halvårig November"
 
 msgid "Six-Monthly"
-msgstr ""
+msgstr "Halvårlig"
 
 msgid "Two-Yearly"
 msgstr ""
@@ -1668,52 +1669,52 @@ msgid "Weekly Friday"
 msgstr ""
 
 msgid "Weekly Saturday"
-msgstr ""
+msgstr "Ukentlig Lørdag"
 
 msgid "Weekly Sunday"
-msgstr ""
+msgstr "Ukentlig Søndag"
 
 msgid "Weekly Thursday"
-msgstr ""
+msgstr "Ukentlig Torsdag"
 
 msgid "Weekly Wednesday"
-msgstr ""
+msgstr "Ukentlig Onsdag"
 
 msgid "Yearly"
 msgstr "Årlig"
 
 msgid "Equal to"
-msgstr ""
+msgstr "Lik"
 
 msgid "Not equal to"
-msgstr ""
+msgstr "Ikke lik "
 
 msgid "Greater than"
-msgstr ""
+msgstr "Større enn"
 
 msgid "Greater than or equal to"
-msgstr ""
+msgstr "Større eller likt med"
 
 msgid "Less than"
-msgstr ""
+msgstr "Mindre enn"
 
 msgid "Less than or equal to"
-msgstr ""
+msgstr "Mindre enn eller lik"
 
 msgid "Compulsory pair"
-msgstr ""
+msgstr "Obligatorisk par"
 
 msgid "Exclusive pair"
-msgstr ""
+msgstr "Eksklusivt par"
 
 msgid "High"
-msgstr ""
+msgstr "Høy"
 
 msgid "Medium"
-msgstr ""
+msgstr "Medium"
 
 msgid "Low"
-msgstr ""
+msgstr "Lav"
 
 msgid "Collective summary"
 msgstr "Sammendrag"
@@ -1728,19 +1729,19 @@ msgid "Data set completion"
 msgstr ""
 
 msgid "Program completion"
-msgstr ""
+msgstr "Fullføring av programmet"
 
 msgid "Program enrollment"
-msgstr ""
+msgstr "Programregistrering"
 
 msgid "Days scheduled (due date)"
-msgstr ""
+msgstr "Dager planlagt (forfallsdato)"
 
 msgid "Days scheduled (incident date)"
-msgstr ""
+msgstr "Dager planlagt (forekomstdato)"
 
 msgid "Days scheduled (enrollment date)"
-msgstr ""
+msgstr "Dager planlagt (registreringsdato)"
 
 msgid "Organisation unit contact"
 msgstr "Organisasjonsenhet kontakt"
@@ -1749,10 +1750,10 @@ msgid "User group"
 msgstr "Brukergruppe"
 
 msgid "Tracked entity instance"
-msgstr ""
+msgstr "Sporet enhetforekomst"
 
 msgid "Users at Organisation Unit"
-msgstr ""
+msgstr "Brukere på organisasjonsenheten"
 
 msgid "Program attribute"
 msgstr "Programattributter"
@@ -1761,40 +1762,40 @@ msgid "Web hook"
 msgstr ""
 
 msgid "Dropdown"
-msgstr ""
+msgstr "Nedtrekksmeny"
 
 msgid "Vertical radiobuttons"
-msgstr ""
+msgstr "Vertikale radioknapper"
 
 msgid "Horizontal radiobuttons"
-msgstr ""
+msgstr "Horisontale radioknapper"
 
 msgid "Vertical checkboxes"
-msgstr ""
+msgstr "Vertikale sjekkbokser"
 
 msgid "Horizontal checkboxes"
-msgstr ""
+msgstr "Horisontale sjekkbokser"
 
 msgid "Shared header radiobuttons"
-msgstr ""
+msgstr "Delt overskrift-radioknapper"
 
 msgid "Icons as buttons"
-msgstr ""
+msgstr "Ikoner som knapper"
 
 msgid "Spinner"
-msgstr ""
+msgstr "Spinner"
 
 msgid "Toggle"
-msgstr ""
+msgstr "Veksler"
 
 msgid "Value"
 msgstr "Verdi"
 
 msgid "Slider"
-msgstr ""
+msgstr "Glidebryter"
 
 msgid "Linear scale"
-msgstr ""
+msgstr "Lineær skala"
 
 msgid "Autocomplete"
 msgstr ""
@@ -1812,19 +1813,19 @@ msgid "Canvas"
 msgstr ""
 
 msgid "Reporting rate"
-msgstr ""
+msgstr "Rapporteringfrekvens"
 
 msgid "Reporting rate on time"
-msgstr ""
+msgstr "Rapporteringsfrekvens i tide"
 
 msgid "Actual reports"
-msgstr ""
+msgstr "Faktiske rapporter"
 
 msgid "Actual reports on time"
-msgstr ""
+msgstr "Faktiske rapporter i tide"
 
 msgid "Expected reports"
-msgstr ""
+msgstr "Forventede rapporter"
 
 msgid "At selected level(s) only"
 msgstr ""
@@ -1833,10 +1834,10 @@ msgid "At selected level(s) and all levels below"
 msgstr ""
 
 msgid "On complete"
-msgstr ""
+msgstr "Ved fullføring"
 
 msgid "On update and insert"
-msgstr ""
+msgstr "Ved oppdatering og sett inn"
 
 msgid "Data element in newest event in program stage"
 msgstr ""
@@ -1848,10 +1849,10 @@ msgid "Data element from current event"
 msgstr ""
 
 msgid "Data element from previous event"
-msgstr ""
+msgstr "Dataelement fra forrige hendelse"
 
 msgid "Calculated value"
-msgstr ""
+msgstr "Kalkulert verdi"
 
 msgid "Category option combination for aggregate data export"
 msgstr "Alternativ for kombinasjon av kategori for samlet dataeksport"
@@ -1869,7 +1870,7 @@ msgid "Analytics type"
 msgstr "Analysetype"
 
 msgid "Bidirectional"
-msgstr ""
+msgstr "Toveis"
 
 msgid "Compulsory"
 msgstr "Obligatorisk"
@@ -1908,31 +1909,31 @@ msgid "Form type"
 msgstr "Skjematype"
 
 msgid "Relationship name seen from initiating entity"
-msgstr ""
+msgstr "Relasjonsnavn sett fra innledende enhet"
 
 msgid "Ignore data approval"
 msgstr "Ignorer datagodkjenningen"
 
 msgid "Source type"
-msgstr ""
+msgstr "Kildetype"
 
 msgid "Priority"
-msgstr ""
+msgstr "Prioritet"
 
 msgid "Condition"
-msgstr ""
+msgstr "Tilstand"
 
 msgid "Referral"
-msgstr ""
+msgstr "Henvisning"
 
 msgid "Sharing"
 msgstr "Deling"
 
 msgid "Relationship name seen from receiving entity"
-msgstr ""
+msgstr "Relasjonsnavn sett fra mottakende enhet"
 
 msgid "Use code for option set"
-msgstr ""
+msgstr "Bruk kode for alternativsett"
 
 msgid "Owner"
 msgstr "Eier"
@@ -1947,7 +1948,7 @@ msgid "Feature type"
 msgstr "Funksjonstype"
 
 msgid "Program type"
-msgstr ""
+msgstr "Programtype"
 
 msgid "Maximum number of tracked entity instances to return in search"
 msgstr "Maksimum antall sporet enhetsforekomster å returnere i søk"
@@ -1965,10 +1966,10 @@ msgid "Program stage label"
 msgstr ""
 
 msgid "Due date label"
-msgstr ""
+msgstr "Forfallsdatoetikett"
 
 msgid "Execution date label"
-msgstr ""
+msgstr "Utførelsesdatoetikett"
 
 msgid "Event label"
 msgstr ""
@@ -1977,10 +1978,10 @@ msgid "Tracked entity attribute label"
 msgstr ""
 
 msgid "Enrollment date label"
-msgstr ""
+msgstr "Registreringsdatoetikett"
 
 msgid "Incident date label"
-msgstr ""
+msgstr "Forekomstdatoetikett"
 
 msgid "Note label"
 msgstr ""
@@ -2094,25 +2095,25 @@ msgid "Unique"
 msgstr "Unik"
 
 msgid "Display in list"
-msgstr ""
+msgstr "Vis i listen"
 
 msgid "Trigram indexable"
 msgstr ""
 
 msgid "Version"
-msgstr ""
+msgstr "Versjon"
 
 msgid "Program Type"
 msgstr ""
 
 msgid "Access level"
-msgstr ""
+msgstr "Tilgangsnivå"
 
 msgid "Completed events expiry days"
-msgstr ""
+msgstr "Fullførte utløpsdager for hendelser"
 
 msgid "Display front page list"
-msgstr ""
+msgstr "Vis fremside liste"
 
 msgid "Mandatory"
 msgstr "Obligatorisk"
@@ -2226,28 +2227,28 @@ msgid "Importance"
 msgstr "Viktighet"
 
 msgid "Instruction"
-msgstr ""
+msgstr "Instruksjon"
 
 msgid "Operator"
 msgstr "Operator"
 
 msgid "Skip this rule during form validation"
-msgstr ""
+msgstr "Hopp over denne regelen under skjemavalidering"
 
 msgid "Output"
-msgstr ""
+msgstr "Resultat"
 
 msgid "Output option combo"
 msgstr ""
 
 msgid "Sequential sample count"
-msgstr ""
+msgstr "Sekvensvis utvalg-antall"
 
 msgid "Annual sample count"
-msgstr ""
+msgstr "Årlig utvalgstall"
 
 msgid "Sequential skip count"
-msgstr ""
+msgstr "Antall seksvenser å hoppe over"
 
 msgid "Organisation unit providing data"
 msgstr ""
@@ -2729,10 +2730,10 @@ msgid "Number of days {{beforeOrAfter}} scheduled date to send notification"
 msgstr ""
 
 msgid "before"
-msgstr ""
+msgstr "før"
 
 msgid "after"
-msgstr ""
+msgstr "etter"
 
 msgid "Recipient type"
 msgstr ""
@@ -2941,7 +2942,7 @@ msgid ""
 msgstr ""
 
 msgid "Number of days"
-msgstr ""
+msgstr "Antall dager"
 
 msgid ""
 "Close data entry after \"{{categoryComboName}}\" category option end date "
@@ -3447,7 +3448,7 @@ msgid "Value type cannot be edited after an option set has been created."
 msgstr ""
 
 msgid "Option Set"
-msgstr ""
+msgstr "Alternativsett"
 
 msgid "Set up the information for this option."
 msgstr ""
@@ -3471,7 +3472,7 @@ msgid "New option"
 msgstr ""
 
 msgid "Edit option"
-msgstr ""
+msgstr "Rediger alternativ"
 
 msgid "Create and manage options in this option set."
 msgstr ""
@@ -3480,7 +3481,7 @@ msgid "Search by name or code"
 msgstr ""
 
 msgid "Add option"
-msgstr ""
+msgstr "Legg til alternativ"
 
 msgid "Sort by name (A-Z)"
 msgstr ""
@@ -3697,7 +3698,7 @@ msgid ""
 msgstr ""
 
 msgid "Data Approval"
-msgstr ""
+msgstr "Datagodkjenning"
 
 msgid ""
 "Data approval workflows create a process for authorized users to review and "
@@ -3790,6 +3791,7 @@ msgstr ""
 
 msgid "Create predictors which can be used to predict future data values."
 msgstr ""
+"Opprett prediktorer som kan bli brukt til å forutsi fremtidige dataverdier."
 
 msgid "Create predictor groups that contain several related predictors."
 msgstr ""
@@ -3801,6 +3803,8 @@ msgid ""
 "Create option sets which can be included in data elements and produce drop-"
 "down lists in data entry forms."
 msgstr ""
+"Opprett alternativsett som kan inkluderes i dataelementer og produser "
+"nedtrekksmeny lister i dataregistreringsskjemaer."
 
 msgid ""
 "Create a group of options from option sets that has a similar functional "
@@ -3854,24 +3858,32 @@ msgid ""
 "Create constants which can be included in expressions of indicator and "
 "validation rules."
 msgstr ""
+"Lag konstanter som kan inkluderes i uttrykk for indikator- og "
+"valideringsregler."
 
 msgid "Configure external map layers for use in GIS."
-msgstr ""
+msgstr "Konfigurer ekstern kartlagshåndtering for bruk i GIS"
 
 msgid ""
 "Create, modify and view predefined legends for maps and other "
 "visualisations."
 msgstr ""
+"Lag, modifiser og vis forhåndsdefinerte tegnforklaringer for kart og andre "
+"visualiseringer."
 
 msgid ""
 "Create and manage locales for database content. A locale is a combination of"
 " language and country."
 msgstr ""
+"Opprett og administrer lokaliteter for databaseinnhold. En lokalitet er en "
+"kombinasjon av språk og land."
 
 msgid ""
 "Manage analytics to be emailed to specific user groups on a daily, weekly or"
 " monthly basis."
 msgstr ""
+"Administrer analyser som skal sendes til bestemte brukergrupper på daglig, "
+"ukentlig eller månedlig basis."
 
 msgid "Configure hooks in SQL that run during the analytics process."
 msgstr ""
@@ -3892,29 +3904,39 @@ msgid ""
 "Create, modify and view programs. A program has program stages and defines "
 "which actions should be taken at each stage."
 msgstr ""
+"Lag, endre og vis programmer. Et program har programfaser og definerer "
+"hvilke handlinger som skal utføres på hver fase."
 
 msgid ""
 "Create, modify and view tracked entity attributes. An attribute can be used "
 "to register extra information for a tracked entity."
 msgstr ""
+"Opprette, endre og se sporede entitetsattributter. Et attributt kan brukes "
+"til å registrere ekstra informasjon for en sporet enhet."
 
 msgid ""
 "Create, modify and view relationship types. A relationship is typically wife"
 " and husband or mother and child."
 msgstr ""
+"Opprett, endre, og vis relasjontyper. En relasjon kan være kone, mann, mor "
+"eller barn."
 
 msgid ""
 "Define types of entities which can be tracked through the system, which can "
 "be anything from persons to commodities."
 msgstr ""
+"Definer typer enheter som kan spores gjennom systemet, som kan være alt fra "
+"personer til varer."
 
 msgid ""
 "Program rules allow you to create and control dynamic behavior of the user "
 "interface in the Tracker Capture and Event Capture apps."
 msgstr ""
+"Programregler lar deg opprette og kontrollere dynamisk oppførsel av "
+"brukergrensesnittet i appene Tracker Capture og Event Capture."
 
 msgid "Variables you use to create program rule expressions."
-msgstr ""
+msgstr "Variabler som kan brukes til å opprette programregelfraser."
 
 msgid "Set disaggregation mappings for program indicators."
 msgstr ""
@@ -3930,11 +3952,15 @@ msgid ""
 "Add, modify, view and delete validation rules. Anomalies can be discovered "
 "by running validation rules against the data."
 msgstr ""
+"Legg til, endre, se og slett valideringsregler. Avvik kan oppdages ved å "
+"kjøre valideringsregler mot dataene."
 
 msgid ""
 "Add, modify, view and delete validation rule groups. Provides the ability to"
 " group and run validation rules together."
 msgstr ""
+"Legg til, endre, se og slette valideringsregelgrupper. Gir muligheten til å "
+"gruppere og kjøre valideringsregler sammen."
 
 msgid "Sends a notification when a validation rule failed."
 msgstr ""
@@ -3964,19 +3990,19 @@ msgid "Predictor run started successfully"
 msgstr ""
 
 msgid "Run predictor"
-msgstr ""
+msgstr "Kjør prediktor"
 
 msgid "Start date"
-msgstr ""
+msgstr "Startdato"
 
 msgid "End date"
-msgstr ""
+msgstr "Sluttdato"
 
 msgid "Run now"
-msgstr ""
+msgstr "Kjør nå"
 
 msgid "Output data element"
-msgstr ""
+msgstr "Resultatdataelement"
 
 msgid "Predict using input category option combination"
 msgstr ""
@@ -4063,7 +4089,7 @@ msgid "Category mapping: "
 msgstr ""
 
 msgid "Edit filter"
-msgstr ""
+msgstr "Endre filter"
 
 msgid "Set up filter"
 msgstr ""
@@ -4263,7 +4289,7 @@ msgid "Choose the program and data types this program indicator applies to."
 msgstr ""
 
 msgid "Data source"
-msgstr ""
+msgstr "Datakilde"
 
 msgid "Uses data from all events within a program stage"
 msgstr ""
@@ -4275,7 +4301,7 @@ msgid "Configure the program indicator expression."
 msgstr ""
 
 msgid "Edit expression"
-msgstr ""
+msgstr "Rediger frase"
 
 msgid "Set up expression"
 msgstr ""
@@ -4355,10 +4381,10 @@ msgid "Expression (required) *"
 msgstr ""
 
 msgid "Feedback widget"
-msgstr ""
+msgstr "Tilbakemelding widget"
 
 msgid "Program indicator widget"
-msgstr ""
+msgstr "Programindikator widget"
 
 msgid "Display widget (required)"
 msgstr ""
@@ -4373,7 +4399,7 @@ msgid "Can be 0 or negative. Leave empty if not needed."
 msgstr ""
 
 msgid "Program rule variable to assign to"
-msgstr ""
+msgstr "Programregelvariabel å tildele til"
 
 msgid "Program stage to trigger rule"
 msgstr ""
@@ -4385,7 +4411,7 @@ msgid "Program stage section to hide (required)"
 msgstr ""
 
 msgid "Program stage section to hide"
-msgstr ""
+msgstr "Programfase seksjoner som skal skjules"
 
 msgid "Set up the basic information for this program rule."
 msgstr ""
@@ -4400,7 +4426,7 @@ msgid "Set up the expression that checks when this program rule runs."
 msgstr ""
 
 msgid "Action"
-msgstr ""
+msgstr "Handling"
 
 msgid "Program rule action saved"
 msgstr ""
@@ -4436,52 +4462,52 @@ msgid "Program rule must be saved before actions can be added"
 msgstr ""
 
 msgid "Data element to assign to"
-msgstr ""
+msgstr "Dataelement som skal tildeles til"
 
 msgid "Tracked entity attribute to assign to"
-msgstr ""
+msgstr "Sporet enhetattributt å tildele til"
 
 msgid "Expression to evaluate and assign"
-msgstr ""
+msgstr "Fraser å evaluere og tildele"
 
 msgid "Data element to display warning next to"
-msgstr ""
+msgstr "Dataelement å vise advarsel ved siden av"
 
 msgid "Data element to display error next to"
-msgstr ""
+msgstr "Dataelement som skal vises feil ved siden av"
 
 msgid "Tracked entity attribute to display warning next to"
-msgstr ""
+msgstr "Sporet enhet attributt for visning av advarsel ved siden av"
 
 msgid "Tracked entity attribute to display error next to"
-msgstr ""
+msgstr "Sporet enhetsattributt til visningsfeil ved siden av"
 
 msgid "Static text"
-msgstr ""
+msgstr "Statisk tekst"
 
 msgid "Expression to evaluate and display after static text."
 msgstr ""
 
 msgid "Key label"
-msgstr ""
+msgstr "Nøkkelmerke"
 
 msgid "Expression to evaluate and display as value."
 msgstr ""
 
 msgid "Data element to hide"
-msgstr ""
+msgstr "Dataelement som skal skjules"
 
 msgid "Tracked entity attribute to hide"
-msgstr ""
+msgstr "Sporet enhet attributt å skjule"
 
 msgid "Custom message for blanked field"
-msgstr ""
+msgstr "Tilpasset melding for blankt felt"
 
 msgid "Option to hide"
-msgstr ""
+msgstr "Alternativer som skal skjules"
 
 msgid "Option group to hide"
-msgstr ""
+msgstr "Alternativgruppe som skal skjules"
 
 msgid "Program rule variable for scheduled date"
 msgstr ""
@@ -4490,58 +4516,58 @@ msgid "Date to send message."
 msgstr ""
 
 msgid "Option group to show"
-msgstr ""
+msgstr "Alternativgruppe som skal vises"
 
 msgid "Assign value"
-msgstr ""
+msgstr "Tildel verdi"
 
 msgid "Display key-value pair"
 msgstr ""
 
 msgid "Display text"
-msgstr ""
+msgstr "Vis tekst"
 
 msgid "Error on complete"
-msgstr ""
+msgstr "Feil ved fullføring"
 
 msgid "Hide field"
-msgstr ""
+msgstr "Skjul felt"
 
 msgid "Hide option"
-msgstr ""
+msgstr "Skjul alternativ"
 
 msgid "Hide option group"
-msgstr ""
+msgstr "Skjul alternativgruppe"
 
 msgid "Hide program stage"
-msgstr ""
+msgstr "Skjul programfase"
 
 msgid "Hide section"
-msgstr ""
+msgstr "Skjul seksjon"
 
 msgid "Schedule event"
 msgstr ""
 
 msgid "Schedule message"
-msgstr ""
+msgstr "Planlegg melding"
 
 msgid "Send message"
-msgstr ""
+msgstr "Send melding"
 
 msgid "Set mandatory field"
 msgstr ""
 
 msgid "Show error"
-msgstr ""
+msgstr "Vis feil"
 
 msgid "Show option group"
-msgstr ""
+msgstr "Vis alternativgruppe"
 
 msgid "Show warning"
-msgstr ""
+msgstr "Vis advarsel"
 
 msgid "Warning on complete"
-msgstr ""
+msgstr "Advarsel ved fullføring"
 
 msgid "Expression to evaluate and assign is required"
 msgstr ""
@@ -4555,7 +4581,7 @@ msgid "Display widget is required"
 msgstr ""
 
 msgid "This field is required"
-msgstr ""
+msgstr "Dette er et påkrevd felt"
 
 msgid ""
 "At least one of the data element or tracked entity attribute must be "
@@ -4563,7 +4589,7 @@ msgid ""
 msgstr ""
 
 msgid "Program stage is required"
-msgstr ""
+msgstr "Programfase er påkrevd"
 
 msgid "Program stage section to hide is required"
 msgstr ""
@@ -4641,7 +4667,7 @@ msgid "Unknown action type"
 msgstr ""
 
 msgid "Program Rule"
-msgstr ""
+msgstr "Programregel"
 
 msgid "Name (required)"
 msgstr ""
@@ -4664,7 +4690,7 @@ msgid "Choose how this program collects data. This cannot be changed later."
 msgstr ""
 
 msgid "Single event"
-msgstr ""
+msgstr "Enkelt hendelse"
 
 msgid "Collect standalone events with no person or entity attached."
 msgstr ""
@@ -4673,7 +4699,7 @@ msgid "Collect events for a person or other entity over time."
 msgstr ""
 
 msgid "Continue"
-msgstr ""
+msgstr "Fortsett"
 
 msgid "Access updated successfully"
 msgstr ""
@@ -4685,7 +4711,7 @@ msgid "Failed to apply program access rules"
 msgstr ""
 
 msgid "Untitled"
-msgstr ""
+msgstr "Uten navn"
 
 msgid "No data access"
 msgstr ""
@@ -4814,16 +4840,16 @@ msgid "Set up advanced options for this program."
 msgstr ""
 
 msgid "Allow user assignment of events"
-msgstr ""
+msgstr "Tillat brukertildeling av hendelser"
 
 msgid "Block entry form after completed"
-msgstr ""
+msgstr "Blokk registreringsskjema etter fullføring"
 
 msgid "Pre-generate event UID"
-msgstr ""
+msgstr "For generer UID for hendelser"
 
 msgid "Related program"
-msgstr ""
+msgstr "Relatert program"
 
 msgid "Close data entry a number of days after a period ends"
 msgstr ""
@@ -4836,10 +4862,10 @@ msgid ""
 msgstr ""
 
 msgid "Settings"
-msgstr ""
+msgstr "Innstillinger"
 
 msgid "Validation strategy"
-msgstr ""
+msgstr "Valideringsstrategi"
 
 msgid "Access and Sharing"
 msgstr ""
@@ -4854,7 +4880,7 @@ msgid "List of enrolled tracked entities"
 msgstr ""
 
 msgid "Expiry period type"
-msgstr ""
+msgstr "Utløpsperiode type"
 
 msgid ""
 "Close data entry a number of days after end date of "
@@ -4886,28 +4912,28 @@ msgid "Notification form saved"
 msgstr ""
 
 msgid "Program stage completion"
-msgstr ""
+msgstr "Fullføring av programfasen"
 
 msgid "Allow notification to be sent multiple times"
 msgstr ""
 
 msgid "Days since due date"
-msgstr ""
+msgstr "Dager siden forfallsdato"
 
 msgid "Days until due date"
-msgstr ""
+msgstr "Dager til forfallsdato"
 
 msgid "Set up the basic information for this program notification."
 msgstr ""
 
 msgid "Program attribute recipient"
-msgstr ""
+msgstr "Programattributtmottaker"
 
 msgid "No program attributes of type email or phone number found."
 msgstr ""
 
 msgid "Data element recipient"
-msgstr ""
+msgstr "Mottaker dataelement"
 
 msgid "No data elements of type email or phone number found."
 msgstr ""
@@ -4956,10 +4982,10 @@ msgid ""
 msgstr ""
 
 msgid "Allow provided elsewhere"
-msgstr ""
+msgstr "Tillat gitte andre steder"
 
 msgid "Display in reports"
-msgstr ""
+msgstr "Vis i rapporter"
 
 msgid "Skip in analytics"
 msgstr ""
@@ -4977,7 +5003,7 @@ msgid "Mobile Display"
 msgstr ""
 
 msgid "Stage"
-msgstr ""
+msgstr "Fase"
 
 msgid "Stages"
 msgstr ""
@@ -5054,7 +5080,7 @@ msgid "Auto-generate an event in this stage"
 msgstr ""
 
 msgid "Generate events based on enrollment date"
-msgstr ""
+msgstr "Generer hendelser basert på registreringsdato"
 
 msgid "Show scheduled date"
 msgstr ""
@@ -5066,10 +5092,10 @@ msgid "Days to add to the enrollment or incident date. 0 means same day. "
 msgstr ""
 
 msgid "Default next scheduled date"
-msgstr ""
+msgstr "Standard neste planlagte dato"
 
 msgid "Open data entry form after enrollment"
-msgstr ""
+msgstr "Åpne skjemaet for dataregistrering etter registrering"
 
 msgid "On event completion, ask user to complete enrollment"
 msgstr ""
@@ -5078,10 +5104,10 @@ msgid "Allow multiple events in this stage (repeatable stage)"
 msgstr ""
 
 msgid "Report date to use"
-msgstr ""
+msgstr "Rapportdato som skal brukes"
 
 msgid "Standard interval days"
-msgstr ""
+msgstr "Standard intervalldager"
 
 msgid "Enter the number of days between repeated events."
 msgstr ""
@@ -5099,13 +5125,13 @@ msgid "Stage section form saved"
 msgstr ""
 
 msgid "Listing"
-msgstr ""
+msgstr "Listing"
 
 msgid "Sequential"
-msgstr ""
+msgstr "Sekvensiell"
 
 msgid "Matrix"
-msgstr ""
+msgstr "Matrise"
 
 msgid "Explain the purpose of this section."
 msgstr ""
@@ -5129,7 +5155,7 @@ msgid "Stage: Creation and Scheduling"
 msgstr ""
 
 msgid "Scheduled days from start"
-msgstr ""
+msgstr "Planlagte dager fra start"
 
 msgid "Stage: Data"
 msgstr ""
@@ -5171,7 +5197,7 @@ msgid "Manage how the chosen attributes are collected and displayed."
 msgstr ""
 
 msgid "Searchable"
-msgstr ""
+msgstr "Søkbar"
 
 msgid "This attribute is defined at the tracked entity type level"
 msgstr ""
@@ -5180,7 +5206,7 @@ msgid "This attribute is marked as required at the tracked entity type level"
 msgstr ""
 
 msgid "Unique attributes are always searchable"
-msgstr ""
+msgstr "Unike attributter er alltid søkbare"
 
 msgid "Enrollment: Form"
 msgstr ""
@@ -5280,7 +5306,7 @@ msgid ""
 msgstr ""
 
 msgid "Program Stages"
-msgstr ""
+msgstr "Programfaser"
 
 msgid "Set up stages in this program."
 msgstr ""
@@ -5349,7 +5375,7 @@ msgid "Receiving side constraint"
 msgstr ""
 
 msgid "Name is required"
-msgstr ""
+msgstr "Navn er påkrevd"
 
 msgid "Relationship name seen from initiating entity is required"
 msgstr ""
@@ -5380,7 +5406,7 @@ msgid ""
 msgstr ""
 
 msgid "Confidential"
-msgstr ""
+msgstr "Konfidensielt"
 
 msgid ""
 "Prevent searching or viewing in analytics. Available only when system "
@@ -5399,7 +5425,7 @@ msgid ""
 msgstr ""
 
 msgid "Clear"
-msgstr ""
+msgstr "Fjern"
 
 msgid "Pattern for automatically generated values"
 msgstr ""
@@ -5480,22 +5506,22 @@ msgid "Choose legends to visually categorize values in analytics apps."
 msgstr ""
 
 msgid "Tracked Entity Attribute"
-msgstr ""
+msgstr "Sporet enhetattributt"
 
 msgid "Organisation unit scope"
-msgstr ""
+msgstr "Organisasjonsenhet-omfang"
 
 msgid "Generated"
 msgstr ""
 
 msgid "Pattern"
-msgstr ""
+msgstr "Mønster"
 
 msgid "Inherit"
-msgstr ""
+msgstr "Arve"
 
 msgid "Skip synchronization"
-msgstr ""
+msgstr "Hopp over synkronisering"
 
 msgid "Minimum characters to search"
 msgstr ""
@@ -5602,7 +5628,7 @@ msgid "Configure the expressions and how they are compared."
 msgstr ""
 
 msgid "Left side expression"
-msgstr ""
+msgstr "Venstre side frase"
 
 msgid "Edit numerator expression"
 msgstr ""
@@ -5617,7 +5643,7 @@ msgid "Comparison operator"
 msgstr ""
 
 msgid "Right side expression"
-msgstr ""
+msgstr "Høyre side frase"
 
 msgid "Edit denominator expression"
 msgstr ""
