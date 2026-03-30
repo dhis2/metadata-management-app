@@ -38,7 +38,7 @@ jobs:
             - name: Check for contract changes
               id: diff
               run: |
-                  if git diff --quiet HEAD -- contracts; then
+                  if git diff --quiet origin/master -- contracts; then
                     echo "changed=false" >> $GITHUB_OUTPUT
                   else
                     echo "changed=true" >> $GITHUB_OUTPUT

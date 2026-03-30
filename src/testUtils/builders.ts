@@ -41,7 +41,10 @@ import {
 import { dataSetListSchema } from '../pages/dataSets/form/dataSetFormSchema'
 import { indicatorGroupListSchema } from '../pages/indicatorGroups/form/indicatorGroupSchema'
 import { indicatorGroupSetListSchema } from '../pages/indicatorGroupSets/form/indicatorGroupSetSchema'
-import { indicatorListSchema } from '../pages/indicators/form/indicatorSchema'
+import {
+    indicatorFormSchema,
+    indicatorListSchema,
+} from '../pages/indicators/form/indicatorSchema'
 import { indicatorTypeListSchema } from '../pages/indicatorTypes/form/indicatorTypesSchema'
 import { legendSetListSchema } from '../pages/legendSets/form/legendSetListSchema'
 import { localeListSchema } from '../pages/locales/form'
@@ -150,6 +153,13 @@ export const testConstant = (overwrites: Record<any, any> = {}) => ({
 
 export const testIndicator = (overwrites: Record<any, any> = {}) => ({
     ...generateMock(indicatorListSchema, {
+        stringMap,
+    }),
+    ...overwrites,
+})
+
+export const testIndicatorForm = (overwrites: Record<any, any> = {}) => ({
+    ...generateMock(indicatorFormSchema, {
         stringMap,
     }),
     ...overwrites,

@@ -10,7 +10,7 @@ import {
     randomLongString,
     testCustomAttribute,
     testLegendSet,
-    testIndicator,
+    testIndicatorForm,
     testIndicatorType,
 } from '../../testUtils/builders'
 import { generateRenderer } from '../../testUtils/generateRenderer'
@@ -93,7 +93,7 @@ describe('Indicators form tests', () => {
                                     ) {
                                         return {
                                             pager: { total: 1 },
-                                            indicators: [testIndicator()],
+                                            indicators: [testIndicatorForm()],
                                         }
                                     }
                                     return {
@@ -385,7 +385,7 @@ describe('Indicators form tests', () => {
                                     ) {
                                         return {
                                             pager: { total: 1 },
-                                            indicators: [testIndicator()],
+                                            indicators: [testIndicatorForm()],
                                         }
                                     }
                                     return {
@@ -851,7 +851,7 @@ describe('Indicators form tests', () => {
                 ]
                 const attributes = [testCustomAttribute()]
                 const legendSets = [testLegendSet(), testLegendSet()]
-                const indicator = testIndicator({
+                const indicator = testIndicatorForm({
                     id,
                     indicatorType,
                     legendSets: [legendSets[0]],
@@ -892,7 +892,7 @@ describe('Indicators form tests', () => {
                                     ) {
                                         return {
                                             pager: { total: 1 },
-                                            indicators: [testIndicator()],
+                                            indicators: [testIndicatorForm()],
                                         }
                                     }
                                     return {

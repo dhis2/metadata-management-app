@@ -10,7 +10,7 @@ import {
 } from '../../components'
 import {
     ATTRIBUTE_VALUES_FIELD_FILTERS,
-    DEFAULT_FIELD_FILTERS,
+    DEFAULT_IDENTIFIABLE,
     SectionedFormProvider,
     SECTIONS_MAP,
     useOnSubmitEdit,
@@ -21,9 +21,8 @@ import { IndicatorFormFields } from './form/IndicatorFormFields'
 import { IndicatorFormValues, validate } from './form/indicatorSchema'
 
 const fieldFilters = [
-    ...DEFAULT_FIELD_FILTERS,
+    ...DEFAULT_IDENTIFIABLE,
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
-    'name',
     'shortName',
     'code',
     'description',
