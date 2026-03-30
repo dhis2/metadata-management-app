@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 import { render, within, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import schemaMock from '../../__mocks__/schema/dataElementsSchema.json'
+import schemaMock from '../../__mocks__/schema/dataElements.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
 import { DISABLING_VALUE_TYPES } from '../../components/form/fields/AggregationTypeFieldByValueType'
 import {

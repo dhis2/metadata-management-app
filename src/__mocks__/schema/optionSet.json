@@ -6,12 +6,18 @@
     "shareable": true,
     "dataShareable": false,
     "authorities": [
-        { "type": "CREATE_PUBLIC", "authorities": ["F_OPTIONSET_PUBLIC_ADD"] },
+        {
+            "type": "CREATE_PUBLIC",
+            "authorities": ["F_OPTIONSET_PUBLIC_ADD"]
+        },
         {
             "type": "CREATE_PRIVATE",
             "authorities": ["F_OPTIONSET_PRIVATE_ADD"]
         },
-        { "type": "DELETE", "authorities": ["F_OPTIONSET_DELETE"] }
+        {
+            "type": "DELETE",
+            "authorities": ["F_OPTIONSET_DELETE"]
+        }
     ],
     "properties": {
         "lastUpdatedBy": {
@@ -45,7 +51,10 @@
             "relativeApiEndpoint": "/users",
             "apiEndpoint": "http://localhost:8080/api/users",
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": false,
             "propertyTransformer": true
         },
@@ -77,7 +86,10 @@
             "manyToOne": false,
             "oneToMany": false,
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": true,
             "propertyTransformer": false
         },
@@ -140,7 +152,10 @@
             "manyToOne": false,
             "oneToMany": false,
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": true,
             "propertyTransformer": false
         },
@@ -170,7 +185,10 @@
             "manyToOne": false,
             "oneToMany": false,
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": true,
             "propertyTransformer": false
         },
@@ -201,7 +219,10 @@
             "manyToOne": false,
             "oneToMany": false,
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": false,
             "propertyTransformer": false
         },
@@ -233,7 +254,10 @@
             "manyToOne": false,
             "oneToMany": false,
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": true,
             "propertyTransformer": false
         },
@@ -300,7 +324,10 @@
             "manyToOne": false,
             "oneToMany": false,
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": true,
             "propertyTransformer": false
         },
@@ -330,7 +357,10 @@
             "manyToOne": false,
             "oneToMany": false,
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": true,
             "propertyTransformer": false
         },
@@ -454,7 +484,6 @@
                 "INTEGER_POSITIVE",
                 "INTEGER_NEGATIVE",
                 "INTEGER_ZERO_OR_POSITIVE",
-                "TRACKER_ASSOCIATE",
                 "USERNAME",
                 "COORDINATE",
                 "ORGANISATION_UNIT",
@@ -466,7 +495,10 @@
                 "GEOJSON"
             ],
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": true,
             "propertyTransformer": false
         },
@@ -500,7 +532,10 @@
             "translatable": true,
             "translationKey": "NAME",
             "i18nTranslationKey": "name",
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": true,
             "propertyTransformer": false
         },
@@ -540,7 +575,10 @@
             "relativeApiEndpoint": "/options",
             "apiEndpoint": "http://localhost:8080/api/options",
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": false,
             "propertyTransformer": false
         },
@@ -571,7 +609,10 @@
             "manyToOne": false,
             "oneToMany": false,
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": true,
             "propertyTransformer": false
         },
@@ -601,7 +642,10 @@
             "manyToOne": false,
             "oneToMany": false,
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": false,
             "propertyTransformer": false
         },
@@ -633,7 +677,10 @@
             "relativeApiEndpoint": "/users",
             "apiEndpoint": "http://localhost:8080/api/users",
             "translatable": false,
-            "gistPreferences": { "included": "AUTO", "transformation": "AUTO" },
+            "gistPreferences": {
+                "included": "AUTO",
+                "transformation": "AUTO"
+            },
             "sortable": false,
             "propertyTransformer": true
         }
