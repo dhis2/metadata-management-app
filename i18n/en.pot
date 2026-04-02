@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
-"PO-Revision-Date: 2026-03-16T18:45:52.560Z\n"
+"POT-Creation-Date: 2026-04-01T13:52:40.474Z\n"
+"PO-Revision-Date: 2026-04-01T13:52:40.474Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -1978,11 +1978,11 @@ msgstr "Message template"
 msgid "Program stage label"
 msgstr "Program stage label"
 
-msgid "Due date label"
-msgstr "Due date label"
+msgid "Scheduled date label"
+msgstr "Scheduled date label"
 
-msgid "Execution date label"
-msgstr "Execution date label"
+msgid "Report date label"
+msgstr "Report date label"
 
 msgid "Event label"
 msgstr "Event label"
@@ -2010,6 +2010,18 @@ msgstr "Organisation unit label"
 
 msgid "Relationship label"
 msgstr "Relationship label"
+
+msgid "Enrollment label (Plural)"
+msgstr "Enrollment label (Plural)"
+
+msgid "Event label (Plural)"
+msgstr "Event label (Plural)"
+
+msgid "Program stage label (Plural)"
+msgstr "Program stage label (Plural)"
+
+msgid "Names"
+msgstr "Names"
 
 msgid "Unknown error"
 msgstr "Unknown error"
@@ -2094,6 +2106,12 @@ msgstr "Factor"
 
 msgid "Program name"
 msgstr "Program name"
+
+msgid "Category Combination (PI Disaggregation)"
+msgstr "Category Combination (PI Disaggregation)"
+
+msgid "Attribute Combination (PI Disaggregation)"
+msgstr "Attribute Combination (PI Disaggregation)"
 
 msgid "Decimals in data output"
 msgstr "Decimals in data output"
@@ -3770,6 +3788,9 @@ msgstr ""
 "                            ' and '\n"
 "                        )}"
 
+msgid "Add a unit inside"
+msgstr "Add a unit inside"
+
 msgid "No organisation units available"
 msgstr "No organisation units available"
 
@@ -4944,6 +4965,9 @@ msgstr "External"
 msgid "Group"
 msgstr "Group"
 
+msgid "Set up how users can access program data outside their capture scope."
+msgstr "Set up how users can access program data outside their capture scope."
+
 msgid "Organisation unit access"
 msgstr "Organisation unit access"
 
@@ -4952,6 +4976,40 @@ msgstr "Role access"
 
 msgid "Save the program first to set up sharing."
 msgstr "Save the program first to set up sharing."
+
+msgid "Open"
+msgstr "Open"
+
+msgid "Users can open tracked entities in their search or capture scope."
+msgstr "Users can open tracked entities in their search or capture scope."
+
+msgid "Audited"
+msgstr "Audited"
+
+msgid ""
+"Users can open tracked entities in their search or capture scope. Opening "
+"outside capture scope is logged."
+msgstr ""
+"Users can open tracked entities in their search or capture scope. Opening "
+"outside capture scope is logged."
+
+msgid "Protected"
+msgstr "Protected"
+
+msgid ""
+"Users can open tracked entities in their capture scope. To open outside "
+"capture scope (but within search scope), users must give a reason for "
+"temporary access. All access is logged."
+msgstr ""
+"Users can open tracked entities in their capture scope. To open outside "
+"capture scope (but within search scope), users must give a reason for "
+"temporary access. All access is logged."
+
+msgid "Closed"
+msgstr "Closed"
+
+msgid "Users can only open tracked entities in their capture scope."
+msgstr "Users can only open tracked entities in their capture scope."
 
 msgid "Notifications"
 msgstr "Notifications"
@@ -5533,6 +5591,9 @@ msgstr "Restore stage"
 
 msgid "Add a program stage"
 msgstr "Add a program stage"
+
+msgid "Access Level"
+msgstr "Access Level"
 
 msgid "Relationship entity constraint"
 msgstr "Relationship entity constraint"

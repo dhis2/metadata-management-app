@@ -37,11 +37,13 @@ type UseFilteredOrgUnitsOptions = {
     fieldFilters: string[]
     searchQuery?: string
     enabled?: boolean
+    organisationUnitGroupId?: string
 }
 export const useFilteredOrgUnits = ({
     fieldFilters,
     searchQuery,
     enabled,
+    organisationUnitGroupId,
 }: UseFilteredOrgUnitsOptions) => {
     const boundQueryFn = useBoundResourceQueryFn()
 
@@ -51,8 +53,13 @@ export const useFilteredOrgUnits = ({
             fields: getOrgUnitFieldFilters(fieldFilters),
             query: searchQuery,
             withinUserHierarchy: true,
+            ...(organisationUnitGroupId && {
+                filter: [
+                    `organisationUnitGroups.id:eq:${organisationUnitGroupId}`,
+                ],
+            }),
         },
-    }
+    } as const
 
     return useQuery({
         enabled,

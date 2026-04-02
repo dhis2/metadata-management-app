@@ -15,12 +15,14 @@ export function useIsFieldValueUnique({
     model,
     field,
     id,
+    customFilter,
     message,
     caseSensitive = false,
 }: {
     model: string
     field: string
     id?: string
+    customFilter?: string
     message?: string
     caseSensitive?: boolean
 }) {
@@ -39,6 +41,9 @@ export function useIsFieldValueUnique({
                 if (variables.id) {
                     filter.push(`id:ne:${variables.id}`)
                 }
+                if (variables.customFilter) {
+                    filter.push(variables.customFilter)
+                }
 
                 return { pageSize: 1, fields: 'id', filter }
             },
@@ -54,7 +59,7 @@ export function useIsFieldValueUnique({
                 }
 
                 const data = (await engine.query(HAS_FIELD_VALUE_QUERY, {
-                    variables: { field, value, id },
+                    variables: { field, value, id, customFilter },
                 })) as unknown as QueryResponse
 
                 if (data.result.pager.total > 0) {
@@ -66,7 +71,7 @@ export function useIsFieldValueUnique({
                     )
                 }
             }),
-        [field, engine, id, HAS_FIELD_VALUE_QUERY, message]
+        [field, engine, id, HAS_FIELD_VALUE_QUERY, message, customFilter]
     )
 
     // Doing it this way to prevent extra arguments to be passed.

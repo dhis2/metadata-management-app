@@ -16,12 +16,13 @@ import {
     useForm,
     useFormState,
 } from 'react-final-form'
+import { useParams } from 'react-router-dom'
 import {
     CodeField,
     DescriptionField,
     DrawerFormFooter,
     DrawerLayout,
-    NameField,
+    NameFieldWithAdditionalUniquenessConstraint,
     SectionedFormErrorNotice,
     SectionedFormSection,
     SectionedFormSections,
@@ -66,6 +67,7 @@ export type DataSetDataElementsType = {
 export const DataSetSectionFormContents = ({
     onCancel,
 }: DataSetSectionFormProps) => {
+    const dataSetId = useParams()?.id
     const form = useForm<SectionFormValues>()
     const { submitting, values } = useFormState({
         subscription: { submitting: true, values: true },
@@ -147,9 +149,14 @@ export const DataSetSectionFormContents = ({
                         )}
                     </StandardFormSectionDescription>
                     <StandardFormField>
-                        <NameField
+                        <NameFieldWithAdditionalUniquenessConstraint
                             schemaSection={dataSetSectionSchemaSection}
                             modelId={values.id}
+                            additionalNameUniquenessConstraint={
+                                dataSetId
+                                    ? `dataSet.id:eq:${dataSetId}`
+                                    : undefined
+                            }
                         />
                     </StandardFormField>
                     <StandardFormField>

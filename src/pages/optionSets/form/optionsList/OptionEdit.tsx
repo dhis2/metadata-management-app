@@ -1,4 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
+import { Validator } from '@dhis2/ui'
 import { useQuery } from '@tanstack/react-query'
 import arrayMutators from 'final-form-arrays'
 import React, { useCallback, useMemo } from 'react'
@@ -19,7 +20,6 @@ import {
 } from '../../../../components'
 import {
     NameField,
-    CodeField,
     DescriptionField,
     ColorAndIconField,
 } from '../../../../components/form/fields'
@@ -36,15 +36,18 @@ import {
 } from '../../../../lib'
 import { Option } from '../../../../types/generated'
 import { PickWithFieldFilters } from '../../../../types/models'
+import { OptionCodeField } from './OptionCodeField'
 import { initialOptionValues } from './optionSchema'
 import { DrawerState } from './OptionsListTable'
 
 export const OptionFormContents = ({
     editCodeDisabled,
     onCancel,
+    validateOptionCode,
 }: {
     editCodeDisabled: boolean
     onCancel?: (s: DrawerState) => void
+    validateOptionCode: Validator
 }) => {
     const form = useForm()
     const { submitting, values } = useFormState({
@@ -72,13 +75,15 @@ export const OptionFormContents = ({
                         />
                     </StandardFormField>
                     <StandardFormField>
-                        <CodeField
+                        <OptionCodeField
                             schemaSection={optionSchemaSection}
                             modelId={values.id}
+                            validateOptionCode={validateOptionCode}
                             required={true}
                             disabled={editCodeDisabled}
                         />
                     </StandardFormField>
+
                     <StandardFormField>
                         <DescriptionField />
                     </StandardFormField>
@@ -150,10 +155,11 @@ type OptionFormProps = {
 export const OptionForm = ({ option, onSubmit, onCancel }: OptionFormProps) => {
     const optionSetId = useParams().id as string
 
-    const initialValues: SubmittedOptionFormValues | undefined = useMemo(
-        () => option ?? (initialOptionValues as SubmittedOptionFormValues),
-        [option]
-    )
+    const initialValues: SubmittedOptionFormValues | undefined = useMemo(() => {
+        const startingInitialValues =
+            option ?? (initialOptionValues as SubmittedOptionFormValues)
+        return { ...startingInitialValues, optionSet: { id: optionSetId } }
+    }, [option, optionSetId])
 
     const valueFormatter = useCallback(
         (values: SubmittedOptionFormValues) => {
@@ -164,10 +170,27 @@ export const OptionForm = ({ option, onSubmit, onCancel }: OptionFormProps) => {
         },
         [optionSetId]
     )
+
+    const optionId = initialValues?.id
+    const form = useForm()
+    const optionValues = form.getState()?.values?.options
+    const validateOptionCode = useCallback(
+        (code: unknown) => {
+            const codeInUse = optionValues
+                .filter(
+                    (opt: SubmittedOptionFormValues) => opt?.id !== optionId
+                )
+                .map((opt: SubmittedOptionFormValues) => opt?.code)
+                .includes(code)
+            return codeInUse ? i18n.t('Code is already in use') : undefined
+        },
+        [optionValues, optionId]
+    )
+
     return (
         <FormBase
             modelName={optionSchemaSection.name}
-            initialValues={{ ...initialValues, optionSet: { id: optionSetId } }}
+            initialValues={initialValues}
             onSubmit={onSubmit}
             valueFormatter={valueFormatter}
             includeAttributes={true}
@@ -176,6 +199,7 @@ export const OptionForm = ({ option, onSubmit, onCancel }: OptionFormProps) => {
             <OptionFormContents
                 onCancel={onCancel}
                 editCodeDisabled={!!option}
+                validateOptionCode={validateOptionCode}
             />
         </FormBase>
     )

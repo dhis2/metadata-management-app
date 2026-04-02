@@ -1,5 +1,6 @@
 export { DefaultIdentifiableFields } from './DefaultIdentifibleFIelds'
 export { NameField } from './NameField'
+export { NameFieldWithAdditionalUniquenessConstraint } from './NameFieldWithAdditionalUniquenessConstraint'
 export { ShortNameField } from './ShortNameField'
 export { CodeField } from './CodeField'
 export { DescriptionField } from './DescriptionField'

@@ -27,10 +27,11 @@ export const OrganisationUnitListMessage = ({
         return <SectionListError />
     }
 
-    // we only show loading indicator when we don't have any data to show
-    // and some query is loading
+    // Show loading indicator when there is nothing to display yet and we're fetching.
+    // This prevents briefly showing "no matches" while a new filter/search is loading.
     const showLoading =
-        orgUnitCount < 1 && queries.some((query) => query.isLoading)
+        orgUnitCount < 1 &&
+        queries.some((query) => query.isLoading || query.isFetching)
 
     if (showLoading) {
         return <SectionListLoader />

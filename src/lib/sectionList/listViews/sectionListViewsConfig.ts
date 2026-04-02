@@ -203,7 +203,7 @@ export const modelListViewsConfig = {
             default: [DESCRIPTORS.name, 'code', 'lastUpdated'],
         },
         filters: {
-            default: [],
+            default: ['organisationUnitGroup'],
             overrideDefaultAvailable: true,
         },
     },

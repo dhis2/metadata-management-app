@@ -3,7 +3,7 @@ import i18n from '@dhis2/d2-i18n'
 import { SharingDialog } from '@dhis2/ui'
 import { useQueryClient } from '@tanstack/react-query'
 import React, { useCallback, useMemo, useState } from 'react'
-import { useForm, useFormState } from 'react-final-form'
+import { useFormState } from 'react-final-form'
 import { useParams } from 'react-router-dom'
 import { useDebouncedCallback } from 'use-debounce'
 import type { SharingSettings } from '../../../../lib'
@@ -31,7 +31,6 @@ export const RoleAccess = ({
     showStageAccess = true,
 }: RoleAccessProps = {}) => {
     const { values } = useFormState<ProgramValues>()
-    const form = useForm<ProgramValues>()
     const { id: programId } = useParams()
     const dataEngine = useDataEngine()
     const queryClient = useQueryClient()
@@ -163,7 +162,7 @@ export const RoleAccess = ({
                 queryKey: [{ resource: 'programs', id: programId }],
             })
         }
-    }, [programId, dataEngine, queryClient, form, values.programStages])
+    }, [programId, queryClient])
 
     return (
         <>
@@ -211,16 +210,18 @@ export const RoleAccess = ({
             </div>
 
             {sharingDialog && (
-                <SharingDialog
-                    type={sharingDialog.type}
-                    id={sharingDialog.id}
-                    onClose={() => {
-                        setSharingDialog(null)
-                        handleSaveSharing()
-                    }}
-                    dataSharing
-                    metadataSharing={sharingDialog.type !== 'programStage'}
-                />
+                <div onSubmit={(e) => e.stopPropagation()}>
+                    <SharingDialog
+                        type={sharingDialog.type}
+                        id={sharingDialog.id}
+                        onClose={() => {
+                            setSharingDialog(null)
+                            handleSaveSharing()
+                        }}
+                        dataSharing
+                        metadataSharing={sharingDialog.type !== 'programStage'}
+                    />
+                </div>
             )}
         </>
     )
