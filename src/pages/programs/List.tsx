@@ -25,7 +25,7 @@ import {
 import { DefaultSectionList } from '../DefaultSectionList'
 import css from './List.module.css'
 
-const IconToBeReplaced = () => (
+const EventIcon = () => (
     <svg
         width="40"
         height="40"
@@ -37,7 +37,7 @@ const IconToBeReplaced = () => (
     </svg>
 )
 
-const IconToBeReplaced2 = () => (
+const TrackerIcon = () => (
     <svg
         width="40"
         height="40"
@@ -96,7 +96,7 @@ const NewProgramDialog = ({ onClose }: { onClose: () => void }) => {
                                 description={i18n.t(
                                     'Collect standalone events with no person or entity attached.'
                                 )}
-                                Icon={IconToBeReplaced}
+                                Icon={EventIcon}
                             />
                         }
                         onChange={({ checked }) => {
@@ -119,7 +119,7 @@ const NewProgramDialog = ({ onClose }: { onClose: () => void }) => {
                                 description={i18n.t(
                                     'Collect events for a person or other entity over time.'
                                 )}
-                                Icon={IconToBeReplaced2}
+                                Icon={TrackerIcon}
                             />
                         }
                         onChange={({ checked }) => {

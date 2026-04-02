@@ -23,20 +23,19 @@ const section = SECTIONS_MAP.programIndicator
 
 export const Component = () => {
     const queryFn = useBoundResourceQueryFn()
-    const id = useParams().id
+    const modelId = useParams().id as string
     const programIndicators = useQuery({
         queryFn: queryFn<ProgramIndicatorValues>,
         queryKey: [
             {
                 resource: 'programIndicators',
-                id,
+                id: modelId,
                 params: {
                     fields: fieldFilters.concat(),
                 },
             },
         ] as const,
     })
-    const modelId = useParams().id as string
 
     return (
         <FormBase

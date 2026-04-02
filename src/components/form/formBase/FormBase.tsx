@@ -1,3 +1,4 @@
+import i18n from '@dhis2/d2-i18n'
 import { NoticeBox } from '@dhis2/ui'
 import React, { useCallback, useMemo } from 'react'
 import {
@@ -33,6 +34,7 @@ type OwnProps<TValues, TFormattedValues = TValues> = {
     children: FormProps<TValues>['children']
     modelName?: string
     includeAttributes?: boolean
+    fetchError?: boolean
     valueFormatter?: (values: NoInfer<TValues>) => TFormattedValues
     onSubmit: EnhancedOnSubmit<TFormattedValues>
 }
@@ -49,6 +51,7 @@ export function FormBase<TInitialValues extends MaybeModelWithAttributes>({
     validate,
     valueFormatter = defaultValueFormatter,
     includeAttributes = true,
+    fetchError = false,
     modelName,
     ...reactFinalFormProps
 }: FormBaseProps<TInitialValues>) {
@@ -80,8 +83,17 @@ export function FormBase<TInitialValues extends MaybeModelWithAttributes>({
         [onSubmit, valueFormatter, contextValue.submitActionRef]
     )
 
+    if (fetchError) {
+        return <NoticeBox error title={i18n.t('Failed to load data')} />
+    }
+
     if (customAttributes.error) {
-        return <NoticeBox error title="Failed to load custom attributes" />
+        return (
+            <NoticeBox
+                error
+                title={i18n.t('Failed to load custom attributes')}
+            />
+        )
     }
 
     if (!initialValuesWithAttributes || customAttributes.loading) {

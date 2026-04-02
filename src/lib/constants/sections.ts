@@ -27,6 +27,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Category'),
         titlePlural: i18n.t('Categories'),
         parentSectionKey: 'category',
+        duplicable: true,
     },
     categoryOption: {
         name: SchemaName.categoryOption,
@@ -34,6 +35,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Category option'),
         titlePlural: i18n.t('Category options'),
         parentSectionKey: 'category',
+        duplicable: true,
     },
     categoryCombo: {
         name: SchemaName.categoryCombo,
@@ -69,6 +71,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Data element'),
         titlePlural: i18n.t('Data elements'),
         parentSectionKey: 'dataElement',
+        duplicable: true,
     },
     dataElementGroup: {
         name: SchemaName.dataElementGroup,
@@ -97,6 +100,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Data set notification'),
         titlePlural: i18n.t('Data set notifications'),
         parentSectionKey: 'dataSet',
+        duplicable: true,
     },
     indicator: {
         name: SchemaName.indicator,
@@ -132,6 +136,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Organisation unit'),
         titlePlural: i18n.t('Organisation units'),
         parentSectionKey: 'organisationUnit',
+        duplicable: true,
     },
     organisationUnitGroup: {
         name: SchemaName.organisationUnitGroup,

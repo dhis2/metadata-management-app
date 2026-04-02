@@ -9,6 +9,7 @@ export interface SectionBase {
     routeName?: string
     minApiVersion?: number
     maxApiVersion?: number
+    duplicable?: boolean
 }
 
 // SchemaSection is a section that can be mapped directly to a schema by the name

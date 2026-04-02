@@ -1,8 +1,7 @@
-import i18n from '@dhis2/d2-i18n'
-import { Button, NoticeBox } from '@dhis2/ui'
 import { useQuery } from '@tanstack/react-query'
+import { omit } from 'lodash'
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import {
     DefaultFormFooter,
     DefaultSectionedFormSidebar,
@@ -10,18 +9,15 @@ import {
     SectionedFormErrorNotice,
     SectionedFormLayout,
 } from '../../components'
+import { DuplicationNoticeBox } from '../../components/form/DuplicationNoticeBox'
 import {
-    SectionedFormProvider,
-    DEFAULT_FIELD_FILTERS,
-    useBoundResourceQueryFn,
-    useOnSubmitEdit,
-    SECTIONS_MAP,
     getSectionPath,
+    SectionedFormProvider,
+    SECTIONS_MAP,
+    useBoundResourceQueryFn,
+    useOnSubmitNew,
 } from '../../lib'
-import {
-    DataSetNotificationTemplate,
-    PickWithFieldFilters,
-} from '../../types/generated'
+import { DataSetNotificationResult } from './Edit'
 import { DataSetNotificationsFormFields } from './form/DataSetNotificationsFormFields'
 import {
     transformFormValues,
@@ -30,7 +26,6 @@ import {
 import { formDescriptor } from './form/formDescriptor'
 
 const fieldFilters = [
-    ...DEFAULT_FIELD_FILTERS,
     'name',
     'code',
     'subjectTemplate',
@@ -45,64 +40,46 @@ const fieldFilters = [
     'notifyUsersInHierarchyOnly',
 ] as const
 
-export type DataSetNotificationResult = PickWithFieldFilters<
-    DataSetNotificationTemplate,
-    typeof fieldFilters
->
-
 export const Component = () => {
-    const { id: templateId } = useParams<{ id: string }>()
+    const [searchParams] = useSearchParams()
+    const duplicatedModelId = searchParams.get('duplicatedId') as string
+
     const queryFn = useBoundResourceQueryFn()
     const section = SECTIONS_MAP.dataSetNotificationTemplate
-
-    const {
-        data: template,
-        isError,
-        refetch,
-    } = useQuery({
+    const { data: template } = useQuery({
         queryKey: [
             {
                 resource: 'dataSetNotificationTemplates',
-                id: templateId,
+                id: duplicatedModelId,
                 params: {
                     fields: fieldFilters.join(','),
                 },
             },
         ],
         queryFn: queryFn<DataSetNotificationResult>,
-        enabled: !!templateId,
+        enabled: !!duplicatedModelId,
     })
 
-    const onSubmit = useOnSubmitEdit({
-        modelId: templateId as string,
-        section,
-    })
-
-    if (isError) {
-        return (
-            <NoticeBox error title={i18n.t('Error')}>
-                {i18n.t('Error loading notification template')}
-                <br />
-                <Button small onClick={() => refetch()}>
-                    {i18n.t('Retry')}
-                </Button>
-            </NoticeBox>
-        )
-    }
+    const initialValues: Partial<DataSetNotificationResult> | undefined =
+        template ? omit(template, 'id') : undefined
 
     return (
         <FormBase
-            valueFormatter={transformFormValues}
-            onSubmit={onSubmit}
-            initialValues={template}
+            onSubmit={useOnSubmitNew({
+                section: SECTIONS_MAP.dataSetNotificationTemplate,
+            })}
+            initialValues={initialValues}
             validate={validate}
+            valueFormatter={transformFormValues}
             includeAttributes={false}
+            fetchError={!!template}
         >
             {({ handleSubmit }) => (
                 <SectionedFormProvider formDescriptor={formDescriptor}>
                     <SectionedFormLayout
                         sidebar={<DefaultSectionedFormSidebar />}
                     >
+                        <DuplicationNoticeBox section={section} />
                         <form onSubmit={handleSubmit}>
                             <DataSetNotificationsFormFields />
                             <SectionedFormErrorNotice />

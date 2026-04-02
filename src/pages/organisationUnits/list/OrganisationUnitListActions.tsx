@@ -3,6 +3,7 @@ import {
     Button,
     FlyoutMenu,
     IconDimensionOrgUnit16,
+    IconDuplicate16,
     IconEdit16,
     IconInfo16,
     IconMore24,
@@ -82,6 +83,11 @@ const OrganisationUnitActionMore = ({
         { state: preservedSearchState }
     )
 
+    const handleDuplicateClick = useLinkClickHandler({
+        pathname: 'duplicate',
+        search: `?duplicatedId=${model.id}`,
+    })
+
     const handleAddChildClick = useLinkClickHandler(
         {
             pathname: 'new',
@@ -114,6 +120,17 @@ const OrganisationUnitActionMore = ({
                             icon={<IconEdit16 />}
                             onClick={(_, e) => {
                                 handleEditClick(e)
+                                setOpen(false)
+                            }}
+                            target="_blank"
+                            href={href}
+                        />
+                        <MenuItem
+                            dense
+                            label={i18n.t('Duplicate')}
+                            icon={<IconDuplicate16 />}
+                            onClick={(_, e) => {
+                                handleDuplicateClick(e)
                                 setOpen(false)
                             }}
                             target="_blank"

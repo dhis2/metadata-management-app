@@ -7,14 +7,14 @@ export function AggregationLevelsField() {
     const { input, meta } = useField('aggregationLevels', {
         multiple: true,
         format: (levels: number[]) => {
-            return levels.map((l) => ({
+            return levels?.map((l) => ({
                 id: l.toString(),
                 displayName: l.toString(),
                 level: l,
             }))
         },
         parse: (levels) => {
-            return levels.map((l) => parseInt(l.id, 10))
+            return levels?.map((l) => parseInt(l.id, 10))
         },
         validateFields: [],
     })

@@ -1,5 +1,9 @@
 import React from 'react'
-import { BaseListModel, useSchemaFromHandle } from '../../../lib'
+import {
+    BaseListModel,
+    useModelSectionHandleOrThrow,
+    useSchemaFromHandle,
+} from '../../../lib'
 import { canEditModel, canDeleteModel } from '../../../lib/models/access'
 import {
     ListActions,
@@ -23,10 +27,11 @@ export const DefaultListActions = ({
     onDeleteSuccess,
 }: DefaultListActionProps) => {
     const schema = useSchemaFromHandle()
-
+    const section = useModelSectionHandleOrThrow()
     const deletable = canDeleteModel(model)
     const editable = canEditModel(model)
     const shareable = schema.shareable
+    const duplicable = !!section.duplicable
 
     return (
         <ListActions>
@@ -36,6 +41,7 @@ export const DefaultListActions = ({
                 editable={editable}
                 translatable={schema.translatable}
                 shareable={shareable}
+                duplicable={duplicable}
                 model={model}
                 onShowDetailsClick={() => onShowDetailsClick(model)}
                 onOpenSharingClick={() => onOpenSharingClick(model.id)}

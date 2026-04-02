@@ -2,6 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import {
     Button,
     FlyoutMenu,
+    IconDuplicate16,
     IconEdit16,
     IconInfo16,
     IconShare16,
@@ -93,6 +94,7 @@ type ActionMoreProps = {
     editable: boolean
     translatable: boolean
     shareable: boolean
+    duplicable: boolean
     model: BaseListModel
     onShowDetailsClick: () => void
     onOpenSharingClick: () => void
@@ -104,6 +106,7 @@ export const ActionMore = ({
     editable,
     translatable,
     shareable,
+    duplicable,
     model,
     onOpenSharingClick,
     onShowDetailsClick,
@@ -123,6 +126,11 @@ export const ActionMore = ({
             state: preservedSearchState,
         }
     )
+
+    const handleDuplicateClick = useLinkClickHandler({
+        pathname: 'duplicate',
+        search: `?duplicatedId=${model.id}`,
+    })
 
     return (
         <div ref={ref}>
@@ -174,6 +182,25 @@ export const ActionMore = ({
                                 href={href}
                             />
                         </TooltipWrapper>
+                        {duplicable && (
+                            <TooltipWrapper
+                                condition={!editable}
+                                content={TOOLTIPS.noDuplicateAccess}
+                            >
+                                <MenuItem
+                                    dense
+                                    disabled={!editable}
+                                    label={i18n.t('Duplicate')}
+                                    icon={<IconDuplicate16 />}
+                                    onClick={(_, e) => {
+                                        handleDuplicateClick(e)
+                                        setOpen(false)
+                                    }}
+                                    target="_blank"
+                                    href={href}
+                                />
+                            </TooltipWrapper>
+                        )}
                         <MenuItem
                             dense
                             label={i18n.t('Show details')}

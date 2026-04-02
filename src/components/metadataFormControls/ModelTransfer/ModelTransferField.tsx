@@ -66,7 +66,7 @@ export function ModelTransferField({
             className={css.moduleTransferField}
         >
             <ModelTransfer
-                selected={input.value}
+                selected={input.value || []}
                 onChange={({ selected }) => {
                     input.onChange(selected)
                     input.onBlur()

@@ -44,10 +44,13 @@ const fieldFilters = [
     'parent[id,path,displayName]',
 ] as const
 
-export type OrgUnitFormValues = PickWithFieldFilters<
+type OrgUnitFormValuesFromFilters = PickWithFieldFilters<
     OrganisationUnit,
     typeof fieldFilters
 >
+export type OrgUnitFormValues = Omit<OrgUnitFormValuesFromFilters, 'parent'> & {
+    parent?: { id: string; path?: string; displayName?: string }
+}
 
 const section = SECTIONS_MAP.organisationUnit
 
@@ -67,7 +70,6 @@ export const useOnEditOrgUnits = (modelId: string) => {
                 values: OrgUnitFormValues,
                 form: FormApi<OrgUnitFormValues>
             ) => {
-                const { dataSets, programs, ...rest } = values
                 const {
                     dataSets: dataSetsDirty,
                     programs: programsDirty,

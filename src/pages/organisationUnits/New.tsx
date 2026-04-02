@@ -11,8 +11,8 @@ import {
 } from '../../lib'
 import { createFormError } from '../../lib/form/createFormError'
 import { useCreateModel } from '../../lib/form/useCreateModel'
+import { OrgUnitFormValues } from './Edit'
 import { initialValues, OrganisationUnitFormField, validate } from './form'
-import { OrganisationUnitFormValues } from './form/organisationUnitSchema'
 import { useOnSaveDataSetsAndPrograms } from './form/useOnSaveDataSetsAndPrograms'
 import { ORG_UNIT_PARENT_SEARCH_PARAM } from './list/OrganisationUnitListActions'
 
@@ -25,7 +25,7 @@ export const useOnSaveOrgUnits = () => {
     const navigate = useNavigateWithSearchState()
 
     return useMemo(
-        () => async (values: OrganisationUnitFormValues) => {
+        () => async (values: Partial<OrgUnitFormValues>) => {
             const { dataSets, programs, ...restFields } = values
 
             const { data, error } = await createModel(restFields)
@@ -65,15 +65,17 @@ export const Component = () => {
         enabled: !!parentId,
     })
 
-    const initialValuesWithMaybeParent = useMemo(() => {
-        if (parentId && parentOrgUnit.data) {
-            return {
-                ...initialValues,
-                parent: { id: parentId, path: parentOrgUnit.data?.path },
+    const initialValuesWithMaybeParent: Partial<OrgUnitFormValues> =
+        useMemo(() => {
+            if (parentId && parentOrgUnit.data) {
+                return {
+                    ...initialValues,
+                    parent: { id: parentId, path: parentOrgUnit.data?.path },
+                }
             }
-        }
-        return initialValues
-    }, [parentId, parentOrgUnit.data])
+            return initialValues
+        }, [parentId, parentOrgUnit.data])
+
     return (
         <FormBase
             onSubmit={onSubmit}
