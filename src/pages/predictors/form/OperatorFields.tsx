@@ -1,8 +1,8 @@
 import i18n from '@dhis2/d2-i18n'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useField } from 'react-final-form'
 import { useHref } from 'react-router'
-import { EditableFieldWrapper, StandardFormField } from '../../../components'
+import { EditableInputWrapper, StandardFormField } from '../../../components'
 import {
     ModelSingleSelectFormField,
     useRefreshModelSingleSelect,
@@ -26,39 +26,47 @@ export const OperatorFields = () => {
     const { input: outputInput } = useField('output')
     const { input: outputComboInput } = useField('outputCombo')
 
+    const inputWrapper = useCallback(
+        (select: React.ReactElement) => (
+            <EditableInputWrapper
+                onRefresh={() => refreshDataElements()}
+                onAddNew={() => window.open(newDataElement, '_blank')}
+            >
+                {select}
+            </EditableInputWrapper>
+        ),
+        [refreshDataElements, newDataElement]
+    )
+
     return (
         <>
             <StandardFormField>
-                <EditableFieldWrapper
-                    onRefresh={() => refreshDataElements()}
-                    onAddNew={() => window.open(newDataElement, '_blank')}
-                >
-                    <ModelSingleSelectFormField
-                        inputWidth="400px"
-                        name="output"
-                        label={i18n.t('Output data element')}
-                        query={{
-                            resource: 'dataElements',
-                            params: {
-                                fields: 'id,displayName,categoryCombo[id,isDefault]',
-                                order: 'displayName:iasc',
-                            },
-                        }}
-                        clearable={false}
-                        required={true}
-                        dataTest="formfields-output"
-                        onChange={(val: OutputResponse | undefined) => {
-                            if (
-                                val?.categoryCombo?.id &&
-                                outputComboInput?.value?.categoryCombo?.id &&
-                                val?.categoryCombo?.id !==
-                                    outputComboInput?.value?.categoryCombo?.id
-                            ) {
-                                outputComboInput.onChange(undefined)
-                            }
-                        }}
-                    />
-                </EditableFieldWrapper>
+                <ModelSingleSelectFormField
+                    inputWidth="400px"
+                    name="output"
+                    label={i18n.t('Output data element')}
+                    query={{
+                        resource: 'dataElements',
+                        params: {
+                            fields: 'id,displayName,categoryCombo[id,isDefault]',
+                            order: 'displayName:iasc',
+                        },
+                    }}
+                    clearable={false}
+                    required={true}
+                    dataTest="formfields-output"
+                    onChange={(val: OutputResponse | undefined) => {
+                        if (
+                            val?.categoryCombo?.id &&
+                            outputComboInput?.value?.categoryCombo?.id &&
+                            val?.categoryCombo?.id !==
+                                outputComboInput?.value?.categoryCombo?.id
+                        ) {
+                            outputComboInput.onChange(undefined)
+                        }
+                    }}
+                    inputWrapper={inputWrapper}
+                />
             </StandardFormField>
             {outputInput?.value?.categoryCombo &&
                 !outputInput?.value?.categoryCombo?.isDefault && (

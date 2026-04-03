@@ -1,15 +1,14 @@
 import i18n from '@dhis2/d2-i18n'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useForm, useFormState } from 'react-final-form'
 import { useHref } from 'react-router'
-import { EditableFieldWrapper } from '../../../components'
+import { EditableInputWrapper } from '../../../components'
 import {
     ModelSingleSelectFormField,
     useRefreshModelSingleSelect,
 } from '../../../components/metadataFormControls/ModelSingleSelect'
 import { DEFAULT_CATEGORYCOMBO_SELECT_OPTION } from '../../../lib'
 import { DisplayableModel } from '../../../types/models'
-import classes from './CategoryComboField.module.css'
 
 const CATEGORY_COMBOS_QUERY = {
     resource: 'categoryCombos',
@@ -38,25 +37,29 @@ export function CategoryComboField() {
         }
     }, [change, domainTypeIsTracker])
 
+    const inputWrapper = useCallback(
+        (select: React.ReactElement) => (
+            <EditableInputWrapper
+                onRefresh={() => refresh()}
+                onAddNew={() => window.open(newCategoryComboLink, '_blank')}
+            >
+                {select}
+            </EditableInputWrapper>
+        ),
+        [refresh, newCategoryComboLink]
+    )
+
     return (
-        <EditableFieldWrapper
-            onRefresh={() => refresh()}
-            onAddNew={() => window.open(newCategoryComboLink, '_blank')}
-        >
-            <div className={classes.categoryComboSelect}>
-                <ModelSingleSelectFormField
-                    required
-                    name="categoryCombo"
-                    dataTest="formfields-categorycombo"
-                    label={i18n.t('Category combination')}
-                    helpText={i18n.t(
-                        'Choose how this data element is disaggregated.'
-                    )}
-                    disabled={disabled}
-                    query={CATEGORY_COMBOS_QUERY}
-                    transform={addDefaultCategoryComboTransform}
-                />
-            </div>
-        </EditableFieldWrapper>
+        <ModelSingleSelectFormField
+            required
+            name="categoryCombo"
+            dataTest="formfields-categorycombo"
+            label={i18n.t('Category combination')}
+            helpText={i18n.t('Choose how this data element is disaggregated.')}
+            disabled={disabled}
+            query={CATEGORY_COMBOS_QUERY}
+            transform={addDefaultCategoryComboTransform}
+            inputWrapper={inputWrapper}
+        />
     )
 }
