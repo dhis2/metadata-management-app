@@ -71,6 +71,7 @@ const OptionListNewOrEdit = () => {
                             : i18n.t('Edit option')}
                     </DrawerHeader>
                 }
+                disableFocusTrap={true}
             >
                 <EditOrNewOptionForm
                     onSubmitted={onSubmitted}

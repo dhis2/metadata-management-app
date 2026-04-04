@@ -12,6 +12,7 @@ export interface DrawerProps {
     onClose: () => void
     level?: 'primary' | 'secondary'
     header?: React.ReactNode | string
+    disableFocusTrap?: boolean
 }
 
 const DRAWER_PORTAL_ID = 'drawer-portal'
@@ -22,6 +23,7 @@ export const DrawerPanel: React.FC<DrawerProps> = ({
     onClose,
     level = 'primary',
     header,
+    disableFocusTrap = false,
 }) => {
     const globalShellEnabled =
         useSystemSettingsStore(
@@ -47,7 +49,11 @@ export const DrawerPanel: React.FC<DrawerProps> = ({
                 onClick={(e) => e.stopPropagation()}
             >
                 {isOpen && (
-                    <DrawerContents onClose={onClose} header={header}>
+                    <DrawerContents
+                        onClose={onClose}
+                        header={header}
+                        disableFocusTrap={disableFocusTrap}
+                    >
                         {children}
                     </DrawerContents>
                 )}
@@ -60,10 +66,12 @@ const DrawerContents = ({
     children,
     onClose,
     header,
+    disableFocusTrap,
 }: {
     children: React.ReactNode
     onClose: () => void
     header?: React.ReactNode | string
+    disableFocusTrap?: boolean
 }) => {
     useEffect(() => {
         const onKeyDown = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
@@ -76,7 +84,18 @@ const DrawerContents = ({
         ) : (
             header
         )
-    return (
+
+    const content = (
+        <div className={css.drawerContent}>
+            <span tabIndex={0}></span>
+            {headerNode}
+            <div className={css.drawerBody}>{children}</div>
+        </div>
+    )
+
+    return disableFocusTrap ? (
+        content
+    ) : (
         <FocusTrap
             focusTrapOptions={{
                 delayInitialFocus: true,
@@ -86,11 +105,7 @@ const DrawerContents = ({
                 },
             }}
         >
-            <div className={css.drawerContent}>
-                <span tabIndex={0}></span>
-                {headerNode}
-                <div className={css.drawerBody}>{children}</div>
-            </div>
+            {content}
         </FocusTrap>
     )
 }
