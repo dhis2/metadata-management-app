@@ -6,6 +6,7 @@ import {
     Section,
     getOverviewPath,
     getSectionPath,
+    routePaths,
     useIsSectionAuthorizedPredicate,
     useIsSectionFeatureToggle,
 } from '../../lib'
@@ -87,6 +88,13 @@ export const sidebarLinks = {
             getSectionLinkItem(SECTIONS_MAP.organisationUnitGroup),
             getSectionLinkItem(SECTIONS_MAP.organisationUnitGroupSet),
             getSectionLinkItem(SECTIONS_MAP.organisationUnitLevel),
+            {
+                label: i18n.t('Hierarchy operations'),
+                to: `${getSectionPath(SECTIONS_MAP.organisationUnit)}/${
+                    routePaths.move
+                }`,
+                section: SECTIONS_MAP.organisationUnit,
+            },
         ],
     },
     programs: {

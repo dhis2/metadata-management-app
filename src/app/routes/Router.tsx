@@ -77,7 +77,7 @@ function createOverviewLazyRouteFunction(
 
 function createSectionLazyRouteFunction(
     section: Section,
-    componentFileName: 'New' | 'Edit' | 'List' | 'Merge' | 'Duplicate'
+    componentFileName: 'New' | 'Edit' | 'List' | 'Merge' | 'Duplicate' | 'Move'
 ) {
     return async () => {
         try {
@@ -248,6 +248,22 @@ const schemaSectionRoutes = Object.values(SECTIONS_MAP).map((section) => (
                         }
                     />
                 </Route>
+            )}
+            {section === SECTIONS_MAP.organisationUnit && (
+                <Route
+                    path={routePaths.move}
+                    lazy={() => import('../../pages/organisationUnits/Move')}
+                    handle={
+                        {
+                            crumb: (matchInfo) => (
+                                <BreadcrumbItem
+                                    label={i18n.t('Move organisation units')}
+                                    to={matchInfo.pathname}
+                                />
+                            ),
+                        } satisfies RouteHandle
+                    }
+                />
             )}
             {
                 <Route

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-04-01T13:52:40.474Z\n"
-"PO-Revision-Date: 2026-04-01T13:52:40.474Z\n"
+"POT-Creation-Date: 2026-04-15T07:54:17.109Z\n"
+"PO-Revision-Date: 2026-04-15T07:54:17.109Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -39,14 +39,26 @@ msgstr "Not found"
 msgid "The page you are looking for does not exist."
 msgstr "The page you are looking for does not exist."
 
+msgid "Duplication not available yet."
+msgstr "Duplication not available yet."
+
+msgid "{{-sectionName}} cannot be duplicated."
+msgstr "{{-sectionName}} cannot be duplicated."
+
+msgid "Edit"
+msgstr "Edit"
+
 msgid "New {{modelName}}"
 msgstr "New {{modelName}}"
 
 msgid "Merge {{modelName}}"
 msgstr "Merge {{modelName}}"
 
-msgid "Edit {{modelName}}"
-msgstr "Edit {{modelName}}"
+msgid "Move organisation units"
+msgstr "Move organisation units"
+
+msgid "Duplicate {{modelName}}"
+msgstr "Duplicate {{modelName}}"
 
 msgid "Metadata Integrity Checks"
 msgstr "Metadata Integrity Checks"
@@ -65,6 +77,9 @@ msgstr "No menu items found for"
 
 msgid "Overview"
 msgstr "Overview"
+
+msgid "Hierarchy operations"
+msgstr "Hierarchy operations"
 
 msgid "Search menu items"
 msgstr "Search menu items"
@@ -466,9 +481,6 @@ msgstr "Custom form"
 msgid "Define a custom form for this {{customFormTarget}} by editing HTML below."
 msgstr "Define a custom form for this {{customFormTarget}} by editing HTML below."
 
-msgid "Edit"
-msgstr "Edit"
-
 msgid "Preview"
 msgstr "Preview"
 
@@ -568,6 +580,16 @@ msgstr "Show error details"
 
 msgid "Save and close"
 msgstr "Save and close"
+
+msgid "Duplicating {{duplicatedModelName}}"
+msgstr "Duplicating {{duplicatedModelName}}"
+
+msgid ""
+"All values from the original {{-sectionName}} are included. Values that "
+"must be unique need to be updated."
+msgstr ""
+"All values from the original {{-sectionName}} are included. Values that "
+"must be unique need to be updated."
 
 msgid ""
 "Translatable fields appear in the default language in this form, not in "
@@ -722,6 +744,12 @@ msgstr "undefined"
 
 msgid "Change to {{newValue}}"
 msgstr "Change to {{newValue}}"
+
+msgid "Failed to load data"
+msgstr "Failed to load data"
+
+msgid "Failed to load custom attributes"
+msgstr "Failed to load custom attributes"
 
 msgid "New section"
 msgstr "New section"
@@ -879,9 +907,6 @@ msgstr "An error occurred"
 
 msgid "An error occurred while loading the items."
 msgstr "An error occurred while loading the items."
-
-msgid "{{modelName}} management"
-msgstr "{{modelName}} management"
 
 msgid "Metadata access"
 msgstr "Metadata access"
@@ -1108,6 +1133,9 @@ msgstr "Confirm deletion"
 msgid "Show details"
 msgstr "Show details"
 
+msgid "Duplicate"
+msgstr "Duplicate"
+
 msgid "Sharing settings"
 msgstr "Sharing settings"
 
@@ -1179,6 +1207,9 @@ msgstr "{{number}} selected"
 
 msgid "Merge..."
 msgstr "Merge..."
+
+msgid "Move..."
+msgstr "Move..."
 
 msgid "Choose a Locale to translate from the menu above"
 msgstr "Choose a Locale to translate from the menu above"
@@ -1333,6 +1364,9 @@ msgstr "Validation rule groups"
 msgid "Validation notification"
 msgstr "Validation notification"
 
+msgid "Validation notifications"
+msgstr "Validation notifications"
+
 msgid "Constant"
 msgstr "Constant"
 
@@ -1414,11 +1448,26 @@ msgstr "Predictor group"
 msgid "Predictor groups"
 msgstr "Predictor groups"
 
+msgid "Categories overview"
+msgstr "Categories overview"
+
+msgid "Data elements overview"
+msgstr "Data elements overview"
+
+msgid "Data sets overview"
+msgstr "Data sets overview"
+
 msgid "Indicators and Predictors"
 msgstr "Indicators and Predictors"
 
-msgid "Programs and Tracker"
-msgstr "Programs and Tracker"
+msgid "Organisation units overview"
+msgstr "Organisation units overview"
+
+msgid "Programs overview"
+msgstr "Programs overview"
+
+msgid "Option sets overview"
+msgstr "Option sets overview"
 
 msgid "Validation"
 msgstr "Validation"
@@ -1446,6 +1495,9 @@ msgstr "Program disaggregations"
 
 msgid "You do not have access to edit this item."
 msgstr "You do not have access to edit this item."
+
+msgid "You do not have access to duplicate this item."
+msgstr "You do not have access to duplicate this item."
 
 msgid "You do not have access to delete this item."
 msgstr "You do not have access to delete this item."
@@ -3577,6 +3629,9 @@ msgstr "Save option"
 msgid "Saving an option does not save other changes to the option set"
 msgstr "Saving an option does not save other changes to the option set"
 
+msgid "Code is already in use"
+msgstr "Code is already in use"
+
 msgid "Option created"
 msgstr "Option created"
 
@@ -3675,6 +3730,18 @@ msgstr "Choose the organisation units to include in this group."
 
 msgid "Error saving organisation unit levels"
 msgstr "Error saving organisation unit levels"
+
+msgid ""
+"Select the organisation units you want to move on the left, and choose the "
+"new parent on the right. The moved units and all their descendants will be "
+"relocated in the hierarchy."
+msgstr ""
+"Select the organisation units you want to move on the left, and choose the "
+"new parent on the right. The moved units and all their descendants will be "
+"relocated in the hierarchy."
+
+msgid "Move"
+msgstr "Move"
 
 msgid "Longitude"
 msgstr "Longitude"
@@ -3796,6 +3863,18 @@ msgstr "No organisation units available"
 
 msgid "Load more for {{orgUnitName}}"
 msgstr "Load more for {{orgUnitName}}"
+
+msgid "Organisation units to move (source)"
+msgstr "Organisation units to move (source)"
+
+msgid "Move into (target)"
+msgstr "Move into (target)"
+
+msgid "Summary"
+msgstr "Summary"
+
+msgid "Select one or more organisation units on the left to move."
+msgstr "Select one or more organisation units on the left to move."
 
 msgid "Metadata management"
 msgstr "Metadata management"
@@ -4662,6 +4741,9 @@ msgstr "Action will be deleted when the program rule is saved."
 msgid "Undo delete"
 msgstr "Undo delete"
 
+msgid "Priority: {{priority}}"
+msgstr "Priority: {{priority}}"
+
 msgid "Program rule must be saved before actions can be added"
 msgstr "Program rule must be saved before actions can be added"
 
@@ -5083,17 +5165,17 @@ msgstr "Only integers are allowed"
 msgid "Program Settings"
 msgstr "Program Settings"
 
-msgid "Set up advanced options for this program."
-msgstr "Set up advanced options for this program."
+msgid "Set up how data is collected for events in this program."
+msgstr "Set up how data is collected for events in this program."
 
-msgid "Allow user assignment of events"
-msgstr "Allow user assignment of events"
+msgid "Allow events to be assigned to users"
+msgstr "Allow events to be assigned to users"
 
-msgid "Block entry form after completed"
-msgstr "Block entry form after completed"
+msgid "Block data entry after completion"
+msgstr "Block data entry after completion"
 
-msgid "Pre-generate event UID"
-msgstr "Pre-generate event UID"
+msgid "Generate offline event IDs"
+msgstr "Generate offline event IDs"
 
 msgid "Related program"
 msgstr "Related program"
@@ -5106,9 +5188,6 @@ msgstr "Lock events a number of days after completion"
 
 msgid "Close data entry a number of days after event category combination end date"
 msgstr "Close data entry a number of days after event category combination end date"
-
-msgid "Settings"
-msgstr "Settings"
 
 msgid "Validation strategy"
 msgstr "Validation strategy"
@@ -5198,23 +5277,8 @@ msgstr "Recipient program attribute"
 msgid "Recipient data element"
 msgstr "Recipient data element"
 
-msgid "Event repetition"
-msgstr "Event repetition"
-
-msgid "Define the frequency of events within this stage."
-msgstr "Define the frequency of events within this stage."
-
-msgid "Event scheduling"
-msgstr "Event scheduling"
-
-msgid "Configure how and when events in this stage are scheduled."
-msgstr "Configure how and when events in this stage are scheduled."
-
-msgid "Completion options"
-msgstr "Completion options"
-
-msgid "Decide what should happen after a user completes this event."
-msgstr "Decide what should happen after a user completes this event."
+msgid "Set up automatic event creation and scheduling in this program stage."
+msgstr "Set up automatic event creation and scheduling in this program stage."
 
 msgid "Configure data collection for events in this program stage."
 msgstr "Configure data collection for events in this program stage."
@@ -5273,17 +5337,20 @@ msgstr "A stage with this name already exists. Please choose another name."
 msgid "Configure the basic information for this program stage."
 msgstr "Configure the basic information for this program stage."
 
-msgid "Configuration options"
-msgstr "Configuration options"
+msgid "Data entry options"
+msgstr "Data entry options"
 
-msgid "Set up more advanced options for this program stage."
-msgstr "Set up more advanced options for this program stage."
+msgid "Set up how data is collected for events in this program stage."
+msgstr "Set up how data is collected for events in this program stage."
 
-msgid "Custom terminology"
-msgstr "Custom terminology"
+msgid "Completion options"
+msgstr "Completion options"
 
-msgid "Customise the wording of labels for this stage."
-msgstr "Customise the wording of labels for this stage."
+msgid "Decide what should happen after a user completes this event."
+msgstr "Decide what should happen after a user completes this event."
+
+msgid "Override default labels with program stage-specific terms."
+msgstr "Override default labels with program stage-specific terms."
 
 msgid "Custom label for report date"
 msgstr "Custom label for report date"
@@ -5296,9 +5363,6 @@ msgstr "Custom label for program stage"
 
 msgid "Custom label for event"
 msgstr "Custom label for event"
-
-msgid "Program stage form"
-msgstr "Program stage form"
 
 msgid "Configure the form for data collection for events in this program stage."
 msgstr "Configure the form for data collection for events in this program stage."
@@ -5323,44 +5387,72 @@ msgstr ""
 msgid "Edit or rearrange the data elements"
 msgstr "Edit or rearrange the data elements"
 
-msgid "On event completion, show a prompt to create a new event"
-msgstr "On event completion, show a prompt to create a new event"
+msgid "Ask user to create a new event after completion"
+msgstr "Ask user to create a new event after completion"
 
-msgid "Auto-generate an event in this stage"
-msgstr "Auto-generate an event in this stage"
+msgid "Create an event in this stage on enrollment"
+msgstr "Create an event in this stage on enrollment"
 
-msgid "Generate events based on enrollment date"
-msgstr "Generate events based on enrollment date"
+msgid "Reference date for scheduling"
+msgstr "Reference date for scheduling"
 
-msgid "Show scheduled date"
-msgstr "Show scheduled date"
+msgid "Hide scheduled date"
+msgstr "Hide scheduled date"
 
-msgid "Scheduled days from start (required)"
-msgstr "Scheduled days from start (required)"
+msgid ""
+"Android Capture will disable all scheduling. Web Capture will allow manual "
+"scheduling, but scheduled dates will not be editable."
+msgstr ""
+"Android Capture will disable all scheduling. Web Capture will allow manual "
+"scheduling, but scheduled dates will not be editable."
 
-msgid "Days to add to the enrollment or incident date. 0 means same day. "
-msgstr "Days to add to the enrollment or incident date. 0 means same day. "
+msgid "Scheduled days from reference date"
+msgstr "Scheduled days from reference date"
+
+msgid ""
+"Days to add to the enrollment or incident date when scheduling events. 0 "
+"means same day. "
+msgstr ""
+"Days to add to the enrollment or incident date when scheduling events. 0 "
+"means same day. "
 
 msgid "Default next scheduled date"
 msgstr "Default next scheduled date"
 
+msgid ""
+"If set, this date sets the next scheduled date. Standard interval days is "
+"used if the date is empty."
+msgstr ""
+"If set, this date sets the next scheduled date. Standard interval days is "
+"used if the date is empty."
+
 msgid "Open data entry form after enrollment"
 msgstr "Open data entry form after enrollment"
 
-msgid "On event completion, ask user to complete enrollment"
-msgstr "On event completion, ask user to complete enrollment"
+msgid ""
+"If set, only one event per period is allowed. Report date will be a period "
+"instead of a date. Not supported by web Capture."
+msgstr ""
+"If set, only one event per period is allowed. Report date will be a period "
+"instead of a date. Not supported by web Capture."
 
-msgid "Allow multiple events in this stage (repeatable stage)"
-msgstr "Allow multiple events in this stage (repeatable stage)"
+msgid "Ask user to complete enrollment after completion"
+msgstr "Ask user to complete enrollment after completion"
 
-msgid "Report date to use"
-msgstr "Report date to use"
+msgid "Allow multiple events in this stage"
+msgstr "Allow multiple events in this stage"
+
+msgid "None (report date will be empty)"
+msgstr "None (report date will be empty)"
+
+msgid "Date to use for created event report date"
+msgstr "Date to use for created event report date"
 
 msgid "Standard interval days"
 msgstr "Standard interval days"
 
-msgid "Enter the number of days between repeated events."
-msgstr "Enter the number of days between repeated events."
+msgid "The number of days between repeated events."
+msgstr "The number of days between repeated events."
 
 msgid "Stage section"
 msgstr "Stage section"
@@ -5392,26 +5484,11 @@ msgstr "Desktop display"
 msgid "Mobile display"
 msgstr "Mobile display"
 
-msgid "Stage: Setup"
-msgstr "Stage: Setup"
+msgid "Creation and scheduling"
+msgstr "Creation and scheduling"
 
-msgid "Stage: Configuration"
-msgstr "Stage: Configuration"
-
-msgid "Stage: Terminology"
-msgstr "Stage: Terminology"
-
-msgid "Stage: Creation and Scheduling"
-msgstr "Stage: Creation and Scheduling"
-
-msgid "Scheduled days from start"
-msgstr "Scheduled days from start"
-
-msgid "Stage: Data"
-msgstr "Stage: Data"
-
-msgid "Stage: Form"
-msgstr "Stage: Form"
+msgid "Program stage form"
+msgstr "Program stage form"
 
 msgid "Section tracked entity attributes"
 msgstr "Section tracked entity attributes"
@@ -5672,16 +5749,6 @@ msgid ""
 msgstr ""
 "Searches using these operators return no results. Use this to prevent "
 "inefficient searches."
-
-msgid "Confidential"
-msgstr "Confidential"
-
-msgid ""
-"Prevent searching or viewing in analytics. Available only when system "
-"encryption is enabled."
-msgstr ""
-"Prevent searching or viewing in analytics. Available only when system "
-"encryption is enabled."
 
 msgid "Inherit values from tracked entities linked by a relationship"
 msgstr "Inherit values from tracked entities linked by a relationship"

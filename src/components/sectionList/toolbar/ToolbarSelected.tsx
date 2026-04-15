@@ -30,6 +30,7 @@ export const ToolbarSelected = ({
     )
     const sharable = maybeSchema?.shareable
     const mergeable = useCanMergeModelInCurrentSection()
+    const isOrgUnitSection = section?.name === 'organisationUnit'
     const handleClose = () => setSharingDialogOpen(false)
     const searchStateWithSelectedModels = useLocationState({
         selectedModels,
@@ -55,6 +56,15 @@ export const ToolbarSelected = ({
                     state={searchStateWithSelectedModels}
                 >
                     {i18n.t('Merge...')}
+                </LinkButton>
+            )}
+            {isOrgUnitSection && (
+                <LinkButton
+                    small
+                    to={'move'}
+                    state={searchStateWithSelectedModels}
+                >
+                    {i18n.t('Move...')}
                 </LinkButton>
             )}
             {downloadButtonElement}

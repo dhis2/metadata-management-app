@@ -1,0 +1,75 @@
+.moveForm {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacers-dp16);
+    gap: var(--spacers-dp16);
+    box-shadow: var(--elevations-e100);
+    border-radius: 3px;
+    background-color: var(--colors-white);
+}
+
+.title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--colors-grey800);
+}
+
+.description {
+    line-height: 19px;
+    color: var(--colors-grey800);
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacers-dp8);
+    margin: 0;
+}
+
+.description p {
+    margin: 0;
+}
+
+.sourceTargetWrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    max-width: 1200px;
+    gap: var(--spacers-dp8);
+    background-color: var(--colors-grey100);
+    border-radius: 3px;
+    padding: var(--spacers-dp12) var(--spacers-dp16);
+    align-items: flex-start;
+}
+
+.sourceTargetWrapper > svg {
+    align-self: center;
+    color: var(--colors-grey700);
+}
+
+.treeWrapper {
+    min-height: 400px;
+    max-height: 60vh;
+    overflow-y: auto;
+    border: 1px solid var(--colors-grey300);
+    background-color: var(--colors-white);
+    padding: var(--spacers-dp8);
+    border-radius: 3px;
+    resize: vertical;
+}
+
+.treeField {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacers-dp8);
+    min-width: 0;
+}
+
+.treeFieldLabel {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--colors-grey900);
+}
+
+.summary {
+    margin: var(--spacers-dp8) 0;
+    max-width: 960px;
+}
