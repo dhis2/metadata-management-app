@@ -126,6 +126,7 @@ const ProgramStageListNewOrEdit = () => {
                             : i18n.t('Edit stage')}
                     </DrawerHeader>
                 }
+                disableFocusTrap={true}
             >
                 {stageFormOpen !== undefined && (
                     <EditOrNewStageForm
