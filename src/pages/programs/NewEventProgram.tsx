@@ -45,14 +45,16 @@ const useOnSubmitEventProgram = (): EnhancedOnSubmit<ProgramValues> => {
             if (programResponse.error) {
                 return createFormError(programResponse.error)
             }
+            const newProgramId = (
+                programResponse.data as { response: { uid: string } }
+            )?.response.uid
 
             const stage = {
                 ...programStages[0],
                 program: {
-                    id: (programResponse.data as { response: { uid: string } })
-                        ?.response.uid,
+                    id: newProgramId,
                 },
-                name: programValues.name,
+                name: `${programValues.name}_${newProgramId}`,
             }
 
             const programStageResponse = await createProgramStage(stage)
