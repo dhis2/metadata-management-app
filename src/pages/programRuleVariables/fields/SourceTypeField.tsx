@@ -64,7 +64,7 @@ export function SourceTypeField({
 
     return (
         <FieldGroup
-            label={i18n.t('Source type (required)')}
+            label={i18n.t('Source type')}
             required
             error={!!error}
             validationText={error ? meta.error : undefined}

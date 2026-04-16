@@ -1,8 +1,8 @@
-import i18n from '@dhis2/d2-i18n'
 import { Box, Field as UIField } from '@dhis2/ui'
 import { useQuery } from '@tanstack/react-query'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Field, useForm, useFormState } from 'react-final-form'
+import { useDebouncedCallback } from 'use-debounce'
 import { BaseModelSingleSelect } from '../../../components/metadataFormControls/ModelSingleSelect/BaseModelSingleSelect'
 import { useBoundResourceQueryFn, useClearFormFields } from '../../../lib'
 
@@ -31,6 +31,7 @@ export function DataElementWithOptionSetField({
     label: string
 }>) {
     const form = useForm()
+    const [filter, setFilter] = useState<string | undefined>(undefined)
     const clearDependentFields = useClearFormFields(
         form,
         'trackedEntityAttribute',
@@ -65,11 +66,23 @@ export function DataElementWithOptionSetField({
                     ) ?? []
             ) ?? []
         const withOptionSet = list.filter((de) => de.optionSet?.id)
-        return [...new Map(withOptionSet.map((de) => [de.id, de])).values()]
-    }, [data])
+        const allOptions = [
+            ...new Map(withOptionSet.map((de) => [de.id, de])).values(),
+        ]
+        return filter
+            ? allOptions.filter((o) =>
+                  o.displayName?.toLowerCase().includes(filter.toLowerCase())
+              )
+            : allOptions
+    }, [data, filter])
 
     const formValues = values as { trackedEntityAttribute?: { id: string } }
     const disabled = !!formValues.trackedEntityAttribute?.id
+    const handleFilterChange = useDebouncedCallback(({ value }) => {
+        if (value != undefined) {
+            setFilter(value)
+        }
+    }, 250)
 
     return (
         <Field
@@ -99,16 +112,13 @@ export function DataElementWithOptionSetField({
                                 input.onChange(value)
                                 input.onBlur()
                             }}
-                            showNoValueOption={{
-                                value: '',
-                                label: i18n.t('<No value>'),
-                            }}
+                            clearable
                             disabled={disabled}
                             invalid={meta.touched && !!meta.error}
                             onRetryClick={queryResult.refetch}
                             showEndLoader={false}
                             loading={queryResult.isLoading}
-                            searchable={false}
+                            onFilterChange={handleFilterChange}
                         />
                     </Box>
                 </UIField>

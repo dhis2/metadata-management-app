@@ -116,7 +116,7 @@ export const ProgramRuleVariableFormFields = () => {
                         inputWidth={FIELD_WIDTH}
                         dataTest="program-field"
                         name="program"
-                        label={i18n.t('Program (required)')}
+                        label={i18n.t('Program')}
                         query={{
                             resource: 'programs',
                             params: {

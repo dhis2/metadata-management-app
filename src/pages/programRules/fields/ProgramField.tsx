@@ -22,7 +22,7 @@ export function ProgramField({ disabled = false }: ProgramFieldProps) {
             inputWidth="400px"
             dataTest="program-field"
             name="program"
-            label={i18n.t('Program (required)')}
+            label={i18n.t('Program')}
             query={PROGRAM_QUERY}
             disabled={disabled}
         />
@@ -32,7 +32,7 @@ export function ProgramField({ disabled = false }: ProgramFieldProps) {
             inputWidth="400px"
             dataTest="program-field"
             name="program"
-            label={i18n.t('Program (required)')}
+            label={i18n.t('Program')}
             query={PROGRAM_QUERY}
             disabled={disabled}
             refreshResource="programs"

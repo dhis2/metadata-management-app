@@ -70,7 +70,7 @@ export function DateField({
                 format={'YYYY-MM-DD'}
                 onBlur={(_, e) => input.onBlur(e)}
                 clearable
-                label={required ? `${label} (required)` : label}
+                label={label}
                 {...validation}
                 valid={validation?.valid && input?.value !== ''}
                 {...calendarInputProps}

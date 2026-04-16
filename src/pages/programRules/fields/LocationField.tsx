@@ -27,7 +27,7 @@ export function LocationField({ required }: Readonly<{ required?: boolean }>) {
 
                 return (
                     <UIField
-                        label={i18n.t('Display widget (required)')}
+                        label={i18n.t('Display widget')}
                         required={required}
                         error={meta.invalid}
                         validationText={

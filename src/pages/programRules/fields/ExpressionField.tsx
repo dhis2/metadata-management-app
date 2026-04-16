@@ -35,9 +35,7 @@ export function ExpressionField({
             <Box width="800px" minWidth="100px">
                 <PaddedContainer
                     title={
-                        required
-                            ? i18n.t('Expression (required) *')
-                            : i18n.t('Expression')
+                        required ? i18n.t('Expression *') : i18n.t('Expression')
                     }
                 >
                     <ExpressionBuilderEntry

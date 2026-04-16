@@ -1,8 +1,8 @@
-import i18n from '@dhis2/d2-i18n'
 import { Box, Field as UIField } from '@dhis2/ui'
 import { useQuery } from '@tanstack/react-query'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Field, useFormState } from 'react-final-form'
+import { useDebouncedCallback } from 'use-debounce'
 import { BaseModelSingleSelect } from '../../../components/metadataFormControls/ModelSingleSelect/BaseModelSingleSelect'
 import { useBoundResourceQueryFn } from '../../../lib'
 
@@ -31,6 +31,8 @@ export function TrackedEntityAttributeField({
     disableIfOtherFieldSet?: string
 }>) {
     const { values } = useFormState({ subscription: { values: true } })
+    const [filter, setFilter] = useState<string | undefined>(undefined)
+
     const queryFn = useBoundResourceQueryFn()
 
     const query = useMemo(() => PROGRAM_TEAS_QUERY(programId), [programId])
@@ -44,13 +46,23 @@ export function TrackedEntityAttributeField({
     })
     const { data } = queryResult
 
-    const available = useMemo(
-        () =>
+    const available = useMemo(() => {
+        const allOptions =
             data?.programTrackedEntityAttributes?.map(
                 (pta) => pta.trackedEntityAttribute
-            ) ?? [],
-        [data]
-    )
+            ) ?? []
+        return filter
+            ? allOptions.filter((o) =>
+                  o.displayName?.toLowerCase().includes(filter.toLowerCase())
+              )
+            : allOptions
+    }, [data, filter])
+
+    const handleFilterChange = useDebouncedCallback(({ value }) => {
+        if (value != undefined) {
+            setFilter(value)
+        }
+    }, 250)
 
     const formValues = values as Record<string, { id?: string } | undefined>
     const disabled = disableIfOtherFieldSet
@@ -65,14 +77,7 @@ export function TrackedEntityAttributeField({
         >
             {({ input, meta }) => (
                 <UIField
-                    label={
-                        required
-                            ? i18n.t('{{label}} (required)', {
-                                  label,
-                                  nsSeparator: '~:~',
-                              })
-                            : label
-                    }
+                    label={label}
                     required={required}
                     disabled={disabled}
                     error={meta.invalid}
@@ -88,16 +93,13 @@ export function TrackedEntityAttributeField({
                                 input.onChange(value)
                                 input.onBlur()
                             }}
-                            showNoValueOption={{
-                                value: '',
-                                label: i18n.t('<No value>'),
-                            }}
                             disabled={disabled}
                             invalid={meta.touched && !!meta.error}
                             onRetryClick={queryResult.refetch}
                             showEndLoader={false}
                             loading={queryResult.isLoading}
-                            searchable={false}
+                            clearable={!required}
+                            onFilterChange={handleFilterChange}
                         />
                     </Box>
                 </UIField>

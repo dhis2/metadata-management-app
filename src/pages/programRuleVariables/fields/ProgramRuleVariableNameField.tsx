@@ -158,9 +158,7 @@ export function ProgramRuleVariableNameField() {
                     dataTest="formfields-name"
                     required
                     inputWidth="400px"
-                    label={i18n.t('{{fieldLabel}} (required)', {
-                        fieldLabel: i18n.t('Name'),
-                    })}
+                    label={i18n.t('Name')}
                     helpText={i18n.t(
                         'Variable name cannot contain the words: and, or, not.'
                     )}

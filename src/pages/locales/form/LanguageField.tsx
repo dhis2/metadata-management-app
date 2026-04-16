@@ -64,7 +64,7 @@ export function LanguageField() {
         <Field
             name="language"
             dataTest="formfields-language"
-            label={i18n.t('Language (required)')}
+            label={i18n.t('Language')}
             required
             error={touched && !!error}
             validationText={(touched && error?.toString()) || ''}

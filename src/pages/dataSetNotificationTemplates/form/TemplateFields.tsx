@@ -66,9 +66,7 @@ export function MessageTemplateField({
             component={TextAreaFieldFF}
             dataTest="formfields-message-template"
             required
-            label={i18n.t('{{fieldLabel}} (required)', {
-                fieldLabel: i18n.t('Message'),
-            })}
+            label={i18n.t('Message')}
             inputWidth="400px"
             name="messageTemplate"
             helpText={helpString}

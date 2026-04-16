@@ -27,10 +27,7 @@ export function ProgramStageField() {
                     paging: false,
                 },
             }}
-            showNoValueOption={{
-                value: '',
-                label: i18n.t('<No value>'),
-            }}
+            clearable
             helpText={i18n.t(
                 'Select a specific program stage that the rule should only trigger on.'
             )}

@@ -85,14 +85,14 @@ export const PredictorFormFields = () => {
                 <StandardFormField>
                     <NumberField
                         fieldName="sequentialSampleCount"
-                        label={i18n.t('Sequential sample count (required)')}
+                        label={i18n.t('Sequential sample count')}
                         required={true}
                     />
                 </StandardFormField>
                 <StandardFormField>
                     <NumberField
                         fieldName="annualSampleCount"
-                        label={i18n.t('Annual sample count (required)')}
+                        label={i18n.t('Annual sample count')}
                         required={true}
                     />
                 </StandardFormField>

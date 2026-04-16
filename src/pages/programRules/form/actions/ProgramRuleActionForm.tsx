@@ -36,8 +36,8 @@ import { ACTION_FIELDS_TO_CLEAR, ACTION_TYPE_OPTIONS } from './constants'
 import styles from './ProgramRuleActionForm.module.css'
 import { toProgramRuleActionApiPayload } from './transformers'
 import type {
-    ProgramRuleActionListItem,
     ProgramRuleActionFormValues,
+    ProgramRuleActionListItem,
 } from './types'
 import { validateProgramRuleAction } from './validation'
 
@@ -332,14 +332,16 @@ function ProgramRuleActionFormBody({
                     <Field name="programRuleActionType">
                         {({ input, meta }) => (
                             <Box width="400px" minWidth="100px">
-                                <SingleSelectFieldFF
-                                    input={input}
-                                    meta={meta}
-                                    label={i18n.t('Action type (required)')}
-                                    options={filteredActionTypeOptions}
-                                    required
-                                    filterable
-                                />
+                                <span id="single-select-search-input">
+                                    <SingleSelectFieldFF
+                                        input={input}
+                                        meta={meta}
+                                        label={i18n.t('Action type')}
+                                        options={filteredActionTypeOptions}
+                                        required
+                                        filterable
+                                    />
+                                </span>
                             </Box>
                         )}
                     </Field>

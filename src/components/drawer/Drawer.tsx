@@ -101,7 +101,10 @@ const DrawerContents = ({
                 delayInitialFocus: true,
                 allowOutsideClick: true,
                 clickOutsideDeactivates: () => {
-                    return !!document.getElementById('expression-builder-modal')
+                    return (
+                        !!document.getElementById('expression-builder-modal') ||
+                        !!document.getElementById('single-select-search-input')
+                    )
                 },
             }}
         >

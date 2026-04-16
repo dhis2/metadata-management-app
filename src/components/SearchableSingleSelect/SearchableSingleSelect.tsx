@@ -153,7 +153,10 @@ export const SearchableSingleSelect = ({
         >
             {searchable && (
                 <div className={classes.searchField}>
-                    <div className={classes.searchInput}>
+                    <div
+                        className={classes.searchInput}
+                        id="single-select-search-input"
+                    >
                         <Input
                             dense
                             initialFocus
