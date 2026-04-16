@@ -29,6 +29,13 @@
     padding-block-end: var(--spacers-dp8);
 }
 
+.orgUnitRow td:first-child {
+    padding-left: var(--spacers-dp4);
+}
+
+.selectionCell {
+    padding-inline-end: 0 !important;
+}
 .orgUnitRow.clickable:hover td:nth-child(2) span {
     text-decoration: underline;
 }

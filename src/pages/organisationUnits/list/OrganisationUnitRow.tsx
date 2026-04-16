@@ -58,10 +58,10 @@ export const OrganisationUnitRow = ({
                 })}
                 key={row.id}
             >
-                <DataTableCell>
+                <DataTableCell className={css.selectionCell}>
                     <span
                         style={{
-                            paddingLeft: `${row.depth * 2}rem`,
+                            paddingInlineStart: `${row.depth * 1}rem`,
                             display: 'flex',
                         }}
                     >
@@ -92,6 +92,7 @@ export const OrganisationUnitRow = ({
                             <span style={{ width: 26 }} />
                         )}
                         <Checkbox
+                            dense
                             checked={row.getIsSelected()}
                             onChange={({ checked }) =>
                                 row.toggleSelected(checked)
