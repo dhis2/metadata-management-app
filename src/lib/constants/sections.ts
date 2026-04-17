@@ -110,6 +110,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Indicator'),
         titlePlural: i18n.t('Indicators'),
         parentSectionKey: 'indicator',
+        duplicable: true,
     },
     indicatorType: {
         name: SchemaName.indicatorType,
@@ -117,6 +118,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Indicator type'),
         titlePlural: i18n.t('Indicator types'),
         parentSectionKey: 'indicator',
+        duplicable: true,
     },
     indicatorGroup: {
         name: SchemaName.indicatorGroup,
@@ -124,6 +126,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Indicator group'),
         titlePlural: i18n.t('Indicator groups'),
         parentSectionKey: 'indicator',
+        duplicable: true,
     },
     indicatorGroupSet: {
         name: SchemaName.indicatorGroupSet,
@@ -131,6 +134,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Indicator group set'),
         titlePlural: i18n.t('Indicator group sets'),
         parentSectionKey: 'indicator',
+        duplicable: true,
     },
     organisationUnit: {
         name: SchemaName.organisationUnit,
@@ -188,6 +192,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Program indicator'),
         titlePlural: i18n.t('Program indicators'),
         parentSectionKey: 'indicator',
+        duplicable: true,
     },
     programIndicatorGroup: {
         name: SchemaName.programIndicatorGroup,
@@ -195,6 +200,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Program indicator group'),
         titlePlural: i18n.t('Program indicator groups'),
         parentSectionKey: 'indicator',
+        duplicable: true,
     },
     programRule: {
         name: SchemaName.programRule,
@@ -287,6 +293,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Predictor'),
         titlePlural: i18n.t('Predictors'),
         parentSectionKey: 'indicator',
+        duplicable: true,
     },
     pushAnalysis: {
         name: SchemaName.pushAnalysis,
@@ -351,6 +358,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Predictor group'),
         titlePlural: i18n.t('Predictor groups'),
         parentSectionKey: 'indicator',
+        duplicable: true,
     },
 } as const satisfies SchemaSectionMap
 
