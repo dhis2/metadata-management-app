@@ -3484,6 +3484,66 @@ msgstr "No indicators available. Remove one from source."
 msgid "What should happen to the source indicators after the merge is complete?"
 msgstr "What should happen to the source indicators after the merge is complete?"
 
+msgid "Set up the basic information for this legend."
+msgstr "Set up the basic information for this legend."
+
+msgid "Legend items"
+msgstr "Legend items"
+
+msgid "Create legend items to define value ranges and associated colors."
+msgstr "Create legend items to define value ranges and associated colors."
+
+msgid "End value must be greater than start value"
+msgstr "End value must be greater than start value"
+
+msgid "Legend items must not overlap"
+msgstr "Legend items must not overlap"
+
+msgid "Legend items must not have gaps"
+msgstr "Legend items must not have gaps"
+
+msgid "Name is required"
+msgstr "Name is required"
+
+msgid "Must be greater than start value"
+msgstr "Must be greater than start value"
+
+msgid "Add legend item"
+msgstr "Add legend item"
+
+msgid "Edit legend item"
+msgstr "Edit legend item"
+
+msgid "Start value"
+msgstr "Start value"
+
+msgid "End value"
+msgstr "End value"
+
+msgid "Add"
+msgstr "Add"
+
+msgid "Number of legend items"
+msgstr "Number of legend items"
+
+msgid "Color scale"
+msgstr "Color scale"
+
+msgid "Create legend items"
+msgstr "Create legend items"
+
+msgid "Replace existing items?"
+msgstr "Replace existing items?"
+
+msgid "This will replace all existing legend items."
+msgstr "This will replace all existing legend items."
+
+msgid "Proceed"
+msgstr "Proceed"
+
+msgid "No legend items yet. Add items manually or use the generator above."
+msgstr "No legend items yet. Add items manually or use the generator above."
+
 msgid "Exit without saving"
 msgstr "Exit without saving"
 
@@ -5638,9 +5698,6 @@ msgstr "Initiating side constraint"
 msgid "Receiving side constraint"
 msgstr "Receiving side constraint"
 
-msgid "Name is required"
-msgstr "Name is required"
-
 msgid "Relationship name seen from initiating entity is required"
 msgstr "Relationship name seen from initiating entity is required"
 
@@ -5672,16 +5729,6 @@ msgid ""
 msgstr ""
 "Searches using these operators return no results. Use this to prevent "
 "inefficient searches."
-
-msgid "Confidential"
-msgstr "Confidential"
-
-msgid ""
-"Prevent searching or viewing in analytics. Available only when system "
-"encryption is enabled."
-msgstr ""
-"Prevent searching or viewing in analytics. Available only when system "
-"encryption is enabled."
 
 msgid "Inherit values from tracked entities linked by a relationship"
 msgstr "Inherit values from tracked entities linked by a relationship"
