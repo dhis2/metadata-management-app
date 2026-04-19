@@ -32,7 +32,7 @@ export const OrganisationUnitLevelsField = () => {
                     resource: 'organisationUnitLevels',
                     params: {
                         fields: ['displayName', 'level'],
-                        order: ['displayName'],
+                        order: ['level'],
                     },
                 }}
                 transform={(values) =>
