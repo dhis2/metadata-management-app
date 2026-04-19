@@ -1,7 +1,12 @@
 import { z } from 'zod'
-import { modelFormSchemas } from '../../../lib'
+import {
+    getDefaultsOld,
+    createFormValidate,
+    modelFormSchemas,
+} from '../../../lib'
 
-const { withDefaultListColumns, withAttributeValues } = modelFormSchemas
+const { identifiable, withDefaultListColumns, withAttributeValues } =
+    modelFormSchemas
 
 const dataApprovalWorkflowBaseSchema = z.object({
     name: z.string().trim(),
@@ -27,6 +32,17 @@ const dataApprovalWorkflowBaseSchema = z.object({
         .default([]),
 })
 
+export const dataApprovalWorkflowFormSchema = identifiable
+    .merge(dataApprovalWorkflowBaseSchema)
+    .extend({
+        periodType: z.string().trim(),
+        categoryCombo: z.object({ id: z.string() }),
+    })
+
 export const dataApprovalWorkflowListSchema = dataApprovalWorkflowBaseSchema
     .merge(withDefaultListColumns)
     .merge(withAttributeValues)
+
+export const initialValues = getDefaultsOld(dataApprovalWorkflowFormSchema)
+
+export const validate = createFormValidate(dataApprovalWorkflowFormSchema)

@@ -1,4 +1,4 @@
-import { Field } from '@dhis2/ui'
+import { Box, Field } from '@dhis2/ui'
 import React from 'react'
 import { FieldRenderProps, useField } from 'react-final-form'
 import { PlainResourceQuery } from '../../../types'
@@ -24,6 +24,7 @@ type OwnProps<TModel extends DisplayableModel> = {
     helpText?: string
     required?: boolean
     onChange?: ModelMultiSelectProps<TModel>['onChange']
+    inputWidth?: string
 }
 
 export type ModelMultiSelectFieldProps<TModel extends DisplayableModel> = Omit<
@@ -42,6 +43,7 @@ export function ModelMultiSelectField<TModel extends DisplayableModel>({
     input,
     meta,
     dataTest,
+    inputWidth,
     ...modelSingleSelectProps
 }: ModelMultiSelectFieldProps<TModel> & RelevantRenderProps<TModel>) {
     return (
@@ -54,16 +56,18 @@ export function ModelMultiSelectField<TModel extends DisplayableModel>({
             helpText={helpText}
             required={required}
         >
-            <ModelMultiSelect<TModel>
-                {...modelSingleSelectProps}
-                selected={input.value}
-                onChange={(payload) => {
-                    input.onChange(payload.selected)
-                    input.onBlur()
-                    onChange?.(payload)
-                }}
-                query={query}
-            />
+            <Box width={inputWidth} minWidth={inputWidth && '100px'}>
+                <ModelMultiSelect<TModel>
+                    {...modelSingleSelectProps}
+                    selected={input.value}
+                    onChange={(payload) => {
+                        input.onChange(payload.selected)
+                        input.onBlur()
+                        onChange?.(payload)
+                    }}
+                    query={query}
+                />
+            </Box>
         </Field>
     )
 }
