@@ -145,6 +145,7 @@ textarea::placeholder {
 
 .elementTypePrefix {
     font-weight: 500;
+    cursor: default;
 }
 
 .elementListContainer {
