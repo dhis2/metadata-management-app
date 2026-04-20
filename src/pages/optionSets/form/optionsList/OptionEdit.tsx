@@ -1,5 +1,4 @@
 import i18n from '@dhis2/d2-i18n'
-import { Validator } from '@dhis2/ui'
 import { useQuery } from '@tanstack/react-query'
 import arrayMutators from 'final-form-arrays'
 import React, { useCallback, useMemo } from 'react'
@@ -19,7 +18,7 @@ import {
     CustomAttributesSection,
 } from '../../../../components'
 import {
-    NameField,
+    NameFieldWithAdditionalUniquenessConstraint,
     DescriptionField,
     ColorAndIconField,
 } from '../../../../components/form/fields'
@@ -43,13 +42,12 @@ import { DrawerState } from './OptionsListTable'
 export const OptionFormContents = ({
     editCodeDisabled,
     onCancel,
-    validateOptionCode,
 }: {
     editCodeDisabled: boolean
     onCancel?: (s: DrawerState) => void
-    validateOptionCode: Validator
 }) => {
     const form = useForm()
+    const optionId = useParams().id as string
     const { submitting, values } = useFormState({
         subscription: { submitting: true, values: true },
     })
@@ -69,18 +67,27 @@ export const OptionFormContents = ({
                         {i18n.t('Set up the information for this option.')}
                     </StandardFormSectionDescription>
                     <StandardFormField>
-                        <NameField
+                        <NameFieldWithAdditionalUniquenessConstraint
                             schemaSection={optionSchemaSection}
                             modelId={values.id}
+                            additionalNameUniquenessConstraint={
+                                optionId
+                                    ? `optionSet.id:eq:${optionId}`
+                                    : undefined
+                            }
                         />
                     </StandardFormField>
                     <StandardFormField>
                         <OptionCodeField
                             schemaSection={optionSchemaSection}
                             modelId={values.id}
-                            validateOptionCode={validateOptionCode}
                             required={true}
                             disabled={editCodeDisabled}
+                            additionalCodeUniquenessConstraint={
+                                optionId
+                                    ? `optionSet.id:eq:${optionId}`
+                                    : undefined
+                            }
                         />
                     </StandardFormField>
 
@@ -171,22 +178,6 @@ export const OptionForm = ({ option, onSubmit, onCancel }: OptionFormProps) => {
         [optionSetId]
     )
 
-    const optionId = initialValues?.id
-    const form = useForm()
-    const optionValues = form.getState()?.values?.options
-    const validateOptionCode = useCallback(
-        (code: unknown) => {
-            const codeInUse = optionValues
-                .filter(
-                    (opt: SubmittedOptionFormValues) => opt?.id !== optionId
-                )
-                .map((opt: SubmittedOptionFormValues) => opt?.code)
-                .includes(code)
-            return codeInUse ? i18n.t('Code is already in use') : undefined
-        },
-        [optionValues, optionId]
-    )
-
     return (
         <FormBase
             modelName={optionSchemaSection.name}
@@ -199,7 +190,6 @@ export const OptionForm = ({ option, onSubmit, onCancel }: OptionFormProps) => {
             <OptionFormContents
                 onCancel={onCancel}
                 editCodeDisabled={!!option}
-                validateOptionCode={validateOptionCode}
             />
         </FormBase>
     )

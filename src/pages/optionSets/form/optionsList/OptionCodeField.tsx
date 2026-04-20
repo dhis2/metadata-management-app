@@ -11,20 +11,20 @@ export function OptionCodeField({
     modelId,
     required = false,
     disabled = false,
-    validateOptionCode,
+    additionalCodeUniquenessConstraint,
 }: {
     schemaSection: SchemaSection
     helpText?: string
     modelId?: string
     required?: boolean
     disabled?: boolean
-    validateOptionCode: Validator
+    additionalCodeUniquenessConstraint?: string
 }) {
     const validator = useValidator({
         schemaSection,
         property: 'code',
         modelId,
-        customValidator: validateOptionCode,
+        customFilterUniqueness: additionalCodeUniquenessConstraint,
     })
 
     const helpString = helpText || i18n.t('An optional unique identifier.')
