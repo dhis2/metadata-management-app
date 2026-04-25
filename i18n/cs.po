@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
+"POT-Creation-Date: 2026-04-01T13:52:40.474Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2026\n"
 "Language-Team: Czech (https://app.transifex.com/hisp-uio/teams/100509/cs/)\n"
@@ -1972,11 +1972,11 @@ msgstr "Šablona zprávy"
 msgid "Program stage label"
 msgstr ""
 
-msgid "Due date label"
-msgstr "Štítek s termínem platnosti"
+msgid "Scheduled date label"
+msgstr ""
 
-msgid "Execution date label"
-msgstr "Štítek s datem provedení"
+msgid "Report date label"
+msgstr ""
 
 msgid "Event label"
 msgstr ""
@@ -2003,6 +2003,18 @@ msgid "Organisation unit label"
 msgstr ""
 
 msgid "Relationship label"
+msgstr ""
+
+msgid "Enrollment label (Plural)"
+msgstr ""
+
+msgid "Event label (Plural)"
+msgstr ""
+
+msgid "Program stage label (Plural)"
+msgstr ""
+
+msgid "Names"
 msgstr ""
 
 msgid "Unknown error"
@@ -2088,6 +2100,12 @@ msgstr "činitel"
 
 msgid "Program name"
 msgstr "Název programu"
+
+msgid "Category Combination (PI Disaggregation)"
+msgstr ""
+
+msgid "Attribute Combination (PI Disaggregation)"
+msgstr ""
 
 msgid "Decimals in data output"
 msgstr "Desetinná místa ve výstupu dat"
@@ -3706,6 +3724,9 @@ msgstr ""
 "                            ' a '\n"
 "                        )}"
 
+msgid "Add a unit inside"
+msgstr ""
+
 msgid "No organisation units available"
 msgstr "Žádné organizační jednotky nejsou k dispozici"
 
@@ -4865,6 +4886,9 @@ msgstr "Externí"
 msgid "Group"
 msgstr "Skupina"
 
+msgid "Set up how users can access program data outside their capture scope."
+msgstr ""
+
 msgid "Organisation unit access"
 msgstr "Přístup k organizační jednotce"
 
@@ -4872,6 +4896,35 @@ msgid "Role access"
 msgstr ""
 
 msgid "Save the program first to set up sharing."
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "Users can open tracked entities in their search or capture scope."
+msgstr ""
+
+msgid "Audited"
+msgstr ""
+
+msgid ""
+"Users can open tracked entities in their search or capture scope. Opening "
+"outside capture scope is logged."
+msgstr ""
+
+msgid "Protected"
+msgstr "Chráněný"
+
+msgid ""
+"Users can open tracked entities in their capture scope. To open outside "
+"capture scope (but within search scope), users must give a reason for "
+"temporary access. All access is logged."
+msgstr ""
+
+msgid "Closed"
+msgstr ""
+
+msgid "Users can only open tracked entities in their capture scope."
 msgstr ""
 
 msgid "Notifications"
@@ -5440,6 +5493,9 @@ msgid "Restore stage"
 msgstr ""
 
 msgid "Add a program stage"
+msgstr ""
+
+msgid "Access Level"
 msgstr ""
 
 msgid "Relationship entity constraint"

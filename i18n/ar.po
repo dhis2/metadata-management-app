@@ -1,15 +1,15 @@
 # Translators:
 # Mozafar Haider, 2026
 # Philip Larsen Donnelly, 2026
-# Hamza <7amza.it@gmail.com>, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
+# Hamza <7amza.it@gmail.com>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
+"POT-Creation-Date: 2026-04-01T13:52:40.474Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
+"Last-Translator: Hamza <7amza.it@gmail.com>, 2026\n"
 "Language-Team: Arabic (https://app.transifex.com/hisp-uio/teams/100509/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1965,11 +1965,11 @@ msgstr "قالب الرسالة"
 msgid "Program stage label"
 msgstr ""
 
-msgid "Due date label"
-msgstr "تسمية تاريخ الاستحقاق"
+msgid "Scheduled date label"
+msgstr ""
 
-msgid "Execution date label"
-msgstr "تسمية تاريخ التنفيذ"
+msgid "Report date label"
+msgstr ""
 
 msgid "Event label"
 msgstr ""
@@ -1996,6 +1996,18 @@ msgid "Organisation unit label"
 msgstr ""
 
 msgid "Relationship label"
+msgstr ""
+
+msgid "Enrollment label (Plural)"
+msgstr ""
+
+msgid "Event label (Plural)"
+msgstr ""
+
+msgid "Program stage label (Plural)"
+msgstr ""
+
+msgid "Names"
 msgstr ""
 
 msgid "Unknown error"
@@ -2081,6 +2093,12 @@ msgstr "العامل"
 
 msgid "Program name"
 msgstr "اسم البرنامج"
+
+msgid "Category Combination (PI Disaggregation)"
+msgstr ""
+
+msgid "Attribute Combination (PI Disaggregation)"
+msgstr ""
 
 msgid "Decimals in data output"
 msgstr "أعداد عشرية في خرج البيانات"
@@ -3655,6 +3673,9 @@ msgid ""
 "                        )}"
 msgstr ""
 
+msgid "Add a unit inside"
+msgstr ""
+
 msgid "No organisation units available"
 msgstr ""
 
@@ -4749,6 +4770,9 @@ msgstr ""
 msgid "Group"
 msgstr "المجموعة"
 
+msgid "Set up how users can access program data outside their capture scope."
+msgstr ""
+
 msgid "Organisation unit access"
 msgstr ""
 
@@ -4756,6 +4780,35 @@ msgid "Role access"
 msgstr ""
 
 msgid "Save the program first to set up sharing."
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "Users can open tracked entities in their search or capture scope."
+msgstr ""
+
+msgid "Audited"
+msgstr ""
+
+msgid ""
+"Users can open tracked entities in their search or capture scope. Opening "
+"outside capture scope is logged."
+msgstr ""
+
+msgid "Protected"
+msgstr "محمي"
+
+msgid ""
+"Users can open tracked entities in their capture scope. To open outside "
+"capture scope (but within search scope), users must give a reason for "
+"temporary access. All access is logged."
+msgstr ""
+
+msgid "Closed"
+msgstr ""
+
+msgid "Users can only open tracked entities in their capture scope."
 msgstr ""
 
 msgid "Notifications"
@@ -5324,6 +5377,9 @@ msgid "Restore stage"
 msgstr ""
 
 msgid "Add a program stage"
+msgstr ""
+
+msgid "Access Level"
 msgstr ""
 
 msgid "Relationship entity constraint"
