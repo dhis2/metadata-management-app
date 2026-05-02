@@ -1,14 +1,14 @@
 # Translators:
 # Transifex Bot <>, 2026
 # Philip Larsen Donnelly, 2026
-# 晓东 林 <13981924470@126.com>, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
+# 晓东 林 <13981924470@126.com>, 2026
 # easylin <lin_xd@126.com>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-03-16T18:45:52.560Z\n"
+"POT-Creation-Date: 2026-04-01T13:52:40.474Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: easylin <lin_xd@126.com>, 2026\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
@@ -886,7 +886,7 @@ msgid "Data access"
 msgstr "数据访问"
 
 msgid "Data view and capture"
-msgstr "数据查看和捕获"
+msgstr "数据查看和采集"
 
 msgid "Data view only"
 msgstr "仅查看数据"
@@ -1968,11 +1968,11 @@ msgstr "消息模版"
 msgid "Program stage label"
 msgstr "节目阶段标签"
 
-msgid "Due date label"
-msgstr "截止日期标签"
+msgid "Scheduled date label"
+msgstr "预定日期标签"
 
-msgid "Execution date label"
-msgstr "执行日期标签"
+msgid "Report date label"
+msgstr "报告日期标签"
 
 msgid "Event label"
 msgstr "事件标签"
@@ -2000,6 +2000,18 @@ msgstr "组织单位标签"
 
 msgid "Relationship label"
 msgstr "关系标签"
+
+msgid "Enrollment label (Plural)"
+msgstr "注册标签（复数）"
+
+msgid "Event label (Plural)"
+msgstr "事件标签（复数）"
+
+msgid "Program stage label (Plural)"
+msgstr "项目期间标签（复数）"
+
+msgid "Names"
+msgstr "名称"
 
 msgid "Unknown error"
 msgstr "未知错误"
@@ -2084,6 +2096,12 @@ msgstr "因子"
 
 msgid "Program name"
 msgstr "项目名称"
+
+msgid "Category Combination (PI Disaggregation)"
+msgstr "类别组合（PI 分解）"
+
+msgid "Attribute Combination (PI Disaggregation)"
+msgstr "属性组合（PI 分解）"
 
 msgid "Decimals in data output"
 msgstr "数据输出小数位数"
@@ -3683,6 +3701,9 @@ msgstr ""
 "                            和\n"
 "                        )}"
 
+msgid "Add a unit inside"
+msgstr "在内部增加一个单元"
+
 msgid "No organisation units available"
 msgstr "无组织单位"
 
@@ -4760,6 +4781,9 @@ msgstr "外部"
 msgid "Group"
 msgstr "组"
 
+msgid "Set up how users can access program data outside their capture scope."
+msgstr "设置用户如何访问其采集范围之外的程序数据。"
+
 msgid "Organisation unit access"
 msgstr "组织单位访问"
 
@@ -4768,6 +4792,35 @@ msgstr "角色访问"
 
 msgid "Save the program first to set up sharing."
 msgstr "首先保存程序以设置共享。"
+
+msgid "Open"
+msgstr "打开"
+
+msgid "Users can open tracked entities in their search or capture scope."
+msgstr "用户可以在搜索或采集范围内打开跟踪的实体。"
+
+msgid "Audited"
+msgstr "已审计"
+
+msgid ""
+"Users can open tracked entities in their search or capture scope. Opening "
+"outside capture scope is logged."
+msgstr "用户可在搜索或采集范围内打开跟踪的实体。在采集范围外打开会被记录。"
+
+msgid "Protected"
+msgstr "已保护"
+
+msgid ""
+"Users can open tracked entities in their capture scope. To open outside "
+"capture scope (but within search scope), users must give a reason for "
+"temporary access. All access is logged."
+msgstr "用户可以打开其采集范围内的跟踪实体。要在采集范围之外（但在搜索范围之内）打开，用户必须给出临时访问的理由。所有访问都会记录在案。"
+
+msgid "Closed"
+msgstr "已关闭"
+
+msgid "Users can only open tracked entities in their capture scope."
+msgstr "用户只能打开其采集范围内的被跟踪实体。"
 
 msgid "Notifications"
 msgstr "通知"
@@ -5336,6 +5389,9 @@ msgstr "恢复阶段"
 
 msgid "Add a program stage"
 msgstr "添加程序阶段"
+
+msgid "Access Level"
+msgstr "访问级别"
 
 msgid "Relationship entity constraint"
 msgstr "关系实体约束"
