@@ -1,16 +1,16 @@
 # Translators:
 # Transifex Bot <>, 2026
 # Philip Larsen Donnelly, 2026
+# easylin <lin_xd@126.com>, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
 # 晓东 林 <13981924470@126.com>, 2026
-# easylin <lin_xd@126.com>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-04-01T13:52:40.474Z\n"
+"POT-Creation-Date: 2026-05-07T08:04:05.825Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: easylin <lin_xd@126.com>, 2026\n"
+"Last-Translator: 晓东 林 <13981924470@126.com>, 2026\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -48,14 +48,26 @@ msgstr "未找到"
 msgid "The page you are looking for does not exist."
 msgstr "您要查找的页面不存在。"
 
+msgid "Duplication not available yet."
+msgstr ""
+
+msgid "{{-sectionName}} cannot be duplicated."
+msgstr ""
+
+msgid "Edit"
+msgstr "编辑"
+
 msgid "New {{modelName}}"
 msgstr "新{{modelName}}"
 
 msgid "Merge {{modelName}}"
 msgstr "合并{{modelName}}"
 
-msgid "Edit {{modelName}}"
-msgstr "编辑{{modelName}}"
+msgid "Move organisation units"
+msgstr ""
+
+msgid "Duplicate {{modelName}}"
+msgstr ""
 
 msgid "Metadata Integrity Checks"
 msgstr "元数据完整性检查"
@@ -74,6 +86,9 @@ msgstr "未找到以下菜单项"
 
 msgid "Overview"
 msgstr "概要"
+
+msgid "Hierarchy operations"
+msgstr "体系结构操作"
 
 msgid "Search menu items"
 msgstr "搜索菜单项"
@@ -474,9 +489,6 @@ msgid ""
 "Define a custom form for this {{customFormTarget}} by editing HTML below."
 msgstr "通过编辑下面的 HTML，为{{customFormTarget}} 定义自定义表单。"
 
-msgid "Edit"
-msgstr "编辑"
-
 msgid "Preview"
 msgstr "预览"
 
@@ -586,6 +598,14 @@ msgstr "<无值>"
 
 msgid "Set up information for the attributes assigned to {{modelName}}."
 msgstr "设置分配给{{modelName}} 的属性信息。"
+
+msgid "Duplicating {{- duplicatedModelName}}"
+msgstr ""
+
+msgid ""
+"All values from the original {{-sectionName}} are included. Values that must"
+" be unique need to be updated."
+msgstr ""
 
 msgid "The default way to aggregate in analytics."
 msgstr "分析中的默认聚合方式。"
@@ -717,6 +737,12 @@ msgstr "未定义"
 
 msgid "Change to {{newValue}}"
 msgstr "改为{{newValue}}"
+
+msgid "Failed to load data"
+msgstr ""
+
+msgid "Failed to load custom attributes"
+msgstr ""
 
 msgid "New section"
 msgstr "新章节"
@@ -869,9 +895,6 @@ msgstr "发生了一个错误"
 
 msgid "An error occurred while loading the items."
 msgstr "加载项目时发生错误。"
-
-msgid "{{modelName}} management"
-msgstr "{{modelName}} 管理"
 
 msgid "Metadata access"
 msgstr "元数据访问"
@@ -1098,6 +1121,9 @@ msgstr "确认删除"
 msgid "Show details"
 msgstr "显示详情"
 
+msgid "Duplicate"
+msgstr "重复的"
+
 msgid "Sharing settings"
 msgstr "共享设置"
 
@@ -1169,6 +1195,9 @@ msgstr "{{number}} 选定的"
 
 msgid "Merge..."
 msgstr "合并..."
+
+msgid "Move..."
+msgstr ""
 
 msgid "Choose a Locale to translate from the menu above"
 msgstr "从上面的菜单中选择要翻译的地区"
@@ -1323,6 +1352,9 @@ msgstr "验证规则组"
 msgid "Validation notification"
 msgstr "验证通知"
 
+msgid "Validation notifications"
+msgstr "验证通知"
+
 msgid "Constant"
 msgstr "常数"
 
@@ -1404,11 +1436,26 @@ msgstr "预测器组"
 msgid "Predictor groups"
 msgstr "指标组"
 
+msgid "Categories overview"
+msgstr ""
+
+msgid "Data elements overview"
+msgstr ""
+
+msgid "Data sets overview"
+msgstr ""
+
 msgid "Indicators and Predictors"
 msgstr "指标和预测"
 
-msgid "Programs and Tracker"
-msgstr "计划和跟踪器"
+msgid "Organisation units overview"
+msgstr ""
+
+msgid "Programs overview"
+msgstr ""
+
+msgid "Option sets overview"
+msgstr ""
 
 msgid "Validation"
 msgstr "验证"
@@ -1436,6 +1483,9 @@ msgstr "计划分类"
 
 msgid "You do not have access to edit this item."
 msgstr "您无权编辑此项目。"
+
+msgid "You do not have access to duplicate this item."
+msgstr ""
 
 msgid "You do not have access to delete this item."
 msgstr "您无权删除此项目。"
@@ -1842,6 +1892,78 @@ msgstr "在完成时"
 msgid "On update and insert"
 msgstr "在更新或插入时"
 
+msgid "Resource tables"
+msgstr "资源表"
+
+msgid "Analytics tables"
+msgstr "Analytics tables"
+
+msgid "Data value"
+msgstr "数据值"
+
+msgid "Completeness"
+msgstr "完整性"
+
+msgid "Completeness target"
+msgstr "完成目标"
+
+msgid "Organisation unit target"
+msgstr "组织单位目标"
+
+msgid "Validation result"
+msgstr "验证结果"
+
+msgid "Ownership"
+msgstr "所有权"
+
+msgid "Tracked entity instance events"
+msgstr ""
+
+msgid "Tracked entity instance enrollments"
+msgstr ""
+
+msgid "Organisation unit structure"
+msgstr "组织机构结构"
+
+msgid "Data set organisation unit category"
+msgstr "数据集组织机构类别"
+
+msgid "Category option combo name"
+msgstr "类别选项组合名称"
+
+msgid "Data element group set structure"
+msgstr "数据元组集结构"
+
+msgid "Indicator group set structure"
+msgstr "指标组集合结构"
+
+msgid "Organisation unit group set structure"
+msgstr "若干组织机构组集结构"
+
+msgid "Category structure"
+msgstr "分类结构"
+
+msgid "Data element structure"
+msgstr "数据元结构"
+
+msgid "Period structure"
+msgstr "期间结构"
+
+msgid "Date period structure"
+msgstr "日期期间结构"
+
+msgid "Data element category option combo"
+msgstr ""
+
+msgid "Data approval remap level"
+msgstr "数据批准重映射级别"
+
+msgid "Data approval min level"
+msgstr ""
+
+msgid "Tracked entity instance relationship count"
+msgstr ""
+
 msgid "Data element in newest event in program stage"
 msgstr "计划阶段最新事件中的数据元素"
 
@@ -1871,6 +1993,9 @@ msgstr "属性类别组合"
 
 msgid "Analytics type"
 msgstr "分析类型"
+
+msgid "Analytics table type"
+msgstr ""
 
 msgid "Bidirectional"
 msgstr "双向的"
@@ -1917,6 +2042,9 @@ msgstr "从初始实体方看的关系名称"
 msgid "Ignore data approval"
 msgstr "忽略数据审核"
 
+msgid "Phase"
+msgstr ""
+
 msgid "Source type"
 msgstr "源类型"
 
@@ -1931,6 +2059,12 @@ msgstr "转派"
 
 msgid "Sharing"
 msgstr "共享"
+
+msgid "SQL"
+msgstr "SQL"
+
+msgid "Resource table type"
+msgstr ""
 
 msgid "Relationship name seen from receiving entity"
 msgstr "从接受方看关系名称"
@@ -2010,8 +2144,8 @@ msgstr "事件标签（复数）"
 msgid "Program stage label (Plural)"
 msgstr "项目期间标签（复数）"
 
-msgid "Names"
-msgstr "名称"
+msgid "Name (Plural)"
+msgstr ""
 
 msgid "Unknown error"
 msgstr "未知错误"
@@ -2274,8 +2408,20 @@ msgstr "连续样本跳过数量"
 msgid "Organisation unit providing data"
 msgstr "提供数据的组织单位"
 
+msgid "Which resource table"
+msgstr "哪个资源表"
+
+msgid "Which analytics table"
+msgstr "哪个分析表"
+
+msgid "An analytics table hook with this table and SQL already exists."
+msgstr ""
+
 msgid "Basic information"
 msgstr "基本信息"
+
+msgid "Set up the basic information for this analytics table hook."
+msgstr ""
 
 msgid "Data and options"
 msgstr "数据和选项"
@@ -2540,6 +2686,11 @@ msgstr "用作常数的数值。"
 msgid "Please enter a number"
 msgstr "请输入数字"
 
+msgid ""
+"An approval level for this organisation unit level and category option group"
+" set combination already exists."
+msgstr ""
+
 msgid "Available data element groups"
 msgstr "可用数据元素组"
 
@@ -2780,9 +2931,6 @@ msgstr "主题"
 
 msgid "Used as template for the message field."
 msgstr "用作信息字段的模板。"
-
-msgid "{{fieldLabel}} (required)"
-msgstr "{{fieldLabel}} (必填)"
 
 msgid "Message"
 msgstr "消息"
@@ -3409,14 +3557,75 @@ msgid ""
 "What should happen to the source indicators after the merge is complete?"
 msgstr "合并完成后，源指标会发生什么变化？"
 
+msgid "Set up the basic information for this legend."
+msgstr ""
+
+msgid "Legend items"
+msgstr ""
+
+msgid "Create legend items to define value ranges and associated colors."
+msgstr ""
+
+msgid "Start value"
+msgstr "开始值"
+
+msgid "End value"
+msgstr "结束值"
+
+msgid "Items"
+msgstr "条目"
+
+msgid "Color scale"
+msgstr "色阶"
+
+msgid "End value must be greater than start value."
+msgstr ""
+
+msgid "Legend items must not overlap."
+msgstr ""
+
+msgid "Legend items must not have gaps."
+msgstr ""
+
+msgid "Generate a new legend..."
+msgstr ""
+
+msgid "Legend generator"
+msgstr ""
+
+msgid "Replace existing legend items"
+msgstr ""
+
+msgid ""
+"Generating new legend items will replace all legend items in the table."
+msgstr ""
+
+msgid "Create legend items"
+msgstr "创建图例条目"
+
+msgid "Generate a legend"
+msgstr ""
+
+msgid "Generate legend items"
+msgstr ""
+
+msgid "Manually add legend items"
+msgstr ""
+
+msgid "Add legend item"
+msgstr ""
+
+msgid "Change color"
+msgstr ""
+
 msgid "Exit without saving"
 msgstr "不保存退出"
 
 msgid "Create {{modelName}} "
 msgstr "创建{{modelName}} "
 
-msgid "Country (required)"
-msgstr "国家（必填）"
+msgid "Country"
+msgstr "国家"
 
 msgid "Failed to load countries"
 msgstr "加载国家失败"
@@ -3424,8 +3633,8 @@ msgstr "加载国家失败"
 msgid "Select a country"
 msgstr "选择国家"
 
-msgid "Language (required)"
-msgstr "语言（必填）"
+msgid "Language"
+msgstr "语言"
 
 msgid "Failed to load languages"
 msgstr "加载语言失败"
@@ -3595,6 +3804,12 @@ msgstr "选择要包含在该组中的组织单位。"
 msgid "Error saving organisation unit levels"
 msgstr "错误保存组织单位级别"
 
+msgid "Organisation units successfully moved"
+msgstr ""
+
+msgid "There was an error moving organisation units: {{orgUnitNames}}"
+msgstr ""
+
 msgid "Longitude"
 msgstr "经度"
 
@@ -3709,6 +3924,26 @@ msgstr "无组织单位"
 
 msgid "Load more for {{orgUnitName}}"
 msgstr "加载更多{{orgUnitName}}"
+
+msgid ""
+"Choose the organisation units to move and their new position in the "
+"hierarchy. All descendants move with them."
+msgstr ""
+
+msgid "Move"
+msgstr "移动"
+
+msgid "Can not move an organisation unit to one of its descendants."
+msgstr ""
+
+msgid "Organisation units to move"
+msgstr ""
+
+msgid "Move into"
+msgstr ""
+
+msgid "At least one org unit is required"
+msgstr "至少需要一个 org 单元"
 
 msgid "Metadata management"
 msgstr "元数据管理"
@@ -4045,12 +4280,6 @@ msgstr "配置该预测器的计算方式。"
 msgid "Organisation units providing data"
 msgstr "提供数据的组织单位"
 
-msgid "Sequential sample count (required)"
-msgstr "连续样本计数（必填）"
-
-msgid "Annual sample count (required)"
-msgstr "年度样本计数（必填）"
-
 msgid "generator"
 msgstr "发生器"
 
@@ -4371,17 +4600,11 @@ msgstr "请输入最多{{max}} 个字符"
 msgid "A variable with this name already exists in this program."
 msgstr "该程序中已经存在使用此名称的变量。"
 
-msgid "Source type (required)"
-msgstr "来源类型（必填）"
-
 msgid "Set up the basic information for this program rule variable."
 msgstr "设置该程序规则变量的基本信息。"
 
 msgid "Configure how this variable works."
 msgstr "配置该变量的工作方式。"
-
-msgid "Program (required)"
-msgstr "计划（必填）"
 
 msgid "Program cannot be changed after creation"
 msgstr "程序创建后不可更改"
@@ -4403,8 +4626,8 @@ msgstr "设置条件表达式"
 msgid "Expression can not be edited after saving"
 msgstr "保存后无法编辑表达式"
 
-msgid "Expression (required) *"
-msgstr "表达式（必填） *"
+msgid "Expression *"
+msgstr ""
 
 msgid "Feedback widget"
 msgstr "反馈向导"
@@ -4412,17 +4635,16 @@ msgstr "反馈向导"
 msgid "Program indicator widget"
 msgstr "项目指标向导"
 
-msgid "Display widget (required)"
-msgstr "显示小部件（必填）"
+msgid "Display widget"
+msgstr "显示向导"
 
 msgid "Message template can not be edited after saving"
 msgstr "保存后无法编辑信息模板"
 
-msgid "Message template (required)"
-msgstr "留言模板（必填）"
-
-msgid "Can be 0 or negative. Leave empty if not needed."
-msgstr "可以为 0 或负数。如果不需要，则留空。"
+msgid ""
+"Enter a number to set run order. Lower numbers run first. Leave empty to use"
+" the default order."
+msgstr ""
 
 msgid "Program rule variable to assign to"
 msgstr "分配的项目规则变量"
@@ -4432,9 +4654,6 @@ msgstr "触发规则的程序阶段"
 
 msgid "Select a specific program stage that the rule should only trigger on."
 msgstr "选择一个特定的程序阶段，该规则只能在该阶段触发。"
-
-msgid "Program stage section to hide (required)"
-msgstr "要隐藏的节目阶段部分（必填）"
 
 msgid "Program stage section to hide"
 msgstr "隐藏项目的阶段的部分"
@@ -4469,8 +4688,8 @@ msgstr "配置程序规则操作。"
 msgid "This program rule action will not be editable after saving."
 msgstr "保存后将无法编辑此程序规则操作。"
 
-msgid "Action type (required)"
-msgstr "操作类型（必填）"
+msgid "Action type"
+msgstr ""
 
 msgid "Save action"
 msgstr "保存操作"
@@ -4483,6 +4702,9 @@ msgstr "保存程序规则时，该操作将被删除。"
 
 msgid "Undo delete"
 msgstr "撤销删除"
+
+msgid "Priority: {{priority}}"
+msgstr ""
 
 msgid "Program rule must be saved before actions can be added"
 msgstr "必须先保存程序规则，才能添加操作"
@@ -4695,9 +4917,6 @@ msgstr "未知操作类型"
 msgid "Program Rule"
 msgstr "项目规则"
 
-msgid "Name (required)"
-msgstr "姓名（必填）"
-
 msgid "Program stages to trigger rule"
 msgstr "触发规则的程序阶段"
 
@@ -4894,17 +5113,17 @@ msgstr "只允许使用整数"
 msgid "Program Settings"
 msgstr "程序设置"
 
-msgid "Set up advanced options for this program."
-msgstr "设置该程序的高级选项。"
+msgid "Set up how data is collected for events in this program."
+msgstr ""
 
-msgid "Allow user assignment of events"
-msgstr "允许用户指派事件"
+msgid "Allow events to be assigned to users"
+msgstr ""
 
-msgid "Block entry form after completed"
-msgstr "完成后阻止 输入表单"
+msgid "Block data entry after completion"
+msgstr ""
 
-msgid "Pre-generate event UID"
-msgstr "预生成事件UID"
+msgid "Generate offline event IDs"
+msgstr ""
 
 msgid "Related program"
 msgstr "相关项目"
@@ -4918,9 +5137,6 @@ msgstr "在活动完成若干天后锁定活动"
 msgid ""
 "Close data entry a number of days after event category combination end date"
 msgstr "在事件类别组合结束日期若干天后关闭数据输入"
-
-msgid "Settings"
-msgstr "设置"
 
 msgid "Validation strategy"
 msgstr "验证策略"
@@ -5008,23 +5224,8 @@ msgstr "受援国计划属性"
 msgid "Recipient data element"
 msgstr "收件人数据元素"
 
-msgid "Event repetition"
-msgstr "事件重复"
-
-msgid "Define the frequency of events within this stage."
-msgstr "确定这一阶段中事件发生的频率。"
-
-msgid "Event scheduling"
-msgstr "活动安排"
-
-msgid "Configure how and when events in this stage are scheduled."
-msgstr "配置本阶段事件的计划方式和时间。"
-
-msgid "Completion options"
-msgstr "完工选项"
-
-msgid "Decide what should happen after a user completes this event."
-msgstr "决定用户完成此事件后应该发生什么。"
+msgid "Set up automatic event creation and scheduling in this program stage."
+msgstr ""
 
 msgid "Configure data collection for events in this program stage."
 msgstr "为本程序阶段的事件配置数据收集。"
@@ -5078,23 +5279,23 @@ msgstr "保存阶段不会保存程序的其他更改"
 msgid "Stage form saved"
 msgstr "保存的阶段表格"
 
-msgid "A stage with this name already exists. Please choose another name."
-msgstr "已存在使用此名称的舞台。请选择其他名称。"
-
 msgid "Configure the basic information for this program stage."
 msgstr "配置该程序阶段的基本信息。"
 
-msgid "Configuration options"
-msgstr "配置选项"
+msgid "Data entry options"
+msgstr ""
 
-msgid "Set up more advanced options for this program stage."
-msgstr "为该程序阶段设置更多高级选项。"
+msgid "Set up how data is collected for events in this program stage."
+msgstr ""
 
-msgid "Custom terminology"
-msgstr "自定义术语"
+msgid "Completion options"
+msgstr "完工选项"
 
-msgid "Customise the wording of labels for this stage."
-msgstr "自定义此阶段的标签措辞。"
+msgid "Decide what should happen after a user completes this event."
+msgstr "决定用户完成此事件后应该发生什么。"
+
+msgid "Override default labels with program stage-specific terms."
+msgstr ""
 
 msgid "Custom label for report date"
 msgstr "报告日期的自定义标签"
@@ -5107,9 +5308,6 @@ msgstr "节目阶段自定义标签"
 
 msgid "Custom label for event"
 msgstr "事件的自定义标签"
-
-msgid "Program stage form"
-msgstr "计划阶段表"
 
 msgid ""
 "Configure the form for data collection for events in this program stage."
@@ -5131,44 +5329,64 @@ msgstr "此表格显示自动生成的为该程序定义的数据元素列表。
 msgid "Edit or rearrange the data elements"
 msgstr "编辑或重新排列数据元素"
 
-msgid "On event completion, show a prompt to create a new event"
-msgstr "事件完成时，显示创建新事件的提示"
+msgid "Ask user to create a new event after completion"
+msgstr ""
 
-msgid "Auto-generate an event in this stage"
-msgstr "在此阶段自动生成事件"
+msgid "Create an event in this stage on enrollment"
+msgstr ""
 
-msgid "Generate events based on enrollment date"
-msgstr "基于注册日期生成事件"
+msgid "Reference date for scheduling"
+msgstr ""
 
-msgid "Show scheduled date"
-msgstr "演出预定日期"
+msgid "Hide scheduled date"
+msgstr ""
 
-msgid "Scheduled days from start (required)"
-msgstr "从开始算起的预定天数（必填）"
+msgid ""
+"Android Capture will disable all scheduling. Web Capture will allow manual "
+"scheduling, but scheduled dates will not be editable."
+msgstr ""
 
-msgid "Days to add to the enrollment or incident date. 0 means same day. "
-msgstr "登记日期或事件日期的天数。0 表示当天。 "
+msgid "Scheduled days from reference date"
+msgstr ""
+
+msgid ""
+"Days to add to the enrollment or incident date when scheduling events. 0 "
+"means same day. "
+msgstr ""
 
 msgid "Default next scheduled date"
 msgstr "缺省的下一个调度日期"
 
+msgid ""
+"If set, this date sets the next scheduled date. Standard interval days is "
+"used if the date is empty."
+msgstr ""
+
 msgid "Open data entry form after enrollment"
 msgstr "注册后打开数据输入表单"
 
-msgid "On event completion, ask user to complete enrollment"
-msgstr "事件完成时，要求用户完成注册"
+msgid ""
+"If set, only one event per period is allowed. Report date will be a period "
+"instead of a date. Not supported by web Capture."
+msgstr ""
 
-msgid "Allow multiple events in this stage (repeatable stage)"
-msgstr "本阶段允许多个事件（可重复阶段）"
+msgid "Ask user to complete enrollment after completion"
+msgstr ""
 
-msgid "Report date to use"
-msgstr "使用的报表日期"
+msgid "Allow multiple events in this stage"
+msgstr ""
+
+msgid "None (report date will be empty)"
+msgstr ""
+
+msgid "Date to use for created event report date"
+msgstr ""
 
 msgid "Standard interval days"
 msgstr "标准间隔天数"
 
-msgid "Enter the number of days between repeated events."
-msgstr "输入重复事件之间的间隔天数。"
+msgid "The number of days between repeated events."
+msgstr ""
 
 msgid "Stage section"
 msgstr "舞台部分"
@@ -5200,26 +5418,11 @@ msgstr "桌面显示屏"
 msgid "Mobile display"
 msgstr "移动显示屏"
 
-msgid "Stage: Setup"
-msgstr "舞台设置"
+msgid "Creation and scheduling"
+msgstr ""
 
-msgid "Stage: Configuration"
-msgstr "阶段：配置"
-
-msgid "Stage: Terminology"
-msgstr "阶段：术语"
-
-msgid "Stage: Creation and Scheduling"
-msgstr "阶段：创建和计划"
-
-msgid "Scheduled days from start"
-msgstr "从开始调度的天数"
-
-msgid "Stage: Data"
-msgstr "阶段数据"
-
-msgid "Stage: Form"
-msgstr "阶段：形式"
+msgid "Program stage form"
+msgstr "计划阶段表"
 
 msgid "Section tracked entity attributes"
 msgstr "跟踪实体属性的章节"
@@ -5304,6 +5507,14 @@ msgid ""
 "Do not create overdue events when automatically creating program stage "
 "events"
 msgstr "自动创建计划阶段事件时，不创建逾期事件"
+
+msgid "Mandatory tracked entity attributes are not included in this form."
+msgstr ""
+
+msgid ""
+"The following attributes are marked as required but not assigned to any "
+"section:"
+msgstr ""
 
 msgid "Custom label for \"Incident date\""
 msgstr "事件日期 \"的自定义标签"
@@ -5465,14 +5676,6 @@ msgid ""
 "Searches using these operators return no results. Use this to prevent "
 "inefficient searches."
 msgstr "使用这些运算符搜索不会返回任何结果。使用它可避免搜索效率低下。"
-
-msgid "Confidential"
-msgstr "保密"
-
-msgid ""
-"Prevent searching or viewing in analytics. Available only when system "
-"encryption is enabled."
-msgstr "防止在分析中搜索或查看。仅在启用系统加密时可用。"
 
 msgid "Inherit values from tracked entities linked by a relationship"
 msgstr "从通过关系连接的跟踪实体继承值"

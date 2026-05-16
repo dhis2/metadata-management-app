@@ -1,29 +1,29 @@
 # Translators:
-# Carlos Macaneta, 2025
 # Martins Matola, 2025
 # Jason Pickering <jason@dhis2.org>, 2025
 # Miguel Vasco Macamo, 2025
 # Sheila André <sandre@saudigitus.org>, 2025
-# Edson Nhancale, 2026
-# Fernando Domingos Inacio <nando.inaciio1996@gmail.com>, 2026
+# Edson Nhancale, 2025
 # Laurência Luís, 2026
 # Helton Dias, 2026
 # António Fernando Macaringue, 2026
-# Mozafar Haider, 2026
-# Philip Larsen Donnelly, 2026
 # David Mondlane, 2026
 # Shelsea Chumaio, 2026
 # Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2026
-# Viktor Varland <viktor@dhis2.org>, 2026
 # David Júnior <davidjr.mondlane@gmail.com>, 2026
+# Philip Larsen Donnelly, 2026
+# Fernando Domingos Inacio <nando.inaciio1996@gmail.com>, 2026
+# Mozafar Haider, 2026
 # Ge Joao <gsimango@saudigitus.org>, 2026
+# Carlos Macaneta, 2026
+# Viktor Varland <viktor@dhis2.org>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-04-01T13:52:40.474Z\n"
+"POT-Creation-Date: 2026-05-07T08:04:05.825Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Ge Joao <gsimango@saudigitus.org>, 2026\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
 "Language-Team: Portuguese (https://app.transifex.com/hisp-uio/teams/100509/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -61,13 +61,25 @@ msgstr ""
 msgid "The page you are looking for does not exist."
 msgstr ""
 
+msgid "Duplication not available yet."
+msgstr ""
+
+msgid "{{-sectionName}} cannot be duplicated."
+msgstr ""
+
+msgid "Edit"
+msgstr "Editar"
+
 msgid "New {{modelName}}"
 msgstr "Novo {{modelName}}"
 
 msgid "Merge {{modelName}}"
 msgstr ""
 
-msgid "Edit {{modelName}}"
+msgid "Move organisation units"
+msgstr ""
+
+msgid "Duplicate {{modelName}}"
 msgstr ""
 
 msgid "Metadata Integrity Checks"
@@ -87,6 +99,9 @@ msgstr ""
 
 msgid "Overview"
 msgstr "Visão global"
+
+msgid "Hierarchy operations"
+msgstr "Operações de hierarquias"
 
 msgid "Search menu items"
 msgstr ""
@@ -487,9 +502,6 @@ msgid ""
 "Define a custom form for this {{customFormTarget}} by editing HTML below."
 msgstr ""
 
-msgid "Edit"
-msgstr "Editar"
-
 msgid "Preview"
 msgstr "Pré-visualização"
 
@@ -598,6 +610,14 @@ msgid "<No value>"
 msgstr "<No value>"
 
 msgid "Set up information for the attributes assigned to {{modelName}}."
+msgstr ""
+
+msgid "Duplicating {{- duplicatedModelName}}"
+msgstr ""
+
+msgid ""
+"All values from the original {{-sectionName}} are included. Values that must"
+" be unique need to be updated."
 msgstr ""
 
 msgid "The default way to aggregate in analytics."
@@ -727,6 +747,12 @@ msgid "undefined"
 msgstr ""
 
 msgid "Change to {{newValue}}"
+msgstr ""
+
+msgid "Failed to load data"
+msgstr ""
+
+msgid "Failed to load custom attributes"
 msgstr ""
 
 msgid "New section"
@@ -879,9 +905,6 @@ msgid "An error occurred"
 msgstr ""
 
 msgid "An error occurred while loading the items."
-msgstr ""
-
-msgid "{{modelName}} management"
 msgstr ""
 
 msgid "Metadata access"
@@ -1109,6 +1132,9 @@ msgstr "Confirmar exclusão"
 msgid "Show details"
 msgstr "Mostrar detalhes"
 
+msgid "Duplicate"
+msgstr "Duplicar"
+
 msgid "Sharing settings"
 msgstr "Definições de partilha"
 
@@ -1179,6 +1205,9 @@ msgid "{{number}} selected"
 msgstr ""
 
 msgid "Merge..."
+msgstr ""
+
+msgid "Move..."
 msgstr ""
 
 msgid "Choose a Locale to translate from the menu above"
@@ -1334,6 +1363,9 @@ msgstr "Grupo de regras de validação"
 msgid "Validation notification"
 msgstr "Notificação de validação "
 
+msgid "Validation notifications"
+msgstr "Notificações de validação"
+
 msgid "Constant"
 msgstr "Constante"
 
@@ -1415,10 +1447,25 @@ msgstr "Grupo preditor"
 msgid "Predictor groups"
 msgstr "Grupos preditores"
 
+msgid "Categories overview"
+msgstr ""
+
+msgid "Data elements overview"
+msgstr ""
+
+msgid "Data sets overview"
+msgstr ""
+
 msgid "Indicators and Predictors"
 msgstr ""
 
-msgid "Programs and Tracker"
+msgid "Organisation units overview"
+msgstr ""
+
+msgid "Programs overview"
+msgstr ""
+
+msgid "Option sets overview"
 msgstr ""
 
 msgid "Validation"
@@ -1446,6 +1493,9 @@ msgid "Program disaggregations"
 msgstr ""
 
 msgid "You do not have access to edit this item."
+msgstr ""
+
+msgid "You do not have access to duplicate this item."
 msgstr ""
 
 msgid "You do not have access to delete this item."
@@ -1855,6 +1905,78 @@ msgstr "Em completo"
 msgid "On update and insert"
 msgstr "Na actualização e inserção"
 
+msgid "Resource tables"
+msgstr "Tabela de recursos"
+
+msgid "Analytics tables"
+msgstr "Tabelas Analíticas"
+
+msgid "Data value"
+msgstr ""
+
+msgid "Completeness"
+msgstr "Completude"
+
+msgid "Completeness target"
+msgstr ""
+
+msgid "Organisation unit target"
+msgstr ""
+
+msgid "Validation result"
+msgstr "Resultado da validação"
+
+msgid "Ownership"
+msgstr ""
+
+msgid "Tracked entity instance events"
+msgstr ""
+
+msgid "Tracked entity instance enrollments"
+msgstr ""
+
+msgid "Organisation unit structure"
+msgstr "Estrutura da Unidade Organizacional"
+
+msgid "Data set organisation unit category"
+msgstr "Categoria da unidade organizacional da ficha"
+
+msgid "Category option combo name"
+msgstr ""
+
+msgid "Data element group set structure"
+msgstr "Estrutura de Dados de Elementos do Grupo"
+
+msgid "Indicator group set structure"
+msgstr "Estrutura de conjunto de grupo de indicador"
+
+msgid "Organisation unit group set structure"
+msgstr "Estrutura de conjunto de grupo de unidade organizacional"
+
+msgid "Category structure"
+msgstr "Estrutura da categoria"
+
+msgid "Data element structure"
+msgstr "Estrutura de elemento de dados"
+
+msgid "Period structure"
+msgstr "Estrutura de período"
+
+msgid "Date period structure"
+msgstr "Estrutura de período de dados"
+
+msgid "Data element category option combo"
+msgstr ""
+
+msgid "Data approval remap level"
+msgstr ""
+
+msgid "Data approval min level"
+msgstr ""
+
+msgid "Tracked entity instance relationship count"
+msgstr ""
+
 msgid "Data element in newest event in program stage"
 msgstr ""
 
@@ -1884,6 +2006,9 @@ msgstr ""
 
 msgid "Analytics type"
 msgstr "Tipo de analises "
+
+msgid "Analytics table type"
+msgstr ""
 
 msgid "Bidirectional"
 msgstr ""
@@ -1930,6 +2055,9 @@ msgstr ""
 msgid "Ignore data approval"
 msgstr "Ignorar aprovação de dados"
 
+msgid "Phase"
+msgstr ""
+
 msgid "Source type"
 msgstr "Tipo de fonte"
 
@@ -1944,6 +2072,12 @@ msgstr "Transferência"
 
 msgid "Sharing"
 msgstr "Partilha"
+
+msgid "SQL"
+msgstr ""
+
+msgid "Resource table type"
+msgstr ""
 
 msgid "Relationship name seen from receiving entity"
 msgstr ""
@@ -2024,7 +2158,7 @@ msgstr ""
 msgid "Program stage label (Plural)"
 msgstr ""
 
-msgid "Names"
+msgid "Name (Plural)"
 msgstr ""
 
 msgid "Unknown error"
@@ -2288,7 +2422,19 @@ msgstr "Pular contagem sequencial"
 msgid "Organisation unit providing data"
 msgstr ""
 
+msgid "Which resource table"
+msgstr ""
+
+msgid "Which analytics table"
+msgstr ""
+
+msgid "An analytics table hook with this table and SQL already exists."
+msgstr ""
+
 msgid "Basic information"
+msgstr ""
+
+msgid "Set up the basic information for this analytics table hook."
 msgstr ""
 
 msgid "Data and options"
@@ -2546,6 +2692,11 @@ msgstr ""
 msgid "Please enter a number"
 msgstr ""
 
+msgid ""
+"An approval level for this organisation unit level and category option group"
+" set combination already exists."
+msgstr ""
+
 msgid "Available data element groups"
 msgstr ""
 
@@ -2783,9 +2934,6 @@ msgid "Subject"
 msgstr "Assunto"
 
 msgid "Used as template for the message field."
-msgstr ""
-
-msgid "{{fieldLabel}} (required)"
 msgstr ""
 
 msgid "Message"
@@ -3401,14 +3549,75 @@ msgid ""
 "What should happen to the source indicators after the merge is complete?"
 msgstr ""
 
+msgid "Set up the basic information for this legend."
+msgstr ""
+
+msgid "Legend items"
+msgstr ""
+
+msgid "Create legend items to define value ranges and associated colors."
+msgstr ""
+
+msgid "Start value"
+msgstr "Valor inicial"
+
+msgid "End value"
+msgstr "Valor final"
+
+msgid "Items"
+msgstr "Itens"
+
+msgid "Color scale"
+msgstr "Escala da cor"
+
+msgid "End value must be greater than start value."
+msgstr ""
+
+msgid "Legend items must not overlap."
+msgstr ""
+
+msgid "Legend items must not have gaps."
+msgstr ""
+
+msgid "Generate a new legend..."
+msgstr ""
+
+msgid "Legend generator"
+msgstr ""
+
+msgid "Replace existing legend items"
+msgstr ""
+
+msgid ""
+"Generating new legend items will replace all legend items in the table."
+msgstr ""
+
+msgid "Create legend items"
+msgstr "Criar itens de legenda"
+
+msgid "Generate a legend"
+msgstr ""
+
+msgid "Generate legend items"
+msgstr ""
+
+msgid "Manually add legend items"
+msgstr ""
+
+msgid "Add legend item"
+msgstr ""
+
+msgid "Change color"
+msgstr ""
+
 msgid "Exit without saving"
 msgstr "Sair sem gravar"
 
 msgid "Create {{modelName}} "
 msgstr ""
 
-msgid "Country (required)"
-msgstr ""
+msgid "Country"
+msgstr "País"
 
 msgid "Failed to load countries"
 msgstr ""
@@ -3416,8 +3625,8 @@ msgstr ""
 msgid "Select a country"
 msgstr ""
 
-msgid "Language (required)"
-msgstr ""
+msgid "Language"
+msgstr "Idioma"
 
 msgid "Failed to load languages"
 msgstr ""
@@ -3587,6 +3796,12 @@ msgstr ""
 msgid "Error saving organisation unit levels"
 msgstr ""
 
+msgid "Organisation units successfully moved"
+msgstr ""
+
+msgid "There was an error moving organisation units: {{orgUnitNames}}"
+msgstr ""
+
 msgid "Longitude"
 msgstr "Longitude"
 
@@ -3698,6 +3913,26 @@ msgstr ""
 
 msgid "Load more for {{orgUnitName}}"
 msgstr ""
+
+msgid ""
+"Choose the organisation units to move and their new position in the "
+"hierarchy. All descendants move with them."
+msgstr ""
+
+msgid "Move"
+msgstr "Mover"
+
+msgid "Can not move an organisation unit to one of its descendants."
+msgstr ""
+
+msgid "Organisation units to move"
+msgstr ""
+
+msgid "Move into"
+msgstr ""
+
+msgid "At least one org unit is required"
+msgstr "É necessária pelo menos uma unidade organizacional"
 
 msgid "Metadata management"
 msgstr ""
@@ -4060,12 +4295,6 @@ msgstr ""
 msgid "Organisation units providing data"
 msgstr ""
 
-msgid "Sequential sample count (required)"
-msgstr ""
-
-msgid "Annual sample count (required)"
-msgstr ""
-
 msgid "generator"
 msgstr ""
 
@@ -4383,16 +4612,10 @@ msgstr ""
 msgid "A variable with this name already exists in this program."
 msgstr ""
 
-msgid "Source type (required)"
-msgstr ""
-
 msgid "Set up the basic information for this program rule variable."
 msgstr ""
 
 msgid "Configure how this variable works."
-msgstr ""
-
-msgid "Program (required)"
 msgstr ""
 
 msgid "Program cannot be changed after creation"
@@ -4415,7 +4638,7 @@ msgstr ""
 msgid "Expression can not be edited after saving"
 msgstr ""
 
-msgid "Expression (required) *"
+msgid "Expression *"
 msgstr ""
 
 msgid "Feedback widget"
@@ -4424,16 +4647,15 @@ msgstr ""
 msgid "Program indicator widget"
 msgstr "ferramenta de Indicador do programa "
 
-msgid "Display widget (required)"
-msgstr ""
+msgid "Display widget"
+msgstr "Ferrmanta de exibição"
 
 msgid "Message template can not be edited after saving"
 msgstr ""
 
-msgid "Message template (required)"
-msgstr ""
-
-msgid "Can be 0 or negative. Leave empty if not needed."
+msgid ""
+"Enter a number to set run order. Lower numbers run first. Leave empty to use"
+" the default order."
 msgstr ""
 
 msgid "Program rule variable to assign to"
@@ -4443,9 +4665,6 @@ msgid "Program stage to trigger rule"
 msgstr ""
 
 msgid "Select a specific program stage that the rule should only trigger on."
-msgstr ""
-
-msgid "Program stage section to hide (required)"
 msgstr ""
 
 msgid "Program stage section to hide"
@@ -4481,7 +4700,7 @@ msgstr ""
 msgid "This program rule action will not be editable after saving."
 msgstr ""
 
-msgid "Action type (required)"
+msgid "Action type"
 msgstr ""
 
 msgid "Save action"
@@ -4494,6 +4713,9 @@ msgid "Action will be deleted when the program rule is saved."
 msgstr ""
 
 msgid "Undo delete"
+msgstr ""
+
+msgid "Priority: {{priority}}"
 msgstr ""
 
 msgid "Program rule must be saved before actions can be added"
@@ -4707,9 +4929,6 @@ msgstr ""
 msgid "Program Rule"
 msgstr "Regra do programa"
 
-msgid "Name (required)"
-msgstr ""
-
 msgid "Program stages to trigger rule"
 msgstr ""
 
@@ -4906,17 +5125,17 @@ msgstr ""
 msgid "Program Settings"
 msgstr ""
 
-msgid "Set up advanced options for this program."
+msgid "Set up how data is collected for events in this program."
 msgstr ""
 
-msgid "Allow user assignment of events"
+msgid "Allow events to be assigned to users"
 msgstr ""
 
-msgid "Block entry form after completed"
-msgstr "Bloquear formulário de inscrição, após concluído"
+msgid "Block data entry after completion"
+msgstr ""
 
-msgid "Pre-generate event UID"
-msgstr "UID do evento de pré-geração"
+msgid "Generate offline event IDs"
+msgstr ""
 
 msgid "Related program"
 msgstr "Programa relacionado"
@@ -4930,9 +5149,6 @@ msgstr ""
 msgid ""
 "Close data entry a number of days after event category combination end date"
 msgstr ""
-
-msgid "Settings"
-msgstr "Configurações"
 
 msgid "Validation strategy"
 msgstr "Estratégia de validação"
@@ -5020,22 +5236,7 @@ msgstr ""
 msgid "Recipient data element"
 msgstr ""
 
-msgid "Event repetition"
-msgstr ""
-
-msgid "Define the frequency of events within this stage."
-msgstr ""
-
-msgid "Event scheduling"
-msgstr ""
-
-msgid "Configure how and when events in this stage are scheduled."
-msgstr ""
-
-msgid "Completion options"
-msgstr ""
-
-msgid "Decide what should happen after a user completes this event."
+msgid "Set up automatic event creation and scheduling in this program stage."
 msgstr ""
 
 msgid "Configure data collection for events in this program stage."
@@ -5090,22 +5291,22 @@ msgstr ""
 msgid "Stage form saved"
 msgstr ""
 
-msgid "A stage with this name already exists. Please choose another name."
-msgstr ""
-
 msgid "Configure the basic information for this program stage."
 msgstr ""
 
-msgid "Configuration options"
+msgid "Data entry options"
 msgstr ""
 
-msgid "Set up more advanced options for this program stage."
+msgid "Set up how data is collected for events in this program stage."
 msgstr ""
 
-msgid "Custom terminology"
+msgid "Completion options"
 msgstr ""
 
-msgid "Customise the wording of labels for this stage."
+msgid "Decide what should happen after a user completes this event."
+msgstr ""
+
+msgid "Override default labels with program stage-specific terms."
 msgstr ""
 
 msgid "Custom label for report date"
@@ -5118,9 +5319,6 @@ msgid "Custom label for program stage"
 msgstr ""
 
 msgid "Custom label for event"
-msgstr ""
-
-msgid "Program stage form"
 msgstr ""
 
 msgid ""
@@ -5143,43 +5341,63 @@ msgstr ""
 msgid "Edit or rearrange the data elements"
 msgstr ""
 
-msgid "On event completion, show a prompt to create a new event"
+msgid "Ask user to create a new event after completion"
 msgstr ""
 
-msgid "Auto-generate an event in this stage"
+msgid "Create an event in this stage on enrollment"
 msgstr ""
 
-msgid "Generate events based on enrollment date"
-msgstr "Gere eventos com base na data da inscrição"
-
-msgid "Show scheduled date"
+msgid "Reference date for scheduling"
 msgstr ""
 
-msgid "Scheduled days from start (required)"
+msgid "Hide scheduled date"
 msgstr ""
 
-msgid "Days to add to the enrollment or incident date. 0 means same day. "
+msgid ""
+"Android Capture will disable all scheduling. Web Capture will allow manual "
+"scheduling, but scheduled dates will not be editable."
+msgstr ""
+
+msgid "Scheduled days from reference date"
+msgstr ""
+
+msgid ""
+"Days to add to the enrollment or incident date when scheduling events. 0 "
+"means same day. "
 msgstr ""
 
 msgid "Default next scheduled date"
 msgstr ""
 
+msgid ""
+"If set, this date sets the next scheduled date. Standard interval days is "
+"used if the date is empty."
+msgstr ""
+
 msgid "Open data entry form after enrollment"
 msgstr "Abrir o formulário de entrada de dados após inscrição"
 
-msgid "On event completion, ask user to complete enrollment"
+msgid ""
+"If set, only one event per period is allowed. Report date will be a period "
+"instead of a date. Not supported by web Capture."
 msgstr ""
 
-msgid "Allow multiple events in this stage (repeatable stage)"
+msgid "Ask user to complete enrollment after completion"
 msgstr ""
 
-msgid "Report date to use"
-msgstr "Data de relatório a ser utilizada"
+msgid "Allow multiple events in this stage"
+msgstr ""
+
+msgid "None (report date will be empty)"
+msgstr ""
+
+msgid "Date to use for created event report date"
+msgstr ""
 
 msgid "Standard interval days"
 msgstr "Padrão dias de intervalo"
 
-msgid "Enter the number of days between repeated events."
+msgid "The number of days between repeated events."
 msgstr ""
 
 msgid "Stage section"
@@ -5212,25 +5430,10 @@ msgstr ""
 msgid "Mobile display"
 msgstr ""
 
-msgid "Stage: Setup"
+msgid "Creation and scheduling"
 msgstr ""
 
-msgid "Stage: Configuration"
-msgstr ""
-
-msgid "Stage: Terminology"
-msgstr ""
-
-msgid "Stage: Creation and Scheduling"
-msgstr ""
-
-msgid "Scheduled days from start"
-msgstr "Dias programados desde o início"
-
-msgid "Stage: Data"
-msgstr ""
-
-msgid "Stage: Form"
+msgid "Program stage form"
 msgstr ""
 
 msgid "Section tracked entity attributes"
@@ -5315,6 +5518,14 @@ msgstr ""
 msgid ""
 "Do not create overdue events when automatically creating program stage "
 "events"
+msgstr ""
+
+msgid "Mandatory tracked entity attributes are not included in this form."
+msgstr ""
+
+msgid ""
+"The following attributes are marked as required but not assigned to any "
+"section:"
 msgstr ""
 
 msgid "Custom label for \"Incident date\""
@@ -5476,14 +5687,6 @@ msgstr ""
 msgid ""
 "Searches using these operators return no results. Use this to prevent "
 "inefficient searches."
-msgstr ""
-
-msgid "Confidential"
-msgstr "Confidencial"
-
-msgid ""
-"Prevent searching or viewing in analytics. Available only when system "
-"encryption is enabled."
 msgstr ""
 
 msgid "Inherit values from tracked entities linked by a relationship"

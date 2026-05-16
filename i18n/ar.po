@@ -1,15 +1,15 @@
 # Translators:
-# Mozafar Haider, 2026
 # Philip Larsen Donnelly, 2026
-# Viktor Varland <viktor@dhis2.org>, 2026
+# Mozafar Haider, 2026
 # Hamza <7amza.it@gmail.com>, 2026
+# Viktor Varland <viktor@dhis2.org>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-05-07T08:04:05.825Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Hamza <7amza.it@gmail.com>, 2026\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
 "Language-Team: Arabic (https://app.transifex.com/hisp-uio/teams/100509/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -87,7 +87,7 @@ msgid "Overview"
 msgstr "نظرة عامة"
 
 msgid "Hierarchy operations"
-msgstr ""
+msgstr "عمليات التسلسل الهرمي"
 
 msgid "Search menu items"
 msgstr ""
@@ -1119,7 +1119,7 @@ msgid "Show details"
 msgstr "إظهار التفاصيل"
 
 msgid "Duplicate"
-msgstr ""
+msgstr "تكرار"
 
 msgid "Sharing settings"
 msgstr "إعدادات المشاركة"
@@ -1350,7 +1350,7 @@ msgid "Validation notification"
 msgstr "إشعار التحقق من الصحة"
 
 msgid "Validation notifications"
-msgstr ""
+msgstr "إشعارات التحقق من الصحة"
 
 msgid "Constant"
 msgstr "الثابت"
@@ -1890,10 +1890,10 @@ msgid "On update and insert"
 msgstr "عند التحديث والإدراج"
 
 msgid "Resource tables"
-msgstr ""
+msgstr "جداول المصادر"
 
 msgid "Analytics tables"
-msgstr ""
+msgstr "جداول التحليلات"
 
 msgid "Data value"
 msgstr ""
@@ -1908,7 +1908,7 @@ msgid "Organisation unit target"
 msgstr ""
 
 msgid "Validation result"
-msgstr ""
+msgstr "نتيجة التحقق"
 
 msgid "Ownership"
 msgstr ""
@@ -1920,7 +1920,7 @@ msgid "Tracked entity instance enrollments"
 msgstr ""
 
 msgid "Organisation unit structure"
-msgstr ""
+msgstr "هيكلية الوحدة التنظيمية"
 
 msgid "Data set organisation unit category"
 msgstr ""
@@ -1929,25 +1929,25 @@ msgid "Category option combo name"
 msgstr ""
 
 msgid "Data element group set structure"
-msgstr ""
+msgstr "هيكلية حزمة مجموعات عناصر البيانات"
 
 msgid "Indicator group set structure"
-msgstr ""
+msgstr "هيكلية حزمة مجموعات المؤشرات"
 
 msgid "Organisation unit group set structure"
-msgstr ""
+msgstr "هيكلية حزمة مجموعات الوحدات التنظيمية"
 
 msgid "Category structure"
-msgstr ""
+msgstr "هيكلية الفئة"
 
 msgid "Data element structure"
-msgstr ""
+msgstr "هيكلية عناصر البيانات"
 
 msgid "Period structure"
-msgstr ""
+msgstr "هيكلية الفترة الزمنية"
 
 msgid "Date period structure"
-msgstr ""
+msgstr "هيكلية الفترة الزمنية للتاريخ"
 
 msgid "Data element category option combo"
 msgstr ""
@@ -3542,16 +3542,16 @@ msgid "Create legend items to define value ranges and associated colors."
 msgstr ""
 
 msgid "Start value"
-msgstr ""
+msgstr "قيمة البداية"
 
 msgid "End value"
-msgstr ""
+msgstr "قيمة النهاية"
 
 msgid "Items"
-msgstr ""
+msgstr "العناصر"
 
 msgid "Color scale"
-msgstr ""
+msgstr "مقياس اللون"
 
 msgid "End value must be greater than start value."
 msgstr ""
@@ -3576,7 +3576,7 @@ msgid ""
 msgstr ""
 
 msgid "Create legend items"
-msgstr ""
+msgstr "إنشاء عناصر وسائل الإيضاح"
 
 msgid "Generate a legend"
 msgstr ""
@@ -3600,7 +3600,7 @@ msgid "Create {{modelName}} "
 msgstr ""
 
 msgid "Country"
-msgstr ""
+msgstr "البلد"
 
 msgid "Failed to load countries"
 msgstr ""
@@ -3609,7 +3609,7 @@ msgid "Select a country"
 msgstr ""
 
 msgid "Language"
-msgstr ""
+msgstr "اللغة"
 
 msgid "Failed to load languages"
 msgstr ""
@@ -3903,7 +3903,7 @@ msgid ""
 msgstr ""
 
 msgid "Move"
-msgstr ""
+msgstr "نقل"
 
 msgid "Can not move an organisation unit to one of its descendants."
 msgstr ""
@@ -4625,7 +4625,7 @@ msgid "Program indicator widget"
 msgstr "Program indicator widget"
 
 msgid "Display widget"
-msgstr ""
+msgstr "Display widget"
 
 msgid "Message template can not be edited after saving"
 msgstr ""

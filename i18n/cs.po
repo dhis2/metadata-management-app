@@ -87,7 +87,7 @@ msgid "Overview"
 msgstr "Přehled"
 
 msgid "Hierarchy operations"
-msgstr ""
+msgstr "Hierarchické operace"
 
 msgid "Search menu items"
 msgstr "Položky menu Vyhledávání"
@@ -1124,7 +1124,7 @@ msgid "Show details"
 msgstr "Ukázat detaily"
 
 msgid "Duplicate"
-msgstr ""
+msgstr "Duplikát"
 
 msgid "Sharing settings"
 msgstr "Nastavení sdílení"
@@ -1896,70 +1896,70 @@ msgid "On update and insert"
 msgstr "Při aktualizaci a vložení"
 
 msgid "Resource tables"
-msgstr ""
+msgstr "Zdrojové tabulky"
 
 msgid "Analytics tables"
-msgstr ""
+msgstr "tabulky Analýzy"
 
 msgid "Data value"
-msgstr ""
+msgstr "Hodnota dat"
 
 msgid "Completeness"
-msgstr ""
+msgstr "Úplnost"
 
 msgid "Completeness target"
-msgstr ""
+msgstr "Cíl úplnosti"
 
 msgid "Organisation unit target"
-msgstr ""
+msgstr "Cílová organizační jednotka"
 
 msgid "Validation result"
-msgstr ""
+msgstr "Výsledek ověření"
 
 msgid "Ownership"
-msgstr ""
+msgstr "Vlastnictví"
 
 msgid "Tracked entity instance events"
-msgstr ""
+msgstr "Události instance trasovaných entit"
 
 msgid "Tracked entity instance enrollments"
-msgstr ""
+msgstr "Zápisy instancí trasovaných entit"
 
 msgid "Organisation unit structure"
-msgstr ""
+msgstr "Struktura organizační jednotky"
 
 msgid "Data set organisation unit category"
-msgstr ""
+msgstr "Kategorie organizační jednotky datového souboru"
 
 msgid "Category option combo name"
-msgstr ""
+msgstr "Název kombinace možností kategorie"
 
 msgid "Data element group set structure"
-msgstr ""
+msgstr "Struktura sady datových prvků"
 
 msgid "Indicator group set structure"
-msgstr ""
+msgstr "Struktura skupiny indikátorů"
 
 msgid "Organisation unit group set structure"
-msgstr ""
+msgstr "Struktura sady skupin organizačních jednotek"
 
 msgid "Category structure"
-msgstr ""
+msgstr "Struktura kategorie"
 
 msgid "Data element structure"
-msgstr ""
+msgstr "Struktura datových prvků"
 
 msgid "Period structure"
-msgstr ""
+msgstr "Struktura období"
 
 msgid "Date period structure"
-msgstr ""
+msgstr "Struktura období"
 
 msgid "Data element category option combo"
 msgstr ""
 
 msgid "Data approval remap level"
-msgstr ""
+msgstr "Úroveň přemapování schválení dat"
 
 msgid "Data approval min level"
 msgstr ""
@@ -2064,7 +2064,7 @@ msgid "Sharing"
 msgstr "Sdílení"
 
 msgid "SQL"
-msgstr ""
+msgstr "SQL"
 
 msgid "Resource table type"
 msgstr ""
@@ -3583,16 +3583,16 @@ msgid "Create legend items to define value ranges and associated colors."
 msgstr ""
 
 msgid "Start value"
-msgstr ""
+msgstr "Počáteční hodnota"
 
 msgid "End value"
-msgstr ""
+msgstr "Konečná hodnota"
 
 msgid "Items"
-msgstr ""
+msgstr "Položky"
 
 msgid "Color scale"
-msgstr ""
+msgstr "Barevná stupnice"
 
 msgid "End value must be greater than start value."
 msgstr ""
@@ -3617,7 +3617,7 @@ msgid ""
 msgstr ""
 
 msgid "Create legend items"
-msgstr ""
+msgstr "Vytvořit položky legendy"
 
 msgid "Generate a legend"
 msgstr ""
@@ -3641,7 +3641,7 @@ msgid "Create {{modelName}} "
 msgstr "Vytvořit {{modelName}} "
 
 msgid "Country"
-msgstr ""
+msgstr "Země"
 
 msgid "Failed to load countries"
 msgstr ""
@@ -3650,7 +3650,7 @@ msgid "Select a country"
 msgstr ""
 
 msgid "Language"
-msgstr ""
+msgstr "Jazyk"
 
 msgid "Failed to load languages"
 msgstr ""
@@ -3954,7 +3954,7 @@ msgid ""
 msgstr ""
 
 msgid "Move"
-msgstr ""
+msgstr "Posun"
 
 msgid "Can not move an organisation unit to one of its descendants."
 msgstr ""
@@ -3966,7 +3966,7 @@ msgid "Move into"
 msgstr ""
 
 msgid "At least one org unit is required"
-msgstr ""
+msgstr "Je vyžadována alespoň jedna org. jednotka"
 
 msgid "Metadata management"
 msgstr "Správa metadat"
@@ -4741,7 +4741,7 @@ msgid "Program indicator widget"
 msgstr "Widget indikátoru programu"
 
 msgid "Display widget"
-msgstr ""
+msgstr "Zobrazit widget"
 
 msgid "Message template can not be edited after saving"
 msgstr ""
