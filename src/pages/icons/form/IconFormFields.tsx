@@ -32,31 +32,44 @@ function IconKeyField() {
     )
 }
 
+function getImageSection(
+    mode: 'new' | 'edit',
+    href: string | undefined
+): React.ReactNode {
+    if (mode === 'new') {
+        return (
+            <StandardFormField>
+                <IconFileField />
+            </StandardFormField>
+        )
+    }
+    if (href) {
+        return (
+            <StandardFormField>
+                <img
+                    src={href}
+                    alt={i18n.t('Icon preview')}
+                    style={{ width: 48, height: 48, display: 'block' }}
+                />
+            </StandardFormField>
+        )
+    }
+    return null
+}
+
 export function IconFormFields({
     mode,
     href,
-}: {
+}: Readonly<{
     mode: 'new' | 'edit'
     href?: string
-}) {
+}>) {
     return (
         <StandardFormSection>
             <StandardFormSectionTitle>
                 {i18n.t('Basic information')}
             </StandardFormSectionTitle>
-            {mode === 'new' ? (
-                <StandardFormField>
-                    <IconFileField />
-                </StandardFormField>
-            ) : href ? (
-                <StandardFormField>
-                    <img
-                        src={href}
-                        alt={i18n.t('Icon preview')}
-                        style={{ width: 48, height: 48, display: 'block' }}
-                    />
-                </StandardFormField>
-            ) : null}
+            {getImageSection(mode, href)}
             <StandardFormField>
                 {mode === 'new' ? (
                     <IconKeyField />
