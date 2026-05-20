@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { Checkbox, InputFieldFF, SingleSelectFieldFF } from '@dhis2/ui'
 import React, { useEffect, useState } from 'react'
-import { Field as FieldRFF, useField, useForm } from 'react-final-form'
+import { Field as FieldRFF, useField } from 'react-final-form'
 import type { FieldMetaState } from 'react-final-form'
 import { Program } from '../../../../types/generated'
 import setupClasses from '../common/SetupFormContents.module.css'
