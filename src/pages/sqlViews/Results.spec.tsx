@@ -133,6 +133,29 @@ describe('SqlViewResults', () => {
             )
         })
 
+        it('shows "Refresh data" button for MATERIALIZED_VIEW type', async () => {
+            const { screen } = await renderResults({
+                meta: mockMeta({ type: SqlView.type.MATERIALIZED_VIEW }),
+            })
+            expect(screen.getByTestId('results-refresh-button')).toBeVisible()
+        })
+
+        it('does not show "Refresh data" button for VIEW type', async () => {
+            const { screen } = await renderResults()
+            expect(
+                screen.queryByTestId('results-refresh-button')
+            ).not.toBeInTheDocument()
+        })
+
+        it('does not show "Refresh data" button for QUERY type', async () => {
+            const { screen } = await renderResults({
+                meta: mockMeta({ type: SqlView.type.QUERY }),
+            })
+            expect(
+                screen.queryByTestId('results-refresh-button')
+            ).not.toBeInTheDocument()
+        })
+
         it('shows "Run query" run button for QUERY type', async () => {
             const { screen } = await renderResults({
                 meta: mockMeta({ type: SqlView.type.QUERY }),
@@ -253,7 +276,7 @@ describe('SqlViewResults', () => {
                     },
                 },
             })
-            await uiActions.clickButton('results-run-button', screen)
+            await uiActions.clickButton('results-refresh-button', screen)
             await waitFor(() => {
                 expect(refreshMock).toHaveBeenCalledTimes(1)
             })
