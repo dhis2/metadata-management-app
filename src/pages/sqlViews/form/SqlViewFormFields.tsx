@@ -40,9 +40,7 @@ export function SqlViewFormFields() {
                 </StandardFormSectionTitle>
 
                 <StandardFormSectionDescription>
-                    {i18n.t(
-                        'Set up how this SQL view is identified and described.'
-                    )}
+                    {i18n.t('Set up the basic information for this SQL view.')}
                 </StandardFormSectionDescription>
 
                 <StandardFormField>
@@ -73,7 +71,9 @@ export function SqlViewFormFields() {
                 </StandardFormSectionTitle>
 
                 <StandardFormSectionDescription>
-                    {i18n.t('Choose the type of SQL view and write the query.')}
+                    {i18n.t(
+                        'Choose the type of SQL view and define the query.'
+                    )}
                 </StandardFormSectionDescription>
 
                 <StandardFormField>
