@@ -1,5 +1,5 @@
 export { AllOverview } from './AllOverview'
-export { ListOfAll } from './ListOfAll'
+export { ListOfAll } from './listOfAllMetadata/ListOfAll'
 
 export { Component as DataElements } from './DataElements'
 

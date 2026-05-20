@@ -92,3 +92,7 @@
         transform: rotate(-90deg);
     }
 }
+
+.sidenavSubmenu {
+    padding-left: var(--spacers-dp32) !important;
+}
