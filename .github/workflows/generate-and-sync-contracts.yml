@@ -51,6 +51,7 @@ jobs:
                   fi
 
             - name: Clone contracts repo and push branch
+              id: push
               if: steps.diff.outputs.changed == 'true'
               run: |
                   git config --global user.name "github-actions[bot]"
@@ -74,15 +75,17 @@ jobs:
                   git add .
                   if git diff --cached --quiet; then
                     echo "No changes to commit after copy."
+                    echo "pushed=false" >> $GITHUB_OUTPUT
                     exit 0
                   fi
 
                   git commit -m "Auto-update contracts from metadata management app PR #${{ github.event.pull_request.number }}"
                   git push origin $BRANCH_NAME
+                  echo "pushed=true" >> $GITHUB_OUTPUT
 
             - name: Create Pull Request in contract repo
               id: create_pr
-              if: steps.diff.outputs.changed == 'true'
+              if: steps.push.outputs.pushed == 'true'
               run: |
                   cd dhis2-api-contracts
                   BRANCH_NAME="auto/contracts-update-${{ github.event.pull_request.number }}"
