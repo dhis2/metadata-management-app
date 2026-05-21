@@ -2,19 +2,18 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { z, ZodObject, ZodRawShape } from 'zod'
 import { zodToJsonSchema } from 'zod-to-json-schema'
 import { categoryFormSchema } from '../pages/categories/form'
+import { categoryOptionComboFormSchema } from '../pages/categoryOptionCombos/form'
 
 const generateContract = <T extends ZodRawShape>({
     method,
     path,
     name,
     expectedSchema,
-    usage,
 }: {
     method: string
     path: string
     name: string
     expectedSchema: ZodObject<T>
-    usage?: string
 }) => {
     const contractPath = `contracts/${name}/contract.json`
     const schemaPath = `contracts/${name}/json-schema.json`
@@ -37,12 +36,6 @@ const generateContract = <T extends ZodRawShape>({
         schemaPath,
         JSON.stringify(schema.definitions?.[name], null, 2)
     )
-    if (usage) {
-        writeFileSync(
-            `contracts/${name}/README.md`,
-            `# ${method} ${name} usage\n\n${usage}`
-        )
-    }
 }
 
 describe('contracts', () => {

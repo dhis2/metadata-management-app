@@ -35,6 +35,12 @@ jobs:
             - name: Format
               run: yarn format
 
+            - name: Normalize contract files
+              run: |
+                  find contracts -type f -name "*.json" | while read -r file; do
+                    jq --sort-keys . "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+                  done
+
             - name: Check for contract changes
               id: diff
               run: |
@@ -82,14 +88,37 @@ jobs:
                   BRANCH_NAME="auto/contracts-update-${{ github.event.pull_request.number }}"
                   gh auth login --with-token <<< "${{ secrets.CONTRACTS_PAT }}"
 
-                  # Check if a PR already exists
-                  if gh pr list --head "$BRANCH_NAME" --base main --json number --jq '.[0].number' | grep -q .; then
-                    echo "PR already exists for branch $BRANCH_NAME, skipping creation."
+                  # Compute which contract folders were added, removed, or modified
+                  git ls-tree --name-only main:contracts/metadata-management-app/ 2>/dev/null | sort > /tmp/main_folders.txt
+                  git ls-tree --name-only HEAD:contracts/metadata-management-app/ 2>/dev/null | sort > /tmp/current_folders.txt
+
+                  ADDED=$(comm -23 /tmp/current_folders.txt /tmp/main_folders.txt | paste -sd ', ' -)
+                  REMOVED=$(comm -13 /tmp/current_folders.txt /tmp/main_folders.txt | paste -sd ', ' -)
+                  MODIFIED=""
+                  while IFS= read -r folder; do
+                    [ -z "$folder" ] && continue
+                    if ! git diff --quiet main HEAD -- "contracts/metadata-management-app/$folder/"; then
+                      MODIFIED="${MODIFIED:+$MODIFIED, }$folder"
+                    fi
+                  done < <(comm -12 /tmp/current_folders.txt /tmp/main_folders.txt)
+
+                  TITLE_SUFFIX=""
+                  [ -n "$ADDED" ]    && TITLE_SUFFIX="${TITLE_SUFFIX} Added contracts: ${ADDED}."
+                  [ -n "$REMOVED" ]  && TITLE_SUFFIX="${TITLE_SUFFIX} Removed contracts: ${REMOVED}."
+                  [ -n "$MODIFIED" ] && TITLE_SUFFIX="${TITLE_SUFFIX} Modified contracts: ${MODIFIED}."
+
+                  PR_TITLE="Auto PR: Contracts from metadata management app PR #${{ github.event.pull_request.number }}${TITLE_SUFFIX}"
+
+                  # Create or update the PR
+                  EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --base main --json number --jq '.[0].number')
+                  if [ -n "$EXISTING_PR" ]; then
+                    echo "PR #$EXISTING_PR already exists for branch $BRANCH_NAME, updating title."
+                    gh pr edit "$EXISTING_PR" --title "$PR_TITLE"
                   else
                     gh pr create \
                       --base main \
                       --head "$BRANCH_NAME" \
-                      --title "Auto PR: Contracts from metadata management app PR #${{ github.event.pull_request.number }}" \
+                      --title "$PR_TITLE" \
                       --body "This PR was automatically created from a pull request in metadata management app." \
                       --reviewer dhis2/platform-backend
                   fi
