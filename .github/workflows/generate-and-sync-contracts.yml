@@ -130,30 +130,25 @@ jobs:
                   # Output the branch name safely for downstream jobs
                   echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
 
-    check-dependent-pr:
-        needs: generate-and-sync
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'check-only'
+    check-contracts-pr:
         runs-on: ubuntu-latest
+        if: github.event_name == 'pull_request'
         steps:
-            - name: Install GitHub CLI
+            - name: Check for open contracts PR
               run: |
-                  sudo apt-get update
-                  sudo apt-get install -y gh jq
+                  echo "${{ secrets.CONTRACTS_PAT }}" | gh auth login --with-token
+                  BRANCH_NAME="auto/contracts-update-${{ github.event.pull_request.number }}"
 
-            - name: Authenticate GitHub CLI
-              run: echo "${{ secrets.CONTRACTS_PAT }}" | gh auth login --with-token
+                  OPEN_PR=$(gh pr list \
+                    --repo dhis2/dhis2-api-contracts \
+                    --head "$BRANCH_NAME" \
+                    --base main \
+                    --state open \
+                    --json number \
+                    --jq '.[0].number')
 
-            - name: Verify dependent PR merged
-              run: |
-                  # Get the branch name from the previous job output
-                  BRANCH_NAME="${{ needs.generate-and-sync.outputs.pr_branch_name }}"
-                  DEP_PR=$(echo "$BRANCH_NAME" | grep -oE '[0-9]+$')
-                  DEP_REPO="org/metadata-management-app"
-
-                  echo "Checking dependency: $DEP_REPO PR #$DEP_PR"
-                  STATUS=$(gh pr view $DEP_PR --repo $DEP_REPO --json state --jq .state)
-                  echo "Dependent PR status: $STATUS"
-
-                  if [ "$STATUS" != "MERGED" ]; then
-                    echo "::error::Dependent PR $DEP_REPO#$DEP_PR is not merged yet."
+                  if [ -n "$OPEN_PR" ]; then
+                    echo "::error::Contracts PR #$OPEN_PR in dhis2/dhis2-api-contracts is still open. Close or merge it before merging this PR."
                     exit 1
+                  fi
+                  echo "No open contracts PR — safe to merge."
