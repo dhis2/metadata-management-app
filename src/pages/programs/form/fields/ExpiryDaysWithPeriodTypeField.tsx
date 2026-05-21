@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { Checkbox, InputFieldFF, SingleSelectFieldFF } from '@dhis2/ui'
 import React, { useEffect, useState } from 'react'
-import { Field as FieldRFF, useField } from 'react-final-form'
+import { Field as FieldRFF, useField, useFormState } from 'react-final-form'
 import type { FieldMetaState } from 'react-final-form'
 import { Program } from '../../../../types/generated'
 import setupClasses from '../common/SetupFormContents.module.css'
@@ -10,7 +10,12 @@ const EXPIRY_PERIOD_TYPE_OPTIONS = Object.entries(Program.expiryPeriodType).map(
     ([, value]) => ({ label: value, value })
 )
 
-function isEnabled(value: unknown): boolean {
+type ExpiryFormValues = {
+    expiryDays?: unknown
+    expiryPeriodType?: unknown
+}
+
+function hasExpiryDays(value: unknown): boolean {
     if (value == null || value === '') {
         return false
     }
@@ -18,21 +23,30 @@ function isEnabled(value: unknown): boolean {
     return !Number.isNaN(numericValue) && numericValue !== 0
 }
 
+function hasExpiryPeriodType(value: unknown): boolean {
+    return value != null && value !== ''
+}
+
 export function ExpiryDaysWithPeriodTypeField() {
     const { input: expiryDaysInput } = useField('expiryDays')
     const { input: expiryPeriodTypeInput } = useField('expiryPeriodType')
-    const [checked, setChecked] = useState(() =>
-        isEnabled(expiryDaysInput.value)
-    )
+    const { initialValues } = useFormState<ExpiryFormValues>({
+        subscription: { initialValues: true },
+    })
+    const initialChecked =
+        hasExpiryDays(initialValues?.expiryDays) &&
+        hasExpiryPeriodType(initialValues?.expiryPeriodType)
+    const [checked, setChecked] = useState(initialChecked)
 
     useEffect(() => {
-        if (isEnabled(expiryDaysInput.value)) {
-            setChecked(true)
-        }
-    }, [expiryDaysInput.value])
+        setChecked(initialChecked)
+    }, [initialChecked])
 
     const onToggle = (isChecked: boolean) => {
         setChecked(isChecked)
+        if (isChecked && !hasExpiryDays(expiryDaysInput.value)) {
+            expiryDaysInput.onChange(1)
+        }
         if (!isChecked) {
             expiryDaysInput.onChange(0)
             expiryPeriodTypeInput.onChange(null)
@@ -55,13 +69,13 @@ export function ExpiryDaysWithPeriodTypeField() {
                         name="expiryDays"
                         component={InputFieldFF}
                         type="number"
-                        min="0"
+                        min="1"
                         inputWidth="150px"
                         label={i18n.t('Number of days')}
                         dataTest="formfields-expiryDays"
                         format={(value: unknown) => value?.toString()}
                         parse={(value: unknown) => {
-                            if (value === undefined || value === null) {
+                            if (value == null) {
                                 return null
                             }
                             if (value === '') {

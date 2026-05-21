@@ -1,10 +1,14 @@
 import i18n from '@dhis2/d2-i18n'
 import { Checkbox, InputFieldFF } from '@dhis2/ui'
 import React, { useEffect, useState } from 'react'
-import { Field as FieldRFF, useField } from 'react-final-form'
+import { Field as FieldRFF, useField, useFormState } from 'react-final-form'
 import setupClasses from '../common/SetupFormContents.module.css'
 
-function isEnabled(value: unknown): boolean {
+type CompleteEventsExpiryFormValues = {
+    completeEventsExpiryDays?: unknown
+}
+
+function hasExpiryDays(value: unknown): boolean {
     if (value == null || value === '') {
         return false
     }
@@ -14,16 +18,23 @@ function isEnabled(value: unknown): boolean {
 
 export function CompleteEventsExpiryDaysField() {
     const { input } = useField('completeEventsExpiryDays')
-    const [checked, setChecked] = useState(() => isEnabled(input.value))
+    const { initialValues } = useFormState<CompleteEventsExpiryFormValues>({
+        subscription: { initialValues: true },
+    })
+    const initialChecked = hasExpiryDays(
+        initialValues?.completeEventsExpiryDays
+    )
+    const [checked, setChecked] = useState(initialChecked)
 
     useEffect(() => {
-        if (isEnabled(input.value)) {
-            setChecked(true)
-        }
-    }, [input.value])
+        setChecked(initialChecked)
+    }, [initialChecked])
 
     const onToggle = (isChecked: boolean) => {
         setChecked(isChecked)
+        if (isChecked && !hasExpiryDays(input.value)) {
+            input.onChange(1)
+        }
         if (!isChecked) {
             input.onChange(0)
         }
@@ -43,13 +54,13 @@ export function CompleteEventsExpiryDaysField() {
                         name="completeEventsExpiryDays"
                         component={InputFieldFF}
                         type="number"
-                        min="0"
+                        min="1"
                         inputWidth="150px"
                         label={i18n.t('Number of days')}
                         dataTest="formfields-completeEventsExpiryDays"
                         format={(value: unknown) => value?.toString()}
                         parse={(value: unknown) => {
-                            if (value === undefined || value === null) {
+                            if (value == null) {
                                 return null
                             }
                             if (value === '') {
