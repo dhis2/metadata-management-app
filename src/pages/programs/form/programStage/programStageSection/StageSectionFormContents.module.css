@@ -28,3 +28,11 @@
 .pivotedCategorySelector {
     margin: var(--spacers-dp4) var(--spacers-dp16);
 }
+
+.mandatoryWarningNotice {
+    margin-bottom: var(--spacers-dp12);
+}
+
+.notice {
+    max-width: 1050px;
+}

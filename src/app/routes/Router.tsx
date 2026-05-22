@@ -117,6 +117,8 @@ function createSectionLazyRouteFunction(
     }
 }
 
+const sectionsWithNonUidId = new Set<Section>([SECTIONS_MAP.icon])
+
 const VerifyModelId = () => {
     const { id } = useParams()
     const section = useSectionHandle()
@@ -124,7 +126,10 @@ const VerifyModelId = () => {
         if (!id) {
             throw new Error('Invalid model id.')
         }
-    } else if (!isValidUid(id)) {
+        return <Outlet />
+    }
+
+    if (!isValidUid(id)) {
         throw new Error('Invalid model id.')
     }
     return <Outlet />
@@ -167,8 +172,6 @@ const sectionsNoNewRoute = new Set<SchemaSection | NonSchemaSection>([
     SECTIONS_MAP.categoryOptionCombo,
     SECTIONS_MAP.organisationUnitLevel,
 ])
-
-const sectionsWithNonUidId = new Set<Section>([SECTIONS_MAP.icon])
 
 const schemaSectionRoutes = Object.values(SECTIONS_MAP).map((section) => (
     <Route
