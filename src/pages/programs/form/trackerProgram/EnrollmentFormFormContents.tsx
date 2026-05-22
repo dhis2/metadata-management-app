@@ -1,6 +1,6 @@
 import { useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { Button } from '@dhis2/ui'
+import { Button, NoticeBox } from '@dhis2/ui'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useField, UseFieldConfig, useFormState } from 'react-final-form'
 import {

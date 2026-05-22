@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-05-22T11:30:32.387Z\n"
-"PO-Revision-Date: 2026-05-22T11:30:32.388Z\n"
+"POT-Creation-Date: 2026-05-13T08:11:47.456Z\n"
+"PO-Revision-Date: 2026-05-13T08:11:47.456Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -2275,6 +2275,15 @@ msgstr "Initiating entity type"
 
 msgid "Receiving entity type"
 msgstr "Receiving entity type"
+
+msgid "SQL type"
+msgstr "SQL type"
+
+msgid "Cache strategy"
+msgstr "Cache strategy"
+
+msgid "SQL query"
+msgstr "SQL query"
 
 msgid "Unique"
 msgstr "Unique"
@@ -4893,6 +4902,12 @@ msgstr ""
 msgid "Program Rule Variable"
 msgstr "Program Rule Variable"
 
+msgid "Program rule created but ID cannot be determined"
+msgstr "Program rule created but ID cannot be determined"
+
+msgid "Some program rule actions failed to save"
+msgstr "Some program rule actions failed to save"
+
 msgid "Edit condition expression"
 msgstr "Edit condition expression"
 
@@ -4974,6 +4989,9 @@ msgstr "Save action"
 
 msgid "Set up the actions that happen when the program rule runs."
 msgstr "Set up the actions that happen when the program rule runs."
+
+msgid "Program rule must be saved before actions can be modified"
+msgstr "Program rule must be saved before actions can be modified"
 
 msgid "Action will be deleted when the program rule is saved."
 msgstr "Action will be deleted when the program rule is saved."
@@ -5986,6 +6004,95 @@ msgid ""
 msgstr ""
 "Relationship name seen from receiving entity is required when bidirectional "
 "is checked"
+
+msgid "SQL view results"
+msgstr "SQL view results"
+
+msgid "Materialized view refreshed."
+msgstr "Materialized view refreshed."
+
+msgid "SQL view created or updated."
+msgstr "SQL view created or updated."
+
+msgid "An unknown error occurred."
+msgstr "An unknown error occurred."
+
+msgid "View results"
+msgstr "View results"
+
+msgid "Run query"
+msgstr "Run query"
+
+msgid "Create or update view"
+msgstr "Create or update view"
+
+msgid "SQL view results"
+msgstr "SQL view results"
+
+msgid "Materialized view refreshed."
+msgstr "Materialized view refreshed."
+
+msgid "SQL view created or updated."
+msgstr "SQL view created or updated."
+
+msgid "An unknown error occurred."
+msgstr "An unknown error occurred."
+
+msgid "Could not run SQL view: {{error}}"
+msgstr "Could not run SQL view: {{error}}"
+
+msgid "View results"
+msgstr "View results"
+
+msgid "Run query"
+msgstr "Run query"
+
+msgid "Create or update view"
+msgstr "Create or update view"
+
+msgid "Current user id"
+msgstr "Current user id"
+
+msgid "Current username"
+msgstr "Current username"
+
+msgid "SQL query *"
+msgstr "SQL query *"
+
+msgid ""
+"Only SELECT statements allowed. Sensitive tables, including user "
+"information, cannot be queried."
+msgstr ""
+"Only SELECT statements allowed. Sensitive tables, including user "
+"information, cannot be queried."
+
+msgid "Set up how this SQL view is identified and described."
+msgstr "Set up how this SQL view is identified and described."
+
+msgid "Controls how long results are cached on the server before re-execution"
+msgstr "Controls how long results are cached on the server before re-execution"
+
+msgid "SQL definition"
+msgstr "SQL definition"
+
+msgid "Choose the type of SQL view and write the query."
+msgstr "Choose the type of SQL view and write the query."
+
+msgid "SQL type cannot be changed after creation."
+msgstr "SQL type cannot be changed after creation."
+
+msgid "View: SQL query is stored in the database; results are generated each time."
+msgstr "View: SQL query is stored in the database; results are generated each time."
+
+msgid "Materialized view: SQL query is stored, and results are cached."
+msgstr "Materialized view: SQL query is stored, and results are cached."
+
+msgid ""
+"Query only: Neither query nor results stored in the database. Supports "
+"inline $(variable) references."
+msgstr ""
+"Query only: Neither query nor results stored in the database. Supports "
+"inline $(variable) references."
 
 msgid "SW | Starts with"
 msgstr "SW | Starts with"

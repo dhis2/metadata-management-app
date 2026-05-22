@@ -557,6 +557,21 @@ export const modelListViewsConfig = {
             overrideDefaultAvailable: true,
         },
     },
+    sqlView: {
+        columns: {
+            default: [
+                DESCRIPTORS.name,
+                { label: i18n.t('SQL type'), path: 'type' },
+                'lastUpdated',
+                DESCRIPTORS.publicAccess,
+            ],
+            available: [
+                { label: i18n.t('Cache strategy'), path: 'cacheStrategy' },
+                { label: i18n.t('SQL query'), path: 'sqlQuery' },
+            ],
+        },
+        filters: {},
+    },
     trackedEntityType: {
         columns: {
             default: [

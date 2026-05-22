@@ -212,12 +212,14 @@ export const ListInFormItem = ({
     onClick,
     onDelete,
     translatable = true,
+    disabled = false,
 }: {
     item: ListItem
     schemaName: SchemaName
     onClick?: () => void
     onDelete?: () => void
     translatable?: boolean
+    disabled?: boolean
 }) => {
     const [translationDialogModel, setTranslationDialogModel] = useState<
         BaseListModel | undefined
@@ -256,6 +258,7 @@ export const ListInFormItem = ({
                         <MoreDropdownItem
                             label={i18n.t('Edit')}
                             onClick={onClick}
+                            disabled={disabled}
                         />
                         {item.access !== undefined && translatable && (
                             <MoreDropdownItem
@@ -268,12 +271,14 @@ export const ListInFormItem = ({
                             onClick={() => {
                                 navigator.clipboard.writeText(item.id)
                             }}
+                            disabled={disabled}
                         />
                         <MoreDropdownDivider />
                         <MoreDropdownItem
                             label={i18n.t('Delete')}
                             destructive
                             onClick={onDelete}
+                            disabled={disabled}
                         />
                     </MoreDropdownButton>
                 </div>

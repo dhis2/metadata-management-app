@@ -270,11 +270,31 @@ const PROGRAM_RULE_VARIABLE_SOURCE_TYPE = {
     TEI_ATTRIBUTE: i18n.t('Tracked entity attribute'),
 }
 
+const MATERIALIZED_VIEW = {
+    VIEW: 'View',
+    MATERIALIZED_VIEW: 'Materialized view',
+    QUERY: 'Query',
+}
+
+const CACHE_STRATEGY = {
+    NO_CACHE: 'No cache',
+    CACHE_1_MINUTE: 'Cache for 1 minute',
+    CACHE_5_MINUTES: 'Cache for 5 minutes',
+    CACHE_10_MINUTES: 'Cache for 10 minutes',
+    CACHE_15_MINUTES: 'Cache for 15 minutes',
+    CACHE_30_MINUTES: 'Cache for 30 minutes',
+    CACHE_1_HOUR: 'Cache for one hour',
+    CACHE_6AM_TOMORROW: 'Cache until 6am tomorrow',
+    CACHE_TWO_WEEKS: 'Cache for two weeks',
+    RESPECT_SYSTEM_SETTING: 'Respect system setting',
+}
+
 const allConstantTranslations: Record<string, string> = {
     ...AGGREGATION_TYPE,
     ...ANALYTICS_TYPE,
     ...DOMAIN_TYPE,
     ...VALUE_TYPE,
+    ...CACHE_STRATEGY,
     ...DATA_DIMENSION_TYPE,
     ...GEOMETRY_TYPE,
     ...FORM_TYPE,
@@ -289,6 +309,7 @@ const allConstantTranslations: Record<string, string> = {
     ...REPORTING_RATE,
     ...PREDICTOR_ORG_UNIT_SOURCE,
     ...MISSING_VALUE_STRATEGY,
+    ...MATERIALIZED_VIEW,
     ...VALIDATION_STRATEGY,
     ...PROGRAM_RULE_VARIABLE_SOURCE_TYPE,
     ...ANALYTICS_TABLE_HOOK_PHASE,

@@ -1,6 +1,6 @@
 {
     "name": "metadata-management-app",
-    "version": "0.152.0",
+    "version": "0.156.2",
     "description": "",
     "license": "BSD-3-Clause",
     "private": true,
@@ -16,7 +16,7 @@
         "check-types": "node --max-old-space-size=8192 node_modules/.bin/tsc --noemit",
         "cypress:open": "REACT_APP_NODE_ENV=test yarn cypress open",
         "cypress:run": "REACT_APP_NODE_ENV=test yarn cypress run",
-        "postinstall": "yarn d2-style install",
+        "postinstall": "yarn d2-style install && patch-package",
         "contracts": "d2-app-scripts test src/contracts/generateContracts.spec.ts"
     },
     "devDependencies": {
@@ -41,7 +41,7 @@
     "dependencies": {
         "@dhis2/app-runtime": "3.16.0",
         "@dhis2/multi-calendar-dates": "^2.1.2",
-        "@dhis2/ui": "^10.12.13",
+        "@dhis2/ui": "^10.14.0",
         "@tanstack/react-query": "4",
         "@tanstack/react-table": "^8.16.0",
         "@testing-library/dom": "^10.4.0",
@@ -51,6 +51,8 @@
         "final-form-arrays": "^3.1.0",
         "focus-trap-react": "^11.0.4",
         "lodash": "^4.17.21",
+        "patch-package": "^8.0.1",
+        "postinstall-postinstall": "^2.1.0",
         "react-color": "^2.19.3",
         "react-error-boundary": "^4.0.11",
         "react-final-form": "^6.5.9",
@@ -63,7 +65,7 @@
         "zustand": "^4.4.0"
     },
     "resolutions": {
-        "@dhis2/ui": "^10.12.13",
+        "@dhis2/ui": "^10.14.0",
         "@dhis2/app-runtime": "3.16.0"
     }
 }

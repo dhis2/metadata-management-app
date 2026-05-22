@@ -1,3 +1,71 @@
+## [0.156.2](https://github.com/dhis2/metadata-management-app/compare/v0.156.1...v0.156.2) (2026-05-20)
+
+
+### Bug Fixes
+
+* update sql form text to AC ([#941](https://github.com/dhis2/metadata-management-app/issues/941)) ([f029b06](https://github.com/dhis2/metadata-management-app/commit/f029b0680085c256df0c46366d9bc86d37b53394))
+
+## [0.156.1](https://github.com/dhis2/metadata-management-app/compare/v0.156.0...v0.156.1) (2026-05-19)
+
+
+### Bug Fixes
+
+* rename duplicate to clone [DHIS2-21399] ([c2c4025](https://github.com/dhis2/metadata-management-app/commit/c2c40258f408cdb87a56502c42719b94d1758278))
+
+# [0.156.0](https://github.com/dhis2/metadata-management-app/compare/v0.155.0...v0.156.0) (2026-05-18)
+
+
+### Features
+
+* program type duplicates ([#914](https://github.com/dhis2/metadata-management-app/issues/914)) ([894a955](https://github.com/dhis2/metadata-management-app/commit/894a955761e1b675101dd471d6df8ab8a57c5ba4))
+
+# [0.155.0](https://github.com/dhis2/metadata-management-app/compare/v0.154.2...v0.155.0) (2026-05-15)
+
+
+### Bug Fixes
+
+* add program rule duplicates [DHIS2-21249] ([286f07c](https://github.com/dhis2/metadata-management-app/commit/286f07c01cb6ac55a21e33fb8c2e4ed511b7aae6))
+
+
+### Features
+
+* sql view form [DHIS2-21243] ([5e52a24](https://github.com/dhis2/metadata-management-app/commit/5e52a249257dde9cbab5f8cadf0d850754b450ec))
+
+## [0.154.2](https://github.com/dhis2/metadata-management-app/compare/v0.154.1...v0.154.2) (2026-05-15)
+
+
+### Bug Fixes
+
+* duplicate issues [DHIS2-21299] ([#925](https://github.com/dhis2/metadata-management-app/issues/925)) ([cea9d18](https://github.com/dhis2/metadata-management-app/commit/cea9d18b26943232257553b316f49931c73a66da))
+
+## [0.154.1](https://github.com/dhis2/metadata-management-app/compare/v0.154.0...v0.154.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* non available route notice ([#936](https://github.com/dhis2/metadata-management-app/issues/936)) ([e81d775](https://github.com/dhis2/metadata-management-app/commit/e81d7755d50a2111235412e16974ba1a3aa42f2b))
+
+# [0.154.0](https://github.com/dhis2/metadata-management-app/compare/v0.153.1...v0.154.0) (2026-05-13)
+
+
+### Features
+
+* create results content ([#930](https://github.com/dhis2/metadata-management-app/issues/930)) ([a6f5833](https://github.com/dhis2/metadata-management-app/commit/a6f5833cfabb4da1d35597ee389e0358836a0f4f))
+
+## [0.153.1](https://github.com/dhis2/metadata-management-app/compare/v0.153.0...v0.153.1) (2026-05-13)
+
+
+### Bug Fixes
+
+* **DHIS2-21475:** add iso8601 to gregorian calendar mapping workaround ([#934](https://github.com/dhis2/metadata-management-app/issues/934)) ([82d091a](https://github.com/dhis2/metadata-management-app/commit/82d091a751bbcf7416ff104b14d36d26df56da60))
+
+# [0.153.0](https://github.com/dhis2/metadata-management-app/compare/v0.152.0...v0.153.0) (2026-05-11)
+
+
+### Features
+
+* sql view list ([#919](https://github.com/dhis2/metadata-management-app/issues/919)) ([5cf30c7](https://github.com/dhis2/metadata-management-app/commit/5cf30c7131590490f7dc2fd6444448483ed03083))
+
 # [0.152.0](https://github.com/dhis2/metadata-management-app/compare/v0.151.5...v0.152.0) (2026-05-07)
 
 
