@@ -78,7 +78,7 @@ function createOverviewLazyRouteFunction(
 
 function createSectionLazyRouteFunction(
     section: Section,
-    componentFileName: 'New' | 'Edit' | 'List' | 'Merge' | 'Duplicate' | 'Move'
+    componentFileName: 'New' | 'Edit' | 'List' | 'Merge' | 'Clone' | 'Move'
 ) {
     return async () => {
         try {
@@ -93,18 +93,18 @@ function createSectionLazyRouteFunction(
             if (isModuleNotFoundError(e)) {
                 return {
                     element:
-                        componentFileName !== 'Duplicate' ? (
+                        componentFileName !== 'Clone' ? (
                             <LegacyAppRedirect
                                 section={section}
                                 isNew={componentFileName === 'New'}
                             />
                         ) : (
                             <NoticeBox
-                                title={i18n.t('Duplication not available yet.')}
+                                title={i18n.t('Cloning not available yet.')}
                             >
                                 <p>
                                     {i18n.t(
-                                        '{{-sectionName}} cannot be duplicated.',
+                                        '{{-sectionName}} cannot be cloned.',
                                         { sectionName: section.titlePlural }
                                     )}
                                 </p>
@@ -276,13 +276,13 @@ const schemaSectionRoutes = Object.values(SECTIONS_MAP).map((section) => (
             )}
             {
                 <Route
-                    path={`${routePaths.duplicate}`}
-                    lazy={createSectionLazyRouteFunction(section, 'Duplicate')}
+                    path={`${routePaths.clone}`}
+                    lazy={createSectionLazyRouteFunction(section, 'Clone')}
                     handle={
                         {
                             crumb: (matchInfo) => (
                                 <BreadcrumbItem
-                                    label={i18n.t('Duplicate {{modelName}}', {
+                                    label={i18n.t('Clone {{modelName}}', {
                                         modelName: section.title,
                                     })}
                                     to={matchInfo.pathname}

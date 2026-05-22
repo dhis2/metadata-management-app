@@ -1,3 +1,17 @@
+## [0.156.2](https://github.com/dhis2/metadata-management-app/compare/v0.156.1...v0.156.2) (2026-05-20)
+
+
+### Bug Fixes
+
+* update sql form text to AC ([#941](https://github.com/dhis2/metadata-management-app/issues/941)) ([f029b06](https://github.com/dhis2/metadata-management-app/commit/f029b0680085c256df0c46366d9bc86d37b53394))
+
+## [0.156.1](https://github.com/dhis2/metadata-management-app/compare/v0.156.0...v0.156.1) (2026-05-19)
+
+
+### Bug Fixes
+
+* rename duplicate to clone [DHIS2-21399] ([c2c4025](https://github.com/dhis2/metadata-management-app/commit/c2c40258f408cdb87a56502c42719b94d1758278))
+
 # [0.156.0](https://github.com/dhis2/metadata-management-app/compare/v0.155.0...v0.156.0) (2026-05-18)
 
 

@@ -185,9 +185,9 @@ export const PredictorListActions = ({
             state: preservedSearchState,
         }
     )
-    const handleDuplicateClick = useLinkClickHandler({
-        pathname: 'duplicate',
-        search: `?duplicatedId=${model.id}`,
+    const handleCloneClick = useLinkClickHandler({
+        pathname: 'clone',
+        search: `?clonedId=${model.id}`,
     })
 
     return (
@@ -229,18 +229,18 @@ export const PredictorListActions = ({
                                         href={href}
                                     />
                                 </TooltipWrapper>
-                                {section.duplicable && (
+                                {section.clonable && (
                                     <TooltipWrapper
                                         condition={!editable}
-                                        content={TOOLTIPS.noDuplicateAccess}
+                                        content={TOOLTIPS.noCloneAccess}
                                     >
                                         <MenuItem
                                             dense
                                             disabled={!editable}
-                                            label={i18n.t('Duplicate')}
+                                            label={i18n.t('Clone')}
                                             icon={<IconDuplicate16 />}
                                             onClick={(_, e) => {
-                                                handleDuplicateClick(e)
+                                                handleCloneClick(e)
                                                 setOpen(false)
                                             }}
                                             target="_blank"
