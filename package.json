@@ -13,7 +13,7 @@
         "lint:staged": "yarn lint --staged",
         "format": "yarn d2-style apply",
         "format:staged": "yarn format --staged",
-        "check-types": "tsc --noemit",
+        "check-types": "node --max-old-space-size=8192 node_modules/.bin/tsc --noemit",
         "cypress:open": "REACT_APP_NODE_ENV=test yarn cypress open",
         "cypress:run": "REACT_APP_NODE_ENV=test yarn cypress run",
         "postinstall": "yarn d2-style install && patch-package",
