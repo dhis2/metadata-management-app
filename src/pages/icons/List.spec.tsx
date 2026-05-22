@@ -75,7 +75,10 @@ describe('Icons list', () => {
                 <TestComponentWithRouter
                     path={`/${section.namePlural}`}
                     customData={{
-                        icons: (type: string, params: any) => {
+                        icons: (
+                            type: string,
+                            params: Record<string, unknown>
+                        ) => {
                             if (type === 'read') {
                                 getIconsMock(params)
                                 return {

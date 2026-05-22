@@ -25,12 +25,15 @@ const generateContract = <T extends ZodRawShape>({
         responseStatus: 200,
         jsonSchema: `contracts/metadata-management-app/${name}/json-schema.json`,
     }
-    const schema = zodToJsonSchema(expectedSchema.extend({ id: z.string() }), {
-        name,
-        // @ts-expect-error - zod-to-json-schema types omit true for rejectedAdditionalProperties
-        rejectedAdditionalProperties: true,
-        $refStrategy: 'none',
-    })
+    const schema = zodToJsonSchema(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (expectedSchema as any).extend({ id: z.string() }),
+        {
+            name,
+            rejectedAdditionalProperties: true as unknown as false,
+            $refStrategy: 'none',
+        }
+    )
     mkdirSync(`contracts/${name}`, { recursive: true })
     writeFileSync(contractPath, JSON.stringify(request, null, 2))
     writeFileSync(
