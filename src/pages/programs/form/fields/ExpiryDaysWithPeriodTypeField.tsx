@@ -44,10 +44,16 @@ export function ExpiryDaysWithPeriodTypeField() {
 
     const onToggle = (isChecked: boolean) => {
         setChecked(isChecked)
-        if (isChecked && !hasExpiryDays(expiryDaysInput.value)) {
-            expiryDaysInput.onChange(1)
-        }
-        if (!isChecked) {
+        if (isChecked) {
+            if (!hasExpiryDays(expiryDaysInput.value)) {
+                expiryDaysInput.onChange(1)
+            }
+            if (!hasExpiryPeriodType(expiryPeriodTypeInput.value)) {
+                expiryPeriodTypeInput.onChange(
+                    Program.expiryPeriodType.DAILY
+                )
+            }
+        } else {
             expiryDaysInput.onChange(0)
             expiryPeriodTypeInput.onChange(null)
         }

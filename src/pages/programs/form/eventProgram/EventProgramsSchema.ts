@@ -6,6 +6,7 @@ import {
     modelFormSchemas,
     DEFAULT_CATEGORY_COMBO,
 } from '../../../../lib'
+import { Program } from '../../../../types/generated'
 import { sharingSettingsSchema } from '../common/sharingSettingsSchema'
 
 const {
@@ -75,9 +76,12 @@ const eventProgramBaseSchema = z.object({
         ]),
     organisationUnits: z.array(modelReference).default([]),
     sharing: sharingSettingsSchema.optional(),
-    expiryDays: z.coerce.number().int().min(0).optional(),
-    expiryPeriodType: z.string().nullable().optional(),
-    completeEventsExpiryDays: z.coerce.number().int().min(0).optional(),
+    expiryDays: z.coerce.number().int().min(0).default(1),
+    expiryPeriodType: z
+        .string()
+        .nullable()
+        .default(Program.expiryPeriodType.DAILY),
+    completeEventsExpiryDays: z.coerce.number().int().min(0).default(1),
     openDaysAfterCoEndDate: z.coerce.number().min(0).default(0),
 })
 
