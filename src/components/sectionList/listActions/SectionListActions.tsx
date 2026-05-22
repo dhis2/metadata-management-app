@@ -94,7 +94,7 @@ type ActionMoreProps = {
     editable: boolean
     translatable: boolean
     shareable: boolean
-    duplicable: boolean
+    clonable: boolean
     model: BaseListModel
     onShowDetailsClick: () => void
     onOpenSharingClick: () => void
@@ -106,7 +106,7 @@ export const ActionMore = ({
     editable,
     translatable,
     shareable,
-    duplicable,
+    clonable,
     model,
     onOpenSharingClick,
     onShowDetailsClick,
@@ -127,9 +127,9 @@ export const ActionMore = ({
         }
     )
 
-    const handleDuplicateClick = useLinkClickHandler({
-        pathname: 'duplicate',
-        search: `?duplicatedId=${model.id}`,
+    const handleCloneClick = useLinkClickHandler({
+        pathname: 'clone',
+        search: `?clonedId=${model.id}`,
     })
 
     return (
@@ -182,18 +182,18 @@ export const ActionMore = ({
                                 href={href}
                             />
                         </TooltipWrapper>
-                        {duplicable && (
+                        {clonable && (
                             <TooltipWrapper
                                 condition={!editable}
-                                content={TOOLTIPS.noDuplicateAccess}
+                                content={TOOLTIPS.noCloneAccess}
                             >
                                 <MenuItem
                                     dense
                                     disabled={!editable}
-                                    label={i18n.t('Duplicate')}
+                                    label={i18n.t('Clone')}
                                     icon={<IconDuplicate16 />}
                                     onClick={(_, e) => {
-                                        handleDuplicateClick(e)
+                                        handleCloneClick(e)
                                         setOpen(false)
                                     }}
                                     target="_blank"

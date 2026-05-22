@@ -43,7 +43,7 @@ export const ProgramRuleActionsFormContents = React.memo(
 const ProgramRuleActionListNewOrEdit = () => {
     const modelId = useParams().id
     const [searchParams] = useSearchParams()
-    const isDuplicate = !!searchParams.get('duplicatedId')
+    const isClone = !!searchParams.get('clonedId')
     const { values: formValues } = useFormState<FormValuesWithProgramTemplates>(
         { subscription: { values: true } }
     )
@@ -96,7 +96,7 @@ const ProgramRuleActionListNewOrEdit = () => {
         }
     }
 
-    if (modelId || isDuplicate) {
+    if (modelId || isClone) {
         const actions: ProgramRuleActionListItem[] =
             actionsFieldArray.value ?? []
         const sortedActionsBy = actions.sort((a, b) => {
@@ -112,7 +112,7 @@ const ProgramRuleActionListNewOrEdit = () => {
 
         return (
             <>
-                {!isDuplicate && (
+                {!isClone && (
                     <DrawerPortal
                         isOpen={isActionFormOpen}
                         onClose={onCloseActionForm}
@@ -130,7 +130,7 @@ const ProgramRuleActionListNewOrEdit = () => {
                     </DrawerPortal>
                 )}
 
-                {isDuplicate && (
+                {isClone && (
                     <NoticeBox>
                         {i18n.t(
                             'Program rule must be saved before actions can be modified'
@@ -188,13 +188,13 @@ const ProgramRuleActionListNewOrEdit = () => {
                                     onClick={() => setActionFormOpen(action)}
                                     onDelete={() => handleDelete(index)}
                                     translatable={false}
-                                    disabled={isDuplicate}
+                                    disabled={isClone}
                                 />
                             )
                         })}
                     </div>
 
-                    {!isDuplicate && (
+                    {!isClone && (
                         <div className={styles.addActionButton}>
                             <Button
                                 secondary
