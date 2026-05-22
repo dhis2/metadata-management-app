@@ -2,17 +2,10 @@ import { useAlert, useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { useQueryClient } from '@tanstack/react-query'
 import React, { useMemo } from 'react'
-import {
-    FormBase,
-    StandardFormActions,
-    StandardFormSection,
-    useFormBase,
-} from '../../components'
-import classes from '../../components/form/DefaultFormContents.module.css'
-import { DefaultFormErrorNotice } from '../../components/form/DefaultFormErrorNotice'
+import { FormBase } from '../../components'
+import { DefaultNewFormContents } from '../../components/form/DefaultFormContents'
 import {
     getSectionPath,
-    getDefaultsOld,
     SECTIONS_MAP,
     useNavigateWithSearchState,
 } from '../../lib'
@@ -20,9 +13,9 @@ import { createFormError } from '../../lib/form/createFormError'
 import { EnhancedOnSubmit } from '../../lib/form/useOnSubmit'
 import {
     IconFormFields,
-    iconNewFormSchema,
+    initialValues,
     stringToKeywords,
-    validateNew,
+    validate,
 } from './form'
 
 const section = SECTIONS_MAP.icon
@@ -84,37 +77,17 @@ const useOnSubmitNewIcon = (): EnhancedOnSubmit<IconNewSubmitValues> => {
 
 export const Component = () => {
     const onSubmit = useOnSubmitNewIcon()
-    const { setSubmitAction } = useFormBase()
-    const listPath = `/${getSectionPath(section)}`
 
     return (
         <FormBase
-            initialValues={
-                getDefaultsOld(iconNewFormSchema) as IconNewSubmitValues
-            }
+            initialValues={initialValues as IconNewSubmitValues}
             onSubmit={onSubmit}
-            validate={validateNew}
+            validate={validate}
             includeAttributes={false}
         >
-            {({ handleSubmit, submitting }) => (
-                <div className={classes.form}>
-                    <IconFormFields mode="new" />
-                    <StandardFormSection>
-                        <DefaultFormErrorNotice />
-                    </StandardFormSection>
-                    <StandardFormActions
-                        cancelLabel={i18n.t('Exit without saving')}
-                        submitLabel={i18n.t('Create icon')}
-                        onSaveClick={undefined}
-                        onSubmitClick={() => {
-                            setSubmitAction('saveAndExit')
-                            handleSubmit()
-                        }}
-                        submitting={submitting}
-                        cancelTo={listPath}
-                    />
-                </div>
-            )}
+            <DefaultNewFormContents section={section}>
+                <IconFormFields mode="new" />
+            </DefaultNewFormContents>
         </FormBase>
     )
 }

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-05-07T08:04:05.825Z\n"
-"PO-Revision-Date: 2026-05-07T08:04:05.825Z\n"
+"POT-Creation-Date: 2026-05-22T11:30:32.387Z\n"
+"PO-Revision-Date: 2026-05-22T11:30:32.388Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -44,6 +44,9 @@ msgstr "Duplication not available yet."
 
 msgid "{{-sectionName}} cannot be duplicated."
 msgstr "{{-sectionName}} cannot be duplicated."
+
+msgid "Edit: {{objectName}}"
+msgstr "Edit: {{objectName}}"
 
 msgid "Edit"
 msgstr "Edit"
@@ -90,11 +93,17 @@ msgstr "Color and icon"
 msgid "Color"
 msgstr "Color"
 
+msgid "Color: none selected"
+msgstr "Color: none selected"
+
 msgid "Remove color"
 msgstr "Remove color"
 
 msgid "Icon"
 msgstr "Icon"
+
+msgid "Icon: none selected"
+msgstr "Icon: none selected"
 
 msgid "Choose an icon"
 msgstr "Choose an icon"
@@ -581,6 +590,9 @@ msgstr "Show error details"
 msgid "Save and close"
 msgstr "Save and close"
 
+msgid "Name: {{- displayName}} (Translated)"
+msgstr "Name: {{- displayName}} (Translated)"
+
 msgid ""
 "Translatable fields appear in the default language in this form, not in "
 "your selected database language."
@@ -813,6 +825,12 @@ msgstr "Show data items in a simple list."
 
 msgid "Form type based on current setup"
 msgstr "Form type based on current setup"
+
+msgid "Web: {{webFormType}}"
+msgstr "Web: {{webFormType}}"
+
+msgid "Android: {{androidFormType}}"
+msgstr "Android: {{androidFormType}}"
 
 msgid ""
 "Organise data items into sections for easier entry. Section forms are used "
@@ -2493,6 +2511,9 @@ msgstr "Set up the basic information for this attribute."
 msgid "Configure how this attribute wil be collected, analyzed, and stored."
 msgstr "Configure how this attribute wil be collected, analyzed, and stored."
 
+msgid "Mandatory: all objects must have a value for this attribute"
+msgstr "Mandatory: all objects must have a value for this attribute"
+
 msgid "Unique values only"
 msgstr "Unique values only"
 
@@ -2728,6 +2749,13 @@ msgid ""
 msgstr ""
 "An approval level for this organisation unit level and category option "
 "group set combination already exists."
+
+msgid ""
+"Compulsory: all data elements must belong to at least one group in this "
+"group set."
+msgstr ""
+"Compulsory: all data elements must belong to at least one group in this "
+"group set."
 
 msgid "Available data element groups"
 msgstr "Available data element groups"
@@ -3442,17 +3470,8 @@ msgstr "System icon"
 msgid "System icons cannot be edited. Only custom icons can be modified."
 msgstr "System icons cannot be edited. Only custom icons can be modified."
 
-msgid "Exit without saving"
-msgstr "Exit without saving"
-
-msgid "Save and exit"
-msgstr "Save and exit"
-
 msgid "Icon created successfully"
 msgstr "Icon created successfully"
-
-msgid "Create icon"
-msgstr "Create icon"
 
 msgid "Icon file"
 msgstr "Icon file"
@@ -3460,8 +3479,14 @@ msgstr "Icon file"
 msgid "Icon preview"
 msgstr "Icon preview"
 
+msgid "Change icon"
+msgstr "Change icon"
+
 msgid "Upload icon"
 msgstr "Upload icon"
+
+msgid "Key cannot be \"new\""
+msgstr "Key cannot be \"new\""
 
 msgid "Key"
 msgstr "Key"
@@ -3477,6 +3502,13 @@ msgstr "Comma-separated list of keywords"
 
 msgid "Set up the basic information for this indicator group set."
 msgstr "Set up the basic information for this indicator group set."
+
+msgid ""
+"Compulsory: all indicators must belong to at least one group in this group "
+"set."
+msgstr ""
+"Compulsory: all indicators must belong to at least one group in this group "
+"set."
 
 msgid "Choose the indicators to include in this indicator group."
 msgstr "Choose the indicators to include in this indicator group."
@@ -3901,6 +3933,13 @@ msgstr "There was an error deleting options: {{optionIds}}"
 
 msgid "Set up the basic information for this organisation unit group set."
 msgstr "Set up the basic information for this organisation unit group set."
+
+msgid ""
+"Compulsory: all organisation units must belong to at least one group in "
+"this group set."
+msgstr ""
+"Compulsory: all organisation units must belong to at least one group in "
+"this group set."
 
 msgid "Inherit parent organisation unit groups"
 msgstr "Inherit parent organisation unit groups"
@@ -4823,11 +4862,17 @@ msgstr "Show program indicators in data entry forms"
 msgid "Name can only contain letters, numbers, space, dash, dot and underscore"
 msgstr "Name can only contain letters, numbers, space, dash, dot and underscore"
 
+msgid "Program rule variable name contains forbidden words: and, or, not."
+msgstr "Program rule variable name contains forbidden words: and, or, not."
+
 msgid "Please enter a maximum of {{max}} characters"
 msgstr "Please enter a maximum of {{max}} characters"
 
 msgid "A variable with this name already exists in this program."
 msgstr "A variable with this name already exists in this program."
+
+msgid "Variable name cannot contain the words: and, or, not."
+msgstr "Variable name cannot contain the words: and, or, not."
 
 msgid "Set up the basic information for this program rule variable."
 msgstr "Set up the basic information for this program rule variable."
@@ -5094,6 +5139,9 @@ msgstr "Message template is required"
 msgid "Option group is required"
 msgstr "Option group is required"
 
+msgid "Select at least one: data element or tracked entity attribute"
+msgstr "Select at least one: data element or tracked entity attribute"
+
 msgid "Static text is required"
 msgstr "Static text is required"
 
@@ -5194,8 +5242,14 @@ msgstr "Failed to apply access to all stages"
 msgid "Failed to apply program access rules"
 msgstr "Failed to apply program access rules"
 
+msgid "Program: {{name}}"
+msgstr "Program: {{name}}"
+
 msgid "Untitled"
 msgstr "Untitled"
+
+msgid "Stage: {{name}}"
+msgstr "Stage: {{name}}"
 
 msgid "No data access"
 msgstr "No data access"
@@ -5238,6 +5292,9 @@ msgstr "External"
 
 msgid "Group"
 msgstr "Group"
+
+msgid "{{prefix}}: {{name}}"
+msgstr "{{prefix}}: {{name}}"
 
 msgid "Set up how users can access program data outside their capture scope."
 msgstr "Set up how users can access program data outside their capture scope."
@@ -5296,6 +5353,9 @@ msgstr "Notification {{- notificationName}} will be removed on save"
 
 msgid "Restore notification"
 msgstr "Restore notification"
+
+msgid "Notification type: Program"
+msgstr "Notification type: Program"
 
 msgid "Notification type: Stage | Stage: {{stageDisplayName}}"
 msgstr "Notification type: Stage | Stage: {{stageDisplayName}}"
@@ -6065,6 +6125,13 @@ msgstr "Skip synchronization"
 msgid "Minimum characters to search"
 msgstr "Minimum characters to search"
 
+msgid ""
+"After changing the tracked entity type attributes, you may need to update "
+"the following program(s): {{programNames}}."
+msgstr ""
+"After changing the tracked entity type attributes, you may need to update "
+"the following program(s): {{programNames}}."
+
 msgid "Choose which attributes to show, require, and make searchable."
 msgstr "Choose which attributes to show, require, and make searchable."
 
@@ -6224,3 +6291,7 @@ msgstr "Right side sliding window"
 
 msgid "Skip form validation"
 msgstr "Skip form validation"
+
+msgctxt ")"
+msgid "Key may only contain letters, numbers, hyphens (-) and underscores ("
+msgstr "Key may only contain letters, numbers, hyphens (-) and underscores (_)"

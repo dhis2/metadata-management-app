@@ -1,15 +1,21 @@
 import i18n from '@dhis2/d2-i18n'
 import { InputFieldFF } from '@dhis2/ui'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Field } from 'react-final-form'
 import {
+    DescriptionField,
     StandardFormField,
     StandardFormSection,
     StandardFormSectionTitle,
 } from '../../../components'
+import { composeAsyncValidators } from '../../../lib'
 import { IconFileField } from './IconFileField'
+import { useIsIconKeyUnique } from './useIsIconKeyUnique'
 
 const validateKey = (value?: string) => {
+    if (value === 'new') {
+        return i18n.t('Key cannot be "new"')
+    }
     if (value && !/^[a-zA-Z0-9_-]+$/.test(value)) {
         return i18n.t(
             'Key may only contain letters, numbers, hyphens (-) and underscores (_)'
@@ -17,7 +23,15 @@ const validateKey = (value?: string) => {
     }
 }
 
-function IconKeyField() {
+function IconKeyField({ disabled = false }: { disabled?: boolean }) {
+    const isKeyUnique = useIsIconKeyUnique()
+    const validate = useMemo(
+        () =>
+            disabled
+                ? undefined
+                : composeAsyncValidators([validateKey, isKeyUnique]),
+        [disabled, isKeyUnique]
+    )
     return (
         <Field
             component={InputFieldFF}
@@ -26,7 +40,8 @@ function IconKeyField() {
             helpText={i18n.t('A unique identifier for this icon')}
             inputWidth="400px"
             required
-            validate={validateKey}
+            disabled={disabled}
+            validate={validate}
             validateFields={[]}
         />
     )
@@ -71,28 +86,10 @@ export function IconFormFields({
             </StandardFormSectionTitle>
             {getImageSection(mode, href)}
             <StandardFormField>
-                {mode === 'new' ? (
-                    <IconKeyField />
-                ) : (
-                    <Field
-                        component={InputFieldFF}
-                        name="key"
-                        label={i18n.t('Key')}
-                        inputWidth="400px"
-                        required
-                        disabled
-                        validateFields={[]}
-                    />
-                )}
+                <IconKeyField disabled={mode === 'edit'} />
             </StandardFormField>
             <StandardFormField>
-                <Field
-                    component={InputFieldFF}
-                    name="description"
-                    label={i18n.t('Description')}
-                    inputWidth="400px"
-                    validateFields={[]}
-                />
+                <DescriptionField />
             </StandardFormField>
             <StandardFormField>
                 <Field

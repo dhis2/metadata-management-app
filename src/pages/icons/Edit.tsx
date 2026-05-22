@@ -4,14 +4,8 @@ import { NoticeBox } from '@dhis2/ui'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import React, { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
-import {
-    FormBase,
-    StandardFormActions,
-    StandardFormSection,
-    useFormBase,
-} from '../../components'
-import classes from '../../components/form/DefaultFormContents.module.css'
-import { DefaultFormErrorNotice } from '../../components/form/DefaultFormErrorNotice'
+import { FormBase } from '../../components'
+import { DefaultEditFormContents } from '../../components/form/DefaultFormContents'
 import {
     getSectionPath,
     SECTIONS_MAP,
@@ -25,7 +19,6 @@ import {
     IconModel,
     keywordsToString,
     stringToKeywords,
-    validateEdit,
 } from './form'
 
 const section = SECTIONS_MAP.icon
@@ -80,8 +73,6 @@ const useOnSubmitEditIcon = (
 export const Component = () => {
     const iconKey = useParams().id as string
     const queryFn = useBoundResourceQueryFn()
-    const { setSubmitAction } = useFormBase()
-    const listPath = `/${getSectionPath(section)}`
 
     const { data, error } = useQuery({
         queryKey: [{ resource: 'icons', id: iconKey }],
@@ -120,28 +111,11 @@ export const Component = () => {
         <FormBase
             initialValues={initialValues}
             onSubmit={onSubmit}
-            validate={validateEdit}
             includeAttributes={false}
         >
-            {({ handleSubmit, submitting }) => (
-                <div className={classes.form}>
-                    <IconFormFields mode="edit" href={data?.href} />
-                    <StandardFormSection>
-                        <DefaultFormErrorNotice />
-                    </StandardFormSection>
-                    <StandardFormActions
-                        cancelLabel={i18n.t('Exit without saving')}
-                        submitLabel={i18n.t('Save and exit')}
-                        onSaveClick={undefined}
-                        onSubmitClick={() => {
-                            setSubmitAction('saveAndExit')
-                            handleSubmit()
-                        }}
-                        submitting={submitting}
-                        cancelTo={listPath}
-                    />
-                </div>
-            )}
+            <DefaultEditFormContents section={section}>
+                <IconFormFields mode="edit" href={data?.href} />
+            </DefaultEditFormContents>
         </FormBase>
     )
 }
