@@ -23,7 +23,7 @@ const validateKey = (value?: string) => {
     }
 }
 
-function IconKeyField({ disabled = false }: { disabled?: boolean }) {
+function IconKeyField({ disabled = false }: Readonly<{ disabled?: boolean }>) {
     const isKeyUnique = useIsIconKeyUnique()
     const validate = useMemo(
         () =>
