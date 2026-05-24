@@ -49,9 +49,7 @@ export function ExpiryDaysWithPeriodTypeField() {
                 expiryDaysInput.onChange(1)
             }
             if (!hasExpiryPeriodType(expiryPeriodTypeInput.value)) {
-                expiryPeriodTypeInput.onChange(
-                    Program.expiryPeriodType.DAILY
-                )
+                expiryPeriodTypeInput.onChange(Program.expiryPeriodType.DAILY)
             }
         } else {
             expiryDaysInput.onChange(0)
