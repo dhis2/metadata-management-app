@@ -24,6 +24,19 @@
 * add mandatory de warning ([#924](https://github.com/dhis2/metadata-management-app/issues/924)) ([bff3bf1](https://github.com/dhis2/metadata-management-app/commit/bff3bf1a3a716f0379be3b2e103137b0b6b74a5c))
 * implement icon forms ([#921](https://github.com/dhis2/metadata-management-app/issues/921)) ([1414509](https://github.com/dhis2/metadata-management-app/commit/141450970fafdefe76dbca3a305d1174ab1c88f0))
 
+# [0.157.0](https://github.com/dhis2/metadata-management-app/compare/v0.156.2...v0.157.0) (2026-05-24)
+
+
+### Bug Fixes
+
+* [DHIS2-21521] Unchecking does not clear values in Program details section ([#942](https://github.com/dhis2/metadata-management-app/issues/942)) ([df20920](https://github.com/dhis2/metadata-management-app/commit/df20920840249e1952b033ecf918380cf6ec3238))
+
+
+### Features
+
+* add mandatory de warning ([#924](https://github.com/dhis2/metadata-management-app/issues/924)) ([bff3bf1](https://github.com/dhis2/metadata-management-app/commit/bff3bf1a3a716f0379be3b2e103137b0b6b74a5c))
+* implement icon forms ([#921](https://github.com/dhis2/metadata-management-app/issues/921)) ([1414509](https://github.com/dhis2/metadata-management-app/commit/141450970fafdefe76dbca3a305d1174ab1c88f0))
+
 ## [0.156.2](https://github.com/dhis2/metadata-management-app/compare/v0.156.1...v0.156.2) (2026-05-20)
 
 
