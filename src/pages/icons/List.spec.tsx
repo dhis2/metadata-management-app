@@ -42,7 +42,7 @@ const buildPager = (total: number, page = 1, pageSize = 50) => ({
 })
 
 jest.spyOn(console, 'warn').mockImplementation((value) => {
-    if (typeof value === 'string' && !value.match(/No server timezone/)) {
+    if (typeof value === 'string' && !/No server timezone/.exec(value)) {
         console.info(value)
     }
 })
@@ -52,7 +52,7 @@ describe('Icons list', () => {
     const deleteMock = jest.fn()
 
     const renderList = generateRenderer(
-        { section },
+        { section, mockSchema: {} },
         (
             routeOptions,
             {
@@ -164,7 +164,7 @@ describe('Icons list', () => {
         const { screen } = await renderList()
         await waitFor(() => expect(getIconsMock).toHaveBeenCalled())
         const searchInputWrapper = screen.getByTestId('input-search-name')
-        const searchInput = within(searchInputWrapper).getByRole('searchbox')
+        const searchInput = within(searchInputWrapper).getByRole('textbox')
         await userEvent.type(searchInput, 'health')
 
         await waitFor(() => {
@@ -180,7 +180,7 @@ describe('Icons list', () => {
         const { screen } = await renderList()
         const searchInputWrapper = screen.getByTestId('input-search-name')
         const searchInput = within(searchInputWrapper).getByRole(
-            'searchbox'
+            'textbox'
         ) as HTMLInputElement
         await userEvent.type(searchInput, 'lalala')
         expect(searchInput).toHaveValue('lalala')

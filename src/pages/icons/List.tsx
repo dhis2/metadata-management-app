@@ -1,8 +1,7 @@
-import { FetchError, useDataEngine } from '@dhis2/app-runtime'
+import { useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { Button, Input } from '@dhis2/ui'
 import { useQuery } from '@tanstack/react-query'
-import React, { useCallback, useState } from 'react'
+import React, { ReactNode, useCallback, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ClientDateTime } from '../../components/date'
 import {
@@ -11,24 +10,29 @@ import {
     DetailsPanel,
     DetailsPanelContent,
 } from '../../components/sectionList/detailsPanel'
+import { FilterWrapper } from '../../components/sectionList/filters/FilterWrapper'
 import { useModelListView } from '../../components/sectionList/listView'
-import { BooleanValue } from '../../components/sectionList/modelValue/BooleanValue'
 import { ModelValueRenderer } from '../../components/sectionList/modelValue/ModelValueRenderer'
 import { TextValue } from '../../components/sectionList/modelValue/TextValue'
 import { SectionList } from '../../components/sectionList/SectionList'
+import { SectionListLoader } from '../../components/sectionList/SectionListLoader'
+import {
+    SectionListEmpty,
+    SectionListError,
+} from '../../components/sectionList/SectionListMessages'
 import { SectionListPagination } from '../../components/sectionList/SectionListPagination'
-import { DefaultSectionListMessage } from '../../components/sectionList/SectionListWrapper'
 import { DefaultToolbar } from '../../components/sectionList/toolbar'
 import { SelectedColumn } from '../../components/sectionList/types'
 import {
     getIn,
     getSectionPath,
+    IDENTIFIABLE_FILTER_KEY,
     SchemaFieldPropertyType,
     SECTIONS_MAP,
-    useDebouncedState,
     usePaginationQueryParams,
+    useSectionListFilter,
 } from '../../lib'
-import { ModelCollection, PagedResponse, WrapQueryResponse } from '../../types'
+import { PagedResponse, WrapQueryResponse } from '../../types'
 import css from './IconList.module.css'
 import { IconListActions } from './IconListActions'
 import { IconListRow } from './IconListRow'
@@ -41,59 +45,71 @@ export type IconModel = {
     keywords?: string[]
     lastUpdated?: string
     created?: string
-    createdBy?: { displayName: string; id: string }
+    createdBy?: {
+        displayName: string
+        id: string
+    }
+    sharing?: {
+        public: string
+    }
 }
 
 type IconsListResponse = WrapQueryResponse<PagedResponse<IconModel, 'icons'>>
 
 export const Component = () => {
     const { columns: headerColumns } = useModelListView()
+
     const engine = useDataEngine()
     const navigate = useNavigate()
-    const [paginationParams] = usePaginationQueryParams()
-    const {
-        liveValue: searchValue,
-        setValue: setSearchValue,
-        debouncedValue: debouncedSearch,
-    } = useDebouncedState({ initialValue: '' })
 
-    const query = {
-        result: {
-            resource: 'icons',
-            params: {
-                type: 'CUSTOM',
-                fields: [
-                    'key',
-                    'description',
-                    'href',
-                    'custom',
-                    'keywords',
-                    'lastUpdated',
-                    'created',
-                    'createdBy[id,displayName]',
-                ],
-                page: paginationParams.page,
-                pageSize: paginationParams.pageSize,
-                ...(debouncedSearch.trim()
-                    ? { search: debouncedSearch.trim() }
-                    : {}),
+    const [paginationParams] = usePaginationQueryParams()
+    const [identifiableFilter] = useSectionListFilter(IDENTIFIABLE_FILTER_KEY)
+
+    const [detailsIcon, setDetailsIcon] = useState<IconModel | undefined>()
+
+    const trimmedFilter = identifiableFilter?.trim()
+
+    const query = useMemo(
+        () => ({
+            result: {
+                resource: 'icons',
+                params: {
+                    type: 'CUSTOM',
+                    fields: [
+                        'key',
+                        'description',
+                        'href',
+                        'custom',
+                        'keywords',
+                        'lastUpdated',
+                        'created',
+                        'createdBy[id,displayName]',
+                        'sharing',
+                    ],
+                    page: paginationParams.page,
+                    pageSize: paginationParams.pageSize,
+                    ...(trimmedFilter ? { search: trimmedFilter } : {}),
+                },
             },
-        },
-    }
+        }),
+        [paginationParams.page, paginationParams.pageSize, trimmedFilter]
+    )
 
     const { data, error, refetch } = useQuery({
-        queryKey: [query],
-        queryFn: ({ queryKey: [query], signal }) =>
-            engine.query(query, { signal }) as Promise<IconsListResponse>,
+        queryKey: ['icons', query],
+        queryFn: ({ signal }) =>
+            engine.query(query, {
+                signal,
+            }) as Promise<IconsListResponse>,
     })
 
     const iconList = data?.result?.icons
     const pager = data?.result?.pager
 
-    const [detailsIcon, setDetailsIcon] = useState<IconModel | undefined>()
-
     const handleDetailsClick = useCallback((icon: IconModel) => {
-        setDetailsIcon((prev) => (prev?.key === icon.key ? undefined : icon))
+        setDetailsIcon((previousIcon) =>
+            previousIcon?.key === icon.key ? undefined : icon
+        )
     }, [])
 
     const handleRowClick = useCallback(
@@ -106,13 +122,17 @@ export const Component = () => {
     const renderColumnValue = useCallback(
         ({ path }: SelectedColumn, icon: IconModel) => {
             if (path === 'href') {
-                return icon.href ? (
+                if (!icon.href) {
+                    return null
+                }
+
+                return (
                     <img
                         src={icon.href}
                         alt={icon.key}
                         className={css.iconThumbnail}
                     />
-                ) : null
+                )
             }
 
             const value = getIn(icon, path)
@@ -121,19 +141,7 @@ export const Component = () => {
                 return <TextValue value={(value as string[]).join(', ')} />
             }
 
-            if (path === 'custom') {
-                return <BooleanValue value={true} />
-            }
-
-            if (path === 'createdBy') {
-                return (
-                    <TextValue
-                        value={(value as IconModel['createdBy'])?.displayName}
-                    />
-                )
-            }
-
-            if (value === undefined || value === null) {
+            if (value == null) {
                 return null
             }
 
@@ -153,39 +161,36 @@ export const Component = () => {
         []
     )
 
+    const renderListState = (): ReactNode => {
+        if (error) {
+            return <SectionListError />
+        }
+
+        if (iconList == null) {
+            return <SectionListLoader />
+        }
+
+        if (iconList.length === 0) {
+            return <SectionListEmpty />
+        }
+
+        return null
+    }
+
     return (
         <div>
-            <div className={css.filterWrapper}>
-                <Input
-                    dense
-                    className={css.filterInput}
-                    placeholder={i18n.t(
-                        'Search by name, keyword or description'
-                    )}
-                    value={searchValue}
-                    onChange={({ value }) => setSearchValue(value || '')}
-                    type="search"
-                    dataTest="input-search-name"
-                />
-                <Button
-                    small
-                    onClick={() => setSearchValue('')}
-                    dataTest="clear-all-filters-button"
-                >
-                    {i18n.t('Clear filter')}
-                </Button>
-            </div>
+            <FilterWrapper />
+
             <div className={css.listDetailsWrapper}>
                 <DefaultToolbar
                     selectedModels={new Set()}
                     onDeselectAll={() => {}}
                     downloadable={false}
                 />
+
                 <SectionList headerColumns={headerColumns}>
-                    <DefaultSectionListMessage
-                        error={error as FetchError | undefined}
-                        data={iconList as unknown as ModelCollection}
-                    />
+                    {renderListState()}
+
                     {iconList?.map((icon) => (
                         <IconListRow
                             key={icon.key}
@@ -202,18 +207,21 @@ export const Component = () => {
                                         if (detailsIcon?.key === icon.key) {
                                             setDetailsIcon(undefined)
                                         }
+
                                         refetch()
                                     }}
                                 />
                             )}
                         />
                     ))}
+
                     <SectionListPagination pager={pager} />
                 </SectionList>
+
                 {detailsIcon && (
                     <DetailsPanel
-                        onClose={() => setDetailsIcon(undefined)}
                         key={detailsIcon.key}
+                        onClose={() => setDetailsIcon(undefined)}
                     >
                         <DetailsPanelContent displayName={detailsIcon.key}>
                             {detailsIcon.href && (
@@ -223,22 +231,20 @@ export const Component = () => {
                                     className={css.iconDetailsThumbnail}
                                 />
                             )}
+
                             <DetailsList>
                                 {detailsIcon.description && (
                                     <DetailItem label={i18n.t('Description')}>
                                         {detailsIcon.description}
                                     </DetailItem>
                                 )}
-                                {detailsIcon.custom && (
-                                    <DetailItem label={i18n.t('Custom')}>
-                                        <BooleanValue value={true} />
-                                    </DetailItem>
-                                )}
+
                                 {!!detailsIcon.keywords?.length && (
                                     <DetailItem label={i18n.t('Keywords')}>
                                         {detailsIcon.keywords.join(', ')}
                                     </DetailItem>
                                 )}
+
                                 {detailsIcon.lastUpdated && (
                                     <DetailItem label={i18n.t('Last updated')}>
                                         <ClientDateTime
@@ -246,6 +252,7 @@ export const Component = () => {
                                         />
                                     </DetailItem>
                                 )}
+
                                 {detailsIcon.created && (
                                     <DetailItem label={i18n.t('Created')}>
                                         <ClientDateTime
@@ -253,6 +260,7 @@ export const Component = () => {
                                         />
                                     </DetailItem>
                                 )}
+
                                 {detailsIcon.createdBy && (
                                     <DetailItem label={i18n.t('Created by')}>
                                         {detailsIcon.createdBy.displayName}
