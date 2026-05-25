@@ -3,10 +3,10 @@ import { useForm } from 'react-final-form'
 import { getSectionPath } from '../../lib'
 import { ModelSection } from '../../types'
 import { StandardFormSection } from '../standardForm'
+import { CloneNoticeBox } from './cloning'
 import classes from './DefaultFormContents.module.css'
 import { DefaultFormErrorNotice } from './DefaultFormErrorNotice'
 import { DefaultFormFooter } from './DefaultFormFooter'
-import { DuplicationNoticeBox } from './duplicates'
 import { TranslatedFieldsNoticeBox } from './TranslatedFieldsNoticeBox'
 
 type DefaultFormContentsProps = {
@@ -18,10 +18,10 @@ function DefaultFormContents({
     children,
     section,
     showTranslatedFieldsNotice = false,
-    showDuplicationNotice = false,
+    showCloneNotice = false,
 }: DefaultFormContentsProps & {
     readonly showTranslatedFieldsNotice?: boolean
-    readonly showDuplicationNotice?: boolean
+    readonly showCloneNotice?: boolean
 }) {
     const listPath = `/${getSectionPath(section)}`
 
@@ -29,9 +29,7 @@ function DefaultFormContents({
         <>
             <div className={classes.form}>
                 {showTranslatedFieldsNotice && <TranslatedFieldsNoticeBox />}
-                {showDuplicationNotice && (
-                    <DuplicationNoticeBox section={section} />
-                )}
+                {showCloneNotice && <CloneNoticeBox section={section} />}
                 {children}
                 <StandardFormSection>
                     <DefaultFormErrorNotice />
@@ -54,7 +52,7 @@ export function DefaultNewFormContents(
     return <DefaultFormContents {...props} showTranslatedFieldsNotice={false} />
 }
 
-export function DefaultDuplicateFormContents(
+export function DefaultCloneFormContents(
     props: Readonly<DefaultFormContentsProps>
 ) {
     const form = useForm()
@@ -70,7 +68,7 @@ export function DefaultDuplicateFormContents(
             <DefaultFormContents
                 {...props}
                 showTranslatedFieldsNotice={false}
-                showDuplicationNotice={true}
+                showCloneNotice={true}
             />
         </div>
     )

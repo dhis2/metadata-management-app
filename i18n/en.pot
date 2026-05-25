@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-05-07T08:04:05.825Z\n"
-"PO-Revision-Date: 2026-05-07T08:04:05.825Z\n"
+"POT-Creation-Date: 2026-05-13T08:11:47.456Z\n"
+"PO-Revision-Date: 2026-05-13T08:11:47.456Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -44,6 +44,9 @@ msgstr "Duplication not available yet."
 
 msgid "{{-sectionName}} cannot be duplicated."
 msgstr "{{-sectionName}} cannot be duplicated."
+
+msgid "Edit: {{objectName}}"
+msgstr "Edit: {{objectName}}"
 
 msgid "Edit"
 msgstr "Edit"
@@ -90,11 +93,17 @@ msgstr "Color and icon"
 msgid "Color"
 msgstr "Color"
 
+msgid "Color: none selected"
+msgstr "Color: none selected"
+
 msgid "Remove color"
 msgstr "Remove color"
 
 msgid "Icon"
 msgstr "Icon"
+
+msgid "Icon: none selected"
+msgstr "Icon: none selected"
 
 msgid "Choose an icon"
 msgstr "Choose an icon"
@@ -581,6 +590,9 @@ msgstr "Show error details"
 msgid "Save and close"
 msgstr "Save and close"
 
+msgid "Name: {{- displayName}} (Translated)"
+msgstr "Name: {{- displayName}} (Translated)"
+
 msgid ""
 "Translatable fields appear in the default language in this form, not in "
 "your selected database language."
@@ -813,6 +825,12 @@ msgstr "Show data items in a simple list."
 
 msgid "Form type based on current setup"
 msgstr "Form type based on current setup"
+
+msgid "Web: {{webFormType}}"
+msgstr "Web: {{webFormType}}"
+
+msgid "Android: {{androidFormType}}"
+msgstr "Android: {{androidFormType}}"
 
 msgid ""
 "Organise data items into sections for easier entry. Section forms are used "
@@ -2258,6 +2276,15 @@ msgstr "Initiating entity type"
 msgid "Receiving entity type"
 msgstr "Receiving entity type"
 
+msgid "SQL type"
+msgstr "SQL type"
+
+msgid "Cache strategy"
+msgstr "Cache strategy"
+
+msgid "SQL query"
+msgstr "SQL query"
+
 msgid "Unique"
 msgstr "Unique"
 
@@ -2492,6 +2519,9 @@ msgstr "Set up the basic information for this attribute."
 
 msgid "Configure how this attribute wil be collected, analyzed, and stored."
 msgstr "Configure how this attribute wil be collected, analyzed, and stored."
+
+msgid "Mandatory: all objects must have a value for this attribute"
+msgstr "Mandatory: all objects must have a value for this attribute"
 
 msgid "Unique values only"
 msgstr "Unique values only"
@@ -2728,6 +2758,13 @@ msgid ""
 msgstr ""
 "An approval level for this organisation unit level and category option "
 "group set combination already exists."
+
+msgid ""
+"Compulsory: all data elements must belong to at least one group in this "
+"group set."
+msgstr ""
+"Compulsory: all data elements must belong to at least one group in this "
+"group set."
 
 msgid "Available data element groups"
 msgstr "Available data element groups"
@@ -3427,8 +3464,60 @@ msgstr "Display Options"
 msgid "Advanced"
 msgstr "Advanced"
 
+msgid "Icon saved successfully"
+msgstr "Icon saved successfully"
+
+msgid "Failed to load icon"
+msgstr "Failed to load icon"
+
+msgid "Could not load icon \"{{key}}\""
+msgstr "Could not load icon \"{{key}}\""
+
+msgid "System icon"
+msgstr "System icon"
+
+msgid "System icons cannot be edited. Only custom icons can be modified."
+msgstr "System icons cannot be edited. Only custom icons can be modified."
+
+msgid "Icon created successfully"
+msgstr "Icon created successfully"
+
+msgid "Icon file"
+msgstr "Icon file"
+
+msgid "Icon preview"
+msgstr "Icon preview"
+
+msgid "Change icon"
+msgstr "Change icon"
+
+msgid "Upload icon"
+msgstr "Upload icon"
+
+msgid "Key cannot be \"new\""
+msgstr "Key cannot be \"new\""
+
+msgid "Key"
+msgstr "Key"
+
+msgid "A unique identifier for this icon"
+msgstr "A unique identifier for this icon"
+
+msgid "Keywords"
+msgstr "Keywords"
+
+msgid "Comma-separated list of keywords"
+msgstr "Comma-separated list of keywords"
+
 msgid "Set up the basic information for this indicator group set."
 msgstr "Set up the basic information for this indicator group set."
+
+msgid ""
+"Compulsory: all indicators must belong to at least one group in this group "
+"set."
+msgstr ""
+"Compulsory: all indicators must belong to at least one group in this group "
+"set."
 
 msgid "Choose the indicators to include in this indicator group."
 msgstr "Choose the indicators to include in this indicator group."
@@ -3853,6 +3942,13 @@ msgstr "There was an error deleting options: {{optionIds}}"
 
 msgid "Set up the basic information for this organisation unit group set."
 msgstr "Set up the basic information for this organisation unit group set."
+
+msgid ""
+"Compulsory: all organisation units must belong to at least one group in "
+"this group set."
+msgstr ""
+"Compulsory: all organisation units must belong to at least one group in "
+"this group set."
 
 msgid "Inherit parent organisation unit groups"
 msgstr "Inherit parent organisation unit groups"
@@ -4775,11 +4871,17 @@ msgstr "Show program indicators in data entry forms"
 msgid "Name can only contain letters, numbers, space, dash, dot and underscore"
 msgstr "Name can only contain letters, numbers, space, dash, dot and underscore"
 
+msgid "Program rule variable name contains forbidden words: and, or, not."
+msgstr "Program rule variable name contains forbidden words: and, or, not."
+
 msgid "Please enter a maximum of {{max}} characters"
 msgstr "Please enter a maximum of {{max}} characters"
 
 msgid "A variable with this name already exists in this program."
 msgstr "A variable with this name already exists in this program."
+
+msgid "Variable name cannot contain the words: and, or, not."
+msgstr "Variable name cannot contain the words: and, or, not."
 
 msgid "Set up the basic information for this program rule variable."
 msgstr "Set up the basic information for this program rule variable."
@@ -4799,6 +4901,12 @@ msgstr ""
 
 msgid "Program Rule Variable"
 msgstr "Program Rule Variable"
+
+msgid "Program rule created but ID cannot be determined"
+msgstr "Program rule created but ID cannot be determined"
+
+msgid "Some program rule actions failed to save"
+msgstr "Some program rule actions failed to save"
 
 msgid "Edit condition expression"
 msgstr "Edit condition expression"
@@ -4881,6 +4989,9 @@ msgstr "Save action"
 
 msgid "Set up the actions that happen when the program rule runs."
 msgstr "Set up the actions that happen when the program rule runs."
+
+msgid "Program rule must be saved before actions can be modified"
+msgstr "Program rule must be saved before actions can be modified"
 
 msgid "Action will be deleted when the program rule is saved."
 msgstr "Action will be deleted when the program rule is saved."
@@ -5046,6 +5157,9 @@ msgstr "Message template is required"
 msgid "Option group is required"
 msgstr "Option group is required"
 
+msgid "Select at least one: data element or tracked entity attribute"
+msgstr "Select at least one: data element or tracked entity attribute"
+
 msgid "Static text is required"
 msgstr "Static text is required"
 
@@ -5146,8 +5260,14 @@ msgstr "Failed to apply access to all stages"
 msgid "Failed to apply program access rules"
 msgstr "Failed to apply program access rules"
 
+msgid "Program: {{name}}"
+msgstr "Program: {{name}}"
+
 msgid "Untitled"
 msgstr "Untitled"
+
+msgid "Stage: {{name}}"
+msgstr "Stage: {{name}}"
 
 msgid "No data access"
 msgstr "No data access"
@@ -5190,6 +5310,9 @@ msgstr "External"
 
 msgid "Group"
 msgstr "Group"
+
+msgid "{{prefix}}: {{name}}"
+msgstr "{{prefix}}: {{name}}"
 
 msgid "Set up how users can access program data outside their capture scope."
 msgstr "Set up how users can access program data outside their capture scope."
@@ -5248,6 +5371,9 @@ msgstr "Notification {{- notificationName}} will be removed on save"
 
 msgid "Restore notification"
 msgstr "Restore notification"
+
+msgid "Notification type: Program"
+msgstr "Notification type: Program"
 
 msgid "Notification type: Stage | Stage: {{stageDisplayName}}"
 msgstr "Notification type: Stage | Stage: {{stageDisplayName}}"
@@ -5420,6 +5546,16 @@ msgstr "Recipient program attribute"
 
 msgid "Recipient data element"
 msgstr "Recipient data element"
+
+msgid "Mandatory data elements are not included in this form."
+msgstr "Mandatory data elements are not included in this form."
+
+msgid ""
+"The following data elements are marked as required but not assigned to any "
+"section:"
+msgstr ""
+"The following data elements are marked as required but not assigned to any "
+"section:"
 
 msgid "Set up automatic event creation and scheduling in this program stage."
 msgstr "Set up automatic event creation and scheduling in this program stage."
@@ -5879,6 +6015,95 @@ msgstr ""
 "Relationship name seen from receiving entity is required when bidirectional "
 "is checked"
 
+msgid "SQL view results"
+msgstr "SQL view results"
+
+msgid "Materialized view refreshed."
+msgstr "Materialized view refreshed."
+
+msgid "SQL view created or updated."
+msgstr "SQL view created or updated."
+
+msgid "An unknown error occurred."
+msgstr "An unknown error occurred."
+
+msgid "View results"
+msgstr "View results"
+
+msgid "Run query"
+msgstr "Run query"
+
+msgid "Create or update view"
+msgstr "Create or update view"
+
+msgid "SQL view results"
+msgstr "SQL view results"
+
+msgid "Materialized view refreshed."
+msgstr "Materialized view refreshed."
+
+msgid "SQL view created or updated."
+msgstr "SQL view created or updated."
+
+msgid "An unknown error occurred."
+msgstr "An unknown error occurred."
+
+msgid "Could not run SQL view: {{error}}"
+msgstr "Could not run SQL view: {{error}}"
+
+msgid "View results"
+msgstr "View results"
+
+msgid "Run query"
+msgstr "Run query"
+
+msgid "Create or update view"
+msgstr "Create or update view"
+
+msgid "Current user id"
+msgstr "Current user id"
+
+msgid "Current username"
+msgstr "Current username"
+
+msgid "SQL query *"
+msgstr "SQL query *"
+
+msgid ""
+"Only SELECT statements allowed. Sensitive tables, including user "
+"information, cannot be queried."
+msgstr ""
+"Only SELECT statements allowed. Sensitive tables, including user "
+"information, cannot be queried."
+
+msgid "Set up how this SQL view is identified and described."
+msgstr "Set up how this SQL view is identified and described."
+
+msgid "Controls how long results are cached on the server before re-execution"
+msgstr "Controls how long results are cached on the server before re-execution"
+
+msgid "SQL definition"
+msgstr "SQL definition"
+
+msgid "Choose the type of SQL view and write the query."
+msgstr "Choose the type of SQL view and write the query."
+
+msgid "SQL type cannot be changed after creation."
+msgstr "SQL type cannot be changed after creation."
+
+msgid "View: SQL query is stored in the database; results are generated each time."
+msgstr "View: SQL query is stored in the database; results are generated each time."
+
+msgid "Materialized view: SQL query is stored, and results are cached."
+msgstr "Materialized view: SQL query is stored, and results are cached."
+
+msgid ""
+"Query only: Neither query nor results stored in the database. Supports "
+"inline $(variable) references."
+msgstr ""
+"Query only: Neither query nor results stored in the database. Supports "
+"inline $(variable) references."
+
 msgid "SW | Starts with"
 msgstr "SW | Starts with"
 
@@ -6016,6 +6241,13 @@ msgstr "Skip synchronization"
 
 msgid "Minimum characters to search"
 msgstr "Minimum characters to search"
+
+msgid ""
+"After changing the tracked entity type attributes, you may need to update "
+"the following program(s): {{programNames}}."
+msgstr ""
+"After changing the tracked entity type attributes, you may need to update "
+"the following program(s): {{programNames}}."
 
 msgid "Choose which attributes to show, require, and make searchable."
 msgstr "Choose which attributes to show, require, and make searchable."
@@ -6176,3 +6408,7 @@ msgstr "Right side sliding window"
 
 msgid "Skip form validation"
 msgstr "Skip form validation"
+
+msgctxt ")"
+msgid "Key may only contain letters, numbers, hyphens (-) and underscores ("
+msgstr "Key may only contain letters, numbers, hyphens (-) and underscores (_)"

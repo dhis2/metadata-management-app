@@ -16,7 +16,10 @@ import {
 import { BaseModelTransfer } from '../../../../../components/metadataFormControls/ModelTransfer/BaseModelTransfer'
 import { useBoundResourceQueryFn } from '../../../../../lib'
 import { DisplayableModel } from '../../../../../types/models'
+import { MandatoryDataElementsWarning } from '../MandatoryDataElementsWarning'
+import { getMandatoryDataElementsMissingFromSections } from '../mandatoryStageDataElements'
 import { stageSectionSchemaSection } from './ProgramStageSectionForm'
+import styles from './StageSectionFormContents.module.css'
 
 const displayOptions = [
     {
@@ -36,6 +39,7 @@ const displayOptions = [
 export type ProgramStateSectionDataElements = {
     programStageDataElements: {
         id: string
+        compulsory: boolean
         dataElement: { id: string; displayName: string }
     }[]
     programStageSections: { dataElements: { id: string }[]; id: string }[]
@@ -53,8 +57,8 @@ export const ProgramStageSectionFormContents = () => {
                 id: values.programStage.id,
                 params: {
                     fields: [
-                        'programStageDataElements[id,dataElement[id,displayName]]',
-                        'programStageSections[dataElements[id,displayName], id]',
+                        'programStageDataElements[id,compulsory,dataElement[id,displayName]]',
+                        'programStageSections[dataElements[id], id]',
                     ].concat(),
                 },
             },
@@ -67,6 +71,7 @@ export const ProgramStageSectionFormContents = () => {
         multiple: true,
         validateFields: [],
     })
+
     const availableDataElements = useMemo(() => {
         if (!data?.programStageSections || !data?.programStageDataElements) {
             return []
@@ -79,6 +84,22 @@ export const ProgramStageSectionFormContents = () => {
             .map((de) => de.dataElement)
             .filter((de) => !otherSectionsDataElements.includes(de.id))
     }, [data, values.id])
+
+    const missingMandatoryDataElements = useMemo(() => {
+        const otherSections = (data?.programStageSections ?? []).filter(
+            (s) => s.id !== values.id
+        )
+        const selectedDataElements = Array.isArray(dataElementsInput.value)
+            ? dataElementsInput.value
+            : []
+        const currentSection = {
+            dataElements: selectedDataElements.map((de) => ({ id: de.id })),
+        }
+        return getMandatoryDataElementsMissingFromSections({
+            programStageDataElements: data?.programStageDataElements,
+            programStageSections: [...otherSections, currentSection],
+        })
+    }, [data, values.id, dataElementsInput.value])
 
     return (
         <SectionedFormSections>
@@ -135,6 +156,12 @@ export const ProgramStageSectionFormContents = () => {
                 <StandardFormSectionDescription>
                     {i18n.t('Choose what data is collected for this section.')}
                 </StandardFormSectionDescription>
+                <div className={styles.notice}>
+                    <MandatoryDataElementsWarning
+                        missingDataElements={missingMandatoryDataElements}
+                        className={styles.mandatoryWarningNotice}
+                    />
+                </div>
                 <StandardFormField>
                     <Field
                         error={dataElementsMeta.invalid}

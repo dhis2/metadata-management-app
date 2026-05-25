@@ -2,7 +2,8 @@ import i18n from '@dhis2/d2-i18n'
 import React, { useState } from 'react'
 import { DrawerHeader, DrawerPortal, DrawerRoot } from '../../components'
 import { DefaultSectionList } from '../DefaultSectionList'
-import { SqlViewActions } from './SqlViewActions'
+import { SqlViewActions } from './list/sqlViewActions'
+import { SqlViewResults } from './Results'
 
 export const Component = () => {
     const [selectedSqlViewId, setSelectedSqlViewId] = useState<string>()
@@ -20,11 +21,9 @@ export const Component = () => {
                         {i18n.t('SQL view results')}
                     </DrawerHeader>
                 }
-                // disableFocusTrap
+                disableFocusTrap
             >
-                {selectedSqlViewId && (
-                    <div data-test="sql-view-results">Results:</div>
-                )}
+                {selectedSqlViewId && <SqlViewResults id={selectedSqlViewId} />}
             </DrawerPortal>
             <DefaultSectionList
                 ActionsComponent={(props) => (

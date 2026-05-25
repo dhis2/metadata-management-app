@@ -1,0 +1,13 @@
+diff --git a/node_modules/@dhis2/multi-calendar-dates/build/es/constants/dhis2CalendarsMap.js b/node_modules/@dhis2/multi-calendar-dates/build/es/constants/dhis2CalendarsMap.js
+index 0116053..d478d7f 100644
+--- a/node_modules/@dhis2/multi-calendar-dates/build/es/constants/dhis2CalendarsMap.js
++++ b/node_modules/@dhis2/multi-calendar-dates/build/es/constants/dhis2CalendarsMap.js
+@@ -6,7 +6,7 @@ export const dhis2CalendarsMap = {
+   coptic: 'coptic',
+   gregorian: 'gregory',
+   islamic: 'islamic',
+-  iso8601: 'iso8601',
++  iso8601: 'gregory', // FIXME: Temporary workaround for Chrome bug with iso8601 date formatting
+   // 'Julian': 'julian', // this is not supported by Temporal
+   nepali: 'nepali',
+   thai: 'buddhist',

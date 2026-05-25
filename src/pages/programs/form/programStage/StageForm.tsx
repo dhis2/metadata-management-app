@@ -56,7 +56,7 @@ export const fieldFilters = [
     'dueDateLabel',
     'programStageLabel',
     'eventLabel',
-    'programStageSections[id,displayName]',
+    'programStageSections[id,displayName,dataElements[id]]',
     'programStageDataElements[id,dataElement[id,displayName,valueType,optionSet],compulsory,displayInReports,allowFutureDate,skipAnalytics,skipSynchronization,renderType,sortOrder]',
     'dataEntryForm[id,displayName,htmlCode]',
     'repeatable',
@@ -319,6 +319,9 @@ export const EditStageForm = ({
         }
 
         showSuccess({ success: true })
+        queryClient.invalidateQueries({
+            queryKey: [{ resource: 'programStages' }],
+        })
         if (
             nonDeletedProgramStageSections.length !==
             formValues.programStageSections?.length

@@ -4,7 +4,7 @@ export const routePaths = {
     overviewRoot: 'overview',
     sectionNew: 'new',
     merge: 'merge',
-    duplicate: 'duplicate',
+    clone: 'clone',
     move: 'move',
 } as const
 

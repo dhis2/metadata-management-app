@@ -1,0 +1,161 @@
+.queryContainer {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--spacers-dp16);
+}
+
+.queryEditContainer {
+    min-width: 300px;
+    width: 100%;
+}
+
+.queryVariablesContainer {
+    min-width: 200px;
+    height: 325px;
+    overflow-y: auto;
+    border: 1px solid var(--colors-grey400);
+    border-radius: 5px;
+    margin-block-start: 22px;
+    padding: var(--spacers-dp8);
+}
+
+.queryFieldLabel {
+    font-size: 14px;
+    line-height: 19px;
+    display: block;
+    padding: 0px;
+}
+
+.templateVariablesText {
+    font-size: 13px;
+    color: var(--colors-grey700);
+    padding-block-end: var(--spacers-dp8);
+}
+
+.variableButton {
+    margin-block-end: var(--spacers-dp4);
+}
+
+.input {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    gap: var(--spacers-dp8);
+    margin-top: 2px;
+}
+
+.inputError {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    gap: var(--spacers-dp8);
+    margin-top: 2px;
+}
+
+.inputError:not(:focus) {
+    border-color: var(--colors-red500) !important;
+}
+
+.queryField {
+    display: flex;
+    align-items: center;
+}
+
+.queryField > input,
+.queryField > textarea {
+    box-sizing: border-box;
+
+    font-size: 14px;
+    line-height: 16px;
+    user-select: text;
+
+    color: var(--colors-grey900);
+    background-color: var(--colors-white);
+
+    padding: 11px 12px;
+    width: 100%;
+    outline: 0;
+    border: 1px solid;
+    border-color: var(--colors-grey500);
+    border-radius: 3px;
+    box-shadow: inset 0 0 1px 0 rgba(48, 54, 60, 0.1);
+    text-overflow: ellipsis;
+}
+
+.queryField > input {
+    max-height: 40px;
+}
+
+.queryField > textarea {
+    height: 325px;
+    resize: vertical;
+    line-height: 1.5;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco,
+        'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', monospace;
+}
+
+.queryField > input.dense,
+.queryField > textarea.dense {
+    max-height: 32px;
+    padding: 7px 8px;
+}
+
+.queryField > input:focus,
+.queryField > textarea:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--theme-focus);
+    border-color: var(--theme-focus);
+}
+
+.queryField > input::placeholder,
+.queryField > textarea::placeholder {
+    color: var(--colors-grey600);
+    opacity: 1;
+}
+
+.queryField > input.warning,
+.queryField > textarea.warning {
+    border-color: var(--theme-warning);
+}
+
+.queryField > input.error,
+.queryField > textarea.error {
+    border-color: var(--theme-error);
+}
+
+.queryField > input.read-only,
+.queryField > textarea.read-only {
+    background-color: var(--colors-grey050);
+    border-color: var(--colors-grey300);
+    box-shadow: none;
+    cursor: text;
+}
+
+.queryField > input.disabled,
+.queryField > textarea.disabled {
+    background-color: var(--colors-grey100);
+    border-color: var(--colors-grey500);
+    color: var(--theme-disabled);
+    cursor: not-allowed;
+}
+
+.helpText {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--colors-grey700);
+}
+
+.errorStyling {
+    margin-block-start: 4px;
+    margin-block-end: 0px;
+    margin-inline: 0px;
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--theme-error);
+}
+
+.errorIcon {
+    margin-inline-start: var(--spacers-dp8);
+    display: inline-block;
+}
