@@ -141,9 +141,9 @@ export const SqlViewActions = ({
         { pathname: model.id },
         { state: preservedSearchState }
     )
-    const handleDuplicateClick = useLinkClickHandler({
-        pathname: 'duplicate',
-        search: `?duplicatedId=${model.id}`,
+    const handleCloneClick = useLinkClickHandler({
+        pathname: 'clone',
+        search: `?clonedId=${model.id}`,
     })
 
     const isQuery = sqlViewModel.type === SqlView.type.QUERY
@@ -242,18 +242,18 @@ export const SqlViewActions = ({
                                     href={href}
                                 />
                             </TooltipWrapper>
-                            {section.duplicable && (
+                            {section.clonable && (
                                 <TooltipWrapper
                                     condition={!editable}
-                                    content={TOOLTIPS.noDuplicateAccess}
+                                    content={TOOLTIPS.noCloneAccess}
                                 >
                                     <MenuItem
                                         dense
                                         disabled={!editable}
-                                        label={i18n.t('Duplicate')}
+                                        label={i18n.t('Clone')}
                                         icon={<IconDuplicate16 />}
                                         onClick={(_, e) => {
-                                            handleDuplicateClick(e)
+                                            handleCloneClick(e)
                                             setOpen(false)
                                         }}
                                     />

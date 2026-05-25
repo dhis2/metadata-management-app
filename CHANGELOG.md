@@ -1,3 +1,63 @@
+# [0.157.0](https://github.com/dhis2/metadata-management-app/compare/v0.156.2...v0.157.0) (2026-05-24)
+
+
+### Bug Fixes
+
+* [DHIS2-21521] Unchecking does not clear values in Program details section ([#942](https://github.com/dhis2/metadata-management-app/issues/942)) ([df20920](https://github.com/dhis2/metadata-management-app/commit/df20920840249e1952b033ecf918380cf6ec3238))
+
+
+### Features
+
+* add mandatory de warning ([#924](https://github.com/dhis2/metadata-management-app/issues/924)) ([bff3bf1](https://github.com/dhis2/metadata-management-app/commit/bff3bf1a3a716f0379be3b2e103137b0b6b74a5c))
+* implement icon forms ([#921](https://github.com/dhis2/metadata-management-app/issues/921)) ([1414509](https://github.com/dhis2/metadata-management-app/commit/141450970fafdefe76dbca3a305d1174ab1c88f0))
+
+# [0.157.0](https://github.com/dhis2/metadata-management-app/compare/v0.156.2...v0.157.0) (2026-05-24)
+
+
+### Bug Fixes
+
+* [DHIS2-21521] Unchecking does not clear values in Program details section ([#942](https://github.com/dhis2/metadata-management-app/issues/942)) ([df20920](https://github.com/dhis2/metadata-management-app/commit/df20920840249e1952b033ecf918380cf6ec3238))
+
+
+### Features
+
+* add mandatory de warning ([#924](https://github.com/dhis2/metadata-management-app/issues/924)) ([bff3bf1](https://github.com/dhis2/metadata-management-app/commit/bff3bf1a3a716f0379be3b2e103137b0b6b74a5c))
+* implement icon forms ([#921](https://github.com/dhis2/metadata-management-app/issues/921)) ([1414509](https://github.com/dhis2/metadata-management-app/commit/141450970fafdefe76dbca3a305d1174ab1c88f0))
+
+# [0.157.0](https://github.com/dhis2/metadata-management-app/compare/v0.156.2...v0.157.0) (2026-05-24)
+
+
+### Bug Fixes
+
+* [DHIS2-21521] Unchecking does not clear values in Program details section ([#942](https://github.com/dhis2/metadata-management-app/issues/942)) ([df20920](https://github.com/dhis2/metadata-management-app/commit/df20920840249e1952b033ecf918380cf6ec3238))
+
+
+### Features
+
+* add mandatory de warning ([#924](https://github.com/dhis2/metadata-management-app/issues/924)) ([bff3bf1](https://github.com/dhis2/metadata-management-app/commit/bff3bf1a3a716f0379be3b2e103137b0b6b74a5c))
+* implement icon forms ([#921](https://github.com/dhis2/metadata-management-app/issues/921)) ([1414509](https://github.com/dhis2/metadata-management-app/commit/141450970fafdefe76dbca3a305d1174ab1c88f0))
+
+## [0.156.2](https://github.com/dhis2/metadata-management-app/compare/v0.156.1...v0.156.2) (2026-05-20)
+
+
+### Bug Fixes
+
+* update sql form text to AC ([#941](https://github.com/dhis2/metadata-management-app/issues/941)) ([f029b06](https://github.com/dhis2/metadata-management-app/commit/f029b0680085c256df0c46366d9bc86d37b53394))
+
+## [0.156.1](https://github.com/dhis2/metadata-management-app/compare/v0.156.0...v0.156.1) (2026-05-19)
+
+
+### Bug Fixes
+
+* rename duplicate to clone [DHIS2-21399] ([c2c4025](https://github.com/dhis2/metadata-management-app/commit/c2c40258f408cdb87a56502c42719b94d1758278))
+
+# [0.156.0](https://github.com/dhis2/metadata-management-app/compare/v0.155.0...v0.156.0) (2026-05-18)
+
+
+### Features
+
+* program type duplicates ([#914](https://github.com/dhis2/metadata-management-app/issues/914)) ([894a955](https://github.com/dhis2/metadata-management-app/commit/894a955761e1b675101dd471d6df8ab8a57c5ba4))
+
 # [0.155.0](https://github.com/dhis2/metadata-management-app/compare/v0.154.2...v0.155.0) (2026-05-15)
 
 

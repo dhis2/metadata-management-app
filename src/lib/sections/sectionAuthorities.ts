@@ -35,6 +35,10 @@ function canCreateModelInSection(
 ): boolean {
     if (isSchemaSection(section)) {
         const schema = schemas[section.name]
+        // Schemas with no authorities defined are publicly accessible (e.g. icons)
+        if (!schema?.authorities?.length) {
+            return true
+        }
         return canCreate(schema, userAuthorities)
     } else {
         // NonSchemaSection
@@ -62,6 +66,13 @@ export const useIsSectionAuthorizedPredicate = () => {
     const isSectionAuthorizedPredicate = useCallback(
         (section: Section): boolean => {
             if (!requireCreateAuthToView) {
+                return true
+            }
+            // Schemas with no authorities defined are publicly accessible (e.g. icons)
+            if (
+                isSchemaSection(section) &&
+                !schemas[section.name]?.authorities?.length
+            ) {
                 return true
             }
             // if schema is non-creatable, we still need to check authority for creation

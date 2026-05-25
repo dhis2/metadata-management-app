@@ -3464,6 +3464,51 @@ msgstr "Display Options"
 msgid "Advanced"
 msgstr "Advanced"
 
+msgid "Icon saved successfully"
+msgstr "Icon saved successfully"
+
+msgid "Failed to load icon"
+msgstr "Failed to load icon"
+
+msgid "Could not load icon \"{{key}}\""
+msgstr "Could not load icon \"{{key}}\""
+
+msgid "System icon"
+msgstr "System icon"
+
+msgid "System icons cannot be edited. Only custom icons can be modified."
+msgstr "System icons cannot be edited. Only custom icons can be modified."
+
+msgid "Icon created successfully"
+msgstr "Icon created successfully"
+
+msgid "Icon file"
+msgstr "Icon file"
+
+msgid "Icon preview"
+msgstr "Icon preview"
+
+msgid "Change icon"
+msgstr "Change icon"
+
+msgid "Upload icon"
+msgstr "Upload icon"
+
+msgid "Key cannot be \"new\""
+msgstr "Key cannot be \"new\""
+
+msgid "Key"
+msgstr "Key"
+
+msgid "A unique identifier for this icon"
+msgstr "A unique identifier for this icon"
+
+msgid "Keywords"
+msgstr "Keywords"
+
+msgid "Comma-separated list of keywords"
+msgstr "Comma-separated list of keywords"
+
 msgid "Set up the basic information for this indicator group set."
 msgstr "Set up the basic information for this indicator group set."
 
@@ -5502,6 +5547,16 @@ msgstr "Recipient program attribute"
 msgid "Recipient data element"
 msgstr "Recipient data element"
 
+msgid "Mandatory data elements are not included in this form."
+msgstr "Mandatory data elements are not included in this form."
+
+msgid ""
+"The following data elements are marked as required but not assigned to any "
+"section:"
+msgstr ""
+"The following data elements are marked as required but not assigned to any "
+"section:"
+
 msgid "Set up automatic event creation and scheduling in this program stage."
 msgstr "Set up automatic event creation and scheduling in this program stage."
 
@@ -6353,3 +6408,7 @@ msgstr "Right side sliding window"
 
 msgid "Skip form validation"
 msgstr "Skip form validation"
+
+msgctxt ")"
+msgid "Key may only contain letters, numbers, hyphens (-) and underscores ("
+msgstr "Key may only contain letters, numbers, hyphens (-) and underscores (_)"
