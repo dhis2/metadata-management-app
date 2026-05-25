@@ -1,4 +1,4 @@
-import { FetchError, useDataEngine } from '@dhis2/app-runtime'
+import { useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { useQuery } from '@tanstack/react-query'
 import React, { useCallback, useState } from 'react'
@@ -15,8 +15,12 @@ import { useModelListView } from '../../components/sectionList/listView'
 import { ModelValueRenderer } from '../../components/sectionList/modelValue/ModelValueRenderer'
 import { TextValue } from '../../components/sectionList/modelValue/TextValue'
 import { SectionList } from '../../components/sectionList/SectionList'
+import { SectionListLoader } from '../../components/sectionList/SectionListLoader'
+import {
+    SectionListEmpty,
+    SectionListError,
+} from '../../components/sectionList/SectionListMessages'
 import { SectionListPagination } from '../../components/sectionList/SectionListPagination'
-import { DefaultSectionListMessage } from '../../components/sectionList/SectionListWrapper'
 import { DefaultToolbar } from '../../components/sectionList/toolbar'
 import { SelectedColumn } from '../../components/sectionList/types'
 import {
@@ -28,7 +32,7 @@ import {
     usePaginationQueryParams,
     useSectionListFilter,
 } from '../../lib'
-import { ModelCollection, PagedResponse, WrapQueryResponse } from '../../types'
+import { PagedResponse, WrapQueryResponse } from '../../types'
 import css from './IconList.module.css'
 import { IconListActions } from './IconListActions'
 import { IconListRow } from './IconListRow'
@@ -149,10 +153,13 @@ export const Component = () => {
                     downloadable={false}
                 />
                 <SectionList headerColumns={headerColumns}>
-                    <DefaultSectionListMessage
-                        error={error as FetchError}
-                        data={iconList as unknown as ModelCollection}
-                    />
+                    {error ? (
+                        <SectionListError />
+                    ) : !iconList ? (
+                        <SectionListLoader />
+                    ) : iconList.length === 0 ? (
+                        <SectionListEmpty />
+                    ) : null}
                     {iconList?.map((icon) => (
                         <IconListRow
                             key={icon.key}

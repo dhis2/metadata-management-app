@@ -52,7 +52,7 @@ describe('Icons list', () => {
     const deleteMock = jest.fn()
 
     const renderList = generateRenderer(
-        { section },
+        { section, mockSchema: {} },
         (
             routeOptions,
             {
