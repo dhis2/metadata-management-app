@@ -13,11 +13,7 @@ import {
     NoticeBox,
 } from '@dhis2/ui'
 import React, { useState } from 'react'
-import {
-    isOverviewSection,
-    useDeleteModelMutation,
-    useSectionHandle,
-} from '../../../lib'
+import { useDeleteModelMutation, useSectionHandle } from '../../../lib'
 import { ModelSection } from '../../../types'
 import classes from './DeleteAction.module.css'
 
