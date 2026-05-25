@@ -243,7 +243,7 @@ const ProgramAttributeComponent = ({
         params: {
             filters: [`id:eq:${programId}`],
             fields: [
-                'programTrackedEntityAttributes[id,displayName,trackedEntityAttribute[id]]',
+                'programType,programTrackedEntityAttributes[id,displayName,trackedEntityAttribute[id]]',
             ],
         },
     }
@@ -707,9 +707,10 @@ const PI_VARIABLE_ELEMENTS = [
     { id: 'V{creation_date}', displayName: i18n.t('Creation date') },
     { id: 'V{current_date}', displayName: i18n.t('Current date') },
     { id: 'V{due_date}', displayName: i18n.t('Due date') },
+    { id: 'V{enrollment_date}', displayName: i18n.t('Enrollment date') },
     { id: 'V{enrollment_status}', displayName: i18n.t('Enrollment status') },
     { id: 'V{event_date}', displayName: i18n.t('Event date') },
-    { id: 'V{event_status}', displayName: i18n.t('Event status') },
+    { id: 'V{incident_date}', displayName: i18n.t('Incident date') },
     { id: 'V{program_stage_id}', displayName: i18n.t('Program stage id') },
     { id: 'V{program_stage_name}', displayName: i18n.t('Program stage name') },
     { id: 'V{sync_date}', displayName: i18n.t('Sync date') },
