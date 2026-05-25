@@ -1,7 +1,7 @@
 import { useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { useQuery } from '@tanstack/react-query'
-import React, { useCallback, useState } from 'react'
+import React, { ReactNode, useCallback, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ClientDateTime } from '../../components/date'
 import {
@@ -45,57 +45,71 @@ export type IconModel = {
     keywords?: string[]
     lastUpdated?: string
     created?: string
-    createdBy?: { displayName: string; id: string }
-    sharing?: { public: string }
+    createdBy?: {
+        displayName: string
+        id: string
+    }
+    sharing?: {
+        public: string
+    }
 }
 
 type IconsListResponse = WrapQueryResponse<PagedResponse<IconModel, 'icons'>>
 
 export const Component = () => {
     const { columns: headerColumns } = useModelListView()
+
     const engine = useDataEngine()
     const navigate = useNavigate()
+
     const [paginationParams] = usePaginationQueryParams()
     const [identifiableFilter] = useSectionListFilter(IDENTIFIABLE_FILTER_KEY)
 
-    const query = {
-        result: {
-            resource: 'icons',
-            params: {
-                type: 'CUSTOM',
-                fields: [
-                    'key',
-                    'description',
-                    'href',
-                    'custom',
-                    'keywords',
-                    'lastUpdated',
-                    'created',
-                    'createdBy[id,displayName]',
-                    'sharing',
-                ],
-                page: paginationParams.page,
-                pageSize: paginationParams.pageSize,
-                ...(identifiableFilter?.trim()
-                    ? { search: identifiableFilter.trim() }
-                    : {}),
+    const [detailsIcon, setDetailsIcon] = useState<IconModel | undefined>()
+
+    const trimmedFilter = identifiableFilter?.trim()
+
+    const query = useMemo(
+        () => ({
+            result: {
+                resource: 'icons',
+                params: {
+                    type: 'CUSTOM',
+                    fields: [
+                        'key',
+                        'description',
+                        'href',
+                        'custom',
+                        'keywords',
+                        'lastUpdated',
+                        'created',
+                        'createdBy[id,displayName]',
+                        'sharing',
+                    ],
+                    page: paginationParams.page,
+                    pageSize: paginationParams.pageSize,
+                    ...(trimmedFilter ? { search: trimmedFilter } : {}),
+                },
             },
-        },
-    }
+        }),
+        [paginationParams.page, paginationParams.pageSize, trimmedFilter]
+    )
 
     const { data, error, refetch } = useQuery({
-        queryKey: [query],
-        queryFn: ({ queryKey: [query], signal }) =>
-            engine.query(query, { signal }) as Promise<IconsListResponse>,
+        queryKey: ['icons', query],
+        queryFn: ({ signal }) =>
+            engine.query(query, {
+                signal,
+            }) as Promise<IconsListResponse>,
     })
 
     const iconList = data?.result?.icons
     const pager = data?.result?.pager
 
-    const [detailsIcon, setDetailsIcon] = useState<IconModel | undefined>()
-
     const handleDetailsClick = useCallback((icon: IconModel) => {
-        setDetailsIcon((prev) => (prev?.key === icon.key ? undefined : icon))
+        setDetailsIcon((previousIcon) =>
+            previousIcon?.key === icon.key ? undefined : icon
+        )
     }, [])
 
     const handleRowClick = useCallback(
@@ -108,13 +122,17 @@ export const Component = () => {
     const renderColumnValue = useCallback(
         ({ path }: SelectedColumn, icon: IconModel) => {
             if (path === 'href') {
-                return icon.href ? (
+                if (!icon.href) {
+                    return null
+                }
+
+                return (
                     <img
                         src={icon.href}
                         alt={icon.key}
                         className={css.iconThumbnail}
                     />
-                ) : null
+                )
             }
 
             const value = getIn(icon, path)
@@ -123,7 +141,7 @@ export const Component = () => {
                 return <TextValue value={(value as string[]).join(', ')} />
             }
 
-            if (value === undefined || value === null) {
+            if (value == null) {
                 return null
             }
 
@@ -143,23 +161,36 @@ export const Component = () => {
         []
     )
 
+    const renderListState = (): ReactNode => {
+        if (error) {
+            return <SectionListError />
+        }
+
+        if (iconList == null) {
+            return <SectionListLoader />
+        }
+
+        if (iconList.length === 0) {
+            return <SectionListEmpty />
+        }
+
+        return null
+    }
+
     return (
         <div>
             <FilterWrapper />
+
             <div className={css.listDetailsWrapper}>
                 <DefaultToolbar
                     selectedModels={new Set()}
                     onDeselectAll={() => {}}
                     downloadable={false}
                 />
+
                 <SectionList headerColumns={headerColumns}>
-                    {error ? (
-                        <SectionListError />
-                    ) : !iconList ? (
-                        <SectionListLoader />
-                    ) : iconList.length === 0 ? (
-                        <SectionListEmpty />
-                    ) : null}
+                    {renderListState()}
+
                     {iconList?.map((icon) => (
                         <IconListRow
                             key={icon.key}
@@ -176,18 +207,21 @@ export const Component = () => {
                                         if (detailsIcon?.key === icon.key) {
                                             setDetailsIcon(undefined)
                                         }
+
                                         refetch()
                                     }}
                                 />
                             )}
                         />
                     ))}
+
                     <SectionListPagination pager={pager} />
                 </SectionList>
+
                 {detailsIcon && (
                     <DetailsPanel
-                        onClose={() => setDetailsIcon(undefined)}
                         key={detailsIcon.key}
+                        onClose={() => setDetailsIcon(undefined)}
                     >
                         <DetailsPanelContent displayName={detailsIcon.key}>
                             {detailsIcon.href && (
@@ -197,17 +231,20 @@ export const Component = () => {
                                     className={css.iconDetailsThumbnail}
                                 />
                             )}
+
                             <DetailsList>
                                 {detailsIcon.description && (
                                     <DetailItem label={i18n.t('Description')}>
                                         {detailsIcon.description}
                                     </DetailItem>
                                 )}
+
                                 {!!detailsIcon.keywords?.length && (
                                     <DetailItem label={i18n.t('Keywords')}>
                                         {detailsIcon.keywords.join(', ')}
                                     </DetailItem>
                                 )}
+
                                 {detailsIcon.lastUpdated && (
                                     <DetailItem label={i18n.t('Last updated')}>
                                         <ClientDateTime
@@ -215,6 +252,7 @@ export const Component = () => {
                                         />
                                     </DetailItem>
                                 )}
+
                                 {detailsIcon.created && (
                                     <DetailItem label={i18n.t('Created')}>
                                         <ClientDateTime
@@ -222,6 +260,7 @@ export const Component = () => {
                                         />
                                     </DetailItem>
                                 )}
+
                                 {detailsIcon.createdBy && (
                                     <DetailItem label={i18n.t('Created by')}>
                                         {detailsIcon.createdBy.displayName}
