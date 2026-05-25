@@ -26,7 +26,6 @@ const generateContract = <T extends ZodRawShape>({
         jsonSchema: `contracts/metadata-management-app/${name}/json-schema.json`,
     }
     const schema = zodToJsonSchema(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (expectedSchema as any).extend({ id: z.string() }),
         {
             name,
