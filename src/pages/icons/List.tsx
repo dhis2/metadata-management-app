@@ -135,6 +135,12 @@ export const Component = () => {
                 )
             }
 
+            if (path === 'createdBy') {
+                return icon.createdBy ? (
+                    <TextValue value={icon.createdBy.displayName} />
+                ) : null
+            }
+
             const value = getIn(icon, path)
 
             if (path === 'keywords' && Array.isArray(value)) {
