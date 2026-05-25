@@ -150,7 +150,7 @@ export const Component = () => {
                 />
                 <SectionList headerColumns={headerColumns}>
                     <DefaultSectionListMessage
-                        error={error as FetchError | undefined}
+                        error={error as FetchError}
                         data={iconList as unknown as ModelCollection}
                     />
                     {iconList?.map((icon) => (

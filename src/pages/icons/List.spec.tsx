@@ -42,7 +42,7 @@ const buildPager = (total: number, page = 1, pageSize = 50) => ({
 })
 
 jest.spyOn(console, 'warn').mockImplementation((value) => {
-    if (typeof value === 'string' && !value.match(/No server timezone/)) {
+    if (typeof value === 'string' && !/No server timezone/.exec(value)) {
         console.info(value)
     }
 })

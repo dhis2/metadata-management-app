@@ -32,7 +32,7 @@ export const generateRenderer =
                 [section.name]: mockSchema,
             } as unknown as ModelSchemas)
         } else if (useSchemaStore.getState().schemas === undefined) {
-            useSchemaStore.getState().setSchemas({} as ModelSchemas)
+            useSchemaStore.getState().setSchemas({} as unknown as ModelSchemas)
         }
         useCurrentUserStore.getState().setCurrentUser({
             organisationUnits: [testOrgUnit()] as OrganisationUnit[],
