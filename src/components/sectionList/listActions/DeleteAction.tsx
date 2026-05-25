@@ -101,7 +101,7 @@ function ConfirmationDialog({
         <Modal dataTest="delete-confirmation-modal">
             <ModalTitle>
                 {i18n.t(
-                    'Are you sure that you want to delete "{{displayName}}"?',
+                    'Are you sure that you want to delete "{{- displayName}}"?',
                     { displayName: modelDisplayName }
                 )}
             </ModalTitle>
