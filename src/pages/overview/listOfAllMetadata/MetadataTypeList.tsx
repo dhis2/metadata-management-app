@@ -134,7 +134,7 @@ export const MetadataTypeList = ({
                 <DataTableCell />
             </DataTableRow>
 
-            {isExpanded && isError ? <SectionListError /> : null}
+            {isExpanded && isError && hasNoItems ? <SectionListError /> : null}
             {isExpanded && !isError && isFetching && hasNoItems ? (
                 <SectionListLoader />
             ) : null}
@@ -185,8 +185,12 @@ export const MetadataTypeList = ({
                         {idx === items.length - 1 && isFetching ? (
                             <SectionListLoader />
                         ) : null}
+                        {idx === items.length - 1 && isError ? (
+                            <SectionListError />
+                        ) : null}
                         {idx === items.length - 1 &&
                         !isFetching &&
+                        !isError &&
                         hasNextPage ? (
                             <DataTableRow>
                                 <DataTableCell
