@@ -297,12 +297,17 @@ describe('Data elements form tests', () => {
                 screen
             )
 
-            const aggregationTypeSelectInput = within(
-                screen.getByTestId('formfields-aggregationType')
-            ).getByTestId('dhis2-uicore-select-input')
-            expect(aggregationTypeSelectInput).toBeVisible()
-            expect(aggregationTypeSelectInput).toHaveTextContent('None')
-            expect(aggregationTypeSelectInput).toHaveClass('disabled')
+            const aggregationTypeField = screen.getByTestId(
+                'formfields-aggregationType'
+            )
+            await waitFor(() => {
+                const aggregationTypeSelectInput = within(
+                    aggregationTypeField
+                ).getByTestId('dhis2-uicore-select-input')
+                expect(aggregationTypeSelectInput).toBeVisible()
+                expect(aggregationTypeSelectInput).toHaveTextContent('None')
+                expect(aggregationTypeSelectInput).toHaveClass('disabled')
+            })
 
             await uiActions.submitForm(screen)
             expect(createMock).toHaveBeenCalledWith(

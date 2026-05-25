@@ -26,6 +26,7 @@ import {
     getOverviewPath,
     isMergableSection,
     useBoundResourceQueryFn,
+    useSectionHandle,
 } from '../../lib'
 import { OverviewSection } from '../../types'
 import { Layout, BreadcrumbItem } from '../layout'
@@ -116,8 +117,17 @@ function createSectionLazyRouteFunction(
     }
 }
 
+const sectionsWithNonUidId = new Set<Section>([SECTIONS_MAP.icon])
+
 const VerifyModelId = () => {
     const { id } = useParams()
+    const section = useSectionHandle()
+    if (section && sectionsWithNonUidId.has(section)) {
+        if (!id) {
+            throw new Error('Invalid model id.')
+        }
+        return <Outlet />
+    }
 
     if (!isValidUid(id)) {
         throw new Error('Invalid model id.')

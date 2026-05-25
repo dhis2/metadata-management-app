@@ -31,11 +31,9 @@ export function OpenDaysAfterCoEndDateField({
         }
     }, [input.value])
 
-    const num = Number(input.value)
-
-    const onToggle = (next: boolean) => {
-        setChecked(next)
-        input.onChange(next ? num || 7 : 0)
+    const onToggle = (isChecked: boolean) => {
+        setChecked(isChecked)
+        input.onChange(isChecked ? 0 : undefined)
         input.onBlur()
     }
 
