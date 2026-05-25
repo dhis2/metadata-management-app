@@ -2,7 +2,8 @@ import { useCallback } from 'react'
 import { StringParam, useQueryParam } from 'use-query-params'
 import { z } from 'zod'
 import { getSchemaPropertyForPath } from '../models/path'
-import { useSchemaFromHandle } from '../schemas'
+import { useSchemaSectionHandleOrThrow } from '../routeUtils'
+import { useSchemaStore } from '../schemas/schemaStore'
 import { Schema } from '../useLoadApp'
 
 const SortQueryParam = StringParam
@@ -43,7 +44,7 @@ export const isValidSortPathForSchema = (
     schema: Schema | undefined,
     path: string
 ) => {
-    if (!schema) {
+    if (!schema?.properties) {
         return false
     }
     const schemaProperty = getSchemaPropertyForPath(schema, path)
@@ -58,7 +59,8 @@ export const isValidSortPathForSchema = (
 }
 
 export const useSectionListSortOrder = () => {
-    const schema = useSchemaFromHandle()
+    const section = useSchemaSectionHandleOrThrow()
+    const schema = useSchemaStore((state) => state.schemas?.[section.name])
     const [sortOrderParam, setSortOrderParam] = useQueryParam(
         'sort',
         SortQueryParam,
