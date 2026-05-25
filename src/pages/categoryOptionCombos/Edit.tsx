@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { DefaultEditFormContents, FormBase } from '../../components'
 import {
     ATTRIBUTE_VALUES_FIELD_FILTERS,
-    DEFAULT_FIELD_FILTERS,
+    DEFAULT_IDENTIFIABLE,
     SECTIONS_MAP,
     useOnSubmitEdit,
 } from '../../lib'
@@ -16,9 +16,8 @@ import {
 import { validate, CategoryOptionComboFormFields } from './form'
 
 const fieldFilters = [
-    ...DEFAULT_FIELD_FILTERS,
+    ...DEFAULT_IDENTIFIABLE,
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
-    'name',
     'code',
     'ignoreApproval',
 ] as const

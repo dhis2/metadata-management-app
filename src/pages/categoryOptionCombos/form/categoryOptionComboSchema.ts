@@ -1,24 +1,27 @@
 import { z } from 'zod'
-import { getDefaultsOld, modelFormSchemas } from '../../../lib'
+import { modelFormSchemas } from '../../../lib'
 import { createFormValidate } from '../../../lib/form/validate'
+import { getDefaults } from '../../../lib/zod/getDefaults'
 
-const { withAttributeValues, withDefaultListColumns } = modelFormSchemas
+const { identifiable, withAttributeValues, withDefaultListColumns } =
+    modelFormSchemas
 
-const categoryOptionComboBaeSchema = z.object({
+const categoryOptionComboBaseSchema = z.object({
     code: z.string().trim().optional(),
 })
 
 // categoryCombos should only be able to change the code and attributes
-export const categoryOptionComboFormSchema = withAttributeValues
-    .merge(categoryOptionComboBaeSchema)
+export const categoryOptionComboFormSchema = identifiable
+    .merge(withAttributeValues)
+    .merge(categoryOptionComboBaseSchema)
     .extend({
-        id: z.string(),
-        ignoreApproval: z.boolean().optional().default(false),
+        ignoreApproval: z.boolean().optional(),
     })
-export const categoryOptionComboListSchema = categoryOptionComboBaeSchema.merge(
-    withDefaultListColumns
-)
+export const categoryOptionComboListSchema =
+    categoryOptionComboBaseSchema.merge(withDefaultListColumns)
 
-export const initialValues = getDefaultsOld(categoryOptionComboFormSchema)
+export const initialValues = getDefaults(categoryOptionComboFormSchema, {
+    ignoreApproval: false,
+})
 
 export const validate = createFormValidate(categoryOptionComboFormSchema)
