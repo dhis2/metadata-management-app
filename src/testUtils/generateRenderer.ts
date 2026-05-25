@@ -31,6 +31,8 @@ export const generateRenderer =
             useSchemaStore.getState().setSchemas({
                 [section.name]: mockSchema,
             } as unknown as ModelSchemas)
+        } else if (useSchemaStore.getState().schemas === undefined) {
+            useSchemaStore.getState().setSchemas({} as ModelSchemas)
         }
         useCurrentUserStore.getState().setCurrentUser({
             organisationUnits: [testOrgUnit()] as OrganisationUnit[],
@@ -44,10 +46,10 @@ export const generateRenderer =
             .setSystemSettings({} as SystemSettings)
 
         const { screen, ...rest } = renderer(routeOptions, renderOptions)
-        if (mockSchema !== undefined) {
-            await waitForElementToBeRemoved(() =>
-                screen.queryAllByTestId('dhis2-uicore-circularloader')
-            )
+        const hasLoaders = () =>
+            screen.queryAllByTestId('dhis2-uicore-circularloader')
+        if (mockSchema !== undefined || hasLoaders().length > 0) {
+            await waitForElementToBeRemoved(hasLoaders)
         }
         return { screen, ...rest }
     }

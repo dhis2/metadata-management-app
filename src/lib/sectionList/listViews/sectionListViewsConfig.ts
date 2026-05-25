@@ -1039,4 +1039,21 @@ export const modelListViewsConfig = {
             overrideDefaultAvailable: true,
         },
     },
+    icon: {
+        columns: {
+            available: [{ label: i18n.t('Keywords'), path: 'keywords' }],
+            default: [
+                { label: i18n.t('Key'), path: 'key' },
+                { label: i18n.t('Icon'), path: 'href' },
+                DESCRIPTORS.publicAccess,
+                'lastUpdated',
+            ],
+            overrideDefaultAvailable: true,
+        },
+        filters: {
+            default: [],
+            available: [],
+            overrideDefaultAvailable: true,
+        },
+    },
 } satisfies SectionListViewConfig<SectionName>

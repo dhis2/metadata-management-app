@@ -39,7 +39,13 @@ const formatSortOrderToString = (
     caseSensitive: boolean = true
 ): string => `${value[0]}:${caseSensitive ? '' : 'i'}${value[1]}`
 
-export const isValidSortPathForSchema = (schema: Schema, path: string) => {
+export const isValidSortPathForSchema = (
+    schema: Schema | undefined,
+    path: string
+) => {
+    if (!schema) {
+        return false
+    }
     const schemaProperty = getSchemaPropertyForPath(schema, path)
     if (schemaProperty && schemaProperty.sortable !== undefined) {
         return schemaProperty.sortable
