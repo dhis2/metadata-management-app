@@ -8,11 +8,11 @@ import {
     IconShare16,
     MenuItem,
     Popover,
-    Tooltip,
 } from '@dhis2/ui'
 import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DeleteAction } from '../../../components/sectionList/listActions/DeleteAction'
+import { TooltipWrapper } from '../../../components/tooltip'
 import {
     canDeleteModel,
     canEditModel,
@@ -22,6 +22,7 @@ import {
     SchemaName,
     TOOLTIPS,
 } from '../../../lib'
+import { ModelSection } from '../../../types'
 import { ListItem } from './ListOfAll'
 
 const SCHEMA_NAME_TO_SECTION = Object.fromEntries(
@@ -55,9 +56,8 @@ export const ListOfAllActionsMore = ({
     const navigate = useNavigate()
     const sectionPath = getSectionPathForSchema(schema.singular)
     const editable = canEditModel(model)
-    const section = SCHEMA_NAME_TO_SECTION[schema.singular]
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const duplicable = !!(section as any)?.duplicable
+    const section = SCHEMA_NAME_TO_SECTION[schema.singular] as ModelSection
+    const clonable = section.clonable
     const deletable = canDeleteModel(model)
     return (
         <div ref={ref}>
@@ -90,9 +90,9 @@ export const ListOfAllActionsMore = ({
                     dataTest="row-actions-menu"
                 >
                     <FlyoutMenu>
-                        <Tooltip
+                        <TooltipWrapper
+                            condition={!editable}
                             content={TOOLTIPS.noEditAccess}
-                            openDelay={800}
                         >
                             <MenuItem
                                 dense
@@ -104,11 +104,11 @@ export const ListOfAllActionsMore = ({
                                     setOpen(false)
                                 }}
                             />
-                        </Tooltip>
-                        {duplicable && (
-                            <Tooltip
-                                content={TOOLTIPS.noDuplicateAccess}
-                                openDelay={800}
+                        </TooltipWrapper>
+                        {clonable && (
+                            <TooltipWrapper
+                                condition={!editable}
+                                content={TOOLTIPS.noCloneAccess}
                             >
                                 <MenuItem
                                     dense
@@ -122,7 +122,7 @@ export const ListOfAllActionsMore = ({
                                         setOpen(false)
                                     }}
                                 />
-                            </Tooltip>
+                            </TooltipWrapper>
                         )}
                         <MenuItem
                             dense
@@ -134,9 +134,9 @@ export const ListOfAllActionsMore = ({
                             }}
                         />
                         {schema.shareable && (
-                            <Tooltip
-                                content={TOOLTIPS.noEditAccess}
-                                openDelay={800}
+                            <TooltipWrapper
+                                condition={!editable}
+                                content={TOOLTIPS.noCloneAccess}
                             >
                                 <MenuItem
                                     dense
@@ -148,7 +148,7 @@ export const ListOfAllActionsMore = ({
                                         setOpen(false)
                                     }}
                                 />
-                            </Tooltip>
+                            </TooltipWrapper>
                         )}
                         {isDeletable(schema) && (
                             <DeleteAction

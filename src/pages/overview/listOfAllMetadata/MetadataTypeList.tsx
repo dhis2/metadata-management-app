@@ -1,5 +1,11 @@
 import i18n from '@dhis2/d2-i18n'
-import { Button, DataTableCell, DataTableRow } from '@dhis2/ui'
+import {
+    Button,
+    DataTableCell,
+    DataTableRow,
+    IconChevronDown16,
+    IconChevronRight16,
+} from '@dhis2/ui'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import React, { useEffect, useState } from 'react'
 import {
@@ -111,33 +117,9 @@ export const MetadataTypeList = ({
                         type="button"
                         icon={
                             isExpanded ? (
-                                <svg
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 16 16"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M13.5 5.5l-5.5 5.5-5.5-5.5"
-                                        stroke="currentColor"
-                                        strokeWidth="1.5"
-                                        fill="none"
-                                    />
-                                </svg>
+                                <IconChevronDown16 />
                             ) : (
-                                <svg
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 16 16"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M5.5 2.5l5.5 5.5-5.5 5.5"
-                                        stroke="currentColor"
-                                        strokeWidth="1.5"
-                                        fill="none"
-                                    />
-                                </svg>
+                                <IconChevronRight16 />
                             )
                         }
                         onClick={() => setIsExpanded((prev) => !prev)}

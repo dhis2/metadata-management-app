@@ -83,6 +83,13 @@ const ListOfAllDetailsPanelContent = ({
     )
 }
 
+const excludedMetadataTypes = [
+    'locale',
+    'icons',
+    'organisationUnit',
+    'organisationUnitLevel',
+]
+
 export const ListOfAll = () => {
     const engine = useDataEngine()
     const schemas = useSchemas()
@@ -100,13 +107,10 @@ export const ListOfAll = () => {
         () =>
             sidebarLinks
                 .flatMap(({ links }) => links)
-                .filter(({ to }) => !to.startsWith('overview/'))
                 .filter(
                     ({ section }) =>
-                        (section as { parentSectionKey?: string })
-                            .parentSectionKey !== 'organisationUnit'
+                        !excludedMetadataTypes.includes(section.name)
                 )
-                .filter(({ section }) => section.name !== 'locale')
                 .map(({ section }) => schemas[section.name as SchemaName])
                 .filter((s): s is Schema => !!s),
         [sidebarLinks, schemas]
