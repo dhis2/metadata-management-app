@@ -34,9 +34,6 @@ function canCreateModelInSection(
     schemas: ModelSchemas
 ): boolean {
     if (isSchemaSection(section)) {
-        if (section === SECTIONS_MAP.icon) {
-            return true
-        }
         const schema = schemas[section.name]
         // Schemas with no authorities defined are publicly accessible (e.g. icons)
         if (!schema?.authorities?.length) {
