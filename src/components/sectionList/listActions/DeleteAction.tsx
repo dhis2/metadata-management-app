@@ -14,9 +14,11 @@ import {
 } from '@dhis2/ui'
 import React, { useState } from 'react'
 import {
+    isOverviewSection,
     useDeleteModelMutation,
-    useModelSectionHandleOrThrow,
+    useSectionHandle,
 } from '../../../lib'
+import { ModelSection } from '../../../types'
 import classes from './DeleteAction.module.css'
 
 export function DeleteAction({
@@ -25,12 +27,14 @@ export function DeleteAction({
     modelDisplayName,
     onCancel,
     onDeleteSuccess,
+    section,
 }: {
     disabled: boolean
     modelId: string
     modelDisplayName: string
     onCancel: () => void
     onDeleteSuccess: () => void
+    section?: ModelSection
 }) {
     const [showConfirmationDialog, setShowConfirmationDialog] = useState(false)
     const deleteAndClose = () => {
@@ -60,6 +64,7 @@ export function DeleteAction({
                     modelDisplayName={modelDisplayName}
                     onDeleteSuccess={deleteAndClose}
                     onCancel={closeAndCancel}
+                    section={section}
                 />
             )}
         </>
@@ -71,26 +76,32 @@ function ConfirmationDialog({
     modelDisplayName,
     onCancel,
     onDeleteSuccess,
+    section,
 }: {
     modelId: string
     modelDisplayName: string
     onCancel: () => void
     onDeleteSuccess: () => void
+    section?: ModelSection
 }) {
-    const section = useModelSectionHandleOrThrow()
+    const sectionFromHandle = useSectionHandle()
+    const sectionOrSectionFromHandle = section ?? sectionFromHandle
 
-    const deleteModelMutation = useDeleteModelMutation(section.namePlural, {
-        onSuccess: () => {
-            showDeletionSuccess()
-            onDeleteSuccess()
-        },
-    })
+    const deleteModelMutation = useDeleteModelMutation(
+        sectionOrSectionFromHandle!.namePlural,
+        {
+            onSuccess: () => {
+                showDeletionSuccess()
+                onDeleteSuccess()
+            },
+        }
+    )
 
     const { show: showDeletionSuccess } = useAlert(
         () =>
             i18n.t('Successfully deleted {{modelType}} "{{displayName}}"', {
                 displayName: modelDisplayName,
-                modelType: section.title,
+                modelType: section!.title,
             }),
         { success: true }
     )
@@ -102,7 +113,7 @@ function ConfirmationDialog({
             <ModalTitle>
                 {i18n.t(
                     'Are you sure that you want to delete this {{modelType}}?',
-                    { modelType: section.title }
+                    { modelType: section!.title }
                 )}
             </ModalTitle>
 
@@ -112,7 +123,7 @@ function ConfirmationDialog({
                         error
                         title={i18n.t(
                             'Something went wrong deleting the {{modelType}}',
-                            { modelType: section.title }
+                            { modelType: section!.title }
                         )}
                     >
                         <div>
@@ -120,7 +131,7 @@ function ConfirmationDialog({
                                 'Failed to delete {{modelType}} "{{displayName}}"! {{messages}}',
                                 {
                                     displayName: modelDisplayName,
-                                    modelType: section.title,
+                                    modelType: section!.title,
                                 }
                             )}
                         </div>

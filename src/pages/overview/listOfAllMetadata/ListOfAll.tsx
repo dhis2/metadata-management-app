@@ -24,6 +24,7 @@ import {
 import { DetailsPanel } from '../../../components/sectionList/detailsPanel/DetailsPanel'
 import type { Schema } from '../../../lib'
 import { SchemaName, useSchemas, useSectionListFilter } from '../../../lib'
+import type { Access } from '../../../types/generated'
 import css from './ListOfAll.module.css'
 import { MetadataTypeList } from './MetadataTypeList'
 
@@ -32,7 +33,7 @@ export type ListItem = {
     displayName: string
     lastUpdated?: string
     sharing?: { public?: string }
-    access: { write: boolean; delete: boolean; [key: string]: unknown }
+    access: Access
 }
 
 type ActiveModel = { model: ListItem; schema: Schema }

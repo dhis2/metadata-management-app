@@ -1,28 +1,21 @@
-import { useAlert, useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import {
     Button,
-    ButtonStrip,
-    CircularLoader,
     FlyoutMenu,
-    IconDelete16,
     IconDuplicate16,
     IconEdit16,
     IconInfo16,
     IconShare16,
     MenuItem,
-    Modal,
-    ModalActions,
-    ModalContent,
-    ModalTitle,
-    NoticeBox,
     Popover,
     Tooltip,
 } from '@dhis2/ui'
-import { useMutation } from '@tanstack/react-query'
 import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { DeleteAction } from '../../../components/sectionList/listActions/DeleteAction'
 import {
+    canDeleteModel,
+    canEditModel,
     getSectionPath,
     Schema,
     SCHEMA_SECTIONS,
@@ -40,93 +33,8 @@ const getSectionPathForSchema = (schemaName: SchemaName): string => {
     return section ? getSectionPath(section) : schemaName
 }
 
-export const ListOfAllDeleteAction = ({
-    model,
-    schema,
-    onDeleteSuccess,
-    onCancel,
-}: {
-    model: ListItem
-    schema: Schema
-    onDeleteSuccess: () => void
-    onCancel: () => void
-}) => {
-    const engine = useDataEngine()
-    const [showConfirm, setShowConfirm] = useState(false)
-
-    const { show: showSuccess } = useAlert(
-        () =>
-            i18n.t('Successfully deleted "{{name}}"', {
-                name: model.displayName,
-            }),
-        { success: true }
-    )
-
-    const deleteMutation = useMutation({
-        mutationFn: () =>
-            engine.mutate({
-                resource: schema.plural,
-                id: model.id,
-                type: 'delete',
-            }) as unknown as Promise<void>,
-        onSuccess: () => {
-            showSuccess()
-            setShowConfirm(false)
-            onDeleteSuccess()
-        },
-    })
-
-    return (
-        <>
-            <MenuItem
-                dense
-                destructive
-                disabled={!model.access?.delete}
-                label={i18n.t('Delete')}
-                icon={<IconDelete16 />}
-                onClick={() => setShowConfirm(true)}
-            />
-            {showConfirm && (
-                <Modal>
-                    <ModalTitle>{i18n.t('Confirm deletion')}</ModalTitle>
-                    {deleteMutation.isError && (
-                        <ModalContent>
-                            <NoticeBox error title={i18n.t('Deletion failed')}>
-                                {i18n.t('Could not delete "{{name}}".', {
-                                    name: model.displayName,
-                                })}
-                            </NoticeBox>
-                        </ModalContent>
-                    )}
-                    <ModalActions>
-                        <ButtonStrip>
-                            <Button
-                                destructive
-                                disabled={deleteMutation.isLoading}
-                                onClick={() => deleteMutation.mutate()}
-                            >
-                                {deleteMutation.isLoading && (
-                                    <CircularLoader extrasmall />
-                                )}
-                                {deleteMutation.isError
-                                    ? i18n.t('Try again')
-                                    : i18n.t('Confirm deletion')}
-                            </Button>
-                            <Button
-                                disabled={deleteMutation.isLoading}
-                                onClick={() => {
-                                    setShowConfirm(false)
-                                    onCancel()
-                                }}
-                            >
-                                {i18n.t('Cancel')}
-                            </Button>
-                        </ButtonStrip>
-                    </ModalActions>
-                </Modal>
-            )}
-        </>
-    )
+const isDeletable = (schema: Schema) => {
+    return schema.name !== 'categoryOptionCombo'
 }
 
 export const ListOfAllActionsMore = ({
@@ -146,11 +54,11 @@ export const ListOfAllActionsMore = ({
     const ref = useRef<HTMLDivElement>(null)
     const navigate = useNavigate()
     const sectionPath = getSectionPathForSchema(schema.singular)
-    const editable = !!model.access?.write
+    const editable = canEditModel(model)
     const section = SCHEMA_NAME_TO_SECTION[schema.singular]
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const duplicable = !!(section as any)?.duplicable
-
+    const deletable = canDeleteModel(model)
     return (
         <div ref={ref}>
             <Button
@@ -242,15 +150,19 @@ export const ListOfAllActionsMore = ({
                                 />
                             </Tooltip>
                         )}
-                        <ListOfAllDeleteAction
-                            model={model}
-                            schema={schema}
-                            onDeleteSuccess={() => {
-                                onDeleteSuccess()
-                                setOpen(false)
-                            }}
-                            onCancel={() => setOpen(false)}
-                        />
+                        {isDeletable(schema) && (
+                            <DeleteAction
+                                modelId={model.id}
+                                modelDisplayName={model.displayName}
+                                disabled={!deletable}
+                                onDeleteSuccess={() => {
+                                    onDeleteSuccess()
+                                    setOpen(false)
+                                }}
+                                onCancel={() => setOpen(false)}
+                                section={section}
+                            />
+                        )}
                     </FlyoutMenu>
                 </Popover>
             )}

@@ -44,13 +44,7 @@ export const MetadataTypeList = ({
 }) => {
     const [isExpanded, setIsExpanded] = useState(false)
 
-    const queryKeyStr = [
-        schema.plural,
-        filter ?? '',
-        sortOrder ? `${sortOrder[0]}:${sortOrder[1]}` : '',
-    ].join('|')
-
-    const { data, hasNextPage, fetchNextPage, isFetching, isError } =
+    const { data, hasNextPage, fetchNextPage, isFetching, isError, refetch } =
         useInfiniteQuery({
             queryKey: [
                 'listOfAll',
@@ -98,11 +92,6 @@ export const MetadataTypeList = ({
             (p) => (p as SchemaQueryResult).result[schema.plural] ?? []
         ) ?? []
     const hasNoItems = items.length === 0
-
-    // reset when query params change
-    useEffect(() => {
-        setIsExpanded(false)
-    }, [queryKeyStr])
 
     // auto-collapse when results come back empty
     useEffect(() => {
@@ -203,9 +192,10 @@ export const MetadataTypeList = ({
                                         onOpenSharing={() =>
                                             onOpenSharing(item, schema)
                                         }
-                                        onDeleteSuccess={() =>
+                                        onDeleteSuccess={() => {
+                                            refetch()
                                             onDeleteSuccess(item)
-                                        }
+                                        }}
                                     />
                                 </ListActions>
                             </DataTableCell>
