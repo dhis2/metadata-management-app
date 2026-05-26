@@ -16,6 +16,8 @@ import {
     isNonCreateableSchema,
     useCurrentUserAuthorities,
 } from '../user'
+import { useIsSectionFeatureToggle } from './sectionFeatureToggle'
+
 type UserAuthorities = ReturnType<typeof useCurrentUserAuthorities>
 
 const isNonCreateableSection = (section: Section): section is SchemaSection => {
@@ -62,6 +64,7 @@ export const useIsSectionAuthorizedPredicate = () => {
     const userAuthorities = useCurrentUserAuthorities()
     const schemas = useSchemas()
     const requireCreateAuthToView = useSystemSetting('keyRequireAddToView')
+    const isSectionFeatureToggled = useIsSectionFeatureToggle()
 
     const isSectionAuthorizedPredicate = useCallback(
         (section: Section): boolean => {
@@ -90,8 +93,10 @@ export const useIsSectionAuthorizedPredicate = () => {
                     (childSection) =>
                         childSection.parentSectionKey === section.name
                 )
-                return childSections.some((childSection) =>
-                    isSectionAuthorizedPredicate(childSection)
+                return childSections.some(
+                    (childSection) =>
+                        isSectionFeatureToggled(childSection) &&
+                        isSectionAuthorizedPredicate(childSection)
                 )
             }
             return canCreateModelInSection(section, userAuthorities, schemas)
