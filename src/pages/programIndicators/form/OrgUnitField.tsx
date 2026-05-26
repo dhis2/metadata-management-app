@@ -15,7 +15,7 @@ const ORG_UNIT_VALUE_TYPE = 'ORGANISATION_UNIT'
 
 export const staticOptions = {
     eventDefault: {
-        value: ANALYTICS_TYPE_EVENT,
+        value: '',
         label: i18n.t('Event organisation unit default'),
     },
     enrollmentDefault: {
@@ -242,6 +242,12 @@ export const OrgUnitField = () => {
                     loading={isLoading}
                     showEndLoader={false}
                     onRetryClick={refetch}
+                    placeholder={
+                        programType === PROGRAM_TYPE_WITHOUT_REGISTRATION ||
+                        analyticsType === ANALYTICS_TYPE_EVENT
+                            ? staticOptions.eventDefault.label
+                            : undefined
+                    }
                 />
             </Box>
         </Field>
