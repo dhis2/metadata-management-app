@@ -97,7 +97,7 @@ function ConfirmationDialog({
         () =>
             i18n.t('Successfully deleted {{modelType}} "{{displayName}}"', {
                 displayName: modelDisplayName,
-                modelType: section!.title,
+                modelType: sectionOrSectionFromHandle?.title ?? '',
             }),
         { success: true }
     )
@@ -108,8 +108,8 @@ function ConfirmationDialog({
         <Modal dataTest="delete-confirmation-modal">
             <ModalTitle>
                 {i18n.t(
-                    'Are you sure that you want to delete this {{modelType}}?',
-                    { modelType: section!.title }
+                    'Are you sure that you want to delete "{{- displayName}}"?',
+                    { displayName: modelDisplayName }
                 )}
             </ModalTitle>
 
@@ -119,7 +119,7 @@ function ConfirmationDialog({
                         error
                         title={i18n.t(
                             'Something went wrong deleting the {{modelType}}',
-                            { modelType: section!.title }
+                            { modelType: sectionOrSectionFromHandle?.title }
                         )}
                     >
                         <div>
@@ -127,7 +127,8 @@ function ConfirmationDialog({
                                 'Failed to delete {{modelType}} "{{displayName}}"! {{messages}}',
                                 {
                                     displayName: modelDisplayName,
-                                    modelType: section!.title,
+                                    modelType:
+                                        sectionOrSectionFromHandle?.title ?? '',
                                 }
                             )}
                         </div>

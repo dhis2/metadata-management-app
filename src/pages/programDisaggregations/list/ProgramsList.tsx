@@ -153,7 +153,8 @@ export const ProgramsList = () => {
                         </p>
                         <p>
                             {i18n.t(
-                                'Are you sure you want to delete this program mapping configuration?'
+                                'Are you sure you want to delete {{- displayName}} mapping configuration?',
+                                { displayName: programToDelete.displayName }
                             )}
                         </p>
                     </ModalContent>
