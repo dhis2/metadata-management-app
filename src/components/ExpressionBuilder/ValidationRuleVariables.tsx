@@ -911,7 +911,7 @@ const programIndicatorElementTypes: ElementType[] = [
     },
     {
         type: 'programStage',
-        name: i18n.t('Program stage data'),
+        name: i18n.t('Program data'),
         component: ProgramStageList,
     },
     {
