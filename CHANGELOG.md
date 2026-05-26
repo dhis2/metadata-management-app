@@ -122,6 +122,23 @@
 
 ### Bug Fixes
 
+*  fix existing contracts ([#945](https://github.com/dhis2/metadata-management-app/issues/945)) ([8163eb2](https://github.com/dhis2/metadata-management-app/commit/8163eb272abffd5b689a96821bcf30d02152d261))
+* [DHIS2-21521] Unchecking does not clear values in Program details section ([#942](https://github.com/dhis2/metadata-management-app/issues/942)) ([df20920](https://github.com/dhis2/metadata-management-app/commit/df20920840249e1952b033ecf918380cf6ec3238))
+* deletion text update for program disaggregation ([69b31f2](https://github.com/dhis2/metadata-management-app/commit/69b31f2d18e560b01159eb64ff0a33f0854e75e5))
+
+
+### Features
+
+* add mandatory de warning ([#924](https://github.com/dhis2/metadata-management-app/issues/924)) ([bff3bf1](https://github.com/dhis2/metadata-management-app/commit/bff3bf1a3a716f0379be3b2e103137b0b6b74a5c))
+* create icon list ([#923](https://github.com/dhis2/metadata-management-app/issues/923)) ([eac21f6](https://github.com/dhis2/metadata-management-app/commit/eac21f6ee6ab22005c96873dae52ee0917fb8c82))
+* implement icon forms ([#921](https://github.com/dhis2/metadata-management-app/issues/921)) ([1414509](https://github.com/dhis2/metadata-management-app/commit/141450970fafdefe76dbca3a305d1174ab1c88f0))
+* update deletion text ([7e848eb](https://github.com/dhis2/metadata-management-app/commit/7e848eb9cc7f6d81fb801b98786b95cbb1c80aff))
+
+# [0.157.0](https://github.com/dhis2/metadata-management-app/compare/v0.156.2...v0.157.0) (2026-05-26)
+
+
+### Bug Fixes
+
 * [DHIS2-21521] Unchecking does not clear values in Program details section ([#942](https://github.com/dhis2/metadata-management-app/issues/942)) ([df20920](https://github.com/dhis2/metadata-management-app/commit/df20920840249e1952b033ecf918380cf6ec3238))
 * deletion text update for program disaggregation ([69b31f2](https://github.com/dhis2/metadata-management-app/commit/69b31f2d18e560b01159eb64ff0a33f0854e75e5))
 
