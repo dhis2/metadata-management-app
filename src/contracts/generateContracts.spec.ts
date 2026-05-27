@@ -8,13 +8,11 @@ const generateContract = <T extends ZodRawShape>({
     path,
     name,
     expectedSchema,
-    usage,
 }: {
     method: string
     path: string
     name: string
     expectedSchema: ZodObject<T>
-    usage?: string
 }) => {
     const contractPath = `contracts/${name}/contract.json`
     const schemaPath = `contracts/${name}/json-schema.json`
@@ -25,24 +23,20 @@ const generateContract = <T extends ZodRawShape>({
         responseStatus: 200,
         jsonSchema: `contracts/metadata-management-app/${name}/json-schema.json`,
     }
-    const schema = zodToJsonSchema(expectedSchema.extend({ id: z.string() }), {
-        name,
-        // @ts-expect-error - zod-to-json-schema types omit true for rejectedAdditionalProperties
-        rejectedAdditionalProperties: true,
-        $refStrategy: 'none',
-    })
+    const schema = zodToJsonSchema(
+        (expectedSchema as any).extend({ id: z.string() }),
+        {
+            name,
+            rejectedAdditionalProperties: true as unknown as false,
+            $refStrategy: 'none',
+        }
+    )
     mkdirSync(`contracts/${name}`, { recursive: true })
     writeFileSync(contractPath, JSON.stringify(request, null, 2))
     writeFileSync(
         schemaPath,
         JSON.stringify(schema.definitions?.[name], null, 2)
     )
-    if (usage) {
-        writeFileSync(
-            `contracts/${name}/README.md`,
-            `# ${method} ${name} usage\n\n${usage}`
-        )
-    }
 }
 
 describe('contracts', () => {
@@ -52,7 +46,6 @@ describe('contracts', () => {
             path: '/categories/{id}',
             name: 'category',
             expectedSchema: categoryFormSchema,
-            usage: 'used to populate edit category form',
         })
     })
 })

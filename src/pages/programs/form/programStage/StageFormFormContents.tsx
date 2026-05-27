@@ -2,7 +2,7 @@ import { useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button } from '@dhis2/ui'
 import cx from 'classnames'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useFormState } from 'react-final-form'
 import {
     SectionedFormSection,
@@ -19,6 +19,8 @@ import {
 } from '../../../../components/formCreators/TabbedFormTypePicker'
 import { SchemaName, scrollToSection } from '../../../../lib'
 import styles from '../trackerProgram/EnrollmentFormFormContents.module.css'
+import { MandatoryDataElementsWarning } from './MandatoryDataElementsWarning'
+import { getMandatoryDataElementsMissingFromSections } from './mandatoryStageDataElements'
 import { EditOrNewStageSectionForm } from './programStageSection/ProgramStageSectionForm'
 
 export const StageFormFormContents = ({
@@ -32,8 +34,8 @@ export const StageFormFormContents = ({
     name: string
     isTrackerProgram?: boolean
 }) => {
-    const { values } = useFormState({
-        subscription: { values: true },
+    const { values, initialValues } = useFormState({
+        subscription: { values: true, initialValues: true },
     })
     const currentSections = isTrackerProgram
         ? values.programStageSections
@@ -45,6 +47,20 @@ export const StageFormFormContents = ({
     const hasDataElements = isTrackerProgram
         ? values.programStageDataElements?.length > 0
         : values.programStages?.[0]?.programStageDataElements?.length > 0
+
+    const initialDataElements = isTrackerProgram
+        ? initialValues.programStageDataElements
+        : initialValues.programStages?.[0]?.programStageDataElements
+
+    const missingMandatoryDataElements = useMemo(
+        () =>
+            getMandatoryDataElementsMissingFromSections({
+                programStageDataElements: initialDataElements,
+                programStageSections: currentSections,
+            }),
+        [initialDataElements, currentSections]
+    )
+
     const [selectedFormType, setSelectedFormType] = useState<FormType>(
         FormType.DEFAULT
     )
@@ -223,6 +239,14 @@ export const StageFormFormContents = ({
                             sectionsLength: currentSections?.length ?? 0,
                             stageId: stageId,
                         }}
+                        warningNotice={
+                            <MandatoryDataElementsWarning
+                                missingDataElements={
+                                    missingMandatoryDataElements
+                                }
+                                className={styles.sectionWarningNotice}
+                            />
+                        }
                     />
                 </div>
                 <div

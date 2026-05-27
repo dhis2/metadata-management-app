@@ -1,66 +1,66 @@
 {
-    "type": "object",
+    "additionalProperties": true,
     "properties": {
-        "id": {
-            "type": "string"
-        },
-        "name": {
-            "type": "string"
-        },
-        "displayName": {
-            "type": "string"
-        },
         "attributeValues": {
-            "type": "array",
             "items": {
-                "type": "object",
+                "additionalProperties": true,
                 "properties": {
-                    "value": {
-                        "type": "string"
-                    },
                     "attribute": {
-                        "type": "object",
+                        "additionalProperties": true,
                         "properties": {
                             "id": {
                                 "type": "string"
                             }
                         },
                         "required": ["id"],
-                        "additionalProperties": true
+                        "type": "object"
+                    },
+                    "value": {
+                        "type": "string"
                     }
                 },
                 "required": ["value", "attribute"],
-                "additionalProperties": true
-            }
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "categoryOptions": {
+            "items": {
+                "additionalProperties": true,
+                "properties": {
+                    "displayName": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": ["id"],
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "dataDimension": {
+            "type": "boolean"
         },
         "dataDimensionType": {
-            "type": "string",
-            "enum": ["DISAGGREGATION", "ATTRIBUTE"]
-        },
-        "shortName": {
+            "enum": ["DISAGGREGATION", "ATTRIBUTE"],
             "type": "string"
         },
         "description": {
             "type": "string"
         },
-        "dataDimension": {
-            "type": "boolean"
+        "displayName": {
+            "type": "string"
         },
-        "categoryOptions": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "displayName": {
-                        "type": "string"
-                    }
-                },
-                "required": ["id"],
-                "additionalProperties": true
-            }
+        "id": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "shortName": {
+            "type": "string"
         }
     },
     "required": [
@@ -72,5 +72,5 @@
         "dataDimension",
         "categoryOptions"
     ],
-    "additionalProperties": true
+    "type": "object"
 }

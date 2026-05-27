@@ -278,14 +278,14 @@ const MATERIALIZED_VIEW = {
 
 const CACHE_STRATEGY = {
     NO_CACHE: 'No cache',
-    CACHE_1_MINUTE: 'Cache 1 minute',
-    CACHE_5_MINUTES: 'Cache 5 minutes',
-    CACHE_10_MINUTES: 'Cache 10 minutes',
-    CACHE_15_MINUTES: 'Cache 15 minutes',
-    CACHE_30_MINUTES: 'Cache 30 minutes',
-    CACHE_1_HOUR: 'Cache 1 hour',
-    CACHE_6AM_TOMORROW: 'Cache 6am tomorrow',
-    CACHE_TWO_WEEKS: 'Cache 2 weeks',
+    CACHE_1_MINUTE: 'Cache for 1 minute',
+    CACHE_5_MINUTES: 'Cache for 5 minutes',
+    CACHE_10_MINUTES: 'Cache for 10 minutes',
+    CACHE_15_MINUTES: 'Cache for 15 minutes',
+    CACHE_30_MINUTES: 'Cache for 30 minutes',
+    CACHE_1_HOUR: 'Cache for one hour',
+    CACHE_6AM_TOMORROW: 'Cache until 6am tomorrow',
+    CACHE_TWO_WEEKS: 'Cache for two weeks',
     RESPECT_SYSTEM_SETTING: 'Respect system setting',
 }
 

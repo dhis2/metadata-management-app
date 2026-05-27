@@ -3,6 +3,7 @@ import i18n from '@dhis2/d2-i18n'
 import {
     Button,
     FlyoutMenu,
+    IconDuplicate16,
     IconEdit16,
     IconInfo16,
     IconLaunch16,
@@ -28,6 +29,7 @@ import {
     BaseListModel,
     TOOLTIPS,
     useLocationSearchState,
+    useModelSectionHandleOrThrow,
     useSchemaFromHandle,
     canDeleteModel,
     canEditModel,
@@ -89,6 +91,7 @@ export const useRunSqlView = () => {
                 errorAlert.show({
                     message: i18n.t('Could not run SQL view: {{error}}', {
                         error: errorMessage,
+                        nsSeparator: '~:~',
                     }),
                 })
                 return { success: false, errorMessage }
@@ -158,6 +161,7 @@ export const SqlViewActions = ({
 }: DefaultListActionProps & { onOpenResultsDrawer: (id: string) => void }) => {
     const sqlViewModel = model as SqlViewListModel
     const schema = useSchemaFromHandle()
+    const section = useModelSectionHandleOrThrow()
     const deletable = canDeleteModel(model)
     const editable = canEditModel(model)
     const shareable = schema.shareable
@@ -174,6 +178,10 @@ export const SqlViewActions = ({
         { pathname: model.id },
         { state: preservedSearchState }
     )
+    const handleCloneClick = useLinkClickHandler({
+        pathname: 'clone',
+        search: `?clonedId=${model.id}`,
+    })
 
     const isQuery = sqlViewModel.type === SqlView.type.QUERY
 
@@ -294,6 +302,23 @@ export const SqlViewActions = ({
                                     href={href}
                                 />
                             </TooltipWrapper>
+                            {section.clonable && (
+                                <TooltipWrapper
+                                    condition={!editable}
+                                    content={TOOLTIPS.noCloneAccess}
+                                >
+                                    <MenuItem
+                                        dense
+                                        disabled={!editable}
+                                        label={i18n.t('Clone')}
+                                        icon={<IconDuplicate16 />}
+                                        onClick={(_, e) => {
+                                            handleCloneClick(e)
+                                            setOpen(false)
+                                        }}
+                                    />
+                                </TooltipWrapper>
+                            )}
                             <MenuItem
                                 dense
                                 label={i18n.t('Show details')}

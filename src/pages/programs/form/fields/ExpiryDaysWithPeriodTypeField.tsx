@@ -1,17 +1,21 @@
 import i18n from '@dhis2/d2-i18n'
 import { Checkbox, InputFieldFF, SingleSelectFieldFF } from '@dhis2/ui'
 import React, { useEffect, useState } from 'react'
-import { Field as FieldRFF, useField, useForm } from 'react-final-form'
+import { Field as FieldRFF, useField, useFormState } from 'react-final-form'
 import type { FieldMetaState } from 'react-final-form'
 import { Program } from '../../../../types/generated'
 import setupClasses from '../common/SetupFormContents.module.css'
-import { formatNumericInput, parseNumericInput } from './numericInputParsing'
 
 const EXPIRY_PERIOD_TYPE_OPTIONS = Object.entries(Program.expiryPeriodType).map(
     ([, value]) => ({ label: value, value })
 )
 
-function isEnabled(value: unknown): boolean {
+type ExpiryFormValues = {
+    expiryDays?: unknown
+    expiryPeriodType?: unknown
+}
+
+function hasExpiryDays(value: unknown): boolean {
     if (value == null || value === '') {
         return false
     }
@@ -19,29 +23,39 @@ function isEnabled(value: unknown): boolean {
     return !Number.isNaN(numericValue) && numericValue !== 0
 }
 
+function hasExpiryPeriodType(value: unknown): boolean {
+    return value != null && value !== ''
+}
+
 export function ExpiryDaysWithPeriodTypeField() {
-    const form = useForm()
-    const { input, meta } = useField('expiryDays', {
-        parse: parseNumericInput,
-        format: formatNumericInput,
+    const { input: expiryDaysInput } = useField('expiryDays')
+    const { input: expiryPeriodTypeInput } = useField('expiryPeriodType')
+    const { initialValues } = useFormState<ExpiryFormValues>({
+        subscription: { initialValues: true },
     })
-    const [checked, setChecked] = useState(() => isEnabled(input.value))
+    const initialChecked =
+        hasExpiryDays(initialValues?.expiryDays) &&
+        hasExpiryPeriodType(initialValues?.expiryPeriodType)
+    const [checked, setChecked] = useState(initialChecked)
 
     useEffect(() => {
-        if (isEnabled(input.value)) {
-            setChecked(true)
-        }
-    }, [input.value])
+        setChecked(initialChecked)
+    }, [initialChecked])
 
-    const num = Number(input.value)
-
-    const onToggle = (next: boolean) => {
-        setChecked(next)
-        input.onChange(next ? num || 7 : 0)
-        input.onBlur()
-        if (!next) {
-            form.change('expiryPeriodType', undefined)
+    const onToggle = (isChecked: boolean) => {
+        setChecked(isChecked)
+        if (isChecked) {
+            if (!hasExpiryDays(expiryDaysInput.value)) {
+                expiryDaysInput.onChange(1)
+            }
+            if (!hasExpiryPeriodType(expiryPeriodTypeInput.value)) {
+                expiryPeriodTypeInput.onChange(Program.expiryPeriodType.DAILY)
+            }
+        } else {
+            expiryDaysInput.onChange(0)
+            expiryPeriodTypeInput.onChange(null)
         }
+        expiryDaysInput.onBlur()
     }
 
     return (
@@ -55,23 +69,38 @@ export function ExpiryDaysWithPeriodTypeField() {
             />
             {checked && (
                 <div className={setupClasses.expiryDaysRow}>
-                    <InputFieldFF
-                        input={input}
-                        meta={meta as FieldMetaState<string | undefined>}
+                    <FieldRFF
+                        name="expiryDays"
+                        component={InputFieldFF}
+                        type="number"
+                        min="1"
                         inputWidth="150px"
                         label={i18n.t('Number of days')}
                         dataTest="formfields-expiryDays"
+                        format={(value: unknown) => value?.toString()}
+                        parse={(value: unknown) => {
+                            if (value == null) {
+                                return null
+                            }
+                            if (value === '') {
+                                return 0
+                            }
+                            return Number.parseInt(value as string, 10)
+                        }}
                     />
                     <FieldRFF
                         name="expiryPeriodType"
-                        format={(value: string | undefined) => value ?? ''}
-                        parse={(value: string) =>
-                            value === '' ? undefined : value
-                        }
-                        render={({ input, meta }) => (
+                        render={({
+                            input: expiryPeriodTypeInput,
+                            meta: expiryPeriodTypeMeta,
+                        }) => (
                             <SingleSelectFieldFF
-                                input={input}
-                                meta={meta}
+                                input={expiryPeriodTypeInput}
+                                meta={
+                                    expiryPeriodTypeMeta as FieldMetaState<
+                                        string | undefined
+                                    >
+                                }
                                 inputWidth="200px"
                                 label={i18n.t('Expiry period type')}
                                 dataTest="formfields-expiryPeriodType"

@@ -1,0 +1,13 @@
+.noticeBox {
+    margin-top: var(--spacers-dp12);
+    max-width: 720px;
+}
+
+.description {
+    margin-bottom: var(--spacers-dp8);
+}
+
+.list {
+    margin: 0;
+    padding-left: var(--spacers-dp16);
+}

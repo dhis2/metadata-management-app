@@ -4,7 +4,7 @@ import { IconAdd16 } from '@dhis2/ui-icons'
 import React, { useMemo } from 'react'
 import { useFormState } from 'react-final-form'
 import { useFieldArray } from 'react-final-form-arrays'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import {
     DrawerPortal,
     SectionedFormSection,
@@ -42,6 +42,8 @@ export const ProgramRuleActionsFormContents = React.memo(
 
 const ProgramRuleActionListNewOrEdit = () => {
     const modelId = useParams().id
+    const [searchParams] = useSearchParams()
+    const isClone = !!searchParams.get('clonedId')
     const { values: formValues } = useFormState<FormValuesWithProgramTemplates>(
         { subscription: { values: true } }
     )
@@ -94,7 +96,7 @@ const ProgramRuleActionListNewOrEdit = () => {
         }
     }
 
-    if (modelId) {
+    if (modelId || isClone) {
         const actions: ProgramRuleActionListItem[] =
             actionsFieldArray.value ?? []
         const sortedActionsBy = actions.sort((a, b) => {
@@ -110,21 +112,31 @@ const ProgramRuleActionListNewOrEdit = () => {
 
         return (
             <>
-                <DrawerPortal
-                    isOpen={isActionFormOpen}
-                    onClose={onCloseActionForm}
-                >
-                    {actionFormOpen !== undefined && (
-                        <EditOrNewProgramRuleActionForm
-                            programId={programId}
-                            programType={programType}
-                            programRuleId={modelId}
-                            action={actionFormOpen}
-                            onCancel={onCloseActionForm}
-                            onSubmitted={handleSubmitted}
-                        />
-                    )}
-                </DrawerPortal>
+                {!isClone && (
+                    <DrawerPortal
+                        isOpen={isActionFormOpen}
+                        onClose={onCloseActionForm}
+                    >
+                        {actionFormOpen !== undefined && (
+                            <EditOrNewProgramRuleActionForm
+                                programId={programId}
+                                programType={programType}
+                                programRuleId={modelId ?? ''}
+                                action={actionFormOpen}
+                                onCancel={onCloseActionForm}
+                                onSubmitted={handleSubmitted}
+                            />
+                        )}
+                    </DrawerPortal>
+                )}
+
+                {isClone && (
+                    <NoticeBox>
+                        {i18n.t(
+                            'Program rule must be saved before actions can be modified'
+                        )}
+                    </NoticeBox>
+                )}
 
                 <div>
                     <div>
@@ -176,21 +188,24 @@ const ProgramRuleActionListNewOrEdit = () => {
                                     onClick={() => setActionFormOpen(action)}
                                     onDelete={() => handleDelete(index)}
                                     translatable={false}
+                                    disabled={isClone}
                                 />
                             )
                         })}
                     </div>
 
-                    <div className={styles.addActionButton}>
-                        <Button
-                            secondary
-                            small
-                            icon={<IconAdd16 />}
-                            onClick={() => setActionFormOpen(null)}
-                        >
-                            {i18n.t('Add action')}
-                        </Button>
-                    </div>
+                    {!isClone && (
+                        <div className={styles.addActionButton}>
+                            <Button
+                                secondary
+                                small
+                                icon={<IconAdd16 />}
+                                onClick={() => setActionFormOpen(null)}
+                            >
+                                {i18n.t('Add action')}
+                            </Button>
+                        </div>
+                    )}
                 </div>
             </>
         )

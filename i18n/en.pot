@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-05-13T08:11:47.456Z\n"
-"PO-Revision-Date: 2026-05-13T08:11:47.456Z\n"
+"POT-Creation-Date: 2026-05-18T21:32:23.573Z\n"
+"PO-Revision-Date: 2026-05-18T21:32:23.573Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -2447,6 +2447,12 @@ msgstr "Sequential skip count"
 msgid "Organisation unit providing data"
 msgstr "Organisation unit providing data"
 
+msgid "Key"
+msgstr "Key"
+
+msgid "Keywords"
+msgstr "Keywords"
+
 msgid "Which resource table"
 msgstr "Which resource table"
 
@@ -3463,6 +3469,57 @@ msgstr "Display Options"
 
 msgid "Advanced"
 msgstr "Advanced"
+
+msgid "Icon saved successfully"
+msgstr "Icon saved successfully"
+
+msgid "Failed to load icon"
+msgstr "Failed to load icon"
+
+msgid "Could not load icon \"{{key}}\""
+msgstr "Could not load icon \"{{key}}\""
+
+msgid "System icon"
+msgstr "System icon"
+
+msgid "System icons cannot be edited. Only custom icons can be modified."
+msgstr "System icons cannot be edited. Only custom icons can be modified."
+
+msgid "Icon created successfully"
+msgstr "Icon created successfully"
+
+msgid "Icon file"
+msgstr "Icon file"
+
+msgid "Icon preview"
+msgstr "Icon preview"
+
+msgid "Change icon"
+msgstr "Change icon"
+
+msgid "Upload icon"
+msgstr "Upload icon"
+
+msgid "Key cannot be \"new\""
+msgstr "Key cannot be \"new\""
+
+msgid "Key"
+msgstr "Key"
+
+msgid "A unique identifier for this icon"
+msgstr "A unique identifier for this icon"
+
+msgid "Keywords"
+msgstr "Keywords"
+
+msgid "Comma-separated list of keywords"
+msgstr "Comma-separated list of keywords"
+
+msgid "Search by name, keyword or description"
+msgstr "Search by name, keyword or description"
+
+msgid "Clear filter"
+msgstr "Clear filter"
 
 msgid "Set up the basic information for this indicator group set."
 msgstr "Set up the basic information for this indicator group set."
@@ -4799,9 +4856,6 @@ msgstr ""
 "Configure a filter to control which data is evaulated by the main "
 "expression."
 
-msgid "Clear filter"
-msgstr "Clear filter"
-
 msgid "Period boundaries"
 msgstr "Period boundaries"
 
@@ -4856,6 +4910,12 @@ msgstr ""
 
 msgid "Program Rule Variable"
 msgstr "Program Rule Variable"
+
+msgid "Program rule created but ID cannot be determined"
+msgstr "Program rule created but ID cannot be determined"
+
+msgid "Some program rule actions failed to save"
+msgstr "Some program rule actions failed to save"
 
 msgid "Edit condition expression"
 msgstr "Edit condition expression"
@@ -4938,6 +4998,9 @@ msgstr "Save action"
 
 msgid "Set up the actions that happen when the program rule runs."
 msgstr "Set up the actions that happen when the program rule runs."
+
+msgid "Program rule must be saved before actions can be modified"
+msgstr "Program rule must be saved before actions can be modified"
 
 msgid "Action will be deleted when the program rule is saved."
 msgstr "Action will be deleted when the program rule is saved."
@@ -5493,6 +5556,16 @@ msgstr "Recipient program attribute"
 msgid "Recipient data element"
 msgstr "Recipient data element"
 
+msgid "Mandatory data elements are not included in this form."
+msgstr "Mandatory data elements are not included in this form."
+
+msgid ""
+"The following data elements are marked as required but not assigned to any "
+"section:"
+msgstr ""
+"The following data elements are marked as required but not assigned to any "
+"section:"
+
 msgid "Set up automatic event creation and scheduling in this program stage."
 msgstr "Set up automatic event creation and scheduling in this program stage."
 
@@ -5954,6 +6027,108 @@ msgstr ""
 msgid "SQL view results"
 msgstr "SQL view results"
 
+msgid "Excel (.xlsx)"
+msgstr "Excel (.xlsx)"
+
+msgid "CSV (.csv)"
+msgstr "CSV (.csv)"
+
+msgid "PDF (.pdf)"
+msgstr "PDF (.pdf)"
+
+msgid "HTML (.html)"
+msgstr "HTML (.html)"
+
+msgid "XML (.xml)"
+msgstr "XML (.xml)"
+
+msgid "JSON (.json)"
+msgstr "JSON (.json)"
+
+msgid "Could not load SQL view"
+msgstr "Could not load SQL view"
+
+msgid "The SQL view metadata could not be loaded. Please go back and try again."
+msgstr "The SQL view metadata could not be loaded. Please go back and try again."
+
+msgid "Variables required"
+msgstr "Variables required"
+
+msgid "Provide variables and run"
+msgstr "Provide variables and run"
+
+msgid "No results available yet"
+msgstr "No results available yet"
+
+msgid "Could not load results"
+msgstr "Could not load results"
+
+msgid ""
+"Check that the SQL uses only SELECT statements and does not query "
+"restricted tables."
+msgstr ""
+"Check that the SQL uses only SELECT statements and does not query "
+"restricted tables."
+
+msgid "No rows returned"
+msgstr "No rows returned"
+
+msgid "The query ran successfully but returned no rows."
+msgstr "The query ran successfully but returned no rows."
+
+msgid "Current user id"
+msgstr "Current user id"
+
+msgid "Current username"
+msgstr "Current username"
+
+msgid "SQL query *"
+msgstr "SQL query *"
+
+msgid ""
+"Only SELECT statements allowed. Sensitive tables, including user "
+"information, cannot be queried."
+msgstr ""
+"Only SELECT statements allowed. Sensitive tables, including user "
+"information, cannot be queried."
+
+msgid "Set up how this SQL view is identified and described."
+msgstr "Set up how this SQL view is identified and described."
+
+msgid "Controls how long results are cached on the server before re-execution"
+msgstr "Controls how long results are cached on the server before re-execution"
+
+msgid "SQL definition"
+msgstr "SQL definition"
+
+msgid "Choose the type of SQL view and write the query."
+msgstr "Choose the type of SQL view and write the query."
+
+msgid "SQL type cannot be changed after creation."
+msgstr "SQL type cannot be changed after creation."
+
+msgid "View: SQL query is stored in the database; results are generated each time."
+msgstr "View: SQL query is stored in the database; results are generated each time."
+
+msgid "Materialized view: SQL query is stored, and results are cached."
+msgstr "Materialized view: SQL query is stored, and results are cached."
+
+msgid ""
+"Query only: Neither query nor results stored in the database. Supports "
+"inline $(variable) references."
+msgstr ""
+"Query only: Neither query nor results stored in the database. Supports "
+"inline $(variable) references."
+
+msgid "Query variables"
+msgstr "Query variables"
+
+msgid "Run query"
+msgstr "Run query"
+
+msgid "Create or update view"
+msgstr "Create or update view"
+
 msgid "Materialized view refreshed."
 msgstr "Materialized view refreshed."
 
@@ -5963,14 +6138,11 @@ msgstr "SQL view created or updated."
 msgid "An unknown error occurred."
 msgstr "An unknown error occurred."
 
+msgid "Could not run SQL view: {{error}}"
+msgstr "Could not run SQL view: {{error}}"
+
 msgid "View results"
 msgstr "View results"
-
-msgid "Run query"
-msgstr "Run query"
-
-msgid "Create or update view"
-msgstr "Create or update view"
 
 msgid "SW | Starts with"
 msgstr "SW | Starts with"
@@ -6276,3 +6448,7 @@ msgstr "Right side sliding window"
 
 msgid "Skip form validation"
 msgstr "Skip form validation"
+
+msgctxt ")"
+msgid "Key may only contain letters, numbers, hyphens (-) and underscores ("
+msgstr "Key may only contain letters, numbers, hyphens (-) and underscores (_)"
