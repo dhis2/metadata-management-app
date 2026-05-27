@@ -3,6 +3,7 @@ import { faker } from '@faker-js/faker'
 import { render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
+import schemaMock from '../../__mocks__/schema/icons.json'
 import { SECTIONS_MAP } from '../../lib'
 import { useCurrentUserStore } from '../../lib/user/currentUserStore'
 import { testOrgUnit } from '../../testUtils/builders'
@@ -52,7 +53,7 @@ describe('Icons list', () => {
     const deleteMock = jest.fn()
 
     const renderList = generateRenderer(
-        { section, mockSchema: {} },
+        { section, mockSchema: schemaMock },
         (
             routeOptions,
             {
