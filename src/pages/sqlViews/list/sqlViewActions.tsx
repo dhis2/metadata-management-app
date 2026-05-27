@@ -6,7 +6,6 @@ import {
     IconDuplicate16,
     IconEdit16,
     IconInfo16,
-    IconLaunch16,
     IconShare16,
     IconSync16,
     IconTranslate16,
