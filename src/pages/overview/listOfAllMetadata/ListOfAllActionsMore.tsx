@@ -34,7 +34,7 @@ const getSectionPathForSchema = (schemaName: SchemaName): string => {
     return section ? getSectionPath(section) : schemaName
 }
 
-const isDeletable = (schema: Schema) => {
+const doesSectionSupportDeletes = (schema: Schema) => {
     return schema.name !== 'categoryOptionCombo'
 }
 
@@ -113,11 +113,11 @@ export const ListOfAllActionsMore = ({
                                 <MenuItem
                                     dense
                                     disabled={!editable}
-                                    label={i18n.t('Duplicate')}
+                                    label={i18n.t('Clone')}
                                     icon={<IconDuplicate16 />}
                                     onClick={() => {
                                         navigate(
-                                            `/${sectionPath}/duplicate?duplicatedId=${model.id}`
+                                            `/${sectionPath}/clone?clonedId=${model.id}`
                                         )
                                         setOpen(false)
                                     }}
@@ -150,7 +150,7 @@ export const ListOfAllActionsMore = ({
                                 />
                             </TooltipWrapper>
                         )}
-                        {isDeletable(schema) && (
+                        {doesSectionSupportDeletes(schema) && (
                             <DeleteAction
                                 modelId={model.id}
                                 modelDisplayName={model.displayName}

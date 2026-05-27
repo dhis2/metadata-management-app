@@ -6,7 +6,7 @@ import {
     IconChevronDown16,
     IconChevronRight16,
 } from '@dhis2/ui'
-import { useInfiniteQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import React, { useEffect, useState } from 'react'
 import {
     ActionShowDetails,
@@ -68,11 +68,12 @@ export const MetadataTypeList = ({
                                 fields: 'id,displayName,access,sharing[public],lastUpdated',
                                 pageSize: PAGE_SIZE,
                                 page: pageParam,
-                                ...(filter
-                                    ? {
-                                          filter: `identifiable:token:${filter}`,
-                                      }
-                                    : {}),
+                                filter: filter
+                                    ? [
+                                          `identifiable:token:${filter}`,
+                                          'name:ne:default',
+                                      ]
+                                    : 'name:ne:default',
                                 ...(sortOrder
                                     ? {
                                           order: `${sortOrder[0]}:${sortOrder[1]}`,
@@ -105,6 +106,7 @@ export const MetadataTypeList = ({
             setIsExpanded(false)
         }
     }, [total])
+    const queryClient = useQueryClient()
 
     return (
         <>
@@ -134,8 +136,7 @@ export const MetadataTypeList = ({
                 <DataTableCell />
             </DataTableRow>
 
-            {isExpanded && isError && hasNoItems ? <SectionListError /> : null}
-            {isExpanded && !isError && isFetching && hasNoItems ? (
+            {isExpanded && isFetching && hasNoItems ? (
                 <SectionListLoader />
             ) : null}
             {isExpanded && !isError && !isFetching && hasNoItems ? (
@@ -175,6 +176,9 @@ export const MetadataTypeList = ({
                                             onOpenSharing(item, schema)
                                         }
                                         onDeleteSuccess={() => {
+                                            queryClient.invalidateQueries({
+                                                queryKey: [schema.plural],
+                                            })
                                             refetch()
                                             onDeleteSuccess(item)
                                         }}
@@ -190,7 +194,6 @@ export const MetadataTypeList = ({
                         ) : null}
                         {idx === items.length - 1 &&
                         !isFetching &&
-                        !isError &&
                         hasNextPage ? (
                             <DataTableRow>
                                 <DataTableCell
@@ -207,6 +210,7 @@ export const MetadataTypeList = ({
                         ) : null}
                     </React.Fragment>
                 ))}
+            {isExpanded && isError && hasNoItems ? <SectionListError /> : null}
         </>
     )
 }

@@ -85,7 +85,7 @@ const ListOfAllDetailsPanelContent = ({
 
 const excludedMetadataTypes = [
     'locale',
-    'icons',
+    'icon',
     'organisationUnit',
     'organisationUnitLevel',
 ]
@@ -107,6 +107,7 @@ export const ListOfAll = () => {
         () =>
             sidebarLinks
                 .flatMap(({ links }) => links)
+                .filter(({ to }) => !to.startsWith('overview/'))
                 .filter(
                     ({ section }) =>
                         !excludedMetadataTypes.includes(section.name)
