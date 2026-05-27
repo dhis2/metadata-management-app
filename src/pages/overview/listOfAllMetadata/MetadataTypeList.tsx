@@ -18,7 +18,11 @@ import {
     SectionListEmpty,
     SectionListError,
 } from '../../../components/sectionList/SectionListMessages'
-import type { Schema } from '../../../lib'
+import {
+    modelListViewsConfig,
+    Schema,
+    shouldFilterOutDefaultForSection,
+} from '../../../lib'
 import { DataEngine } from '../../../types'
 import { Pager } from '../../../types/generated'
 import { ListItem } from './ListOfAll'
@@ -50,6 +54,13 @@ export const MetadataTypeList = ({
 }) => {
     const [isExpanded, setIsExpanded] = useState(false)
 
+    const appliedFilter = filter ? [`identifiable:token:${filter}`] : []
+    const defaultFilters = shouldFilterOutDefaultForSection(
+        schema.name as keyof typeof modelListViewsConfig
+    )
+        ? ['name:ne:default']
+        : []
+
     const { data, hasNextPage, fetchNextPage, isFetching, isError, refetch } =
         useInfiniteQuery({
             queryKey: [
@@ -68,12 +79,7 @@ export const MetadataTypeList = ({
                                 fields: 'id,displayName,access,sharing[public],lastUpdated',
                                 pageSize: PAGE_SIZE,
                                 page: pageParam,
-                                filter: filter
-                                    ? [
-                                          `identifiable:token:${filter}`,
-                                          'name:ne:default',
-                                      ]
-                                    : 'name:ne:default',
+                                filter: [...appliedFilter, ...defaultFilters],
                                 ...(sortOrder
                                     ? {
                                           order: `${sortOrder[0]}:${sortOrder[1]}`,
