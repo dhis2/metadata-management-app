@@ -260,13 +260,7 @@ export const SqlViewActions = ({
                                 dense
                                 disabled={running || !editable}
                                 label={getRunActionLabel(sqlViewModel.type)}
-                                icon={
-                                    sqlViewModel.type === SqlView.type.QUERY ? (
-                                        <IconLaunch16 />
-                                    ) : (
-                                        <IconSync16 />
-                                    )
-                                }
+                                icon={<IconSync16 />}
                                 onClick={handleRun}
                                 dataTest={`row-actions-run-${
                                     sqlViewModel.type ?? 'view'
