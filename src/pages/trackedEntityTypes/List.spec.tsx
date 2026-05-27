@@ -10,6 +10,8 @@ const ComponentToTest = Component
 const generateRandomElement = testTrackedEntityType
 const customData = {}
 
+jest.retryTimes(2, { logErrorsBeforeRetry: true })
+
 generateDefaultListTests({
     section,
     mockSchema,

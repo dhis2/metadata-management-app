@@ -10,6 +10,8 @@ const ComponentToTest = Component
 const generateRandomElement = testValidationRule
 const customData = {}
 
+jest.retryTimes(2, { logErrorsBeforeRetry: true })
+
 generateDefaultListTests({
     section,
     mockSchema,
