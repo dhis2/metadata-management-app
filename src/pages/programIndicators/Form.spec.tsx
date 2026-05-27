@@ -1796,8 +1796,6 @@ describe('Program indicator form tests', () => {
             })
         })
         it('shows null orgUnitField value with appropriate label', async () => {
-            const orgUnitOption = staticOptions.ownerAtStart
-
             const programWithRegistration = testProgram({
                 programType: 'WITH_REGISTRATION' as Program.programType,
             })
