@@ -35,6 +35,12 @@ jobs:
             - name: Format
               run: yarn format
 
+            - name: Normalize contract files
+              run: |
+                  find contracts -type f -name "*.json" | while read -r file; do
+                    jq --sort-keys . "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+                  done
+
             - name: Check for contract changes
               id: diff
               run: |
@@ -45,6 +51,7 @@ jobs:
                   fi
 
             - name: Clone contracts repo and push branch
+              id: push
               if: steps.diff.outputs.changed == 'true'
               run: |
                   git config --global user.name "github-actions[bot]"
@@ -68,59 +75,80 @@ jobs:
                   git add .
                   if git diff --cached --quiet; then
                     echo "No changes to commit after copy."
+                    echo "pushed=false" >> $GITHUB_OUTPUT
                     exit 0
                   fi
 
                   git commit -m "Auto-update contracts from metadata management app PR #${{ github.event.pull_request.number }}"
                   git push origin $BRANCH_NAME
+                  echo "pushed=true" >> $GITHUB_OUTPUT
 
             - name: Create Pull Request in contract repo
               id: create_pr
-              if: steps.diff.outputs.changed == 'true'
+              if: steps.push.outputs.pushed == 'true'
               run: |
                   cd dhis2-api-contracts
                   BRANCH_NAME="auto/contracts-update-${{ github.event.pull_request.number }}"
                   gh auth login --with-token <<< "${{ secrets.CONTRACTS_PAT }}"
 
-                  # Check if a PR already exists
-                  if gh pr list --head "$BRANCH_NAME" --base main --json number --jq '.[0].number' | grep -q .; then
-                    echo "PR already exists for branch $BRANCH_NAME, skipping creation."
+                  # Compute which contract folders were added, removed, or modified
+                  git ls-tree --name-only main:contracts/metadata-management-app/ 2>/dev/null | sort > /tmp/main_folders.txt
+                  git ls-tree --name-only HEAD:contracts/metadata-management-app/ 2>/dev/null | sort > /tmp/current_folders.txt
+
+                  ADDED=$(comm -23 /tmp/current_folders.txt /tmp/main_folders.txt | paste -sd ', ' -)
+                  REMOVED=$(comm -13 /tmp/current_folders.txt /tmp/main_folders.txt | paste -sd ', ' -)
+                  MODIFIED=""
+                  while IFS= read -r folder; do
+                    [ -z "$folder" ] && continue
+                    if ! git diff --quiet main HEAD -- "contracts/metadata-management-app/$folder/"; then
+                      MODIFIED="${MODIFIED:+$MODIFIED, }$folder"
+                    fi
+                  done < <(comm -12 /tmp/current_folders.txt /tmp/main_folders.txt)
+
+                  TITLE_SUFFIX=""
+                  [ -n "$ADDED" ]    && TITLE_SUFFIX="${TITLE_SUFFIX} Added contracts: ${ADDED}."
+                  [ -n "$REMOVED" ]  && TITLE_SUFFIX="${TITLE_SUFFIX} Removed contracts: ${REMOVED}."
+                  [ -n "$MODIFIED" ] && TITLE_SUFFIX="${TITLE_SUFFIX} Modified contracts: ${MODIFIED}."
+
+                  PR_TITLE="Auto PR: Contracts from metadata management app PR #${{ github.event.pull_request.number }}"
+                  PR_BODY="This PR was automatically created from a pull request in metadata management app.${TITLE_SUFFIX}"
+
+                  # Create or update the PR
+                  EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --base master --json number --jq '.[0].number')
+                  if [ -n "$EXISTING_PR" ]; then
+                    echo "PR #$EXISTING_PR already exists for branch $BRANCH_NAME, updating body."
+                    gh pr edit "$EXISTING_PR" --body "$PR_BODY"
                   else
                     gh pr create \
-                      --base main \
+                      --base master \
                       --head "$BRANCH_NAME" \
-                      --title "Auto PR: Contracts from metadata management app PR #${{ github.event.pull_request.number }}" \
-                      --body "This PR was automatically created from a pull request in metadata management app." \
+                      --title "$PR_TITLE" \
+                      --body "$PR_BODY" \
                       --reviewer dhis2/platform-backend
                   fi
 
                   # Output the branch name safely for downstream jobs
                   echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
 
-    check-dependent-pr:
-        needs: generate-and-sync
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'check-only'
+    check-contracts-pr:
         runs-on: ubuntu-latest
+        if: github.event_name == 'pull_request'
         steps:
-            - name: Install GitHub CLI
+            - name: Check for open contracts PR
               run: |
-                  sudo apt-get update
-                  sudo apt-get install -y gh jq
+                  echo "${{ secrets.CONTRACTS_PAT }}" | gh auth login --with-token
+                  BRANCH_NAME="auto/contracts-update-${{ github.event.pull_request.number }}"
 
-            - name: Authenticate GitHub CLI
-              run: echo "${{ secrets.CONTRACTS_PAT }}" | gh auth login --with-token
+                  OPEN_PR=$(gh pr list \
+                    --repo dhis2/dhis2-api-contracts \
+                    --head "$BRANCH_NAME" \
+                    --base main \
+                    --state open \
+                    --json number \
+                    --jq '.[0].number')
 
-            - name: Verify dependent PR merged
-              run: |
-                  # Get the branch name from the previous job output
-                  BRANCH_NAME="${{ needs.generate-and-sync.outputs.pr_branch_name }}"
-                  DEP_PR=$(echo "$BRANCH_NAME" | grep -oE '[0-9]+$')
-                  DEP_REPO="org/metadata-management-app"
-
-                  echo "Checking dependency: $DEP_REPO PR #$DEP_PR"
-                  STATUS=$(gh pr view $DEP_PR --repo $DEP_REPO --json state --jq .state)
-                  echo "Dependent PR status: $STATUS"
-
-                  if [ "$STATUS" != "MERGED" ]; then
-                    echo "::error::Dependent PR $DEP_REPO#$DEP_PR is not merged yet."
+                  if [ -n "$OPEN_PR" ]; then
+                    echo "::error::Contracts PR #$OPEN_PR in dhis2/dhis2-api-contracts is still open. Close or merge it before merging this PR."
                     exit 1
+                  fi
+                  echo "No open contracts PR — safe to merge."

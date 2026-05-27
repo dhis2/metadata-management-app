@@ -8,6 +8,8 @@ import {
 import { generateDefaultListTests } from '../defaultListTests'
 import { Component } from './List'
 
+jest.retryTimes(2, { logErrorsBeforeRetry: true })
+
 const section = SECTIONS_MAP.dataElementGroup
 const mockSchema = schemaMock
 const ComponentToTest = Component

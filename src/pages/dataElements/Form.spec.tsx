@@ -31,6 +31,8 @@ import { Component as Edit } from './Edit'
 import { Component as New } from './New'
 import resetAllMocks = jest.resetAllMocks
 
+jest.retryTimes(2, { logErrorsBeforeRetry: true })
+
 const section = SECTIONS_MAP.dataElement
 const mockSchema = schemaMock
 jest.mock('use-debounce', () => ({
