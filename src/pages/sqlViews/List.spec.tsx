@@ -144,6 +144,47 @@ describe('SQL views specific action tests', () => {
         expect(actionsMenu).not.toHaveTextContent('Run query')
     })
 
+    it('should show "Refresh data" action for MATERIALIZED_VIEW type SQL views', async () => {
+        const materializedElement = testSqlViews({
+            type: SqlView.type.MATERIALIZED_VIEW,
+        })
+        const { screen } = await renderList({
+            elements: [materializedElement],
+        })
+        const tableRows = screen.getAllByTestId('section-list-row')
+        const actionsMenu = await uiActions.openListElementActionsMenu(
+            tableRows[0],
+            screen
+        )
+        expect(actionsMenu).toHaveTextContent('Refresh data')
+    })
+
+    it('should not show "Refresh data" action for VIEW type SQL views', async () => {
+        const viewElement = testSqlViews({ type: SqlView.type.VIEW })
+        const { screen } = await renderList({
+            elements: [viewElement],
+        })
+        const tableRows = screen.getAllByTestId('section-list-row')
+        const actionsMenu = await uiActions.openListElementActionsMenu(
+            tableRows[0],
+            screen
+        )
+        expect(actionsMenu).not.toHaveTextContent('Refresh data')
+    })
+
+    it('should not show "Refresh data" action for QUERY type SQL views', async () => {
+        const queryElement = testSqlViews({ type: SqlView.type.QUERY })
+        const { screen } = await renderList({
+            elements: [queryElement],
+        })
+        const tableRows = screen.getAllByTestId('section-list-row')
+        const actionsMenu = await uiActions.openListElementActionsMenu(
+            tableRows[0],
+            screen
+        )
+        expect(actionsMenu).not.toHaveTextContent('Refresh data')
+    })
+
     it('should open the results drawer when "View results" is clicked', async () => {
         const { screen } = await renderList()
         const tableRows = screen.getAllByTestId('section-list-row')
@@ -231,9 +272,7 @@ describe('SQL views specific action tests', () => {
             tableRows[0],
             screen
         )
-        await userEvent.click(
-            within(actionsMenu).getByText('Create or update view')
-        )
+        await userEvent.click(within(actionsMenu).getByText('Refresh data'))
         await waitFor(() => {
             expect(refreshMock).toHaveBeenCalledWith(materializedElement.id)
         })

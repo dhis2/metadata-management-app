@@ -7,6 +7,7 @@ import {
     IconChevronDown16,
     IconDownload16,
     IconSync16,
+    IconVisualizationPivotTable16,
     Menu,
     MenuItem,
     NoticeBox,
@@ -17,7 +18,11 @@ import React, { useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useBoundResourceQueryFn } from '../../lib'
 import { SqlView } from '../../types/generated'
-import { getRunActionLabel, useRunSqlView } from './list/sqlViewActions'
+import {
+    getRunActionLabel,
+    useRefreshMaterializedView,
+    useRunSqlView,
+} from './list/sqlViewActions'
 import {
     extractUserDefinedVariables,
     VariablePromptModal,
@@ -77,6 +82,7 @@ export const SqlViewResults = ({ id }: SqlViewResultsProps) => {
     const navigate = useNavigate()
     const { baseUrl } = useConfig()
     const { run, running } = useRunSqlView()
+    const { refresh, running: refreshRunning } = useRefreshMaterializedView()
 
     const [varValues, setVarValues] = useState<Record<string, string>>({})
     const [showVariableModal, setShowVariableModal] = useState(false)
@@ -137,6 +143,16 @@ export const SqlViewResults = ({ id }: SqlViewResultsProps) => {
             return
         }
         const result = await run(sqlView.id, sqlView.type)
+        if (result.success) {
+            dataQuery.refetch()
+        }
+    }
+
+    const handleRefresh = async () => {
+        if (!sqlView) {
+            return
+        }
+        const result = await refresh(sqlView.id)
         if (result.success) {
             dataQuery.refetch()
         }
@@ -204,6 +220,18 @@ export const SqlViewResults = ({ id }: SqlViewResultsProps) => {
                     >
                         {getRunActionLabel(sqlView.type)}
                     </Button>
+                    {sqlView.type === SqlView.type.MATERIALIZED_VIEW && (
+                        <Button
+                            small
+                            loading={refreshRunning || dataQuery.isFetching}
+                            disabled={refreshRunning || dataQuery.isFetching}
+                            onClick={handleRefresh}
+                            icon={<IconVisualizationPivotTable16 />}
+                            dataTest="results-refresh-button"
+                        >
+                            {i18n.t('Refresh data')}
+                        </Button>
+                    )}
                     <div ref={downloadButtonRef}>
                         <Button
                             small
