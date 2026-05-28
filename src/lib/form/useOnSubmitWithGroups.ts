@@ -8,10 +8,10 @@ import { createFormError } from './createFormError'
 import { createJsonPatchOperations } from './createJsonPatchOperations'
 import { useCreateModel } from './useCreateModel'
 import {
-    defaultNavigateTo,
     EnhancedOnSubmit,
+    getNavigateTo,
     useOnEditCompletedSuccessfully,
-    useOnNewCompletedSuccessfully,
+    useOnNewCompletedSuccessfullyOrSkipped,
 } from './useOnSubmit'
 import { usePatchModel } from './usePatchModel'
 import { useSyncGroupMembership } from './useSyncGroupMembership'
@@ -75,10 +75,7 @@ export const useOnSubmitEditWithGroups = <
                 originalValue: initialValues,
             })
 
-            const navigateTo =
-                options?.navigateTo === undefined
-                    ? defaultNavigateTo
-                    : options.navigateTo
+            const navigateTo = getNavigateTo(options)
 
             if (jsonPatchOperations.length < 1 && !groupsDirty) {
                 onEditCompletedSuccessfully({
@@ -112,7 +109,7 @@ export const useOnSubmitEditWithGroups = <
                 if (!outcome.ok) {
                     return createFormError({
                         message: i18n.t(
-                            'Saved successfully, but failed to update groups'
+                            'Group assignment failed. Other values have been saved/updated'
                         ),
                         ...outcome,
                     })
@@ -152,7 +149,8 @@ export const useOnSubmitNewWithGroups = <
         resource: section.namePlural,
         groupResource,
     })
-    const onNewCompletedSuccessfully = useOnNewCompletedSuccessfully(section)
+    const onNewCompletedSuccessfully =
+        useOnNewCompletedSuccessfullyOrSkipped(section)
     const navigate = useNavigateWithSearchState()
     const saveAlert = useAlert(
         ({ message }) => message,
@@ -206,10 +204,7 @@ export const useOnSubmitNewWithGroups = <
                     return
                 }
             }
-            const navigateTo =
-                options?.navigateTo === undefined
-                    ? defaultNavigateTo
-                    : options.navigateTo
+            const navigateTo = getNavigateTo(options)
 
             onNewCompletedSuccessfully({
                 withChanges: true,

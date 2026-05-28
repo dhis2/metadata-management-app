@@ -88,6 +88,12 @@ export const defaultNavigateTo: GetToFunction = ({
     return undefined
 }
 
+export const getNavigateTo = (options?: Navigateable) => {
+    return options?.navigateTo === undefined
+        ? defaultNavigateTo
+        : options.navigateTo
+}
+
 export type UseOnSubmitEditOptions = {
     modelId: string
     section: ModelSection
@@ -161,10 +167,7 @@ export const useOnSubmitEdit = <TFormValues extends IdentifiableObject>({
                 originalValue: form.getState().initialValues,
             })
 
-            const navigateTo =
-                options?.navigateTo === undefined
-                    ? defaultNavigateTo
-                    : options.navigateTo
+            const navigateTo = getNavigateTo(options)
 
             if (jsonPatchOperations.length < 1) {
                 onEditCompletedSuccessfully({
@@ -208,7 +211,9 @@ export const defaultValueFormatter = <
     return values
 }
 
-export const useOnNewCompletedSuccessfully = (section: ModelSection) => {
+export const useOnNewCompletedSuccessfullyOrSkipped = (
+    section: ModelSection
+) => {
     const saveAlert = useAlert(
         ({ message }) => message,
         (options) => options
@@ -269,7 +274,8 @@ export const useOnSubmitNew = <
     section,
 }: UseOnSubmitNewOptions) => {
     const createModel = useCreateModel(section.namePlural)
-    const onNewCompletedSuccessfully = useOnNewCompletedSuccessfully(section)
+    const onNewCompletedSuccessfully =
+        useOnNewCompletedSuccessfullyOrSkipped(section)
 
     return useMemo<EnhancedOnSubmit<TFormValues>>(
         () => async (values, form, options) => {
@@ -281,10 +287,7 @@ export const useOnSubmitNew = <
                 return createFormError(response.error)
             }
 
-            const navigateTo =
-                options?.navigateTo === undefined
-                    ? defaultNavigateTo
-                    : options.navigateTo
+            const navigateTo = getNavigateTo(options)
 
             onNewCompletedSuccessfully({
                 withChanges: true,
