@@ -1,3 +1,10 @@
+# [0.159.0](https://github.com/dhis2/metadata-management-app/compare/v0.158.0...v0.159.0) (2026-05-28)
+
+
+### Features
+
+* add refresh action ([#937](https://github.com/dhis2/metadata-management-app/issues/937)) ([d6fd940](https://github.com/dhis2/metadata-management-app/commit/d6fd94009739959a1afb23aef4bc17fca70499b5))
+
 # [0.158.0](https://github.com/dhis2/metadata-management-app/compare/v0.157.1...v0.158.0) (2026-05-28)
 
 
