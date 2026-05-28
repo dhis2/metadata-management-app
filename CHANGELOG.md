@@ -1,3 +1,10 @@
+## [0.157.1](https://github.com/dhis2/metadata-management-app/compare/v0.157.0...v0.157.1) (2026-05-28)
+
+
+### Bug Fixes
+
+* trigger release ([f87ca23](https://github.com/dhis2/metadata-management-app/commit/f87ca23e833457a8556a2a9a9f27afebd5f197cf))
+
 # [0.157.0](https://github.com/dhis2/metadata-management-app/compare/v0.156.2...v0.157.0) (2026-05-28)
 
 
