@@ -7,8 +7,12 @@ import {
 } from '../../../lib'
 import { DataElement } from '../../../types/generated'
 
-const { identifiable, withAttributeValues, withDefaultListColumns } =
-    modelFormSchemas
+const {
+    identifiable,
+    withAttributeValues,
+    withDefaultListColumns,
+    referenceCollection,
+} = modelFormSchemas
 
 const dataElementBaseSchema = z.object({
     shortName: z.string().trim(),
@@ -44,6 +48,7 @@ const dataElementBaseSchema = z.object({
         .default([]),
     aggregationLevels: z.array(z.number()).default([]),
     zeroIsSignificant: z.boolean().default(false),
+    dataElementGroups: referenceCollection.default([]),
 })
 export const dataElementListSchema = dataElementBaseSchema
     .merge(withDefaultListColumns)

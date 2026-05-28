@@ -7,6 +7,7 @@ import {
     CustomAttributesSection,
     DefaultIdentifiableFields,
     DescriptionField,
+    GroupMembershipField,
     ModelTransferField,
     SectionedFormSection,
     SectionedFormSections,
@@ -160,6 +161,17 @@ export const IndicatorFormFields = () => {
                         }}
                         enableOrderChange={true}
                     />
+                </StandardFormField>
+            </SectionedFormSection>
+            <SectionedFormSection name={descriptor.getSection('groups').name}>
+                <StandardFormSectionTitle>
+                    {i18n.t('Groups')}
+                </StandardFormSectionTitle>
+                <StandardFormSectionDescription>
+                    {i18n.t('Choose the groups this indicator belongs to.')}
+                </StandardFormSectionDescription>
+                <StandardFormField>
+                    <GroupMembershipField resource="indicatorGroups" />
                 </StandardFormField>
             </SectionedFormSection>
             <SectionedFormSection

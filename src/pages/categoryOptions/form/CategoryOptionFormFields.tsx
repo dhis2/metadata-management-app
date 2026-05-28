@@ -6,6 +6,7 @@ import {
     CustomAttributesSection,
     DefaultIdentifiableFields,
     DescriptionField,
+    GroupMembershipField,
     OrganisationUnitTreeWithToolbarFormField,
     StandardFormField,
     StandardFormSection,
@@ -67,6 +68,21 @@ export const CategoryOptionFormFields = () => {
 
                 <StandardFormField>
                     <OrganisationUnitTreeWithToolbarFormField />
+                </StandardFormField>
+            </StandardFormSection>
+            <StandardFormSection>
+                <StandardFormSectionTitle>
+                    {i18n.t('Groups')}
+                </StandardFormSectionTitle>
+
+                <StandardFormSectionDescription>
+                    {i18n.t(
+                        'Choose the groups this category option belongs to.'
+                    )}
+                </StandardFormSectionDescription>
+
+                <StandardFormField>
+                    <GroupMembershipField resource="categoryOptionGroups" />
                 </StandardFormField>
             </StandardFormSection>
 

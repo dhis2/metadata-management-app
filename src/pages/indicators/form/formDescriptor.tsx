@@ -81,6 +81,16 @@ export const IndicatorFormDescriptor = {
             ],
         },
         {
+            name: 'groups',
+            label: i18n.t('Groups'),
+            fields: [
+                {
+                    name: 'indicatorGroups',
+                    label: i18n.t('Indicator groups'),
+                },
+            ],
+        },
+        {
             name: 'mappingSettings',
             label: i18n.t('Mapping settings'),
             fields: [

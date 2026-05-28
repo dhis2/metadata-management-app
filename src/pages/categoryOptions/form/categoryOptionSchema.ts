@@ -27,6 +27,7 @@ export const categoryOptionFormSchema = identifiable
         startDate: z.coerce.date().optional(),
         endDate: z.coerce.date().optional(),
         organisationUnits: referenceCollection.optional(),
+        categoryOptionGroups: referenceCollection.default([]),
     })
     .refine(
         (data) => {

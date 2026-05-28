@@ -6,7 +6,7 @@ import {
     ATTRIBUTE_VALUES_FIELD_FILTERS,
     DEFAULT_FIELD_FILTERS,
     SECTIONS_MAP,
-    useOnSubmitEdit,
+    useOnSubmitEditWithGroups,
 } from '../../lib'
 import { useBoundResourceQueryFn } from '../../lib/query/useBoundQueryFn'
 import { CategoryOption, PickWithFieldFilters } from '../../types/generated'
@@ -23,6 +23,7 @@ const fieldFilters = [
     'startDate',
     'endDate',
     'organisationUnits[id,displayName,path]',
+    'categoryOptionGroups[id,displayName]',
 ] as const
 
 export type CategoryOptionFormValues = PickWithFieldFilters<
@@ -50,7 +51,11 @@ export const Component = () => {
 
     return (
         <FormBase
-            onSubmit={useOnSubmitEdit({ section, modelId })}
+            onSubmit={useOnSubmitEditWithGroups({
+                section,
+                modelId,
+                groupResource: 'categoryOptionGroups',
+            })}
             initialValues={categoryOptionCombo.data}
             validate={validate}
         >

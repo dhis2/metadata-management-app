@@ -88,6 +88,12 @@ export const defaultNavigateTo: GetToFunction = ({
     return undefined
 }
 
+export const getNavigateTo = (options?: Navigateable) => {
+    return options?.navigateTo === undefined
+        ? defaultNavigateTo
+        : options.navigateTo
+}
+
 export type UseOnSubmitEditOptions = {
     modelId: string
     section: ModelSection
@@ -161,10 +167,7 @@ export const useOnSubmitEdit = <TFormValues extends IdentifiableObject>({
                 originalValue: form.getState().initialValues,
             })
 
-            const navigateTo =
-                options?.navigateTo === undefined
-                    ? defaultNavigateTo
-                    : options.navigateTo
+            const navigateTo = getNavigateTo(options)
 
             if (jsonPatchOperations.length < 1) {
                 onEditCompletedSuccessfully({
@@ -208,36 +211,39 @@ export const defaultValueFormatter = <
     return values
 }
 
-export const useOnSubmitNew = <
-    TFormValues extends Record<string, unknown> & ModelWithAttributeValues
->({
-    section,
-}: UseOnSubmitNewOptions) => {
-    const createModel = useCreateModel(section.namePlural)
-    const queryClient = useQueryClient()
+export const useOnNewCompletedSuccessfullyOrSkipped = (
+    section: ModelSection
+) => {
     const saveAlert = useAlert(
         ({ message }) => message,
         (options) => options
     )
+
+    const queryClient = useQueryClient()
     const navigate = useNavigateWithSearchState()
     const [searchParams] = useSearchParams()
 
-    return useMemo<EnhancedOnSubmit<TFormValues>>(
-        () => async (values, form, options) => {
-            if (!values) {
-                console.error('Tried to save new object without any changes', {
-                    values,
-                })
+    return useCallback(
+        ({
+            withChanges,
+            navigateTo = defaultNavigateTo,
+            response,
+            submitAction = 'saveAndExit',
+        }: {
+            withChanges: boolean
+            navigateTo?: GetToFunction | null
+            submitAction?: SubmitAction
+            response?: any
+        }) => {
+            if (!withChanges) {
+                console.error('Tried to save new object without any changes')
                 saveAlert.show({
                     message: i18n.t('Cannot save empty object'),
                     error: true,
                 })
                 return
             }
-            const response = await createModel(values)
-            if (response.error) {
-                return createFormError(response.error)
-            }
+
             saveAlert.show({
                 message: i18n.t('Created successfully'),
                 success: true,
@@ -246,15 +252,10 @@ export const useOnSubmitNew = <
                 queryKey: [{ resource: section.namePlural }],
             })
 
-            const navigateTo =
-                options?.navigateTo === undefined
-                    ? defaultNavigateTo
-                    : options.navigateTo
-
             if (navigateTo) {
                 const navTo = navigateTo({
                     section,
-                    submitAction: options?.submitAction,
+                    submitAction,
                     responseData: response.data,
                     searchParams,
                 })
@@ -262,8 +263,41 @@ export const useOnSubmitNew = <
                     navigate(navTo)
                 }
             }
+        },
+        [saveAlert, queryClient, navigate, section, searchParams]
+    )
+}
+
+export const useOnSubmitNew = <
+    TFormValues extends Record<string, unknown> & ModelWithAttributeValues
+>({
+    section,
+}: UseOnSubmitNewOptions) => {
+    const createModel = useCreateModel(section.namePlural)
+    const onNewCompletedSuccessfully =
+        useOnNewCompletedSuccessfullyOrSkipped(section)
+
+    return useMemo<EnhancedOnSubmit<TFormValues>>(
+        () => async (values, form, options) => {
+            if (!values) {
+                return onNewCompletedSuccessfully({ withChanges: false })
+            }
+            const response = await createModel(values)
+            if (response.error) {
+                return createFormError(response.error)
+            }
+
+            const navigateTo = getNavigateTo(options)
+
+            onNewCompletedSuccessfully({
+                withChanges: true,
+                response,
+                navigateTo,
+                submitAction: options?.submitAction,
+            })
+
             return response
         },
-        [queryClient, createModel, saveAlert, navigate, section, searchParams]
+        [createModel, onNewCompletedSuccessfully]
     )
 }
