@@ -1,3 +1,10 @@
+# [0.158.0](https://github.com/dhis2/metadata-management-app/compare/v0.157.1...v0.158.0) (2026-05-28)
+
+
+### Features
+
+* list of all prototype ([#939](https://github.com/dhis2/metadata-management-app/issues/939)) ([0843708](https://github.com/dhis2/metadata-management-app/commit/084370840dcb7d853f865b4e051e9abc351e9ee7))
+
 ## [0.157.1](https://github.com/dhis2/metadata-management-app/compare/v0.157.0...v0.157.1) (2026-05-28)
 
 
