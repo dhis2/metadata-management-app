@@ -215,6 +215,8 @@ describe('Sidebar', () => {
         await user.tab()
         expect(getByText('Metadata Overview')).toHaveFocus()
         await user.tab()
+        expect(getByText('All metadata')).toHaveFocus()
+        await user.tab()
         expect(getByText('Categories').parentElement).toHaveFocus()
     })
 

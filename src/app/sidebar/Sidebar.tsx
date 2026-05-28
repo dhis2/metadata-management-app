@@ -216,11 +216,22 @@ export const Sidebar = ({
             <Sidenav>
                 <SidenavFilter onChange={handleFilterChange} />
                 <SidenavItems>
-                    <SidebarNavLink
-                        to="/overview"
-                        label={i18n.t('Metadata Overview')}
-                        end={true}
-                    />
+                    <div>
+                        <li>
+                            <SidebarNavLink
+                                to="/overview"
+                                label={i18n.t('Metadata Overview')}
+                                end={true}
+                            />
+                            <ul className={styles.sidenavSubmenu}>
+                                <SidebarNavLink
+                                    to="/overview/all"
+                                    label={i18n.t('All metadata')}
+                                    end={true}
+                                />
+                            </ul>
+                        </li>
+                    </div>
                     {noMatch && <NoMatchMessage filter={filterValue} />}
                     {filteredSidebarLinks.map(({ label, links }) => (
                         <HidePreventUnmount key={label} hide={links.length < 1}>
