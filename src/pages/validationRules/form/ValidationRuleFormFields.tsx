@@ -1,6 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import {
     CheckboxFieldFF,
+    InputFieldFF,
     RadioFieldFF,
     SingleSelectFieldFF,
     TextAreaFieldFF,
@@ -133,6 +134,18 @@ const ValidationRuleFormFields = () => {
                         </StandardFormField>
 
                         <StandardFormField>
+                            <Field
+                                dense
+                                inputWidth="400px"
+                                name="leftSide.description"
+                                type="text"
+                                data-test="formfields-leftSide.description"
+                                label={i18n.t('Description')}
+                                component={InputFieldFF}
+                            />
+                        </StandardFormField>
+
+                        <StandardFormField>
                             <MissingValueStrategyField fieldName="leftSide" />
                         </StandardFormField>
 
@@ -177,6 +190,18 @@ const ValidationRuleFormFields = () => {
                                 validationResource="validationRules/expression/description"
                                 validateSchemaSection={expressionSchemaSection}
                                 validateProperty="expression"
+                            />
+                        </StandardFormField>
+
+                        <StandardFormField>
+                            <Field
+                                dense
+                                inputWidth="400px"
+                                name="rightSide.description"
+                                type="text"
+                                data-test="formfields-rightSide.description"
+                                label={i18n.t('Description')}
+                                component={InputFieldFF}
                             />
                         </StandardFormField>
 
