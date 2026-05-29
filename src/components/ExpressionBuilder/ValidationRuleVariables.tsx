@@ -1,7 +1,13 @@
 import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, SingleSelect, SingleSelectOption } from '@dhis2/ui'
-import React, { useCallback, useState } from 'react'
-import { SchemaName, useSchema, getConstantTranslation } from '../../lib'
+import { useQuery } from '@tanstack/react-query'
+import React, { useCallback, useEffect, useState } from 'react'
+import {
+    SchemaName,
+    useSchema,
+    getConstantTranslation,
+    useBoundResourceQueryFn,
+} from '../../lib'
 import { ModelSingleSelect } from '../metadataFormControls/ModelSingleSelect'
 import styles from './ExpressionBuilder.module.css'
 import { ExpressionList, ExpressionListInner } from './ExpressionList'
@@ -400,6 +406,13 @@ const ProgramsList = ({
     )
 }
 
+type ProgramInfoResponse = {
+    id: string
+    displayName?: string
+    programType?: string
+    programStages?: BasicIdentifiable[]
+}
+
 const ProgramStageList = ({
     insertElement,
     programId,
@@ -407,8 +420,38 @@ const ProgramStageList = ({
     insertElement: InsertElementType
     programId?: string
 }) => {
+    const queryFn = useBoundResourceQueryFn()
     const [programStage, setProgramStage] = useState<BasicIdentifiable>()
     const programStageId = programStage?.id
+
+    const programInfo = useQuery({
+        queryKey: [
+            {
+                resource: 'programs',
+                id: programId,
+                params: {
+                    fields: [
+                        'id',
+                        'displayName',
+                        'programType',
+                        'programStages[id,displayName]',
+                    ],
+                },
+            },
+        ],
+        queryFn: queryFn<ProgramInfoResponse>,
+        enabled: !!programId,
+    })
+
+    const programStages = programInfo.data?.programStages
+    const isEventProgram =
+        programInfo.data?.programType === 'WITHOUT_REGISTRATION'
+
+    useEffect(() => {
+        if (isEventProgram && programStages?.[0]) {
+            setProgramStage(programStages[0])
+        }
+    }, [isEventProgram, programStages])
 
     const insertElementFormatted = useCallback(
         (s: string) => {
@@ -442,14 +485,24 @@ const ProgramStageList = ({
     return (
         <>
             <div className={styles.preliminarySelect}>
-                <ModelSingleSelect
-                    query={programStagesSelectQuery}
-                    onChange={(program) => {
-                        setProgramStage(program)
-                    }}
-                    placeholder={i18n.t('Select a Program stage')}
-                    selected={programStage}
-                />
+                {isEventProgram ? (
+                    <SingleSelect disabled selected={programStage?.id}>
+                        {programStages?.map((stage) => (
+                            <SingleSelectOption
+                                key={stage.id}
+                                value={stage.id}
+                                label={stage.displayName}
+                            />
+                        ))}
+                    </SingleSelect>
+                ) : (
+                    <ModelSingleSelect
+                        query={programStagesSelectQuery}
+                        onChange={(program) => setProgramStage(program)}
+                        placeholder={i18n.t('Select a Program stage')}
+                        selected={programStage}
+                    />
+                )}
             </div>
             {programStageId ? (
                 <ExpressionList
