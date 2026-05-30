@@ -1,16 +1,16 @@
 # Translators:
-# Kiry Heng, 2025
 # channara rin, 2026
 # Em Le <em.hispvietnam@gmail.com>, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
 # Philip Larsen Donnelly, 2026
+# Kiry Heng, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-05-07T08:04:05.825Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Philip Larsen Donnelly, 2026\n"
+"Last-Translator: Kiry Heng, 2026\n"
 "Language-Team: Khmer (https://app.transifex.com/hisp-uio/teams/100509/km/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -853,7 +853,7 @@ msgid "Select models to merge"
 msgstr ""
 
 msgid "Target"
-msgstr ""
+msgstr "គោលដៅ"
 
 msgid "Select the model to merge into"
 msgstr ""
@@ -1018,7 +1018,7 @@ msgid "Category combo"
 msgstr ""
 
 msgid "Category"
-msgstr ""
+msgstr "ចំណាត់ក្រុម"
 
 msgid "Category option"
 msgstr "ជម្រើសប្រភេទ"
