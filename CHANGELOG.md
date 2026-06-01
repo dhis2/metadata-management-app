@@ -1,3 +1,10 @@
+## [0.159.2](https://github.com/dhis2/metadata-management-app/compare/v0.159.1...v0.159.2) (2026-06-01)
+
+
+### Bug Fixes
+
+* orgUnitField default [DHIS2-21560] ([#949](https://github.com/dhis2/metadata-management-app/issues/949)) ([dc53847](https://github.com/dhis2/metadata-management-app/commit/dc538478dd0189ee7226fef10771189dc45a22b0))
+
 ## [0.159.1](https://github.com/dhis2/metadata-management-app/compare/v0.159.0...v0.159.1) (2026-06-01)
 
 
