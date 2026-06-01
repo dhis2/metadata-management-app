@@ -1,0 +1,53 @@
+.listDetailsWrapper {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 'list details';
+    margin-top: var(--spacers-dp8);
+}
+
+.table {
+    align-self: start;
+    grid-area: list;
+}
+
+.filterRow {
+    display: flex;
+    gap: var(--spacers-dp8);
+    padding-block-end: var(--spacers-dp8);
+}
+
+.expandCell {
+    padding: 0 !important;
+}
+
+.expandButton {
+    border: 0 !important;
+}
+.expandButton:hover {
+    background-color: var(--colors-grey300) !important;
+    color: var(--colors-grey900) !important;
+}
+
+.schemaRow td {
+    background: var(--colors-grey100);
+    font-weight: 500;
+}
+
+.schemaNameCell {
+    padding-inline-start: var(--spacers-dp4) !important;
+}
+
+.schemaCount {
+    color: var(--colors-grey600);
+    font-weight: 400;
+}
+
+.loadMoreCell {
+    text-align: center;
+    cursor: pointer;
+}
+
+.loadMoreCell:hover {
+    background: var(--colors-grey200) !important;
+}

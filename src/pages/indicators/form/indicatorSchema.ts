@@ -8,8 +8,13 @@ import {
 import { Indicator, PickWithFieldFilters } from '../../../types/generated'
 import { fieldFilters } from '../../programIndicators/form/fieldFilters'
 
-const { identifiable, withAttributeValues, style, withDefaultListColumns } =
-    modelFormSchemas
+const {
+    identifiable,
+    withAttributeValues,
+    style,
+    withDefaultListColumns,
+    referenceCollection,
+} = modelFormSchemas
 
 const indicatorBaseSchema = z.object({
     code: z.string().trim().optional(),
@@ -29,6 +34,7 @@ const indicatorBaseSchema = z.object({
         id: z.string(),
     }),
     legendSets: z.array(z.object({ id: z.string() })),
+    indicatorGroups: referenceCollection.default([]),
 })
 
 export const indicatorFormSchema = identifiable

@@ -10,6 +10,7 @@ import {
     CustomAttributesSection,
     DefaultIdentifiableFields,
     DescriptionField,
+    GroupMembershipField,
     ValueTypeField,
 } from '../../../components'
 import { SCHEMA_SECTIONS } from '../../../lib'
@@ -142,6 +143,20 @@ export function DataElementFormFields() {
 
                 <StandardFormField>
                     <AggregationLevelsField />
+                </StandardFormField>
+            </StandardFormSection>
+
+            <StandardFormSection>
+                <StandardFormSectionTitle>
+                    {i18n.t('Groups')}
+                </StandardFormSectionTitle>
+
+                <StandardFormSectionDescription>
+                    {i18n.t('Choose the groups this data element belongs to.')}
+                </StandardFormSectionDescription>
+
+                <StandardFormField>
+                    <GroupMembershipField resource="dataElementGroups" />
                 </StandardFormField>
             </StandardFormSection>
 

@@ -353,6 +353,11 @@ const routes = createRoutesFromElements(
                         handle={{ section } satisfies RouteHandle}
                     />
                 ))}
+                <Route
+                    key={'all'}
+                    path={'all'}
+                    lazy={createOverviewLazyRouteFunction('ListOfAll')}
+                />
             </Route>
             {schemaSectionRoutes}
         </Route>

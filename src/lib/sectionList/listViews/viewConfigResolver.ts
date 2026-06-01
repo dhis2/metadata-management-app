@@ -3,6 +3,7 @@ import { uniqueBy } from '../../utils'
 import {
     defaultModelViewConfig,
     modelListViewsConfig,
+    ViewConfig,
     ViewConfigPart,
     ModelPropertyConfig,
     ModelPropertyDescriptor,
@@ -142,3 +143,9 @@ export const getFiltersForSection = (
     const view = getViewConfigForSection(sectionName)
     return view.filters
 }
+
+export const shouldFilterOutDefaultForSection = (
+    sectionName: keyof typeof modelListViewsConfig
+) =>
+    (modelListViewsConfig[sectionName] as ViewConfig | undefined)
+        ?.shouldFilterOutDefault ?? false

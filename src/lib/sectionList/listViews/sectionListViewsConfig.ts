@@ -33,6 +33,7 @@ export interface ViewConfigPart<TEntry> {
 export interface ViewConfig {
     columns: ViewConfigPart<ModelPropertyConfig>
     filters: ViewConfigPart<FilterConfig>
+    shouldFilterOutDefault?: boolean
 }
 
 // generic here is just used for "satisfies" below, for code-completion of future customizations
@@ -282,6 +283,7 @@ export const modelListViewsConfig = {
         filters: {
             default: ['category', 'categoryOptionGroup', 'formName'],
         },
+        shouldFilterOutDefault: true,
     },
     category: {
         columns: {
@@ -296,6 +298,7 @@ export const modelListViewsConfig = {
         filters: {
             default: ['dataDimensionType', 'categoryCombo'],
         },
+        shouldFilterOutDefault: true,
     },
     optionGroup: {
         columns: {
@@ -416,6 +419,7 @@ export const modelListViewsConfig = {
             default: ['dataDimensionType', 'category'],
             available: ['ignoreApproval'],
         },
+        shouldFilterOutDefault: true,
     },
     categoryOptionCombo: {
         columns: {
@@ -430,6 +434,7 @@ export const modelListViewsConfig = {
             // categoryOptionCombo does not have publicAccess
             overrideDefaultAvailable: true,
         },
+        shouldFilterOutDefault: true,
     },
     programIndicatorGroup: {
         columns: {

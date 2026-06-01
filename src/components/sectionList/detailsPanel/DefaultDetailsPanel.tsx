@@ -51,7 +51,7 @@ type ExtraFields = {
     displayShortName?: string
 }
 
-type DetailsResponse = Pick<
+export type DetailsResponse = Pick<
     BaseIdentifiableObject & ExtraFields,
     (typeof defaultQueryFields)[number]
 >
@@ -78,11 +78,19 @@ export const DefaultDetailsPanelContent = ({ modelId }: DetailsPanelProps) => {
     )
 }
 
-const DetailsContent = ({ data }: { data: DetailsResponse }) => {
+export const DetailsContent = ({
+    data,
+    withEditButton = true,
+}: {
+    data: DetailsResponse
+    withEditButton?: boolean
+}) => {
     const canEdit = canEditModel(data)
     return (
         <DetailsPanelContent displayName={data.displayName}>
-            <DetailsPanelButtons modelId={data.id} editable={canEdit} />
+            {withEditButton && (
+                <DetailsPanelButtons modelId={data.id} editable={canEdit} />
+            )}
             <DetailsList>
                 {data.displayShortName && (
                     <DetailItem label={i18n.t('Short name')}>

@@ -13,7 +13,7 @@ import {
     DEFAULT_FIELD_FILTERS,
     SectionedFormProvider,
     SECTIONS_MAP,
-    useOnSubmitEdit,
+    useOnSubmitEditWithGroups,
 } from '../../lib'
 import { useBoundResourceQueryFn } from '../../lib/query/useBoundQueryFn'
 import { IndicatorFormDescriptor } from './form/formDescriptor'
@@ -40,6 +40,7 @@ const fieldFilters = [
     'indicatorType[id,displayName]',
     'legendSets[id,displayName]',
     'style[color,icon]',
+    'indicatorGroups[id,displayName]',
 ] as const
 
 export const Component = () => {
@@ -64,7 +65,11 @@ export const Component = () => {
 
     return (
         <FormBase
-            onSubmit={useOnSubmitEdit({ section, modelId })}
+            onSubmit={useOnSubmitEditWithGroups({
+                section,
+                modelId,
+                groupResource: 'indicatorGroups',
+            })}
             initialValues={initialValues}
             validate={validate}
             subscription={{}}

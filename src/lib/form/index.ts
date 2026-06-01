@@ -10,6 +10,10 @@ export {
     useOnEditCompletedSuccessfully,
     defaultValueFormatter,
 } from './useOnSubmit'
+export {
+    useOnSubmitEditWithGroups,
+    useOnSubmitNewWithGroups,
+} from './useOnSubmitWithGroups'
 export { modelFormSchemas } from './modelFormSchemas'
 export * from './sectionedForm'
 export * from './useCreateModel'

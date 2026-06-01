@@ -9,9 +9,10 @@ import {
     randomDhis2Id,
     randomLongString,
     testCustomAttribute,
-    testLegendSet,
     testIndicator,
+    testIndicatorGroup,
     testIndicatorType,
+    testLegendSet,
 } from '../../testUtils/builders'
 import { generateRenderer } from '../../testUtils/generateRenderer'
 import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
@@ -65,6 +66,10 @@ describe('Indicators form tests', () => {
                     testIndicatorType(),
                 ]
                 const legendSets = [testLegendSet(), testLegendSet()]
+                const indicatorGroups = [
+                    testIndicatorGroup(),
+                    testIndicatorGroup(),
+                ]
                 const screen = render(
                     <TestComponentWithRouter
                         path={`/${section.namePlural}`}
@@ -79,6 +84,10 @@ describe('Indicators form tests', () => {
                                     pageSize: 20,
                                     pageCount: 1,
                                 },
+                            }),
+                            indicatorGroups: () => ({
+                                pager: {},
+                                indicatorGroups,
                             }),
                             indicators: (type: any, params: any) => {
                                 if (type === 'create') {
@@ -357,6 +366,10 @@ describe('Indicators form tests', () => {
                     testIndicatorType(),
                 ]
                 const legendSets = [testLegendSet(), testLegendSet()]
+                const indicatorGroups = [
+                    testIndicatorGroup(),
+                    testIndicatorGroup(),
+                ]
                 const screen = render(
                     <TestComponentWithRouter
                         path={`/${section.namePlural}`}
@@ -371,6 +384,10 @@ describe('Indicators form tests', () => {
                                     pageSize: 20,
                                     pageCount: 1,
                                 },
+                            }),
+                            indicatorGroups: () => ({
+                                pager: {},
+                                indicatorGroups,
                             }),
                             indicators: (type: any, params: any) => {
                                 if (type === 'create') {
@@ -404,13 +421,24 @@ describe('Indicators form tests', () => {
                         <New />
                     </TestComponentWithRouter>
                 )
-                return { screen, attributes, indicatorTypes, legendSets }
+                return {
+                    screen,
+                    attributes,
+                    indicatorTypes,
+                    legendSets,
+                    indicatorGroups,
+                }
             }
         )
 
         it('contain all needed field', async () => {
-            const { screen, indicatorTypes, legendSets, attributes } =
-                await renderForm()
+            const {
+                screen,
+                indicatorTypes,
+                legendSets,
+                indicatorGroups,
+                attributes,
+            } = await renderForm()
 
             // Basic Information Fields
             uiAssertions.expectNameFieldExist('', screen)
@@ -471,6 +499,12 @@ describe('Indicators form tests', () => {
             await uiAssertions.expectTransferFieldToExistWithOptions(
                 'legendSets-field',
                 { lhs: legendSets, rhs: [] },
+                screen
+            )
+
+            await uiAssertions.expectTransferFieldToExistWithOptions(
+                'formfields-indicatorGroups',
+                { lhs: indicatorGroups, rhs: [] },
                 screen
             )
 
@@ -875,6 +909,10 @@ describe('Indicators form tests', () => {
                                     pageSize: 20,
                                     pageCount: 1,
                                 },
+                            }),
+                            indicatorGroups: () => ({
+                                pager: {},
+                                indicatorGroups: [],
                             }),
                             indicators: (type: any, params: any) => {
                                 if (type === 'json-patch') {

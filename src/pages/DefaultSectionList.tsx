@@ -10,6 +10,9 @@ import {
     useParamsForDataQuery,
     BaseListModel,
     DEFAULT_FIELD_FILTERS,
+    useModelSectionHandleOrThrow,
+    shouldFilterOutDefaultForSection,
+    modelListViewsConfig,
 } from '../lib'
 import { getFieldFilter } from '../lib/models/path'
 import { WrapQueryResponse } from '../types'
@@ -29,10 +32,14 @@ export const DefaultSectionList = ({
     ActionsComponent,
     ToolbarComponent,
 }: DefaultSectionListProps) => {
+    const section = useModelSectionHandleOrThrow()
     const { columns } = useModelListView()
     const schema = useSchemaFromHandle()
     const engine = useDataEngine()
     const modelListName = schema.plural
+    const shouldFilterOutDefault = shouldFilterOutDefaultForSection(
+        section.name as keyof typeof modelListViewsConfig
+    )
 
     const initialParams = useParamsForDataQuery()
 
@@ -41,7 +48,9 @@ export const DefaultSectionList = ({
             resource: modelListName,
             params: {
                 ...initialParams,
-                filter: initialParams.filter.concat(filters ?? []),
+                filter: initialParams.filter
+                    .concat(filters ?? [])
+                    .concat(shouldFilterOutDefault ? ['name:ne:default'] : []),
                 order: initialParams.order ?? order,
                 fields: columns
                     .map((column) => getFieldFilter(schema, column.path))
