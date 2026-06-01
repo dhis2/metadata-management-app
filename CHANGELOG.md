@@ -1,3 +1,10 @@
+## [0.159.1](https://github.com/dhis2/metadata-management-app/compare/v0.159.0...v0.159.1) (2026-06-01)
+
+
+### Bug Fixes
+
+* filter out child sections by api version [DHIS2-21547] ([#948](https://github.com/dhis2/metadata-management-app/issues/948)) ([a310c3c](https://github.com/dhis2/metadata-management-app/commit/a310c3c9fe7dfe4f8960d7f6b95aa9a8684fa7b5))
+
 # [0.159.0](https://github.com/dhis2/metadata-management-app/compare/v0.158.0...v0.159.0) (2026-05-28)
 
 
