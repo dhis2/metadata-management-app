@@ -4,7 +4,13 @@ import { render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/icons.json'
-import { SECTIONS_MAP } from '../../lib'
+import {
+    defaultModelViewConfig,
+    modelListViewsConfig,
+    ModelPropertyConfig,
+    SECTIONS_MAP,
+    toModelPropertyDescriptor,
+} from '../../lib'
 import { useCurrentUserStore } from '../../lib/user/currentUserStore'
 import { testOrgUnit } from '../../testUtils/builders'
 import {
@@ -115,6 +121,29 @@ describe('Icons list', () => {
         elements.forEach((icon: IconModel, index: number) => {
             expect(tableRows[index]).toHaveTextContent(icon.key)
         })
+    })
+
+    it('should display the default columns', async () => {
+        const { screen } = await renderList()
+        const tableHeaders = screen.getAllByTestId(
+            'dhis2-uicore-datatablecellhead'
+        )
+        const sectionName = section.name as keyof typeof modelListViewsConfig
+        const configs = modelListViewsConfig[sectionName] as Record<
+            string,
+            unknown
+        >
+        const columnsToRender =
+            (configs?.columns as { default?: ModelPropertyConfig[] })?.default ??
+            defaultModelViewConfig.columns.default
+        expect(tableHeaders).toHaveLength(columnsToRender.length + 2)
+        columnsToRender.forEach(
+            (column: ModelPropertyConfig, index: number) => {
+                expect(tableHeaders[index + 1]).toHaveTextContent(
+                    toModelPropertyDescriptor(column).label
+                )
+            }
+        )
     })
 
     it('should request only custom icons by default', async () => {
