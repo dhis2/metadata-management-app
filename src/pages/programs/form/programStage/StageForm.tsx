@@ -102,7 +102,7 @@ export type StageFormValues = Omit<
 type PartialStageFormValues = Partial<StageFormValues>
 export type SubmittedStageFormValues = PartialStageFormValues & DisplayableModel
 
-const StageFormDrawerFooter = ({
+const StageFormDrawerWithFooter = ({
     form,
     setCloseOnSubmit,
     onCancel,
@@ -223,7 +223,7 @@ export const StageForm = ({ stage, onSubmit, onCancel }: StageFormProps) => {
                     return null
                 }
                 return (
-                    <StageFormDrawerFooter
+                    <StageFormDrawerWithFooter
                         form={form}
                         setCloseOnSubmit={setCloseOnSubmit}
                         onCancel={onCancel}

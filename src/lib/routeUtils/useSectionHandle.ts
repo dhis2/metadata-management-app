@@ -42,3 +42,19 @@ export const useNonSchemaSectionHandleOrThrow = (): NonSchemaSection => {
     }
     return section
 }
+
+export const useGivenShemaOrSchemaSectionHandleOrThrow = ({
+    section,
+}: {
+    section?: Section
+}): SchemaSection => {
+    const sectionFromHandle = useSectionHandle()
+    if (section && isSchemaSection(section)) {
+        return section
+    }
+
+    if (!sectionFromHandle || !isSchemaSection(sectionFromHandle)) {
+        throw new Error('Could not find schema section handle')
+    }
+    return sectionFromHandle
+}

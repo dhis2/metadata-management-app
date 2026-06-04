@@ -2,13 +2,21 @@ import i18n from '@dhis2/d2-i18n'
 import { Button, ButtonStrip, Checkbox } from '@dhis2/ui'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import React, { useMemo, useState } from 'react'
+import { useForm, useFormState } from 'react-final-form'
 import { useHref } from 'react-router-dom'
 import { useDebouncedCallback } from 'use-debounce'
 import { getSectionNewPath } from '../../../lib'
 import { useBoundResourceQueryFn } from '../../../lib/query/useBoundQueryFn'
+import type { SectionFormValues } from '../../../pages/dataSets/form/dataEntryForm/sectionForm'
 import { PlainResourceQuery } from '../../../types'
 import { PagedResponse } from '../../../types/generated'
 import { DisplayableModel } from '../../../types/models'
+import {
+    DrawerFormFooter,
+    DrawerHeader,
+    DrawerPortal,
+    DrawerRoot,
+} from '../../drawer'
 import { LinkButton } from '../../LinkButton'
 import { BaseModelTransfer, BaseModelTransferProps } from './BaseModelTransfer'
 import css from './ModelTransfer.module.css'
@@ -22,6 +30,12 @@ const defaultQuery = {
     },
 }
 
+export type NewItemFormComponent = React.ComponentType<{
+    onSubmitted?: () => void
+    footer?: React.ReactNode
+    redirectOnSubmitted?: boolean
+}>
+
 export type ModelTranferProps<
     TModel extends DisplayableModel,
     TModelData
@@ -29,6 +43,8 @@ export type ModelTranferProps<
     query: Omit<PlainResourceQuery, 'id'>
     transform?: (value: TModelData[]) => TModel[]
     filterUnassignedTo?: string
+    NewItemForm?: NewItemFormComponent
+    newItemFormHeader?: string
 }
 
 export const ModelTransfer = <
@@ -44,6 +60,8 @@ export const ModelTransfer = <
     filterPlaceholderPicked,
     transform,
     filterUnassignedTo,
+    NewItemForm,
+    newItemFormHeader,
     height = '360px',
     optionsWidth = '480px',
     selectedWidth = '480px',
@@ -141,6 +159,8 @@ export const ModelTransfer = <
                     <DefaultTransferLeftFooter
                         onRefreshClick={queryResult.refetch}
                         newLink={newLink}
+                        NewItemForm={NewItemForm}
+                        newItemFormHeader={newItemFormHeader}
                     />
                 )
             }
@@ -159,19 +179,77 @@ export const TransferHeader = ({ children }: { children: React.ReactNode }) => {
 export const DefaultTransferLeftFooter = ({
     onRefreshClick,
     newLink,
+    NewItemForm,
+    newItemFormHeader,
 }: {
     onRefreshClick: () => void
     newLink: string
+    NewItemForm?: NewItemFormComponent
+    newItemFormHeader?: string
 }) => {
+    const [drawerOpen, setDrawerOpen] = useState(false)
     return (
-        <ButtonStrip className={css.modelTransferFooter}>
-            <Button small onClick={onRefreshClick}>
-                {i18n.t('Refresh list')}
-            </Button>
+        <>
+            <DrawerRoot />
+            <ButtonStrip className={css.modelTransferFooter}>
+                <Button small onClick={onRefreshClick}>
+                    {i18n.t('Refresh list')}
+                </Button>
 
-            <LinkButton small href={newLink} target="_blank">
-                {i18n.t('Add new')}
-            </LinkButton>
-        </ButtonStrip>
+                {!NewItemForm && (
+                    <LinkButton small href={newLink} target="_blank">
+                        {i18n.t('Add new')}
+                    </LinkButton>
+                )}
+
+                {NewItemForm && (
+                    <Button small onClick={() => setDrawerOpen(true)}>
+                        {i18n.t('Add new')}
+                    </Button>
+                )}
+            </ButtonStrip>
+            {NewItemForm && (
+                <DrawerPortal
+                    isOpen={drawerOpen}
+                    onClose={() => setDrawerOpen(false)}
+                    header={
+                        <DrawerHeader onClose={() => setDrawerOpen(false)}>
+                            {newItemFormHeader ?? i18n.t('Add new')}
+                        </DrawerHeader>
+                    }
+                    disableFocusTrap
+                >
+                    <NewItemForm
+                        onSubmitted={() => {
+                            onRefreshClick()
+                            setDrawerOpen(false)
+                        }}
+                        redirectOnSubmitted={false}
+                        footer={
+                            <AddNewDrawerFormFooter
+                                onCancel={() => setDrawerOpen(false)}
+                            />
+                        }
+                    />
+                </DrawerPortal>
+            )}
+        </>
+    )
+}
+
+const AddNewDrawerFormFooter = ({ onCancel }: { onCancel: () => void }) => {
+    const { submitting } = useFormState({
+        subscription: { submitting: true, values: true },
+    })
+    const form = useForm<SectionFormValues>()
+
+    return (
+        <DrawerFormFooter
+            submitLabel={i18n.t('Save and close')}
+            cancelLabel={i18n.t('Cancel')}
+            submitting={submitting ?? false}
+            onSubmitClick={() => form.submit()}
+            onCancelClick={onCancel}
+        />
     )
 }

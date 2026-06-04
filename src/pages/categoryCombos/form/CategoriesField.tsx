@@ -5,6 +5,7 @@ import { useField } from 'react-final-form'
 import { NavLink, useParams } from 'react-router-dom'
 import { ModelTransfer } from '../../../components'
 import { DisplayableModel } from '../../../types/models'
+import { Component as NewCategoryForm } from '../../categories/New'
 import css from './CategoryCombo.module.css'
 import { CategoryComboFormValues } from './categoryComboSchema'
 import { useIdenticalCategoryCombosQuery } from './useIdenticalCategoryCombosQuery'
@@ -61,6 +62,8 @@ export function CategoriesField() {
                     )}
                     query={query}
                     maxSelections={200}
+                    NewItemForm={NewCategoryForm}
+                    newItemFormHeader={i18n.t('Add new category')}
                 />
             </Field>
             <div className={css.categoriesNoticesWrapper}>
@@ -132,7 +135,7 @@ const IdenticalCategoryComboWarning = ({
     return (
         <NoticeBox warning title={i18n.t('Identical Category Combination')}>
             {i18n.t(
-                `One or more Category combinations with the same categories already exist in the system. 
+                `One or more Category combinations with the same categories already exist in the system.
         It is strongly discouraged to have more than one Category combination with the same categories.`
             )}
             <br />

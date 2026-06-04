@@ -27,7 +27,7 @@ export const CategoryFormFields = () => {
                 <StandardFormSectionDescription>
                     {i18n.t('Set up the basic information for this category.')}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
                 <DescriptionField />
             </StandardFormSection>
 
