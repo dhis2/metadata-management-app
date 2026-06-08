@@ -93,18 +93,7 @@ function CategoryOptionGroupSetFormFields() {
                             query={{
                                 resource: 'categoryOptionGroups',
                             }}
-                            leftHeader={i18n.t(
-                                'Available category option groups'
-                            )}
-                            rightHeader={i18n.t(
-                                'Selected category option groups'
-                            )}
-                            filterPlaceholder={i18n.t(
-                                'Filter available category option groups'
-                            )}
-                            filterPlaceholderPicked={i18n.t(
-                                'Filter selected category option groups'
-                            )}
+                            transferSection={SECTIONS_MAP.categoryOptionGroup}
                             enableOrderChange={true}
                             maxSelections={Infinity}
                         />
