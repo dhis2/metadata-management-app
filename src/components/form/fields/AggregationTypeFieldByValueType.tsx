@@ -8,7 +8,6 @@ import {
     Section,
     useGivenShemaOrSchemaSectionHandleOrThrow,
     useSchema,
-    useSchemaSectionHandleOrThrow,
 } from '../../../lib'
 
 export const DISABLING_VALUE_TYPES = [
@@ -43,7 +42,7 @@ const aggregationTypeDisabledHelpText = i18n.t(
 export function AggregationTypeFieldByValueType({
     section,
 }: {
-    section?: Section
+    readonly section?: Section
 }) {
     const { change } = useForm()
     const fieldName = 'aggregationType'
