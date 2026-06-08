@@ -25,6 +25,7 @@ export const Component = ({
             })}
             initialValues={initialValues}
             validate={validate}
+            section={section}
         >
             <DefaultNewFormContents section={section} footer={footer}>
                 <DataElementFormFields />

@@ -28,6 +28,7 @@ export const Component = ({
             initialValues={initialValues}
             validate={validate}
             valueFormatter={transformFormValues}
+            section={section}
         >
             <DefaultNewFormContents section={section} footer={footer}>
                 <CategoryOptionFormFields />
