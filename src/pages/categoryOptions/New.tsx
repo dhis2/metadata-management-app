@@ -8,18 +8,28 @@ import { initialValues, transformFormValues } from './form/categoryOptionSchema'
 
 const section = SECTIONS_MAP.categoryOption
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
             onSubmit={useOnSubmitNewWithGroups({
                 section,
                 groupResource: 'categoryOptionGroups',
+                onSubmitted,
+                redirectOnSubmitted,
             })}
             initialValues={initialValues}
             validate={validate}
             valueFormatter={transformFormValues}
         >
-            <DefaultNewFormContents section={section}>
+            <DefaultNewFormContents section={section} footer={footer}>
                 <CategoryOptionFormFields />
             </DefaultNewFormContents>
         </FormBase>

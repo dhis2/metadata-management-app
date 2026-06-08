@@ -93,14 +93,7 @@ export const CategoryFormFields = () => {
                                     filter: ['isDefault:eq:false'],
                                 },
                             }}
-                            leftHeader={i18n.t('Available category options')}
-                            rightHeader={i18n.t('Selected category options')}
-                            filterPlaceholder={i18n.t(
-                                'Filter available category options'
-                            )}
-                            filterPlaceholderPicked={i18n.t(
-                                'Filter selected category options'
-                            )}
+                            transferSection={SECTIONS_MAP.categoryOption}
                             enableOrderChange={true}
                             maxSelections={Infinity}
                         />
