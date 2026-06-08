@@ -17,15 +17,26 @@ import { initialValues, validate } from './form/indicatorSchema'
 
 const section = SECTIONS_MAP.indicator
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
             onSubmit={useOnSubmitNewWithGroups({
                 section,
                 groupResource: 'indicatorGroups',
+                onSubmitted,
+                redirectOnSubmitted,
             })}
             initialValues={initialValues}
             validate={validate}
+            section={section}
         >
             {({ handleSubmit }) => {
                 return (
@@ -37,7 +48,9 @@ export const Component = () => {
                         >
                             <form onSubmit={handleSubmit}>
                                 <IndicatorFormFields />
-                                <DefaultFormFooter cancelTo="/indicators" />
+                                {footer ?? (
+                                    <DefaultFormFooter cancelTo="/indicators" />
+                                )}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>
