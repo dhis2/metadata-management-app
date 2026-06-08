@@ -82,7 +82,7 @@ export const ProgramIndicatorsFormFields = () => {
                         'Set up the basic information for this program indicator.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
                 <StandardFormField>
                     <DescriptionField />
                 </StandardFormField>
@@ -193,6 +193,7 @@ export const ProgramIndicatorsFormFields = () => {
                             clearable={true}
                             programId={programInput?.value?.id}
                             type="programIndicator"
+                            validateSchemaSection={section}
                         />
                     </PaddedContainer>
                 </StandardFormField>
@@ -218,6 +219,7 @@ export const ProgramIndicatorsFormFields = () => {
                             clearable={true}
                             programId={programInput?.value?.id}
                             type="programIndicator"
+                            validateSchemaSection={section}
                         />
                     </PaddedContainer>
                 </StandardFormField>
