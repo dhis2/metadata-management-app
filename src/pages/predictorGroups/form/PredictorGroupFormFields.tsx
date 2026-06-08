@@ -51,15 +51,8 @@ export const PredictorGroupFormFields = () => {
                         query={{
                             resource: 'predictors',
                         }}
+                        transferSection={SECTIONS_MAP.predictor}
                         filterUnassignedTo="predictorGroups"
-                        leftHeader={i18n.t('Available predictors')}
-                        rightHeader={i18n.t('Selected predictors')}
-                        filterPlaceholder={i18n.t(
-                            'Filter available predictors'
-                        )}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected predictors'
-                        )}
                         maxSelections={Infinity}
                     />
                 </StandardFormField>
