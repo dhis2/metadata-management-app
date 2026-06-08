@@ -3,9 +3,9 @@ import { Field, NoticeBox } from '@dhis2/ui'
 import React from 'react'
 import { useField } from 'react-final-form'
 import { NavLink, useParams } from 'react-router-dom'
-import { ModelTransfer } from '../../../components'
+import { ModelTransferFrom } from '../../../components'
+import { SECTIONS_MAP } from '../../../lib'
 import { DisplayableModel } from '../../../types/models'
-import { Component as NewCategoryForm } from '../../categories/New'
 import css from './CategoryCombo.module.css'
 import { CategoryComboFormValues } from './categoryComboSchema'
 import { useIdenticalCategoryCombosQuery } from './useIdenticalCategoryCombosQuery'
@@ -48,22 +48,15 @@ export function CategoriesField() {
                 validationText={(meta.touched && meta.error?.toString()) || ''}
                 name={fieldName}
             >
-                <ModelTransfer
+                <ModelTransferFrom
                     selected={input.value}
                     onChange={({ selected }) => {
                         input.onChange(selected)
                         input.onBlur()
                     }}
-                    leftHeader={i18n.t('Available categories')}
-                    rightHeader={i18n.t('Selected categories')}
-                    filterPlaceholder={i18n.t('Filter available categories')}
-                    filterPlaceholderPicked={i18n.t(
-                        'Filter selected categories'
-                    )}
                     query={query}
                     maxSelections={200}
-                    NewItemForm={NewCategoryForm}
-                    newItemFormHeader={i18n.t('Add new category')}
+                    transferSection={SECTIONS_MAP.category}
                 />
             </Field>
             <div className={css.categoriesNoticesWrapper}>

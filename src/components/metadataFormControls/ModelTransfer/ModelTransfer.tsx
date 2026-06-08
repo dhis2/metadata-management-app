@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { Button, ButtonStrip, Checkbox } from '@dhis2/ui'
 import { useInfiniteQuery } from '@tanstack/react-query'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useForm, useFormState } from 'react-final-form'
 import { useHref } from 'react-router-dom'
 import { useDebouncedCallback } from 'use-debounce'
@@ -11,6 +11,7 @@ import type { SectionFormValues } from '../../../pages/dataSets/form/dataEntryFo
 import { PlainResourceQuery } from '../../../types'
 import { PagedResponse } from '../../../types/generated'
 import { DisplayableModel } from '../../../types/models'
+import { ModelSection } from '../../../types/section'
 import {
     DrawerFormFooter,
     DrawerHeader,
@@ -45,6 +46,63 @@ export type ModelTranferProps<
     filterUnassignedTo?: string
     NewItemForm?: NewItemFormComponent
     newItemFormHeader?: string
+}
+
+export type ModelTranferPropsFor<
+    TModel extends DisplayableModel,
+    TModelData
+> = Omit<
+    ModelTranferProps<TModel, TModelData>,
+    | 'leftHeader'
+    | 'rightHeader'
+    | 'filterPlaceholder'
+    | 'filterPlaceholderPicked'
+    | 'newItemFormHeader'
+    | 'NewItemForm'
+> & {
+    transferSection: ModelSection
+}
+
+export const ModelTransferFrom = <
+    TModel extends DisplayableModel,
+    TModelData extends DisplayableModel = TModel
+>({
+    transferSection,
+    ...rest
+}: ModelTranferPropsFor<TModel, TModelData>) => {
+    const [NewItemForm, setNewItemForm] = useState<
+        NewItemFormComponent | undefined
+    >()
+
+    useEffect(() => {
+        import(`../../../pages/${transferSection.namePlural}/New`)
+            .then((m: { Component: NewItemFormComponent }) =>
+                setNewItemForm(() => m.Component)
+            )
+            .catch(() => setNewItemForm(undefined))
+    }, [transferSection.namePlural])
+
+    return (
+        <ModelTransfer
+            leftHeader={i18n.t('Available {{name}}', {
+                name: transferSection.titlePlural,
+            })}
+            rightHeader={i18n.t('Selected {{name}}', {
+                name: transferSection.titlePlural,
+            })}
+            filterPlaceholder={i18n.t('Filter available {{name}}', {
+                name: transferSection.titlePlural,
+            })}
+            filterPlaceholderPicked={i18n.t('Filter selected {{name}}', {
+                name: transferSection.titlePlural,
+            })}
+            newItemFormHeader={i18n.t('Add new {{name}}', {
+                name: transferSection.title,
+            })}
+            NewItemForm={NewItemForm}
+            {...rest}
+        />
+    )
 }
 
 export const ModelTransfer = <
