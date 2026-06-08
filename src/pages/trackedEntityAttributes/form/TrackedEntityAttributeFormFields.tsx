@@ -124,7 +124,7 @@ export const TrackedEntityAttributeFormFields = ({
                 </StandardFormField>
 
                 <StandardFormField>
-                    <ValueTypeField />
+                    <ValueTypeField section={section} />
                 </StandardFormField>
 
                 {showTrackedEntityType && (
@@ -238,7 +238,7 @@ export const TrackedEntityAttributeFormFields = ({
                 )}
 
                 <StandardFormField>
-                    <AggregationTypeFieldByValueType />
+                    <AggregationTypeFieldByValueType section={section} />
                 </StandardFormField>
             </SectionedFormSection>
 
