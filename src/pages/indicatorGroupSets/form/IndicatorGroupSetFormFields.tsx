@@ -25,7 +25,9 @@ function IndicatorGroupSetFormFields() {
                         'Set up the basic information for this indicator group set.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields
+                    section={SECTIONS_MAP.indicatorGroupSet}
+                />
                 <StandardFormField>
                     <DescriptionField />
                 </StandardFormField>

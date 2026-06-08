@@ -28,7 +28,7 @@ export const OrganisationalUnitGroupSetFormFields = () => {
                         'Set up the basic information for this organisation unit group set.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
                 <StandardFormField>
                     <DescriptionField />
                 </StandardFormField>

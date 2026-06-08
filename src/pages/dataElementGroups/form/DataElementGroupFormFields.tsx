@@ -30,7 +30,7 @@ export function DataElementGroupFormFields() {
                     )}
                 </StandardFormSectionDescription>
 
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
 
                 <StandardFormField>
                     <DescriptionField />

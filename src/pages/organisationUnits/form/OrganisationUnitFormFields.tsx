@@ -52,7 +52,7 @@ export function OrganisationUnitFormField() {
                         'Set up the basic information for this organisation unit.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
                 <StandardFormField>
                     <DateField
                         name="openingDate"

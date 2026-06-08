@@ -28,7 +28,7 @@ function CategoryOptionGroupSetFormFields() {
                         'Set up the basic information for this category option group set.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
                 <DescriptionField />
             </StandardFormSection>
 

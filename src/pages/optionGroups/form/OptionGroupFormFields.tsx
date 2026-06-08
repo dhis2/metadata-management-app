@@ -11,6 +11,7 @@ import {
     StandardFormSectionDescription,
     StandardFormSectionTitle,
 } from '../../../components'
+import { SECTIONS_MAP } from '../../../lib'
 import styles from './OptionGroupFormFields.module.css'
 import { OptionSetField } from './OptionSetField'
 
@@ -36,7 +37,7 @@ export const OptionGroupFormFields = ({
                     )}
                 </StandardFormSectionDescription>
 
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={SECTIONS_MAP.optionGroup} />
 
                 <StandardFormField>
                     <DescriptionField />

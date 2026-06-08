@@ -40,7 +40,7 @@ export function DataElementFormFields() {
                     {i18n.t('Set up the information for this data element.')}
                 </StandardFormSectionDescription>
 
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
 
                 <StandardFormField>
                     <FormNameField />
