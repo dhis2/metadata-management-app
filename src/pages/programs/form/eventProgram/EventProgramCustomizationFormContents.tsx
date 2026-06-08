@@ -8,11 +8,23 @@ import {
     StandardFormSectionDescription,
     StandardFormSectionTitle,
 } from '../../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../lib'
+import {
+    Section,
+    useGivenShemaOrSchemaSectionHandleOrThrow,
+    useValidator,
+} from '../../../../lib'
 
 export const EventProgramCustomizationFormContents = React.memo(
-    function EventProgramCustomizationFormContents({ name }: { name: string }) {
-        const schemaSection = useSchemaSectionHandleOrThrow()
+    function EventProgramCustomizationFormContents({
+        name,
+        section,
+    }: {
+        name: string
+        section?: Section
+    }) {
+        const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({
+            section,
+        })
         const reportDateLabelValidator = useValidator({
             schemaSection,
             property: 'incidentDateLabel',
