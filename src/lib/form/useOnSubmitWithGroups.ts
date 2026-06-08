@@ -136,6 +136,8 @@ export const useOnSubmitEditWithGroups = <
 type UseOnSubmitNewWithGroupsOptions = {
     section: ModelSection
     groupResource: string
+    onSubmitted?: () => void
+    redirectOnSubmitted?: boolean
 }
 
 export const useOnSubmitNewWithGroups = <
@@ -143,6 +145,8 @@ export const useOnSubmitNewWithGroups = <
 >({
     section,
     groupResource,
+    onSubmitted,
+    redirectOnSubmitted = true,
 }: UseOnSubmitNewWithGroupsOptions) => {
     const createModel = useCreateModel(section.namePlural)
     const syncGroupMembership = useSyncGroupMembership({
@@ -209,9 +213,11 @@ export const useOnSubmitNewWithGroups = <
             onNewCompletedSuccessfully({
                 withChanges: true,
                 response,
-                navigateTo,
+                navigateTo: redirectOnSubmitted ? navigateTo : null,
                 submitAction: options?.submitAction,
             })
+
+            onSubmitted?.()
 
             return response
         },
@@ -223,6 +229,8 @@ export const useOnSubmitNewWithGroups = <
             navigate,
             section.namePlural,
             saveAlert,
+            onSubmitted,
+            redirectOnSubmitted,
         ]
     )
 }

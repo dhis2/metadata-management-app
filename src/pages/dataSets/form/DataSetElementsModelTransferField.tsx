@@ -11,7 +11,8 @@ import {
 } from '@dhis2/ui'
 import React, { useState } from 'react'
 import { useField, useForm } from 'react-final-form'
-import { ModelTransfer } from '../../../components'
+import { ModelTransferFrom } from '../../../components'
+import { SECTIONS_MAP } from '../../../lib'
 import { DisplayableModel } from '../../../types/models'
 import { CategoryComboSelect } from './CategoryComboField'
 import css from './DataSetElementModelTransfer.module.css'
@@ -57,10 +58,11 @@ export function DataSetElementsModelTransferField() {
             name={name}
             className={css.moduleTransferField}
         >
-            <ModelTransfer<
+            <ModelTransferFrom<
                 DataSetElement & DisplayableModel,
                 DataElementWithCategoryCombo
             >
+                transferSection={SECTIONS_MAP.dataElement}
                 selected={input.value}
                 onChange={({ selected }) => {
                     input.onChange(selected)
@@ -78,12 +80,6 @@ export function DataSetElementsModelTransferField() {
                         categoryCombo: undefined,
                     }))
                 }}
-                leftHeader={i18n.t('Available data elements')}
-                rightHeader={i18n.t('Selected data elements')}
-                filterPlaceholder={i18n.t('Filter available data elements')}
-                filterPlaceholderPicked={i18n.t(
-                    'Filter selected data elements'
-                )}
                 filterUnassignedTo={'dataSetElements'}
                 query={{
                     resource: 'dataElements',

@@ -76,7 +76,7 @@ export function DataElementFormFields() {
                 </StandardFormField>
 
                 <StandardFormField>
-                    <ValueTypeField />
+                    <ValueTypeField section={section} />
                 </StandardFormField>
 
                 <StandardFormField>
