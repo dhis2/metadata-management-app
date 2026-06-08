@@ -254,16 +254,14 @@ export const DefaultTransferLeftFooter = ({
                     {i18n.t('Refresh list')}
                 </Button>
 
-                {!NewItemForm && (
-                    <LinkButton small href={newLink} target="_blank">
-                        {i18n.t('Add new')}
-                    </LinkButton>
-                )}
-
-                {NewItemForm && (
+                {NewItemForm ? (
                     <Button small onClick={() => setDrawerOpen(true)}>
                         {i18n.t('Add new')}
                     </Button>
+                ) : (
+                    <LinkButton small href={newLink} target="_blank">
+                        {i18n.t('Add new')}
+                    </LinkButton>
                 )}
             </ButtonStrip>
             {NewItemForm && (
@@ -302,12 +300,21 @@ const AddNewDrawerFormFooter = ({ onCancel }: { onCancel: () => void }) => {
     const form = useForm<SectionFormValues>()
 
     return (
-        <DrawerFormFooter
-            submitLabel={i18n.t('Save and close')}
-            cancelLabel={i18n.t('Cancel')}
-            submitting={submitting ?? false}
-            onSubmitClick={() => form.submit()}
-            onCancelClick={onCancel}
-        />
+        <div
+            style={{
+                position: 'sticky',
+                bottom: 0,
+                zIndex: 1,
+                marginTop: 'var(--spacers-dp16)',
+            }}
+        >
+            <DrawerFormFooter
+                submitLabel={i18n.t('Save and close')}
+                cancelLabel={i18n.t('Cancel')}
+                submitting={submitting ?? false}
+                onSubmitClick={() => form.submit()}
+                onCancelClick={onCancel}
+            />
+        </div>
     )
 }

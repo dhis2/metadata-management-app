@@ -25,6 +25,12 @@
     position: relative;
 }
 
+.stickyFooter {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
 .sidebar {
     grid-area: sidebar;
     min-width: var(--sidebar-width);
