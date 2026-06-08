@@ -47,7 +47,7 @@ export const IndicatorFormFields = () => {
                     {i18n.t('Set up the basic information for this indicator.')}
                 </StandardFormSectionDescription>
 
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
 
                 <StandardFormField>
                     <DescriptionField />
