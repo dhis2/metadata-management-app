@@ -146,12 +146,6 @@ export const IndicatorFormFields = () => {
                     <ModelTransferField
                         dataTest="legendSets-field"
                         name="legendSets"
-                        leftHeader={i18n.t('Available legends')}
-                        rightHeader={i18n.t('Selected legends')}
-                        filterPlaceholder={i18n.t('Filter available legends')}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected legends'
-                        )}
                         query={{
                             resource: 'legendSets',
                             params: {
@@ -159,6 +153,7 @@ export const IndicatorFormFields = () => {
                                 fields: ['id', 'displayName'],
                             },
                         }}
+                        transferSection={SECTIONS_MAP.legendSet}
                         enableOrderChange={true}
                     />
                 </StandardFormField>
