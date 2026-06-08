@@ -77,6 +77,7 @@ export const OptionGroupFormFields = ({
                                 'Filter selected options'
                             )}
                             maxSelections={Infinity}
+                            leftFooter={<></>}
                         />
                     </StandardFormField>
                 ) : (
