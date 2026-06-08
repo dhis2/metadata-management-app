@@ -320,12 +320,7 @@ export const ProgramIndicatorsFormFields = () => {
                                 filter: ['name:ne:default'],
                             },
                         }}
-                        leftHeader={i18n.t('Available legends')}
-                        rightHeader={i18n.t('Selected legends')}
-                        filterPlaceholder={i18n.t('Filter available legends')}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected legends'
-                        )}
+                        transferSection={SECTIONS_MAP.legendSet}
                         maxSelections={Infinity}
                     />
                 </StandardFormField>
