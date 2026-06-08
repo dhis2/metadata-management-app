@@ -8,7 +8,7 @@ import {
     StandardFormSectionDescription,
     StandardFormSectionTitle,
 } from '../../../components'
-import { SchemaSection } from '../../../lib'
+import { SchemaSection, SECTIONS_MAP } from '../../../lib'
 
 type BasicInformationSectionProps = {
     section: SchemaSection
@@ -35,10 +35,7 @@ export const BasicInformationSection: React.FC<
                 name="dataSets"
                 dataTest="formfields-dataSets"
                 query={{ resource: 'dataSets' }}
-                leftHeader={i18n.t('Available Data Sets')}
-                rightHeader={i18n.t('Selected Data Sets')}
-                filterPlaceholder={i18n.t('Search data sets...')}
-                filterPlaceholderPicked={i18n.t('Filter selected data sets...')}
+                transferSection={SECTIONS_MAP.dataSet}
                 maxSelections={Infinity}
             />
         </StandardFormField>

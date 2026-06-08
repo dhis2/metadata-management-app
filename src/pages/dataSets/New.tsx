@@ -30,13 +30,26 @@ export const dataSetValueFormatter = <
     }
 }
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
-            onSubmit={useOnSubmitNew({ section })}
+            onSubmit={useOnSubmitNew({
+                section,
+                onSubmitted,
+                redirectOnSubmitted,
+            })}
             valueFormatter={dataSetValueFormatter}
             initialValues={initialValues}
             validate={validate}
+            section={section}
             subscription={{}}
             mutators={{ ...arrayMutators }}
         >
@@ -49,8 +62,8 @@ export const Component = () => {
                             sidebar={<DefaultSectionedFormSidebar />}
                         >
                             <form onSubmit={handleSubmit}>
-                                <DataSetFormContents />
-                                <DefaultFormFooter />
+                                <DataSetFormContents section={section} />
+                                {footer ?? <DefaultFormFooter />}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>
