@@ -13,7 +13,7 @@ import {
 import React, { useEffect, useRef } from 'react'
 import { Field as FieldRFF, useField } from 'react-final-form'
 import {
-    ModelTransfer,
+    ModelTransferFrom,
     RenderingOptionsSelect,
     SectionedFormSection,
     StandardFormSectionDescription,
@@ -24,6 +24,7 @@ import {
     InfoIconWithTooltip,
     TooltipWrapper,
 } from '../../../../components/tooltip'
+import { SECTIONS_MAP } from '../../../../lib'
 import { ProgramTrackedEntityAttribute } from '../../../../types/generated'
 import { ProgramsFromFilters } from '../../EditTrackerProgram'
 
@@ -148,7 +149,8 @@ export const EnrollmentDataFormContents = React.memo(
                     name={name}
                     className={css.moduleTransferField}
                 >
-                    <ModelTransfer
+                    <ModelTransferFrom
+                        transferSection={SECTIONS_MAP.trackedEntityAttribute}
                         selected={input.value.map((attribute) => {
                             const tea = attribute.trackedEntityAttribute
                             return {
@@ -213,18 +215,6 @@ export const EnrollmentDataFormContents = React.memo(
                             input.onChange(selectedAttributes)
                             input.onBlur()
                         }}
-                        leftHeader={i18n.t(
-                            'Available tracked entity attributes'
-                        )}
-                        rightHeader={i18n.t(
-                            'Selected tracked entity attributes'
-                        )}
-                        filterPlaceholder={i18n.t(
-                            'Filter available tracked entity attributes'
-                        )}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected tracked entity attributes'
-                        )}
                         query={{
                             resource: 'trackedEntityAttributes',
                             params: {
