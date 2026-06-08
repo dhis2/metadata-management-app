@@ -7,15 +7,28 @@ import { initialValues, validate } from './form/indicatorGroupSetSchema'
 
 const section = SECTIONS_MAP.indicatorGroupSet
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
-            onSubmit={useOnSubmitNew({ section })}
+            onSubmit={useOnSubmitNew({
+                section,
+                onSubmitted,
+                redirectOnSubmitted,
+            })}
             initialValues={initialValues}
             validate={validate}
+            section={section}
             includeAttributes={false}
         >
-            <DefaultNewFormContents section={section}>
+            <DefaultNewFormContents section={section} footer={footer}>
                 <IndicatorGroupSetFormFields />
             </DefaultNewFormContents>
         </FormBase>
