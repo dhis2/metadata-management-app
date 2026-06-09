@@ -238,6 +238,7 @@ export const StageFormContents = ({
                     </StandardFormField>
                 </SectionedFormSection>
                 <CustomAttributesSection
+                    name="programStageAttributes"
                     schemaSection={SCHEMA_SECTIONS.programStage}
                     sectionedLayout
                 />

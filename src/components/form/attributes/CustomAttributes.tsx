@@ -101,9 +101,11 @@ function CustomAttribute({ attribute, index }: CustomAttributeProps) {
 export function CustomAttributesSection({
     schemaSection,
     sectionedLayout = false,
+    name,
 }: {
     schemaSection: SchemaSection
     sectionedLayout?: boolean
+    name?: string
 }) {
     const formState = useFormState<ValuesWithAttributes>({
         subscription: { initialValues: true },
@@ -124,7 +126,7 @@ export function CustomAttributesSection({
     const Wrapper = sectionedLayout ? SectionedFormSection : StandardFormSection
 
     return (
-        <Wrapper name="attributes">
+        <Wrapper name={name ?? 'attributes'}>
             <StandardFormSectionTitle>
                 {i18n.t('Attributes')}
             </StandardFormSectionTitle>
