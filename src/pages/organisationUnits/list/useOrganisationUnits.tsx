@@ -52,7 +52,6 @@ export const useFilteredOrgUnits = ({
         params: {
             fields: getOrgUnitFieldFilters(fieldFilters),
             query: searchQuery,
-            withinUserHierarchy: true,
             ...(organisationUnitGroupId && {
                 filter: [
                     `organisationUnitGroups.id:eq:${organisationUnitGroupId}`,

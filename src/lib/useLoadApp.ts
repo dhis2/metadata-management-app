@@ -6,6 +6,10 @@ import type {
     SystemSettings,
 } from '../types/models'
 import { useSetSchemas } from './schemas'
+import {
+    useSetSystemOrganisationUnits,
+    useSystemOrgUnits,
+} from './systemOrgUnits'
 import { useSetSystemSettings } from './systemSettings'
 import { useSetCurrentUser } from './user'
 
@@ -73,12 +77,19 @@ const query = {
     },
     currentUser: {
         resource: 'me',
-        params: {
-            fields: userFieldsFilter,
-        },
+        params: {},
     },
     systemSettings: {
         resource: 'systemSettings',
+    },
+    organisationUnits: {
+        resource: 'organisationUnits',
+        fields: orgUnitFields,
+        params: {
+            fields: 'id,path,level',
+            paging: false,
+            filter: 'parent:null',
+        },
     },
 }
 
@@ -93,6 +104,7 @@ interface QueryResponse {
     }
     currentUser: CurrentUserResponse
     systemSettings: SystemSettings
+    organisationUnits: { organisationUnits: UserAssignedOrganisationUnits }
 }
 
 const formatSchema = (schema: SchemaResponse): Schema => {
@@ -108,6 +120,7 @@ export const useLoadApp = () => {
     const setSchemas = useSetSchemas()
     const setCurrentUser = useSetCurrentUser()
     const setSystemSettings = useSetSystemSettings()
+    const setSystemOrganisationUnits = useSetSystemOrganisationUnits()
 
     const queryResponse = useDataQuery<QueryResponse>(query, {
         onComplete: (queryData) => {
@@ -128,6 +141,9 @@ export const useLoadApp = () => {
                 setSchemas(modelSchemas)
                 setCurrentUser(currentUser)
                 setSystemSettings(queryData.systemSettings)
+                setSystemOrganisationUnits(
+                    queryData?.organisationUnits?.organisationUnits ?? []
+                )
             } catch (e) {
                 console.log('Failed to load app', e)
             }

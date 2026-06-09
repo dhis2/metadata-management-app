@@ -6,7 +6,7 @@ import {
 } from '@dhis2/ui'
 import React from 'react'
 import { useField } from 'react-final-form'
-import { useCurrentUserRootOrgUnits } from '../../../lib/user/currentUserStore'
+import { useSystemOrgUnits } from '../../../lib/'
 import classes from './OrganisationUnitField.module.css'
 
 type OrganisationUnitFieldProps = {
@@ -36,7 +36,7 @@ export const OrganisationUnitField = ({
         format: (value) => (value === '' ? [] : value),
     })
 
-    const roots = useCurrentUserRootOrgUnits()
+    const roots = useSystemOrgUnits()
     const rootIds = roots.map((ou) => ou.id)
 
     const handleChange: OrganisationUnitTreeProps['onChange'] = ({
