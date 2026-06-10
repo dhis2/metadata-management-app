@@ -1,3 +1,1 @@
-import { DefaultSectionList } from '../DefaultSectionList'
-
-export const Component = DefaultSectionList
+export { DefaultSectionList as Component } from '../DefaultSectionList'
