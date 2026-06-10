@@ -1049,6 +1049,7 @@ export const modelListViewsConfig = {
             available: [
                 { label: i18n.t('Key'), path: 'key' },
                 { label: i18n.t('Icon'), path: 'href' },
+                DESCRIPTORS.publicAccess,
                 { label: i18n.t('Custom'), path: 'custom' },
                 { label: i18n.t('Keywords'), path: 'keywords' },
                 'lastUpdated',
@@ -1058,6 +1059,8 @@ export const modelListViewsConfig = {
             default: [
                 { label: i18n.t('Key'), path: 'key' },
                 { label: i18n.t('Icon'), path: 'href' },
+                DESCRIPTORS.publicAccess,
+                'lastUpdated',
             ],
             overrideDefaultAvailable: true,
         },

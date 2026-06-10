@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-05-18T21:32:23.573Z\n"
-"PO-Revision-Date: 2026-05-18T21:32:23.573Z\n"
+"POT-Creation-Date: 2026-06-03T08:42:52.958Z\n"
+"PO-Revision-Date: 2026-06-03T08:42:52.958Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -39,11 +39,11 @@ msgstr "Not found"
 msgid "The page you are looking for does not exist."
 msgstr "The page you are looking for does not exist."
 
-msgid "Duplication not available yet."
-msgstr "Duplication not available yet."
+msgid "Cloning not available yet."
+msgstr "Cloning not available yet."
 
-msgid "{{-sectionName}} cannot be duplicated."
-msgstr "{{-sectionName}} cannot be duplicated."
+msgid "{{-sectionName}} cannot be cloned."
+msgstr "{{-sectionName}} cannot be cloned."
 
 msgid "Edit: {{objectName}}"
 msgstr "Edit: {{objectName}}"
@@ -60,8 +60,8 @@ msgstr "Merge {{modelName}}"
 msgid "Move organisation units"
 msgstr "Move organisation units"
 
-msgid "Duplicate {{modelName}}"
-msgstr "Duplicate {{modelName}}"
+msgid "Clone {{modelName}}"
+msgstr "Clone {{modelName}}"
 
 msgid "Metadata Integrity Checks"
 msgstr "Metadata Integrity Checks"
@@ -74,6 +74,9 @@ msgstr "Export Metadata"
 
 msgid "Metadata Overview"
 msgstr "Metadata Overview"
+
+msgid "All metadata"
+msgstr "All metadata"
 
 msgid "No menu items found for"
 msgstr "No menu items found for"
@@ -606,8 +609,8 @@ msgstr "<No value>"
 msgid "Set up information for the attributes assigned to {{modelName}}."
 msgstr "Set up information for the attributes assigned to {{modelName}}."
 
-msgid "Duplicating {{- duplicatedModelName}}"
-msgstr "Duplicating {{- duplicatedModelName}}"
+msgid "Cloning {{- clonedModelName}}"
+msgstr "Cloning {{- clonedModelName}}"
 
 msgid ""
 "All values from the original {{-sectionName}} are included. Values that "
@@ -648,6 +651,18 @@ msgstr "Polygon/Area"
 
 msgid "Do not collect location data"
 msgstr "Do not collect location data"
+
+msgid "Available groups"
+msgstr "Available groups"
+
+msgid "Selected groups"
+msgstr "Selected groups"
+
+msgid "Filter available groups"
+msgstr "Filter available groups"
+
+msgid "Filter selected groups"
+msgstr "Filter selected groups"
 
 msgid ""
 "This name is already in use. Consider updating the name to avoid a "
@@ -1133,8 +1148,8 @@ msgstr "Validation rule group"
 msgid "Successfully deleted {{modelType}} \"{{displayName}}\""
 msgstr "Successfully deleted {{modelType}} \"{{displayName}}\""
 
-msgid "Are you sure that you want to delete this {{modelType}}?"
-msgstr "Are you sure that you want to delete this {{modelType}}?"
+msgid "Are you sure that you want to delete \"{{- displayName}}\"?"
+msgstr "Are you sure that you want to delete \"{{- displayName}}\"?"
 
 msgid "Something went wrong deleting the {{modelType}}"
 msgstr "Something went wrong deleting the {{modelType}}"
@@ -1151,8 +1166,8 @@ msgstr "Confirm deletion"
 msgid "Show details"
 msgstr "Show details"
 
-msgid "Duplicate"
-msgstr "Duplicate"
+msgid "Clone"
+msgstr "Clone"
 
 msgid "Sharing settings"
 msgstr "Sharing settings"
@@ -1514,8 +1529,8 @@ msgstr "Program disaggregations"
 msgid "You do not have access to edit this item."
 msgstr "You do not have access to edit this item."
 
-msgid "You do not have access to duplicate this item."
-msgstr "You do not have access to duplicate this item."
+msgid "You do not have access to clone this item."
+msgstr "You do not have access to clone this item."
 
 msgid "You do not have access to delete this item."
 msgstr "You do not have access to delete this item."
@@ -2198,6 +2213,12 @@ msgstr "Cannot save empty object"
 msgid "Created successfully"
 msgstr "Created successfully"
 
+msgid "Group assignment failed. Other values have been saved/updated"
+msgstr "Group assignment failed. Other values have been saved/updated"
+
+msgid "Created successfully, but failed to update groups"
+msgstr "Created successfully, but failed to update groups"
+
 msgid "This field requires a unique value, please choose another one"
 msgstr "This field requires a unique value, please choose another one"
 
@@ -2696,6 +2717,12 @@ msgstr ""
 "Choose when, and for which organisation units, this category option will be "
 "available."
 
+msgid "Groups"
+msgstr "Groups"
+
+msgid "Choose the groups this category option belongs to."
+msgstr "Choose the groups this category option belongs to."
+
 msgid "Form name should not exceed 230 characters"
 msgstr "Form name should not exceed 230 characters"
 
@@ -2921,6 +2948,9 @@ msgstr ""
 "You can override this by choosing a different level. Choosing a higher "
 "level means that data from lower levels will not be included in the "
 "aggregation."
+
+msgid "Choose the groups this data element belongs to."
+msgstr "Choose the groups this data element belongs to."
 
 msgid "Error"
 msgstr "Error"
@@ -3503,23 +3533,14 @@ msgstr "Upload icon"
 msgid "Key cannot be \"new\""
 msgstr "Key cannot be \"new\""
 
-msgid "Key"
-msgstr "Key"
-
 msgid "A unique identifier for this icon"
 msgstr "A unique identifier for this icon"
-
-msgid "Keywords"
-msgstr "Keywords"
 
 msgid "Comma-separated list of keywords"
 msgstr "Comma-separated list of keywords"
 
-msgid "Search by name, keyword or description"
-msgstr "Search by name, keyword or description"
-
-msgid "Clear filter"
-msgstr "Clear filter"
+msgid "An icon with this key already exists"
+msgstr "An icon with this key already exists"
 
 msgid "Set up the basic information for this indicator group set."
 msgstr "Set up the basic information for this indicator group set."
@@ -3651,6 +3672,9 @@ msgid ""
 msgstr ""
 "Choose legends to visually categorize values in data entry and analytics "
 "apps."
+
+msgid "Choose the groups this indicator belongs to."
+msgstr "Choose the groups this indicator belongs to."
 
 msgid "Aggregate data export mapping"
 msgstr "Aggregate data export mapping"
@@ -4511,6 +4535,15 @@ msgstr "Sends a notification when a validation rule failed."
 msgid "Manage"
 msgstr "Manage"
 
+msgid "Search metadata types"
+msgstr "Search metadata types"
+
+msgid "All metadata types"
+msgstr "All metadata types"
+
+msgid "Load more for {{schema}}"
+msgstr "Load more for {{schema}}"
+
 msgid "Set up the basic information for this predictor group."
 msgstr "Set up the basic information for this predictor group."
 
@@ -4732,8 +4765,8 @@ msgstr "Delete Mapping"
 msgid "This action cannot be undone."
 msgstr "This action cannot be undone."
 
-msgid "Are you sure you want to delete this program mapping configuration?"
-msgstr "Are you sure you want to delete this program mapping configuration?"
+msgid "Are you sure you want to delete {{- displayName}} mapping configuration?"
+msgstr "Are you sure you want to delete {{- displayName}} mapping configuration?"
 
 msgid "Set up the basic information for this program indicator group."
 msgstr "Set up the basic information for this program indicator group."
@@ -4855,6 +4888,9 @@ msgid ""
 msgstr ""
 "Configure a filter to control which data is evaulated by the main "
 "expression."
+
+msgid "Clear filter"
+msgstr "Clear filter"
 
 msgid "Period boundaries"
 msgstr "Period boundaries"
@@ -6051,6 +6087,9 @@ msgstr "Could not load SQL view"
 msgid "The SQL view metadata could not be loaded. Please go back and try again."
 msgstr "The SQL view metadata could not be loaded. Please go back and try again."
 
+msgid "Refresh data"
+msgstr "Refresh data"
+
 msgid "Variables required"
 msgstr "Variables required"
 
@@ -6092,8 +6131,8 @@ msgstr ""
 "Only SELECT statements allowed. Sensitive tables, including user "
 "information, cannot be queried."
 
-msgid "Set up how this SQL view is identified and described."
-msgstr "Set up how this SQL view is identified and described."
+msgid "Set up the basic information for this SQL view."
+msgstr "Set up the basic information for this SQL view."
 
 msgid "Controls how long results are cached on the server before re-execution"
 msgstr "Controls how long results are cached on the server before re-execution"
@@ -6101,8 +6140,8 @@ msgstr "Controls how long results are cached on the server before re-execution"
 msgid "SQL definition"
 msgstr "SQL definition"
 
-msgid "Choose the type of SQL view and write the query."
-msgstr "Choose the type of SQL view and write the query."
+msgid "Choose the type of SQL view and define the query."
+msgstr "Choose the type of SQL view and define the query."
 
 msgid "SQL type cannot be changed after creation."
 msgstr "SQL type cannot be changed after creation."
@@ -6129,9 +6168,6 @@ msgstr "Run query"
 msgid "Create or update view"
 msgstr "Create or update view"
 
-msgid "Materialized view refreshed."
-msgstr "Materialized view refreshed."
-
 msgid "SQL view created or updated."
 msgstr "SQL view created or updated."
 
@@ -6140,6 +6176,9 @@ msgstr "An unknown error occurred."
 
 msgid "Could not run SQL view: {{error}}"
 msgstr "Could not run SQL view: {{error}}"
+
+msgid "Materialized view data refreshed."
+msgstr "Materialized view data refreshed."
 
 msgid "View results"
 msgstr "View results"
