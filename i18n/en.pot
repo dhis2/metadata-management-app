@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-06-03T08:42:52.958Z\n"
-"PO-Revision-Date: 2026-06-03T08:42:52.958Z\n"
+"POT-Creation-Date: 2026-06-10T09:35:20.832Z\n"
+"PO-Revision-Date: 2026-06-10T09:35:20.833Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -913,6 +913,21 @@ msgstr "At least one source is required"
 
 msgid "Loading..."
 msgstr "Loading..."
+
+msgid "Available {{name}}"
+msgstr "Available {{name}}"
+
+msgid "Selected {{name}}"
+msgstr "Selected {{name}}"
+
+msgid "Filter available {{name}}"
+msgstr "Filter available {{name}}"
+
+msgid "Filter selected {{name}}"
+msgstr "Filter selected {{name}}"
+
+msgid "Add new {{name}}"
+msgstr "Add new {{name}}"
 
 msgid "Filter available items"
 msgstr "Filter available items"
@@ -2568,30 +2583,6 @@ msgstr "Show as data dimension in analytics apps"
 msgid "Choose the options to include in this category."
 msgstr "Choose the options to include in this category."
 
-msgid "Available category options"
-msgstr "Available category options"
-
-msgid "Selected category options"
-msgstr "Selected category options"
-
-msgid "Filter available category options"
-msgstr "Filter available category options"
-
-msgid "Filter selected category options"
-msgstr "Filter selected category options"
-
-msgid "Available categories"
-msgstr "Available categories"
-
-msgid "Selected categories"
-msgstr "Selected categories"
-
-msgid "Filter available categories"
-msgstr "Filter available categories"
-
-msgid "Filter selected categories"
-msgstr "Filter selected categories"
-
 msgid "More than 4 Categories"
 msgstr "More than 4 Categories"
 
@@ -2603,12 +2594,12 @@ msgstr "Identical Category Combination"
 
 msgid ""
 "One or more Category combinations with the same categories already exist in "
-"the system. \n"
+"the system.\n"
 "        It is strongly discouraged to have more than one Category "
 "combination with the same categories."
 msgstr ""
 "One or more Category combinations with the same categories already exist in "
-"the system. \n"
+"the system.\n"
 "        It is strongly discouraged to have more than one Category "
 "combination with the same categories."
 
@@ -2663,18 +2654,6 @@ msgid ""
 msgstr ""
 "Choose the category option groups to include in this category option group "
 "set."
-
-msgid "Available category option groups"
-msgstr "Available category option groups"
-
-msgid "Selected category option groups"
-msgstr "Selected category option groups"
-
-msgid "Filter available category option groups"
-msgstr "Filter available category option groups"
-
-msgid "Filter selected category option groups"
-msgstr "Filter selected category option groups"
 
 msgid "Set up the basic information for this category option group."
 msgstr "Set up the basic information for this category option group."
@@ -2799,35 +2778,11 @@ msgstr ""
 "Compulsory: all data elements must belong to at least one group in this "
 "group set."
 
-msgid "Available data element groups"
-msgstr "Available data element groups"
-
-msgid "Selected data element groups"
-msgstr "Selected data element groups"
-
-msgid "Filter available data element groups"
-msgstr "Filter available data element groups"
-
-msgid "Filter selected data element groups"
-msgstr "Filter selected data element groups"
-
 msgid "Set up the information for this data element group set."
 msgstr "Set up the information for this data element group set."
 
 msgid "Choose the data element groups to include in this data element group set."
 msgstr "Choose the data element groups to include in this data element group set."
-
-msgid "Available data elements"
-msgstr "Available data elements"
-
-msgid "Selected data elements"
-msgstr "Selected data elements"
-
-msgid "Filter available data elements"
-msgstr "Filter available data elements"
-
-msgid "Filter selected elements"
-msgstr "Filter selected elements"
 
 msgid "Set up the information for this data element group."
 msgstr "Set up the information for this data element group."
@@ -2853,18 +2808,6 @@ msgid ""
 msgstr ""
 "Use a pattern to limit what information can be entered. See documentation "
 "for details."
-
-msgid "Available legends"
-msgstr "Available legends"
-
-msgid "Selected legends"
-msgstr "Selected legends"
-
-msgid "Filter available legends"
-msgstr "Filter available legends"
-
-msgid "Filter selected legends"
-msgstr "Filter selected legends"
 
 msgid "Option set comment"
 msgstr "Option set comment"
@@ -2960,18 +2903,6 @@ msgstr "Error loading notification template"
 
 msgid "Choose which data sets to send this notification for"
 msgstr "Choose which data sets to send this notification for"
-
-msgid "Available Data Sets"
-msgstr "Available Data Sets"
-
-msgid "Selected Data Sets"
-msgstr "Selected Data Sets"
-
-msgid "Search data sets..."
-msgstr "Search data sets..."
-
-msgid "Filter selected data sets..."
-msgstr "Filter selected data sets..."
 
 msgid "Data set name"
 msgstr "Data set name"
@@ -3116,8 +3047,26 @@ msgstr ""
 "Choose legends to visually categorize values in Data entry and Analytics "
 "apps."
 
+msgid "Available legends"
+msgstr "Available legends"
+
+msgid "Selected legends"
+msgstr "Selected legends"
+
+msgid "Filter available legends"
+msgstr "Filter available legends"
+
+msgid "Filter selected legends"
+msgstr "Filter selected legends"
+
+msgid "Available data elements"
+msgstr "Available data elements"
+
 msgid "Compulsory data elements"
 msgstr "Compulsory data elements"
+
+msgid "Filter available data elements"
+msgstr "Filter available data elements"
 
 msgid "Filter compulsory data elements"
 msgstr "Filter compulsory data elements"
@@ -3143,21 +3092,6 @@ msgstr ""
 
 msgid "Choose indicators to calculate and show in the data entry form."
 msgstr "Choose indicators to calculate and show in the data entry form."
-
-msgid "Available indicators"
-msgstr "Available indicators"
-
-msgid "Selected indicators"
-msgstr "Selected indicators"
-
-msgid "Filter available indicators"
-msgstr "Filter available indicators"
-
-msgid "Filter selected indicators"
-msgstr "Filter selected indicators"
-
-msgid "Filter selected data elements"
-msgstr "Filter selected data elements"
 
 msgid "Custom disaggregation"
 msgstr "Custom disaggregation"
@@ -3333,8 +3267,14 @@ msgstr "Filter by category combination"
 msgid "<No filter>"
 msgstr "<No filter>"
 
+msgid "Selected data elements"
+msgstr "Selected data elements"
+
 msgid "Manage enabled/disabled fields"
 msgstr "Manage enabled/disabled fields"
+
+msgid "Filter selected data elements"
+msgstr "Filter selected data elements"
 
 msgid ""
 "No data elements available. Add data elements to this data set to use them "
@@ -3366,6 +3306,18 @@ msgstr "Section indicators"
 
 msgid "Choose what indicators are shown in this section."
 msgstr "Choose what indicators are shown in this section."
+
+msgid "Available indicators"
+msgstr "Available indicators"
+
+msgid "Selected indicators"
+msgstr "Selected indicators"
+
+msgid "Filter available indicators"
+msgstr "Filter available indicators"
+
+msgid "Filter selected indicators"
+msgstr "Filter selected indicators"
 
 msgid ""
 "No indicators available. Add indicators to this data set to use them in "
@@ -3554,18 +3506,6 @@ msgstr ""
 
 msgid "Choose the indicators to include in this indicator group."
 msgstr "Choose the indicators to include in this indicator group."
-
-msgid "Available indicator groups"
-msgstr "Available indicator groups"
-
-msgid "Selected indicator groups"
-msgstr "Selected indicator groups"
-
-msgid "Filter available indicator groups"
-msgstr "Filter available indicator groups"
-
-msgid "Filter selected indicator groups"
-msgstr "Filter selected indicator groups"
 
 msgid "Set up the basic information for this indicator group."
 msgstr "Set up the basic information for this indicator group."
@@ -3999,18 +3939,6 @@ msgstr ""
 msgid "Choose the groups to include in this organisation unit group set."
 msgstr "Choose the groups to include in this organisation unit group set."
 
-msgid "Available organisation unit groups"
-msgstr "Available organisation unit groups"
-
-msgid "Selected organisation unit groups"
-msgstr "Selected organisation unit groups"
-
-msgid "Filter available organisation unit groups"
-msgstr "Filter available organisation unit groups"
-
-msgid "Filter selected organisation unit groups"
-msgstr "Filter selected organisation unit groups"
-
 msgid "Set up the basic information for this organisation unit group."
 msgstr "Set up the basic information for this organisation unit group."
 
@@ -4073,18 +4001,6 @@ msgstr "Reference assignment"
 
 msgid "Assign the organisation unit to related objects."
 msgstr "Assign the organisation unit to related objects."
-
-msgid "Available data sets"
-msgstr "Available data sets"
-
-msgid "Selected data sets"
-msgstr "Selected data sets"
-
-msgid "Filter available data sets"
-msgstr "Filter available data sets"
-
-msgid "Filter selected data sets"
-msgstr "Filter selected data sets"
 
 msgid "Available programs"
 msgstr "Available programs"
@@ -4550,18 +4466,6 @@ msgstr "Set up the basic information for this predictor group."
 msgid "Choose the predictors to include in this predictor group."
 msgstr "Choose the predictors to include in this predictor group."
 
-msgid "Available predictors"
-msgstr "Available predictors"
-
-msgid "Selected predictors"
-msgstr "Selected predictors"
-
-msgid "Filter available predictors"
-msgstr "Filter available predictors"
-
-msgid "Filter selected predictors"
-msgstr "Filter selected predictors"
-
 msgid "Predictor run started successfully"
 msgstr "Predictor run started successfully"
 
@@ -4773,18 +4677,6 @@ msgstr "Set up the basic information for this program indicator group."
 
 msgid "Choose the program indicators to include in this program indicator group."
 msgstr "Choose the program indicators to include in this program indicator group."
-
-msgid "Available program indicators"
-msgstr "Available program indicators"
-
-msgid "Selected program indicators"
-msgstr "Selected program indicators"
-
-msgid "Filter available program indicators"
-msgstr "Filter available program indicators"
-
-msgid "Filter selected program indicators"
-msgstr "Filter selected program indicators"
 
 msgid "Incident date"
 msgstr "Incident date"
@@ -6391,18 +6283,6 @@ msgstr "Set up the basic information for this validation notification."
 
 msgid "Choose which validation rules trigger this notification."
 msgstr "Choose which validation rules trigger this notification."
-
-msgid "Available validation rules"
-msgstr "Available validation rules"
-
-msgid "Selected validation rules"
-msgstr "Selected validation rules"
-
-msgid "Filter available validation rules"
-msgstr "Filter available validation rules"
-
-msgid "Filter selected validation rules"
-msgstr "Filter selected validation rules"
 
 msgid "Configure the templates for the notification message content."
 msgstr "Configure the templates for the notification message content."
