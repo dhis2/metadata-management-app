@@ -6,10 +6,7 @@ import type {
     SystemSettings,
 } from '../types/models'
 import { useSetSchemas } from './schemas'
-import {
-    useSetSystemOrganisationUnits,
-    useSystemOrgUnits,
-} from './systemOrgUnits'
+import { useSetSystemOrganisationUnits } from './systemOrgUnits'
 import { useSetSystemSettings } from './systemSettings'
 import { useSetCurrentUser } from './user'
 
