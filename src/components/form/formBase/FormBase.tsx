@@ -13,13 +13,14 @@ import {
     getAllAttributeValues,
     useCustomAttributesQuery,
 } from '../../../lib/models/attributes'
-import { RemoveIndexSignature } from '../../../types'
+import { RemoveIndexSignature, Section } from '../../../types'
 import { LoadingSpinner } from '../../loading/LoadingSpinner'
 import { FormBaseProvider, useFormBaseContextValue } from './FormBaseContext'
 
 type MaybeModelWithAttributes = {
     id?: string
     name?: string
+    section?: Section
     modelName?: string
     attributeValues?: PartialAttributeValue[]
 }
@@ -32,7 +33,7 @@ type FixedFormProps<TValues> = RemoveIndexSignature<FormProps<TValues>>
 type OwnProps<TValues, TFormattedValues = TValues> = {
     initialValues: TValues | undefined
     children: FormProps<TValues>['children']
-    modelName?: string
+    section?: Section
     includeAttributes?: boolean
     fetchError?: boolean
     valueFormatter?: (values: NoInfer<TValues>) => TFormattedValues
@@ -52,12 +53,12 @@ export function FormBase<TInitialValues extends MaybeModelWithAttributes>({
     valueFormatter = defaultValueFormatter,
     includeAttributes = true,
     fetchError = false,
-    modelName,
+    section,
     ...reactFinalFormProps
 }: FormBaseProps<TInitialValues>) {
     const customAttributes = useCustomAttributesQuery({
         enabled: includeAttributes,
-        modelName: modelName,
+        section: section,
     })
     const contextValue = useFormBaseContextValue()
 

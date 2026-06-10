@@ -20,6 +20,7 @@ import {
     useSchemaSectionHandleOrThrow,
     useSyncSelectedSectionWithScroll,
     getConstantTranslation,
+    SECTIONS_MAP,
 } from '../../../lib'
 import styles from './ValidationNotificationTemplateFormFields.module.css'
 
@@ -114,14 +115,7 @@ export const ValidationNotificationTemplateFormFields = () => {
                         query={{
                             resource: 'validationRules',
                         }}
-                        leftHeader={i18n.t('Available validation rules')}
-                        rightHeader={i18n.t('Selected validation rules')}
-                        filterPlaceholder={i18n.t(
-                            'Filter available validation rules'
-                        )}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected validation rules'
-                        )}
+                        transferSection={SECTIONS_MAP.validationRule}
                         maxSelections={Infinity}
                     />
                 </StandardFormField>

@@ -82,7 +82,7 @@ export const ProgramIndicatorsFormFields = () => {
                         'Set up the basic information for this program indicator.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
                 <StandardFormField>
                     <DescriptionField />
                 </StandardFormField>
@@ -193,6 +193,7 @@ export const ProgramIndicatorsFormFields = () => {
                             clearable={true}
                             programId={programInput?.value?.id}
                             type="programIndicator"
+                            validateSchemaSection={section}
                         />
                     </PaddedContainer>
                 </StandardFormField>
@@ -218,6 +219,7 @@ export const ProgramIndicatorsFormFields = () => {
                             clearable={true}
                             programId={programInput?.value?.id}
                             type="programIndicator"
+                            validateSchemaSection={section}
                         />
                     </PaddedContainer>
                 </StandardFormField>
@@ -318,12 +320,7 @@ export const ProgramIndicatorsFormFields = () => {
                                 filter: ['name:ne:default'],
                             },
                         }}
-                        leftHeader={i18n.t('Available legends')}
-                        rightHeader={i18n.t('Selected legends')}
-                        filterPlaceholder={i18n.t('Filter available legends')}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected legends'
-                        )}
+                        transferSection={SECTIONS_MAP.legendSet}
                         maxSelections={Infinity}
                     />
                 </StandardFormField>

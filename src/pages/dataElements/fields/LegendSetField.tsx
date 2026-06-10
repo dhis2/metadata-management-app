@@ -1,6 +1,6 @@
-import i18n from '@dhis2/d2-i18n'
 import React from 'react'
 import { ModelTransferField } from '../../../components'
+import { SECTIONS_MAP } from '../../../lib'
 
 export function LegendSetField() {
     return (
@@ -13,10 +13,7 @@ export function LegendSetField() {
                     fields: ['id', 'displayName'],
                 },
             }}
-            leftHeader={i18n.t('Available legends')}
-            rightHeader={i18n.t('Selected legends')}
-            filterPlaceholder={i18n.t('Filter available legends')}
-            filterPlaceholderPicked={i18n.t('Filter selected legends')}
+            transferSection={SECTIONS_MAP.legendSet}
             maxSelections={Infinity}
         />
     )

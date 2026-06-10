@@ -11,14 +11,19 @@ import {
     StandardFormSectionTitle,
 } from '../../../components'
 import { SectionedFormSection } from '../../../components/sectionedForm'
-import { useSchemaSectionHandleOrThrow } from '../../../lib'
+import {
+    Section,
+    useGivenShemaOrSchemaSectionHandleOrThrow,
+} from '../../../lib'
 
 export const SetupFormContents = React.memo(function SetupFormContents({
     name,
+    section,
 }: {
     name: string
+    section?: Section
 }) {
-    const schemaSection = useSchemaSectionHandleOrThrow()
+    const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({ section })
 
     return (
         <SectionedFormSection name={name}>

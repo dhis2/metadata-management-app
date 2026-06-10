@@ -2,6 +2,7 @@ import React from 'react'
 import { CustomAttributesSection } from '../../../components'
 import { SectionedFormSections } from '../../../components/sectionedForm'
 import {
+    Section,
     SECTIONS_MAP,
     useSectionedFormContext,
     useSyncSelectedSectionWithScroll,
@@ -15,13 +16,16 @@ import { PeriodsContents } from './PeriodsFormContents'
 import { SetupFormContents } from './SetupFormContents'
 import { ValidationFormContents } from './ValidationFormContents'
 
-export const DataSetFormContents = () => {
+export const DataSetFormContents = ({ section }: { section?: Section }) => {
     const descriptor = useSectionedFormContext<typeof DataSetFormDescriptor>()
     useSyncSelectedSectionWithScroll()
     return (
         <>
             <SectionedFormSections>
-                <SetupFormContents name={descriptor.getSection('setup').name} />
+                <SetupFormContents
+                    name={descriptor.getSection('setup').name}
+                    section={section}
+                />
                 <DataFormContents name={descriptor.getSection('data').name} />
                 <PeriodsContents name={descriptor.getSection('periods').name} />
                 <ValidationFormContents

@@ -53,6 +53,7 @@ export const EventProgramFormContents = () => {
             />
             <EventProgramCustomizationFormContents
                 name={descriptor.getSection('programCustomization').name}
+                section={SCHEMA_SECTIONS.program}
             />
             <CustomAttributesSection
                 schemaSection={SCHEMA_SECTIONS.program}

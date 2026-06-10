@@ -11,7 +11,7 @@ import {
     StandardFormSectionDescription,
     StandardFormSectionTitle,
 } from '../../../components'
-import { SCHEMA_SECTIONS, useSchemaSectionHandleOrThrow } from '../../../lib'
+import { useSchemaSectionHandleOrThrow, SECTIONS_MAP } from '../../../lib'
 
 export function ValidationRuleGroupsFormFields() {
     const schemaSection = useSchemaSectionHandleOrThrow()
@@ -56,15 +56,8 @@ export function ValidationRuleGroupsFormFields() {
                         query={{
                             resource: 'validationRules',
                         }}
+                        transferSection={SECTIONS_MAP.validationRule}
                         filterUnassignedTo={'validationRuleGroups'}
-                        leftHeader={i18n.t('Available validation rules')}
-                        rightHeader={i18n.t('Selected validation rules')}
-                        filterPlaceholder={i18n.t(
-                            'Filter available validation rules'
-                        )}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected validation rules'
-                        )}
                         maxSelections={Infinity}
                     />
                 </StandardFormField>

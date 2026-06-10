@@ -27,8 +27,8 @@ import {
     getConstantTranslation,
     SchemaName,
     SchemaSection,
+    SECTIONS_MAP,
     useSchema,
-    useSchemaSectionHandleOrThrow,
     useSectionedFormContext,
     useSyncSelectedSectionWithScroll,
 } from '../../../lib'
@@ -37,8 +37,9 @@ import { OrganisationUnitLevelsField } from './OrganisationUnitLevelsField'
 import { PeriodTypeField } from './PeriodTypeField'
 import css from './ValidationRuleFormFields.module.css'
 
+const schemaSection = SECTIONS_MAP.validationRule
+
 const ValidationRuleFormFields = () => {
-    const schemaSection = useSchemaSectionHandleOrThrow()
     const schema = useSchema(schemaSection.name)
     const descriptor =
         useSectionedFormContext<typeof ValidationRuleFormDescriptor>()

@@ -3,7 +3,8 @@ import { Field, NoticeBox } from '@dhis2/ui'
 import React from 'react'
 import { useField } from 'react-final-form'
 import { NavLink, useParams } from 'react-router-dom'
-import { ModelTransfer } from '../../../components'
+import { ModelTransferFrom } from '../../../components'
+import { SECTIONS_MAP } from '../../../lib'
 import { DisplayableModel } from '../../../types/models'
 import css from './CategoryCombo.module.css'
 import { CategoryComboFormValues } from './categoryComboSchema'
@@ -47,20 +48,15 @@ export function CategoriesField() {
                 validationText={(meta.touched && meta.error?.toString()) || ''}
                 name={fieldName}
             >
-                <ModelTransfer
+                <ModelTransferFrom
                     selected={input.value}
                     onChange={({ selected }) => {
                         input.onChange(selected)
                         input.onBlur()
                     }}
-                    leftHeader={i18n.t('Available categories')}
-                    rightHeader={i18n.t('Selected categories')}
-                    filterPlaceholder={i18n.t('Filter available categories')}
-                    filterPlaceholderPicked={i18n.t(
-                        'Filter selected categories'
-                    )}
                     query={query}
                     maxSelections={200}
+                    transferSection={SECTIONS_MAP.category}
                 />
             </Field>
             <div className={css.categoriesNoticesWrapper}>
@@ -132,7 +128,7 @@ const IdenticalCategoryComboWarning = ({
     return (
         <NoticeBox warning title={i18n.t('Identical Category Combination')}>
             {i18n.t(
-                `One or more Category combinations with the same categories already exist in the system. 
+                `One or more Category combinations with the same categories already exist in the system.
         It is strongly discouraged to have more than one Category combination with the same categories.`
             )}
             <br />

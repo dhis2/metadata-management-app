@@ -9,7 +9,7 @@ import {
     CodeField,
     ModelTransferField,
 } from '../../../components'
-import { useSchemaSectionHandleOrThrow } from '../../../lib'
+import { useSchemaSectionHandleOrThrow, SECTIONS_MAP } from '../../../lib'
 
 export const ProgramIndicatorGroupsFormFields = () => {
     const schemaSection = useSchemaSectionHandleOrThrow()
@@ -51,14 +51,7 @@ export const ProgramIndicatorGroupsFormFields = () => {
                         query={{
                             resource: 'programIndicators',
                         }}
-                        leftHeader={i18n.t('Available program indicators')}
-                        rightHeader={i18n.t('Selected program indicators')}
-                        filterPlaceholder={i18n.t(
-                            'Filter available program indicators'
-                        )}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected program indicators'
-                        )}
+                        transferSection={SECTIONS_MAP.programIndicator}
                         dataTest="program-indicators-transfer"
                         maxSelections={Infinity}
                     />

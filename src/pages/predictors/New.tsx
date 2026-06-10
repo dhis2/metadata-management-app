@@ -13,12 +13,25 @@ import { initialValues, validate } from './form/predictorSchema'
 
 const section = SECTIONS_MAP.predictor
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
-            onSubmit={useOnSubmitNew({ section })}
+            onSubmit={useOnSubmitNew({
+                section,
+                onSubmitted,
+                redirectOnSubmitted,
+            })}
             initialValues={initialValues}
             validate={validate}
+            section={section}
             includeAttributes={false}
         >
             {({ handleSubmit }) => {
@@ -31,7 +44,9 @@ export const Component = () => {
                         >
                             <form onSubmit={handleSubmit}>
                                 <PredictorFormFields />
-                                <DefaultFormFooter cancelTo="/predictors" />
+                                {footer ?? (
+                                    <DefaultFormFooter cancelTo="/predictors" />
+                                )}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>

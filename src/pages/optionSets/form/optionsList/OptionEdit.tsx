@@ -180,7 +180,7 @@ export const OptionForm = ({ option, onSubmit, onCancel }: OptionFormProps) => {
 
     return (
         <FormBase
-            modelName={optionSchemaSection.name}
+            section={optionSchemaSection}
             initialValues={initialValues}
             onSubmit={onSubmit}
             valueFormatter={valueFormatter}

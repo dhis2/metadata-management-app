@@ -30,7 +30,7 @@ export const CategoryOptionFormFields = () => {
                         'Set up the basic information for this category option.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
 
                 <StandardFormField>
                     <Field

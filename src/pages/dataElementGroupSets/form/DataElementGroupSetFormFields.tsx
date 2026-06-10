@@ -34,7 +34,7 @@ export function DataElementGroupSetFormFields() {
                     )}
                 </StandardFormSectionDescription>
 
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
 
                 <StandardFormField>
                     <DescriptionField />

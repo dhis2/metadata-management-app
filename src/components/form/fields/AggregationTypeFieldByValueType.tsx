@@ -5,8 +5,9 @@ import { Field as FieldRFF, useField, useForm } from 'react-final-form'
 import {
     AGGREGATION_TYPE,
     required,
+    Section,
+    useGivenShemaOrSchemaSectionHandleOrThrow,
     useSchema,
-    useSchemaSectionHandleOrThrow,
 } from '../../../lib'
 
 export const DISABLING_VALUE_TYPES = [
@@ -38,7 +39,11 @@ const aggregationTypeDisabledHelpText = i18n.t(
     'Disabled for the selected value type.'
 )
 
-export function AggregationTypeFieldByValueType() {
+export function AggregationTypeFieldByValueType({
+    section,
+}: {
+    readonly section?: Section
+}) {
     const { change } = useForm()
     const fieldName = 'aggregationType'
     const valueTypeField = useField('valueType')
@@ -55,7 +60,7 @@ export function AggregationTypeFieldByValueType() {
         }
     }, [change, disabled, fieldName, aggregationTypeField.input.value])
 
-    const schemaSection = useSchemaSectionHandleOrThrow()
+    const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({ section })
     const schema = useSchema(schemaSection.name)
 
     const options =

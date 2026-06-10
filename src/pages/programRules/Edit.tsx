@@ -127,7 +127,7 @@ export const Component = () => {
         <FormBase
             onSubmit={onSubmit}
             initialValues={rawInitialValues}
-            modelName={section.name}
+            section={section}
             includeAttributes={false}
             validate={validate}
             subscription={{}}

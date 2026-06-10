@@ -13,12 +13,25 @@ import { initialValues, validate } from './form/programIndicatorsFormSchema'
 
 const section = SECTIONS_MAP.programIndicator
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
-            onSubmit={useOnSubmitNew({ section })}
+            onSubmit={useOnSubmitNew({
+                section,
+                onSubmitted,
+                redirectOnSubmitted,
+            })}
             initialValues={initialValues}
             validate={validate}
+            section={section}
             subscription={{}}
         >
             {({ handleSubmit }) => {
@@ -31,7 +44,9 @@ export const Component = () => {
                         >
                             <form onSubmit={handleSubmit}>
                                 <ProgramIndicatorsFormFields />
-                                <DefaultFormFooter cancelTo="/programIndicators" />
+                                {footer ?? (
+                                    <DefaultFormFooter cancelTo="/programIndicators" />
+                                )}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>
