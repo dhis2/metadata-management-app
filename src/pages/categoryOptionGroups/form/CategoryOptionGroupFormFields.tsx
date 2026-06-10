@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { RadioFieldFF, CheckboxFieldFF } from '@dhis2/ui'
+import { RadioFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
 import {
@@ -28,7 +28,7 @@ function CategoryOptionGroupFormFields() {
                         'Set up the basic information for this category option group.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
                 <DescriptionField />
             </StandardFormSection>
 
@@ -86,14 +86,7 @@ function CategoryOptionGroupFormFields() {
                                     filter: ['isDefault:eq:false'],
                                 },
                             }}
-                            leftHeader={i18n.t('Available category options')}
-                            rightHeader={i18n.t('Selected category options')}
-                            filterPlaceholder={i18n.t(
-                                'Filter available category options'
-                            )}
-                            filterPlaceholderPicked={i18n.t(
-                                'Filter selected category options'
-                            )}
+                            transferSection={SECTIONS_MAP.categoryOption}
                             maxSelections={Infinity}
                         />
                     </StandardFormField>

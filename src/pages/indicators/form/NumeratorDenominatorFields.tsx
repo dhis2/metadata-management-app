@@ -4,6 +4,7 @@ import React from 'react'
 import { Field as FieldRFF } from 'react-final-form'
 import { StandardFormField, ExpressionBuilderEntry } from '../../../components'
 import { PaddedContainer } from '../../../components/ExpressionBuilder/PaddedContainer'
+import { SECTIONS_MAP } from '../../../lib'
 import css from './NumeratorDenominatorFields.module.css'
 
 export const NumeratorDenominatorFields = ({
@@ -36,6 +37,7 @@ export const NumeratorDenominatorFields = ({
                             { objectName }
                         )}
                         validationResource={validationResource}
+                        validateSchemaSection={SECTIONS_MAP.indicator}
                         type="indicator"
                     />
                 </StandardFormField>

@@ -12,6 +12,7 @@ import { TranslatedFieldsNoticeBox } from './TranslatedFieldsNoticeBox'
 type DefaultFormContentsProps = {
     readonly children: React.ReactNode
     readonly section: ModelSection
+    readonly footer?: React.ReactNode
 }
 
 function DefaultFormContents({
@@ -19,6 +20,7 @@ function DefaultFormContents({
     section,
     showTranslatedFieldsNotice = false,
     showCloneNotice = false,
+    footer,
 }: DefaultFormContentsProps & {
     readonly showTranslatedFieldsNotice?: boolean
     readonly showCloneNotice?: boolean
@@ -35,7 +37,7 @@ function DefaultFormContents({
                     <DefaultFormErrorNotice />
                 </StandardFormSection>
             </div>
-            <DefaultFormFooter cancelTo={listPath} />
+            {footer ?? <DefaultFormFooter cancelTo={listPath} />}
         </>
     )
 }

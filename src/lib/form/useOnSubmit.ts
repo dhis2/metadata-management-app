@@ -101,6 +101,8 @@ export type UseOnSubmitEditOptions = {
 
 export type UseOnSubmitNewOptions = {
     section: ModelSection
+    readonly onSubmitted?: () => void
+    readonly redirectOnSubmitted?: boolean
 }
 
 export const useOnEditCompletedSuccessfully = (section: ModelSection) => {
@@ -272,6 +274,8 @@ export const useOnSubmitNew = <
     TFormValues extends Record<string, unknown> & ModelWithAttributeValues
 >({
     section,
+    onSubmitted,
+    redirectOnSubmitted = true,
 }: UseOnSubmitNewOptions) => {
     const createModel = useCreateModel(section.namePlural)
     const onNewCompletedSuccessfully =
@@ -292,12 +296,18 @@ export const useOnSubmitNew = <
             onNewCompletedSuccessfully({
                 withChanges: true,
                 response,
-                navigateTo,
+                navigateTo: redirectOnSubmitted ? navigateTo : null,
                 submitAction: options?.submitAction,
             })
+            onSubmitted?.()
 
             return response
         },
-        [createModel, onNewCompletedSuccessfully]
+        [
+            createModel,
+            onNewCompletedSuccessfully,
+            onSubmitted,
+            redirectOnSubmitted,
+        ]
     )
 }

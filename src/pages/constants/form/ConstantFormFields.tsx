@@ -29,7 +29,7 @@ function ConstantFormFields() {
                 {i18n.t('Set up the basic information for this constant.')}
             </StandardFormSectionDescription>
 
-            <DefaultIdentifiableFields />
+            <DefaultIdentifiableFields section={section} />
 
             <StandardFormField>
                 <DescriptionField />

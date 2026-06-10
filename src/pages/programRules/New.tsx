@@ -19,7 +19,7 @@ export const Component = () => {
         <FormBase
             onSubmit={useOnSubmitNew({ section })}
             initialValues={initialValues}
-            modelName={section.name}
+            section={section}
             includeAttributes={false}
             subscription={{}}
             validate={validate}

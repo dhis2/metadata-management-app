@@ -124,7 +124,7 @@ export const TrackedEntityAttributeFormFields = ({
                 </StandardFormField>
 
                 <StandardFormField>
-                    <ValueTypeField />
+                    <ValueTypeField section={section} />
                 </StandardFormField>
 
                 {showTrackedEntityType && (
@@ -238,7 +238,7 @@ export const TrackedEntityAttributeFormFields = ({
                 )}
 
                 <StandardFormField>
-                    <AggregationTypeFieldByValueType />
+                    <AggregationTypeFieldByValueType section={section} />
                 </StandardFormField>
             </SectionedFormSection>
 
@@ -290,12 +290,7 @@ export const TrackedEntityAttributeFormFields = ({
                                 fields: ['id', 'displayName'],
                             },
                         }}
-                        leftHeader={i18n.t('Available legends')}
-                        rightHeader={i18n.t('Selected legends')}
-                        filterPlaceholder={i18n.t('Filter available legends')}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected legends'
-                        )}
+                        transferSection={SECTIONS_MAP.legendSet}
                         enableOrderChange={true}
                         maxSelections={Infinity}
                     />

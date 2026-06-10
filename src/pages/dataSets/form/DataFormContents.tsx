@@ -7,6 +7,7 @@ import {
     StandardFormSectionTitle,
 } from '../../../components'
 import { SectionedFormSection } from '../../../components/sectionedForm'
+import { SECTIONS_MAP } from '../../../lib'
 import { CategoryComboField } from './CategoryComboField'
 import { DataSetElementsModelTransferField } from './DataSetElementsModelTransferField'
 
@@ -51,12 +52,7 @@ export const DataFormContents = React.memo(function DataFormContents({
                     query={{
                         resource: 'indicators',
                     }}
-                    leftHeader={i18n.t('Available indicators')}
-                    rightHeader={i18n.t('Selected indicators')}
-                    filterPlaceholder={i18n.t('Filter available indicators')}
-                    filterPlaceholderPicked={i18n.t(
-                        'Filter selected indicators'
-                    )}
+                    transferSection={SECTIONS_MAP.indicator}
                     maxSelections={Infinity}
                 />
             </StandardFormField>

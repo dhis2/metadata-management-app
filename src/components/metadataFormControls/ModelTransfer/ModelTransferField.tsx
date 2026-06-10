@@ -1,9 +1,10 @@
 import { Field, TransferProps } from '@dhis2/ui'
 import React from 'react'
 import { useField } from 'react-final-form'
-import { ModelTransfer } from '../../../components'
+import { ModelTransfer, ModelTransferFrom } from '../../../components'
 import { PlainResourceQuery } from '../../../types'
 import { DisplayableModel } from '../../../types/models'
+import { ModelSection } from '../../../types/section'
 import css from './ModelTransfer.module.css'
 
 // this currently does not need a generic, because the value of the field is not passed
@@ -14,6 +15,7 @@ type ModelTransferFieldProps = {
     query: PlainResourceQuery
     label?: string
     filterUnassignedTo?: string
+    transferSection?: ModelSection
 } & Pick<
     TransferProps,
     | 'rightHeader'
@@ -46,6 +48,7 @@ export function ModelTransferField({
     enableOrderChange,
     dataTest,
     filterUnassignedTo,
+    transferSection,
     hideFilterInputPicked = false,
     disabled = false,
     optionsWidth,
@@ -57,6 +60,26 @@ export function ModelTransferField({
         validateFields: [],
     })
 
+    const sharedProps = {
+        selected: input.value || [],
+        onChange: ({ selected }: { selected: DisplayableModel[] }) => {
+            input.onChange(selected)
+            input.onBlur()
+        },
+        leftFooter,
+        rightFooter,
+        query,
+        maxSelections: maxSelections || 5000,
+        enableOrderChange,
+        dataTest,
+        hideFilterInputPicked,
+        disabled,
+        filterUnassignedTo,
+        optionsWidth,
+        selectedWidth,
+        height,
+    }
+
     return (
         <Field
             error={meta.invalid}
@@ -65,29 +88,20 @@ export function ModelTransferField({
             label={label}
             className={css.moduleTransferField}
         >
-            <ModelTransfer
-                selected={input.value || []}
-                onChange={({ selected }) => {
-                    input.onChange(selected)
-                    input.onBlur()
-                }}
-                leftHeader={leftHeader}
-                rightHeader={rightHeader}
-                leftFooter={leftFooter}
-                rightFooter={rightFooter}
-                filterPlaceholder={filterPlaceholder}
-                filterPlaceholderPicked={filterPlaceholderPicked}
-                query={query}
-                maxSelections={maxSelections || 5000}
-                enableOrderChange={enableOrderChange}
-                dataTest={dataTest}
-                hideFilterInputPicked={hideFilterInputPicked}
-                disabled={disabled}
-                filterUnassignedTo={filterUnassignedTo}
-                optionsWidth={optionsWidth}
-                selectedWidth={selectedWidth}
-                height={height}
-            />
+            {transferSection ? (
+                <ModelTransferFrom
+                    {...sharedProps}
+                    transferSection={transferSection}
+                />
+            ) : (
+                <ModelTransfer
+                    {...sharedProps}
+                    leftHeader={leftHeader}
+                    rightHeader={rightHeader}
+                    filterPlaceholder={filterPlaceholder}
+                    filterPlaceholderPicked={filterPlaceholderPicked}
+                />
+            )}
         </Field>
     )
 }
