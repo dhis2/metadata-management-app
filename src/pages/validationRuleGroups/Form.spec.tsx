@@ -61,7 +61,10 @@ describe('Validation Rule Groups form tests', () => {
                         path={`/${section.namePlural}`}
                         customData={{
                             attributes: () => ({ attributes }),
-                            validationRules: () => ({ validationRules }),
+                            validationRules: () => ({
+                                validationRules,
+                                pager: {},
+                            }),
                             validationRuleGroups: (type: any, params: any) => {
                                 if (type === 'create') {
                                     createMock(params)

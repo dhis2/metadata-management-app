@@ -11,7 +11,7 @@ import {
 } from '../../testUtils/generateRenderer'
 import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
 import { uiActions } from '../../testUtils/uiActions'
-import { SqlView } from '../../types/generated'
+import { SqlViewType } from '../../types/generated'
 import { SqlViewResults } from './Results'
 
 const section = SECTIONS_MAP.sqlView
@@ -40,7 +40,7 @@ const mockMeta = (overwrites: Record<string, unknown> = {}) =>
     testSqlViews({
         id: DEFAULT_ID,
         displayName: 'My Test SQL View',
-        type: SqlView.type.VIEW,
+        type: SqlViewType.VIEW,
         sqlQuery: 'SELECT * FROM dataelement',
         ...overwrites,
     })
@@ -126,16 +126,39 @@ describe('SqlViewResults', () => {
 
         it('shows "Create or update view" run button for MATERIALIZED_VIEW type', async () => {
             const { screen } = await renderResults({
-                meta: mockMeta({ type: SqlView.type.MATERIALIZED_VIEW }),
+                meta: mockMeta({ type: SqlViewType.MATERIALIZED_VIEW }),
             })
             expect(screen.getByTestId('results-run-button')).toHaveTextContent(
                 'Create or update view'
             )
         })
 
+        it('shows "Refresh data" button for MATERIALIZED_VIEW type', async () => {
+            const { screen } = await renderResults({
+                meta: mockMeta({ type: SqlViewType.MATERIALIZED_VIEW }),
+            })
+            expect(screen.getByTestId('results-refresh-button')).toBeVisible()
+        })
+
+        it('does not show "Refresh data" button for VIEW type', async () => {
+            const { screen } = await renderResults()
+            expect(
+                screen.queryByTestId('results-refresh-button')
+            ).not.toBeInTheDocument()
+        })
+
+        it('does not show "Refresh data" button for QUERY type', async () => {
+            const { screen } = await renderResults({
+                meta: mockMeta({ type: SqlViewType.QUERY }),
+            })
+            expect(
+                screen.queryByTestId('results-refresh-button')
+            ).not.toBeInTheDocument()
+        })
+
         it('shows "Run query" run button for QUERY type', async () => {
             const { screen } = await renderResults({
-                meta: mockMeta({ type: SqlView.type.QUERY }),
+                meta: mockMeta({ type: SqlViewType.QUERY }),
             })
             expect(screen.getByTestId('results-run-button')).toHaveTextContent(
                 'Run query'
@@ -243,7 +266,7 @@ describe('SqlViewResults', () => {
         it('calls the refresh API when running a MATERIALIZED_VIEW type', async () => {
             const refreshMock = jest.fn()
             const { screen } = await renderResults({
-                meta: mockMeta({ type: SqlView.type.MATERIALIZED_VIEW }),
+                meta: mockMeta({ type: SqlViewType.MATERIALIZED_VIEW }),
                 additionalCustomData: {
                     [`sqlViews/${DEFAULT_ID}/refresh`]: (type: string) => {
                         if (type === 'create') {
@@ -253,7 +276,7 @@ describe('SqlViewResults', () => {
                     },
                 },
             })
-            await uiActions.clickButton('results-run-button', screen)
+            await uiActions.clickButton('results-refresh-button', screen)
             await waitFor(() => {
                 expect(refreshMock).toHaveBeenCalledTimes(1)
             })
@@ -263,7 +286,7 @@ describe('SqlViewResults', () => {
     describe('variable prompt (QUERY type)', () => {
         const metaWithVars = () =>
             mockMeta({
-                type: SqlView.type.QUERY,
+                type: SqlViewType.QUERY,
                 sqlQuery: 'SELECT * FROM dataelement WHERE id = ${myVar}',
             })
 

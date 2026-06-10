@@ -37,7 +37,7 @@ const DataInputPeriodModal = ({
 }: {
     modalOpen: boolean
     closeModal: () => void
-    editDIP?: DataInputPeriod
+    editDIP?: ExpandedDIP
     locale: string
     calendar: SupportedCalendar
     dateFormat: SupportedDateFormat
@@ -45,10 +45,10 @@ const DataInputPeriodModal = ({
     const { input } = useField('dataInputPeriods')
 
     const [selectedYear, setSelectedYear] = useState<string | undefined>(
-        editDIP?.period.id ? editDIP.period.id.substring(0, 4) : undefined
+        editDIP?.period?.id ? editDIP.period.id.substring(0, 4) : undefined
     )
     const [selectedPeriod, setSelectedPeriod] = useState<string | undefined>(
-        editDIP?.period.id
+        editDIP?.period?.id
     )
     const changeYear = (year: string) => {
         setSelectedPeriod(undefined)
@@ -63,7 +63,7 @@ const DataInputPeriodModal = ({
     const isUpdatingExistingRule =
         selectedPeriod &&
         input.value.find(
-            (dip: DataInputPeriod) => dip.period.id === selectedPeriod
+            (dip: DataInputPeriod) => dip.period?.id === selectedPeriod
         )
     const { annual, periods, yearRange } = useGetPeriods({
         selectedYear,
@@ -81,7 +81,7 @@ const DataInputPeriodModal = ({
             <ModalContent className={styles.modalItems}>
                 {editDIP && (
                     <div className={styles.periodName}>
-                        {editDIP.period.name}
+                        {editDIP.periodInformation.displayName}
                     </div>
                 )}
                 {!editDIP && !annual && (
@@ -191,11 +191,11 @@ const DataInputPeriodModal = ({
                             if (selectedPeriod === undefined) {
                                 return
                             }
-                            const newDataInputPeriod: DataInputPeriod = {
+                            const newDataInputPeriod = {
                                 period: {
                                     id: selectedPeriod,
                                 },
-                            }
+                            } as DataInputPeriod
                             if (openingDate) {
                                 newDataInputPeriod.openingDate = openingDate
                             }
@@ -206,7 +206,7 @@ const DataInputPeriodModal = ({
                             input.onChange([
                                 ...input.value.filter(
                                     (dip: DataInputPeriod) =>
-                                        dip.period.id !== selectedPeriod
+                                        dip.period?.id !== selectedPeriod
                                 ),
                                 newDataInputPeriod,
                             ])
@@ -232,7 +232,7 @@ const DIPItem = ({
 }: {
     expandedDip: ExpandedDIP
     onRemove: (id: string) => void
-    openEditModal: (d: DataInputPeriod) => void
+    openEditModal: (d: ExpandedDIP) => void
     calendar: SupportedCalendar
     dateFormat: SupportedDateFormat
 }) => {
@@ -282,8 +282,6 @@ const DIPItem = ({
                 <Button
                     small
                     onClick={() => {
-                        expandedDip.period.name =
-                            expandedDip.periodInformation.displayName
                         openEditModal(expandedDip)
                     }}
                 >
@@ -294,7 +292,7 @@ const DIPItem = ({
                     secondary
                     destructive
                     onClick={() => {
-                        onRemove(expandedDip.period.id)
+                        onRemove(expandedDip.period?.id ?? '')
                     }}
                 >
                     {i18n.t('Remove')}
@@ -319,7 +317,7 @@ const DataInputPeriodsField = ({
     dateFormat: SupportedDateFormat
     locale: string
     calendar: SupportedCalendar
-    openEditModal: (dip: DataInputPeriod) => void
+    openEditModal: (dip: ExpandedDIP) => void
 }) => {
     const { value, onBlur, onChange } = input
     const mappedPeriods = useGetPeriodInformation(
@@ -330,7 +328,7 @@ const DataInputPeriodsField = ({
     const onRemove = useCallback(
         (id: string) => {
             onChange(
-                value.filter((dip: DataInputPeriod) => dip.period.id !== id)
+                value.filter((dip: DataInputPeriod) => dip.period?.id !== id)
             )
             onBlur()
         },
@@ -342,7 +340,7 @@ const DataInputPeriodsField = ({
             {mappedPeriods.map((expandedDip) => (
                 <DIPItem
                     expandedDip={expandedDip}
-                    key={expandedDip.period.id}
+                    key={expandedDip.period?.id}
                     onRemove={onRemove}
                     openEditModal={openEditModal}
                     calendar={calendar as SupportedCalendar}
@@ -362,14 +360,12 @@ export const DataInputPeriodsSelector = () => {
         ? keyDateFormat.toUpperCase()
         : 'YYYY-MM-DD'
     const [modalOpen, setModalOpen] = useState<boolean>(false)
-    const [modalEditDIP, setModalEditDIP] = useState<
-        DataInputPeriod | undefined
-    >()
+    const [modalEditDIP, setModalEditDIP] = useState<ExpandedDIP | undefined>()
     const closeModal = useCallback(() => {
         setModalOpen(false)
     }, [setModalOpen])
     const openEditModal = useCallback(
-        (dip: DataInputPeriod) => {
+        (dip: ExpandedDIP) => {
             setModalEditDIP(dip)
             setModalOpen(true)
         },

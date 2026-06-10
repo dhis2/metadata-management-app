@@ -1202,8 +1202,8 @@ describe('Data elements form tests', () => {
 
             // ensure that the value types for options are different
             if (optionSets[0].valueType === optionSets[2].valueType) {
-                optionSets[2].valueType = 'NUMBER'
-                optionSets[0].valueType = 'COORDINATE'
+                optionSets[2].valueType = 'NUMBER' as any
+                optionSets[0].valueType = 'COORDINATE' as any
             }
             const { screen } = await renderForm({
                 dataElementOverwrites: {
@@ -1254,8 +1254,8 @@ describe('Data elements form tests', () => {
 
             // ensure that the value types for options are different
             if (optionSets[0].valueType === optionSets[2].valueType) {
-                optionSets[2].valueType = 'NUMBER'
-                optionSets[0].valueType = 'COORDINATE'
+                optionSets[2].valueType = 'NUMBER' as any
+                optionSets[0].valueType = 'COORDINATE' as any
             }
             const { screen } = await renderForm({
                 dataElementOverwrites: {

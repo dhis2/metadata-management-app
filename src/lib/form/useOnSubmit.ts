@@ -5,7 +5,6 @@ import { FormApi, SubmissionErrors } from 'final-form'
 import { useCallback, useMemo } from 'react'
 import { To, useSearchParams } from 'react-router-dom'
 import { ModelSection } from '../../types'
-import { IdentifiableObject } from '../../types/generated'
 import { getSectionPath, useNavigateWithSearchState } from '../routeUtils'
 import { createFormError } from './createFormError'
 import {
@@ -14,6 +13,8 @@ import {
 } from './createJsonPatchOperations'
 import { useCreateModel } from './useCreateModel'
 import { usePatchModel } from './usePatchModel'
+
+type MinimalFormValues = { id?: string }
 
 export type SubmitAction = 'save' | 'saveAndExit'
 
@@ -101,6 +102,8 @@ export type UseOnSubmitEditOptions = {
 
 export type UseOnSubmitNewOptions = {
     section: ModelSection
+    readonly onSubmitted?: () => void
+    readonly redirectOnSubmitted?: boolean
 }
 
 export const useOnEditCompletedSuccessfully = (section: ModelSection) => {
@@ -152,7 +155,7 @@ export const useOnEditCompletedSuccessfully = (section: ModelSection) => {
     )
 }
 
-export const useOnSubmitEdit = <TFormValues extends IdentifiableObject>({
+export const useOnSubmitEdit = <TFormValues extends MinimalFormValues>({
     modelId,
     section,
 }: UseOnSubmitEditOptions) => {
@@ -162,7 +165,7 @@ export const useOnSubmitEdit = <TFormValues extends IdentifiableObject>({
     return useMemo<EnhancedOnSubmit<TFormValues>>(
         () => async (values, form, options) => {
             const jsonPatchOperations = createJsonPatchOperations({
-                values,
+                values: values as ModelWithAttributeValues,
                 dirtyFields: form.getState().dirtyFields,
                 originalValue: form.getState().initialValues,
             })
@@ -268,10 +271,10 @@ export const useOnNewCompletedSuccessfullyOrSkipped = (
     )
 }
 
-export const useOnSubmitNew = <
-    TFormValues extends Record<string, unknown> & ModelWithAttributeValues
->({
+export const useOnSubmitNew = <TFormValues extends Record<string, unknown>>({
     section,
+    onSubmitted,
+    redirectOnSubmitted = true,
 }: UseOnSubmitNewOptions) => {
     const createModel = useCreateModel(section.namePlural)
     const onNewCompletedSuccessfully =
@@ -292,12 +295,18 @@ export const useOnSubmitNew = <
             onNewCompletedSuccessfully({
                 withChanges: true,
                 response,
-                navigateTo,
+                navigateTo: redirectOnSubmitted ? navigateTo : null,
                 submitAction: options?.submitAction,
             })
+            onSubmitted?.()
 
             return response
         },
-        [createModel, onNewCompletedSuccessfully]
+        [
+            createModel,
+            onNewCompletedSuccessfully,
+            onSubmitted,
+            redirectOnSubmitted,
+        ]
     )
 }

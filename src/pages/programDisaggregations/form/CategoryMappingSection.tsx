@@ -268,8 +268,12 @@ export const CategoryMappingSection = ({
             {suggestedCategories.map((category) => (
                 <SuggestedCategory
                     key={category.id}
-                    category={category}
-                    addCategory={() => addCategories([category])}
+                    category={category as unknown as CategoryFromSelect}
+                    addCategory={() =>
+                        addCategories([
+                            category as unknown as CategoryFromSelect,
+                        ])
+                    }
                 />
             ))}
             <div className={css.collapsibleCardWrapper}>

@@ -10,7 +10,7 @@ import {
 } from '../../testUtils/generateRenderer'
 import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
 import { uiActions } from '../../testUtils/uiActions'
-import { SqlView } from '../../types/generated'
+import { SqlViewType } from '../../types/generated'
 import { generateDefaultListTests } from '../defaultListTests'
 import { Component } from './List'
 
@@ -101,7 +101,7 @@ describe('SQL views specific action tests', () => {
     })
 
     it('should show "Run query" label for QUERY type SQL views', async () => {
-        const queryElement = testSqlViews({ type: SqlView.type.QUERY })
+        const queryElement = testSqlViews({ type: SqlViewType.QUERY })
         const { screen } = await renderList({
             elements: [queryElement],
         })
@@ -115,7 +115,7 @@ describe('SQL views specific action tests', () => {
     })
 
     it('should show "Create or update view" label for VIEW type SQL views', async () => {
-        const viewElement = testSqlViews({ type: SqlView.type.VIEW })
+        const viewElement = testSqlViews({ type: SqlViewType.VIEW })
         const { screen } = await renderList({
             elements: [viewElement],
         })
@@ -130,7 +130,7 @@ describe('SQL views specific action tests', () => {
 
     it('should show "Create or update view" label for MATERIALIZED_VIEW type SQL views', async () => {
         const materializedElement = testSqlViews({
-            type: SqlView.type.MATERIALIZED_VIEW,
+            type: SqlViewType.MATERIALIZED_VIEW,
         })
         const { screen } = await renderList({
             elements: [materializedElement],
@@ -142,6 +142,47 @@ describe('SQL views specific action tests', () => {
         )
         expect(actionsMenu).toHaveTextContent('Create or update view')
         expect(actionsMenu).not.toHaveTextContent('Run query')
+    })
+
+    it('should show "Refresh data" action for MATERIALIZED_VIEW type SQL views', async () => {
+        const materializedElement = testSqlViews({
+            type: SqlViewType.MATERIALIZED_VIEW,
+        })
+        const { screen } = await renderList({
+            elements: [materializedElement],
+        })
+        const tableRows = screen.getAllByTestId('section-list-row')
+        const actionsMenu = await uiActions.openListElementActionsMenu(
+            tableRows[0],
+            screen
+        )
+        expect(actionsMenu).toHaveTextContent('Refresh data')
+    })
+
+    it('should not show "Refresh data" action for VIEW type SQL views', async () => {
+        const viewElement = testSqlViews({ type: SqlViewType.VIEW })
+        const { screen } = await renderList({
+            elements: [viewElement],
+        })
+        const tableRows = screen.getAllByTestId('section-list-row')
+        const actionsMenu = await uiActions.openListElementActionsMenu(
+            tableRows[0],
+            screen
+        )
+        expect(actionsMenu).not.toHaveTextContent('Refresh data')
+    })
+
+    it('should not show "Refresh data" action for QUERY type SQL views', async () => {
+        const queryElement = testSqlViews({ type: SqlViewType.QUERY })
+        const { screen } = await renderList({
+            elements: [queryElement],
+        })
+        const tableRows = screen.getAllByTestId('section-list-row')
+        const actionsMenu = await uiActions.openListElementActionsMenu(
+            tableRows[0],
+            screen
+        )
+        expect(actionsMenu).not.toHaveTextContent('Refresh data')
     })
 
     it('should open the results drawer when "View results" is clicked', async () => {
@@ -160,7 +201,7 @@ describe('SQL views specific action tests', () => {
 
     it('should open the results drawer when running a QUERY type SQL view', async () => {
         const queryElement = testSqlViews({
-            type: SqlView.type.QUERY,
+            type: SqlViewType.QUERY,
             access: testAccess({ write: true }),
         })
         const { screen } = await renderList({
@@ -180,7 +221,7 @@ describe('SQL views specific action tests', () => {
     it('should call the execute API when running a VIEW type SQL view', async () => {
         const executeMock = jest.fn()
         const viewElement = testSqlViews({
-            type: SqlView.type.VIEW,
+            type: SqlViewType.VIEW,
             access: testAccess({ write: true }),
         })
         const { screen } = await renderList({
@@ -210,7 +251,7 @@ describe('SQL views specific action tests', () => {
     it('should call the refresh API when running a MATERIALIZED_VIEW type SQL view', async () => {
         const refreshMock = jest.fn()
         const materializedElement = testSqlViews({
-            type: SqlView.type.MATERIALIZED_VIEW,
+            type: SqlViewType.MATERIALIZED_VIEW,
             access: testAccess({ write: true }),
         })
         const { screen } = await renderList({
@@ -231,9 +272,7 @@ describe('SQL views specific action tests', () => {
             tableRows[0],
             screen
         )
-        await userEvent.click(
-            within(actionsMenu).getByText('Create or update view')
-        )
+        await userEvent.click(within(actionsMenu).getByText('Refresh data'))
         await waitFor(() => {
             expect(refreshMock).toHaveBeenCalledWith(materializedElement.id)
         })

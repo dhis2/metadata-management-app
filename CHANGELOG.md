@@ -1,3 +1,38 @@
+## [0.159.4](https://github.com/dhis2/metadata-management-app/compare/v0.159.3...v0.159.4) (2026-06-10)
+
+
+### Bug Fixes
+
+* trigger release ([#964](https://github.com/dhis2/metadata-management-app/issues/964)) ([f76c128](https://github.com/dhis2/metadata-management-app/commit/f76c1289a928d849c8ed6ca3b70696206613e966))
+
+## [0.159.3](https://github.com/dhis2/metadata-management-app/compare/v0.159.2...v0.159.3) (2026-06-10)
+
+
+### Bug Fixes
+
+* icons list public access default columns ([#956](https://github.com/dhis2/metadata-management-app/issues/956)) ([1a3ba8b](https://github.com/dhis2/metadata-management-app/commit/1a3ba8b3049af1af129d0f9e7e35cd0ab484f636))
+
+## [0.159.2](https://github.com/dhis2/metadata-management-app/compare/v0.159.1...v0.159.2) (2026-06-01)
+
+
+### Bug Fixes
+
+* orgUnitField default [DHIS2-21560] ([#949](https://github.com/dhis2/metadata-management-app/issues/949)) ([dc53847](https://github.com/dhis2/metadata-management-app/commit/dc538478dd0189ee7226fef10771189dc45a22b0))
+
+## [0.159.1](https://github.com/dhis2/metadata-management-app/compare/v0.159.0...v0.159.1) (2026-06-01)
+
+
+### Bug Fixes
+
+* filter out child sections by api version [DHIS2-21547] ([#948](https://github.com/dhis2/metadata-management-app/issues/948)) ([a310c3c](https://github.com/dhis2/metadata-management-app/commit/a310c3c9fe7dfe4f8960d7f6b95aa9a8684fa7b5))
+
+# [0.159.0](https://github.com/dhis2/metadata-management-app/compare/v0.158.0...v0.159.0) (2026-05-28)
+
+
+### Features
+
+* add refresh action ([#937](https://github.com/dhis2/metadata-management-app/issues/937)) ([d6fd940](https://github.com/dhis2/metadata-management-app/commit/d6fd94009739959a1afb23aef4bc17fca70499b5))
+
 # [0.158.0](https://github.com/dhis2/metadata-management-app/compare/v0.157.1...v0.158.0) (2026-05-28)
 
 

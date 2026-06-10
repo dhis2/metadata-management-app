@@ -1,7 +1,11 @@
 import { z } from 'zod'
 import { getDefaultsOld, modelFormSchemas } from '../../../lib'
 import { createFormValidate } from '../../../lib/form/validate'
-import { Predictor, Expression } from '../../../types/generated/models'
+import {
+    MissingValueStrategy,
+    OrganisationUnitDescendants,
+    Predictor,
+} from '../../../types/generated/models'
 
 const {
     identifiable,
@@ -23,8 +27,8 @@ const predictorBaseSchema = z.object({
         .default(Predictor.periodType.MONTHLY),
     organisationUnitLevels: z.array(modelReference).default([]),
     organisationUnitDescendants: z
-        .nativeEnum(Predictor.organisationUnitDescendants)
-        .default(Predictor.organisationUnitDescendants.SELECTED),
+        .nativeEnum(OrganisationUnitDescendants)
+        .default(OrganisationUnitDescendants.SELECTED),
     sequentialSampleCount: z.number().int().default(0),
     annualSampleCount: z.number().int().min(0).max(10).default(0),
     sequentialSkipCount: z.number().int().optional(),
@@ -44,17 +48,15 @@ export const predictorFormSchema = predictorBaseSchema
         generator: z.object({
             expression: z.string(),
             description: z.string(),
-            missingValueStrategy: z
-                .nativeEnum(Expression.missingValueStrategy)
-                .optional(),
+            missingValueStrategy: z.nativeEnum(MissingValueStrategy).optional(),
         }),
         sampleSkipTest: z
             .object({
                 expression: z.string().optional(),
                 description: z.string().optional(),
                 missingValueStrategy: z
-                    .nativeEnum(Expression.missingValueStrategy)
-                    .default(Expression.missingValueStrategy.NEVER_SKIP)
+                    .nativeEnum(MissingValueStrategy)
+                    .default(MissingValueStrategy.NEVER_SKIP)
                     .optional(),
             })
             .optional(),

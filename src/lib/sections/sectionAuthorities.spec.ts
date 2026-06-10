@@ -3,7 +3,7 @@ import { SystemSettings } from '../../types'
 import { OVERVIEW_SECTIONS, SECTIONS_MAP } from '../constants'
 import { useSchemaStore } from '../schemas/schemaStore'
 import { useSystemSettingsStore } from '../systemSettings/systemSettingsStore'
-import { ModelSchemas } from '../useLoadApp'
+import { CurrentUser, ModelSchemas } from '../useLoadApp'
 import { useCurrentUserStore } from '../user/currentUserStore'
 import { SchemaName } from './../../types/schemaBase'
 import {
@@ -151,7 +151,9 @@ const setMockedAuthorities = (authorities: Set<string>) => {
         ...baseMockedCurrentUser,
         authorities,
     }
-    useCurrentUserStore.getState().setCurrentUser(mockedCurrentUser)
+    useCurrentUserStore
+        .getState()
+        .setCurrentUser(mockedCurrentUser as unknown as CurrentUser)
 }
 
 describe('sectionAuthorities', () => {

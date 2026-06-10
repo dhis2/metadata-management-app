@@ -93,6 +93,7 @@ export const Component = () => {
             onSubmit={onSubmit}
             validate={validate}
             includeAttributes={false}
+            section={section}
         >
             {({ handleSubmit, submitting }) => {
                 return (

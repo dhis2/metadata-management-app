@@ -87,7 +87,9 @@ export const CategoriesSelector = ({
                         (categoryCombos: CategoryComboFromSelect[]) =>
                             categoryCombos.map((categoryCombo) => ({
                                 ...categoryCombo,
-                                disabled: categoryCombo.categories
+                                disabled: (
+                                    categoryCombo.categories as { id: string }[]
+                                )
                                     .map((c) => c.id)
                                     .every((cid) =>
                                         categoriesWithMappings.includes(cid)

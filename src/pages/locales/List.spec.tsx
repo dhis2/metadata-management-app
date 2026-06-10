@@ -176,7 +176,7 @@ describe('Locales list tests', () => {
             name: faker.person.fullName(),
             email: faker.internet.email(),
             settings: {},
-        })
+        } as any)
         const tableRows = screen.getAllByTestId('section-list-row')
         const firstElementToDeleteId = elements[0].id
         const deletableElementActionMenu =

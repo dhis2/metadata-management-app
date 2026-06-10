@@ -1,9 +1,9 @@
-import i18n from '@dhis2/d2-i18n'
 import { Field } from '@dhis2/ui'
 import React from 'react'
 import { useField } from 'react-final-form'
-import { ModelTransfer } from '../../../components'
+import { ModelTransferFrom } from '../../../components'
 import css from '../../../components/metadataFormControls/ModelTransfer/ModelTransfer.module.css'
+import { SECTIONS_MAP } from '../../../lib'
 import { DisplayableModel } from '../../../types/models'
 
 type TrackedEntityAttribute = {
@@ -54,10 +54,11 @@ export function AttributesTransferField() {
             name={name}
             className={css.moduleTransferField}
         >
-            <ModelTransfer<
+            <ModelTransferFrom<
                 DisplayableModel & TrackedEntityTypeAttribute,
                 TrackedEntityAttribute
             >
+                transferSection={SECTIONS_MAP.trackedEntityAttribute}
                 selected={input.value}
                 onChange={({ selected }) => {
                     input.onChange(selected)
@@ -73,14 +74,6 @@ export function AttributesTransferField() {
                         displayInList: false,
                     }))
                 }}
-                leftHeader={i18n.t('Available tracked entity attributes')}
-                rightHeader={i18n.t('Selected tracked entity attributes')}
-                filterPlaceholder={i18n.t(
-                    'Filter available tracked entity attributes'
-                )}
-                filterPlaceholderPicked={i18n.t(
-                    'Filter selected tracked entity attributes'
-                )}
                 query={{
                     resource: 'trackedEntityAttributes',
                     params: {

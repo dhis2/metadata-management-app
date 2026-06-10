@@ -47,7 +47,7 @@ const useOnSubmitEventProgram = (): EnhancedOnSubmit<ProgramValues> => {
             }
 
             const stage = {
-                ...programStages[0],
+                ...(programStages?.[0] as object | undefined),
                 program: {
                     id: (programResponse.data as { response: { uid: string } })
                         ?.response.uid,

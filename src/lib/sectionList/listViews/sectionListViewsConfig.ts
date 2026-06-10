@@ -1058,6 +1058,7 @@ export const modelListViewsConfig = {
             default: [
                 { label: i18n.t('Key'), path: 'key' },
                 { label: i18n.t('Icon'), path: 'href' },
+                'lastUpdated',
             ],
             overrideDefaultAvailable: true,
         },

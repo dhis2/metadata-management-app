@@ -13,12 +13,10 @@ import {
     DescriptionField,
 } from '../../../components'
 import { DateField } from '../../../components/form/fields/DateField'
-import { SCHEMA_SECTIONS, SECTIONS_MAP, useSystemSetting } from '../../../lib'
+import { SECTIONS_MAP, useSystemSetting } from '../../../lib'
 import { GeometryFields } from './GeometryFields'
 import { ImageField } from './ImageField'
 import { OrganisationUnitSelector } from './OrganisationUnitSelector'
-
-const schemaSection = SCHEMA_SECTIONS.organisationUnit
 
 export function OrganisationUnitFormField() {
     const allowReferenceAssignments = useSystemSetting(
@@ -54,7 +52,7 @@ export function OrganisationUnitFormField() {
                         'Set up the basic information for this organisation unit.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
                 <StandardFormField>
                     <DateField
                         name="openingDate"
@@ -153,14 +151,7 @@ export function OrganisationUnitFormField() {
                             query={{
                                 resource: 'dataSets',
                             }}
-                            leftHeader={i18n.t('Available data sets')}
-                            rightHeader={i18n.t('Selected data sets')}
-                            filterPlaceholder={i18n.t(
-                                'Filter available data sets'
-                            )}
-                            filterPlaceholderPicked={i18n.t(
-                                'Filter selected data sets'
-                            )}
+                            transferSection={SECTIONS_MAP.dataSet}
                             maxSelections={Infinity}
                         />
                     </StandardFormField>
@@ -179,6 +170,7 @@ export function OrganisationUnitFormField() {
                                 'Filter selected programs'
                             )}
                             maxSelections={Infinity}
+                            leftFooter={<></>}
                         />
                     </StandardFormField>
                 </StandardFormSection>

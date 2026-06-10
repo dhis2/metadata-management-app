@@ -16,9 +16,9 @@ import {
 import {
     useSectionedFormContext,
     useSyncSelectedSectionWithScroll,
-    useSchemaSectionHandleOrThrow,
     useSchema,
     getConstantTranslation,
+    SECTIONS_MAP,
 } from '../../../lib'
 import { ExpressionFields } from './ExpressionFields'
 import { PredictorFormDescriptor } from './formDescriptor'
@@ -27,9 +27,10 @@ import { OperatorFields } from './OperatorFields'
 import { OrganisationUnitLevelsField } from './OrganisationUnitLevelsField'
 import { PeriodTypeField } from './PeriodTypeField'
 
+const section = SECTIONS_MAP.predictor
+
 export const PredictorFormFields = () => {
-    const schemaSection = useSchemaSectionHandleOrThrow()
-    const schema = useSchema(schemaSection.name)
+    const schema = useSchema(section.name)
     const descriptor = useSectionedFormContext<typeof PredictorFormDescriptor>()
     useSyncSelectedSectionWithScroll()
     return (
@@ -44,15 +45,15 @@ export const PredictorFormFields = () => {
                     {i18n.t('Set up the basic information for this predictor.')}
                 </StandardFormSectionDescription>
                 <StandardFormField>
-                    <NameField schemaSection={schemaSection} />
+                    <NameField schemaSection={section} />
                 </StandardFormField>
 
                 <StandardFormField>
-                    <ShortNameField schemaSection={schemaSection} />
+                    <ShortNameField schemaSection={section} />
                 </StandardFormField>
 
                 <StandardFormField>
-                    <CodeField schemaSection={schemaSection} />
+                    <CodeField schemaSection={section} />
                 </StandardFormField>
                 <StandardFormField>
                     <DescriptionField />

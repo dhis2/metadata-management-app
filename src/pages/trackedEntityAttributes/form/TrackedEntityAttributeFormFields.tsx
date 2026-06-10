@@ -16,7 +16,7 @@ import {
     ValueTypeField,
 } from '../../../components'
 import { FEATURES, SECTIONS_MAP, useFeatureAvailable } from '../../../lib'
-import { TrackedEntityAttribute } from '../../../types/generated'
+import { ValueType } from '../../../types/generated'
 import {
     BlockedSearchOperatorsField,
     FieldMaskField,
@@ -55,12 +55,9 @@ export const TrackedEntityAttributeFormFields = ({
     const isUnique = uniqueInput.value
     const isOrgunitScope = orgunitScopeInput.value
     const isGenerated = generatedInput.value
-    const showTrackedEntityType =
-        valueType === TrackedEntityAttribute.valueType.TRACKER_ASSOCIATE
+    const showTrackedEntityType = false
 
-    const uniqueDisabled =
-        valueType === TrackedEntityAttribute.valueType.TRACKER_ASSOCIATE ||
-        valueType === TrackedEntityAttribute.valueType.USERNAME
+    const uniqueDisabled = valueType === ValueType.USERNAME
 
     const isSearchPerformanceSectionAvailable = useFeatureAvailable(
         FEATURES.searchPerformance
@@ -124,7 +121,7 @@ export const TrackedEntityAttributeFormFields = ({
                 </StandardFormField>
 
                 <StandardFormField>
-                    <ValueTypeField />
+                    <ValueTypeField section={section} />
                 </StandardFormField>
 
                 {showTrackedEntityType && (
@@ -238,7 +235,7 @@ export const TrackedEntityAttributeFormFields = ({
                 )}
 
                 <StandardFormField>
-                    <AggregationTypeFieldByValueType />
+                    <AggregationTypeFieldByValueType section={section} />
                 </StandardFormField>
             </SectionedFormSection>
 
@@ -290,12 +287,7 @@ export const TrackedEntityAttributeFormFields = ({
                                 fields: ['id', 'displayName'],
                             },
                         }}
-                        leftHeader={i18n.t('Available legends')}
-                        rightHeader={i18n.t('Selected legends')}
-                        filterPlaceholder={i18n.t('Filter available legends')}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected legends'
-                        )}
+                        transferSection={SECTIONS_MAP.legendSet}
                         enableOrderChange={true}
                         maxSelections={Infinity}
                     />

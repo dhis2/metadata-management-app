@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import {
     DefaultFormFooter,
@@ -37,10 +37,21 @@ export const Component = () => {
         ] as const,
     })
 
+    const initialValues = useMemo((): ProgramIndicatorValues | undefined => {
+        if (!programIndicators.data) {
+            return undefined
+        }
+        const patchedValues = { ...programIndicators.data }
+        if (programIndicators?.data?.orgUnitField === 'EVENT') {
+            patchedValues.orgUnitField = ''
+        }
+        return patchedValues
+    }, [programIndicators.data])
+
     return (
         <FormBase
             onSubmit={useOnSubmitEdit({ section, modelId })}
-            initialValues={programIndicators.data}
+            initialValues={initialValues}
             validate={validate}
             subscription={{}}
         >

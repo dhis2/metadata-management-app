@@ -48,7 +48,7 @@ describe('Organisation unit list tests', () => {
             name: faker.person.fullName(),
             email: faker.internet.email(),
             settings: {},
-        })
+        } as any)
 
         const elements = [
             testOrgUnitLevel({ level: 1, access: testAccess({ write: true }) }),

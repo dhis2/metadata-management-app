@@ -53,7 +53,7 @@ describe('Program indicators additional tests', () => {
             name: faker.person.fullName(),
             email: faker.internet.email(),
             settings: {},
-        })
+        } as any)
 
         const elements = [generateRandomElement()]
         const pager = {

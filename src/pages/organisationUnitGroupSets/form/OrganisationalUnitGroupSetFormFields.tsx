@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
-import { CheckboxFieldFF, RadioFieldFF } from '@dhis2/ui'
+import { CheckboxFieldFF } from '@dhis2/ui'
 import React from 'react'
-import { Field as FieldRFF, Field } from 'react-final-form'
+import { Field as FieldRFF } from 'react-final-form'
 import {
     CustomAttributesSection,
     DefaultIdentifiableFields,
@@ -28,7 +28,7 @@ export const OrganisationalUnitGroupSetFormFields = () => {
                         'Set up the basic information for this organisation unit group set.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields section={section} />
                 <StandardFormField>
                     <DescriptionField />
                 </StandardFormField>
@@ -91,18 +91,7 @@ export const OrganisationalUnitGroupSetFormFields = () => {
                                     filter: ['name:ne:default'],
                                 },
                             }}
-                            leftHeader={i18n.t(
-                                'Available organisation unit groups'
-                            )}
-                            rightHeader={i18n.t(
-                                'Selected organisation unit groups'
-                            )}
-                            filterPlaceholder={i18n.t(
-                                'Filter available organisation unit groups'
-                            )}
-                            filterPlaceholderPicked={i18n.t(
-                                'Filter selected organisation unit groups'
-                            )}
+                            transferSection={SECTIONS_MAP.organisationUnitGroup}
                             maxSelections={Infinity}
                         />
                     </StandardFormField>

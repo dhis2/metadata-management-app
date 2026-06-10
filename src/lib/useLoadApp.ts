@@ -30,13 +30,7 @@ export type Schema = PickSchemaProperties<SchemaPropertyFields>
 export type ModelSchemas = ModelSchemasBase<Schema>
 
 // same fields as headbar-request to hit the cache
-const userFields = [
-    'authorities',
-    'avatar',
-    'email',
-    'name',
-    'settings',
-] as const
+const userFields = ['authorities', 'email', 'name', 'settings'] as const
 // workaround to widen the type, because useQuery() does not allow for
 // readonly types
 // also add complex field-filters that are not trivial to reuse for types

@@ -61,8 +61,11 @@ describe('Validation Notification form tests', () => {
                     <TestComponentWithRouter
                         path={`/${section.namePlural}`}
                         customData={{
-                            validationRules: () => ({ validationRules }),
-                            userGroups: () => ({ userGroups }),
+                            validationRules: () => ({
+                                validationRules,
+                                pager: {},
+                            }),
+                            userGroups: () => ({ userGroups, pager: {} }),
                             validationNotificationTemplates: (
                                 type: any,
                                 params: any

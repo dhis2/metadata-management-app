@@ -128,7 +128,9 @@ export const Component = () => {
                 ...dataSetValues.data,
                 displayOptions:
                     dataSetValues.data?.displayOptions &&
-                    JSON.parse(dataSetValues.data?.displayOptions),
+                    JSON.parse(
+                        dataSetValues.data?.displayOptions as unknown as string
+                    ),
             },
         [dataSetValues.data]
     )

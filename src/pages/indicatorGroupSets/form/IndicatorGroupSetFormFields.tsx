@@ -11,6 +11,7 @@ import {
     StandardFormSectionDescription,
     StandardFormSectionTitle,
 } from '../../../components'
+import { SECTIONS_MAP } from '../../../lib'
 
 function IndicatorGroupSetFormFields() {
     return (
@@ -24,7 +25,9 @@ function IndicatorGroupSetFormFields() {
                         'Set up the basic information for this indicator group set.'
                     )}
                 </StandardFormSectionDescription>
-                <DefaultIdentifiableFields />
+                <DefaultIdentifiableFields
+                    section={SECTIONS_MAP.indicatorGroupSet}
+                />
                 <StandardFormField>
                     <DescriptionField />
                 </StandardFormField>
@@ -59,14 +62,7 @@ function IndicatorGroupSetFormFields() {
                             query={{
                                 resource: 'indicatorGroups',
                             }}
-                            leftHeader={i18n.t('Available indicator groups')}
-                            rightHeader={i18n.t('Selected indicator groups')}
-                            filterPlaceholder={i18n.t(
-                                'Filter available indicator groups'
-                            )}
-                            filterPlaceholderPicked={i18n.t(
-                                'Filter selected indicator groups'
-                            )}
+                            transferSection={SECTIONS_MAP.indicatorGroup}
                             maxSelections={Infinity}
                             enableOrderChange={true}
                         />

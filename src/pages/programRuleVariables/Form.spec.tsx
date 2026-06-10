@@ -15,7 +15,7 @@ import { generateRenderer } from '../../testUtils/generateRenderer'
 import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
 import { uiActions } from '../../testUtils/uiActions'
 import { uiAssertions } from '../../testUtils/uiAssertions'
-import { ProgramRuleVariable } from '../../types/generated'
+import { ProgramRuleVariableSourceType, ValueType } from '../../types/generated'
 import { Component as Edit } from './Edit'
 import { Component as New } from './New'
 
@@ -429,8 +429,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE
+                        ProgramRuleVariableSourceType.DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -447,8 +446,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE
+                        ProgramRuleVariableSourceType.DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -476,8 +474,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE
+                        ProgramRuleVariableSourceType.DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -509,8 +506,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .DATAELEMENT_NEWEST_EVENT_PROGRAM
+                        ProgramRuleVariableSourceType.DATAELEMENT_NEWEST_EVENT_PROGRAM
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -539,8 +535,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .DATAELEMENT_CURRENT_EVENT
+                        ProgramRuleVariableSourceType.DATAELEMENT_CURRENT_EVENT
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -569,8 +564,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .DATAELEMENT_PREVIOUS_EVENT
+                        ProgramRuleVariableSourceType.DATAELEMENT_PREVIOUS_EVENT
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -599,8 +593,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .CALCULATED_VALUE
+                        ProgramRuleVariableSourceType.CALCULATED_VALUE
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -627,8 +620,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .CALCULATED_VALUE
+                        ProgramRuleVariableSourceType.CALCULATED_VALUE
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -652,8 +644,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .TEI_ATTRIBUTE
+                        ProgramRuleVariableSourceType.TEI_ATTRIBUTE
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -687,8 +678,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .DATAELEMENT_CURRENT_EVENT
+                        ProgramRuleVariableSourceType.DATAELEMENT_CURRENT_EVENT
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -716,8 +706,7 @@ describe('Program Rule Variable form tests', () => {
                     name: aName,
                     program: expectedProgram,
                     programRuleVariableSourceType:
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .DATAELEMENT_CURRENT_EVENT,
+                        ProgramRuleVariableSourceType.DATAELEMENT_CURRENT_EVENT,
                     dataElement: expectedDataElement,
                 }
                 const expectedCall = expect.objectContaining({
@@ -737,8 +726,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .CALCULATED_VALUE
+                        ProgramRuleVariableSourceType.CALCULATED_VALUE
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -752,9 +740,8 @@ describe('Program Rule Variable form tests', () => {
                     name: aName,
                     program: expectedProgram,
                     programRuleVariableSourceType:
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .CALCULATED_VALUE,
-                    valueType: ProgramRuleVariable.valueType.TEXT,
+                        ProgramRuleVariableSourceType.CALCULATED_VALUE,
+                    valueType: ValueType.TEXT,
                 }
                 const expectedCall = expect.objectContaining({
                     data: expect.objectContaining(expectedData),
@@ -773,8 +760,7 @@ describe('Program Rule Variable form tests', () => {
 
                 const sourceTypeOption = screen.getByLabelText(
                     getConstantTranslation(
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .TEI_ATTRIBUTE
+                        ProgramRuleVariableSourceType.TEI_ATTRIBUTE
                     )
                 )
                 await userEvent.click(sourceTypeOption)
@@ -805,8 +791,7 @@ describe('Program Rule Variable form tests', () => {
                     name: aName,
                     program: expectedProgram,
                     programRuleVariableSourceType:
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .TEI_ATTRIBUTE,
+                        ProgramRuleVariableSourceType.TEI_ATTRIBUTE,
                     trackedEntityAttribute: expectedTrackedEntityAttribute,
                 }
                 const expectedCall = expect.objectContaining({
@@ -857,8 +842,7 @@ describe('Program Rule Variable form tests', () => {
                     name: 'Existing Variable',
                     program: programs[0],
                     programRuleVariableSourceType:
-                        ProgramRuleVariable.programRuleVariableSourceType
-                            .DATAELEMENT_CURRENT_EVENT,
+                        ProgramRuleVariableSourceType.DATAELEMENT_CURRENT_EVENT,
                 })
 
                 const screen = render(

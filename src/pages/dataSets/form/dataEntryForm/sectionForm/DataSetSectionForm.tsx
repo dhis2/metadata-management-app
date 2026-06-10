@@ -67,22 +67,24 @@ export const DataSetSectionForm = ({
     onCancel,
 }: DataSetSectionFormProps) => {
     const dataSetId = useParams().id as string
-    const initialValues: PartialSectionFormValues | undefined = useMemo(() => {
-        if (dataSetSection) {
-            return {
-                ...dataSetSection,
-                displayOptions:
-                    dataSetSection?.displayOptions &&
-                    JSON.parse(dataSetSection?.displayOptions),
+
+    const initialValues: PartialSectionFormValues | undefined =
+        useMemo<any>(() => {
+            if (dataSetSection) {
+                return {
+                    ...dataSetSection,
+                    displayOptions:
+                        dataSetSection?.displayOptions &&
+                        JSON.parse(dataSetSection?.displayOptions),
+                }
             }
-        }
-        return {
-            ...initialSectionValues,
-            displayOptions:
-                initialSectionValues?.displayOptions &&
-                JSON.parse(initialSectionValues?.displayOptions),
-        }
-    }, [dataSetSection])
+            return {
+                ...initialSectionValues,
+                displayOptions:
+                    initialSectionValues?.displayOptions &&
+                    JSON.parse(initialSectionValues?.displayOptions),
+            }
+        }, [dataSetSection])
 
     const valueFormatter = useCallback(
         (values: PartialSectionFormValues) => {

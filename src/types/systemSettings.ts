@@ -1,4 +1,18 @@
-import { SmsConfiguration } from './models'
+import {
+    BulkSmsGatewayConfig,
+    ClickatellGatewayConfig,
+    GenericHttpGatewayConfig,
+    SMPPGatewayConfig,
+} from './models'
+
+type SmsConfiguration = {
+    gateways: Array<
+        | BulkSmsGatewayConfig
+        | GenericHttpGatewayConfig
+        | ClickatellGatewayConfig
+        | SMPPGatewayConfig
+    >
+}
 
 export type SystemSettings = {
     keyDateFormat: string

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { DEFAULT_CATEGORY_COMBO } from '../../../lib'
-import { Category, CategoryCombo } from '../../../types/generated'
+import { DataDimensionType } from '../../../types/generated'
 import { ProgramData, ProgramIndicatorData } from '../Edit'
 import {
     categoryMapping,
@@ -14,7 +14,7 @@ const getMappingType = (
         categories: {
             id: string
         }[]
-        dataDimensionType: Category.dataDimensionType
+        dataDimensionType: DataDimensionType
     }[]
 ) => {
     const inCombo = combos.find((combo) =>
@@ -84,15 +84,17 @@ export const apiResponseToFormValues = ({
                 if (!categoryMapping) {
                     return acc
                 }
-                const type = getMappingType(categoryMapping, [
-                    disAggCombo,
-                    attributeCombo,
-                ])
+                const type = getMappingType(
+                    categoryMapping,
+                    [disAggCombo, attributeCombo].filter(Boolean) as Parameters<
+                        typeof getMappingType
+                    >[1]
+                )
                 if (!type) {
                     return acc
                 }
                 const key =
-                    type === CategoryCombo.dataDimensionType.DISAGGREGATION
+                    type === DataDimensionType.DISAGGREGATION
                         ? 'disaggregation'
                         : 'attribute'
 

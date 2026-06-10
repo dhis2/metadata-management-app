@@ -19,7 +19,15 @@ import { TrackedEntityAttributeFormContents } from './form/TrackedEntityAttribut
 
 const section = SECTIONS_MAP.trackedEntityAttribute
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     const isSearchPerformanceAvailable = useFeatureAvailable(
         FEATURES.searchPerformance
     )
@@ -37,9 +45,14 @@ export const Component = () => {
 
     return (
         <FormBase
-            onSubmit={useOnSubmitNew({ section })}
+            onSubmit={useOnSubmitNew({
+                section,
+                onSubmitted,
+                redirectOnSubmitted,
+            })}
             initialValues={initialValues}
             validate={validate}
+            section={section}
         >
             {({ handleSubmit }) => {
                 return (
@@ -49,7 +62,7 @@ export const Component = () => {
                         >
                             <form onSubmit={handleSubmit}>
                                 <TrackedEntityAttributeFormContents />
-                                <DefaultFormFooter />
+                                {footer ?? <DefaultFormFooter />}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>

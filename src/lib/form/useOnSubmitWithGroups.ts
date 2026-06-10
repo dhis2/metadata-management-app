@@ -2,10 +2,12 @@ import { useAlert } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { useMemo } from 'react'
 import { ModelSection } from '../../types'
-import { IdentifiableObject } from '../../types/generated'
 import { useNavigateWithSearchState } from '../routeUtils'
 import { createFormError } from './createFormError'
-import { createJsonPatchOperations } from './createJsonPatchOperations'
+import {
+    ModelWithAttributeValues,
+    createJsonPatchOperations,
+} from './createJsonPatchOperations'
 import { useCreateModel } from './useCreateModel'
 import {
     EnhancedOnSubmit,
@@ -39,9 +41,7 @@ type UseOnSubmitEditWithGroupsOptions = {
     groupResource: string
 }
 
-export const useOnSubmitEditWithGroups = <
-    TFormValues extends IdentifiableObject
->({
+export const useOnSubmitEditWithGroups = <TFormValues extends { id?: string }>({
     section,
     modelId,
     groupResource,
@@ -70,7 +70,7 @@ export const useOnSubmitEditWithGroups = <
             })()
 
             const jsonPatchOperations = createJsonPatchOperations({
-                values: valuesForPatch,
+                values: valuesForPatch as ModelWithAttributeValues,
                 dirtyFields,
                 originalValue: initialValues,
             })
@@ -136,6 +136,8 @@ export const useOnSubmitEditWithGroups = <
 type UseOnSubmitNewWithGroupsOptions = {
     section: ModelSection
     groupResource: string
+    onSubmitted?: () => void
+    redirectOnSubmitted?: boolean
 }
 
 export const useOnSubmitNewWithGroups = <
@@ -143,6 +145,8 @@ export const useOnSubmitNewWithGroups = <
 >({
     section,
     groupResource,
+    onSubmitted,
+    redirectOnSubmitted = true,
 }: UseOnSubmitNewWithGroupsOptions) => {
     const createModel = useCreateModel(section.namePlural)
     const syncGroupMembership = useSyncGroupMembership({
@@ -209,9 +213,11 @@ export const useOnSubmitNewWithGroups = <
             onNewCompletedSuccessfully({
                 withChanges: true,
                 response,
-                navigateTo,
+                navigateTo: redirectOnSubmitted ? navigateTo : null,
                 submitAction: options?.submitAction,
             })
+
+            onSubmitted?.()
 
             return response
         },
@@ -223,6 +229,8 @@ export const useOnSubmitNewWithGroups = <
             navigate,
             section.namePlural,
             saveAlert,
+            onSubmitted,
+            redirectOnSubmitted,
         ]
     )
 }

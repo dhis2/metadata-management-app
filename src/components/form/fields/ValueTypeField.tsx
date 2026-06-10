@@ -5,8 +5,9 @@ import { useField, useFormState } from 'react-final-form'
 import { useParams } from 'react-router-dom'
 import {
     getConstantTranslation,
+    Section,
+    useGivenShemaOrSchemaSectionHandleOrThrow,
     useSchema,
-    useSchemaSectionHandleOrThrow,
 } from '../../../lib'
 import { ConfirmationModalWrapper } from '../../confirmationModal'
 
@@ -19,15 +20,17 @@ const valueTypeDisabledHelpText = i18n.t(
 export function ValueTypeField({
     disabled: externallyDisabled = false,
     disabledText,
+    section,
     required = false,
 }: Readonly<{
     disabled?: boolean
     disabledText?: string
     required?: boolean
+    section?: Section
 }>) {
     const { values } = useFormState({ subscription: { values: true } })
     const disabled = !!values.optionSet?.id || externallyDisabled
-    const schemaSection = useSchemaSectionHandleOrThrow()
+    const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({ section })
     const schema = useSchema(schemaSection.name)
 
     const isEdit = !!useParams().id

@@ -20,11 +20,11 @@ import {
     useBoundResourceQueryFn,
 } from '../../lib'
 import {
-    ModelCollectionResponse,
+    DataDimensionType,
     PickWithFieldFilters,
     Program,
-    ProgramIndicator,
 } from '../../types/generated'
+import { PagedResponse } from '../../types/generated/utility'
 import { ProgramDisaggregationFormFields } from './form'
 import { apiResponseToFormValues } from './form/apiResponseToFormValues'
 import { ProgramDisaggregationFormValues } from './form/programDisaggregationSchema'
@@ -51,8 +51,41 @@ const programIndicatorFieldFilters = [
 ] as const
 
 export type ProgramData = PickWithFieldFilters<Program, typeof fieldFilters>
-export type ProgramIndicatorData = ModelCollectionResponse<
-    PickWithFieldFilters<ProgramIndicator, typeof programIndicatorFieldFilters>,
+
+type ProgramIndicatorCategoryOption = { id: string; displayName: string }
+type ProgramIndicatorCategory = {
+    id: string
+    displayName: string
+    name: string
+    dataDimensionType: DataDimensionType
+    categories?: {
+        id: string
+        displayName: string
+        name: string
+        dataDimensionType: DataDimensionType
+        categoryOptions: ProgramIndicatorCategoryOption[]
+    }[]
+    categoryOptions: ProgramIndicatorCategoryOption[]
+}
+type ProgramIndicatorCombo = {
+    id: string
+    displayName: string
+    dataDimensionType: DataDimensionType
+    categories: ProgramIndicatorCategory[]
+}
+type ProgramIndicatorItem = {
+    id: string
+    name: string
+    displayName: string
+    categoryMappingIds: string[]
+    attributeCombo?: ProgramIndicatorCombo
+    categoryCombo?: ProgramIndicatorCombo
+    aggregateExportDataElement?: string
+    aggregateExportCategoryOptionCombo?: string
+    aggregateExportAttributeOptionCombo?: string
+}
+export type ProgramIndicatorData = PagedResponse<
+    ProgramIndicatorItem,
     'programIndicators'
 >
 export type ProgramIndicatorWithMapping = {

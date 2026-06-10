@@ -6,11 +6,11 @@ import {
     IconDuplicate16,
     IconEdit16,
     IconInfo16,
-    IconLaunch16,
     IconShare16,
     IconSync16,
     IconTranslate16,
     IconView16,
+    IconVisualizationPivotTable16,
     MenuItem,
     Popover,
 } from '@dhis2/ui'
@@ -33,22 +33,22 @@ import {
     canDeleteModel,
     canEditModel,
 } from '../../../lib'
-import { SqlView } from '../../../types/generated'
+import { SqlViewType } from '../../../types/generated'
 
 type SqlViewListModel = BaseListModel & {
-    type?: SqlView.type
+    type?: SqlViewType
 }
 export type SqlViewActionResult = {
     success: boolean
     errorMessage?: string
 }
 
-export const getRunActionLabel = (type: SqlView.type | undefined) => {
+export const getRunActionLabel = (type: SqlViewType | undefined) => {
     switch (type) {
-        case SqlView.type.QUERY:
+        case SqlViewType.QUERY:
             return i18n.t('Run query')
-        case SqlView.type.MATERIALIZED_VIEW:
-        case SqlView.type.VIEW:
+        case SqlViewType.MATERIALIZED_VIEW:
+        case SqlViewType.VIEW:
         default:
             return i18n.t('Create or update view')
     }
@@ -64,35 +64,21 @@ export const useRunSqlView = () => {
     const [running, setRunning] = useState(false)
 
     const run = useCallback(
-        async (
-            id: string,
-            type: SqlView.type
-        ): Promise<SqlViewActionResult> => {
-            if (type === SqlView.type.QUERY) {
+        async (id: string, type: SqlViewType): Promise<SqlViewActionResult> => {
+            if (type === SqlViewType.QUERY) {
                 return { success: true }
             }
             setRunning(true)
 
             try {
-                if (type === SqlView.type.MATERIALIZED_VIEW) {
-                    await dataEngine.mutate({
-                        resource: `sqlViews/${id}/refresh`,
-                        type: 'create',
-                        data: {},
-                    })
-                    successAlert.show({
-                        message: i18n.t('Materialized view refreshed.'),
-                    })
-                } else {
-                    await dataEngine.mutate({
-                        resource: `sqlViews/${id}/execute`,
-                        type: 'create',
-                        data: {},
-                    })
-                    successAlert.show({
-                        message: i18n.t('SQL view created or updated.'),
-                    })
-                }
+                await dataEngine.mutate({
+                    resource: `sqlViews/${id}/execute`,
+                    type: 'create',
+                    data: {},
+                })
+                successAlert.show({
+                    message: i18n.t('SQL view created or updated.'),
+                })
                 return { success: true }
             } catch (error) {
                 const errorMessage =
@@ -113,6 +99,52 @@ export const useRunSqlView = () => {
     )
 
     return { run, running }
+}
+
+export const useRefreshMaterializedView = () => {
+    const dataEngine = useDataEngine()
+    const successAlert = useAlert(({ message }) => message, {
+        success: true,
+        duration: 3000,
+    })
+    const errorAlert = useAlert(({ message }) => message, { critical: true })
+    const [running, setRunning] = useState(false)
+
+    const refresh = useCallback(
+        async (id: string): Promise<SqlViewActionResult> => {
+            setRunning(true)
+
+            try {
+                await dataEngine.mutate({
+                    resource: `sqlViews/${id}/refresh`,
+                    type: 'create',
+                    data: {},
+                })
+                successAlert.show({
+                    message: i18n.t('Materialized view data refreshed.'),
+                })
+                return { success: true }
+            } catch (error) {
+                const errorMessage =
+                    (error as Error).message ??
+                    i18n.t('An unknown error occurred.')
+                errorAlert.show({
+                    message: i18n.t(
+                        'Could not refresh materialized view: {{error}}',
+                        {
+                            error: errorMessage,
+                        }
+                    ),
+                })
+                return { success: false, errorMessage }
+            } finally {
+                setRunning(false)
+            }
+        },
+        [dataEngine, successAlert, errorAlert]
+    )
+
+    return { refresh, running }
 }
 
 export const SqlViewActions = ({
@@ -136,6 +168,7 @@ export const SqlViewActions = ({
     const preservedSearchState = useLocationSearchState()
     const queryClient = useQueryClient()
     const { run, running } = useRunSqlView()
+    const { refresh, running: refreshRunning } = useRefreshMaterializedView()
 
     const handleEditClick = useLinkClickHandler(
         { pathname: model.id },
@@ -146,7 +179,7 @@ export const SqlViewActions = ({
         search: `?clonedId=${model.id}`,
     })
 
-    const isQuery = sqlViewModel.type === SqlView.type.QUERY
+    const isQuery = sqlViewModel.type === SqlViewType.QUERY
 
     const handleRun = async () => {
         if (isQuery) {
@@ -158,6 +191,16 @@ export const SqlViewActions = ({
             return
         }
         const result = await run(model.id, sqlViewModel.type)
+        if (result.success) {
+            queryClient.invalidateQueries({
+                queryKey: [{ resource: `sqlViews/${model.id}/data` }],
+            })
+        }
+        setOpen(false)
+    }
+
+    const handleRefresh = async () => {
+        const result = await refresh(model.id)
         if (result.success) {
             queryClient.invalidateQueries({
                 queryKey: [{ resource: `sqlViews/${model.id}/data` }],
@@ -213,18 +256,25 @@ export const SqlViewActions = ({
                                 dense
                                 disabled={running || !editable}
                                 label={getRunActionLabel(sqlViewModel.type)}
-                                icon={
-                                    sqlViewModel.type === SqlView.type.QUERY ? (
-                                        <IconLaunch16 />
-                                    ) : (
-                                        <IconSync16 />
-                                    )
-                                }
+                                icon={<IconSync16 />}
                                 onClick={handleRun}
                                 dataTest={`row-actions-run-${
                                     sqlViewModel.type ?? 'view'
                                 }`}
                             />
+                            {sqlViewModel.type ===
+                                SqlViewType.MATERIALIZED_VIEW && (
+                                <MenuItem
+                                    dense
+                                    disabled={refreshRunning || !editable}
+                                    label={i18n.t('Refresh data')}
+                                    icon={<IconVisualizationPivotTable16 />}
+                                    onClick={handleRefresh}
+                                    dataTest={`row-actions-run-${
+                                        sqlViewModel.type ?? 'view'
+                                    }`}
+                                />
+                            )}
                             <TooltipWrapper
                                 condition={!editable}
                                 content={TOOLTIPS.noEditAccess}

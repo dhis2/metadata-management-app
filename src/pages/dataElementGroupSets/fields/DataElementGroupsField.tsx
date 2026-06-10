@@ -1,6 +1,6 @@
-import i18n from '@dhis2/d2-i18n'
 import React from 'react'
 import { ModelTransferField } from '../../../components'
+import { SECTIONS_MAP } from '../../../lib'
 
 export function DataElementGroupsField() {
     return (
@@ -13,12 +13,7 @@ export function DataElementGroupsField() {
                     fields: ['id', 'displayName'],
                 },
             }}
-            leftHeader={i18n.t('Available data element groups')}
-            rightHeader={i18n.t('Selected data element groups')}
-            filterPlaceholder={i18n.t('Filter available data element groups')}
-            filterPlaceholderPicked={i18n.t(
-                'Filter selected data element groups'
-            )}
+            transferSection={SECTIONS_MAP.dataElementGroup}
             maxSelections={Infinity}
             enableOrderChange={true}
         />

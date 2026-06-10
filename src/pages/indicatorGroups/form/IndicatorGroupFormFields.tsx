@@ -51,14 +51,7 @@ function IndicatorGroupFormFields() {
                             query={{
                                 resource: 'indicators',
                             }}
-                            leftHeader={i18n.t('Available indicators')}
-                            rightHeader={i18n.t('Selected indicators')}
-                            filterPlaceholder={i18n.t(
-                                'Filter available indicators'
-                            )}
-                            filterPlaceholderPicked={i18n.t(
-                                'Filter selected indicators'
-                            )}
+                            transferSection={SECTIONS_MAP.indicator}
                             filterUnassignedTo={'indicatorGroups'}
                             maxSelections={Infinity}
                         />

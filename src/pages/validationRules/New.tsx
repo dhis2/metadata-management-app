@@ -13,12 +13,25 @@ import { initialValues, validate } from './form/validationRuleSchema'
 
 const section = SECTIONS_MAP.validationRule
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
-            onSubmit={useOnSubmitNew({ section })}
+            onSubmit={useOnSubmitNew({
+                section,
+                onSubmitted,
+                redirectOnSubmitted,
+            })}
             initialValues={initialValues}
             validate={validate}
+            section={section}
         >
             {({ handleSubmit }) => {
                 return (
@@ -30,7 +43,9 @@ export const Component = () => {
                         >
                             <form onSubmit={handleSubmit}>
                                 <ValidationRuleFormFields />
-                                <DefaultFormFooter cancelTo="/validationRules" />
+                                {footer ?? (
+                                    <DefaultFormFooter cancelTo="/validationRules" />
+                                )}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>

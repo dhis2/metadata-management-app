@@ -1,4 +1,4 @@
-export { DefaultIdentifiableFields } from './DefaultIdentifibleFIelds'
+export { DefaultIdentifiableFields } from './DefaultIdentifibleFields'
 export { NameField } from './NameField'
 export { NameFieldWithAdditionalUniquenessConstraint } from './NameFieldWithAdditionalUniquenessConstraint'
 export { ShortNameField } from './ShortNameField'

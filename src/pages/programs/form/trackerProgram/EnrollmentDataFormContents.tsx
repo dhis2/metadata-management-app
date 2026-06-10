@@ -13,7 +13,7 @@ import {
 import React, { useEffect, useRef } from 'react'
 import { Field as FieldRFF, useField } from 'react-final-form'
 import {
-    ModelTransfer,
+    ModelTransferFrom,
     RenderingOptionsSelect,
     SectionedFormSection,
     StandardFormSectionDescription,
@@ -24,7 +24,31 @@ import {
     InfoIconWithTooltip,
     TooltipWrapper,
 } from '../../../../components/tooltip'
-import { ProgramTrackedEntityAttribute } from '../../../../types/generated'
+import { SECTIONS_MAP } from '../../../../lib'
+type TEAOptionSet = {
+    id: string
+    displayName?: string
+    options?: { code: string; displayName: string }[]
+}
+type ProgramTrackedEntityAttribute = {
+    id?: string
+    mandatory?: boolean
+    searchable?: boolean
+    displayInList?: boolean
+    renderOptionsAsRadio?: boolean
+    renderType?: Record<string, { type: string }>
+    valueType?: string
+    optionSet?: TEAOptionSet
+    allowFutureDate?: boolean
+    sortOrder?: number
+    trackedEntityAttribute: {
+        id: string
+        displayName: string
+        valueType?: string
+        unique?: boolean
+        optionSet?: TEAOptionSet
+    }
+}
 import { ProgramsFromFilters } from '../../EditTrackerProgram'
 
 const defaultRenderType = {
@@ -34,14 +58,13 @@ const defaultRenderType = {
 
 export const EnrollmentDataFormContents = React.memo(
     function SetupFormContents({ name }: { name: string }) {
-        const { input, meta } = useField<
-            (ProgramsFromFilters['programTrackedEntityAttributes'][0] & {
-                optionSet?: { id: string }
-            })[]
-        >('programTrackedEntityAttributes', {
-            multiple: true,
-            validateFields: [],
-        })
+        const { input, meta } = useField<ProgramTrackedEntityAttribute[]>(
+            'programTrackedEntityAttributes',
+            {
+                multiple: true,
+                validateFields: [],
+            }
+        )
 
         const trackedEntityTypeField = useField<
             ProgramsFromFilters['trackedEntityType']
@@ -148,7 +171,8 @@ export const EnrollmentDataFormContents = React.memo(
                     name={name}
                     className={css.moduleTransferField}
                 >
-                    <ModelTransfer
+                    <ModelTransferFrom
+                        transferSection={SECTIONS_MAP.trackedEntityAttribute}
                         selected={input.value.map((attribute) => {
                             const tea = attribute.trackedEntityAttribute
                             return {
@@ -213,18 +237,6 @@ export const EnrollmentDataFormContents = React.memo(
                             input.onChange(selectedAttributes)
                             input.onBlur()
                         }}
-                        leftHeader={i18n.t(
-                            'Available tracked entity attributes'
-                        )}
-                        rightHeader={i18n.t(
-                            'Selected tracked entity attributes'
-                        )}
-                        filterPlaceholder={i18n.t(
-                            'Filter available tracked entity attributes'
-                        )}
-                        filterPlaceholderPicked={i18n.t(
-                            'Filter selected tracked entity attributes'
-                        )}
                         query={{
                             resource: 'trackedEntityAttributes',
                             params: {
@@ -326,7 +338,7 @@ export const EnrollmentDataFormContents = React.memo(
                                         <TooltipWrapper
                                             condition={
                                                 attribute.trackedEntityAttribute
-                                                    .unique
+                                                    .unique ?? false
                                             }
                                             content={i18n.t(
                                                 'Unique attributes are always searchable'
@@ -376,7 +388,9 @@ export const EnrollmentDataFormContents = React.memo(
                                             fieldName="programTrackedEntityAttributes"
                                             index={index}
                                             device="DESKTOP"
-                                            valueType={attribute.valueType}
+                                            valueType={
+                                                attribute.valueType ?? ''
+                                            }
                                             hasOptionSet={
                                                 !!attribute.optionSet?.id ||
                                                 !!attribute
@@ -390,7 +404,9 @@ export const EnrollmentDataFormContents = React.memo(
                                             fieldName="programTrackedEntityAttributes"
                                             index={index}
                                             device="MOBILE"
-                                            valueType={attribute.valueType}
+                                            valueType={
+                                                attribute.valueType ?? ''
+                                            }
                                             hasOptionSet={
                                                 !!attribute.optionSet?.id ||
                                                 !!attribute

@@ -113,6 +113,7 @@ function OptionGroupSetFormFields() {
                                 'Filter selected option groups'
                             )}
                             maxSelections={Infinity}
+                            leftFooter={<></>}
                         />
                     </StandardFormField>
                 ) : (

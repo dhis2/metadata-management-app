@@ -70,7 +70,7 @@ describe('Icons list', () => {
                 name: faker.person.fullName(),
                 email: faker.internet.email(),
                 settings: {},
-            })
+            } as any)
 
             const screen = render(
                 <TestComponentWithRouter

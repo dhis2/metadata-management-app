@@ -88,12 +88,12 @@ import {
 } from '../pages/validationRuleGroups/form/validationRuleGroupsSchema'
 import { validationRuleListSchema } from '../pages/validationRules/form/validationRuleSchema'
 import {
-    CategoryMapping,
-    DataElement,
-    OptionMapping,
+    ProgramCategoryMapping,
+    ProgramCategoryOptionMapping,
     OrganisationUnit,
-    Program,
-    ProgramTrackedEntityAttribute,
+    ProgramType,
+    ValueType,
+    ProgramTrackedEntityAttributeParams,
 } from '../types/generated'
 
 const { withDefaultListColumns } = modelFormSchemas
@@ -434,7 +434,7 @@ export const testCategoryMapping = ({
     id = randomDhis2Id(),
     categoryId = randomDhis2Id(),
     mappingName = faker.company.name(),
-    optionMappings = [] as OptionMapping[],
+    optionMappings = [] as ProgramCategoryOptionMapping[],
 } = {}) => ({
     id,
     categoryId,
@@ -511,20 +511,21 @@ export const testCustomAttribute = ({
 export const testProgram = ({
     id = randomDhis2Id(),
     name = faker.person.fullName(),
-    categoryMappings = [] as CategoryMapping[],
+    categoryMappings = [] as ProgramCategoryMapping[],
     programType = randomValueIn([
         'WITH_REGISTRATION',
         'WITHOUT_REGISTRATION',
-    ]) as Program.programType,
-    programTrackedEntityAttributes = [] as ProgramTrackedEntityAttribute[],
-} = {}) => ({
-    id,
-    name,
-    displayName: name,
-    categoryMappings,
-    programType,
-    programTrackedEntityAttributes,
-})
+    ]) as ProgramType,
+    programTrackedEntityAttributes = [] as ProgramTrackedEntityAttributeParams[],
+} = {}) =>
+    ({
+        id,
+        name,
+        displayName: name,
+        categoryMappings,
+        programType,
+        programTrackedEntityAttributes,
+    } as unknown as import('../types/generated').Program)
 
 export const testLegendSet = ({
     id = randomDhis2Id(),
@@ -613,7 +614,7 @@ export const testPredictorGroup = (overwrites: Record<any, any> = {}) => ({
 export const testOptionSet = ({
     id = randomDhis2Id(),
     displayName = faker.person.fullName(),
-    valueType = randomValueIn(Object.keys(DataElement.valueType)),
+    valueType = randomValueIn(Object.values(ValueType)) as ValueType,
 } = {}) => ({
     id,
     displayName,

@@ -34,7 +34,7 @@ export const generateRenderer =
         }
         useCurrentUserStore.getState().setCurrentUser({
             organisationUnits: [testOrgUnit()] as OrganisationUnit[],
-            authorities: new Set(),
+            authorities: new Set<string>(),
             name: faker.person.fullName(),
             email: faker.internet.email(),
             settings: {},

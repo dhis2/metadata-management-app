@@ -41,7 +41,7 @@ const renderList = async ({
         name: faker.person.fullName(),
         email: faker.internet.email(),
         settings: {},
-    })
+    } as any)
 
     const result = render(
         <TestComponentWithRouter
