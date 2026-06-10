@@ -1,3 +1,10 @@
+## [0.159.3](https://github.com/dhis2/metadata-management-app/compare/v0.159.2...v0.159.3) (2026-06-10)
+
+
+### Bug Fixes
+
+* icons list public access default columns ([#956](https://github.com/dhis2/metadata-management-app/issues/956)) ([1a3ba8b](https://github.com/dhis2/metadata-management-app/commit/1a3ba8b3049af1af129d0f9e7e35cd0ab484f636))
+
 ## [0.159.2](https://github.com/dhis2/metadata-management-app/compare/v0.159.1...v0.159.2) (2026-06-01)
 
 
