@@ -48,7 +48,7 @@ export type ModelTranferProps<
     newItemFormHeader?: string
 }
 
-export type ModelTranferPropsFor<
+export type ModelTransferPropsFor<
     TModel extends DisplayableModel,
     TModelData
 > = Omit<
@@ -69,7 +69,7 @@ export const ModelTransferFrom = <
 >({
     transferSection,
     ...rest
-}: ModelTranferPropsFor<TModel, TModelData>) => {
+}: ModelTransferPropsFor<TModel, TModelData>) => {
     const [NewItemForm, setNewItemForm] = useState<
         NewItemFormComponent | undefined
     >()
