@@ -40,11 +40,13 @@ import { StageFormDescriptor } from './stageFormDescriptor'
 import { StageFormFormContents } from './StageFormFormContents'
 
 export const StageFormContents = ({
-    isSubsection,
+    isSubsection = false,
     setSelectedSection,
+    programField,
 }: {
-    isSubsection: boolean
-    setSelectedSection: (name: string) => void
+    isSubsection?: boolean
+    setSelectedSection?: (name: string) => void
+    programField?: React.ReactNode
 }) => {
     const { values } = useFormState({ subscription: { values: true } })
     const descriptor = useSectionedFormContext<typeof StageFormDescriptor>()
@@ -84,6 +86,9 @@ export const StageFormContents = ({
                             'Configure the basic information for this program stage.'
                         )}
                     </StandardFormSectionDescription>
+                    {programField && (
+                        <StandardFormField>{programField}</StandardFormField>
+                    )}
                     <NameField schemaSection={SCHEMA_SECTIONS.programStage} />
                     <StandardFormField>
                         <DescriptionField />

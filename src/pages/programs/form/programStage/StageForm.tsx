@@ -15,17 +15,12 @@ import {
     SectionedFormLayout,
 } from '../../../../components'
 import { DrawerSectionedFormSidebar } from '../../../../components/drawer/DrawerSectionedFormSidebar'
-import { Section } from '../../../../components/formCreators/SectionFormList'
 import { LoadingSpinner } from '../../../../components/loading/LoadingSpinner'
 import { useHandleOnSubmitEditFormDeletions } from '../../../../components/sectionedForm/useHandleOnSubmitEditFormDeletions'
 import {
-    ATTRIBUTE_VALUES_FIELD_FILTERS,
     createFormError,
     createJsonPatchOperations,
-    DEFAULT_FIELD_FILTERS,
     getAllAttributeValues,
-    SchemaName,
-    SchemaSection,
     SectionedFormProvider,
     SECTIONS_MAP,
     useBoundResourceQueryFn,
@@ -33,74 +28,21 @@ import {
     useCustomAttributesQuery,
     usePatchModel,
 } from '../../../../lib'
-import {
-    DisplayableModel,
-    PickWithFieldFilters,
-    ProgramStage,
-} from '../../../../types/models'
+import { DisplayableModel } from '../../../../types/models'
 import { StageFormContents } from './StageFormContents'
 import { StageFormDescriptor } from './stageFormDescriptor'
+import {
+    fieldFilters,
+    PartialStageFormValues,
+    stageSchemaSection,
+    StageFormValues,
+    SubmittedStageFormValues,
+} from './stageFormShared'
 import { initialStageValue } from './stageSchema'
 
-export const fieldFilters = [
-    ...DEFAULT_FIELD_FILTERS,
-    ...ATTRIBUTE_VALUES_FIELD_FILTERS,
-    'name',
-    'description',
-    'style[color,icon]',
-    'enableUserAssignment',
-    'featureType',
-    'validationStrategy',
-    'preGenerateUID',
-    'executionDateLabel',
-    'dueDateLabel',
-    'programStageLabel',
-    'eventLabel',
-    'programStageSections[id,displayName,dataElements[id]]',
-    'programStageDataElements[id,dataElement[id,displayName,valueType,optionSet],compulsory,displayInReports,allowFutureDate,skipAnalytics,skipSynchronization,renderType,sortOrder]',
-    'dataEntryForm[id,displayName,htmlCode]',
-    'repeatable',
-    'standardInterval',
-    'generatedByEnrollmentDate',
-    'autoGenerateEvent',
-    'openAfterEnrollment',
-    'reportDateToUse',
-    'minDaysFromStart',
-    'hideDueDate',
-    'periodType',
-    'nextScheduleDate[id,displayName,valueType]',
-    'blockEntryForm',
-    'allowGenerateNextVisit',
-    'remindCompleted',
-] as const
-
-export const stageSchemaSection = {
-    name: SchemaName.programStage,
-    namePlural: 'programStages',
-    title: i18n.t('Stage'),
-    titlePlural: i18n.t('Stages'),
-    parentSectionKey: 'programs',
-} satisfies SchemaSection
-
-export type StageFormValuesFromFilters = PickWithFieldFilters<
-    ProgramStage,
-    typeof fieldFilters
-> & {
-    program: { id: string }
-}
-
-export type StageFormValues = Omit<
-    StageFormValuesFromFilters,
-    'programStageSections' | 'dataEntryForm'
-> & {
-    programStageSections: Section[]
-    dataEntryForm: StageFormValuesFromFilters['dataEntryForm'] & {
-        deleted?: boolean
-    }
-}
-
-type PartialStageFormValues = Partial<StageFormValues>
-export type SubmittedStageFormValues = PartialStageFormValues & DisplayableModel
+export { fieldFilters, stageSchemaSection }
+export type { StageFormValues, SubmittedStageFormValues }
+export type { StageFormValuesFromFilters } from './stageFormShared'
 
 const StageFormDrawerWithFooter = ({
     form,
