@@ -764,6 +764,98 @@ export const modelListViewsConfig = {
             overrideDefaultAvailable: true,
         },
     },
+    programStage: {
+        columns: {
+            default: [
+                DESCRIPTORS.name,
+                { label: i18n.t('Program'), path: 'program.displayName' },
+                DESCRIPTORS.publicAccess,
+                'lastUpdated',
+            ],
+            available: [
+                'description',
+                { label: i18n.t('Location type'), path: 'featureType' },
+                {
+                    label: i18n.t('Allow events to be assigned to users'),
+                    path: 'enableUserAssignment',
+                },
+                {
+                    label: i18n.t('Allow multiple events in this stage'),
+                    path: 'repeatable',
+                },
+                {
+                    label: i18n.t('Standard interval days'),
+                    path: 'standardInterval',
+                },
+                {
+                    label: i18n.t('Default next scheduled date'),
+                    path: 'nextScheduleDate.displayName',
+                },
+                { label: i18n.t('Period type'), path: 'periodType' },
+                {
+                    label: i18n.t('Validation strategy'),
+                    path: 'validationStrategy',
+                },
+                {
+                    label: i18n.t('Generate offline event IDs'),
+                    path: 'preGenerateUID',
+                },
+                {
+                    label: i18n.t(
+                        'Ask user to create a new event after completion'
+                    ),
+                    path: 'allowGenerateNextVisit',
+                },
+                {
+                    label: i18n.t(
+                        'Ask user to complete enrollment after completion'
+                    ),
+                    path: 'remindCompleted',
+                },
+                {
+                    label: i18n.t('Block data entry after completion'),
+                    path: 'blockEntryForm',
+                },
+                {
+                    label: i18n.t(
+                        'Create an event in this stage on enrollment'
+                    ),
+                    path: 'autoGenerateEvent',
+                },
+                {
+                    label: i18n.t('Open data entry form after enrollment'),
+                    path: 'openAfterEnrollment',
+                },
+                {
+                    label: i18n.t('Date to use for created event report date'),
+                    path: 'reportDateToUse',
+                },
+                {
+                    label: i18n.t('Scheduled days from reference date'),
+                    path: 'minDaysFromStart',
+                },
+                {
+                    label: i18n.t('Reference date for scheduling'),
+                    path: 'generatedByEnrollmentDate',
+                },
+                { label: i18n.t('Hide scheduled date'), path: 'hideDueDate' },
+                {
+                    label: i18n.t('Custom label for report date'),
+                    path: 'executionDateLabel',
+                },
+                {
+                    label: i18n.t('Custom label for due date'),
+                    path: 'dueDateLabel',
+                },
+            ],
+            overrideDefaultAvailable: true,
+        },
+        filters: {
+            default: ['program'],
+            available: [],
+            overrideDefaultAvailable: true,
+        },
+    },
     attribute: {
         columns: {
             default: [
