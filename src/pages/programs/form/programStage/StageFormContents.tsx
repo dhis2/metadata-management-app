@@ -52,6 +52,9 @@ export const StageFormContents = ({
     const showValidationStrategy = useFeatureAvailable(
         FEATURES.validationStrategy
     )
+    const showPluralLabels = useFeatureAvailable(
+        FEATURES.customTerminologyPlurals
+    )
 
     const executionDateLabelValidator = useValidator({
         schemaSection: stageSchemaSection,
@@ -68,6 +71,10 @@ export const StageFormContents = ({
     const eventLabelValidator = useValidator({
         schemaSection: stageSchemaSection,
         property: 'eventLabel',
+    })
+    const eventsLabelValidator = useValidator({
+        schemaSection: stageSchemaSection,
+        property: 'eventsLabel',
     })
 
     return (
@@ -236,6 +243,20 @@ export const StageFormContents = ({
                             validate={eventLabelValidator}
                         />
                     </StandardFormField>
+                    {showPluralLabels && (
+                        <StandardFormField>
+                            <Field
+                                component={InputFieldFF}
+                                name="eventsLabel"
+                                inputWidth="400px"
+                                label={i18n.t(
+                                    'Custom label for event (plural)'
+                                )}
+                                dataTest="formfields-eventsLabel"
+                                validate={eventsLabelValidator}
+                            />
+                        </StandardFormField>
+                    )}
                 </SectionedFormSection>
                 <CustomAttributesSection
                     schemaSection={SCHEMA_SECTIONS.programStage}

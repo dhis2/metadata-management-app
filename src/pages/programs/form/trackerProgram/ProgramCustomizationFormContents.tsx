@@ -8,11 +8,19 @@ import {
     StandardFormSectionDescription,
     StandardFormSectionTitle,
 } from '../../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../lib'
+import {
+    FEATURES,
+    useFeatureAvailable,
+    useSchemaSectionHandleOrThrow,
+    useValidator,
+} from '../../../../lib'
 
 export const ProgramCustomizationFormContents = React.memo(
     function ProgramCustomizationFormContents({ name }: { name: string }) {
         const schemaSection = useSchemaSectionHandleOrThrow()
+        const showPluralLabels = useFeatureAvailable(
+            FEATURES.customTerminologyPlurals
+        )
         const incidentDateLabelValidator = useValidator({
             schemaSection,
             property: 'incidentDateLabel',
@@ -25,13 +33,25 @@ export const ProgramCustomizationFormContents = React.memo(
             schemaSection,
             property: 'enrollmentLabel',
         })
+        const enrollmentsLabelValidator = useValidator({
+            schemaSection,
+            property: 'enrollmentsLabel',
+        })
         const eventLabelValidator = useValidator({
             schemaSection,
             property: 'eventLabel',
         })
+        const eventsLabelValidator = useValidator({
+            schemaSection,
+            property: 'eventsLabel',
+        })
         const programStageLabelValidator = useValidator({
             schemaSection,
             property: 'programStageLabel',
+        })
+        const programStagesLabelValidator = useValidator({
+            schemaSection,
+            property: 'programStagesLabel',
         })
         const followUpLabelValidator = useValidator({
             schemaSection,
@@ -104,6 +124,25 @@ export const ProgramCustomizationFormContents = React.memo(
                     />
                 </StandardFormField>
 
+                {showPluralLabels && (
+                    <StandardFormField>
+                        <Field
+                            component={InputFieldFF}
+                            name="enrollmentsLabel"
+                            inputWidth="400px"
+                            label={i18n.t(
+                                'Custom label for "Enrollment" (plural)'
+                            )}
+                            helpText={i18n.t(
+                                'Example use: See all enrollments',
+                                { nsSeparator: '~:~' }
+                            )}
+                            dataTest="formfields-enrollmentsLabel"
+                            validate={enrollmentsLabelValidator}
+                        />
+                    </StandardFormField>
+                )}
+
                 <StandardFormField>
                     <Field
                         component={InputFieldFF}
@@ -117,6 +156,22 @@ export const ProgramCustomizationFormContents = React.memo(
                         validate={eventLabelValidator}
                     />
                 </StandardFormField>
+
+                {showPluralLabels && (
+                    <StandardFormField>
+                        <Field
+                            component={InputFieldFF}
+                            name="eventsLabel"
+                            inputWidth="400px"
+                            label={i18n.t('Custom label for "Event" (plural)')}
+                            helpText={i18n.t('Example use: See all events', {
+                                nsSeparator: '~:~',
+                            })}
+                            dataTest="formfields-eventsLabel"
+                            validate={eventsLabelValidator}
+                        />
+                    </StandardFormField>
+                )}
 
                 <StandardFormField>
                     <Field
@@ -132,6 +187,25 @@ export const ProgramCustomizationFormContents = React.memo(
                         validate={programStageLabelValidator}
                     />
                 </StandardFormField>
+
+                {showPluralLabels && (
+                    <StandardFormField>
+                        <Field
+                            component={InputFieldFF}
+                            name="programStagesLabel"
+                            inputWidth="400px"
+                            label={i18n.t(
+                                'Custom label for "Program stage" (plural)'
+                            )}
+                            helpText={i18n.t(
+                                'Example use: See all program stages',
+                                { nsSeparator: '~:~' }
+                            )}
+                            dataTest="formfields-programStagesLabel"
+                            validate={programStagesLabelValidator}
+                        />
+                    </StandardFormField>
+                )}
 
                 <StandardFormField>
                     <Field

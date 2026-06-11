@@ -24,6 +24,7 @@ export const stageSchema = identifiable.merge(withAttributeValues).extend({
     dueDateLabel: z.string().optional(),
     programStageLabel: z.string().optional(),
     eventLabel: z.string().optional(),
+    eventsLabel: z.string().optional(),
     program: modelReference,
     programStageDataElements: referenceCollection.default([]),
     repeatable: z.boolean().optional(),

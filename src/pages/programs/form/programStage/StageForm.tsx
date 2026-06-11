@@ -56,6 +56,7 @@ export const fieldFilters = [
     'dueDateLabel',
     'programStageLabel',
     'eventLabel',
+    'eventsLabel',
     'programStageSections[id,displayName,dataElements[id]]',
     'programStageDataElements[id,dataElement[id,displayName,valueType,optionSet],compulsory,displayInReports,allowFutureDate,skipAnalytics,skipSynchronization,renderType,sortOrder]',
     'dataEntryForm[id,displayName,htmlCode]',

@@ -17,6 +17,10 @@ export const TrackedEntityTypeFormDescriptor = {
                     label: i18n.t('Name'),
                 },
                 {
+                    name: 'trackedEntityTypesLabel',
+                    label: i18n.t('Name (Plural)'),
+                },
+                {
                     name: 'shortName',
                     label: i18n.t('Short name'),
                 },

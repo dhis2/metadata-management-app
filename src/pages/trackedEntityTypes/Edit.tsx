@@ -29,6 +29,7 @@ const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
     'name',
+    'trackedEntityTypesLabel',
     'shortName',
     'description',
     'style[color,icon]',
