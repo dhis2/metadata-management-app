@@ -1,5 +1,4 @@
-import { useDataEngine } from '@dhis2/app-runtime'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import arrayMutators from 'final-form-arrays'
 import React, { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
@@ -10,7 +9,6 @@ import {
     SectionedFormErrorNotice,
     SectionedFormLayout,
 } from '../../components'
-import { useHandleOnSubmitEditFormDeletions } from '../../components/sectionedForm/useHandleOnSubmitEditFormDeletions'
 import {
     SectionedFormProvider,
     SECTIONS_MAP,
@@ -18,6 +16,7 @@ import {
     useOnSubmitEdit,
 } from '../../lib'
 import { EnhancedOnSubmit } from '../../lib/form/useOnSubmit'
+import { useTrimStageValuesOnDelete } from '../programs/form/programStage/useTrimStageValuesOnDelete'
 import {
     fieldFilters,
     StageFormContents,
@@ -37,44 +36,21 @@ const useOnSubmitStageEdit = (modelId: string) => {
         section,
         modelId,
     })
-    const dataEngine = useDataEngine()
-    const queryClient = useQueryClient()
-    const handleFormDeletions = useHandleOnSubmitEditFormDeletions(
-        section,
-        'programStageSections',
-        dataEngine,
-        queryClient
-    )
+    const trimValuesOnDelete = useTrimStageValuesOnDelete()
 
     return useMemo<EnhancedOnSubmit<StageFormValues>>(
         () => async (values, form, options) => {
-            const formValues = form.getState().values
-            const sections = formValues.programStageSections ?? []
-            const dataEntryForm = formValues.dataEntryForm
-
-            const { customFormDeleteResult, error } = await handleFormDeletions(
-                sections,
-                dataEntryForm
+            const { trimmedValues, error } = await trimValuesOnDelete(
+                values,
+                form
             )
             if (error) {
                 return error
             }
 
-            const trimmedValues = {
-                ...values,
-                programStageSections: sections.filter(
-                    (formSection) => !formSection.deleted
-                ),
-                dataEntryForm:
-                    customFormDeleteResult &&
-                    customFormDeleteResult?.[0]?.status !== 'rejected'
-                        ? null
-                        : values.dataEntryForm,
-            } as StageFormValues
-
             return submitEdit(trimmedValues, form, options)
         },
-        [submitEdit, handleFormDeletions]
+        [submitEdit, trimValuesOnDelete]
     )
 }
 

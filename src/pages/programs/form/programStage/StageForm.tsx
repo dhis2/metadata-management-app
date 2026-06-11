@@ -1,4 +1,4 @@
-import { useAlert, useDataEngine } from '@dhis2/app-runtime'
+import { useAlert } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import arrayMutators from 'final-form-arrays'
@@ -16,13 +16,11 @@ import {
 } from '../../../../components'
 import { DrawerSectionedFormSidebar } from '../../../../components/drawer/DrawerSectionedFormSidebar'
 import { LoadingSpinner } from '../../../../components/loading/LoadingSpinner'
-import { useHandleOnSubmitEditFormDeletions } from '../../../../components/sectionedForm/useHandleOnSubmitEditFormDeletions'
 import {
     createFormError,
     createJsonPatchOperations,
     getAllAttributeValues,
     SectionedFormProvider,
-    SECTIONS_MAP,
     useBoundResourceQueryFn,
     useCreateModel,
     useCustomAttributesQuery,
@@ -39,6 +37,7 @@ import {
     SubmittedStageFormValues,
 } from './stageFormShared'
 import { initialStageValue } from './stageSchema'
+import { useTrimStageValuesOnDelete } from './useTrimStageValuesOnDelete'
 
 export { fieldFilters, stageSchemaSection }
 export type { StageFormValues, SubmittedStageFormValues }
@@ -192,7 +191,6 @@ export const EditStageForm = ({
     const handlePatch = usePatchModel(stage.id, stageSchemaSection.namePlural)
 
     const queryFn = useBoundResourceQueryFn()
-    const dataEngine = useDataEngine()
     const queryClient = useQueryClient()
     const { show: showSuccess } = useAlert(i18n.t('Stage form saved'), {
         success: true,
@@ -211,12 +209,7 @@ export const EditStageForm = ({
         ],
     })
 
-    const handleDeletions = useHandleOnSubmitEditFormDeletions(
-        SECTIONS_MAP.programStage,
-        'programStageSections',
-        dataEngine,
-        queryClient
-    )
+    const trimValuesOnDelete = useTrimStageValuesOnDelete()
 
     const onFormSubmit: OnSubmitWithClose = async (
         values,
@@ -225,29 +218,13 @@ export const EditStageForm = ({
         closeOnSubmit?: boolean
     ) => {
         const formValues = form.getState().values
-        const sections = formValues.programStageSections ?? []
-        const dataEntryForm = formValues.dataEntryForm
 
-        const { customFormDeleteResult, error } = await handleDeletions(
-            sections,
-            dataEntryForm
-        )
-
+        const { trimmedValues, error } = await trimValuesOnDelete(values, form)
         if (error) {
             return error
         }
-        const nonDeletedProgramStageSections = sections.filter(
-            (section) => !section.deleted
-        )
-        const trimmedValues = {
-            ...values,
-            programStageSections: nonDeletedProgramStageSections,
-            dataEntryForm:
-                customFormDeleteResult &&
-                customFormDeleteResult?.[0]?.status !== 'rejected'
-                    ? null
-                    : values.dataEntryForm,
-        } as Partial<StageFormValues>
+        const nonDeletedProgramStageSections =
+            trimmedValues.programStageSections ?? []
 
         const jsonPatchOperations = createJsonPatchOperations({
             values: trimmedValues,

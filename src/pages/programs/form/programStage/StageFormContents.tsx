@@ -35,9 +35,9 @@ import {
 } from './fields'
 import { StageCreationAndSchedulingFormContents } from './StageCreationAndSchedulingFormContents'
 import { StageDataFormContents } from './StageDataFormContents'
-import { stageSchemaSection } from './StageForm'
 import { StageFormDescriptor } from './stageFormDescriptor'
 import { StageFormFormContents } from './StageFormFormContents'
+import { stageSchemaSection } from './stageFormShared'
 
 export const StageFormContents = ({
     isSubsection = false,

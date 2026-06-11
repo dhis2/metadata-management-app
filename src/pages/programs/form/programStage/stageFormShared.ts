@@ -1,9 +1,8 @@
-import i18n from '@dhis2/d2-i18n'
 import { Section } from '../../../../components/formCreators/SectionFormList'
 import {
     ATTRIBUTE_VALUES_FIELD_FILTERS,
     DEFAULT_FIELD_FILTERS,
-    SchemaName,
+    SECTIONS_MAP,
     SchemaSection,
 } from '../../../../lib'
 import {
@@ -50,11 +49,7 @@ export const fieldFilters = [
 ] as const
 
 export const stageSchemaSection = {
-    name: SchemaName.programStage,
-    namePlural: 'programStages',
-    title: i18n.t('Stage'),
-    titlePlural: i18n.t('Stages'),
-    parentSectionKey: 'programs',
+    ...SECTIONS_MAP.programStage,
 } satisfies SchemaSection
 
 export type StageFormValuesFromFilters = PickWithFieldFilters<
