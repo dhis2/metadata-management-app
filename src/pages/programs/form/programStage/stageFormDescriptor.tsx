@@ -3,7 +3,7 @@ import {
     PROGRAM_STAGE_PROPERTY_LABELS,
     SectionedFormDescriptor,
 } from '../../../../lib'
-import { StageFormValues } from './StageForm'
+import { StageFormValues } from './stageFormShared'
 
 export const StageFormDescriptor = {
     name: 'Program Stage',
