@@ -13,14 +13,9 @@ type DeletionError = NonNullable<
 >
 
 type TrimResult<TValues> =
-    | { trimmedValues: TValues; error?: undefined }
-    | { trimmedValues?: undefined; error: DeletionError }
+    | { trimmedValues: TValues; error?: never }
+    | { trimmedValues?: never; error: DeletionError }
 
-/* Deletes any sections / custom form marked for deletion, then returns the
-   submitted values trimmed accordingly: deleted sections removed and
-   dataEntryForm nullified when its delete succeeded. Shared by the in-program
-   drawer (StageForm) and the standalone stage edit page (programStages/Edit) so
-   the two stay in sync — see both call sites before changing the trim shape. */
 export const useTrimStageValuesOnDelete = () => {
     const dataEngine = useDataEngine()
     const queryClient = useQueryClient()

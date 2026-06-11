@@ -1,7 +1,3 @@
-/* Entry point for the standalone program stage form.
-   The stage form is shared with the in-program drawer, so the schema, types and
-   form building blocks live under programs/form/programStage and are re-exported
-   here so the standalone section owns a single, conventional import surface. */
 export { StageFormContents } from '../../programs/form/programStage/StageFormContents'
 export { StageFormDescriptor } from '../../programs/form/programStage/stageFormDescriptor'
 export {

@@ -27,8 +27,6 @@ import { StageProgramField } from './StageProgramField'
 
 const section = SECTIONS_MAP.programStage
 
-/* The drawer loads the stage without the program (it is implied by the route).
-   Standalone we need the program to populate the required program selector. */
 const editFieldFilters = [...fieldFilters, 'program[id,displayName]'] as const
 
 const useOnSubmitStageEdit = (modelId: string) => {

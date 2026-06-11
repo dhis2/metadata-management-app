@@ -10,10 +10,6 @@ const PROGRAMS_QUERY = {
     },
 }
 
-/* Program selector shown in the Basic information section of the standalone
-   program stage form. A stage must belong to a program, so this is required.
-   In the in-program drawer the program is implied by the route and this field
-   is not rendered. */
 export const StageProgramField = () => (
     <ModelSingleSelectFormField
         name="program"

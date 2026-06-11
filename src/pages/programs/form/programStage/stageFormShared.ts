@@ -11,11 +11,6 @@ import {
     ProgramStage,
 } from '../../../../types/models'
 
-/* Shared, drawer-agnostic definitions for the program stage form.
-   These are consumed both by the in-program stage drawer (StageForm) and by
-   the standalone program stage New/Edit pages, so they must not depend on any
-   drawer-specific code. */
-
 export const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,

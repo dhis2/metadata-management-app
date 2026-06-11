@@ -19,7 +19,6 @@ const PROGRAM_FIELD = 'formfields-stage-program'
 const emptyPager = { page: 1, total: 0, pageSize: 10, pageCount: 1 }
 
 jest.mock('use-debounce', () => ({
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     useDebouncedCallback: (fn: any) => fn,
 }))
 
@@ -44,7 +43,6 @@ describe('Program Stage form tests', () => {
     describe('New', () => {
         const renderForm = generateRenderer(
             { section, mockSchema },
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (routeOptions, { customTestData = {} }: any = {}) => {
                 const programs = [
                     testProgram({ id: 'program1', name: 'Test Program 1' }),
@@ -77,7 +75,6 @@ describe('Program Stage form tests', () => {
                                 attributes: [],
                                 pager: emptyPager,
                             }),
-                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                             programStages: (type: any, params: any) => {
                                 if (type === 'create') {
                                     createMock(params)
@@ -163,7 +160,6 @@ describe('Program Stage form tests', () => {
     describe('Edit', () => {
         const renderForm = generateRenderer(
             { section, mockSchema },
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (routeOptions, { customTestData = {} }: any = {}) => {
                 const programs = [
                     testProgram({ id: 'program1', name: 'Test Program 1' }),
@@ -189,7 +185,6 @@ describe('Program Stage form tests', () => {
                                 attributes: [],
                                 pager: emptyPager,
                             }),
-                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                             programStages: (type: any, params: any) => {
                                 if (type === 'read') {
                                     return existingStage
