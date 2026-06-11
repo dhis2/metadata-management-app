@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-// import schemaMock from '../../__mocks__/schema/programStages.json'
+import schemaMock from '../../__mocks__/schema/programStages.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
 import { SECTIONS_MAP } from '../../lib'
 import { testProgram, testProgramStage } from '../../testUtils/builders'
@@ -12,19 +12,7 @@ import { Component as Edit } from './Edit'
 import { Component as New } from './New'
 
 const section = SECTIONS_MAP.programStage
-const mockSchema = {
-    programStages: {
-        name: 'Program Stage',
-        fields: {
-            name: { type: 'string', required: true },
-            program: {
-                type: 'reference',
-                referenceType: 'program',
-                required: true,
-            },
-        },
-    },
-}
+const mockSchema = schemaMock
 
 const PROGRAM_FIELD = 'formfields-stage-program'
 
