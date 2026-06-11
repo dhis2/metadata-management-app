@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { SectionName } from '../../constants'
+import { PROGRAM_STAGE_PROPERTY_LABELS, SectionName } from '../../constants'
 import type { ConfigurableFilterKey } from '../filters'
 
 export interface ModelPropertyDescriptor {
@@ -774,77 +774,80 @@ export const modelListViewsConfig = {
             ],
             available: [
                 'description',
-                { label: i18n.t('Location type'), path: 'featureType' },
                 {
-                    label: i18n.t('Allow events to be assigned to users'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.featureType,
+                    path: 'featureType',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.enableUserAssignment,
                     path: 'enableUserAssignment',
                 },
                 {
-                    label: i18n.t('Allow multiple events in this stage'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.repeatable,
                     path: 'repeatable',
                 },
                 {
-                    label: i18n.t('Standard interval days'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.standardInterval,
                     path: 'standardInterval',
                 },
                 {
-                    label: i18n.t('Default next scheduled date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.nextScheduleDate,
                     path: 'nextScheduleDate.displayName',
                 },
-                { label: i18n.t('Period type'), path: 'periodType' },
                 {
-                    label: i18n.t('Validation strategy'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.periodType,
+                    path: 'periodType',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.validationStrategy,
                     path: 'validationStrategy',
                 },
                 {
-                    label: i18n.t('Generate offline event IDs'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.preGenerateUID,
                     path: 'preGenerateUID',
                 },
                 {
-                    label: i18n.t(
-                        'Ask user to create a new event after completion'
-                    ),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.allowGenerateNextVisit,
                     path: 'allowGenerateNextVisit',
                 },
                 {
-                    label: i18n.t(
-                        'Ask user to complete enrollment after completion'
-                    ),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.remindCompleted,
                     path: 'remindCompleted',
                 },
                 {
-                    label: i18n.t('Block data entry after completion'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.blockEntryForm,
                     path: 'blockEntryForm',
                 },
                 {
-                    label: i18n.t(
-                        'Create an event in this stage on enrollment'
-                    ),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.autoGenerateEvent,
                     path: 'autoGenerateEvent',
                 },
                 {
-                    label: i18n.t('Open data entry form after enrollment'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.openAfterEnrollment,
                     path: 'openAfterEnrollment',
                 },
                 {
-                    label: i18n.t('Date to use for created event report date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.reportDateToUse,
                     path: 'reportDateToUse',
                 },
                 {
-                    label: i18n.t('Scheduled days from reference date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.minDaysFromStart,
                     path: 'minDaysFromStart',
                 },
                 {
-                    label: i18n.t('Reference date for scheduling'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.generatedByEnrollmentDate,
                     path: 'generatedByEnrollmentDate',
                 },
-                { label: i18n.t('Hide scheduled date'), path: 'hideDueDate' },
                 {
-                    label: i18n.t('Custom label for report date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.hideDueDate,
+                    path: 'hideDueDate',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.executionDateLabel,
                     path: 'executionDateLabel',
                 },
                 {
-                    label: i18n.t('Custom label for due date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.dueDateLabel,
                     path: 'dueDateLabel',
                 },
             ],
