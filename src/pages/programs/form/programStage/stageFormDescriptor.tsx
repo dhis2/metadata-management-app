@@ -1,6 +1,9 @@
 import i18n from '@dhis2/d2-i18n'
-import { SectionedFormDescriptor } from '../../../../lib'
-import { StageFormValues } from './StageForm'
+import {
+    PROGRAM_STAGE_PROPERTY_LABELS,
+    SectionedFormDescriptor,
+} from '../../../../lib'
+import { StageFormValues } from './stageFormShared'
 
 export const StageFormDescriptor = {
     name: 'Program Stage',
@@ -10,59 +13,61 @@ export const StageFormDescriptor = {
             name: 'stageSetup',
             label: i18n.t('Basic information'),
             fields: [
-                { name: 'name', label: i18n.t('Name') },
-                { name: 'description', label: i18n.t('Description') },
-                { name: 'style', label: i18n.t('Visual configuration') },
+                { name: 'name', label: PROGRAM_STAGE_PROPERTY_LABELS.name },
+                {
+                    name: 'description',
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.description,
+                },
+                { name: 'style', label: PROGRAM_STAGE_PROPERTY_LABELS.style },
             ],
         },
         {
             name: 'stageConfiguration',
             label: i18n.t('Data entry options'),
             fields: [
-                { name: 'featureType', label: i18n.t('Feature type') },
+                {
+                    name: 'featureType',
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.featureType,
+                },
                 {
                     name: 'enableUserAssignment',
-                    label: i18n.t('Allow events to be assigned to users'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.enableUserAssignment,
                 },
                 {
                     name: 'repeatable',
-                    label: i18n.t('Allow multiple events in this stage'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.repeatable,
                 },
                 {
                     name: 'standardInterval',
-                    label: i18n.t('Standard interval days'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.standardInterval,
                 },
                 {
                     name: 'nextScheduleDate',
-                    label: i18n.t('Default next scheduled date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.nextScheduleDate,
                 },
                 {
                     name: 'periodType',
-                    label: i18n.t('Period type'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.periodType,
                 },
                 {
                     name: 'validationStrategy',
-                    label: i18n.t('Validation strategy'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.validationStrategy,
                 },
                 {
                     name: 'preGenerateUID',
-                    label: i18n.t('Generate offline event IDs'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.preGenerateUID,
                 },
                 {
                     name: 'allowGenerateNextVisit',
-                    label: i18n.t(
-                        'Ask user to create a new event after completion'
-                    ),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.allowGenerateNextVisit,
                 },
                 {
                     name: 'remindCompleted',
-                    label: i18n.t(
-                        'Ask user to complete enrollment after completion'
-                    ),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.remindCompleted,
                 },
                 {
                     name: 'blockEntryForm',
-                    label: i18n.t('Block data entry after completion'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.blockEntryForm,
                 },
             ],
         },
@@ -72,29 +77,27 @@ export const StageFormDescriptor = {
             fields: [
                 {
                     name: 'autoGenerateEvent',
-                    label: i18n.t(
-                        'Create an event in this stage on enrollment'
-                    ),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.autoGenerateEvent,
                 },
                 {
                     name: 'openAfterEnrollment',
-                    label: i18n.t('Open data entry form after enrollment'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.openAfterEnrollment,
                 },
                 {
                     name: 'reportDateToUse',
-                    label: i18n.t('Date to use for created event report date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.reportDateToUse,
                 },
                 {
                     name: 'minDaysFromStart',
-                    label: i18n.t('Scheduled days from reference date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.minDaysFromStart,
                 },
                 {
                     name: 'generatedByEnrollmentDate',
-                    label: i18n.t('Reference date for scheduling'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.generatedByEnrollmentDate,
                 },
                 {
                     name: 'hideDueDate',
-                    label: i18n.t('Hide scheduled date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.hideDueDate,
                 },
             ],
         },
@@ -114,19 +117,19 @@ export const StageFormDescriptor = {
             fields: [
                 {
                     name: 'executionDateLabel',
-                    label: i18n.t('Custom label for report date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.executionDateLabel,
                 },
                 {
                     name: 'dueDateLabel',
-                    label: i18n.t('Custom label for due date'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.dueDateLabel,
                 },
                 {
                     name: 'programStageLabel',
-                    label: i18n.t('Custom label for program stage'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.programStageLabel,
                 },
                 {
                     name: 'eventLabel',
-                    label: i18n.t('Custom label for event'),
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.eventLabel,
                 },
                 {
                     name: 'eventsLabel',
