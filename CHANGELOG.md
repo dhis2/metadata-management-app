@@ -1,3 +1,10 @@
+## [0.159.5](https://github.com/dhis2/metadata-management-app/compare/v0.159.4...v0.159.5) (2026-06-11)
+
+
+### Bug Fixes
+
+* release icons list ([#967](https://github.com/dhis2/metadata-management-app/issues/967)) ([1fac033](https://github.com/dhis2/metadata-management-app/commit/1fac0337803b2d35130811dbd5bb7873770d8fe9))
+
 ## [0.159.4](https://github.com/dhis2/metadata-management-app/compare/v0.159.3...v0.159.4) (2026-06-10)
 
 
