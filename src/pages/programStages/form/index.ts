@@ -5,10 +5,7 @@ export {
     stageListSchema,
     stageSchema,
 } from '../../programs/form/programStage/stageSchema'
-export {
-    fieldFilters,
-    stageSchemaSection,
-} from '../../programs/form/programStage/stageFormShared'
+export { fieldFilters } from '../../programs/form/programStage/stageFormShared'
 export type {
     PartialStageFormValues,
     StageFormValues,

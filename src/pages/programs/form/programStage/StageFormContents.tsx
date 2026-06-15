@@ -37,7 +37,6 @@ import { StageCreationAndSchedulingFormContents } from './StageCreationAndSchedu
 import { StageDataFormContents } from './StageDataFormContents'
 import { StageFormDescriptor } from './stageFormDescriptor'
 import { StageFormFormContents } from './StageFormFormContents'
-import { stageSchemaSection } from './stageFormShared'
 
 export const StageFormContents = ({
     isSubsection = false,
@@ -56,19 +55,19 @@ export const StageFormContents = ({
     )
 
     const executionDateLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'executionDateLabel',
     })
     const dueDateLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'dueDateLabel',
     })
     const programStageLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'programStageLabel',
     })
     const eventLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'eventLabel',
     })
 
