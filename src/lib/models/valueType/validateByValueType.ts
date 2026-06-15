@@ -39,7 +39,7 @@ const VALUE_TYPE_VALIDATE = {
             return undefined
         }
         if (typeof value === 'string') {
-            const numberValue = parseFloat(value)
+            const numberValue = Number.parseFloat(value)
             if (numberValue >= 0 || numberValue <= 100) {
                 return undefined
             }
@@ -51,7 +51,7 @@ const VALUE_TYPE_VALIDATE = {
             return undefined
         }
         if (typeof value === 'string') {
-            const numberValue = parseFloat(value)
+            const numberValue = Number.parseFloat(value)
             if (numberValue >= 0 || numberValue <= 1) {
                 return undefined
             }
@@ -59,7 +59,8 @@ const VALUE_TYPE_VALIDATE = {
         return i18n.t('Please provide valid unit interval (0-1).')
     }),
     AGE: composeValidators(number, (value) =>
-        isEmpty(value) || (typeof value === 'string' && parseFloat(value) >= 0)
+        isEmpty(value) ||
+        (typeof value === 'string' && Number.parseFloat(value) >= 0)
             ? undefined
             : i18n.t('Please provide a positive number for age')
     ),
