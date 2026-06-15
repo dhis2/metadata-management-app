@@ -27,6 +27,7 @@ import { generateRenderer } from '../../testUtils/generateRenderer'
 import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
 import { uiActions } from '../../testUtils/uiActions'
 import { uiAssertions } from '../../testUtils/uiAssertions'
+import { ValueType } from '../../types/generated'
 import { DisplayableModel } from '../../types/models'
 import { Component as Edit } from './Edit'
 import { Component as New } from './New'
@@ -1202,8 +1203,8 @@ describe('Data elements form tests', () => {
 
             // ensure that the value types for options are different
             if (optionSets[0].valueType === optionSets[2].valueType) {
-                optionSets[2].valueType = 'NUMBER' as any
-                optionSets[0].valueType = 'COORDINATE' as any
+                optionSets[2].valueType = ValueType.NUMBER
+                optionSets[0].valueType = ValueType.COORDINATE
             }
             const { screen } = await renderForm({
                 dataElementOverwrites: {
@@ -1254,8 +1255,8 @@ describe('Data elements form tests', () => {
 
             // ensure that the value types for options are different
             if (optionSets[0].valueType === optionSets[2].valueType) {
-                optionSets[2].valueType = 'NUMBER' as any
-                optionSets[0].valueType = 'COORDINATE' as any
+                optionSets[2].valueType = ValueType.NUMBER
+                optionSets[0].valueType = ValueType.COORDINATE
             }
             const { screen } = await renderForm({
                 dataElementOverwrites: {

@@ -11,6 +11,7 @@ import {
     SECTIONS_MAP,
     toModelPropertyDescriptor,
 } from '../../lib'
+import type { CurrentUser } from '../../lib/useLoadApp'
 import { useCurrentUserStore } from '../../lib/user/currentUserStore'
 import { testLocales, testOrgUnit } from '../../testUtils/builders'
 import {
@@ -176,7 +177,7 @@ describe('Locales list tests', () => {
             name: faker.person.fullName(),
             email: faker.internet.email(),
             settings: {},
-        } as any)
+        } as unknown as CurrentUser)
         const tableRows = screen.getAllByTestId('section-list-row')
         const firstElementToDeleteId = elements[0].id
         const deletableElementActionMenu =

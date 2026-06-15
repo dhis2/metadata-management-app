@@ -10,6 +10,7 @@ import React from 'react'
 import organisationUnitLevelsSchema from '../../__mocks__/schema/organisationUnitLevels.json'
 import { ModelSchemas, SchemaName, SECTIONS_MAP } from '../../lib'
 import { useSchemaStore } from '../../lib/schemas/schemaStore'
+import type { CurrentUser } from '../../lib/useLoadApp'
 import { useCurrentUserStore } from '../../lib/user/currentUserStore'
 import {
     testAccess,
@@ -48,7 +49,7 @@ describe('Organisation unit list tests', () => {
             name: faker.person.fullName(),
             email: faker.internet.email(),
             settings: {},
-        } as any)
+        } as unknown as CurrentUser)
 
         const elements = [
             testOrgUnitLevel({ level: 1, access: testAccess({ write: true }) }),

@@ -10,6 +10,7 @@ import React from 'react'
 import organisationUnitsSchemaMock from '../../__mocks__/schema/organisationUnitsSchema.json'
 import { getRelativeTime, ModelSchemas, SECTIONS_MAP } from '../../lib'
 import { useSchemaStore } from '../../lib/schemas/schemaStore'
+import type { CurrentUser } from '../../lib/useLoadApp'
 import { useCurrentUserStore } from '../../lib/user/currentUserStore'
 import { testAccess, testOrgUnit } from '../../testUtils/builders'
 import { defaultUserDataStoreData } from '../../testUtils/generateRenderer'
@@ -41,7 +42,7 @@ const renderList = async ({
         name: faker.person.fullName(),
         email: faker.internet.email(),
         settings: {},
-    } as any)
+    } as unknown as CurrentUser)
 
     const result = render(
         <TestComponentWithRouter

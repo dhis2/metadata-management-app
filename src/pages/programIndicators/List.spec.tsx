@@ -9,6 +9,7 @@ import React from 'react'
 import schemaMock from '../../__mocks__/schema/programIndicatorsSchema.json'
 import { ModelSchemas, SECTIONS_MAP } from '../../lib'
 import { useSchemaStore } from '../../lib/schemas/schemaStore'
+import type { CurrentUser } from '../../lib/useLoadApp'
 import { useCurrentUserStore } from '../../lib/user/currentUserStore'
 import {
     testOrgUnit,
@@ -53,7 +54,7 @@ describe('Program indicators additional tests', () => {
             name: faker.person.fullName(),
             email: faker.internet.email(),
             settings: {},
-        } as any)
+        } as unknown as CurrentUser)
 
         const elements = [generateRandomElement()]
         const pager = {

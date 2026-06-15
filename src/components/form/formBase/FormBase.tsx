@@ -20,6 +20,7 @@ import { FormBaseProvider, useFormBaseContextValue } from './FormBaseContext'
 type MaybeModelWithAttributes = {
     id?: string
     name?: string
+    displayName?: string
     section?: Section
     modelName?: string
     attributeValues?: PartialAttributeValue[]

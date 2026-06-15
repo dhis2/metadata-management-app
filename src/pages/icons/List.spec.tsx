@@ -5,6 +5,7 @@ import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/icons.json'
 import { SECTIONS_MAP } from '../../lib'
+import type { CurrentUser } from '../../lib/useLoadApp'
 import { useCurrentUserStore } from '../../lib/user/currentUserStore'
 import { testOrgUnit } from '../../testUtils/builders'
 import {
@@ -70,7 +71,7 @@ describe('Icons list', () => {
                 name: faker.person.fullName(),
                 email: faker.internet.email(),
                 settings: {},
-            } as any)
+            } as unknown as CurrentUser)
 
             const screen = render(
                 <TestComponentWithRouter

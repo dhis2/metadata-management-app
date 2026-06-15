@@ -69,7 +69,9 @@ export const Component = () => {
     return (
         <SectionedFormWrapper
             onSubmit={onSubmit}
-            initialValues={initialValues as any}
+            initialValues={
+                initialValues as unknown as ValidationNotificationTemplateFormValues
+            }
             validate={validate}
             cancelTo={`/${getSectionPath(section)}`}
             fetchError={!!validationNotificationTemplateQuery.error}

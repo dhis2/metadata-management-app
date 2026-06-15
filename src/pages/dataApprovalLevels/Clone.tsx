@@ -56,8 +56,8 @@ export const Component = () => {
 
     return (
         <FormBase
-            onSubmit={onSubmit as any}
-            initialValues={initialValues as any}
+            onSubmit={onSubmit}
+            initialValues={initialValues}
             validate={validate}
             fetchError={!!dataApprovalLevelQuery.error}
             includeAttributes={false}
