@@ -4,7 +4,12 @@
     gap: var(--spacers-dp8);
 }
 
+.dateField {
+    flex: 1;
+}
+
 .timeInput {
+    flex: 1;
     /* adjust margin for the label of the datefield */
     margin-block-start: 21px;
 }

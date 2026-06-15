@@ -17,9 +17,9 @@ export const DateTimeFieldFF = (props: DateFieldProps) => {
                 originalInput.onChange('T' + newTime)
                 return
             }
-            // clear both time and date with calendar clear-button
+            // clear only the date (time has its own separate clear button)
             if (!calendarDateString) {
-                originalInput.onChange('')
+                originalInput.onChange(timePart ? `T${timePart}` : '')
                 originalInput.onBlur()
                 return
             }
@@ -38,6 +38,7 @@ export const DateTimeFieldFF = (props: DateFieldProps) => {
         <div className={css.wrapper}>
             <DateFieldFF
                 className={css.dateField}
+                inputWidth="100%"
                 meta={props.meta}
                 input={input}
                 label={props.label}
@@ -45,11 +46,13 @@ export const DateTimeFieldFF = (props: DateFieldProps) => {
             />
             <TimeInput
                 className={css.timeInput}
+                width="100%"
                 value={timePart || ''}
                 onChange={(payload) => {
                     input.onChange(datePart, payload.value)
                 }}
                 onBlur={() => input.onBlur()}
+                clearable
             />
         </div>
     )

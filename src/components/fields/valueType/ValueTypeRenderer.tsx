@@ -58,7 +58,18 @@ export function ValueTypeRenderer(
     if (valueType === 'LONG_TEXT') {
         return <TextAreaFieldFF {...props} />
     }
-    if (valueType === 'NUMBER' || valueType === 'INTEGER') {
+    if (valueType === 'NUMBER') {
+        return (
+            <InputFieldFF
+                {...props}
+                input={{
+                    ...props.input,
+                    type: 'number',
+                }}
+            />
+        )
+    }
+    if (valueType === 'INTEGER') {
         return (
             <InputFieldFF
                 {...props}
@@ -114,6 +125,19 @@ export function ValueTypeRenderer(
                     onChange: (e) => {
                         props.input.onChange(e?.id)
                     },
+                }}
+            />
+        )
+    }
+
+    if (valueType === 'AGE') {
+        return (
+            <InputFieldFF
+                {...props}
+                input={{
+                    ...props.input,
+                    type: 'number',
+                    min: '0',
                 }}
             />
         )
