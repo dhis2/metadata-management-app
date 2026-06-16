@@ -3414,7 +3414,7 @@ export type DataValueFollowUpRequest = {
     }
 }
 
-export type DataValueHistory = any
+export type DataValueHistory = any // NOSONAR
 
 export type DataValuePostParams = {
     attribute: DataValueCategoryParams
@@ -8611,7 +8611,7 @@ export type MinMaxValue = {
     orgUnit: UID_OrganisationUnit
 }
 
-export type MinMaxValueDeleteRequest = any
+export type MinMaxValueDeleteRequest = any // NOSONAR
 
 export type MinMaxValueKey = {
     dataElement: UID_OrganisationUnit
@@ -8624,7 +8624,7 @@ export type MinMaxValueParams = {
     organisationUnit: string
 }
 
-export type MinMaxValueUpsertRequest = any
+export type MinMaxValueUpsertRequest = any // NOSONAR
 export enum MissingValueStrategy {
     SKIP_IF_ANY_VALUE_MISSING = 'SKIP_IF_ANY_VALUE_MISSING',
     SKIP_IF_ALL_VALUES_MISSING = 'SKIP_IF_ALL_VALUES_MISSING',
@@ -8711,7 +8711,7 @@ export type OAuth2ClientCredentialsAuthScheme = {
     tokenUri: string
 }
 
-export type Object = any
+export type Object = any // NOSONAR
 export enum ObjectBundleMode {
     COMMIT = 'COMMIT',
     VALIDATE = 'VALIDATE',
@@ -14574,72 +14574,72 @@ export type TypeReport = {
     stats: Stats
 }
 
-export type UID_AggregateDataExchange = string
-export type UID_Attribute = string
-export type UID_BaseIdentifiableObject = string
-export type UID_Category = string
-export type UID_CategoryCombo = string
-export type UID_CategoryOption = string
-export type UID_CategoryOptionCombo = string
-export type UID_CategoryOptionGroup = string
-export type UID_CategoryOptionGroupSet = string
-export type UID_Dashboard = string
-export type UID_DataApprovalLevel = string
-export type UID_DataApprovalWorkflow = string
-export type UID_DataElement = string
-export type UID_DataElementGroup = string
-export type UID_DataElementGroupSet = string
-export type UID_DataEntryForm = string
-export type UID_DataSet = string
-export type UID_DimensionalItemObject = string
-export type UID_DimensionalObject = string
-export type UID_Document = string
-export type UID_Enrollment = string
-export type UID_FileResource = string
-export type UID_Indicator = string
-export type UID_IndicatorGroup = string
-export type UID_IndicatorGroupSet = string
-export type UID_IndicatorType = string
-export type UID_Interpretation = string
-export type UID_InterpretationComment = string
-export type UID_JobConfiguration = string
-export type UID_LegendSet = string
-export type UID_Message = string
-export type UID_Note = string
-export type UID_Option = string
-export type UID_OptionGroup = string
-export type UID_OptionSet = string
-export type UID_OrganisationUnit = string
-export type UID_OrganisationUnitGroup = string
-export type UID_OrganisationUnitGroupSet = string
-export type UID_OrganisationUnitLevel = string
-export type UID_Predictor = string
-export type UID_PredictorGroup = string
-export type UID_Program = string
-export type UID_ProgramIndicator = string
-export type UID_ProgramIndicatorGroup = string
-export type UID_ProgramNotificationTemplate = string
-export type UID_ProgramRuleAction = string
-export type UID_ProgramRuleVariable = string
-export type UID_ProgramSection = string
-export type UID_ProgramStage = string
-export type UID_ProgramStageSection = string
-export type UID_Relationship = string
-export type UID_RelationshipType = string
-export type UID_Report = string
-export type UID_Section = string
-export type UID_SingleEvent = string
-export type UID_SqlView = string
-export type UID_TrackedEntity = string
-export type UID_TrackedEntityAttribute = string
-export type UID_TrackedEntityType = string
-export type UID_TrackerEvent = string
-export type UID_User = string
-export type UID_UserGroup = string
-export type UID_UserRole = string
-export type UID_ValidationNotificationTemplate = string
-export type UID_ValidationRule = string
-export type UID_ValidationRuleGroup = string
+export type UID_AggregateDataExchange = string // NOSONAR
+export type UID_Attribute = string // NOSONAR
+export type UID_BaseIdentifiableObject = string // NOSONAR
+export type UID_Category = string // NOSONAR
+export type UID_CategoryCombo = string // NOSONAR
+export type UID_CategoryOption = string // NOSONAR
+export type UID_CategoryOptionCombo = string // NOSONAR
+export type UID_CategoryOptionGroup = string // NOSONAR
+export type UID_CategoryOptionGroupSet = string // NOSONAR
+export type UID_Dashboard = string // NOSONAR
+export type UID_DataApprovalLevel = string // NOSONAR
+export type UID_DataApprovalWorkflow = string // NOSONAR
+export type UID_DataElement = string // NOSONAR
+export type UID_DataElementGroup = string // NOSONAR
+export type UID_DataElementGroupSet = string // NOSONAR
+export type UID_DataEntryForm = string // NOSONAR
+export type UID_DataSet = string // NOSONAR
+export type UID_DimensionalItemObject = string // NOSONAR
+export type UID_DimensionalObject = string // NOSONAR
+export type UID_Document = string // NOSONAR
+export type UID_Enrollment = string // NOSONAR
+export type UID_FileResource = string // NOSONAR
+export type UID_Indicator = string // NOSONAR
+export type UID_IndicatorGroup = string // NOSONAR
+export type UID_IndicatorGroupSet = string // NOSONAR
+export type UID_IndicatorType = string // NOSONAR
+export type UID_Interpretation = string // NOSONAR
+export type UID_InterpretationComment = string // NOSONAR
+export type UID_JobConfiguration = string // NOSONAR
+export type UID_LegendSet = string // NOSONAR
+export type UID_Message = string // NOSONAR
+export type UID_Note = string // NOSONAR
+export type UID_Option = string // NOSONAR
+export type UID_OptionGroup = string // NOSONAR
+export type UID_OptionSet = string // NOSONAR
+export type UID_OrganisationUnit = string // NOSONAR
+export type UID_OrganisationUnitGroup = string // NOSONAR
+export type UID_OrganisationUnitGroupSet = string // NOSONAR
+export type UID_OrganisationUnitLevel = string // NOSONAR
+export type UID_Predictor = string // NOSONAR
+export type UID_PredictorGroup = string // NOSONAR
+export type UID_Program = string // NOSONAR
+export type UID_ProgramIndicator = string // NOSONAR
+export type UID_ProgramIndicatorGroup = string // NOSONAR
+export type UID_ProgramNotificationTemplate = string // NOSONAR
+export type UID_ProgramRuleAction = string // NOSONAR
+export type UID_ProgramRuleVariable = string // NOSONAR
+export type UID_ProgramSection = string // NOSONAR
+export type UID_ProgramStage = string // NOSONAR
+export type UID_ProgramStageSection = string // NOSONAR
+export type UID_Relationship = string // NOSONAR
+export type UID_RelationshipType = string // NOSONAR
+export type UID_Report = string // NOSONAR
+export type UID_Section = string // NOSONAR
+export type UID_SingleEvent = string // NOSONAR
+export type UID_SqlView = string // NOSONAR
+export type UID_TrackedEntity = string // NOSONAR
+export type UID_TrackedEntityAttribute = string // NOSONAR
+export type UID_TrackedEntityType = string // NOSONAR
+export type UID_TrackerEvent = string // NOSONAR
+export type UID_User = string // NOSONAR
+export type UID_UserGroup = string // NOSONAR
+export type UID_UserRole = string // NOSONAR
+export type UID_ValidationNotificationTemplate = string // NOSONAR
+export type UID_ValidationRule = string // NOSONAR
+export type UID_ValidationRuleGroup = string // NOSONAR
 
 export type UpdateFollowUpForDataValuesRequest = {
     followups: Array<FollowupParams>
