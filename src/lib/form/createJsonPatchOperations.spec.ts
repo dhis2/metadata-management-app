@@ -34,7 +34,7 @@ describe('sanitizeDirtyValueKeys', () => {
 
     it('keeps a scalar field that shares a prefix with a complex key', () => {
         // 'programStagesLabel' starts with the 'programStages' complex key but
-        // is its own scalar field - it must not be collapsed away (regression).
+        // is its own scalar field - check that it is not collapsed away.
         expect(
             sanitizeDirtyValueKeys(['programStagesLabel', 'programStages[0]'])
         ).toEqual(['programStagesLabel', 'programStages'])
