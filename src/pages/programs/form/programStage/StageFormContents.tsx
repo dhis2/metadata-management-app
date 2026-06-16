@@ -75,7 +75,7 @@ export const StageFormContents = ({
         property: 'eventLabel',
     })
     const eventsLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'eventsLabel',
     })
 
