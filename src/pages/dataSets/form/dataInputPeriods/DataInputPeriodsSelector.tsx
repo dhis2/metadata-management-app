@@ -285,10 +285,12 @@ const DIPItem = ({
                 <Button
                     small
                     onClick={() => {
-                        ;(expandedDip.period as {
-                            id: string
-                            name?: string
-                        })!.name = expandedDip.periodInformation.displayName
+                        ;(
+                            expandedDip.period as {
+                                id: string
+                                name?: string
+                            }
+                        ).name = expandedDip.periodInformation.displayName
                         openEditModal(expandedDip)
                     }}
                 >

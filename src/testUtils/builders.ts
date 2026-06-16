@@ -92,7 +92,6 @@ import {
     OrganisationUnit,
     ProgramCategoryMapping,
     ProgramCategoryOptionMapping,
-    ProgramTrackedEntityAttributeParams,
     ProgramType,
     ValueType,
 } from '../types/generated'
@@ -517,7 +516,7 @@ export const testProgram = ({
         'WITH_REGISTRATION',
         'WITHOUT_REGISTRATION',
     ]) as ProgramType,
-    programTrackedEntityAttributes = [] as unknown as BaseIdentifiableObject[],
+    programTrackedEntityAttributes = [] as BaseIdentifiableObject[],
 } = {}) => ({
     id,
     name,
