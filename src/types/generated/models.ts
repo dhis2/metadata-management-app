@@ -28,7 +28,7 @@ export type AddIconRequest = {
 export type AddOperation = {
     op: string
     path: string
-    value: any
+    value: unknown
 }
 
 export type AggregateDataExchange = {
@@ -2908,7 +2908,7 @@ export type DataSet = {
     displayDescription: string
     displayFormName: string
     displayName: string
-    displayOptions: Record<string, any>
+    displayOptions: Record<string, unknown>
     displayShortName: string
     expiryDays: number
     favorite: boolean
@@ -3127,7 +3127,7 @@ export type DataSetParams = {
     displayDescription: string
     displayFormName: string
     displayName: string
-    displayOptions: Record<string, any>
+    displayOptions: Record<string, unknown>
     displayShortName: string
     expiryDays: number
     favorite: boolean
@@ -3414,7 +3414,7 @@ export type DataValueFollowUpRequest = {
     }
 }
 
-export type DataValueHistory = any
+export type DataValueHistory = unknown
 
 export type DataValuePostParams = {
     attribute: DataValueCategoryParams
@@ -4042,7 +4042,7 @@ export type EnrollmentParams = {
         id: UID_TrackerEvent
     }>
     followup: boolean
-    geometry: Record<string, any>
+    geometry: Record<string, unknown>
     lastUpdatedAtClient: string
     lastUpdatedByUserInfo: UserInfoSnapshot
     notes?: Array<{
@@ -4096,7 +4096,7 @@ export type EntityQueryCriteria = {
 }
 
 export type EntriesResponse = {
-    entries: Array<Record<string, any>>
+    entries: Array<Record<string, unknown>>
     pager?: {
         page: number
         pageSize: number
@@ -4660,7 +4660,7 @@ export type ErrorReport = {
     args: Array<string>
     errorCode: ErrorCode
     errorKlass: string
-    errorProperties: Array<any>
+    errorProperties: Array<unknown>
     errorProperty: string
     mainId: string
     mainKlass: string
@@ -4687,7 +4687,7 @@ export type Event = {
     enrollment: UID_Enrollment
     event: UID_TrackerEvent
     followUp: boolean
-    geometry: Record<string, any>
+    geometry: Record<string, unknown>
     notes: Array<TrackerNote>
     occurredAt: Instant
     orgUnit: string
@@ -5584,7 +5584,7 @@ export type ExchangeTarget = {
 
 export type ExecutionPlan = {
     executionTime: number
-    plan: any
+    plan: unknown
     planningTime: number
     query: string
     timeInMillis: number
@@ -6222,7 +6222,7 @@ export type Icon = {
 }
 
 export type IconListResponse = {
-    icons: Array<Record<string, any>>
+    icons: Array<Record<string, unknown>>
     pager: Pager
 }
 
@@ -7238,7 +7238,7 @@ export enum JobConfigurationPropertyNames {
 export type JobConfigurationWebMessageResponse = {
     created: string
     id: string
-    jobParameters: Record<string, any>
+    jobParameters: Record<string, unknown>
     jobStatus: JobStatus
     jobType: JobType
     name: string
@@ -8151,7 +8151,7 @@ export type CurrentUser = {
     patTokens: Array<ApiToken>
     phoneNumber: string
     programs: Array<string>
-    settings: Record<string, any>
+    settings: Record<string, unknown>
     sharing: Sharing
     skype: string
     surname: string
@@ -8419,7 +8419,7 @@ export enum MessageType {
     SYSTEM_VERSION_UPDATE = 'SYSTEM_VERSION_UPDATE',
 }
 export type MetadataAdjustParams = {
-    change: any
+    change: unknown
     targetId: string
 }
 
@@ -8502,7 +8502,7 @@ export type MetadataItemParams = {
 }
 
 export type MetadataProposal = {
-    change: any
+    change: unknown
     comment: string
     created: string
     createdBy: UserDto
@@ -8545,7 +8545,7 @@ export enum MetadataProposalType {
     REMOVE = 'REMOVE',
 }
 export type MetadataProposeParams = {
-    change: any
+    change: unknown
     comment: string
     targetId: string
 }
@@ -8611,7 +8611,7 @@ export type MinMaxValue = {
     orgUnit: UID_OrganisationUnit
 }
 
-export type MinMaxValueDeleteRequest = any
+export type MinMaxValueDeleteRequest = unknown
 
 export type MinMaxValueKey = {
     dataElement: UID_OrganisationUnit
@@ -8624,7 +8624,7 @@ export type MinMaxValueParams = {
     organisationUnit: string
 }
 
-export type MinMaxValueUpsertRequest = any
+export type MinMaxValueUpsertRequest = unknown
 export enum MissingValueStrategy {
     SKIP_IF_ANY_VALUE_MISSING = 'SKIP_IF_ANY_VALUE_MISSING',
     SKIP_IF_ALL_VALUES_MISSING = 'SKIP_IF_ALL_VALUES_MISSING',
@@ -8660,7 +8660,7 @@ export enum NormalizedOutlierMethod {
 export type Notification = {
     category: JobType
     completed: boolean
-    data: any
+    data: unknown
     dataType: NotificationDataType
     id: string
     level: NotificationLevel
@@ -8711,7 +8711,7 @@ export type OAuth2ClientCredentialsAuthScheme = {
     tokenUri: string
 }
 
-export type Object = any
+export type Object = unknown
 export enum ObjectBundleMode {
     COMMIT = 'COMMIT',
     VALIDATE = 'VALIDATE',
@@ -8751,7 +8751,7 @@ export type OpenApiObject = {
     components: ComponentsObject
     servers: Array<ServerObject>
     openapi: string
-    paths: Record<string, any>
+    paths: Record<string, unknown>
     tags: Array<TagObject>
     info: InfoObject
 }
@@ -9172,7 +9172,7 @@ export type OrganisationUnit = {
     favorite: boolean
     favorites: Array<string>
     formName: string
-    geometry: Record<string, any>
+    geometry: Record<string, unknown>
     href: string
     id: string
     image: FileResource
@@ -9222,7 +9222,7 @@ export type OrganisationUnitGroup = {
     favorites: Array<string>
     featureType: FeatureType
     formName: string
-    geometry: Record<string, any>
+    geometry: Record<string, unknown>
     groupSets: Array<BaseIdentifiableObject>
     href: string
     id: string
@@ -9258,7 +9258,7 @@ export type OrganisationUnitGroupParams = {
     favorites: Array<string>
     featureType: FeatureType
     formName: string
-    geometry: Record<string, any>
+    geometry: Record<string, unknown>
     groupSets?: Array<{
         id: UID_OrganisationUnitGroupSet
     }>
@@ -9555,7 +9555,7 @@ export type OrganisationUnitParams = {
     favorite: boolean
     favorites: Array<string>
     formName: string
-    geometry: Record<string, any>
+    geometry: Record<string, unknown>
     id: string
     image?: {
         id: UID_FileResource
@@ -9887,7 +9887,7 @@ export type ParameterObject = {
     deprecated: boolean
     name: string
     description: string
-    'schema.default': any
+    'schema.default': unknown
     $ref: ParameterObject
     required: boolean
     'x-since': string
@@ -12204,7 +12204,7 @@ export type Rectangle = {
 }
 
 export type Reference = {
-    node: any
+    node: unknown
     uuid: string
 }
 
@@ -12461,7 +12461,7 @@ export enum RenderDevice {
 export type ReplaceOperation = {
     op: string
     path: string
-    value: any
+    value: unknown
 }
 
 export type Report = {
@@ -12784,19 +12784,19 @@ export type SchemaObject = {
     pattern: string
     format: string
     description: string
-    anyOf: Array<any>
+    anyOf: Array<unknown>
     readOnly: boolean
     type: string
     required: Array<string>
-    enum: any
-    allOf: Array<any>
+    enum: unknown
+    allOf: Array<unknown>
     not: SchemaObject
-    default: any
-    oneOf: Array<any>
+    default: unknown
+    oneOf: Array<unknown>
     'x-kind': string
     additionalProperties: SchemaObject
     items: SchemaObject
-    $ref: any
+    $ref: unknown
     maxLength: number
     properties: Record<string, SchemaObject>
     'x-since': string
@@ -12812,7 +12812,7 @@ export type Section = {
     description: string
     disableDataElementAutoGroup: boolean
     displayName: string
-    displayOptions: Record<string, any>
+    displayOptions: Record<string, unknown>
     greyedFields: Array<DataElementOperand>
     href: string
     id: string
@@ -12837,7 +12837,7 @@ export type SectionParams = {
     description: string
     disableDataElementAutoGroup: boolean
     displayName: string
-    displayOptions: Record<string, any>
+    displayOptions: Record<string, unknown>
     greyedFields: Array<DataElementOperandParams>
     id: string
     indicators?: Array<{
@@ -14158,7 +14158,7 @@ export type TrackerEnrollment = {
     enrollment: UID_Enrollment
     events: Array<Event>
     followUp: boolean
-    geometry: Record<string, any>
+    geometry: Record<string, unknown>
     notes: Array<TrackerNote>
     occurredAt: Instant
     orgUnit: string
@@ -14291,7 +14291,7 @@ export type TrackerRelationshipItem = {
             enrollment: UID_Enrollment
             event: UID_TrackerEvent
             followUp: boolean
-            geometry: Record<string, any>
+            geometry: Record<string, unknown>
             notes: Array<TrackerNote>
             occurredAt: Instant
             orgUnit: UID_OrganisationUnit
@@ -14305,7 +14305,7 @@ export type TrackerRelationshipItem = {
             updatedBy: TrackerUser
         }>
         followUp: boolean
-        geometry: Record<string, any>
+        geometry: Record<string, unknown>
         notes: Array<TrackerNote>
         occurredAt: Instant
         orgUnit: string
@@ -14331,7 +14331,7 @@ export type TrackerRelationshipItem = {
         enrollment: UID_Enrollment
         event: UID_TrackerEvent
         followUp: boolean
-        geometry: Record<string, any>
+        geometry: Record<string, unknown>
         notes: Array<TrackerNote>
         occurredAt: Instant
         orgUnit: UID_OrganisationUnit
@@ -14374,7 +14374,7 @@ export type TrackerRelationshipItem = {
                 enrollment: UID_Enrollment
                 event: UID_TrackerEvent
                 followUp: boolean
-                geometry: Record<string, any>
+                geometry: Record<string, unknown>
                 notes: Array<TrackerNote>
                 occurredAt: Instant
                 orgUnit: UID_OrganisationUnit
@@ -14388,7 +14388,7 @@ export type TrackerRelationshipItem = {
                 updatedBy: TrackerUser
             }>
             followUp: boolean
-            geometry: Record<string, any>
+            geometry: Record<string, unknown>
             notes: Array<TrackerNote>
             occurredAt: Instant
             orgUnit: string
@@ -14400,7 +14400,7 @@ export type TrackerRelationshipItem = {
             updatedAtClient: Instant
             updatedBy: TrackerUser
         }>
-        geometry: Record<string, any>
+        geometry: Record<string, unknown>
         inactive: boolean
         orgUnit: UID_OrganisationUnit
         potentialDuplicate: boolean
@@ -14425,7 +14425,7 @@ export type TrackerSingleEvent = {
     dataValues: Array<TrackerDataValue>
     deleted: boolean
     event: UID_SingleEvent
-    geometry: Record<string, any>
+    geometry: Record<string, unknown>
     notes: Array<TrackerNote>
     occurredAt: Instant
     orgUnit: string
@@ -14459,7 +14459,7 @@ export type TrackerTrackedEntity = {
     createdBy: TrackerUser
     deleted: boolean
     enrollments: Array<TrackerEnrollment>
-    geometry: Record<string, any>
+    geometry: Record<string, unknown>
     inactive: boolean
     orgUnit: string
     potentialDuplicate: boolean
@@ -14486,7 +14486,7 @@ export type TrackerTrackerEvent = {
     enrollment: UID_Enrollment
     event: UID_TrackerEvent
     followUp: boolean
-    geometry: Record<string, any>
+    geometry: Record<string, unknown>
     notes: Array<TrackerNote>
     occurredAt: Instant
     orgUnit: string
