@@ -10,6 +10,7 @@ import {
     SectionedFormLayout,
 } from '../../components'
 import {
+    getSectionPath,
     SectionedFormProvider,
     SECTIONS_MAP,
     useBoundResourceQueryFn,
@@ -85,7 +86,9 @@ export const Component = () => {
                     >
                         <form onSubmit={handleSubmit}>
                             <StageFormContents withProgramSelector />
-                            <DefaultFormFooter />
+                            <DefaultFormFooter
+                                cancelTo={`/${getSectionPath(section)}`}
+                            />
                         </form>
                         <SectionedFormErrorNotice />
                     </SectionedFormLayout>

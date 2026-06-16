@@ -150,6 +150,7 @@ describe('Program Stage form tests', () => {
         it('has a cancel link back to the list view', async () => {
             const { screen } = await renderForm()
             const cancelButton = screen.getByTestId('form-cancel-link')
+            expect(cancelButton).toBeVisible()
             expect(cancelButton).toHaveAttribute(
                 'href',
                 `/${section.namePlural}`
