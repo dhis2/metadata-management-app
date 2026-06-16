@@ -22,7 +22,10 @@ import {
     useSectionedFormContext,
     useSyncSelectedSectionWithScroll,
 } from '../../../lib'
-import { ProgramRuleVariable } from '../../../types/generated'
+import {
+    ProgramRuleVariableSourceType,
+    ValueType,
+} from '../../../types/generated'
 import {
     DataElementField,
     ProgramRuleVariableNameField,
@@ -72,12 +75,10 @@ export const ProgramRuleVariableFormFields = () => {
 
     useEffect(() => {
         if (
-            sourceType ===
-                ProgramRuleVariable.programRuleVariableSourceType
-                    .CALCULATED_VALUE &&
+            sourceType === ProgramRuleVariableSourceType.CALCULATED_VALUE &&
             !values.valueType
         ) {
-            form.change('valueType', ProgramRuleVariable.valueType.TEXT)
+            form.change('valueType', ValueType.TEXT)
         }
     }, [sourceType, values.valueType, form])
 

@@ -88,12 +88,13 @@ import {
 } from '../pages/validationRuleGroups/form/validationRuleGroupsSchema'
 import { validationRuleListSchema } from '../pages/validationRules/form/validationRuleSchema'
 import {
-    CategoryMapping,
-    DataElement,
-    OptionMapping,
+    BaseIdentifiableObject,
     OrganisationUnit,
-    Program,
-    ProgramTrackedEntityAttribute,
+    ProgramCategoryMapping,
+    ProgramCategoryOptionMapping,
+    ProgramTrackedEntityAttributeParams,
+    ProgramType,
+    ValueType,
 } from '../types/generated'
 
 const { withDefaultListColumns } = modelFormSchemas
@@ -434,7 +435,7 @@ export const testCategoryMapping = ({
     id = randomDhis2Id(),
     categoryId = randomDhis2Id(),
     mappingName = faker.company.name(),
-    optionMappings = [] as OptionMapping[],
+    optionMappings = [] as ProgramCategoryOptionMapping[],
 } = {}) => ({
     id,
     categoryId,
@@ -511,12 +512,12 @@ export const testCustomAttribute = ({
 export const testProgram = ({
     id = randomDhis2Id(),
     name = faker.person.fullName(),
-    categoryMappings = [] as CategoryMapping[],
+    categoryMappings = [] as ProgramCategoryMapping[],
     programType = randomValueIn([
         'WITH_REGISTRATION',
         'WITHOUT_REGISTRATION',
-    ]) as Program.programType,
-    programTrackedEntityAttributes = [] as ProgramTrackedEntityAttribute[],
+    ]) as ProgramType,
+    programTrackedEntityAttributes = [] as unknown as BaseIdentifiableObject[],
 } = {}) => ({
     id,
     name,
@@ -613,7 +614,7 @@ export const testPredictorGroup = (overwrites: Record<any, any> = {}) => ({
 export const testOptionSet = ({
     id = randomDhis2Id(),
     displayName = faker.person.fullName(),
-    valueType = randomValueIn(Object.keys(DataElement.valueType)),
+    valueType = randomValueIn(Object.keys(ValueType)),
 } = {}) => ({
     id,
     displayName,

@@ -48,6 +48,7 @@ describe('Organisation unit list tests', () => {
             name: faker.person.fullName(),
             email: faker.internet.email(),
             settings: {},
+            avatar: undefined as never,
         })
 
         const elements = [

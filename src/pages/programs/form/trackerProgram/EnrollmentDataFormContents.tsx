@@ -25,7 +25,7 @@ import {
     TooltipWrapper,
 } from '../../../../components/tooltip'
 import { SECTIONS_MAP } from '../../../../lib'
-import { ProgramTrackedEntityAttribute } from '../../../../types/generated'
+import { ProgramTrackedEntityAttributeParams } from '../../../../types/generated'
 import { ProgramsFromFilters } from '../../EditTrackerProgram'
 
 const defaultRenderType = {
@@ -36,7 +36,7 @@ const defaultRenderType = {
 export const EnrollmentDataFormContents = React.memo(
     function SetupFormContents({ name }: { name: string }) {
         const { input, meta } = useField<
-            (ProgramsFromFilters['programTrackedEntityAttributes'][0] & {
+            (ProgramTrackedEntityAttributeParams & {
                 optionSet?: { id: string }
             })[]
         >('programTrackedEntityAttributes', {
@@ -56,8 +56,8 @@ export const EnrollmentDataFormContents = React.memo(
             trackedEntityTypeField.input.value?.trackedEntityTypeAttributes ||
             []
 
-        const tetaMap = new Map<string, ProgramTrackedEntityAttribute>(
-            tetas.map((teta: ProgramTrackedEntityAttribute) => [
+        const tetaMap = new Map<string, ProgramTrackedEntityAttributeParams>(
+            tetas.map((teta: ProgramTrackedEntityAttributeParams) => [
                 teta.trackedEntityAttribute.id,
                 teta,
             ])
@@ -80,7 +80,7 @@ export const EnrollmentDataFormContents = React.memo(
             )
 
             const convertedTetas = tetas.map(
-                (teta: ProgramTrackedEntityAttribute) => {
+                (teta: ProgramTrackedEntityAttributeParams) => {
                     const existing = existingProgramAttributesMap.get(
                         teta.trackedEntityAttribute.id
                     )

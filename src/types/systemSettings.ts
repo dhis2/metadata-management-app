@@ -1,4 +1,4 @@
-import { SmsConfiguration } from './models'
+import { Configuration } from './models'
 
 export type SystemSettings = {
     keyDateFormat: string
@@ -85,7 +85,7 @@ export type SystemSettings = {
     syncMaxRemoteServerAvailabilityCheckAttempts: number
     keyAllowObjectAssignment: boolean
     keyStopMetadataSync: boolean
-    keySmsSetting: SmsConfiguration
+    keySmsSetting: Configuration
     keyDataImportStrictDataElements: boolean
     keyLastSuccessfulDataSynch: string
     keyApplicationIntro: string

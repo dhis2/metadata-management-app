@@ -14,7 +14,7 @@ export const Component = () => {
     return (
         <SectionedFormWrapper
             onSubmit={useOnSubmitNew({ section })}
-            initialValues={initialValues as ValidationNotificationTemplate}
+            initialValues={initialValues as any}
             validate={validate}
             cancelTo={`/${getSectionPath(section)}`}
         >

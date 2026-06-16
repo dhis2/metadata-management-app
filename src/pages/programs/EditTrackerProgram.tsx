@@ -89,7 +89,10 @@ export type ProgramsFromFilters = PickWithFieldFilters<
     typeof fieldFilters
 >
 
-export type ProgramValues = Omit<ProgramsFromFilters, 'sections'> & {
+export type ProgramValues = Omit<
+    ProgramsFromFilters,
+    'sections' | 'programStages'
+> & {
     sections: Section[]
     programStages: ProgramStageListItem[]
     dataEntryForm: DataEntryForm | null

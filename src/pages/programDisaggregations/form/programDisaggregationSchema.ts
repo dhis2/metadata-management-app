@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { CategoryCombo } from './../../../types/generated/models'
+import { DataDimensionType } from './../../../types/generated/models'
 
 export const categoryOptionMapping = z.object({
     filter: z.string(),
@@ -13,14 +13,14 @@ const identifiable = z.object({
 })
 const categorySchema = identifiable.extend({
     categoryOptions: z.array(identifiable),
-    dataDimensionType: z.nativeEnum(CategoryCombo.dataDimensionType),
+    dataDimensionType: z.nativeEnum(DataDimensionType),
     name: z.string(),
 })
 const categoryComboSchema = z
     .object({
         id: z.string(),
         displayName: z.string(),
-        dataDimensionType: z.nativeEnum(CategoryCombo.dataDimensionType),
+        dataDimensionType: z.nativeEnum(DataDimensionType),
         categories: z.array(categorySchema),
     })
     .optional()

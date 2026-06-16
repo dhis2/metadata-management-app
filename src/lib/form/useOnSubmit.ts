@@ -5,7 +5,6 @@ import { FormApi, SubmissionErrors } from 'final-form'
 import { useCallback, useMemo } from 'react'
 import { To, useSearchParams } from 'react-router-dom'
 import { ModelSection } from '../../types'
-import { IdentifiableObject } from '../../types/generated'
 import { getSectionPath, useNavigateWithSearchState } from '../routeUtils'
 import { createFormError } from './createFormError'
 import {
@@ -154,17 +153,17 @@ export const useOnEditCompletedSuccessfully = (section: ModelSection) => {
     )
 }
 
-export const useOnSubmitEdit = <TFormValues extends IdentifiableObject>({
+export const useOnSubmitEdit = <TFormValues = unknown>({
     modelId,
     section,
 }: UseOnSubmitEditOptions) => {
     const patchDirtyFields = usePatchModel(modelId, section.namePlural)
     const onEditCompletedSuccessfully = useOnEditCompletedSuccessfully(section)
 
-    return useMemo<EnhancedOnSubmit<TFormValues>>(
+    return useMemo<EnhancedOnSubmit<any>>(
         () => async (values, form, options) => {
             const jsonPatchOperations = createJsonPatchOperations({
-                values,
+                values: values as unknown as ModelWithAttributeValues,
                 dirtyFields: form.getState().dirtyFields,
                 originalValue: form.getState().initialValues,
             })
@@ -281,7 +280,7 @@ export const useOnSubmitNew = <
     const onNewCompletedSuccessfully =
         useOnNewCompletedSuccessfullyOrSkipped(section)
 
-    return useMemo<EnhancedOnSubmit<TFormValues>>(
+    return useMemo<EnhancedOnSubmit<any>>(
         () => async (values, form, options) => {
             if (!values) {
                 return onNewCompletedSuccessfully({ withChanges: false })

@@ -40,7 +40,7 @@ export const DefaultSectionListMessage = ({
     data,
 }: {
     error?: FetchError
-    data?: ModelCollection
+    data?: unknown[]
 }) => {
     if (error) {
         return <SectionListError />
