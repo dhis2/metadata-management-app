@@ -8,7 +8,7 @@ import {
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import React, { useMemo, useState } from 'react'
 import { Field } from 'react-final-form'
-import { useCurrentUserRootOrgUnits, useDebouncedState } from '../../../../lib'
+import { useSystemOrgUnits, useDebouncedState } from '../../../../lib'
 import { useBoundResourceQueryFn } from '../../../../lib/query/useBoundQueryFn'
 import { uniqueBy } from '../../../../lib/utils'
 import { Optional, PagedResponse, PlainResourceQuery } from '../../../../types'
@@ -48,7 +48,7 @@ export const OrganisationUnitTreeWithToolbar = ({
     const [search, setSearch] = useState('')
     const queryClient = useQueryClient()
     const boundQueryFn = useBoundResourceQueryFn()
-    const roots = useCurrentUserRootOrgUnits()
+    const roots = useSystemOrgUnits()
     const minRootLevel = roots[0]?.level ?? 1
 
     const isFiltered = search !== ''
@@ -61,7 +61,6 @@ export const OrganisationUnitTreeWithToolbar = ({
                 params: {
                     filter: `identifiable:token:${search}`,
                     fields: ['path'],
-                    withinUserHierarchy: true,
                     pageSize: 150,
                 },
             } satisfies PlainResourceQuery,

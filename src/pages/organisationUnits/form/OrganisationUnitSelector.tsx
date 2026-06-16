@@ -3,7 +3,7 @@ import { Field, NoticeBox, OrganisationUnitTree } from '@dhis2/ui'
 import { IconInfo16 } from '@dhis2/ui-icons'
 import React, { useMemo } from 'react'
 import { useField } from 'react-final-form'
-import { useCurrentUserRootOrgUnits } from '../../../lib/user/currentUserStore'
+import { useSystemOrgUnits } from '../../../lib/'
 import classes from './OrganisationUnitSelector.module.css'
 
 export function OrganisationUnitSelector() {
@@ -11,16 +11,16 @@ export function OrganisationUnitSelector() {
     const { input, meta } = useField(fieldName, {
         format: (value) => value,
         validate: (value) =>
-            !value && userRootOrgUnits.length > 0 ? 'Required' : undefined,
+            !value && systemRootOrgUnits.length > 0 ? 'Required' : undefined,
     })
-    const userRootOrgUnits = useCurrentUserRootOrgUnits()
-    const userRootOrgUnitsIds = useMemo(
-        () => userRootOrgUnits.map((unit) => unit.id),
-        [userRootOrgUnits]
+    const systemRootOrgUnits = useSystemOrgUnits()
+    const systemRootOrgUnitsIds = useMemo(
+        () => systemRootOrgUnits.map((unit) => unit.id),
+        [systemRootOrgUnits]
     )
-    const userRootOrgUnitsPaths = useMemo(
-        () => userRootOrgUnits.map((unit) => unit.path),
-        [userRootOrgUnits]
+    const systemRootOrgUnitsPaths = useMemo(
+        () => systemRootOrgUnits.map((unit) => unit.path),
+        [systemRootOrgUnits]
     )
 
     const { initiallyExpanded, selectedPath } = useMemo(() => {
@@ -28,10 +28,10 @@ export function OrganisationUnitSelector() {
             ? [input.value.path]
             : []
         return {
-            initiallyExpanded: [...userRootOrgUnitsPaths, ...selectedPath],
+            initiallyExpanded: [...systemRootOrgUnitsPaths, ...selectedPath],
             selectedPath,
         }
-    }, [userRootOrgUnitsPaths, input])
+    }, [systemRootOrgUnitsPaths, input])
 
     const handleChange = (orgUnit: {
         displayName: string
@@ -52,14 +52,14 @@ export function OrganisationUnitSelector() {
             error={meta.touched && meta.error}
             validationText={meta.touched ? meta.error : undefined}
         >
-            {userRootOrgUnits.length > 0 ? (
+            {systemRootOrgUnits.length > 0 ? (
                 <>
                     <div className={classes.selectedOrgUnitBox}>
                         <OrganisationUnitTree
                             key={initiallyExpanded.join(',')}
                             onChange={handleChange}
                             singleSelection
-                            roots={userRootOrgUnitsIds}
+                            roots={systemRootOrgUnitsIds}
                             selected={selectedPath}
                             initiallyExpanded={initiallyExpanded}
                         />

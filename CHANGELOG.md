@@ -1,3 +1,18 @@
+## [0.160.1](https://github.com/dhis2/metadata-management-app/compare/v0.160.0...v0.160.1) (2026-06-16)
+
+
+### Bug Fixes
+
+* remove multicalendar dates patch ([#966](https://github.com/dhis2/metadata-management-app/issues/966)) ([689328d](https://github.com/dhis2/metadata-management-app/commit/689328d5104c4a4a3a6e3a1af552c21d5923161c))
+* use system root org units ([#960](https://github.com/dhis2/metadata-management-app/issues/960)) ([e4b7066](https://github.com/dhis2/metadata-management-app/commit/e4b7066a74e270661af044788c72568d1448a1c5))
+
+# [0.160.0](https://github.com/dhis2/metadata-management-app/compare/v0.159.5...v0.160.0) (2026-06-16)
+
+
+### Features
+
+* [DHIS2-21578] Standalone program stage list ([#965](https://github.com/dhis2/metadata-management-app/issues/965)) ([11e89c9](https://github.com/dhis2/metadata-management-app/commit/11e89c9c2c6b0188781f66aae03e8cbba66d96a4))
+
 ## [0.159.5](https://github.com/dhis2/metadata-management-app/compare/v0.159.4...v0.159.5) (2026-06-11)
 
 
