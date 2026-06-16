@@ -29,9 +29,8 @@ export const OrganisationUnitListMessage = ({
 
     // Show loading indicator when there is nothing to display yet and we're fetching.
     // This prevents briefly showing "no matches" while a new filter/search is loading.
-    const showLoading =
-        orgUnitCount < 1 &&
-        queries.some((query) => query.isLoading || query.isFetching)
+    // isLoading will be true for disabled query, so use isFetching instead
+    const showLoading = queries.some((query) => query.isFetching)
 
     if (showLoading) {
         return <SectionListLoader />
