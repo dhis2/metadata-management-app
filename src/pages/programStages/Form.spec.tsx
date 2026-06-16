@@ -3,12 +3,13 @@ import React from 'react'
 import schemaMock from '../../__mocks__/schema/programStages.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
 import { SECTIONS_MAP } from '../../lib'
-import { testProgram, testProgramStage } from '../../testUtils/builders'
+import { testProgram } from '../../testUtils/builders'
 import { generateRenderer } from '../../testUtils/generateRenderer'
 import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
 import { uiActions } from '../../testUtils/uiActions'
 import { uiAssertions } from '../../testUtils/uiAssertions'
 import { Component as Edit } from './Edit'
+import { initialStageValue } from './form'
 import { Component as New } from './New'
 
 const section = SECTIONS_MAP.programStage
@@ -165,12 +166,13 @@ describe('Program Stage form tests', () => {
                 const programs = [
                     testProgram({ id: 'program1', name: 'Test Program 1' }),
                 ]
-                const existingStage = testProgramStage({
+                const existingStage = {
+                    ...initialStageValue,
                     id: 'stage1',
                     name: 'Existing Stage',
                     displayName: 'Existing Stage',
                     program: { id: 'program1', displayName: 'Test Program 1' },
-                })
+                }
 
                 const screen = render(
                     <TestComponentWithRouter
