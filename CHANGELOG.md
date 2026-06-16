@@ -1,3 +1,10 @@
+# [0.160.0](https://github.com/dhis2/metadata-management-app/compare/v0.159.5...v0.160.0) (2026-06-16)
+
+
+### Features
+
+* [DHIS2-21578] Standalone program stage list ([#965](https://github.com/dhis2/metadata-management-app/issues/965)) ([11e89c9](https://github.com/dhis2/metadata-management-app/commit/11e89c9c2c6b0188781f66aae03e8cbba66d96a4))
+
 ## [0.159.5](https://github.com/dhis2/metadata-management-app/compare/v0.159.4...v0.159.5) (2026-06-11)
 
 
