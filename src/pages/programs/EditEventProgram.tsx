@@ -35,10 +35,7 @@ import {
 } from './form'
 import { EventProgramFormContents } from './form/eventProgram/EventProgramFormContents'
 import { EventProgramFormDescriptor } from './form/eventProgram/eventProgramFormDescriptor'
-import {
-    StageFormValues,
-    stageSchemaSection,
-} from './form/programStage/StageForm'
+import { StageFormValues } from './form/programStage/StageForm'
 import { ProgramStageListItem } from './form/trackerProgram/ProgramStagesFormContents'
 
 const fieldFilters = [
@@ -140,7 +137,7 @@ export const useOnSubmitProgramEdit = (modelId: string) => {
             try {
                 const response = await dataEngine.mutate(
                     {
-                        resource: stageSchemaSection.namePlural,
+                        resource: SECTIONS_MAP.programStage.namePlural,
                         id: id,
                         type: 'json-patch',
                         data: ({ operations }: Record<string, string>) =>
