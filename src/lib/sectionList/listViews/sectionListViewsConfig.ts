@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { SectionName } from '../../constants'
+import { PROGRAM_STAGE_PROPERTY_LABELS, SectionName } from '../../constants'
 import type { ConfigurableFilterKey } from '../filters'
 
 export interface ModelPropertyDescriptor {
@@ -760,6 +760,101 @@ export const modelListViewsConfig = {
         },
         filters: {
             default: ['programType'],
+            available: [],
+            overrideDefaultAvailable: true,
+        },
+    },
+    programStage: {
+        columns: {
+            default: [
+                DESCRIPTORS.name,
+                { label: i18n.t('Program'), path: 'program.displayName' },
+                DESCRIPTORS.publicAccess,
+                'lastUpdated',
+            ],
+            available: [
+                'description',
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.featureType,
+                    path: 'featureType',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.enableUserAssignment,
+                    path: 'enableUserAssignment',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.repeatable,
+                    path: 'repeatable',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.standardInterval,
+                    path: 'standardInterval',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.nextScheduleDate,
+                    path: 'nextScheduleDate.displayName',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.periodType,
+                    path: 'periodType',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.validationStrategy,
+                    path: 'validationStrategy',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.preGenerateUID,
+                    path: 'preGenerateUID',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.allowGenerateNextVisit,
+                    path: 'allowGenerateNextVisit',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.remindCompleted,
+                    path: 'remindCompleted',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.blockEntryForm,
+                    path: 'blockEntryForm',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.autoGenerateEvent,
+                    path: 'autoGenerateEvent',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.openAfterEnrollment,
+                    path: 'openAfterEnrollment',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.reportDateToUse,
+                    path: 'reportDateToUse',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.minDaysFromStart,
+                    path: 'minDaysFromStart',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.generatedByEnrollmentDate,
+                    path: 'generatedByEnrollmentDate',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.hideDueDate,
+                    path: 'hideDueDate',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.executionDateLabel,
+                    path: 'executionDateLabel',
+                },
+                {
+                    label: PROGRAM_STAGE_PROPERTY_LABELS.dueDateLabel,
+                    path: 'dueDateLabel',
+                },
+            ],
+            overrideDefaultAvailable: true,
+        },
+        filters: {
+            default: ['program'],
             available: [],
             overrideDefaultAvailable: true,
         },
