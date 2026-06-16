@@ -2,8 +2,6 @@ import { Section } from '../../../../components/formCreators/SectionFormList'
 import {
     ATTRIBUTE_VALUES_FIELD_FILTERS,
     DEFAULT_FIELD_FILTERS,
-    SECTIONS_MAP,
-    SchemaSection,
 } from '../../../../lib'
 import {
     DisplayableModel,
@@ -43,10 +41,6 @@ export const fieldFilters = [
     'allowGenerateNextVisit',
     'remindCompleted',
 ] as const
-
-export const stageSchemaSection = {
-    ...SECTIONS_MAP.programStage,
-} satisfies SchemaSection
 
 export type StageFormValuesFromFilters = PickWithFieldFilters<
     ProgramStage,

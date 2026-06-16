@@ -1,6 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
-import { ModelSingleSelectFormField } from '../../components/metadataFormControls/ModelSingleSelect'
+import { ModelSingleSelectFormField } from '../../../../../components/metadataFormControls/ModelSingleSelect'
 
 const PROGRAMS_QUERY = {
     resource: 'programs',

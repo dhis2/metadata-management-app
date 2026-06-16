@@ -7,13 +7,17 @@ import {
     SectionedFormErrorNotice,
     SectionedFormLayout,
 } from '../../components'
-import { SectionedFormProvider, SECTIONS_MAP, useOnSubmitNew } from '../../lib'
+import {
+    getSectionPath,
+    SectionedFormProvider,
+    SECTIONS_MAP,
+    useOnSubmitNew,
+} from '../../lib'
 import {
     initialStageValue,
     StageFormContents,
     StageFormDescriptor,
 } from './form'
-import { StageProgramField } from './StageProgramField'
 
 const section = SECTIONS_MAP.programStage
 
@@ -31,10 +35,10 @@ export const Component = () => {
                         sidebar={<DefaultSectionedFormSidebar />}
                     >
                         <form onSubmit={handleSubmit}>
-                            <StageFormContents
-                                programField={<StageProgramField />}
+                            <StageFormContents withProgramSelector />
+                            <DefaultFormFooter
+                                cancelTo={`/${getSectionPath(section)}`}
                             />
-                            <DefaultFormFooter />
                         </form>
                         <SectionedFormErrorNotice />
                     </SectionedFormLayout>

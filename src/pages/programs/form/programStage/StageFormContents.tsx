@@ -32,21 +32,21 @@ import {
     AllowGenerateNextVisitField,
     RemindCompletedField,
     PeriodTypeField,
+    StageProgramField,
 } from './fields'
 import { StageCreationAndSchedulingFormContents } from './StageCreationAndSchedulingFormContents'
 import { StageDataFormContents } from './StageDataFormContents'
 import { StageFormDescriptor } from './stageFormDescriptor'
 import { StageFormFormContents } from './StageFormFormContents'
-import { stageSchemaSection } from './stageFormShared'
 
 export const StageFormContents = ({
     isSubsection = false,
     setSelectedSection,
-    programField,
+    withProgramSelector = false,
 }: {
     isSubsection?: boolean
     setSelectedSection?: (name: string) => void
-    programField?: React.ReactNode
+    withProgramSelector?: boolean
 }) => {
     const { values } = useFormState({ subscription: { values: true } })
     const descriptor = useSectionedFormContext<typeof StageFormDescriptor>()
@@ -59,19 +59,19 @@ export const StageFormContents = ({
     )
 
     const executionDateLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'executionDateLabel',
     })
     const dueDateLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'dueDateLabel',
     })
     const programStageLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'programStageLabel',
     })
     const eventLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'eventLabel',
     })
     const eventsLabelValidator = useValidator({
@@ -93,8 +93,10 @@ export const StageFormContents = ({
                             'Configure the basic information for this program stage.'
                         )}
                     </StandardFormSectionDescription>
-                    {programField && (
-                        <StandardFormField>{programField}</StandardFormField>
+                    {withProgramSelector && (
+                        <StandardFormField>
+                            <StageProgramField />
+                        </StandardFormField>
                     )}
                     <NameField schemaSection={SCHEMA_SECTIONS.programStage} />
                     <StandardFormField>

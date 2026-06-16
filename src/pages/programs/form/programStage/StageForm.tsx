@@ -20,6 +20,7 @@ import {
     createFormError,
     createJsonPatchOperations,
     getAllAttributeValues,
+    SECTIONS_MAP,
     SectionedFormProvider,
     useBoundResourceQueryFn,
     useCreateModel,
@@ -32,14 +33,13 @@ import { StageFormDescriptor } from './stageFormDescriptor'
 import {
     fieldFilters,
     PartialStageFormValues,
-    stageSchemaSection,
     StageFormValues,
     SubmittedStageFormValues,
 } from './stageFormShared'
 import { initialStageValue } from './stageSchema'
 import { useTrimStageValuesOnDelete } from './useTrimStageValuesOnDelete'
 
-export { fieldFilters, stageSchemaSection }
+export { fieldFilters }
 export type { StageFormValues, SubmittedStageFormValues }
 export type { StageFormValuesFromFilters } from './stageFormShared'
 
@@ -188,7 +188,10 @@ export const EditStageForm = ({
         closeOnSubmit: boolean
     ) => void
 }) => {
-    const handlePatch = usePatchModel(stage.id, stageSchemaSection.namePlural)
+    const handlePatch = usePatchModel(
+        stage.id,
+        SECTIONS_MAP.programStage.namePlural
+    )
 
     const queryFn = useBoundResourceQueryFn()
     const queryClient = useQueryClient()
@@ -290,7 +293,7 @@ export const NewStageForm = ({
         closeOnSubmit: boolean
     ) => void
 }) => {
-    const handleCreate = useCreateModel(stageSchemaSection.namePlural)
+    const handleCreate = useCreateModel(SECTIONS_MAP.programStage.namePlural)
     const onFormSubmit: OnSubmitWithClose = async (
         values,
         b,
