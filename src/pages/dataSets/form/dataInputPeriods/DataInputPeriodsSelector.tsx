@@ -45,7 +45,7 @@ const DataInputPeriodModal = ({
     const { input } = useField('dataInputPeriods')
 
     const [selectedYear, setSelectedYear] = useState<string | undefined>(
-        editDIP?.period?.id ? editDIP.period!.id.substring(0, 4) : undefined
+        editDIP?.period?.id?.substring(0, 4)
     )
     const [selectedPeriod, setSelectedPeriod] = useState<string | undefined>(
         editDIP?.period?.id

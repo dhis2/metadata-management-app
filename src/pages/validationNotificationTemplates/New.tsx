@@ -1,6 +1,5 @@
 import React from 'react'
 import { SECTIONS_MAP, useOnSubmitNew, getSectionPath } from '../../lib'
-import { ValidationNotificationTemplate } from '../../types/generated'
 import {
     ValidationNotificationTemplateFormFields,
     initialValues,

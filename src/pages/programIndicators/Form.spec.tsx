@@ -19,7 +19,6 @@ import { uiActions } from '../../testUtils/uiActions'
 import { uiAssertions } from '../../testUtils/uiAssertions'
 import {
     BaseIdentifiableObject,
-    Program,
     ProgramTrackedEntityAttributeParams,
     ProgramType,
 } from '../../types/generated'

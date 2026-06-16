@@ -163,7 +163,7 @@ export const useOnSubmitEdit = <TFormValues = unknown>({
     return useMemo<EnhancedOnSubmit<any>>(
         () => async (values, form, options) => {
             const jsonPatchOperations = createJsonPatchOperations({
-                values: values as unknown as ModelWithAttributeValues,
+                values: values,
                 dirtyFields: form.getState().dirtyFields,
                 originalValue: form.getState().initialValues,
             })
