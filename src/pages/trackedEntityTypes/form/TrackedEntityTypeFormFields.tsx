@@ -1,7 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
-import { Field } from 'react-final-form'
 import {
     ColorAndIconField,
     StandardFormField,
@@ -22,7 +20,6 @@ import {
     useSchemaSectionHandleOrThrow,
     useSectionedFormContext,
     useSyncSelectedSectionWithScroll,
-    useValidator,
 } from '../../../lib'
 import {
     AttributesTransferField,
@@ -30,6 +27,7 @@ import {
     AllowAuditLogField,
     MinAttributesRequiredField,
     MaxTeiCountField,
+    TrackedEntityTypesLabelField,
 } from '../fields'
 import { TrackedEntityTypeFormDescriptor } from './formDescriptor'
 
@@ -41,10 +39,6 @@ export function TrackedEntityTypeFormFields() {
     const showPluralLabels = useFeatureAvailable(
         FEATURES.customTerminologyPlurals
     )
-    const trackedEntityTypesLabelValidator = useValidator({
-        schemaSection,
-        property: 'trackedEntityTypesLabel',
-    })
 
     return (
         <SectionedFormSections>
@@ -65,18 +59,7 @@ export function TrackedEntityTypeFormFields() {
                     <NameField schemaSection={schemaSection} />
                 </StandardFormField>
 
-                {showPluralLabels && (
-                    <StandardFormField>
-                        <Field
-                            component={InputFieldFF}
-                            name="trackedEntityTypesLabel"
-                            inputWidth="400px"
-                            label={i18n.t('Name (Plural)')}
-                            dataTest="formfields-trackedEntityTypesLabel"
-                            validate={trackedEntityTypesLabelValidator}
-                        />
-                    </StandardFormField>
-                )}
+                {showPluralLabels && <TrackedEntityTypesLabelField />}
 
                 <StandardFormField>
                     <ShortNameField schemaSection={schemaSection} />
