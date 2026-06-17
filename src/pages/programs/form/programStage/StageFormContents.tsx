@@ -33,6 +33,7 @@ import {
     RemindCompletedField,
     PeriodTypeField,
     StageProgramField,
+    EventsLabelField,
 } from './fields'
 import { StageCreationAndSchedulingFormContents } from './StageCreationAndSchedulingFormContents'
 import { StageDataFormContents } from './StageDataFormContents'
@@ -53,6 +54,9 @@ export const StageFormContents = ({
     useSyncSelectedSectionWithScroll(setSelectedSection)
     const showValidationStrategy = useFeatureAvailable(
         FEATURES.validationStrategy
+    )
+    const showPluralLabels = useFeatureAvailable(
+        FEATURES.customTerminologyPlurals
     )
 
     const executionDateLabelValidator = useValidator({
@@ -243,6 +247,7 @@ export const StageFormContents = ({
                             validate={eventLabelValidator}
                         />
                     </StandardFormField>
+                    {showPluralLabels && <EventsLabelField />}
                 </SectionedFormSection>
                 <CustomAttributesSection
                     schemaSection={SCHEMA_SECTIONS.programStage}

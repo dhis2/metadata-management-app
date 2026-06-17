@@ -14,6 +14,7 @@ const {
 
 const trackedEntityTypeBaseSchema = z.object({
     name: z.string().trim(),
+    trackedEntityTypesLabel: z.string().trim().optional(),
     shortName: z
         .string()
         .trim()
