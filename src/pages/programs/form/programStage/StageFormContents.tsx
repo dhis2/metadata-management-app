@@ -33,6 +33,7 @@ import {
     RemindCompletedField,
     PeriodTypeField,
     StageProgramField,
+    EventsLabelField,
 } from './fields'
 import { StageCreationAndSchedulingFormContents } from './StageCreationAndSchedulingFormContents'
 import { StageDataFormContents } from './StageDataFormContents'
@@ -73,10 +74,6 @@ export const StageFormContents = ({
     const eventLabelValidator = useValidator({
         schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'eventLabel',
-    })
-    const eventsLabelValidator = useValidator({
-        schemaSection: SCHEMA_SECTIONS.programStage,
-        property: 'eventsLabel',
     })
 
     return (
@@ -250,20 +247,7 @@ export const StageFormContents = ({
                             validate={eventLabelValidator}
                         />
                     </StandardFormField>
-                    {showPluralLabels && (
-                        <StandardFormField>
-                            <Field
-                                component={InputFieldFF}
-                                name="eventsLabel"
-                                inputWidth="400px"
-                                label={i18n.t(
-                                    'Custom label for event (plural)'
-                                )}
-                                dataTest="formfields-eventsLabel"
-                                validate={eventsLabelValidator}
-                            />
-                        </StandardFormField>
-                    )}
+                    {showPluralLabels && <EventsLabelField />}
                 </SectionedFormSection>
                 <CustomAttributesSection
                     schemaSection={SCHEMA_SECTIONS.programStage}

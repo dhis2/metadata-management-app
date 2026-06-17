@@ -14,6 +14,11 @@ import {
     useSchemaSectionHandleOrThrow,
     useValidator,
 } from '../../../../lib'
+import {
+    EnrollmentsLabelField,
+    EventsLabelField,
+    ProgramStagesLabelField,
+} from './fields'
 
 export const ProgramCustomizationFormContents = React.memo(
     function ProgramCustomizationFormContents({ name }: { name: string }) {
@@ -33,25 +38,13 @@ export const ProgramCustomizationFormContents = React.memo(
             schemaSection,
             property: 'enrollmentLabel',
         })
-        const enrollmentsLabelValidator = useValidator({
-            schemaSection,
-            property: 'enrollmentsLabel',
-        })
         const eventLabelValidator = useValidator({
             schemaSection,
             property: 'eventLabel',
         })
-        const eventsLabelValidator = useValidator({
-            schemaSection,
-            property: 'eventsLabel',
-        })
         const programStageLabelValidator = useValidator({
             schemaSection,
             property: 'programStageLabel',
-        })
-        const programStagesLabelValidator = useValidator({
-            schemaSection,
-            property: 'programStagesLabel',
         })
         const followUpLabelValidator = useValidator({
             schemaSection,
@@ -124,24 +117,7 @@ export const ProgramCustomizationFormContents = React.memo(
                     />
                 </StandardFormField>
 
-                {showPluralLabels && (
-                    <StandardFormField>
-                        <Field
-                            component={InputFieldFF}
-                            name="enrollmentsLabel"
-                            inputWidth="400px"
-                            label={i18n.t(
-                                'Custom label for "Enrollment" (plural)'
-                            )}
-                            helpText={i18n.t(
-                                'Example use: See all enrollments',
-                                { nsSeparator: '~:~' }
-                            )}
-                            dataTest="formfields-enrollmentsLabel"
-                            validate={enrollmentsLabelValidator}
-                        />
-                    </StandardFormField>
-                )}
+                {showPluralLabels && <EnrollmentsLabelField />}
 
                 <StandardFormField>
                     <Field
@@ -157,21 +133,7 @@ export const ProgramCustomizationFormContents = React.memo(
                     />
                 </StandardFormField>
 
-                {showPluralLabels && (
-                    <StandardFormField>
-                        <Field
-                            component={InputFieldFF}
-                            name="eventsLabel"
-                            inputWidth="400px"
-                            label={i18n.t('Custom label for "Event" (plural)')}
-                            helpText={i18n.t('Example use: See all events', {
-                                nsSeparator: '~:~',
-                            })}
-                            dataTest="formfields-eventsLabel"
-                            validate={eventsLabelValidator}
-                        />
-                    </StandardFormField>
-                )}
+                {showPluralLabels && <EventsLabelField />}
 
                 <StandardFormField>
                     <Field
@@ -188,24 +150,7 @@ export const ProgramCustomizationFormContents = React.memo(
                     />
                 </StandardFormField>
 
-                {showPluralLabels && (
-                    <StandardFormField>
-                        <Field
-                            component={InputFieldFF}
-                            name="programStagesLabel"
-                            inputWidth="400px"
-                            label={i18n.t(
-                                'Custom label for "Program stage" (plural)'
-                            )}
-                            helpText={i18n.t(
-                                'Example use: See all program stages',
-                                { nsSeparator: '~:~' }
-                            )}
-                            dataTest="formfields-programStagesLabel"
-                            validate={programStagesLabelValidator}
-                        />
-                    </StandardFormField>
-                )}
+                {showPluralLabels && <ProgramStagesLabelField />}
 
                 <StandardFormField>
                     <Field
