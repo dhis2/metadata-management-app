@@ -11,21 +11,22 @@ export const DateTimeFieldFF = (props: DateFieldProps) => {
 
     const input = useMemo(() => {
         const handleChange = (calendarDateString: string, newTime?: string) => {
-            // allow time to be changed without date, should cause
-            // dateTime validator with required date
-            if (!calendarDateString && newTime) {
-                originalInput.onChange('T' + newTime)
-                return
-            }
-            // clear only the date (time has its own separate clear button)
             if (!calendarDateString) {
-                originalInput.onChange(timePart ? `T${timePart}` : '')
-                originalInput.onBlur()
+                if (newTime) {
+                    originalInput.onChange('T' + newTime)
+                } else if (newTime === '') {
+                    originalInput.onChange('')
+                    originalInput.onBlur()
+                } else {
+                    originalInput.onChange(timePart ? `T${timePart}` : '')
+                    originalInput.onBlur()
+                }
                 return
             }
             const resolvedTime = newTime ?? timePart ?? defaultTime
             const dateTime = `${calendarDateString}T${resolvedTime}`
             originalInput.onChange(dateTime)
+            originalInput.onBlur()
         }
         return {
             ...originalInput,
