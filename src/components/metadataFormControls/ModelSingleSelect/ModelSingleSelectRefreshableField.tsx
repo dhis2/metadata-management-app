@@ -23,7 +23,7 @@ import {
 } from './ModelSingleSelectField'
 import { useRefreshModelSingleSelect } from './useRefreshSingleSelect'
 
-const LINK_ONLY_SECTIONS = ['programs']
+const LINK_ONLY_SECTIONS = new Set(['programs'])
 
 // refactor this to be common for ModelTransfer
 type NewItemFormComponent = React.ComponentType<{
@@ -146,7 +146,7 @@ export function ModelSingleSelectRefreshableFormField<
     useEffect(() => {
         import(`../../../pages/${section.namePlural ?? ''}/New`)
             .then((m: { Component: NewItemFormComponent }) => {
-                if (LINK_ONLY_SECTIONS.includes(section.namePlural)) {
+                if (LINK_ONLY_SECTIONS.has(section.namePlural)) {
                     return
                 }
                 setNewItemForm(() => m.Component)
