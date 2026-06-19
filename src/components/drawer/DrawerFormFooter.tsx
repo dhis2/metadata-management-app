@@ -27,7 +27,7 @@ export const DrawerFormFooter: React.FC<DrawerFormFooterProps> = ({
     infoMessage,
 }) => (
     <div className={css.drawerFooter}>
-        <div className={css.drawerFooterActions}>
+        <div className={css.drawerFooterInner}>
             <ButtonStrip>
                 <Button
                     primary
@@ -84,13 +84,7 @@ export const AddNewDrawerFormFooter = ({
     const form = useForm()
 
     return (
-        <div
-            style={{
-                position: 'sticky',
-                bottom: 0,
-                zIndex: 1,
-            }}
-        >
+        <div className={css.drawerFooter}>
             <DrawerFormFooter
                 submitLabel={i18n.t('Save and close')}
                 cancelLabel={i18n.t('Cancel')}
