@@ -31,8 +31,7 @@ export function DataElementFormFields() {
     const section = SCHEMA_SECTIONS.dataElement
     return (
         <>
-            {/* <StandardFormSection> */}
-            <>
+            <StandardFormSection>
                 <StandardFormSectionTitle>
                     {i18n.t('Basic information')}
                 </StandardFormSectionTitle>
@@ -62,8 +61,7 @@ export function DataElementFormFields() {
                 <StandardFormField>
                     <ColorAndIconField />
                 </StandardFormField>
-            </>
-            {/* </StandardFormSection> */}
+            </StandardFormSection>
             <StandardFormSection>
                 <StandardFormSectionTitle>
                     {i18n.t('Data collection')}
