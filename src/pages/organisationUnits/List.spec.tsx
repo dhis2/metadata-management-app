@@ -1,14 +1,13 @@
-import { faker } from '@faker-js/faker'
-import {
-    render,
-    waitFor,
-    waitForElementToBeRemoved,
-    within,
-} from '@testing-library/react'
+import { render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import organisationUnitsSchemaMock from '../../__mocks__/schema/organisationUnitsSchema.json'
-import { getRelativeTime, ModelSchemas, SECTIONS_MAP } from '../../lib'
+import {
+    getRelativeTime,
+    ModelSchemas,
+    SECTIONS_MAP,
+    useSystemOrgUnitsStore,
+} from '../../lib'
 import { useSchemaStore } from '../../lib/schemas/schemaStore'
 import { useCurrentUserStore } from '../../lib/user/currentUserStore'
 import { testAccess, testOrgUnit } from '../../testUtils/builders'
@@ -24,6 +23,7 @@ const renderList = async ({
     rootOrgUnits = [testOrgUnit()] as Partial<OrganisationUnit>[],
     otherOrgUnits = [] as Partial<OrganisationUnit>[],
     userDataStore = defaultUserDataStoreData,
+    currentUserOrgUnits = undefined as Partial<OrganisationUnit>[] | undefined,
 }) => {
     const routeOptions = {
         handle: { section: SECTIONS_MAP.organisationUnit },
@@ -35,11 +35,17 @@ const renderList = async ({
         organisationUnit: organisationUnitsSchemaMock,
     } as unknown as ModelSchemas)
 
+    useSystemOrgUnitsStore
+        .getState()
+        .setOrganisationUnits(rootOrgUnits as OrganisationUnit[])
+
     useCurrentUserStore.getState().setCurrentUser({
-        organisationUnits: rootOrgUnits as OrganisationUnit[],
+        organisationUnits: (currentUserOrgUnits ?? [
+            testOrgUnit(),
+        ]) as OrganisationUnit[],
         authorities: new Set(),
-        name: faker.person.fullName(),
-        email: faker.internet.email(),
+        name: 'Test User',
+        email: 'test@dhis2.org',
         settings: {},
     })
 
@@ -82,9 +88,11 @@ const renderList = async ({
         </TestComponentWithRouter>
     )
 
-    await waitForElementToBeRemoved(() =>
-        result.queryByTestId('dhis2-uicore-circularloader')
-    )
+    await waitFor(() => {
+        expect(
+            result.queryByTestId('dhis2-uicore-circularloader')
+        ).not.toBeInTheDocument()
+    })
     return result
 }
 
@@ -661,5 +669,39 @@ describe('Organisation unit list', () => {
         expect(selectedRadio!.closest('label')).toHaveTextContent(
             'Only selected (2)'
         )
+    })
+
+    it('should use system org units as roots, not current user org units', async () => {
+        const systemRoot = testOrgUnit({
+            level: 1,
+            childCount: 0,
+            displayName: 'SystemRoot',
+        })
+        const userRoot = testOrgUnit({
+            level: 3,
+            childCount: 0,
+            displayName: 'UserRoot',
+        })
+
+        const screen = await renderList({
+            rootOrgUnits: [systemRoot],
+            currentUserOrgUnits: [userRoot],
+        })
+
+        const tableRows = screen.getAllByTestId('dhis2-uicore-datatablerow')
+        // header row + systemRoot row only
+        expect(tableRows.length).toBe(2)
+        expect(tableRows[1]).toHaveTextContent('SystemRoot')
+        expect(screen.queryByText('UserRoot')).not.toBeInTheDocument()
+    })
+
+    it('should display "No organisation units available" when useSystemOrgUnitsStore has no roots', async () => {
+        const screen = await renderList({
+            rootOrgUnits: [],
+        })
+
+        expect(
+            screen.getByText('No organisation units available')
+        ).toBeVisible()
     })
 })

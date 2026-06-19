@@ -30,6 +30,11 @@ export const ProgramsCardGroup = ({ showTitle }: { showTitle?: boolean }) => {
                     'Create, modify and view programs. A program has program stages and defines which actions should be taken at each stage.'
                 )}
             </SummaryCard>
+            <SummaryCard section={SECTIONS_MAP.programStage}>
+                {i18n.t(
+                    'Create, modify and view program stages. Each stage is part of a program and can also be accessed through the program list.'
+                )}
+            </SummaryCard>
             <SummaryCard section={SECTIONS_MAP.trackedEntityAttribute}>
                 {i18n.t(
                     'Create, modify and view tracked entity attributes. An attribute can be used to register extra information for a tracked entity.'

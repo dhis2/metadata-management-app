@@ -1,6 +1,6 @@
 {
     "name": "metadata-management-app",
-    "version": "0.159.5",
+    "version": "0.161.0",
     "description": "",
     "license": "BSD-3-Clause",
     "private": true,
@@ -16,7 +16,6 @@
         "check-types": "tsc --noemit",
         "cypress:open": "REACT_APP_NODE_ENV=test yarn cypress open",
         "cypress:run": "REACT_APP_NODE_ENV=test yarn cypress run",
-        "postinstall": "yarn d2-style install && patch-package",
         "contracts": "d2-app-scripts test src/contracts/generateContracts.spec.ts"
     },
     "devDependencies": {
@@ -51,8 +50,6 @@
         "final-form-arrays": "^3.1.0",
         "focus-trap-react": "^11.0.4",
         "lodash": "^4.17.21",
-        "patch-package": "^8.0.1",
-        "postinstall-postinstall": "^2.1.0",
         "react-color": "^2.19.3",
         "react-error-boundary": "^4.0.11",
         "react-final-form": "^6.5.9",

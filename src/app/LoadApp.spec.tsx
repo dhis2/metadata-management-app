@@ -2,6 +2,7 @@ import { render, waitForElementToBeRemoved } from '@testing-library/react'
 import React from 'react'
 import fullSchema from '../__mocks__/schema/fullSchema.json'
 import { useSetSchemas } from '../lib/schemas'
+import { useSetSystemOrganisationUnits } from '../lib/systemOrgUnits'
 import { useSetSystemSettings } from '../lib/systemSettings'
 import { useSetCurrentUser } from '../lib/user'
 import TestComponentWithRouter from '../testUtils/TestComponentWithRouter'
@@ -10,11 +11,13 @@ import { LoadApp } from './LoadApp'
 jest.mock('../lib/schemas')
 jest.mock('../lib/systemSettings')
 jest.mock('../lib/user')
+jest.mock('../lib/systemOrgUnits')
 
 describe('LoadApp', () => {
     const setSchemaMock = jest.fn()
     const setSystemSettingsMock = jest.fn()
     const setUserMock = jest.fn()
+    const setOrgUnitsMock = jest.fn()
 
     const mockUser = {
         name: 'dhis2 user',
@@ -25,10 +28,17 @@ describe('LoadApp', () => {
         keyDateFormat: 'yyyy-MM-dd',
     }
 
+    const mockOrgUnits = {
+        organisationUnits: [
+            { id: 'ou1', name: 'Oz', path: 'over/the/rainbow/oz' },
+        ],
+    }
+
     const dataProvider = {
         schemas: fullSchema,
         me: mockUser,
         systemSettings: mockSettings,
+        organisationUnits: mockOrgUnits,
     }
 
     beforeEach(async () => {
@@ -37,6 +47,9 @@ describe('LoadApp', () => {
             () => setSystemSettingsMock
         )
         ;(useSetCurrentUser as jest.Mock).mockImplementation(() => setUserMock)
+        ;(useSetSystemOrganisationUnits as jest.Mock).mockImplementation(
+            () => setOrgUnitsMock
+        )
 
         const result = render(
             <TestComponentWithRouter
@@ -65,5 +78,11 @@ describe('LoadApp', () => {
 
     it('should set the systemm settings', async () => {
         expect(setSystemSettingsMock.mock.lastCall[0]).toEqual(mockSettings)
+    })
+
+    it('should set the system organisation units', async () => {
+        expect(setOrgUnitsMock.mock.lastCall[0]).toEqual(
+            mockOrgUnits.organisationUnits
+        )
     })
 })

@@ -14,7 +14,9 @@ import {
     ShortNameField,
 } from '../../../components'
 import {
+    FEATURES,
     SECTIONS_MAP,
+    useFeatureAvailable,
     useGivenShemaOrSchemaSectionHandleOrThrow,
     useSectionedFormContext,
     useSyncSelectedSectionWithScroll,
@@ -25,6 +27,7 @@ import {
     AllowAuditLogField,
     MinAttributesRequiredField,
     MaxTeiCountField,
+    TrackedEntityTypesLabelField,
 } from '../fields'
 import { TrackedEntityTypeFormDescriptor } from './formDescriptor'
 
@@ -34,6 +37,9 @@ export function TrackedEntityTypeFormFields() {
     const descriptor =
         useSectionedFormContext<typeof TrackedEntityTypeFormDescriptor>()
     useSyncSelectedSectionWithScroll()
+    const showPluralLabels = useFeatureAvailable(
+        FEATURES.customTerminologyPlurals
+    )
 
     return (
         <SectionedFormSections>
@@ -53,6 +59,8 @@ export function TrackedEntityTypeFormFields() {
                 <StandardFormField>
                     <NameField schemaSection={schemaSection} />
                 </StandardFormField>
+
+                {showPluralLabels && <TrackedEntityTypesLabelField />}
 
                 <StandardFormField>
                     <ShortNameField schemaSection={schemaSection} />

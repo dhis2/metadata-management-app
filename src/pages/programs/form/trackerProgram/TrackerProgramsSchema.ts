@@ -66,10 +66,13 @@ const trackerProgramBaseSchema = z.object({
         })
         .optional(),
     programStageLabel: z.string().optional(),
+    programStagesLabel: z.string().optional(),
     eventLabel: z.string().optional(),
+    eventsLabel: z.string().optional(),
     enrollmentDateLabel: z.string().optional(),
     incidentDateLabel: z.string().optional(),
     enrollmentLabel: z.string().optional(),
+    enrollmentsLabel: z.string().optional(),
     followUpLabel: z.string().optional(),
     orgUnitLabel: z.string().optional(),
     relationshipLabel: z.string().optional(),

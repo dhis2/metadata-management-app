@@ -31,9 +31,9 @@ import {
     useSchema,
     useSectionListFilter,
     useSectionListFilters,
+    useSystemOrgUnits,
 } from '../../../lib'
 import { getFieldFilter } from '../../../lib/models/path'
-import { useCurrentUserRootOrgUnits } from '../../../lib/user/currentUserStore'
 import css from './OrganisationUnitList.module.css'
 import { OrganisationUnitListMessage } from './OrganisationUnitListMessage'
 import { OrganisationUnitRow } from './OrganisationUnitRow'
@@ -161,11 +161,11 @@ export const OrganisationUnitList = () => {
     const columnDefinitions = useColumns()
     const [identifiableFilter] = useSectionListFilter('identifiable')
     const [filters, setFilters] = useSectionListFilters()
-    const userRootOrgUnits = useCurrentUserRootOrgUnits()
+    const systemOrgUnits = useSystemOrgUnits()
 
     const initialExpandedState = useMemo(() => {
-        return Object.fromEntries(userRootOrgUnits.map((ou) => [ou.id, true]))
-    }, [userRootOrgUnits])
+        return Object.fromEntries(systemOrgUnits.map((ou) => [ou.id, true]))
+    }, [systemOrgUnits])
 
     const [parentIdsToLoad, setParentIdsToLoad] = useState<ExpandedStateList>(
         () => initialExpandedState
@@ -237,9 +237,9 @@ export const OrganisationUnitList = () => {
             .flatMap((ou) => (ou ? ou.organisationUnits : []))
         return transformToOrgUnitListItems(
             flatData,
-            userRootOrgUnits.map((ou) => ou.id)
+            systemOrgUnits.map((ou) => ou.id)
         )
-    }, [allData, orgUnitFiltered.data, userRootOrgUnits])
+    }, [allData, orgUnitFiltered.data, systemOrgUnits])
 
     const handleExpand = useCallback(
         (valueOrUpdater: Updater<ExpandedState>) => {

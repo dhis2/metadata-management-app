@@ -156,12 +156,24 @@ export const TrackerProgramFormDescriptor = {
                     label: i18n.t('Custom label for "Enrollment"'),
                 },
                 {
+                    name: 'enrollmentsLabel',
+                    label: i18n.t('Custom label for "Enrollment" (plural)'),
+                },
+                {
                     name: 'eventLabel',
                     label: i18n.t('Custom label for "Event"'),
                 },
                 {
+                    name: 'eventsLabel',
+                    label: i18n.t('Custom label for "Event" (plural)'),
+                },
+                {
                     name: 'programStageLabel',
                     label: i18n.t('Custom label for "Program stage"'),
+                },
+                {
+                    name: 'programStagesLabel',
+                    label: i18n.t('Custom label for "Program stage" (plural)'),
                 },
                 {
                     name: 'followUpLabel',

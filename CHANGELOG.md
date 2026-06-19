@@ -1,3 +1,26 @@
+# [0.161.0](https://github.com/dhis2/metadata-management-app/compare/v0.160.1...v0.161.0) (2026-06-17)
+
+
+### Features
+
+* [DHIS2-21579] Standalone program stage form ([#968](https://github.com/dhis2/metadata-management-app/issues/968)) ([0c9f247](https://github.com/dhis2/metadata-management-app/commit/0c9f247052208c67c43e70f6507ee253ba514c21))
+* [DHIS2-21624] Add fields for configuration of custom plurals terminology ([#969](https://github.com/dhis2/metadata-management-app/issues/969)) ([8ffcf50](https://github.com/dhis2/metadata-management-app/commit/8ffcf50e51affe5f600f0df71b33f6c4f56d43b3))
+
+## [0.160.1](https://github.com/dhis2/metadata-management-app/compare/v0.160.0...v0.160.1) (2026-06-16)
+
+
+### Bug Fixes
+
+* remove multicalendar dates patch ([#966](https://github.com/dhis2/metadata-management-app/issues/966)) ([689328d](https://github.com/dhis2/metadata-management-app/commit/689328d5104c4a4a3a6e3a1af552c21d5923161c))
+* use system root org units ([#960](https://github.com/dhis2/metadata-management-app/issues/960)) ([e4b7066](https://github.com/dhis2/metadata-management-app/commit/e4b7066a74e270661af044788c72568d1448a1c5))
+
+# [0.160.0](https://github.com/dhis2/metadata-management-app/compare/v0.159.5...v0.160.0) (2026-06-16)
+
+
+### Features
+
+* [DHIS2-21578] Standalone program stage list ([#965](https://github.com/dhis2/metadata-management-app/issues/965)) ([11e89c9](https://github.com/dhis2/metadata-management-app/commit/11e89c9c2c6b0188781f66aae03e8cbba66d96a4))
+
 ## [0.159.5](https://github.com/dhis2/metadata-management-app/compare/v0.159.4...v0.159.5) (2026-06-11)
 
 

@@ -2,7 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import { Field, IconArrowRight24, OrganisationUnitTree } from '@dhis2/ui'
 import React, { useMemo, useState } from 'react'
 import { useField, useForm } from 'react-final-form'
-import { useCurrentUserRootOrgUnits } from '../../../lib/user/currentUserStore'
+import { useSystemOrgUnits } from '../../../lib/'
 import css from './Move.module.css'
 
 export type OrgUnitTarget = {
@@ -18,7 +18,7 @@ export type SourceOrgUnit = {
 }
 
 export const MoveOrgUnitFormFields = () => {
-    const roots = useCurrentUserRootOrgUnits()
+    const roots = useSystemOrgUnits()
     const rootIds = useMemo(() => roots.map((ou) => ou.id), [roots])
     const rootPaths = useMemo(() => roots.map((ou) => ou.path), [roots])
     const form = useForm()
