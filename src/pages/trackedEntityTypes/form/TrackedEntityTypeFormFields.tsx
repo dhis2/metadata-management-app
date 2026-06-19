@@ -60,7 +60,9 @@ export function TrackedEntityTypeFormFields() {
                     <NameField schemaSection={schemaSection} />
                 </StandardFormField>
 
-                {showPluralLabels && <TrackedEntityTypesLabelField />}
+                {showPluralLabels && (
+                    <TrackedEntityTypesLabelField section={schemaSection} />
+                )}
 
                 <StandardFormField>
                     <ShortNameField schemaSection={schemaSection} />

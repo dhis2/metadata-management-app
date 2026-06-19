@@ -3,10 +3,18 @@ import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { StandardFormField } from '../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../lib'
+import {
+    SchemaSection,
+    useGivenShemaOrSchemaSectionHandleOrThrow,
+    useValidator,
+} from '../../../lib'
 
-export function TrackedEntityTypesLabelField() {
-    const schemaSection = useSchemaSectionHandleOrThrow()
+export function TrackedEntityTypesLabelField({
+    section,
+}: {
+    section?: SchemaSection
+}) {
+    const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({ section })
     const validate = useValidator({
         schemaSection,
         property: 'trackedEntityTypesLabel',
