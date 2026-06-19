@@ -2,15 +2,15 @@ import i18n from '@dhis2/d2-i18n'
 import { InputFieldFF } from '@dhis2/ui'
 import React, { useState } from 'react'
 import { useField } from 'react-final-form'
-import {
-    useIsFieldValueUnique,
-    useSchemaSectionHandleOrThrow,
-} from '../../../lib'
+import { useIsFieldValueUnique, SchemaSection } from '../../../lib'
 import { useValidator } from '../../../lib/models/useFieldValidators'
 
-export const FactorField = () => {
+export const FactorField = ({
+    schemaSection,
+}: {
+    schemaSection: SchemaSection
+}) => {
     const fieldName = 'factor'
-    const schemaSection = useSchemaSectionHandleOrThrow()
     const validate = useValidator({ schemaSection, property: 'factor' })
     const [warning, setWarning] = useState<string | undefined>()
     const checkFactorDuplicate = useIsFieldValueUnique({

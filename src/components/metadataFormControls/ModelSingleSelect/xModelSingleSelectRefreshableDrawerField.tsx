@@ -23,8 +23,6 @@ import {
 } from './ModelSingleSelectField'
 import { useRefreshModelSingleSelect } from './useRefreshSingleSelect'
 
-const LINK_ONLY_SECTIONS = ['programs']
-
 // refactor this to be common for ModelTransfer
 type NewItemFormComponent = React.ComponentType<{
     onSubmitted?: () => void
@@ -138,19 +136,16 @@ export function ModelSingleSelectRefreshableFormField<
         parse,
         data,
     })
-    const newLink = useHref(`/${section.namePlural ?? ''}/new`)
+    const newLink = useHref(`/${section.namePlural}/new`)
     const [NewItemForm, setNewItemForm] = useState<
         NewItemFormComponent | undefined
     >()
 
     useEffect(() => {
-        import(`../../../pages/${section.namePlural ?? ''}/New`)
-            .then((m: { Component: NewItemFormComponent }) => {
-                if (LINK_ONLY_SECTIONS.includes(section.namePlural)) {
-                    return
-                }
+        import(`../../../pages/${section.namePlural}/New`)
+            .then((m: { Component: NewItemFormComponent }) =>
                 setNewItemForm(() => m.Component)
-            })
+            )
             .catch(() => setNewItemForm(undefined))
     }, [section.namePlural])
 

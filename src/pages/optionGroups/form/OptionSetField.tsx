@@ -2,6 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import React from 'react'
 import { useField } from 'react-final-form'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
+import { SECTIONS_MAP } from '../../../lib'
 
 export const OptionSetField = ({ isEdit }: { isEdit: boolean }) => {
     const { input: optionsInput } = useField('options')
@@ -22,7 +23,7 @@ export const OptionSetField = ({ isEdit }: { isEdit: boolean }) => {
             onChange={() => {
                 optionsInput.onChange([])
             }}
-            refreshResource="optionSets"
+            section={SECTIONS_MAP.optionSet}
         />
     )
 }

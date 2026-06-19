@@ -25,6 +25,7 @@ import {
     DEFAULT_CATEGORYCOMBO_SELECT_OPTION,
     selectedLocale,
     useSchemaSectionHandleOrThrow,
+    SECTIONS_MAP,
 } from '../../../../lib'
 import { DisplayableModel } from '../../../../types/models'
 import {
@@ -162,7 +163,7 @@ export const SetupFormContents = React.memo(function SetupFormContents({
                     label={i18n.t('Event category combination')}
                     query={CATEGORY_COMBOS_QUERY}
                     transform={addDefaultCategoryComboTransform}
-                    refreshResource="categoryCombos"
+                    section={SECTIONS_MAP.categoryCombo}
                 />
             </StandardFormField>
 

@@ -2,6 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import React from 'react'
 import { ModelSingleSelectFormField } from '../../../components/metadataFormControls/ModelSingleSelect'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
+import { SECTIONS_MAP } from '../../../lib'
 
 const PROGRAM_QUERY = {
     resource: 'programs',
@@ -35,7 +36,7 @@ export function ProgramField({ disabled = false }: ProgramFieldProps) {
             label={i18n.t('Program')}
             query={PROGRAM_QUERY}
             disabled={disabled}
-            refreshResource="programs"
+            section={SECTIONS_MAP.program}
         />
     )
 }

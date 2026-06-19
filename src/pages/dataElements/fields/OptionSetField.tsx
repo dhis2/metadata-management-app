@@ -3,7 +3,7 @@ import React from 'react'
 import { useField } from 'react-final-form'
 import { ConfirmationModalWrapper } from '../../../components'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
-import { getConstantTranslation } from '../../../lib'
+import { getConstantTranslation, SECTIONS_MAP } from '../../../lib'
 
 export function OptionSetField() {
     const { input } = useField('optionSet')
@@ -32,7 +32,7 @@ export function OptionSetField() {
             helpText={i18n.t(
                 'Limit data entry to a predefined list of options. Overrides value type selection to match the option set.'
             )}
-            refreshResource={'optionSets'}
+            section={SECTIONS_MAP.optionSet}
         />
     )
 

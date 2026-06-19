@@ -1,20 +1,22 @@
 import i18n from '@dhis2/d2-i18n'
 import { Field } from '@dhis2/ui'
-import React, { useState, useEffect, useCallback } from 'react'
-import { useField } from 'react-final-form'
+import React, { useEffect, useState } from 'react'
+import { useField, useForm, useFormState } from 'react-final-form'
 import { useHref } from 'react-router'
+import { getSectionNewPath } from '../../../lib'
 import {
     DisplayableModel,
     PartialLoadedDisplayableModel,
 } from '../../../types/models'
 import { ModelSection } from '../../../types/section'
 import {
-    AddNewDrawerFormFooter,
+    DrawerFormFooter,
     DrawerHeader,
     DrawerPortal,
     DrawerRoot,
 } from '../../drawer'
 import { EditableInputWrapper } from '../../EditableInputWrapper'
+import { NewItemFormComponent } from '../ModelTransfer/ModelTransfer'
 import {
     ModelSingleSelectFF,
     ModelSingleSelectFieldProps,
@@ -23,16 +25,7 @@ import {
 } from './ModelSingleSelectField'
 import { useRefreshModelSingleSelect } from './useRefreshSingleSelect'
 
-const LINK_ONLY_SECTIONS = ['programs']
-
-// refactor this to be common for ModelTransfer
-type NewItemFormComponent = React.ComponentType<{
-    onSubmitted?: () => void
-    footer?: React.ReactNode
-    redirectOnSubmitted?: boolean
-}>
-
-export function ModelSingleSelectRefreshableField<
+export function ModelSingleSelectDrawerField<
     TModel extends PartialLoadedDisplayableModel
 >({
     label,
@@ -42,27 +35,33 @@ export function ModelSingleSelectRefreshableField<
     meta,
     dataTest,
     section,
-    newLink,
-    NewItemForm,
     ...modelSingleSelectProps
 }: ModelSingleSelectFieldProps<TModel> &
-    RelevantRenderProps<TModel> & {
-        section: ModelSection
-        newLink: string
-        NewItemForm?: NewItemFormComponent
-    }) {
+    RelevantRenderProps<TModel> & { section: ModelSection }) {
+    const newLink = useHref(`/${getSectionNewPath(section)}`)
     const refresh = useRefreshModelSingleSelect({
         resource: section.namePlural,
     })
+    const [NewItemForm, setNewItemForm] = useState<
+        NewItemFormComponent | undefined
+    >()
     const [drawerOpen, setDrawerOpen] = useState(false)
 
-    const handleAddNew = useCallback(() => {
+    useEffect(() => {
+        import(`../../../pages/${section.namePlural}/New`)
+            .then((m: { Component: NewItemFormComponent }) =>
+                setNewItemForm(() => m.Component)
+            )
+            .catch(() => setNewItemForm(undefined))
+    }, [section.namePlural])
+
+    const handleAddNew = () => {
         if (NewItemForm) {
             setDrawerOpen(true)
         } else {
             window.open(newLink, '_blank')
         }
-    }, [setDrawerOpen, NewItemForm, newLink])
+    }
 
     return (
         <Field
@@ -75,7 +74,10 @@ export function ModelSingleSelectRefreshableField<
             required={required}
         >
             <DrawerRoot />
-            <EditableInputWrapper onRefresh={refresh} onAddNew={handleAddNew}>
+            <EditableInputWrapper
+                onRefresh={() => refresh()}
+                onAddNew={handleAddNew}
+            >
                 <ModelSingleSelectFF
                     {...modelSingleSelectProps}
                     input={input}
@@ -113,10 +115,35 @@ export function ModelSingleSelectRefreshableField<
     )
 }
 
-export function ModelSingleSelectRefreshableFormField<
+const AddNewDrawerFormFooter = ({ onCancel }: { onCancel: () => void }) => {
+    const { submitting } = useFormState({
+        subscription: { submitting: true },
+    })
+    const form = useForm()
+
+    return (
+        <div
+            style={{
+                position: 'sticky',
+                bottom: 0,
+                zIndex: 1,
+                marginTop: 'var(--spacers-dp16)',
+            }}
+        >
+            <DrawerFormFooter
+                submitLabel={i18n.t('Save and close')}
+                cancelLabel={i18n.t('Cancel')}
+                submitting={submitting ?? false}
+                onSubmitClick={() => form.submit()}
+                onCancelClick={onCancel}
+            />
+        </div>
+    )
+}
+
+export function ModelSingleSelectDrawerFormField<
     TModel extends DisplayableModel
 >({
-    // react-final-form props
     name,
     validateFields,
     validate,
@@ -138,29 +165,12 @@ export function ModelSingleSelectRefreshableFormField<
         parse,
         data,
     })
-    const newLink = useHref(`/${section.namePlural ?? ''}/new`)
-    const [NewItemForm, setNewItemForm] = useState<
-        NewItemFormComponent | undefined
-    >()
-
-    useEffect(() => {
-        import(`../../../pages/${section.namePlural ?? ''}/New`)
-            .then((m: { Component: NewItemFormComponent }) => {
-                if (LINK_ONLY_SECTIONS.includes(section.namePlural)) {
-                    return
-                }
-                setNewItemForm(() => m.Component)
-            })
-            .catch(() => setNewItemForm(undefined))
-    }, [section.namePlural])
 
     return (
-        <ModelSingleSelectRefreshableField
+        <ModelSingleSelectDrawerField
             input={input}
             meta={meta}
             section={section}
-            newLink={newLink}
-            NewItemForm={NewItemForm}
             {...modelSingleSelectProps}
         />
     )

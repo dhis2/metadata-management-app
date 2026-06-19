@@ -3,6 +3,7 @@ import i18n from '@dhis2/d2-i18n'
 import React, { useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import { ModelSingleSelectRefreshableFormField } from '../../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
+import { SECTIONS_MAP } from '../../../../lib'
 import { WrapQueryResponse } from '../../../../types/query'
 
 export function CategoryOptionGroupSetField() {
@@ -57,7 +58,7 @@ export function CategoryOptionGroupSetField() {
                     order: 'displayName:iasc',
                 },
             }}
-            refreshResource="categoryOptionGroupSets"
+            section={SECTIONS_MAP.categoryOptionGroupSet}
             clearable
             validate={validate}
         />

@@ -40,10 +40,11 @@ export const Component = ({
                     >
                         <SectionedFormLayout
                             sidebar={<DefaultSectionedFormSidebar />}
+                            footer={footer}
                         >
                             <form onSubmit={handleSubmit}>
                                 <ValidationRuleFormFields />
-                                {footer ?? (
+                                {!footer && (
                                     <DefaultFormFooter cancelTo="/validationRules" />
                                 )}
                             </form>
