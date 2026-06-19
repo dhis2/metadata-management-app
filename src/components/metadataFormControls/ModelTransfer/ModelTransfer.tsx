@@ -300,14 +300,7 @@ const AddNewDrawerFormFooter = ({ onCancel }: { onCancel: () => void }) => {
     const form = useForm<SectionFormValues>()
 
     return (
-        <div
-            style={{
-                position: 'sticky',
-                bottom: 0,
-                zIndex: 1,
-                marginTop: 'var(--spacers-dp16)',
-            }}
-        >
+        <div className={css.addNewDrawerFormWrapper}>
             <DrawerFormFooter
                 submitLabel={i18n.t('Save and close')}
                 cancelLabel={i18n.t('Cancel')}
