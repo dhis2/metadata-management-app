@@ -1,3 +1,10 @@
+## [0.161.1](https://github.com/dhis2/metadata-management-app/compare/v0.161.0...v0.161.1) (2026-06-22)
+
+
+### Bug Fixes
+
+* make sure attributes sctions in stage drawer has a different name from main program attributes ([#959](https://github.com/dhis2/metadata-management-app/issues/959)) ([db7c745](https://github.com/dhis2/metadata-management-app/commit/db7c745b1a494015e84884b7d71699cdd06e97af))
+
 # [0.161.0](https://github.com/dhis2/metadata-management-app/compare/v0.160.1...v0.161.0) (2026-06-17)
 
 
