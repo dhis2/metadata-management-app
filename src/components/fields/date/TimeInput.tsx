@@ -18,6 +18,7 @@ export function TimeFieldFF({ meta, input, label, required }: TimeFieldProps) {
                 name={input.name}
                 onChange={(payload) => input.onChange(payload.value)}
                 value={input.value}
+                clearable
             />
         </FieldWrapper>
     )

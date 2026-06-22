@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-06-10T09:35:20.832Z\n"
-"PO-Revision-Date: 2026-06-10T09:35:20.833Z\n"
+"POT-Creation-Date: 2026-06-10T20:51:35.027Z\n"
+"PO-Revision-Date: 2026-06-10T20:51:35.027Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -2251,6 +2251,15 @@ msgstr "Please provide valid percantage (0-100)."
 
 msgid "Please provide valid unit interval (0-1)."
 msgstr "Please provide valid unit interval (0-1)."
+
+msgid "Please provide a positive number for age"
+msgstr "Please provide a positive number for age"
+
+msgid "Please provide a single letter (A-Z)"
+msgstr "Please provide a single letter (A-Z)"
+
+msgid "Please provide a valid UID"
+msgstr "Please provide a valid UID"
 
 msgid "Must be checked"
 msgstr "Must be checked"

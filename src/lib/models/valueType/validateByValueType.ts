@@ -38,7 +38,7 @@ const VALUE_TYPE_VALIDATE = {
             return undefined
         }
         if (typeof value === 'string') {
-            const numberValue = parseFloat(value)
+            const numberValue = Number.parseFloat(value)
             if (numberValue >= 0 || numberValue <= 100) {
                 return undefined
             }
@@ -50,14 +50,28 @@ const VALUE_TYPE_VALIDATE = {
             return undefined
         }
         if (typeof value === 'string') {
-            const numberValue = parseFloat(value)
+            const numberValue = Number.parseFloat(value)
             if (numberValue >= 0 || numberValue <= 1) {
                 return undefined
             }
         }
         return i18n.t('Please provide valid unit interval (0-1).')
     }),
-    AGE: number,
+    AGE: composeValidators(number, (value) =>
+        isEmpty(value) ||
+        (typeof value === 'string' && Number.parseFloat(value) >= 0)
+            ? undefined
+            : i18n.t('Please provide a positive number for age')
+    ),
+    LETTER: (value: unknown) => {
+        if (isEmpty(value)) {
+            return undefined
+        }
+        if (typeof value === 'string' && /^[a-zA-Z]$/.test(value)) {
+            return undefined
+        }
+        return i18n.t('Please provide a single letter (A-Z)')
+    },
     // backend has a more thorough check, but it also specifies length between 6 and 50
     // ref: https://github.com/dhis2/dhis2-core/blob/master/dhis-2/dhis-services/dhis-service-dxf2/src/main/java/org/hisp/dhis/dxf2/metadata/objectbundle/validation/attribute/DefaultAttributeValidator.java#L86
     PHONE_NUMBER: createCharacterLengthRange(6, 50),

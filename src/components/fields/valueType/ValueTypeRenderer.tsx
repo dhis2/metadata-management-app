@@ -11,6 +11,15 @@ type CommonFieldProps = {
     required?: boolean
 }
 
+const blockScientificNotation = (
+    _: unknown,
+    e: React.KeyboardEvent<HTMLInputElement>
+) => {
+    if (e.key === 'e' || e.key === 'E') {
+        e.preventDefault()
+    }
+}
+
 type FinalFormFieldProps = Pick<FieldRenderProps<string>, 'input' | 'meta'>
 
 /**
@@ -58,14 +67,21 @@ export function ValueTypeRenderer(
     if (valueType === 'LONG_TEXT') {
         return <TextAreaFieldFF {...props} />
     }
-    if (valueType === 'NUMBER' || valueType === 'INTEGER') {
+    if (valueType === 'NUMBER') {
         return (
             <InputFieldFF
                 {...props}
-                input={{
-                    ...props.input,
-                    type: 'number',
-                }}
+                input={{ ...props.input, type: 'number' }}
+                onKeyDown={blockScientificNotation}
+            />
+        )
+    }
+    if (valueType === 'INTEGER') {
+        return (
+            <InputFieldFF
+                {...props}
+                input={{ ...props.input, type: 'number' }}
+                onKeyDown={blockScientificNotation}
             />
         )
     }
@@ -115,6 +131,16 @@ export function ValueTypeRenderer(
                         props.input.onChange(e?.id)
                     },
                 }}
+            />
+        )
+    }
+
+    if (valueType === 'AGE') {
+        return (
+            <InputFieldFF
+                {...props}
+                input={{ ...props.input, type: 'number', min: '0' }}
+                onKeyDown={blockScientificNotation}
             />
         )
     }
