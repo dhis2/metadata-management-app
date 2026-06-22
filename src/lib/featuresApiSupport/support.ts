@@ -3,6 +3,7 @@ export const FEATURES = Object.freeze({
     validationStrategy: 'validationStrategy',
     programRuleActionPriority: 'programRuleActionPriority',
     skipAnalytics: 'skipAnalytics',
+    customTerminologyPlurals: 'customTerminologyPlurals',
 } as const)
 
 const MINOR_VERSION_SUPPORT = Object.freeze({
@@ -10,6 +11,7 @@ const MINOR_VERSION_SUPPORT = Object.freeze({
     [FEATURES.validationStrategy]: 42,
     [FEATURES.programRuleActionPriority]: 43,
     [FEATURES.skipAnalytics]: 43,
+    [FEATURES.customTerminologyPlurals]: 43,
 } as Record<string, number>)
 
 export const hasAPISupportForFeature = (

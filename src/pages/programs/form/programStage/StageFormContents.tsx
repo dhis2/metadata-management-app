@@ -32,19 +32,22 @@ import {
     AllowGenerateNextVisitField,
     RemindCompletedField,
     PeriodTypeField,
+    StageProgramField,
+    EventsLabelField,
 } from './fields'
 import { StageCreationAndSchedulingFormContents } from './StageCreationAndSchedulingFormContents'
 import { StageDataFormContents } from './StageDataFormContents'
-import { stageSchemaSection } from './StageForm'
 import { StageFormDescriptor } from './stageFormDescriptor'
 import { StageFormFormContents } from './StageFormFormContents'
 
 export const StageFormContents = ({
-    isSubsection,
+    isSubsection = false,
     setSelectedSection,
+    withProgramSelector = false,
 }: {
-    isSubsection: boolean
-    setSelectedSection: (name: string) => void
+    isSubsection?: boolean
+    setSelectedSection?: (name: string) => void
+    withProgramSelector?: boolean
 }) => {
     const { values } = useFormState({ subscription: { values: true } })
     const descriptor = useSectionedFormContext<typeof StageFormDescriptor>()
@@ -52,21 +55,24 @@ export const StageFormContents = ({
     const showValidationStrategy = useFeatureAvailable(
         FEATURES.validationStrategy
     )
+    const showPluralLabels = useFeatureAvailable(
+        FEATURES.customTerminologyPlurals
+    )
 
     const executionDateLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'executionDateLabel',
     })
     const dueDateLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'dueDateLabel',
     })
     const programStageLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'programStageLabel',
     })
     const eventLabelValidator = useValidator({
-        schemaSection: stageSchemaSection,
+        schemaSection: SCHEMA_SECTIONS.programStage,
         property: 'eventLabel',
     })
 
@@ -84,6 +90,11 @@ export const StageFormContents = ({
                             'Configure the basic information for this program stage.'
                         )}
                     </StandardFormSectionDescription>
+                    {withProgramSelector && (
+                        <StandardFormField>
+                            <StageProgramField />
+                        </StandardFormField>
+                    )}
                     <NameField schemaSection={SCHEMA_SECTIONS.programStage} />
                     <StandardFormField>
                         <DescriptionField />
@@ -236,8 +247,10 @@ export const StageFormContents = ({
                             validate={eventLabelValidator}
                         />
                     </StandardFormField>
+                    {showPluralLabels && <EventsLabelField />}
                 </SectionedFormSection>
                 <CustomAttributesSection
+                    name="programStageAttributes"
                     schemaSection={SCHEMA_SECTIONS.programStage}
                     sectionedLayout
                 />

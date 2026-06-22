@@ -3,7 +3,7 @@ import {
     PROGRAM_STAGE_PROPERTY_LABELS,
     SectionedFormDescriptor,
 } from '../../../../lib'
-import { StageFormValues } from './StageForm'
+import { StageFormValues } from './stageFormShared'
 
 export const StageFormDescriptor = {
     name: 'Program Stage',
@@ -130,6 +130,10 @@ export const StageFormDescriptor = {
                 {
                     name: 'eventLabel',
                     label: PROGRAM_STAGE_PROPERTY_LABELS.eventLabel,
+                },
+                {
+                    name: 'eventsLabel',
+                    label: i18n.t('Custom label for event (plural)'),
                 },
             ],
         },

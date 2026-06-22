@@ -38,15 +38,23 @@ const complexKeys = [
     'programStages',
     'legends',
 ] as const
+
+const dirtyKeyBelongsToComplexKey = (dirtyKey: string, complexKey: string) =>
+    dirtyKey === complexKey ||
+    dirtyKey.startsWith(`${complexKey}[`) ||
+    dirtyKey.startsWith(`${complexKey}.`)
+
 export const sanitizeDirtyValueKeys = (dirtyKeys: string[]) => {
     const complexChanges = complexKeys.filter((complexKey) =>
-        dirtyKeys.some((dirtyKey) => dirtyKey.startsWith(complexKey))
+        dirtyKeys.some((dirtyKey) =>
+            dirtyKeyBelongsToComplexKey(dirtyKey, complexKey)
+        )
     )
 
     const dirtyKeysWithoutComplexKeys = dirtyKeys.filter(
         (dirtyKey) =>
             !complexChanges.some((complexKey) =>
-                dirtyKey.startsWith(complexKey)
+                dirtyKeyBelongsToComplexKey(dirtyKey, complexKey)
             )
     )
 

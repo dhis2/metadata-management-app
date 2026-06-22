@@ -8,11 +8,24 @@ import {
     StandardFormSectionDescription,
     StandardFormSectionTitle,
 } from '../../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../lib'
+import {
+    FEATURES,
+    useFeatureAvailable,
+    useSchemaSectionHandleOrThrow,
+    useValidator,
+} from '../../../../lib'
+import {
+    EnrollmentsLabelField,
+    EventsLabelField,
+    ProgramStagesLabelField,
+} from './fields'
 
 export const ProgramCustomizationFormContents = React.memo(
     function ProgramCustomizationFormContents({ name }: { name: string }) {
         const schemaSection = useSchemaSectionHandleOrThrow()
+        const showPluralLabels = useFeatureAvailable(
+            FEATURES.customTerminologyPlurals
+        )
         const incidentDateLabelValidator = useValidator({
             schemaSection,
             property: 'incidentDateLabel',
@@ -104,6 +117,8 @@ export const ProgramCustomizationFormContents = React.memo(
                     />
                 </StandardFormField>
 
+                {showPluralLabels && <EnrollmentsLabelField />}
+
                 <StandardFormField>
                     <Field
                         component={InputFieldFF}
@@ -117,6 +132,8 @@ export const ProgramCustomizationFormContents = React.memo(
                         validate={eventLabelValidator}
                     />
                 </StandardFormField>
+
+                {showPluralLabels && <EventsLabelField />}
 
                 <StandardFormField>
                     <Field
@@ -132,6 +149,8 @@ export const ProgramCustomizationFormContents = React.memo(
                         validate={programStageLabelValidator}
                     />
                 </StandardFormField>
+
+                {showPluralLabels && <ProgramStagesLabelField />}
 
                 <StandardFormField>
                     <Field

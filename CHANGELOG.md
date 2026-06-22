@@ -1,3 +1,18 @@
+## [0.161.1](https://github.com/dhis2/metadata-management-app/compare/v0.161.0...v0.161.1) (2026-06-22)
+
+
+### Bug Fixes
+
+* make sure attributes sctions in stage drawer has a different name from main program attributes ([#959](https://github.com/dhis2/metadata-management-app/issues/959)) ([db7c745](https://github.com/dhis2/metadata-management-app/commit/db7c745b1a494015e84884b7d71699cdd06e97af))
+
+# [0.161.0](https://github.com/dhis2/metadata-management-app/compare/v0.160.1...v0.161.0) (2026-06-17)
+
+
+### Features
+
+* [DHIS2-21579] Standalone program stage form ([#968](https://github.com/dhis2/metadata-management-app/issues/968)) ([0c9f247](https://github.com/dhis2/metadata-management-app/commit/0c9f247052208c67c43e70f6507ee253ba514c21))
+* [DHIS2-21624] Add fields for configuration of custom plurals terminology ([#969](https://github.com/dhis2/metadata-management-app/issues/969)) ([8ffcf50](https://github.com/dhis2/metadata-management-app/commit/8ffcf50e51affe5f600f0df71b33f6c4f56d43b3))
+
 ## [0.160.1](https://github.com/dhis2/metadata-management-app/compare/v0.160.0...v0.160.1) (2026-06-16)
 
 
