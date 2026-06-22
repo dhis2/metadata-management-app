@@ -66,9 +66,11 @@ export const SectionedFormContext = createContext<ReturnType<
 export const SectionedFormProvider = <T extends SectionedFormDescriptor>({
     children,
     formDescriptor,
+    attributesSectionName,
 }: {
     formDescriptor: T
     children: React.ReactNode
+    attributesSectionName?: string
 }) => {
     const formState = useFormState<ValuesWithAttributes>({
         subscription: { initialValues: true },
@@ -84,7 +86,7 @@ export const SectionedFormProvider = <T extends SectionedFormDescriptor>({
                   sections: [
                       ...formDescriptor.sections,
                       {
-                          name: 'attributes',
+                          name: attributesSectionName ?? 'attributes',
                           label: i18n.t('Attributes'),
                           fields: [
                               {

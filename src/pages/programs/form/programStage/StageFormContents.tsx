@@ -250,6 +250,7 @@ export const StageFormContents = ({
                     {showPluralLabels && <EventsLabelField />}
                 </SectionedFormSection>
                 <CustomAttributesSection
+                    name="programStageAttributes"
                     schemaSection={SCHEMA_SECTIONS.programStage}
                     sectionedLayout
                 />

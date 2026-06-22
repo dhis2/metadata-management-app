@@ -138,7 +138,10 @@ export const StageForm = ({ stage, onSubmit, onCancel }: StageFormProps) => {
         >
             {({ handleSubmit, form }) => {
                 const formContent = (
-                    <SectionedFormProvider formDescriptor={StageFormDescriptor}>
+                    <SectionedFormProvider
+                        formDescriptor={StageFormDescriptor}
+                        attributesSectionName={'programStageAttributes'}
+                    >
                         <SectionedFormLayout
                             sidebar={
                                 <DrawerSectionedFormSidebar
