@@ -9,7 +9,6 @@ import {
     Validator,
 } from '@dhis2/ui'
 import { VALUE_TYPE } from '../../constants'
-import { isValidUid } from '../uid'
 import { ValueType } from './types'
 
 const isEmpty = (value: unknown) =>
@@ -72,33 +71,6 @@ const VALUE_TYPE_VALIDATE = {
             return undefined
         }
         return i18n.t('Please provide a single letter (A-Z)')
-    },
-    IMAGE: (value: unknown) => {
-        if (isEmpty(value)) {
-            return undefined
-        }
-        if (typeof value === 'string' && isValidUid(value)) {
-            return undefined
-        }
-        return i18n.t('Please provide a valid UID')
-    },
-    REFERENCE: (value: unknown) => {
-        if (isEmpty(value)) {
-            return undefined
-        }
-        if (typeof value === 'string' && isValidUid(value)) {
-            return undefined
-        }
-        return i18n.t('Please provide a valid UID')
-    },
-    TRACKER_ASSOCIATE: (value: unknown) => {
-        if (isEmpty(value)) {
-            return undefined
-        }
-        if (typeof value === 'string' && isValidUid(value)) {
-            return undefined
-        }
-        return i18n.t('Please provide a valid UID')
     },
     // backend has a more thorough check, but it also specifies length between 6 and 50
     // ref: https://github.com/dhis2/dhis2-core/blob/master/dhis-2/dhis-services/dhis-service-dxf2/src/main/java/org/hisp/dhis/dxf2/metadata/objectbundle/validation/attribute/DefaultAttributeValidator.java#L86
