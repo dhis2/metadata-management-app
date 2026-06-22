@@ -15,11 +15,12 @@ export const DateTimeFieldFF = ({
 
     const handleDateChange = useCallback(
         (calendarDateString: string) => {
-            const newValue = calendarDateString
-                ? `${calendarDateString}T${timePart ?? DEFAULT_TIME}`
-                : timePart
-                ? `T${timePart}`
-                : ''
+            let newValue = ''
+            if (calendarDateString) {
+                newValue = `${calendarDateString}T${timePart ?? DEFAULT_TIME}`
+            } else if (timePart) {
+                newValue = `T${timePart}`
+            }
             originalInput.onChange(newValue)
             originalInput.onBlur()
         },
@@ -28,11 +29,12 @@ export const DateTimeFieldFF = ({
 
     const handleTimeChange = useCallback(
         (newTime: string) => {
-            const newValue = datePart
-                ? `${datePart}T${newTime}`
-                : newTime
-                ? `T${newTime}`
-                : ''
+            let newValue = ''
+            if (datePart) {
+                newValue = `${datePart}T${newTime}`
+            } else if (newTime) {
+                newValue = `T${newTime}`
+            }
             originalInput.onChange(newValue)
             originalInput.onBlur()
         },
