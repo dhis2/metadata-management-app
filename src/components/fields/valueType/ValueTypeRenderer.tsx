@@ -11,6 +11,15 @@ type CommonFieldProps = {
     required?: boolean
 }
 
+const blockScientificNotation = (
+    _: unknown,
+    e: React.KeyboardEvent<HTMLInputElement>
+) => {
+    if (e.key === 'e' || e.key === 'E') {
+        e.preventDefault()
+    }
+}
+
 type FinalFormFieldProps = Pick<FieldRenderProps<string>, 'input' | 'meta'>
 
 /**
@@ -62,10 +71,8 @@ export function ValueTypeRenderer(
         return (
             <InputFieldFF
                 {...props}
-                input={{
-                    ...props.input,
-                    type: 'number',
-                }}
+                input={{ ...props.input, type: 'number' }}
+                onKeyDown={blockScientificNotation}
             />
         )
     }
@@ -73,10 +80,8 @@ export function ValueTypeRenderer(
         return (
             <InputFieldFF
                 {...props}
-                input={{
-                    ...props.input,
-                    type: 'number',
-                }}
+                input={{ ...props.input, type: 'number' }}
+                onKeyDown={blockScientificNotation}
             />
         )
     }
@@ -134,11 +139,8 @@ export function ValueTypeRenderer(
         return (
             <InputFieldFF
                 {...props}
-                input={{
-                    ...props.input,
-                    type: 'number',
-                    min: '0',
-                }}
+                input={{ ...props.input, type: 'number', min: '0' }}
+                onKeyDown={blockScientificNotation}
             />
         )
     }
