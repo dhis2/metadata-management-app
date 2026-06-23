@@ -37,6 +37,10 @@ export const ValidationRuleFormDescriptor = {
                     label: i18n.t('Left side expression'),
                 },
                 {
+                    name: 'leftSide.description',
+                    label: i18n.t('Description'),
+                },
+                {
                     name: 'leftSide.missingValueStrategy',
                     label: i18n.t('Left side missing value strategy'),
                 },
@@ -51,6 +55,10 @@ export const ValidationRuleFormDescriptor = {
                 {
                     name: 'rightSide.expression',
                     label: i18n.t('Right side expression'),
+                },
+                {
+                    name: 'rightSide.description',
+                    label: i18n.t('Description'),
                 },
                 {
                     name: 'rightSide.missingValueStrategy',

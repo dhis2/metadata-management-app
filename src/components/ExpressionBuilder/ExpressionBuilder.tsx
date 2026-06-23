@@ -200,7 +200,7 @@ export const ExpressionBuilder = ({
                                     <IconInfo16 />
                                     <div id="messageTemplate-help">
                                         {i18n.t(
-                                            'Add operators, variables, program rule variables and functions from the right sidebar'
+                                            'Add operators, variables or program data from the right sidebar'
                                         )}
                                     </div>
                                 </div>
