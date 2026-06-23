@@ -6,17 +6,20 @@ export type SectionedFormLayoutProps = {
     children: React.ReactNode
     sidebar?: React.ReactNode
     footer?: React.ReactNode
+    dataTest?: string
 }
 export const SectionedFormLayout = ({
     children,
     sidebar,
     footer,
+    dataTest,
 }: SectionedFormLayoutProps) => {
     const grid = (
         <div
             className={cx(css.layoutGrid, {
                 [css.layoutGridInWrapper]: !!footer,
             })}
+            data-test={!footer ? dataTest : undefined}
         >
             <SectionedFormLayoutSidebar>{sidebar}</SectionedFormLayoutSidebar>
             <SectionedFormLayoutMain>{children}</SectionedFormLayoutMain>
@@ -28,7 +31,7 @@ export const SectionedFormLayout = ({
     }
 
     return (
-        <div className={css.layoutWrapper}>
+        <div className={css.layoutWrapper} data-test={dataTest}>
             {grid}
             <div className={css.stickyFooter}>{footer}</div>
         </div>

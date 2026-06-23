@@ -38,6 +38,7 @@ export const Component = ({
                     <SectionedFormLayout
                         sidebar={<DefaultSectionedFormSidebar />}
                         footer={footer}
+                        dataTest="optionSetNewForm"
                     >
                         <form onSubmit={handleSubmit}>
                             <OptionSetFormContents />
