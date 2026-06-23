@@ -1,3 +1,20 @@
+# [0.162.0](https://github.com/dhis2/metadata-management-app/compare/v0.161.1...v0.162.0) (2026-06-23)
+
+
+### Bug Fixes
+
+* change expression builder helper text ([100bf38](https://github.com/dhis2/metadata-management-app/commit/100bf38ed17a87f723e8af996dd7e35102433c6d))
+* update list of program indicator variables ([82b1773](https://github.com/dhis2/metadata-management-app/commit/82b17739b80ae6d2dec9aff22f06b98496837b81))
+* use firstNonNull instead of firstNotNull ([256f785](https://github.com/dhis2/metadata-management-app/commit/256f7853e80d15c6b42b4107382bddccd3aabe12))
+
+
+### Features
+
+* attributes small improvements ([#971](https://github.com/dhis2/metadata-management-app/issues/971)) ([f79db45](https://github.com/dhis2/metadata-management-app/commit/f79db45fcff68b36b58ee1f5b64fabedef7179d3))
+* description to left right expressions in validation rule ([d26df4d](https://github.com/dhis2/metadata-management-app/commit/d26df4dd6fa09af6c593a70185669b1f2457ba33))
+* program stage autoselected for event programs ([50ea976](https://github.com/dhis2/metadata-management-app/commit/50ea976934c49a01b9b6b59978af15d61dc0e074))
+* update program stage label ([78e51dc](https://github.com/dhis2/metadata-management-app/commit/78e51dc26ad3e2d7658b80847656790f4cb449d2))
+
 ## [0.161.1](https://github.com/dhis2/metadata-management-app/compare/v0.161.0...v0.161.1) (2026-06-22)
 
 
