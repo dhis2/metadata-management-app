@@ -10,7 +10,7 @@ export const SectionedFormLayout = ({
     sidebar,
 }: SectionedFormLayoutProps) => {
     return (
-        <div className={css.layoutGrid}>
+        <div className={css.layoutGrid} data-sectioned-form-root>
             <SectionedFormLayoutSidebar>{sidebar}</SectionedFormLayoutSidebar>
             <SectionedFormLayoutMain>{children}</SectionedFormLayoutMain>
         </div>

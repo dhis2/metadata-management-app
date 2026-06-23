@@ -1,6 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import { CheckboxFieldFF, InputFieldFF } from '@dhis2/ui'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Field, useFormState } from 'react-final-form'
 import {
     ColorAndIconField,
@@ -51,7 +51,18 @@ export const StageFormContents = ({
 }) => {
     const { values } = useFormState({ subscription: { values: true } })
     const descriptor = useSectionedFormContext<typeof StageFormDescriptor>()
-    useSyncSelectedSectionWithScroll(setSelectedSection)
+    const [root, setRoot] = useState<HTMLElement | null>(null)
+
+    useEffect(() => {
+        const formRoot = document.querySelector('[data-sectioned-form-root]')
+        if (formRoot) {
+            // Find the scrollable main container within the form root
+            const mainContainer = formRoot.querySelector<HTMLElement>('.main')
+            setRoot(mainContainer || null)
+        }
+    }, [])
+
+    useSyncSelectedSectionWithScroll(setSelectedSection, root)
     const showValidationStrategy = useFeatureAvailable(
         FEATURES.validationStrategy
     )

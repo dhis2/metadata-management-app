@@ -1,7 +1,11 @@
 import cx from 'classnames'
 import React, { useMemo } from 'react'
 import { createSearchParams, Link, useSearchParams } from 'react-router-dom'
-import { scrollToSection, useSectionedFormContext } from '../../lib'
+import {
+    FORM_SECTION_PARAM_KEY,
+    scrollToSection,
+    useSectionedFormContext,
+} from '../../lib'
 import css from '../sectionedForm/SectionFormSidebar.module.css'
 
 export const DrawerSectionedFormSidebar = ({
@@ -41,6 +45,7 @@ export const DrawerSectionedFormSidebarItem = ({
     // in case we want to preserve other search-params
     const toWithSectionParam = useMemo(() => {
         const paramsObject = Object.fromEntries(searchParams.entries())
+        delete paramsObject[FORM_SECTION_PARAM_KEY]
         return createSearchParams({
             ...paramsObject,
         }).toString()
@@ -52,8 +57,14 @@ export const DrawerSectionedFormSidebarItem = ({
                 [css.selected]: active,
             })}
             to={{ search: toWithSectionParam }}
-            onClick={() => {
-                scrollToSection(sectionName)
+            onClick={(event) => {
+                scrollToSection(
+                    sectionName,
+                    undefined,
+                    event.currentTarget.closest(
+                        '[data-sectioned-form-root]'
+                    ) as HTMLElement | null
+                )
             }}
         >
             {children}

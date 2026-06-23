@@ -1,6 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import { useQuery } from '@tanstack/react-query'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useFormState } from 'react-final-form'
 import {
     MessageFields,
@@ -67,7 +67,18 @@ export const ProgramNotificationsFormFields = ({
     isEditMode?: boolean
     setSelectedSection: (name: string) => void
 }) => {
-    useSyncSelectedSectionWithScroll(setSelectedSection)
+    const [root, setRoot] = useState<HTMLElement | null>(null)
+
+    useEffect(() => {
+        const formRoot = document.querySelector('[data-sectioned-form-root]')
+        if (formRoot) {
+            // Find the scrollable main container within the form root
+            const mainContainer = formRoot.querySelector<HTMLElement>('.main')
+            setRoot(mainContainer || null)
+        }
+    }, [])
+
+    useSyncSelectedSectionWithScroll(setSelectedSection, root)
     const section = notificationSchemaSection
     const descriptor =
         useSectionedFormContext<typeof programNotificationFormDescriptor>()

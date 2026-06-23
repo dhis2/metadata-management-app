@@ -28,14 +28,18 @@ export const FORM_SECTION_PARAM_KEY = 'section'
 
 export const scrollToSection = (
     section: string,
-    scrollOptions?: ScrollOptions
+    scrollOptions?: ScrollOptions,
+    root: HTMLElement | Document | null = document
 ) => {
     // wait for the event loop to be cleared to ensure that the element is in the DOM
     // before scrolling to it, eg if navigating from a link
-    setTimeout(
-        () => document.getElementById(section)?.scrollIntoView(scrollOptions),
-        0
-    )
+    setTimeout(() => {
+        const target =
+            root instanceof Document || root === null
+                ? document.getElementById(section)
+                : root.querySelector<HTMLElement>(`#${CSS.escape(section)}`)
+        target?.scrollIntoView(scrollOptions)
+    }, 0)
 }
 
 export const useSelectedSectionFromQueryParams = () => {
@@ -78,12 +82,17 @@ export const useSelectedSectionFromQueryParams = () => {
  * This keeps the selected section in sync with the section that is in view.
  */
 export const useSyncSelectedSectionWithScroll = (
-    setSelectedSection?: (name: string) => void
+    setSelectedSection?: (name: string) => void,
+    root?: HTMLElement | null
 ) => {
     const { sections } = useSectionedFormContext()
     const [selectedSection, setSection] = useSelectedSectionFromQueryParams()
 
     useEffect(() => {
+        if (setSelectedSection) {
+            return
+        }
+
         const elem = selectedSection && document.getElementById(selectedSection)
         if (elem) {
             scrollToSection(selectedSection, { behavior: 'instant' })
@@ -106,18 +115,24 @@ export const useSyncSelectedSectionWithScroll = (
                         currentInView.delete(entry.target.id)
                     }
                 })
-                const firstVisible = sections.find((s) =>
-                    currentInView.has(s.name)
-                )
-                if (firstVisible) {
+                // Find the section with the highest intersection ratio
+                let maxRatio = 0
+                let bestSection: string | undefined
+                currentInView.forEach((entry, id) => {
+                    if (entry.intersectionRatio > maxRatio) {
+                        maxRatio = entry.intersectionRatio
+                        bestSection = id
+                    }
+                })
+                if (bestSection) {
                     if (setSelectedSection) {
-                        setSelectedSection(firstVisible.name)
+                        setSelectedSection(bestSection)
                     } else {
-                        setSection(firstVisible.name)
+                        setSection(bestSection)
                     }
                 }
             },
-            { threshold: 0.5 }
+            { threshold: 0.1, root } // Lower threshold to detect more sections
         )
         sectionElements.forEach((section) => {
             observer.observe(section)
@@ -126,5 +141,5 @@ export const useSyncSelectedSectionWithScroll = (
         return () => {
             observer.disconnect()
         }
-    }, [sections, setSection, setSelectedSection])
+    }, [sections, setSection, setSelectedSection, root])
 }

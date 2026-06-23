@@ -44,8 +44,14 @@ export const SectionedFormSidebarItem = ({
             })}
             to={{ search: toWithSectionParam }}
             replace
-            onClick={() => {
-                scrollToSection(sectionName)
+            onClick={(event) => {
+                scrollToSection(
+                    sectionName,
+                    undefined,
+                    event.currentTarget.closest(
+                        '[data-sectioned-form-root]'
+                    ) as HTMLElement | null
+                )
             }}
         >
             {children}
