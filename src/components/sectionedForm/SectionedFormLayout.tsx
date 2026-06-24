@@ -19,7 +19,7 @@ export const SectionedFormLayout = ({
             className={cx(css.layoutGrid, {
                 [css.layoutGridInWrapper]: !!footer,
             })}
-            data-test={!footer ? dataTest : undefined}
+            data-test={footer ? undefined : dataTest}
         >
             <SectionedFormLayoutSidebar>{sidebar}</SectionedFormLayoutSidebar>
             <SectionedFormLayoutMain>{children}</SectionedFormLayoutMain>

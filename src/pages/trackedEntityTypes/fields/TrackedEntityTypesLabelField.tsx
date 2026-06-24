@@ -12,7 +12,7 @@ import {
 export function TrackedEntityTypesLabelField({
     section,
 }: {
-    section?: SchemaSection
+    readonly section?: SchemaSection
 }) {
     const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({ section })
     const validate = useValidator({
