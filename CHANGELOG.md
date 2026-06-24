@@ -1,3 +1,10 @@
+# [0.163.0](https://github.com/dhis2/metadata-management-app/compare/v0.162.0...v0.163.0) (2026-06-24)
+
+
+### Features
+
+* refreshable single select, in drawer [DHIS2-21575] ([#973](https://github.com/dhis2/metadata-management-app/issues/973)) ([e2c416a](https://github.com/dhis2/metadata-management-app/commit/e2c416a7458ae096f68a231132b330b9a45711c9))
+
 # [0.162.0](https://github.com/dhis2/metadata-management-app/compare/v0.161.1...v0.162.0) (2026-06-23)
 
 
