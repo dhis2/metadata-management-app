@@ -11,11 +11,16 @@ import {
     DescriptionField,
     ValueTypeField,
 } from '../../../components'
-import { useSchemaSectionHandleOrThrow } from '../../../lib'
+import {
+    SECTIONS_MAP,
+    useGivenShemaOrSchemaSectionHandleOrThrow,
+} from '../../../lib'
 
 export const BasicInfoFormContents = React.memo(
     function OptionSetSetupFormContents({ name }: { name: string }) {
-        const schemaSection = useSchemaSectionHandleOrThrow()
+        const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({
+            section: SECTIONS_MAP.optionSet,
+        })
         const { values } = useFormState({ subscription: { values: true } })
 
         const isEdit = Boolean(values.id)
@@ -49,6 +54,7 @@ export const BasicInfoFormContents = React.memo(
                         disabledText={i18n.t(
                             'Value type cannot be edited after an option set has been created.'
                         )}
+                        section={schemaSection}
                     />
                 </StandardFormField>
             </SectionedFormSection>

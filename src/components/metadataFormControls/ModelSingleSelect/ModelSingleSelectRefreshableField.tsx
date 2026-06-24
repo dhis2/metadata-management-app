@@ -1,11 +1,19 @@
+import i18n from '@dhis2/d2-i18n'
 import { Field } from '@dhis2/ui'
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useField } from 'react-final-form'
 import { useHref } from 'react-router'
 import {
     DisplayableModel,
     PartialLoadedDisplayableModel,
 } from '../../../types/models'
+import { ModelSection } from '../../../types/section'
+import {
+    AddNewDrawerFormFooter,
+    DrawerHeader,
+    DrawerPortal,
+    DrawerRoot,
+} from '../../drawer'
 import { EditableInputWrapper } from '../../EditableInputWrapper'
 import {
     ModelSingleSelectFF,
@@ -14,6 +22,15 @@ import {
     RelevantUseFieldProps,
 } from './ModelSingleSelectField'
 import { useRefreshModelSingleSelect } from './useRefreshSingleSelect'
+
+const LINK_ONLY_SECTIONS = new Set(['programs'])
+
+// refactor this to be common for ModelTransfer
+type NewItemFormComponent = React.ComponentType<{
+    onSubmitted?: () => void
+    footer?: React.ReactNode
+    redirectOnSubmitted?: boolean
+}>
 
 export function ModelSingleSelectRefreshableField<
     TModel extends PartialLoadedDisplayableModel
@@ -24,14 +41,28 @@ export function ModelSingleSelectRefreshableField<
     input,
     meta,
     dataTest,
-    refreshResource,
+    section,
+    newLink,
+    NewItemForm,
     ...modelSingleSelectProps
 }: ModelSingleSelectFieldProps<TModel> &
-    RelevantRenderProps<TModel> & { refreshResource: string }) {
-    const newLink = useHref(`/${refreshResource}/new`)
+    RelevantRenderProps<TModel> & {
+        section: ModelSection
+        newLink: string
+        NewItemForm?: NewItemFormComponent
+    }) {
     const refresh = useRefreshModelSingleSelect({
-        resource: refreshResource,
+        resource: section.namePlural,
     })
+    const [drawerOpen, setDrawerOpen] = useState(false)
+
+    const handleAddNew = useCallback(() => {
+        if (NewItemForm) {
+            setDrawerOpen(true)
+        } else {
+            window.open(newLink, '_blank')
+        }
+    }, [setDrawerOpen, NewItemForm, newLink])
 
     return (
         <Field
@@ -43,16 +74,41 @@ export function ModelSingleSelectRefreshableField<
             helpText={helpText}
             required={required}
         >
-            <EditableInputWrapper
-                onRefresh={() => refresh()}
-                onAddNew={() => window.open(newLink, '_blank')}
-            >
+            <DrawerRoot />
+            <EditableInputWrapper onRefresh={refresh} onAddNew={handleAddNew}>
                 <ModelSingleSelectFF
                     {...modelSingleSelectProps}
                     input={input}
                     meta={meta}
                 />
             </EditableInputWrapper>
+            {NewItemForm && (
+                <DrawerPortal
+                    isOpen={drawerOpen}
+                    onClose={() => setDrawerOpen(false)}
+                    header={
+                        <DrawerHeader onClose={() => setDrawerOpen(false)}>
+                            {i18n.t('Add new {{name}}', {
+                                name: section.title,
+                            })}
+                        </DrawerHeader>
+                    }
+                    disableFocusTrap
+                >
+                    <NewItemForm
+                        onSubmitted={() => {
+                            refresh()
+                            setDrawerOpen(false)
+                        }}
+                        redirectOnSubmitted={false}
+                        footer={
+                            <AddNewDrawerFormFooter
+                                onCancel={() => setDrawerOpen(false)}
+                            />
+                        }
+                    />
+                </DrawerPortal>
+            )}
         </Field>
     )
 }
@@ -68,11 +124,11 @@ export function ModelSingleSelectRefreshableFormField<
     format,
     parse,
     data,
-    refreshResource,
+    section,
     ...modelSingleSelectProps
 }: ModelSingleSelectFieldProps<TModel> &
     RelevantUseFieldProps<TModel> & {
-        refreshResource: string
+        section: ModelSection
     }) {
     const { input, meta } = useField<TModel | undefined>(name, {
         validateFields: validateFields ?? [],
@@ -82,12 +138,29 @@ export function ModelSingleSelectRefreshableFormField<
         parse,
         data,
     })
+    const newLink = useHref(`/${section.namePlural ?? ''}/new`)
+    const [NewItemForm, setNewItemForm] = useState<
+        NewItemFormComponent | undefined
+    >()
+
+    useEffect(() => {
+        import(`../../../pages/${section.namePlural ?? ''}/New`)
+            .then((m: { Component: NewItemFormComponent }) => {
+                if (LINK_ONLY_SECTIONS.has(section.namePlural)) {
+                    return
+                }
+                setNewItemForm(() => m.Component)
+            })
+            .catch(() => setNewItemForm(undefined))
+    }, [section.namePlural])
 
     return (
         <ModelSingleSelectRefreshableField
             input={input}
             meta={meta}
-            refreshResource={refreshResource}
+            section={section}
+            newLink={newLink}
+            NewItemForm={NewItemForm}
             {...modelSingleSelectProps}
         />
     )

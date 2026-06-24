@@ -11,7 +11,10 @@ import {
     StandardFormSectionTitle,
     StandardFormSectionDescription,
 } from '../../../../components'
-import { useSchemaSectionHandleOrThrow } from '../../../../lib'
+import {
+    SECTIONS_MAP,
+    useGivenShemaOrSchemaSectionHandleOrThrow,
+} from '../../../../lib'
 import { EditOrNewOptionForm, SubmittedOptionFormValues } from './OptionEdit'
 import { OptionsListTable, DrawerState, OptionDetail } from './OptionsListTable'
 
@@ -91,7 +94,9 @@ const OptionListNewOrEdit = () => {
 
 export const OptionsListFormContents = React.memo(
     function OptionSetSetupFormContents({ name }: { name: string }) {
-        useSchemaSectionHandleOrThrow()
+        useGivenShemaOrSchemaSectionHandleOrThrow({
+            section: SECTIONS_MAP.optionSet,
+        })
 
         return (
             <SectionedFormSection name={name}>

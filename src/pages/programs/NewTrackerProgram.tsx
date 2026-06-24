@@ -14,14 +14,27 @@ import { TrackerProgramFormDescriptor } from './form/trackerProgram/trackerProgr
 
 const section = SECTIONS_MAP.program
 
-export const NewTrackerProgram = () => {
+export const NewTrackerProgram = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
-            onSubmit={useOnSubmitNew({ section })}
+            onSubmit={useOnSubmitNew({
+                section,
+                onSubmitted,
+                redirectOnSubmitted,
+            })}
             initialValues={trackerProgramInitialValues}
             validate={trackerProgramValidate}
             subscription={{}}
             mutators={{ ...arrayMutators }}
+            section={section}
         >
             {({ handleSubmit }) => {
                 return (
@@ -30,10 +43,11 @@ export const NewTrackerProgram = () => {
                     >
                         <SectionedFormLayout
                             sidebar={<DefaultSectionedFormSidebar />}
+                            footer={footer}
                         >
                             <form onSubmit={handleSubmit}>
                                 <TrackerProgramFormContents />
-                                <DefaultFormFooter />
+                                {!footer && <DefaultFormFooter />}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>

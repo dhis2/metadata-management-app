@@ -7,11 +7,18 @@ import {
     StandardFormSectionDescription,
     NameField,
 } from '../../../components'
-import { useSchemaSectionHandleOrThrow } from '../../../lib'
+import {
+    useGivenShemaOrSchemaSectionHandleOrThrow,
+    Section,
+} from '../../../lib'
 import { FactorField } from './FactorField'
 
-export const IndicatorTypesFormFields = () => {
-    const schemaSection = useSchemaSectionHandleOrThrow()
+export const IndicatorTypesFormFields = ({
+    section,
+}: {
+    section?: Section
+}) => {
+    const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({ section })
 
     return (
         <StandardFormSection>
@@ -29,7 +36,7 @@ export const IndicatorTypesFormFields = () => {
             </StandardFormField>
 
             <StandardFormField>
-                <FactorField />
+                <FactorField schemaSection={schemaSection} />
             </StandardFormField>
         </StandardFormSection>
     )

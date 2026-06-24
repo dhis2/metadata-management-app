@@ -8,13 +8,13 @@
     display: none;
 }
 
-.sections section {
+.sections > section {
     background-color: var(--colors-white);
     border: 1px solid var(--colors-grey300);
     padding: var(--spacers-dp24);
 }
 
-.sections section h2:not(:first-child) {
+.sections > section h2:not(:first-child) {
     margin-block-start: 40px;
 }
 

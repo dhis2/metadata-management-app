@@ -8,16 +8,29 @@ import { initialValues } from './form/indicatorTypesSchema'
 
 const section = SECTIONS_MAP.indicatorType
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
             initialValues={initialValues}
-            onSubmit={useOnSubmitNew({ section })}
+            onSubmit={useOnSubmitNew({
+                section,
+                onSubmitted,
+                redirectOnSubmitted,
+            })}
             validate={validate}
             includeAttributes={false}
+            section={section}
         >
-            <DefaultNewFormContents section={section}>
-                <IndicatorTypesFormFields />
+            <DefaultNewFormContents section={section} footer={footer}>
+                <IndicatorTypesFormFields section={section} />
             </DefaultNewFormContents>
         </FormBase>
     )

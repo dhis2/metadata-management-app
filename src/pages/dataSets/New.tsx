@@ -60,10 +60,11 @@ export const Component = ({
                     >
                         <SectionedFormLayout
                             sidebar={<DefaultSectionedFormSidebar />}
+                            footer={footer}
                         >
                             <form onSubmit={handleSubmit}>
                                 <DataSetFormContents section={section} />
-                                {footer ?? <DefaultFormFooter />}
+                                {!footer && <DefaultFormFooter />}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>

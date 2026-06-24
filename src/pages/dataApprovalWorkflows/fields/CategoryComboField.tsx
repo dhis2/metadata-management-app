@@ -4,6 +4,7 @@ import { ModelSingleSelectRefreshableFormField } from '../../../components/metad
 import {
     DEFAULT_CATEGORYCOMBO_SELECT_OPTION,
     required as requiredValidator,
+    SECTIONS_MAP,
 } from '../../../lib'
 import { DisplayableModel } from '../../../types/models'
 
@@ -30,7 +31,7 @@ export function CategoryComboField() {
             validate={requiredValidator}
             query={CATEGORY_COMBOS_QUERY}
             transform={addDefaultCategoryComboTransform}
-            refreshResource="categoryCombos"
+            section={SECTIONS_MAP.categoryCombo}
         />
     )
 }

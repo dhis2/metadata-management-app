@@ -1,18 +1,39 @@
+import cx from 'classnames'
 import React from 'react'
 import css from './SectionedFormLayout.module.css'
 
 export type SectionedFormLayoutProps = {
     children: React.ReactNode
     sidebar?: React.ReactNode
+    footer?: React.ReactNode
+    dataTest?: string
 }
 export const SectionedFormLayout = ({
     children,
     sidebar,
+    footer,
+    dataTest,
 }: SectionedFormLayoutProps) => {
-    return (
-        <div className={css.layoutGrid}>
+    const grid = (
+        <div
+            className={cx(css.layoutGrid, {
+                [css.layoutGridInWrapper]: !!footer,
+            })}
+            data-test={footer ? undefined : dataTest}
+        >
             <SectionedFormLayoutSidebar>{sidebar}</SectionedFormLayoutSidebar>
             <SectionedFormLayoutMain>{children}</SectionedFormLayoutMain>
+        </div>
+    )
+
+    if (!footer) {
+        return grid
+    }
+
+    return (
+        <div className={css.layoutWrapper} data-test={dataTest}>
+            {grid}
+            <div className={css.stickyFooter}>{footer}</div>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import React, { useCallback, useMemo } from 'react'
 import { useField, useForm } from 'react-final-form'
 import { StandardFormField } from '../../../components'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
-import { required } from '../../../lib'
+import { required, SECTIONS_MAP } from '../../../lib'
 import { Program, TrackedEntityType } from '../../../types/generated'
 import { ConstraintValue, RelationshipSideFieldsProps } from './types'
 
@@ -137,7 +137,7 @@ export const ProgramField = ({ prefix }: RelationshipSideFieldsProps) => {
                 onChange={clearDependentFields}
                 showNoValueOption={!isRequired}
                 dataTest={`${prefix}-program-selector`}
-                refreshResource="programs"
+                section={SECTIONS_MAP.program}
             />
         </StandardFormField>
     )

@@ -41,10 +41,11 @@ export const Component = ({
                     >
                         <SectionedFormLayout
                             sidebar={<DefaultSectionedFormSidebar />}
+                            footer={footer}
                         >
                             <form onSubmit={handleSubmit}>
                                 <PredictorFormFields />
-                                {footer ?? (
+                                {!footer && (
                                     <DefaultFormFooter cancelTo="/predictors" />
                                 )}
                             </form>

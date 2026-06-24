@@ -1,9 +1,18 @@
 import { faker } from '@faker-js/faker'
-import { render } from '@testing-library/react'
+import { act, render, within } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/attributeSchema.json'
+import optionSetSchemaMock from '../../__mocks__/schema/optionSet.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
-import { SECTIONS_MAP, VALUE_TYPE, getConstantTranslation } from '../../lib'
+import * as lib from '../../lib'
+import {
+    ModelSchemas,
+    SECTIONS_MAP,
+    VALUE_TYPE,
+    getConstantTranslation,
+} from '../../lib'
+import { useSchemaStore } from '../../lib/schemas/schemaStore'
 import {
     randomLongString,
     testAttributeForm,
@@ -96,6 +105,7 @@ describe('Attributes form tests', () => {
                 return { screen }
             }
         )
+
         it('should show an error if name field is too long', async () => {
             const { screen } = await renderForm()
             const longText = randomLongString(231)
@@ -151,6 +161,34 @@ describe('Attributes form tests', () => {
             )
             await uiActions.submitForm(screen)
             expect(createMock).not.toHaveBeenCalled()
+        })
+        it('should open the option sets new form in a drawer when clicking the "Add new" button', async () => {
+            const { screen } = await renderForm()
+
+            // Merge optionSet schema so the OptionSet New form can render inside the drawer
+            useSchemaStore.getState().setSchemas({
+                ...useSchemaStore.getState().schemas,
+                optionSet: optionSetSchemaMock,
+            } as unknown as ModelSchemas)
+
+            // Flush the useEffect dynamic import in ModelSingleSelectRefreshableFormField
+            await act(async () => {})
+
+            const optionSetField = screen.getByTestId('formfields-optionSet')
+
+            const addNewButton =
+                within(optionSetField).getAllByRole('button')[1]
+            await userEvent.click(addNewButton)
+
+            expect(
+                await screen.findByText('Add new Option set')
+            ).toBeInTheDocument()
+            expect(screen.getByTestId('optionSetNewForm')).toBeInTheDocument()
+            expect(
+                within(screen.getByTestId('optionSetNewForm')).getByTestId(
+                    'form-submit-button'
+                )
+            ).toHaveTextContent('Save and close')
         })
     })
     describe('New', () => {

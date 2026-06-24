@@ -15,12 +15,13 @@ import {
     StandardFormSectionTitle,
     ValueTypeField,
 } from '../../../components'
-import { ModelSingleSelectFormField } from '../../../components/metadataFormControls/ModelSingleSelect'
+import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
 import { PROGRAM_RULE_VARIABLE_CONSTANTS } from '../../../constants/programRuleVariable'
 import {
     useClearFormFields,
     useSectionedFormContext,
     useSyncSelectedSectionWithScroll,
+    SECTIONS_MAP,
 } from '../../../lib'
 import { ProgramRuleVariable } from '../../../types/generated'
 import {
@@ -111,7 +112,7 @@ export const ProgramRuleVariableFormFields = () => {
                 </StandardFormSectionDescription>
 
                 <StandardFormField>
-                    <ModelSingleSelectFormField
+                    <ModelSingleSelectRefreshableFormField
                         required
                         inputWidth={FIELD_WIDTH}
                         dataTest="program-field"
@@ -133,6 +134,7 @@ export const ProgramRuleVariableFormFields = () => {
                                   )
                                 : undefined
                         }
+                        section={SECTIONS_MAP.program}
                     />
                 </StandardFormField>
 

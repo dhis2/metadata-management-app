@@ -59,10 +59,11 @@ export const Component = ({
                     <SectionedFormProvider formDescriptor={formDescriptor}>
                         <SectionedFormLayout
                             sidebar={<DefaultSectionedFormSidebar />}
+                            footer={footer}
                         >
                             <form onSubmit={handleSubmit}>
                                 <TrackedEntityAttributeFormContents />
-                                {footer ?? <DefaultFormFooter />}
+                                {!footer && <DefaultFormFooter />}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>

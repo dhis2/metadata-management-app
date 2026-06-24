@@ -10,6 +10,7 @@ import {
 } from '../../../components'
 import { ModelSingleSelectField } from '../../../components/metadataFormControls/ModelSingleSelect'
 import { SectionedFormSection } from '../../../components/sectionedForm'
+import { SECTIONS_MAP } from '../../../lib'
 
 const NOTIFICATION_RECIPIENTS_QUERY = {
     resource: 'userGroups',
@@ -136,12 +137,8 @@ export const AdvancedFormContents = React.memo(function AdvancedFormContents({
                     query={{
                         resource: 'legendSets',
                     }}
-                    leftHeader={i18n.t('Available legends')}
-                    rightHeader={i18n.t('Selected legends')}
-                    filterPlaceholder={i18n.t('Filter available legends')}
-                    filterPlaceholderPicked={i18n.t('Filter selected legends')}
+                    transferSection={SECTIONS_MAP.legendSet}
                     maxSelections={Infinity}
-                    leftFooter={<></>}
                     enableOrderChange={false}
                 />
             </StandardFormField>

@@ -3,7 +3,7 @@ import React, { useCallback, useMemo } from 'react'
 import { useField, useForm } from 'react-final-form'
 import { StandardFormField } from '../../../components'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
-import { required } from '../../../lib'
+import { required, SECTIONS_MAP } from '../../../lib'
 import type { TrackedEntityType } from '../../../types/generated'
 import { ConstraintValue, RelationshipSideFieldsProps } from './types'
 
@@ -69,7 +69,7 @@ export const TrackedEntityTypeField = ({
                 inputWidth="400px"
                 onChange={clearDependentFields}
                 dataTest={`${prefix}-tracked-entity-type-selector`}
-                refreshResource="trackedEntityTypes"
+                section={SECTIONS_MAP.trackedEntityType}
             />
         </StandardFormField>
     )

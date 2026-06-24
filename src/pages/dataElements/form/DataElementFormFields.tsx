@@ -80,7 +80,7 @@ export function DataElementFormFields() {
                 </StandardFormField>
 
                 <StandardFormField>
-                    <AggregationTypeFieldByValueType />
+                    <AggregationTypeFieldByValueType section={section} />
                 </StandardFormField>
 
                 <StandardFormField>

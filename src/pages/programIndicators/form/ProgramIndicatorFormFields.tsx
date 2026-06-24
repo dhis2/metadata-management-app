@@ -23,7 +23,7 @@ import {
     ExpressionBuilderEntry,
 } from '../../../components'
 import { PaddedContainer } from '../../../components/ExpressionBuilder/PaddedContainer'
-import { ModelSingleSelectFormField } from '../../../components/metadataFormControls/ModelSingleSelect'
+import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
 import {
     // Used directly to avoid key collision with PROGRAM_NOTIFICATION_TRIGGER.ENROLLMENT in allConstantTranslations
     ANALYTICS_TYPE,
@@ -102,7 +102,7 @@ export const ProgramIndicatorsFormFields = () => {
                     )}
                 </StandardFormSectionDescription>
                 <StandardFormField>
-                    <ModelSingleSelectFormField
+                    <ModelSingleSelectRefreshableFormField
                         required
                         inputWidth="400px"
                         dataTest="programs-field"
@@ -114,6 +114,7 @@ export const ProgramIndicatorsFormFields = () => {
                                 fields: programFilters.concat(),
                             },
                         }}
+                        section={SECTIONS_MAP.program}
                     />
                 </StandardFormField>
                 <StandardFormField dataTest="aggregation-type-field">
