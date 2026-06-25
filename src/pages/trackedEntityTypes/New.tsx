@@ -45,6 +45,7 @@ export const Component = ({
                         <SectionedFormLayout
                             sidebar={<DefaultSectionedFormSidebar />}
                             footer={footer}
+                            dataTest="trackedEntityTypeNewForm"
                         >
                             <form onSubmit={handleSubmit}>
                                 <TrackedEntityTypeFormFields />

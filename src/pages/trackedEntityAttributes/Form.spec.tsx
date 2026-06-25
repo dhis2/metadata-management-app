@@ -1,9 +1,12 @@
 import { faker } from '@faker-js/faker'
-import { render } from '@testing-library/react'
+import { act, render, within } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
+import optionSetSchemaMock from '../../__mocks__/schema/optionSet.json'
 import schemaMock from '../../__mocks__/schema/trackedEntityAttributes.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
-import { SECTIONS_MAP } from '../../lib'
+import { ModelSchemas, SECTIONS_MAP } from '../../lib'
+import { useSchemaStore } from '../../lib/schemas/schemaStore'
 import {
     randomDhis2Id,
     randomLongString,
@@ -124,6 +127,32 @@ describe('TrackedEntityAttributes form tests', () => {
             await uiAssertions.expectNameToErrorWhenExceedsLength(screen)
             await uiActions.submitForm(screen)
             expect(createMock).not.toHaveBeenCalled()
+        })
+
+        it('should open the option set new form in a drawer when clicking the "Add new" button', async () => {
+            const { screen } = await renderForm()
+
+            useSchemaStore.getState().setSchemas({
+                ...useSchemaStore.getState().schemas,
+                optionSet: optionSetSchemaMock,
+            } as unknown as ModelSchemas)
+
+            await act(async () => {})
+
+            const optionSetField = screen.getByTestId('formfields-optionSet')
+            const addNewButton =
+                within(optionSetField).getAllByRole('button')[1]
+            await userEvent.click(addNewButton)
+
+            expect(
+                await screen.findByText('Add new Option set')
+            ).toBeInTheDocument()
+            expect(screen.getByTestId('optionSetNewForm')).toBeInTheDocument()
+            expect(
+                within(screen.getByTestId('optionSetNewForm')).getByTestId(
+                    'form-submit-button'
+                )
+            ).toHaveTextContent('Save and close')
         })
     })
 
