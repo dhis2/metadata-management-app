@@ -1,17 +1,21 @@
 import { faker } from '@faker-js/faker'
-import { render, within, waitFor } from '@testing-library/react'
+import { act, render, within, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
+import categoryCombosSchema from '../../__mocks__/schema/categoryCombosSchema.json'
 import schemaMock from '../../__mocks__/schema/dataElements.json'
+import optionSetSchemaMock from '../../__mocks__/schema/optionSet.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
 import { DISABLING_VALUE_TYPES } from '../../components/form/fields/AggregationTypeFieldByValueType'
 import {
     DEFAULT_CATEGORY_COMBO,
     DEFAULT_CATEGORYCOMBO_SELECT_OPTION,
     getConstantTranslation,
+    ModelSchemas,
     SECTIONS_MAP,
     VALUE_TYPE,
 } from '../../lib'
+import { useSchemaStore } from '../../lib/schemas/schemaStore'
 import {
     randomLongString,
     randomValueIn,
@@ -332,6 +336,95 @@ describe('Data elements form tests', () => {
             )
             expect(multiTextOptions).toHaveLength(0)
         })
+        it('should open the category combo new form in a drawer when clicking the "Add new" button', async () => {
+            const { screen } = await renderForm()
+
+            useSchemaStore.getState().setSchemas({
+                ...useSchemaStore.getState().schemas,
+                categoryCombo: categoryCombosSchema,
+            } as unknown as ModelSchemas)
+
+            // Flush the useEffect dynamic import in ModelSingleSelectRefreshableFormField
+            await act(async () => {})
+
+            const categoryComboField = screen.getByTestId(
+                'formfields-categorycombo'
+            )
+
+            const addNewButton =
+                within(categoryComboField).getAllByRole('button')[1]
+            await userEvent.click(addNewButton)
+
+            expect(
+                await screen.findByText('Add new Category combination')
+            ).toBeInTheDocument()
+            expect(
+                screen.getByTestId('categoryComboNewForm')
+            ).toBeInTheDocument()
+            expect(
+                within(screen.getByTestId('categoryComboNewForm')).getByTestId(
+                    'form-submit-button'
+                )
+            ).toHaveTextContent('Save and close')
+        })
+
+        it('should open the option set new form in a drawer when clicking the "Add new" button', async () => {
+            const { screen } = await renderForm()
+
+            useSchemaStore.getState().setSchemas({
+                ...useSchemaStore.getState().schemas,
+                optionSet: optionSetSchemaMock,
+            } as unknown as ModelSchemas)
+
+            // Flush the useEffect dynamic import in ModelSingleSelectRefreshableFormField
+            await act(async () => {})
+
+            const optionSetField = screen.getByTestId('formfields-optionset')
+            const addNewButton =
+                within(optionSetField).getAllByRole('button')[1]
+            await userEvent.click(addNewButton)
+
+            expect(
+                await screen.findByText('Add new Option set')
+            ).toBeInTheDocument()
+            expect(screen.getByTestId('optionSetNewForm')).toBeInTheDocument()
+            expect(
+                within(screen.getByTestId('optionSetNewForm')).getByTestId(
+                    'form-submit-button'
+                )
+            ).toHaveTextContent('Save and close')
+        })
+
+        it('should open the option set new form in a drawer when clicking the "Add new" button on the comment option set field', async () => {
+            const { screen } = await renderForm()
+
+            useSchemaStore.getState().setSchemas({
+                ...useSchemaStore.getState().schemas,
+                optionSet: optionSetSchemaMock,
+            } as unknown as ModelSchemas)
+
+            // Flush the useEffect dynamic import in ModelSingleSelectRefreshableFormField
+            await act(async () => {})
+
+            const commentOptionSetField = screen.getByTestId(
+                'formfields-commentoptionset'
+            )
+            const addNewButton = within(commentOptionSetField).getAllByRole(
+                'button'
+            )[1]
+            await userEvent.click(addNewButton)
+
+            expect(
+                await screen.findByText('Add new Option set')
+            ).toBeInTheDocument()
+            expect(screen.getByTestId('optionSetNewForm')).toBeInTheDocument()
+            expect(
+                within(screen.getByTestId('optionSetNewForm')).getByTestId(
+                    'form-submit-button'
+                )
+            ).toHaveTextContent('Save and close')
+        })
+
         it('should change the value type accordingly when an option set is selected', async () => {
             const { screen, optionSets } = await renderForm()
 
