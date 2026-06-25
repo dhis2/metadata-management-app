@@ -1,7 +1,11 @@
 import { Field, TransferProps } from '@dhis2/ui'
 import React from 'react'
 import { useField } from 'react-final-form'
-import { ModelTransfer, ModelTransferFrom } from '../../../components'
+import {
+    ModelTransfer,
+    ModelTransferFrom,
+    NewItemFormComponent,
+} from '../../../components'
 import { PlainResourceQuery } from '../../../types'
 import { DisplayableModel } from '../../../types/models'
 import { ModelSection } from '../../../types/section'
@@ -16,6 +20,15 @@ type ModelTransferFieldProps = {
     label?: string
     filterUnassignedTo?: string
     transferSection?: ModelSection
+    /** Override the selected items derived from the form field value. Useful when
+     *  the field stores a richer type (e.g. ProgramStageDataElement[]) and the
+     *  transfer only needs the inner DisplayableModel slice. */
+    selected?: DisplayableModel[]
+    /** Override the default onChange that writes directly to the form field.
+     *  Required when the field stores a richer type than DisplayableModel[]. */
+    onChange?: (params: { selected: DisplayableModel[] }) => void
+    NewItemForm?: NewItemFormComponent
+    newItemFormHeader?: string
 } & Pick<
     TransferProps,
     | 'rightHeader'
@@ -49,6 +62,10 @@ export function ModelTransferField({
     dataTest,
     filterUnassignedTo,
     transferSection,
+    selected: selectedProp,
+    onChange: onChangeProp,
+    NewItemForm,
+    newItemFormHeader,
     hideFilterInputPicked = false,
     disabled = false,
     optionsWidth,
@@ -61,11 +78,13 @@ export function ModelTransferField({
     })
 
     const sharedProps = {
-        selected: input.value || [],
-        onChange: ({ selected }: { selected: DisplayableModel[] }) => {
-            input.onChange(selected)
-            input.onBlur()
-        },
+        selected: selectedProp ?? input.value ?? [],
+        onChange:
+            onChangeProp ??
+            (({ selected }: { selected: DisplayableModel[] }) => {
+                input.onChange(selected)
+                input.onBlur()
+            }),
         leftFooter,
         rightFooter,
         query,
@@ -100,6 +119,8 @@ export function ModelTransferField({
                     rightHeader={rightHeader}
                     filterPlaceholder={filterPlaceholder}
                     filterPlaceholderPicked={filterPlaceholderPicked}
+                    NewItemForm={NewItemForm}
+                    newItemFormHeader={newItemFormHeader}
                 />
             )}
         </Field>

@@ -1,7 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import {
     CheckboxFieldFF,
-    Field,
     Table,
     TableBody,
     TableCell,
@@ -9,17 +8,17 @@ import {
     TableHead,
     TableRow,
 } from '@dhis2/ui'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Field as FieldRFF, useField } from 'react-final-form'
 import {
-    ModelTransfer,
+    ModelTransferField,
+    NewItemFormComponent,
     RenderingOptionsSelect,
     SectionedFormSection,
     StandardFormSectionDescription,
     StandardFormSectionTitle,
     StandardFormSubsectionTitle,
 } from '../../../../components'
-import css from '../../../../components/metadataFormControls/ModelTransfer/ModelTransfer.module.css'
 import { DataElement } from '../../../../types/generated'
 
 type ProgramStageDataElementFormValue = {
@@ -61,13 +60,24 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
     const fieldName = isTrackerProgram
         ? 'programStageDataElements'
         : 'programStages[0].programStageDataElements'
-    const { input, meta } = useField<ProgramStageDataElementFormValue[]>(
-        fieldName,
-        {
-            multiple: true,
-            validateFields: [],
+    const { input } = useField<ProgramStageDataElementFormValue[]>(fieldName, {
+        multiple: true,
+        validateFields: [],
+    })
+
+    const [NewItemForm, setNewItemForm] = useState<
+        NewItemFormComponent | undefined
+    >()
+
+    useEffect(() => {
+        if (!isTrackerProgram) {
+            import('../../../dataElements/New')
+                .then((m: { Component: NewItemFormComponent }) => {
+                    setNewItemForm(() => m.Component)
+                })
+                .catch(() => setNewItemForm(undefined))
         }
-    )
+    }, [isTrackerProgram])
 
     const stageHasDateDataElements = input.value.some(
         (psde) => getValueType(psde) === 'DATE'
@@ -90,76 +100,62 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
                           'Configure data collection for events in this program.'
                       )}
             </StandardFormSectionDescription>
-            <Field
-                error={meta.invalid}
-                validationText={(meta.touched && meta.error?.toString()) || ''}
-                name={name}
-                className={css.moduleTransferField}
-            >
-                <ModelTransfer
-                    selected={input.value.map((psde) => psde.dataElement)}
-                    onChange={({ selected }) => {
-                        const existingDataElementsMap = new Map(
-                            input.value.map((psde) => [
-                                psde.dataElement.id,
-                                psde,
-                            ])
-                        )
-
-                        const selectedDataElements = selected.map((de) => {
-                            const existing = existingDataElementsMap.get(de.id)
-                            if (existing) {
-                                return {
-                                    ...existing,
-                                    renderType:
-                                        existing.renderType ||
-                                        defaultRenderType,
-                                    optionSet: existing.optionSet,
-                                }
-                            }
-
+            <ModelTransferField
+                name={fieldName}
+                selected={input.value.map((psde) => psde.dataElement)}
+                onChange={({ selected }) => {
+                    const existingDataElementsMap = new Map(
+                        input.value.map((psde) => [psde.dataElement.id, psde])
+                    )
+                    const selectedDataElements = selected.map((de) => {
+                        const existing = existingDataElementsMap.get(de.id)
+                        if (existing) {
                             return {
-                                dataElement: {
-                                    id: de.id,
-                                    displayName: de.displayName,
-                                    optionSet: de.optionSet,
-                                },
-                                valueType: de.valueType,
-                                optionSet: de.optionSet,
-                                compulsory: false,
-                                displayInReports: false,
-                                allowFutureDate: false,
-                                skipAnalytics: false,
-                                skipSynchronization: false,
-                                renderType: defaultRenderType,
+                                ...existing,
+                                renderType:
+                                    existing.renderType || defaultRenderType,
+                                optionSet: existing.optionSet,
                             }
-                        })
-
-                        input.onChange(selectedDataElements)
-                        input.onBlur()
-                    }}
-                    leftHeader={i18n.t('Available data elements')}
-                    rightHeader={i18n.t('Selected data elements')}
-                    filterPlaceholder={i18n.t('Filter available data elements')}
-                    filterPlaceholderPicked={i18n.t(
-                        'Filter selected data elements'
-                    )}
-                    maxSelections={Infinity}
-                    enableOrderChange={false}
-                    query={{
-                        resource: 'dataElements',
-                        params: {
-                            fields: [
-                                'id',
-                                'displayName',
-                                'valueType',
-                                'optionSet',
-                            ],
-                            filter: ['domainType:eq:TRACKER'],
-                        },
-                    }}
-                />
-            </Field>
+                        }
+                        // The query fetches valueType and optionSet alongside id/displayName
+                        const dataElement = de as DataElement
+                        return {
+                            dataElement: {
+                                id: dataElement.id,
+                                displayName: dataElement.displayName,
+                                optionSet: dataElement.optionSet,
+                            },
+                            valueType: dataElement.valueType,
+                            optionSet: dataElement.optionSet,
+                            compulsory: false,
+                            displayInReports: false,
+                            allowFutureDate: false,
+                            skipAnalytics: false,
+                            skipSynchronization: false,
+                            renderType: defaultRenderType,
+                        }
+                    })
+                    input.onChange(selectedDataElements)
+                    input.onBlur()
+                }}
+                leftHeader={i18n.t('Available data elements')}
+                rightHeader={i18n.t('Selected data elements')}
+                filterPlaceholder={i18n.t('Filter available data elements')}
+                filterPlaceholderPicked={i18n.t(
+                    'Filter selected data elements'
+                )}
+                maxSelections={Infinity}
+                enableOrderChange={false}
+                NewItemForm={NewItemForm}
+                newItemFormHeader={i18n.t('Add new data element')}
+                query={{
+                    resource: 'dataElements',
+                    params: {
+                        fields: ['id', 'displayName', 'valueType', 'optionSet'],
+                        filter: ['domainType:eq:TRACKER'],
+                    },
+                }}
+            />
             <StandardFormSubsectionTitle>
                 {i18n.t('Configure data items')}
             </StandardFormSubsectionTitle>
