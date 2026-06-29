@@ -80,7 +80,10 @@ export const Component = () => {
             fetchError={stage.isError}
         >
             {({ handleSubmit }) => (
-                <SectionedFormProvider formDescriptor={StageFormDescriptor}>
+                <SectionedFormProvider
+                    formDescriptor={StageFormDescriptor}
+                    attributesSectionName={'programStageAttributes'}
+                >
                     <SectionedFormLayout
                         sidebar={<DefaultSectionedFormSidebar />}
                     >
