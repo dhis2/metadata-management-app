@@ -1,7 +1,8 @@
 import cx from 'classnames'
 import { FocusTrap } from 'focus-trap-react'
-import React, { useEffect, useState, useSyncExternalStore } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { create } from 'zustand'
 import { useSystemSettingsStore } from '../../lib/systemSettings'
 import css from './Drawer.module.css'
 import { DrawerHeader } from './DrawerHeader'
@@ -10,33 +11,24 @@ export interface DrawerProps {
     isOpen: boolean
     children: React.ReactNode
     onClose: () => void
-    level?: 'primary' | 'secondary' | 'tertiary'
+    level?: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
     header?: React.ReactNode | string
     disableFocusTrap?: boolean
 }
 
 const DRAWER_PORTAL_ID = 'drawer-portal'
 
-let openDrawerPanelCount = 0
-const openDrawerListeners = new Set<() => void>()
-const openDrawerStore = {
-    getCount: () => openDrawerPanelCount,
-    increment: () => {
-        openDrawerPanelCount++
-        openDrawerListeners.forEach((l) => l())
-    },
-    decrement: () => {
-        openDrawerPanelCount--
-        openDrawerListeners.forEach((l) => l())
-    },
-    subscribe: (listener: () => void) => {
-        openDrawerListeners.add(listener)
-        return () => openDrawerListeners.delete(listener)
-    },
+interface DrawerStore {
+    count: number
+    increment: () => void
+    decrement: () => void
 }
 
-export const useOpenDrawerPanelCount = () =>
-    useSyncExternalStore(openDrawerStore.subscribe, openDrawerStore.getCount)
+const useDrawerStore = create<DrawerStore>()((set) => ({
+    count: 0,
+    increment: () => set((state) => ({ count: state.count + 1 })),
+    decrement: () => set((state) => ({ count: state.count - 1 })),
+}))
 
 export const DrawerPanel: React.FC<DrawerProps> = ({
     isOpen,
@@ -50,15 +42,23 @@ export const DrawerPanel: React.FC<DrawerProps> = ({
         useSystemSettingsStore(
             (state) => state.systemSettings?.globalShellEnabled
         ) ?? false
-    const [levelOrCalculatedLevel] = useState(
-        () =>
-            level ??
-            (openDrawerStore.getCount() > 0
-                ? openDrawerStore.getCount() > 1
-                    ? 'tertiary'
-                    : 'secondary'
-                : 'primary')
-    )
+
+    const [levelOrCalculatedLevel] = useState(() => {
+        const count = useDrawerStore.getState().count
+        if (level) {
+            return level
+        }
+        if (count === 0) {
+            return 'primary'
+        }
+        if (count === 1) {
+            return 'secondary'
+        }
+        if (count === 2) {
+            return 'tertiary'
+        }
+        return 'quaternary'
+    })
 
     return (
         <div
@@ -77,6 +77,8 @@ export const DrawerPanel: React.FC<DrawerProps> = ({
                     [css.drawerSecondary]:
                         levelOrCalculatedLevel === 'secondary',
                     [css.drawerTertiary]: levelOrCalculatedLevel === 'tertiary',
+                    [css.drawerQuaternary]:
+                        levelOrCalculatedLevel === 'quaternary',
                 })}
                 onClick={(e) => e.stopPropagation()}
             >
@@ -168,8 +170,8 @@ export const DrawerPortal = (props: DrawerProps) => {
         if (!props.isOpen) {
             return
         }
-        openDrawerStore.increment()
-        return () => openDrawerStore.decrement()
+        useDrawerStore.getState().increment()
+        return () => useDrawerStore.getState().decrement()
     }, [props.isOpen])
 
     useEffect(() => {
