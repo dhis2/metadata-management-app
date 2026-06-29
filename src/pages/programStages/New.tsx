@@ -30,7 +30,10 @@ export const Component = () => {
             mutators={{ ...arrayMutators }}
         >
             {({ handleSubmit }) => (
-                <SectionedFormProvider formDescriptor={StageFormDescriptor}>
+                <SectionedFormProvider
+                    formDescriptor={StageFormDescriptor}
+                    attributesSectionName={'programStageAttributes'}
+                >
                     <SectionedFormLayout
                         sidebar={<DefaultSectionedFormSidebar />}
                     >

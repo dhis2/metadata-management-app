@@ -133,7 +133,7 @@ export const StageForm = ({ stage, onSubmit, onCancel }: StageFormProps) => {
             onSubmit={(values, form, options) =>
                 onSubmit(values, form, options, closeOnSubmitRef.current)
             }
-            includeAttributes={false}
+            section={SECTIONS_MAP.programStage}
             mutators={{ ...arrayMutators }}
         >
             {({ handleSubmit, form }) => {
