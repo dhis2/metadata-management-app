@@ -1,3 +1,10 @@
+## [0.163.1](https://github.com/dhis2/metadata-management-app/compare/v0.163.0...v0.163.1) (2026-06-29)
+
+
+### Bug Fixes
+
+* prigram stages attributes ([#980](https://github.com/dhis2/metadata-management-app/issues/980)) ([723eb75](https://github.com/dhis2/metadata-management-app/commit/723eb75aa281ecaca6eb3453608891cfcf9858e4))
+
 # [0.163.0](https://github.com/dhis2/metadata-management-app/compare/v0.162.0...v0.163.0) (2026-06-24)
 
 
