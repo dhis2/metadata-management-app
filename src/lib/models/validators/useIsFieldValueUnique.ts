@@ -30,13 +30,11 @@ export function useIsFieldValueUnique({
         result: {
             resource: model,
             params: (variables: Record<string, string>) => {
-                const trimmed = variables.value.trim()
-                const isNumeric = !Number.isNaN(Number(trimmed))
+                const value = variables.value
+                const isNumeric = !Number.isNaN(Number(value.trim()))
                 const useExactMatch = isNumeric || caseSensitive
                 const equalOperation = useExactMatch ? 'eq' : 'ieq'
-                const filter = [
-                    `${variables.field}:${equalOperation}:${trimmed}`,
-                ]
+                const filter = [`${variables.field}:${equalOperation}:${value}`]
 
                 if (variables.id) {
                     filter.push(`id:ne:${variables.id}`)
