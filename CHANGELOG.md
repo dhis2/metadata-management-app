@@ -1,3 +1,10 @@
+## [0.163.3](https://github.com/dhis2/metadata-management-app/compare/v0.163.2...v0.163.3) (2026-06-30)
+
+
+### Bug Fixes
+
+* url check ([#983](https://github.com/dhis2/metadata-management-app/issues/983)) ([45a88ad](https://github.com/dhis2/metadata-management-app/commit/45a88ad6f2d7d3100ad56bde79be7436aa1980f2))
+
 ## [0.163.2](https://github.com/dhis2/metadata-management-app/compare/v0.163.1...v0.163.2) (2026-06-30)
 
 
