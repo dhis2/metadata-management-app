@@ -15,14 +15,14 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    height: 65vh;
+    height: min(65vh, calc(100vh - 280px));
     min-height: 0;
     min-width: 0;
 }
 
 .validationRuleVariablesContainer {
     width: 400px;
-    height: 65vh;
+    height: min(65vh, calc(100vh - 280px));
     overflow-y: auto;
     border: 1px solid var(--colors-grey500);
     background-color: var(--colors-grey100);
