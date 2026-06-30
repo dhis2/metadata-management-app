@@ -51,7 +51,8 @@ export const organisationUnitFormSchema = identifiable
         url: z
             .string()
             .url({ message: i18n.t('Must be a valid url') })
-            .optional(),
+            .optional()
+            .or(z.literal('')),
         closedDate: z.coerce.date().optional(),
         comment: z
             .string()
