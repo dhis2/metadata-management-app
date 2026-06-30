@@ -46,6 +46,7 @@ export type ModelTranferProps<
     filterUnassignedTo?: string
     NewItemForm?: NewItemFormComponent
     newItemFormHeader?: string
+    newItemFormFooterInfo?: string
 }
 
 export type ModelTransferPropsFor<
@@ -99,6 +100,10 @@ export const ModelTransferFrom = <
             newItemFormHeader={i18n.t('Add new {{name}}', {
                 name: transferSection.title,
             })}
+            newItemFormFooterInfo={i18n.t(
+                "Saving this {{name}} won't apply unsaved changes in the form below.",
+                { name: transferSection.title.toLowerCase() }
+            )}
             NewItemForm={NewItemForm}
             {...rest}
         />
@@ -120,6 +125,7 @@ export const ModelTransfer = <
     filterUnassignedTo,
     NewItemForm,
     newItemFormHeader,
+    newItemFormFooterInfo,
     height = '360px',
     optionsWidth = '480px',
     selectedWidth = '480px',
@@ -219,6 +225,7 @@ export const ModelTransfer = <
                         newLink={newLink}
                         NewItemForm={NewItemForm}
                         newItemFormHeader={newItemFormHeader}
+                        newItemFormFooterInfo={newItemFormFooterInfo}
                     />
                 )
             }
@@ -239,11 +246,13 @@ export const DefaultTransferLeftFooter = ({
     newLink,
     NewItemForm,
     newItemFormHeader,
+    newItemFormFooterInfo,
 }: {
     onRefreshClick: () => void
     newLink: string
     NewItemForm?: NewItemFormComponent
     newItemFormHeader?: string
+    newItemFormFooterInfo?: string
 }) => {
     const [drawerOpen, setDrawerOpen] = useState(false)
     return (
@@ -284,6 +293,7 @@ export const DefaultTransferLeftFooter = ({
                         footer={
                             <AddNewDrawerFormFooter
                                 onCancel={() => setDrawerOpen(false)}
+                                newItemFormFooterInfo={newItemFormFooterInfo}
                             />
                         }
                     />
@@ -293,7 +303,13 @@ export const DefaultTransferLeftFooter = ({
     )
 }
 
-const AddNewDrawerFormFooter = ({ onCancel }: { onCancel: () => void }) => {
+const AddNewDrawerFormFooter = ({
+    onCancel,
+    newItemFormFooterInfo,
+}: {
+    onCancel: () => void
+    newItemFormFooterInfo?: string
+}) => {
     const { submitting } = useFormState({
         subscription: { submitting: true, values: true },
     })
@@ -307,6 +323,7 @@ const AddNewDrawerFormFooter = ({ onCancel }: { onCancel: () => void }) => {
                 submitting={submitting ?? false}
                 onSubmitClick={() => form.submit()}
                 onCancelClick={onCancel}
+                infoMessage={newItemFormFooterInfo}
             />
         </div>
     )
