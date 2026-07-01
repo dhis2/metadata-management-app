@@ -3,6 +3,7 @@ import { Button, ButtonStrip } from '@dhis2/ui'
 import { IconInfo16 } from '@dhis2/ui-icons'
 import React from 'react'
 import { useForm, useFormState } from 'react-final-form'
+import type { SectionFormValues } from '../../pages/dataSets/form/dataEntryForm/sectionForm'
 import css from './Drawer.module.css'
 
 export type DrawerFormFooterProps = {
@@ -75,8 +76,10 @@ export const DrawerFormFooter: React.FC<DrawerFormFooterProps> = ({
 
 export const AddNewDrawerFormFooter = ({
     onCancel,
+    newItemFormFooterInfo,
 }: {
     onCancel: () => void
+    newItemFormFooterInfo?: string
 }) => {
     const { submitting } = useFormState({
         subscription: { submitting: true },
@@ -91,6 +94,7 @@ export const AddNewDrawerFormFooter = ({
                 submitting={submitting ?? false}
                 onSubmitClick={() => form.submit()}
                 onCancelClick={onCancel}
+                infoMessage={newItemFormFooterInfo}
             />
         </div>
     )

@@ -13,6 +13,7 @@ import { PagedResponse } from '../../../types/generated'
 import { DisplayableModel } from '../../../types/models'
 import { ModelSection } from '../../../types/section'
 import {
+    AddNewDrawerFormFooter,
     DrawerFormFooter,
     DrawerHeader,
     DrawerPortal,
@@ -300,31 +301,5 @@ export const DefaultTransferLeftFooter = ({
                 </DrawerPortal>
             )}
         </>
-    )
-}
-
-const AddNewDrawerFormFooter = ({
-    onCancel,
-    newItemFormFooterInfo,
-}: {
-    onCancel: () => void
-    newItemFormFooterInfo?: string
-}) => {
-    const { submitting } = useFormState({
-        subscription: { submitting: true, values: true },
-    })
-    const form = useForm<SectionFormValues>()
-
-    return (
-        <div className={css.addNewDrawerFormWrapper}>
-            <DrawerFormFooter
-                submitLabel={i18n.t('Save and close')}
-                cancelLabel={i18n.t('Cancel')}
-                submitting={submitting ?? false}
-                onSubmitClick={() => form.submit()}
-                onCancelClick={onCancel}
-                infoMessage={newItemFormFooterInfo}
-            />
-        </div>
     )
 }
