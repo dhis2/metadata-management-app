@@ -7,9 +7,9 @@ export const isFetchError = (error: unknown): error is FetchError => {
 // Status codes returned by proxies/gateways when a long-running request is cut
 // off before the backend has finished - the operation may still be completing
 // server-side.
-const MAYBE_STILL_PROCESSING_STATUS_CODES: readonly number[] = [
+const MAYBE_STILL_PROCESSING_STATUS_CODES: ReadonlySet<number> = new Set([
     408, 502, 503, 504,
-]
+])
 
 /**
  * Extracts the HTTP status code from a FetchError.
@@ -44,7 +44,7 @@ export const isMaybeStillProcessingError = (error: unknown): boolean => {
     const httpStatusCode = getHttpStatusCode(error)
     return (
         httpStatusCode !== undefined &&
-        MAYBE_STILL_PROCESSING_STATUS_CODES.includes(httpStatusCode)
+        MAYBE_STILL_PROCESSING_STATUS_CODES.has(httpStatusCode)
     )
 }
 
