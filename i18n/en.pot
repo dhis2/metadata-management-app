@@ -1159,6 +1159,18 @@ msgstr "Successfully deleted {{modelType}} \"{{displayName}}\""
 msgid "Are you sure that you want to delete \"{{- displayName}}\"?"
 msgstr "Are you sure that you want to delete \"{{- displayName}}\"?"
 
+msgid "The deletion may still be in progress"
+msgstr "The deletion may still be in progress"
+
+msgid ""
+"The request to delete {{modelType}} \"{{displayName}}\" timed out, but the "
+"server may still be processing it. Refresh the list in a moment to check "
+"whether it was deleted before trying again."
+msgstr ""
+"The request to delete {{modelType}} \"{{displayName}}\" timed out, but the "
+"server may still be processing it. Refresh the list in a moment to check "
+"whether it was deleted before trying again."
+
 msgid "Something went wrong deleting the {{modelType}}"
 msgstr "Something went wrong deleting the {{modelType}}"
 

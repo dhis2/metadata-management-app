@@ -13,7 +13,11 @@ import {
     NoticeBox,
 } from '@dhis2/ui'
 import React, { useState } from 'react'
-import { useDeleteModelMutation, useSectionHandle } from '../../../lib'
+import {
+    isMaybeStillProcessingError,
+    useDeleteModelMutation,
+    useSectionHandle,
+} from '../../../lib'
 import { ModelSection } from '../../../types'
 import classes from './DeleteAction.module.css'
 
@@ -102,8 +106,10 @@ function ConfirmationDialog({
         { success: true }
     )
 
-    const errorReports =
-        deleteModelMutation.error?.details?.response?.errorReports
+    const { error } = deleteModelMutation
+    const modelType = sectionOrSectionFromHandle?.title ?? ''
+    const errorReports = error?.details?.response?.errorReports
+    const maybeStillProcessing = isMaybeStillProcessingError(error)
     return (
         <Modal dataTest="delete-confirmation-modal">
             <ModalTitle>
@@ -113,13 +119,29 @@ function ConfirmationDialog({
                 )}
             </ModalTitle>
 
-            {!!deleteModelMutation.error && (
+            {!!error && maybeStillProcessing && (
+                <ModalContent>
+                    <NoticeBox
+                        warning
+                        title={i18n.t('The deletion may still be in progress')}
+                    >
+                        <div>
+                            {i18n.t(
+                                'The request to delete {{modelType}} "{{displayName}}" timed out, but the server may still be processing it. Refresh the list in a moment to check whether it was deleted before trying again.',
+                                { displayName: modelDisplayName, modelType }
+                            )}
+                        </div>
+                    </NoticeBox>
+                </ModalContent>
+            )}
+
+            {!!error && !maybeStillProcessing && (
                 <ModalContent>
                     <NoticeBox
                         error
                         title={i18n.t(
                             'Something went wrong deleting the {{modelType}}',
-                            { modelType: sectionOrSectionFromHandle?.title }
+                            { modelType }
                         )}
                     >
                         <div>
@@ -127,8 +149,8 @@ function ConfirmationDialog({
                                 'Failed to delete {{modelType}} "{{displayName}}"! {{messages}}',
                                 {
                                     displayName: modelDisplayName,
-                                    modelType:
-                                        sectionOrSectionFromHandle?.title ?? '',
+                                    modelType,
+                                    messages: error?.details?.message ?? '',
                                 }
                             )}
                         </div>
