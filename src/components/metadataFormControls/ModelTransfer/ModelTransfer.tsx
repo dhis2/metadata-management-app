@@ -2,19 +2,16 @@ import i18n from '@dhis2/d2-i18n'
 import { Button, ButtonStrip, Checkbox } from '@dhis2/ui'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import React, { useEffect, useMemo, useState } from 'react'
-import { useForm, useFormState } from 'react-final-form'
 import { useHref } from 'react-router-dom'
 import { useDebouncedCallback } from 'use-debounce'
 import { getSectionNewPath } from '../../../lib'
 import { useBoundResourceQueryFn } from '../../../lib/query/useBoundQueryFn'
-import type { SectionFormValues } from '../../../pages/dataSets/form/dataEntryForm/sectionForm'
 import { PlainResourceQuery } from '../../../types'
 import { PagedResponse } from '../../../types/generated'
 import { DisplayableModel } from '../../../types/models'
 import { ModelSection } from '../../../types/section'
 import {
     AddNewDrawerFormFooter,
-    DrawerFormFooter,
     DrawerHeader,
     DrawerPortal,
     DrawerRoot,

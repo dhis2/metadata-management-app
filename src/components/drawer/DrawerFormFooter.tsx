@@ -3,7 +3,6 @@ import { Button, ButtonStrip } from '@dhis2/ui'
 import { IconInfo16 } from '@dhis2/ui-icons'
 import React from 'react'
 import { useForm, useFormState } from 'react-final-form'
-import type { SectionFormValues } from '../../pages/dataSets/form/dataEntryForm/sectionForm'
 import css from './Drawer.module.css'
 
 export type DrawerFormFooterProps = {
