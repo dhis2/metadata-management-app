@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { z, ZodObject, ZodRawShape } from 'zod'
 import { zodToJsonSchema } from 'zod-to-json-schema'
 import { categoryFormSchema } from '../pages/categories/form'
+import { categoryOptionComboFormSchema } from '../pages/categoryOptionCombos/form'
 
 const generateContract = <T extends ZodRawShape>({
     method,
@@ -46,6 +47,14 @@ describe('contracts', () => {
             path: '/categories/{id}',
             name: 'category',
             expectedSchema: categoryFormSchema,
+        })
+    })
+    it('should generate get category option combo contracts', () => {
+        generateContract({
+            method: 'GET',
+            path: '/categoryOptionCombos/{id}',
+            name: 'categoryOptionCombo',
+            expectedSchema: categoryOptionComboFormSchema,
         })
     })
 })

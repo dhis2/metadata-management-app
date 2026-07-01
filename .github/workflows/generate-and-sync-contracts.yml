@@ -114,13 +114,13 @@ jobs:
                   PR_BODY="This PR was automatically created from a pull request in metadata management app.${TITLE_SUFFIX}"
 
                   # Create or update the PR
-                  EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --base master --json number --jq '.[0].number')
+                  EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --base main --json number --jq '.[0].number')
                   if [ -n "$EXISTING_PR" ]; then
                     echo "PR #$EXISTING_PR already exists for branch $BRANCH_NAME, updating body."
                     gh pr edit "$EXISTING_PR" --body "$PR_BODY"
                   else
                     gh pr create \
-                      --base master \
+                      --base main \
                       --head "$BRANCH_NAME" \
                       --title "$PR_TITLE" \
                       --body "$PR_BODY" \
