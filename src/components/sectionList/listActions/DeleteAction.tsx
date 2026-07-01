@@ -119,48 +119,51 @@ function ConfirmationDialog({
                 )}
             </ModalTitle>
 
-            {!!error && maybeStillProcessing && (
+            {!!error && (
                 <ModalContent>
                     <NoticeBox
-                        warning
-                        title={i18n.t('The deletion may still be in progress')}
+                        warning={maybeStillProcessing}
+                        error={!maybeStillProcessing}
+                        title={
+                            maybeStillProcessing
+                                ? i18n.t(
+                                      'The deletion may still be in progress'
+                                  )
+                                : i18n.t(
+                                      'Something went wrong deleting the {{modelType}}',
+                                      { modelType }
+                                  )
+                        }
                     >
-                        <div>
-                            {i18n.t(
-                                'The request to delete {{modelType}} "{{displayName}}" timed out, but the server may still be processing it. Refresh the list in a moment to check whether it was deleted before trying again.',
-                                { displayName: modelDisplayName, modelType }
-                            )}
-                        </div>
-                    </NoticeBox>
-                </ModalContent>
-            )}
+                        {maybeStillProcessing ? (
+                            <div>
+                                {i18n.t(
+                                    'The request to delete {{modelType}} "{{displayName}}" timed out, but the server may still be processing it. Refresh the list in a moment to check whether it was deleted before trying again.',
+                                    { displayName: modelDisplayName, modelType }
+                                )}
+                            </div>
+                        ) : (
+                            <>
+                                <div>
+                                    {i18n.t(
+                                        'Failed to delete {{modelType}} "{{displayName}}"! {{messages}}',
+                                        {
+                                            displayName: modelDisplayName,
+                                            modelType,
+                                            messages:
+                                                error?.details?.message ?? '',
+                                        }
+                                    )}
+                                </div>
 
-            {!!error && !maybeStillProcessing && (
-                <ModalContent>
-                    <NoticeBox
-                        error
-                        title={i18n.t(
-                            'Something went wrong deleting the {{modelType}}',
-                            { modelType }
-                        )}
-                    >
-                        <div>
-                            {i18n.t(
-                                'Failed to delete {{modelType}} "{{displayName}}"! {{messages}}',
-                                {
-                                    displayName: modelDisplayName,
-                                    modelType,
-                                    messages: error?.details?.message ?? '',
-                                }
-                            )}
-                        </div>
-
-                        {!!errorReports?.length && (
-                            <ul>
-                                {errorReports.map(({ message }) => (
-                                    <li key={message}>{message}</li>
-                                ))}
-                            </ul>
+                                {!!errorReports?.length && (
+                                    <ul>
+                                        {errorReports.map(({ message }) => (
+                                            <li key={message}>{message}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </>
                         )}
                     </NoticeBox>
                 </ModalContent>
