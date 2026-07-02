@@ -1,3 +1,10 @@
+# [0.164.0](https://github.com/dhis2/metadata-management-app/compare/v0.163.3...v0.164.0) (2026-07-02)
+
+
+### Features
+
+* add drawer footer with info on saving forms ([#984](https://github.com/dhis2/metadata-management-app/issues/984)) ([6a144ba](https://github.com/dhis2/metadata-management-app/commit/6a144ba1dec440cecf4cab8c0b0ddd2faf8b70a3))
+
 ## [0.163.3](https://github.com/dhis2/metadata-management-app/compare/v0.163.2...v0.163.3) (2026-06-30)
 
 
