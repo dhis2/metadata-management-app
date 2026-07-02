@@ -128,7 +128,7 @@ jobs:
                       --head "$BRANCH_NAME" \
                       --title "$PR_TITLE" \
                       --body "$PR_BODY" \
-                      --reviewer dhis2/platform-backend
+                      --reviewer dhis2/team-platform-backend
                   fi
 
                   # Output the branch name safely for downstream jobs
