@@ -50,13 +50,17 @@ jobs:
                     echo "changed=true" >> $GITHUB_OUTPUT
                   fi
 
+            - name: Set up commit signing
+              if: steps.diff.outputs.changed == 'true'
+              uses: dhis2/action-commit-signing@v1
+              with:
+                  ssh-signing-key: ${{ secrets.DHIS2_BOT_SSH_SIGNING_KEY }}
+                  ssh-signing-key-passphrase: ${{ secrets.DHIS2_BOT_SSH_SIGNING_PASSPHRASE }}
+
             - name: Clone contracts repo and push branch
               id: push
               if: steps.diff.outputs.changed == 'true'
               run: |
-                  git config --global user.name "github-actions[bot]"
-                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
                   git clone https://x-access-token:${{ secrets.CONTRACTS_PAT }}@github.com/dhis2/dhis2-api-contracts.git
                   cd dhis2-api-contracts
 
