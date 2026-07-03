@@ -19,6 +19,45 @@
         { "type": "DELETE", "authorities": ["ALL"] }
     ],
     "properties": {
+        "name": {
+            "name": "name",
+            "fieldName": "name",
+            "propertyType": "TEXT",
+            "klass": "java.lang.String",
+            "unique": true,
+            "required": true,
+            "persisted": true,
+            "collection": false,
+            "attribute": false,
+            "simple": true,
+            "embeddedObject": false,
+            "identifiableObject": false,
+            "translatable": true,
+            "owner": true,
+            "readable": true,
+            "writable": true,
+            "min": 1,
+            "max": 230
+        },
+        "shortName": {
+            "name": "shortName",
+            "fieldName": "shortName",
+            "propertyType": "TEXT",
+            "klass": "java.lang.String",
+            "unique": false,
+            "required": false,
+            "persisted": true,
+            "collection": false,
+            "attribute": false,
+            "simple": true,
+            "embeddedObject": false,
+            "identifiableObject": false,
+            "translatable": true,
+            "owner": true,
+            "readable": true,
+            "writable": true,
+            "max": 50
+        },
         "displayName": {
             "name": "displayName",
             "fieldName": "displayName",
@@ -203,7 +242,8 @@
             "translatable": false,
             "owner": true,
             "readable": true,
-            "writable": true
+            "writable": true,
+            "constants": ["SELECTED", "DESCENDANTS"]
         },
         "sequentialSampleCount": {
             "name": "sequentialSampleCount",
