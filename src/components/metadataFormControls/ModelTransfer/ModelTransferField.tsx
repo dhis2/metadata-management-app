@@ -16,6 +16,7 @@ type ModelTransferFieldProps = {
     label?: string
     filterUnassignedTo?: string
     transferSection?: ModelSection
+    hideAddNew?: boolean
 } & Pick<
     TransferProps,
     | 'rightHeader'
@@ -49,6 +50,7 @@ export function ModelTransferField({
     dataTest,
     filterUnassignedTo,
     transferSection,
+    hideAddNew,
     hideFilterInputPicked = false,
     disabled = false,
     optionsWidth,
@@ -75,6 +77,7 @@ export function ModelTransferField({
         hideFilterInputPicked,
         disabled,
         filterUnassignedTo,
+        hideAddNew,
         optionsWidth,
         selectedWidth,
         height,
