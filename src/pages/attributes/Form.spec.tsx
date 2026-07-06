@@ -47,6 +47,7 @@ const OBJECT_OPTIONS = Object.values(ATTRIBUTE_TRANSLATIONS).map((a) => ({
 describe('Attributes form tests', () => {
     const createMock = jest.fn()
     const updateMock = jest.fn()
+    const optionSetCreateMock = jest.fn()
     beforeEach(() => {
         resetAllMocks()
         const portalRoot = document.createElement('div')
@@ -73,7 +74,19 @@ describe('Attributes form tests', () => {
                     <TestComponentWithRouter
                         path={`/${section.namePlural}`}
                         customData={{
-                            optionSets: () => ({ optionSets }),
+                            optionSets: (type: any, params: any) => {
+                                if (type === 'create') {
+                                    optionSetCreateMock(params)
+                                    return { statusCode: 204 }
+                                }
+                                if (type === 'read') {
+                                    return {
+                                        optionSets,
+                                        // this is a bit hacky, but prevents problems with uniqueness validation when submitting option set form
+                                        pager: { total: 0 },
+                                    }
+                                }
+                            },
                             attributes: (type: any, params: any) => {
                                 if (type === 'create') {
                                     createMock(params)
@@ -183,12 +196,27 @@ describe('Attributes form tests', () => {
             expect(
                 await screen.findByText('Add new Option set')
             ).toBeInTheDocument()
-            expect(screen.getByTestId('optionSetNewForm')).toBeInTheDocument()
-            expect(
-                within(screen.getByTestId('optionSetNewForm')).getByTestId(
-                    'form-submit-button'
-                )
-            ).toHaveTextContent('Save and close')
+
+            const drawerForm = screen.getByTestId('optionSetNewForm')
+            const submitButton =
+                within(drawerForm).getByTestId('form-submit-button')
+            expect(submitButton).toHaveTextContent('Save and close')
+
+            const nameInput = within(drawerForm)
+                .getByTestId('formfields-name')
+                .querySelector('input') as HTMLInputElement
+            const optName = faker.animal.bird()
+            await userEvent.type(nameInput, optName)
+
+            await userEvent.click(submitButton)
+
+            // check that the appropriate resource (optionSet) was called with entered optionSet form values
+            expect(optionSetCreateMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    data: expect.objectContaining({ name: optName }),
+                    resource: 'optionSets',
+                })
+            )
         })
     })
     describe('New', () => {
