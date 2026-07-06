@@ -1159,8 +1159,8 @@ msgstr "Successfully deleted {{modelType}} \"{{displayName}}\""
 msgid "Are you sure that you want to delete \"{{- displayName}}\"?"
 msgstr "Are you sure that you want to delete \"{{- displayName}}\"?"
 
-msgid "The deletion may still be in progress"
-msgstr "The deletion may still be in progress"
+msgid "The operation may still be in progress"
+msgstr "The operation may still be in progress"
 
 msgid ""
 "The request timed out. The operation may still be processing in the "

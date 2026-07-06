@@ -127,7 +127,7 @@ function ConfirmationDialog({
                         title={
                             maybeStillProcessing
                                 ? i18n.t(
-                                      'The deletion may still be in progress'
+                                      'The operation may still be in progress'
                                   )
                                 : i18n.t(
                                       'Something went wrong deleting the {{modelType}}',
