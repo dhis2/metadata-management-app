@@ -138,8 +138,7 @@ function ConfirmationDialog({
                         {maybeStillProcessing ? (
                             <div>
                                 {i18n.t(
-                                    'The request to delete {{modelType}} "{{displayName}}" timed out, but the server may still be processing it. Refresh the list in a moment to check whether it was deleted before trying again.',
-                                    { displayName: modelDisplayName, modelType }
+                                    'The request timed out. The operation may still be processing in the background, refresh to confirm.'
                                 )}
                             </div>
                         ) : (
