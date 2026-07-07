@@ -75,8 +75,10 @@ export const DrawerFormFooter: React.FC<DrawerFormFooterProps> = ({
 
 export const AddNewDrawerFormFooter = ({
     onCancel,
+    newItemFormFooterInfo,
 }: {
     onCancel: () => void
+    newItemFormFooterInfo?: string
 }) => {
     const { submitting } = useFormState({
         subscription: { submitting: true },
@@ -91,6 +93,7 @@ export const AddNewDrawerFormFooter = ({
                 submitting={submitting ?? false}
                 onSubmitClick={() => form.submit()}
                 onCancelClick={onCancel}
+                infoMessage={newItemFormFooterInfo}
             />
         </div>
     )

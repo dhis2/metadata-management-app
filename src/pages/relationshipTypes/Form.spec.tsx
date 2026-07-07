@@ -1,9 +1,12 @@
 import { faker } from '@faker-js/faker'
-import { render } from '@testing-library/react'
+import { act, render, within } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/relationshipTypes.json'
+import trackedEntityTypesSchemaMock from '../../__mocks__/schema/trackedEntityTypes.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
-import { SECTIONS_MAP } from '../../lib'
+import { ModelSchemas, SECTIONS_MAP } from '../../lib'
+import { useSchemaStore } from '../../lib/schemas/schemaStore'
 import {
     randomLongString,
     testCustomAttribute,
@@ -56,6 +59,10 @@ describe('Relationship types form tests', () => {
                         path={`/${section.namePlural}`}
                         customData={{
                             attributes: () => ({ attributes }),
+                            trackedEntityTypes: () => ({
+                                trackedEntityTypes: [],
+                            }),
+                            programs: () => ({ programs: [] }),
                             relationshipTypes: (type: any, params: any) => {
                                 if (type === 'create') {
                                     createMock(params)
@@ -235,6 +242,73 @@ describe('Relationship types form tests', () => {
                 'formfields-toFromName'
             )
             expect(toFromNameField).toBeVisible()
+        })
+
+        it('should open the tracked entity type new form in a drawer when clicking the "Add new" button', async () => {
+            const { screen } = await renderForm()
+
+            await uiActions.clickButtonGroupOption(
+                'from-constraint-field',
+                'TRACKED_ENTITY_INSTANCE',
+                screen
+            )
+
+            await screen.findByTestId('from-tracked-entity-type-selector')
+
+            useSchemaStore.getState().setSchemas({
+                ...useSchemaStore.getState().schemas,
+                trackedEntityType: trackedEntityTypesSchemaMock,
+            } as unknown as ModelSchemas)
+
+            await act(async () => {})
+
+            const tetField = screen.getByTestId(
+                'from-tracked-entity-type-selector'
+            )
+            const addNewButton = within(tetField).getAllByRole('button')[1]
+            await userEvent.click(addNewButton)
+
+            expect(
+                await screen.findByText('Add new Tracked entity type')
+            ).toBeInTheDocument()
+            expect(
+                screen.getByTestId('trackedEntityTypeNewForm')
+            ).toBeInTheDocument()
+            expect(
+                within(
+                    screen.getByTestId('trackedEntityTypeNewForm')
+                ).getByTestId('form-submit-button')
+            ).toHaveTextContent('Save and close')
+        })
+
+        it('should open a new tab when clicking "Add new" for programs instead of opening a drawer', async () => {
+            const { screen } = await renderForm()
+
+            const windowOpenSpy = jest
+                .spyOn(window, 'open')
+                .mockImplementation(() => null)
+
+            await uiActions.clickButtonGroupOption(
+                'from-constraint-field',
+                'PROGRAM_INSTANCE',
+                screen
+            )
+
+            await screen.findByTestId('from-program-selector')
+
+            // Flush the useEffect so LINK_ONLY_SECTIONS check runs and NewItemForm stays undefined
+            await act(async () => {})
+
+            const programField = screen.getByTestId('from-program-selector')
+            const addNewButton = within(programField).getAllByRole('button')[1]
+            await userEvent.click(addNewButton)
+
+            expect(windowOpenSpy).toHaveBeenCalledWith(
+                expect.stringContaining('/programs/new'),
+                '_blank'
+            )
+
+            windowOpenSpy.mockRestore()
         })
     })
 
