@@ -14,12 +14,12 @@ export const generateDefaultMergeTests = ({
         it('should default to deleting sources', async () => {
             const screen = await renderMerge()
             const deleteSourcesRadio = screen.getByRole('radio', {
-                name: /delete/i,
+                name: /^delete \d/i,
             })
             expect(deleteSourcesRadio).toBeChecked()
         })
         xit('shows a confirmation component when sources and target have been selected', () => {})
-        xit('goes back to the list when teh cancel button is pressed', () => {})
+        xit('goes back to the list when the cancel button is pressed', () => {})
         xit('it errors if no source has been selected', () => {})
         xit('it errors if no target has been selected', () => {})
         xit('it errors if teh validation code was not entered', () => {})
