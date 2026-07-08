@@ -2,11 +2,13 @@ import { render } from '@testing-library/react'
 import React from 'react'
 import { SECTIONS_MAP } from '../../lib'
 import { testDataElement } from '../../testUtils/builders'
-import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
+import TestComponentWithRouter, {
+    CustomData,
+} from '../../testUtils/TestComponentWithRouter'
 import { generateDefaultMergeTests } from '../defaultMergeTests'
 import { Component as Merge } from './Merge'
 
-const renderMerge = async () => {
+const renderMerge = async (customData: CustomData = {}) => {
     const routeOptions = {
         handle: { section: SECTIONS_MAP.dataElement },
     }
@@ -15,7 +17,11 @@ const renderMerge = async () => {
         <TestComponentWithRouter
             path="/dataElements/merge"
             customData={{
-                dataElements: [testDataElement(), testDataElement()],
+                dataElements: {
+                    dataElements: [testDataElement(), testDataElement()],
+                    pager: { page: 1, pageCount: 1, total: 2, pageSize: 10 },
+                },
+                ...customData,
             }}
             routeOptions={routeOptions}
         >
@@ -24,7 +30,11 @@ const renderMerge = async () => {
     )
 }
 
-generateDefaultMergeTests({ componentName: 'DataElement', renderMerge })
+generateDefaultMergeTests({
+    componentName: 'DataElement',
+    mergeResource: 'dataElements/merge',
+    renderMerge,
+})
 
 describe('data element merge additional tests', () => {
     it('shows both data merge strategy radios and defaults to moving data values to the target', async () => {
