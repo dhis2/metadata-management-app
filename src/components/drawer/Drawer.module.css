@@ -45,6 +45,14 @@
     width: 80%;
 }
 
+.drawerTertiary {
+    width: 70%;
+}
+
+.drawerQuaternary {
+    width: 60%;
+}
+
 .drawer.open {
     transform: translateX(0);
 }
