@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-06-29T13:37:24.549Z\n"
-"PO-Revision-Date: 2026-06-29T13:37:24.550Z\n"
+"POT-Creation-Date: 2026-07-08T15:06:41.084Z\n"
+"PO-Revision-Date: 2026-07-08T15:06:41.084Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -909,6 +909,9 @@ msgstr "Loading..."
 
 msgid "Add new {{name}}"
 msgstr "Add new {{name}}"
+
+msgid "Saving this {{name}} won't apply unsaved changes in the form below."
+msgstr "Saving this {{name}} won't apply unsaved changes in the form below."
 
 msgid "Available {{name}}"
 msgstr "Available {{name}}"

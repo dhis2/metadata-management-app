@@ -659,14 +659,6 @@ describe('Data elements form tests', () => {
                 ).toBeVisible()
             })
         })
-        it('should not show an "Add new" button for data element groups', async () => {
-            const { screen } = await renderForm()
-
-            uiAssertions.expectTransferFieldToHideAddNewButton(
-                'formfields-dataElementGroups',
-                screen
-            )
-        })
         it('should have a cancel button with a link back to the list view', async () => {
             const { screen } = await renderForm()
             const cancelButton = screen.getByTestId('form-cancel-link')

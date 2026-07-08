@@ -82,7 +82,10 @@ export const CategoryOptionFormFields = () => {
                 </StandardFormSectionDescription>
 
                 <StandardFormField>
-                    <GroupMembershipField resource="categoryOptionGroups" />
+                    <GroupMembershipField
+                        resource="categoryOptionGroups"
+                        hideAddNew={true}
+                    />
                 </StandardFormField>
             </StandardFormSection>
 

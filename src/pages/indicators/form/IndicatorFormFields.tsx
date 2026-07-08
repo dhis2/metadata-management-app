@@ -166,7 +166,10 @@ export const IndicatorFormFields = () => {
                     {i18n.t('Choose the groups this indicator belongs to.')}
                 </StandardFormSectionDescription>
                 <StandardFormField>
-                    <GroupMembershipField resource="indicatorGroups" />
+                    <GroupMembershipField
+                        resource="indicatorGroups"
+                        hideAddNew={true}
+                    />
                 </StandardFormField>
             </SectionedFormSection>
             <SectionedFormSection
