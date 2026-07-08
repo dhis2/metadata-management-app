@@ -1,10 +1,12 @@
 import { faker } from '@faker-js/faker'
-import { render, within } from '@testing-library/react'
+import { act, render, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/indicators.json'
+import indicatorTypesSchemaMock from '../../__mocks__/schema/indicatorTypes.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
-import { SECTIONS_MAP } from '../../lib'
+import { ModelSchemas, SECTIONS_MAP } from '../../lib'
+import { useSchemaStore } from '../../lib/schemas/schemaStore'
 import {
     randomDhis2Id,
     randomLongString,
@@ -346,6 +348,38 @@ describe('Indicators form tests', () => {
             )
             await uiActions.submitForm(screen)
             expect(createMock).not.toHaveBeenCalled()
+        })
+
+        it('should open the indicator type new form in a drawer when clicking the "Add new" button', async () => {
+            const { screen } = await renderForm()
+
+            useSchemaStore.getState().setSchemas({
+                ...useSchemaStore.getState().schemas,
+                indicatorType: indicatorTypesSchemaMock,
+            } as unknown as ModelSchemas)
+
+            // Flush the useEffect dynamic import in ModelSingleSelectRefreshableFormField
+            await act(async () => {})
+
+            const indicatorTypeField = screen.getByTestId(
+                'formfields-indicatortype'
+            )
+
+            const addNewButton =
+                within(indicatorTypeField).getAllByRole('button')[1]
+            await userEvent.click(addNewButton)
+
+            expect(
+                await screen.findByText('Add new Indicator type')
+            ).toBeInTheDocument()
+            expect(
+                screen.getByTestId('indicatorTypeNewForm')
+            ).toBeInTheDocument()
+            expect(
+                within(screen.getByTestId('indicatorTypeNewForm')).getByTestId(
+                    'form-submit-button'
+                )
+            ).toHaveTextContent('Save and close')
         })
     })
 

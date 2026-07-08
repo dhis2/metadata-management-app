@@ -47,6 +47,7 @@ export const PredictorGroupFormFields = () => {
                 </StandardFormSectionDescription>
                 <StandardFormField>
                     <ModelTransferField
+                        dataTest="predictors-transfer"
                         name="predictors"
                         query={{
                             resource: 'predictors',
