@@ -27,7 +27,7 @@ const indicatorBaseSchema = z.object({
     denominatorDescription: z.string().min(1),
     annualized: z.boolean().default(false),
     decimals: z.number().int().lte(5).gte(0).optional(),
-    url: z.string().trim().url().optional(),
+    url: z.string().trim().url().optional().or(z.literal('')),
     aggregateExportCategoryOptionCombo: z.string().trim().optional(),
     aggregateExportAttributeOptionCombo: z.string().trim().optional(),
     indicatorType: z.object({

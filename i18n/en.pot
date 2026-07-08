@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-06-24T09:28:57.037Z\n"
-"PO-Revision-Date: 2026-06-24T09:28:57.037Z\n"
+"POT-Creation-Date: 2026-06-29T13:37:24.549Z\n"
+"PO-Revision-Date: 2026-06-29T13:37:24.550Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -162,12 +162,8 @@ msgstr "Invalid expression"
 msgid "Valid expression"
 msgstr "Valid expression"
 
-msgid ""
-"Add operators, variables, program rule variables and functions from the "
-"right sidebar"
-msgstr ""
-"Add operators, variables, program rule variables and functions from the "
-"right sidebar"
+msgid "Add operators, variables or program data from the right sidebar"
+msgstr "Add operators, variables or program data from the right sidebar"
 
 msgid "Apply"
 msgstr "Apply"
@@ -250,8 +246,8 @@ msgstr "isNull("
 msgid "isNotNull("
 msgstr "isNotNull("
 
-msgid "firstNotNull("
-msgstr "firstNotNull("
+msgid "firstNonNull("
+msgstr "firstNonNull("
 
 msgid "greatest("
 msgstr "greatest("
@@ -334,9 +330,6 @@ msgstr "containsItems("
 msgid "is("
 msgstr "is("
 
-msgid "firstNonNull("
-msgstr "firstNonNull("
-
 msgid "normDistCum("
 msgstr "normDistCum("
 
@@ -400,14 +393,17 @@ msgstr "Current date"
 msgid "Due date"
 msgstr "Due date"
 
+msgid "Enrollment date"
+msgstr "Enrollment date"
+
 msgid "Enrollment status"
 msgstr "Enrollment status"
 
 msgid "Event date"
 msgstr "Event date"
 
-msgid "Event status"
-msgstr "Event status"
+msgid "Incident date"
+msgstr "Incident date"
 
 msgid "Program stage id"
 msgstr "Program stage id"
@@ -438,9 +434,6 @@ msgstr "Tracked entity instance count"
 
 msgid "Variables"
 msgstr "Variables"
-
-msgid "Program stage data"
-msgstr "Program stage data"
 
 msgid "Attributes"
 msgstr "Attributes"
@@ -2312,6 +2305,12 @@ msgstr "Please provide valid percantage (0-100)."
 msgid "Please provide valid unit interval (0-1)."
 msgstr "Please provide valid unit interval (0-1)."
 
+msgid "Please provide a positive number for age"
+msgstr "Please provide a positive number for age"
+
+msgid "Please provide a single letter (A-Z)"
+msgstr "Please provide a single letter (A-Z)"
+
 msgid "Must be checked"
 msgstr "Must be checked"
 
@@ -3103,18 +3102,6 @@ msgid ""
 msgstr ""
 "Choose legends to visually categorize values in Data entry and Analytics "
 "apps."
-
-msgid "Available legends"
-msgstr "Available legends"
-
-msgid "Selected legends"
-msgstr "Selected legends"
-
-msgid "Filter available legends"
-msgstr "Filter available legends"
-
-msgid "Filter selected legends"
-msgstr "Filter selected legends"
 
 msgid "Available data elements"
 msgstr "Available data elements"
@@ -4742,12 +4729,6 @@ msgstr "Set up the basic information for this program indicator group."
 msgid "Choose the program indicators to include in this program indicator group."
 msgstr "Choose the program indicators to include in this program indicator group."
 
-msgid "Incident date"
-msgstr "Incident date"
-
-msgid "Enrollment date"
-msgstr "Enrollment date"
-
 msgid "Before start of reporting period"
 msgstr "Before start of reporting period"
 
@@ -5548,6 +5529,9 @@ msgstr ""
 
 msgid "Set up automatic event creation and scheduling in this program stage."
 msgstr "Set up automatic event creation and scheduling in this program stage."
+
+msgid "Program stage data"
+msgstr "Program stage data"
 
 msgid "Configure data collection for events in this program stage."
 msgstr "Configure data collection for events in this program stage."

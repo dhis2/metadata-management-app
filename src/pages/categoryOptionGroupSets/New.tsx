@@ -27,7 +27,11 @@ export const Component = ({
             validate={validate}
             section={section}
         >
-            <DefaultNewFormContents section={section} footer={footer}>
+            <DefaultNewFormContents
+                section={section}
+                footer={footer}
+                dataTest="categoryOptionGroupSetNewForm"
+            >
                 <CategoryOptionGroupSetFormFields />
             </DefaultNewFormContents>
         </FormBase>

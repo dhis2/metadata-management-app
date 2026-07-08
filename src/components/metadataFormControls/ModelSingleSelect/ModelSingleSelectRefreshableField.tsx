@@ -44,12 +44,14 @@ export function ModelSingleSelectRefreshableField<
     section,
     newLink,
     NewItemForm,
+    newItemFormFooterInfo,
     ...modelSingleSelectProps
 }: ModelSingleSelectFieldProps<TModel> &
     RelevantRenderProps<TModel> & {
         section: ModelSection
         newLink: string
         NewItemForm?: NewItemFormComponent
+        newItemFormFooterInfo?: string
     }) {
     const refresh = useRefreshModelSingleSelect({
         resource: section.namePlural,
@@ -104,6 +106,7 @@ export function ModelSingleSelectRefreshableField<
                         footer={
                             <AddNewDrawerFormFooter
                                 onCancel={() => setDrawerOpen(false)}
+                                newItemFormFooterInfo={newItemFormFooterInfo}
                             />
                         }
                     />
@@ -161,6 +164,10 @@ export function ModelSingleSelectRefreshableFormField<
             section={section}
             newLink={newLink}
             NewItemForm={NewItemForm}
+            newItemFormFooterInfo={i18n.t(
+                "Saving this {{name}} won't apply unsaved changes in the form below.",
+                { name: section.title.toLowerCase() }
+            )}
             {...modelSingleSelectProps}
         />
     )
