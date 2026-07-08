@@ -55,6 +55,25 @@ const renderList = async ({
             customData={{
                 organisationUnits: (type: any, params: any) => {
                     if (type === 'read' && params.id !== undefined) {
+                        if (
+                            typeof params.id === 'string' &&
+                            params.id.endsWith('/children')
+                        ) {
+                            const parentId = params.id.split('/')?.[0]
+                            const children = organisationUnits.filter(
+                                (ou) =>
+                                    ou.parent?.id === parentId ||
+                                    ou.id === parentId
+                            )
+                            return {
+                                organisationUnits: children,
+                                pager: {
+                                    page: params.params?.page ?? 1,
+                                    pageCount: children.length ? 1 : 0,
+                                    total: children.length,
+                                },
+                            }
+                        }
                         const foundOrgUnit = organisationUnits.find(
                             (ou) => ou.id === params.id
                         )
