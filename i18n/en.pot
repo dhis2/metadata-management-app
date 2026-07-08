@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-06-29T13:37:24.549Z\n"
-"PO-Revision-Date: 2026-06-29T13:37:24.550Z\n"
+"POT-Creation-Date: 2026-06-10T20:51:35.027Z\n"
+"PO-Revision-Date: 2026-06-10T20:51:35.027Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -162,8 +162,12 @@ msgstr "Invalid expression"
 msgid "Valid expression"
 msgstr "Valid expression"
 
-msgid "Add operators, variables or program data from the right sidebar"
-msgstr "Add operators, variables or program data from the right sidebar"
+msgid ""
+"Add operators, variables, program rule variables and functions from the "
+"right sidebar"
+msgstr ""
+"Add operators, variables, program rule variables and functions from the "
+"right sidebar"
 
 msgid "Apply"
 msgstr "Apply"
@@ -246,8 +250,8 @@ msgstr "isNull("
 msgid "isNotNull("
 msgstr "isNotNull("
 
-msgid "firstNonNull("
-msgstr "firstNonNull("
+msgid "firstNotNull("
+msgstr "firstNotNull("
 
 msgid "greatest("
 msgstr "greatest("
@@ -330,6 +334,9 @@ msgstr "containsItems("
 msgid "is("
 msgstr "is("
 
+msgid "firstNonNull("
+msgstr "firstNonNull("
+
 msgid "normDistCum("
 msgstr "normDistCum("
 
@@ -393,17 +400,14 @@ msgstr "Current date"
 msgid "Due date"
 msgstr "Due date"
 
-msgid "Enrollment date"
-msgstr "Enrollment date"
-
 msgid "Enrollment status"
 msgstr "Enrollment status"
 
 msgid "Event date"
 msgstr "Event date"
 
-msgid "Incident date"
-msgstr "Incident date"
+msgid "Event status"
+msgstr "Event status"
 
 msgid "Program stage id"
 msgstr "Program stage id"
@@ -434,6 +438,9 @@ msgstr "Tracked entity instance count"
 
 msgid "Variables"
 msgstr "Variables"
+
+msgid "Program stage data"
+msgstr "Program stage data"
 
 msgid "Attributes"
 msgstr "Attributes"
@@ -565,9 +572,6 @@ msgstr "Submit"
 msgid "Save"
 msgstr "Save"
 
-msgid "Save and close"
-msgstr "Save and close"
-
 msgid "Required"
 msgstr "Required"
 
@@ -585,6 +589,9 @@ msgstr "Hide error details"
 
 msgid "Show error details"
 msgstr "Show error details"
+
+msgid "Save and close"
+msgstr "Save and close"
 
 msgid "Name: {{- displayName}} (Translated)"
 msgstr "Name: {{- displayName}} (Translated)"
@@ -907,9 +914,6 @@ msgstr "At least one source is required"
 msgid "Loading..."
 msgstr "Loading..."
 
-msgid "Add new {{name}}"
-msgstr "Add new {{name}}"
-
 msgid "Available {{name}}"
 msgstr "Available {{name}}"
 
@@ -921,6 +925,9 @@ msgstr "Filter available {{name}}"
 
 msgid "Filter selected {{name}}"
 msgstr "Filter selected {{name}}"
+
+msgid "Add new {{name}}"
+msgstr "Add new {{name}}"
 
 msgid "Filter available items"
 msgstr "Filter available items"
@@ -1281,69 +1288,6 @@ msgstr "Edit and view"
 
 msgid "Search for a user or group"
 msgstr "Search for a user or group"
-
-msgid "Feature type"
-msgstr "Feature type"
-
-msgid "Allow events to be assigned to users"
-msgstr "Allow events to be assigned to users"
-
-msgid "Allow multiple events in this stage"
-msgstr "Allow multiple events in this stage"
-
-msgid "Standard interval days"
-msgstr "Standard interval days"
-
-msgid "Default next scheduled date"
-msgstr "Default next scheduled date"
-
-msgid "Period type"
-msgstr "Period type"
-
-msgid "Validation strategy"
-msgstr "Validation strategy"
-
-msgid "Generate offline event IDs"
-msgstr "Generate offline event IDs"
-
-msgid "Ask user to create a new event after completion"
-msgstr "Ask user to create a new event after completion"
-
-msgid "Ask user to complete enrollment after completion"
-msgstr "Ask user to complete enrollment after completion"
-
-msgid "Block data entry after completion"
-msgstr "Block data entry after completion"
-
-msgid "Create an event in this stage on enrollment"
-msgstr "Create an event in this stage on enrollment"
-
-msgid "Open data entry form after enrollment"
-msgstr "Open data entry form after enrollment"
-
-msgid "Date to use for created event report date"
-msgstr "Date to use for created event report date"
-
-msgid "Scheduled days from reference date"
-msgstr "Scheduled days from reference date"
-
-msgid "Reference date for scheduling"
-msgstr "Reference date for scheduling"
-
-msgid "Hide scheduled date"
-msgstr "Hide scheduled date"
-
-msgid "Custom label for report date"
-msgstr "Custom label for report date"
-
-msgid "Custom label for due date"
-msgstr "Custom label for due date"
-
-msgid "Custom label for program stage"
-msgstr "Custom label for program stage"
-
-msgid "Custom label for event"
-msgstr "Custom label for event"
 
 msgid "Categories"
 msgstr "Categories"
@@ -2197,6 +2141,9 @@ msgstr "Zero is significant"
 msgid "Enable tracked entity instance audit log"
 msgstr "Enable tracked entity instance audit log"
 
+msgid "Feature type"
+msgstr "Feature type"
+
 msgid "Program type"
 msgstr "Program type"
 
@@ -2311,6 +2258,9 @@ msgstr "Please provide a positive number for age"
 msgid "Please provide a single letter (A-Z)"
 msgstr "Please provide a single letter (A-Z)"
 
+msgid "Please provide a valid UID"
+msgstr "Please provide a valid UID"
+
 msgid "Must be checked"
 msgstr "Must be checked"
 
@@ -2319,6 +2269,9 @@ msgstr "Please provide a time."
 
 msgid "Please provide a date."
 msgstr "Please provide a date."
+
+msgid "Period type"
+msgstr "Period type"
 
 msgid "Favourite"
 msgstr "Favourite"
@@ -3102,6 +3055,18 @@ msgid ""
 msgstr ""
 "Choose legends to visually categorize values in Data entry and Analytics "
 "apps."
+
+msgid "Available legends"
+msgstr "Available legends"
+
+msgid "Selected legends"
+msgstr "Selected legends"
+
+msgid "Filter available legends"
+msgstr "Filter available legends"
+
+msgid "Filter selected legends"
+msgstr "Filter selected legends"
 
 msgid "Available data elements"
 msgstr "Available data elements"
@@ -4431,13 +4396,6 @@ msgstr ""
 "which actions should be taken at each stage."
 
 msgid ""
-"Create, modify and view program stages. Each stage is part of a program and "
-"can also be accessed through the program list."
-msgstr ""
-"Create, modify and view program stages. Each stage is part of a program and "
-"can also be accessed through the program list."
-
-msgid ""
 "Create, modify and view tracked entity attributes. An attribute can be used "
 "to register extra information for a tracked entity."
 msgstr ""
@@ -4728,6 +4686,12 @@ msgstr "Set up the basic information for this program indicator group."
 
 msgid "Choose the program indicators to include in this program indicator group."
 msgstr "Choose the program indicators to include in this program indicator group."
+
+msgid "Incident date"
+msgstr "Incident date"
+
+msgid "Enrollment date"
+msgstr "Enrollment date"
 
 msgid "Before start of reporting period"
 msgstr "Before start of reporting period"
@@ -5420,6 +5384,15 @@ msgstr "Program Settings"
 msgid "Set up how data is collected for events in this program."
 msgstr "Set up how data is collected for events in this program."
 
+msgid "Allow events to be assigned to users"
+msgstr "Allow events to be assigned to users"
+
+msgid "Block data entry after completion"
+msgstr "Block data entry after completion"
+
+msgid "Generate offline event IDs"
+msgstr "Generate offline event IDs"
+
 msgid "Related program"
 msgstr "Related program"
 
@@ -5431,6 +5404,9 @@ msgstr "Lock events a number of days after completion"
 
 msgid "Close data entry a number of days after event category combination end date"
 msgstr "Close data entry a number of days after event category combination end date"
+
+msgid "Validation strategy"
+msgstr "Validation strategy"
 
 msgid "Access and Sharing"
 msgstr "Access and Sharing"
@@ -5530,9 +5506,6 @@ msgstr ""
 msgid "Set up automatic event creation and scheduling in this program stage."
 msgstr "Set up automatic event creation and scheduling in this program stage."
 
-msgid "Program stage data"
-msgstr "Program stage data"
-
 msgid "Configure data collection for events in this program stage."
 msgstr "Configure data collection for events in this program stage."
 
@@ -5566,6 +5539,12 @@ msgstr "Desktop Display"
 msgid "Mobile Display"
 msgstr "Mobile Display"
 
+msgid "Stage"
+msgstr "Stage"
+
+msgid "Stages"
+msgstr "Stages"
+
 msgid "Save stage and close"
 msgstr "Save stage and close"
 
@@ -5596,6 +5575,18 @@ msgstr "Decide what should happen after a user completes this event."
 msgid "Override default labels with program stage-specific terms."
 msgstr "Override default labels with program stage-specific terms."
 
+msgid "Custom label for report date"
+msgstr "Custom label for report date"
+
+msgid "Custom label for due date"
+msgstr "Custom label for due date"
+
+msgid "Custom label for program stage"
+msgstr "Custom label for program stage"
+
+msgid "Custom label for event"
+msgstr "Custom label for event"
+
 msgid "Configure the form for data collection for events in this program stage."
 msgstr "Configure the form for data collection for events in this program stage."
 
@@ -5619,8 +5610,17 @@ msgstr ""
 msgid "Edit or rearrange the data elements"
 msgstr "Edit or rearrange the data elements"
 
-msgid "Custom label for event (plural)"
-msgstr "Custom label for event (plural)"
+msgid "Ask user to create a new event after completion"
+msgstr "Ask user to create a new event after completion"
+
+msgid "Create an event in this stage on enrollment"
+msgstr "Create an event in this stage on enrollment"
+
+msgid "Reference date for scheduling"
+msgstr "Reference date for scheduling"
+
+msgid "Hide scheduled date"
+msgstr "Hide scheduled date"
 
 msgid ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
@@ -5629,12 +5629,18 @@ msgstr ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
 "scheduling, but scheduled dates will not be editable."
 
+msgid "Scheduled days from reference date"
+msgstr "Scheduled days from reference date"
+
 msgid ""
 "Days to add to the enrollment or incident date when scheduling events. 0 "
 "means same day. "
 msgstr ""
 "Days to add to the enrollment or incident date when scheduling events. 0 "
 "means same day. "
+
+msgid "Default next scheduled date"
+msgstr "Default next scheduled date"
 
 msgid ""
 "If set, this date sets the next scheduled date. Standard interval days is "
@@ -5643,18 +5649,30 @@ msgstr ""
 "If set, this date sets the next scheduled date. Standard interval days is "
 "used if the date is empty."
 
+msgid "Open data entry form after enrollment"
+msgstr "Open data entry form after enrollment"
+
 msgid ""
 "If set, only one event per period is allowed. Report date will be a period "
 "instead of a date. Not supported by web Capture."
 msgstr ""
 "If set, only one event per period is allowed. Report date will be a period "
 "instead of a date. Not supported by web Capture."
+
+msgid "Ask user to complete enrollment after completion"
+msgstr "Ask user to complete enrollment after completion"
+
+msgid "Allow multiple events in this stage"
+msgstr "Allow multiple events in this stage"
 
 msgid "None (report date will be empty)"
 msgstr "None (report date will be empty)"
 
-msgid "A program is required"
-msgstr "A program is required"
+msgid "Date to use for created event report date"
+msgstr "Date to use for created event report date"
+
+msgid "Standard interval days"
+msgstr "Standard interval days"
 
 msgid "The number of days between repeated events."
 msgstr "The number of days between repeated events."
@@ -5883,24 +5901,6 @@ msgstr "Restore stage"
 
 msgid "Add a program stage"
 msgstr "Add a program stage"
-
-msgid "Custom label for \"Enrollment\" (plural)"
-msgstr "Custom label for \"Enrollment\" (plural)"
-
-msgid "Example use: See all enrollments"
-msgstr "Example use: See all enrollments"
-
-msgid "Custom label for \"Event\" (plural)"
-msgstr "Custom label for \"Event\" (plural)"
-
-msgid "Example use: See all events"
-msgstr "Example use: See all events"
-
-msgid "Custom label for \"Program stage\" (plural)"
-msgstr "Custom label for \"Program stage\" (plural)"
-
-msgid "Example use: See all program stages"
-msgstr "Example use: See all program stages"
 
 msgid "Access Level"
 msgstr "Access Level"
