@@ -94,9 +94,7 @@ export const getNavigateTo = (options?: Navigateable) => {
         : options.navigateTo
 }
 
-// name/shortName/code participate in server-side uniqueness checks, so
-// leading/trailing spaces must be stripped before saving - otherwise
-// "Fever" and "Fever " can coexist as if they were distinct values
+// avoid saving "Fever" and "Fever " as distinct values
 const TRIMMABLE_FIELDS = ['name', 'shortName', 'code'] as const
 
 const trimTrimmableFields = <TValues>(values: TValues): TValues => {
