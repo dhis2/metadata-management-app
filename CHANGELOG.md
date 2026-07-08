@@ -1,3 +1,10 @@
+# [0.165.0](https://github.com/dhis2/metadata-management-app/compare/v0.164.0...v0.165.0) (2026-07-08)
+
+
+### Features
+
+* make drawers size depend on how many drawers are open ([#978](https://github.com/dhis2/metadata-management-app/issues/978)) ([e74ec28](https://github.com/dhis2/metadata-management-app/commit/e74ec28ccc5af2ba8f723556eefec0075f0fa9ba))
+
 # [0.164.0](https://github.com/dhis2/metadata-management-app/compare/v0.163.3...v0.164.0) (2026-07-02)
 
 
