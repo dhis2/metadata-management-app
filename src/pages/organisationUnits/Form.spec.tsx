@@ -32,6 +32,9 @@ describe('Organisation units form tests', () => {
         it('contain all needed field', () => {})
         it('should have a cancel button with a link back to the list view', () => {})
         it('should submit the data', () => {})
+        // the test below could be combined with the one above
+        it('should not set system organisation units if a non root org unit is created', () => {})
+        it('should set system organisation units if the first organisation unit is created', () => {})
     })
     describe('Edit', () => {
         it('contain all needed field prefilled', () => {})

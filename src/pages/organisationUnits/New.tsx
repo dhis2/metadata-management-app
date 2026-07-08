@@ -11,6 +11,10 @@ import {
 } from '../../lib'
 import { createFormError } from '../../lib/form/createFormError'
 import { useCreateModel } from '../../lib/form/useCreateModel'
+import {
+    useSetSystemOrganisationUnits,
+    useSystemOrgUnitsStore,
+} from '../../lib/systemOrgUnits/systemOrgUnitsStore'
 import { OrgUnitFormValues } from './Edit'
 import { initialValues, OrganisationUnitFormField, validate } from './form'
 import { useOnSaveDataSetsAndPrograms } from './form/useOnSaveDataSetsAndPrograms'
@@ -23,6 +27,10 @@ export const useOnSaveOrgUnits = () => {
     const queryClient = useQueryClient()
     const updateDataSetsAndPrograms = useOnSaveDataSetsAndPrograms()
     const navigate = useNavigateWithSearchState()
+    const hasNoSystemOrgUnits = useSystemOrgUnitsStore(
+        (state) => (state.organisationUnits?.length ?? 0) === 0
+    )
+    const setSystemOrganisationUnits = useSetSystemOrganisationUnits()
 
     return useMemo(
         () => async (values: Partial<OrgUnitFormValues>) => {
@@ -36,12 +44,25 @@ export const useOnSaveOrgUnits = () => {
 
             await updateDataSetsAndPrograms(orgId, { dataSets, programs })
 
+            if (hasNoSystemOrgUnits) {
+                setSystemOrganisationUnits([
+                    { id: orgId, path: `/${orgId}`, level: 1 },
+                ])
+            }
+
             queryClient.invalidateQueries({
                 queryKey: [{ resource: section.namePlural }],
             })
             navigate(`/${getSectionPath(section)}`)
         },
-        [createModel, navigate, updateDataSetsAndPrograms, queryClient]
+        [
+            createModel,
+            navigate,
+            updateDataSetsAndPrograms,
+            queryClient,
+            hasNoSystemOrgUnits,
+            setSystemOrganisationUnits,
+        ]
     )
 }
 
