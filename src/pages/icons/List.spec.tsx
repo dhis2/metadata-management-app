@@ -70,6 +70,7 @@ describe('Icons list', () => {
                 name: faker.person.fullName(),
                 email: faker.internet.email(),
                 settings: {},
+                avatar: undefined as never,
             })
 
             const screen = render(

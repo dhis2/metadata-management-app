@@ -33,22 +33,22 @@ import {
     canDeleteModel,
     canEditModel,
 } from '../../../lib'
-import { SqlView } from '../../../types/generated'
+import { SqlViewType } from '../../../types/generated'
 
 type SqlViewListModel = BaseListModel & {
-    type?: SqlView.type
+    type?: SqlViewType
 }
 export type SqlViewActionResult = {
     success: boolean
     errorMessage?: string
 }
 
-export const getRunActionLabel = (type: SqlView.type | undefined) => {
+export const getRunActionLabel = (type: SqlViewType | undefined) => {
     switch (type) {
-        case SqlView.type.QUERY:
+        case SqlViewType.QUERY:
             return i18n.t('Run query')
-        case SqlView.type.MATERIALIZED_VIEW:
-        case SqlView.type.VIEW:
+        case SqlViewType.MATERIALIZED_VIEW:
+        case SqlViewType.VIEW:
         default:
             return i18n.t('Create or update view')
     }
@@ -64,11 +64,8 @@ export const useRunSqlView = () => {
     const [running, setRunning] = useState(false)
 
     const run = useCallback(
-        async (
-            id: string,
-            type: SqlView.type
-        ): Promise<SqlViewActionResult> => {
-            if (type === SqlView.type.QUERY) {
+        async (id: string, type: SqlViewType): Promise<SqlViewActionResult> => {
+            if (type === SqlViewType.QUERY) {
                 return { success: true }
             }
             setRunning(true)
@@ -182,7 +179,7 @@ export const SqlViewActions = ({
         search: `?clonedId=${model.id}`,
     })
 
-    const isQuery = sqlViewModel.type === SqlView.type.QUERY
+    const isQuery = sqlViewModel.type === SqlViewType.QUERY
 
     const handleRun = async () => {
         if (isQuery) {
@@ -266,7 +263,7 @@ export const SqlViewActions = ({
                                 }`}
                             />
                             {sqlViewModel.type ===
-                                SqlView.type.MATERIALIZED_VIEW && (
+                                SqlViewType.MATERIALIZED_VIEW && (
                                 <MenuItem
                                     dense
                                     disabled={refreshRunning || !editable}

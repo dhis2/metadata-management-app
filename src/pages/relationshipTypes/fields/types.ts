@@ -1,7 +1,7 @@
-import { RelationshipConstraint } from '../../../types/generated'
+import { RelationshipEntity } from '../../../types/generated'
 import { DisplayableModel } from '../../../types/models'
 
-export type ConstraintValue = RelationshipConstraint.relationshipEntity
+export type ConstraintValue = RelationshipEntity
 
 export type RelationshipSideFieldsProps = {
     prefix: 'from' | 'to'
