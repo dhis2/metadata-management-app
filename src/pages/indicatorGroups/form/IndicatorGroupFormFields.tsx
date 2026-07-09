@@ -54,7 +54,6 @@ function IndicatorGroupFormFields() {
                             transferSection={SECTIONS_MAP.indicator}
                             filterUnassignedTo={'indicatorGroups'}
                             maxSelections={Infinity}
-                            hideAddNew={true}
                         />
                     </StandardFormField>
                 </StandardFormField>

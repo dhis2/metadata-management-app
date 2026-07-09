@@ -131,15 +131,6 @@ const expectTransferFieldToExistWithOptions = async (
     })
 }
 
-const expectTransferFieldToHideAddNewButton = (
-    transferTestId: string,
-    screen: RenderResult
-) => {
-    const transfer = screen.getByTestId(transferTestId)
-    expect(within(transfer).getByText('Refresh list')).toBeVisible()
-    expect(within(transfer).queryByText('Add new')).not.toBeInTheDocument()
-}
-
 const expectSelectToExistWithOptions = async (
     triggeringDiv: HTMLElement,
     {
@@ -281,7 +272,6 @@ export const uiAssertions = {
     expectFieldToHaveError: expectInputFieldToHaveError,
     expectInputFieldToHaveWarning,
     expectTransferFieldToExistWithOptions,
-    expectTransferFieldToHideAddNewButton,
     expectSelectToExistWithOptions,
     expectMultiSelectToExistWithOptions,
     expectCheckboxFieldToExist,
