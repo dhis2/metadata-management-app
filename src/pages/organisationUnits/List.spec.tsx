@@ -764,7 +764,7 @@ describe('Organisation unit list', () => {
 
         const tableRows = screen.getAllByTestId('dhis2-uicore-datatablerow')
         // header row + systemRoot row only
-        expect(tableRows.length).toBe(2)
+        expect(tableRows).toHaveLength(2)
         expect(tableRows[1]).toHaveTextContent('SystemRoot')
         expect(screen.queryByText('UserRoot')).not.toBeInTheDocument()
     })
