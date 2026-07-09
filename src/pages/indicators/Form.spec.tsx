@@ -549,6 +549,15 @@ describe('Indicators form tests', () => {
             })
         })
 
+        it('should not show an "Add new" button for indicator groups', async () => {
+            const { screen } = await renderForm()
+
+            uiAssertions.expectTransferFieldToHideAddNewButton(
+                'formfields-indicatorGroups',
+                screen
+            )
+        })
+
         it('should have a cancel button with a link back to the list view', async () => {
             const { screen } = await renderForm()
             const cancelButton = screen.getByTestId('form-cancel-link')
