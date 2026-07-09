@@ -5,7 +5,7 @@ import { testCategoryCombo } from '../../testUtils/builders'
 import TestComponentWithRouter, {
     CustomData,
 } from '../../testUtils/TestComponentWithRouter'
-import { generateDefaultMergeTests } from '../defaultMergeTests'
+import { generateDefaultMergeTests } from '../defaultTests/defaultMergeTests'
 import { Component as Merge } from './Merge'
 
 const renderMerge = async (customData: CustomData = {}) => {

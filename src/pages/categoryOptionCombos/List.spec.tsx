@@ -8,7 +8,7 @@ import {
     generateDefaultListFiltersTests,
     generateDefaultListItemsTests,
     generateDefaultListMultiActionsTests,
-} from '../defaultListTests'
+} from '../defaultTests/defaultListTests'
 import { Component as CategoryOptionComboList } from './List'
 
 const section = SECTIONS_MAP.categoryOptionCombo
