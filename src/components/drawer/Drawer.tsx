@@ -2,6 +2,7 @@ import cx from 'classnames'
 import { FocusTrap } from 'focus-trap-react'
 import React, { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { create } from 'zustand'
 import { useSystemSettingsStore } from '../../lib/systemSettings'
 import css from './Drawer.module.css'
 import { DrawerHeader } from './DrawerHeader'
@@ -10,18 +11,30 @@ export interface DrawerProps {
     isOpen: boolean
     children: React.ReactNode
     onClose: () => void
-    level?: 'primary' | 'secondary'
+    level?: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
     header?: React.ReactNode | string
     disableFocusTrap?: boolean
 }
 
 const DRAWER_PORTAL_ID = 'drawer-portal'
 
+interface DrawerStore {
+    count: number
+    increment: () => void
+    decrement: () => void
+}
+
+const useDrawerStore = create<DrawerStore>()((set) => ({
+    count: 0,
+    increment: () => set((state) => ({ count: state.count + 1 })),
+    decrement: () => set((state) => ({ count: state.count - 1 })),
+}))
+
 export const DrawerPanel: React.FC<DrawerProps> = ({
     isOpen,
     children,
     onClose,
-    level = 'primary',
+    level,
     header,
     disableFocusTrap = false,
 }) => {
@@ -29,6 +42,23 @@ export const DrawerPanel: React.FC<DrawerProps> = ({
         useSystemSettingsStore(
             (state) => state.systemSettings?.globalShellEnabled
         ) ?? false
+
+    const [levelOrCalculatedLevel] = useState(() => {
+        const count = useDrawerStore.getState().count
+        if (level) {
+            return level
+        }
+        if (count === 0) {
+            return 'primary'
+        }
+        if (count === 1) {
+            return 'secondary'
+        }
+        if (count === 2) {
+            return 'tertiary'
+        }
+        return 'quaternary'
+    })
 
     return (
         <div
@@ -43,8 +73,12 @@ export const DrawerPanel: React.FC<DrawerProps> = ({
             <div
                 className={cx(css.drawer, {
                     [css.open]: isOpen,
-                    [css.drawerPrimary]: level === 'primary',
-                    [css.drawerSecondary]: level === 'secondary',
+                    [css.drawerPrimary]: levelOrCalculatedLevel === 'primary',
+                    [css.drawerSecondary]:
+                        levelOrCalculatedLevel === 'secondary',
+                    [css.drawerTertiary]: levelOrCalculatedLevel === 'tertiary',
+                    [css.drawerQuaternary]:
+                        levelOrCalculatedLevel === 'quaternary',
                 })}
                 onClick={(e) => e.stopPropagation()}
             >
@@ -131,6 +165,14 @@ export const DrawerPortal = (props: DrawerProps) => {
     const [mountNode, setMountNode] = useState<HTMLElement | null>(() =>
         document.getElementById(DRAWER_PORTAL_ID)
     )
+
+    useEffect(() => {
+        if (!props.isOpen) {
+            return
+        }
+        useDrawerStore.getState().increment()
+        return () => useDrawerStore.getState().decrement()
+    }, [props.isOpen])
 
     useEffect(() => {
         const portalRoot = document.getElementById(DRAWER_PORTAL_ID)
