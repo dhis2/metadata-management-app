@@ -462,7 +462,11 @@ describe('Organisation unit list', () => {
     })
 
     it('resets system organisation units when root org unit is deleted', async () => {
-        const rootOrg = testOrgUnit({ level: 1, childCount: 0 })
+        const rootOrg = testOrgUnit({
+            level: 1,
+            childCount: 0,
+            access: testAccess({ delete: true }),
+        })
 
         const screen = await renderList({
             rootOrgUnits: [rootOrg],
