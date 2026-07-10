@@ -1,3 +1,22 @@
+# [0.166.0](https://github.com/dhis2/metadata-management-app/compare/v0.165.0...v0.166.0) (2026-07-09)
+
+
+### Bug Fixes
+
+* do not skip contracts test ([#992](https://github.com/dhis2/metadata-management-app/issues/992)) ([7d11023](https://github.com/dhis2/metadata-management-app/commit/7d1102371813315a26ebbe5da789383f28267ce2))
+
+
+### Features
+
+* merge data elements ([#989](https://github.com/dhis2/metadata-management-app/issues/989)) ([559b647](https://github.com/dhis2/metadata-management-app/commit/559b6476bb95246dab1a78a993b5959219690513))
+
+# [0.165.0](https://github.com/dhis2/metadata-management-app/compare/v0.164.0...v0.165.0) (2026-07-08)
+
+
+### Features
+
+* make drawers size depend on how many drawers are open ([#978](https://github.com/dhis2/metadata-management-app/issues/978)) ([e74ec28](https://github.com/dhis2/metadata-management-app/commit/e74ec28ccc5af2ba8f723556eefec0075f0fa9ba))
+
 # [0.164.0](https://github.com/dhis2/metadata-management-app/compare/v0.163.3...v0.164.0) (2026-07-02)
 
 
