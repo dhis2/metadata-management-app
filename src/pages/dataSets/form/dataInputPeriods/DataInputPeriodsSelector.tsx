@@ -73,7 +73,11 @@ const DataInputPeriodModal = ({
     const closeDateBeforeStartDate = Boolean(
         closingDate && openingDate && closingDate < openingDate
     )
-    const saveIsDisabled = Boolean(!selectedPeriod) || closeDateBeforeStartDate
+    const saveIsDisabled =
+        Boolean(!selectedPeriod) ||
+        !openingDate ||
+        !closingDate ||
+        closeDateBeforeStartDate
 
     return (
         <Modal hide={!modalOpen} onClose={closeModal}>
@@ -191,19 +195,19 @@ const DataInputPeriodModal = ({
                         disabled={saveIsDisabled}
                         primary
                         onClick={() => {
-                            if (selectedPeriod === undefined) {
+                            if (
+                                selectedPeriod === undefined ||
+                                !openingDate ||
+                                !closingDate
+                            ) {
                                 return
                             }
-                            const newDataInputPeriod = {
+                            const newDataInputPeriod: DataInputPeriod = {
                                 period: {
                                     id: selectedPeriod,
                                 },
-                            } as DataInputPeriod
-                            if (openingDate) {
-                                newDataInputPeriod.openingDate = openingDate
-                            }
-                            if (closingDate) {
-                                newDataInputPeriod.closingDate = closingDate
+                                openingDate,
+                                closingDate,
                             }
                             // clear edit information (if there is any)
                             input.onChange([

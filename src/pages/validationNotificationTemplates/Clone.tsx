@@ -12,6 +12,7 @@ import {
 import { useBoundResourceQueryFn } from '../../lib/query/useBoundQueryFn'
 import { PickWithFieldFilters } from '../../types/generated'
 import { ValidationNotificationTemplate } from '../../types/models'
+import { ValidationNotificationTemplateFormValues as EditFormValues } from './Edit'
 import { ValidationNotificationTemplateFormFields, validate } from './form'
 import { SectionedFormWrapper } from './SectionedFormWrapper'
 
@@ -61,7 +62,7 @@ export const Component = () => {
                 ? (omit(
                       validationNotificationTemplateQuery.data,
                       'id'
-                  ) as unknown as ValidationNotificationTemplate)
+                  ) as EditFormValues)
                 : undefined,
         [validationNotificationTemplateQuery.data]
     )
@@ -69,7 +70,7 @@ export const Component = () => {
     return (
         <SectionedFormWrapper
             onSubmit={onSubmit}
-            initialValues={initialValues as any}
+            initialValues={initialValues}
             validate={validate}
             cancelTo={`/${getSectionPath(section)}`}
             fetchError={!!validationNotificationTemplateQuery.error}

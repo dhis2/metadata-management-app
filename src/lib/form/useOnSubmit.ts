@@ -153,17 +153,17 @@ export const useOnEditCompletedSuccessfully = (section: ModelSection) => {
     )
 }
 
-export const useOnSubmitEdit = <TFormValues = unknown>({
+export const useOnSubmitEdit = <TFormValues extends ModelWithAttributeValues>({
     modelId,
     section,
 }: UseOnSubmitEditOptions) => {
     const patchDirtyFields = usePatchModel(modelId, section.namePlural)
     const onEditCompletedSuccessfully = useOnEditCompletedSuccessfully(section)
 
-    return useMemo<EnhancedOnSubmit<any>>(
+    return useMemo<EnhancedOnSubmit<TFormValues>>(
         () => async (values, form, options) => {
             const jsonPatchOperations = createJsonPatchOperations({
-                values: values,
+                values,
                 dirtyFields: form.getState().dirtyFields,
                 originalValue: form.getState().initialValues,
             })
@@ -280,7 +280,7 @@ export const useOnSubmitNew = <
     const onNewCompletedSuccessfully =
         useOnNewCompletedSuccessfullyOrSkipped(section)
 
-    return useMemo<EnhancedOnSubmit<any>>(
+    return useMemo<EnhancedOnSubmit<TFormValues>>(
         () => async (values, form, options) => {
             if (!values) {
                 return onNewCompletedSuccessfully({ withChanges: false })

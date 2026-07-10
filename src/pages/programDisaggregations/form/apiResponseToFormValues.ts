@@ -58,8 +58,8 @@ export const apiResponseToFormValues = ({
         .filter(
             (pi) =>
                 pi.categoryMappingIds.length > 0 ||
-                (pi.attributeCombo as any)?.id !== DEFAULT_CATEGORY_COMBO.id ||
-                (pi.categoryCombo as any)?.id !== DEFAULT_CATEGORY_COMBO.id ||
+                pi.attributeCombo?.id !== DEFAULT_CATEGORY_COMBO.id ||
+                pi.categoryCombo?.id !== DEFAULT_CATEGORY_COMBO.id ||
                 pi.aggregateExportAttributeOptionCombo ||
                 pi.aggregateExportCategoryOptionCombo ||
                 pi.aggregateExportDataElement

@@ -105,8 +105,12 @@ export const dataSetFormSchema = identifiable
             .array(
                 z.object({
                     period: modelReference,
-                    openingDate: z.string().optional(),
-                    closingDate: z.string().optional(),
+                    openingDate: z
+                        .string()
+                        .min(1, i18n.t('Opening date is required')),
+                    closingDate: z
+                        .string()
+                        .min(1, i18n.t('Closing date is required')),
                 })
             )
             .default([]),
