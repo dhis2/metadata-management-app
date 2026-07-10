@@ -14,8 +14,10 @@ import {
 
 export const CategoryMergeFormFields = ({
     selectedIds,
+    hideConfirmation = false,
 }: {
     selectedIds: string[]
+    hideConfirmation?: boolean
 }) => {
     return (
         <FormSections>
@@ -82,7 +84,7 @@ export const CategoryMergeFormFields = ({
                 />
             </FormSection>
             <FormSection>
-                <ConfirmationField />
+                {!hideConfirmation && <ConfirmationField />}
             </FormSection>
         </FormSections>
     )
