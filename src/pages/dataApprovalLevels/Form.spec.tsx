@@ -1,9 +1,12 @@
 import { faker } from '@faker-js/faker'
-import { render, waitFor } from '@testing-library/react'
+import { act, render, waitFor, within } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
+import categoryOptionGroupSetSchemaMock from '../../__mocks__/schema/categoriesOptionGroupSetsSchema.json'
 import schemaMock from '../../__mocks__/schema/dataApprovalLevel.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
-import { SECTIONS_MAP } from '../../lib'
+import { ModelSchemas, SECTIONS_MAP } from '../../lib'
+import { useSchemaStore } from '../../lib/schemas/schemaStore'
 import {
     randomDhis2Id,
     randomLongString,
@@ -86,6 +89,7 @@ describe('Data approval levels form tests', () => {
                                 categoryOptionGroupSets,
                                 pager: {},
                             }),
+                            attributes: () => ({ attributes: [] }),
                             dataApprovalLevels: (type: any, params: any) => {
                                 if (type === 'create') {
                                     createMock(params)
@@ -155,6 +159,39 @@ describe('Data approval levels form tests', () => {
             )
             await uiActions.submitForm(screen)
             expect(createMock).not.toHaveBeenCalled()
+        })
+
+        it('should open the category option group set new form in a drawer when clicking the "Add new" button', async () => {
+            const { screen } = await renderForm()
+
+            useSchemaStore.getState().setSchemas({
+                ...useSchemaStore.getState().schemas,
+                categoryOptionGroupSet: categoryOptionGroupSetSchemaMock,
+            } as unknown as ModelSchemas)
+
+            // Flush the useEffect dynamic import in ModelSingleSelectRefreshableFormField
+            await act(async () => {})
+
+            const categoryOptionGroupSetField = screen.getByTestId(
+                'formfields-categoryoptiongroupset'
+            )
+
+            const addNewButton = within(
+                categoryOptionGroupSetField
+            ).getAllByRole('button')[1]
+            await userEvent.click(addNewButton)
+
+            expect(
+                await screen.findByText('Add new Category option group set')
+            ).toBeInTheDocument()
+            expect(
+                screen.getByTestId('categoryOptionGroupSetNewForm')
+            ).toBeInTheDocument()
+            expect(
+                within(
+                    screen.getByTestId('categoryOptionGroupSetNewForm')
+                ).getByTestId('form-submit-button')
+            ).toHaveTextContent('Save and close')
         })
 
         it('should show an error if the org unit level and category option group set combination already exists', async () => {

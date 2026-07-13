@@ -29,7 +29,11 @@ export const Component = ({
             includeAttributes={false}
             section={section}
         >
-            <DefaultNewFormContents section={section} footer={footer}>
+            <DefaultNewFormContents
+                section={section}
+                footer={footer}
+                dataTest="indicatorTypeNewForm"
+            >
                 <IndicatorTypesFormFields section={section} />
             </DefaultNewFormContents>
         </FormBase>

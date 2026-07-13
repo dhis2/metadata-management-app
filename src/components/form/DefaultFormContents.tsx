@@ -13,6 +13,7 @@ type DefaultFormContentsProps = {
     readonly children: React.ReactNode
     readonly section: ModelSection
     readonly footer?: React.ReactNode
+    readonly dataTest?: string
 }
 
 function DefaultFormContents({
@@ -21,6 +22,7 @@ function DefaultFormContents({
     showTranslatedFieldsNotice = false,
     showCloneNotice = false,
     footer,
+    dataTest,
 }: DefaultFormContentsProps & {
     readonly showTranslatedFieldsNotice?: boolean
     readonly showCloneNotice?: boolean
@@ -28,7 +30,7 @@ function DefaultFormContents({
     const listPath = `/${getSectionPath(section)}`
 
     return (
-        <>
+        <div data-test={dataTest}>
             <div className={classes.form}>
                 {showTranslatedFieldsNotice && <TranslatedFieldsNoticeBox />}
                 {showCloneNotice && <CloneNoticeBox section={section} />}
@@ -38,7 +40,7 @@ function DefaultFormContents({
                 </StandardFormSection>
             </div>
             {footer ?? <DefaultFormFooter cancelTo={listPath} />}
-        </>
+        </div>
     )
 }
 

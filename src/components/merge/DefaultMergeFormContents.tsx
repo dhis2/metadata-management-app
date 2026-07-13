@@ -56,42 +56,42 @@ const TooltipWrapper = ({
     children,
     codeConfirmInvalid,
     targetInputEmpty,
+    sourcesEmpty,
 }: React.PropsWithChildren<{
     codeConfirmInvalid: boolean
     targetInputEmpty: boolean
+    sourcesEmpty: boolean
 }>) => {
-    if (!codeConfirmInvalid && !targetInputEmpty) {
+    if (!codeConfirmInvalid && !targetInputEmpty && !sourcesEmpty) {
         return children
     }
-    return (
-        <Tooltip
-            content={
-                targetInputEmpty
-                    ? i18n.t('Target must be specified to merge')
-                    : i18n.t(
-                          'Correct confirmation code must be entered to merge'
-                      )
-            }
-        >
-            {children}
-        </Tooltip>
-    )
+    const content = sourcesEmpty
+        ? i18n.t('At least one source must be specified to merge')
+        : targetInputEmpty
+        ? i18n.t('Target must be specified to merge')
+        : i18n.t('Correct confirmation code must be entered to merge')
+
+    return <Tooltip content={content}>{children}</Tooltip>
 }
 
 export const MergeActions = () => {
     const codeConfirmInvalid = useField<string[]>('confirmation').meta?.invalid
     const targetInputEmpty = !useField<string[]>('target').input?.value
+    const sourcesEmpty = !useField<string[]>('sources').input?.value?.length
 
     return (
         <ButtonStrip className={css.mergeActions}>
             <TooltipWrapper
                 codeConfirmInvalid={codeConfirmInvalid ?? false}
                 targetInputEmpty={targetInputEmpty}
+                sourcesEmpty={sourcesEmpty}
             >
                 <Button
                     primary
                     type="submit"
-                    disabled={targetInputEmpty || codeConfirmInvalid}
+                    disabled={
+                        sourcesEmpty || targetInputEmpty || codeConfirmInvalid
+                    }
                 >
                     {i18n.t('Merge')}
                 </Button>
