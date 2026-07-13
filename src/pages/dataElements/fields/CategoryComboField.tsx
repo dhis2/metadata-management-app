@@ -2,7 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import React, { useEffect } from 'react'
 import { useForm, useFormState } from 'react-final-form'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
-import { DEFAULT_CATEGORYCOMBO_SELECT_OPTION } from '../../../lib'
+import { DEFAULT_CATEGORYCOMBO_SELECT_OPTION, SECTIONS_MAP } from '../../../lib'
 import { DisplayableModel } from '../../../types/models'
 
 const CATEGORY_COMBOS_QUERY = {
@@ -40,7 +40,7 @@ export function CategoryComboField() {
             disabled={disabled}
             query={CATEGORY_COMBOS_QUERY}
             transform={addDefaultCategoryComboTransform}
-            refreshResource="categoryCombos"
+            section={SECTIONS_MAP.categoryCombo}
         />
     )
 }

@@ -17,7 +17,7 @@ import {
     FEATURES,
     SECTIONS_MAP,
     useFeatureAvailable,
-    useSchemaSectionHandleOrThrow,
+    useGivenShemaOrSchemaSectionHandleOrThrow,
     useSectionedFormContext,
     useSyncSelectedSectionWithScroll,
 } from '../../../lib'
@@ -32,7 +32,8 @@ import {
 import { TrackedEntityTypeFormDescriptor } from './formDescriptor'
 
 export function TrackedEntityTypeFormFields() {
-    const schemaSection = useSchemaSectionHandleOrThrow()
+    const section = SECTIONS_MAP.trackedEntityType
+    const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({ section })
     const descriptor =
         useSectionedFormContext<typeof TrackedEntityTypeFormDescriptor>()
     useSyncSelectedSectionWithScroll()
@@ -59,7 +60,9 @@ export function TrackedEntityTypeFormFields() {
                     <NameField schemaSection={schemaSection} />
                 </StandardFormField>
 
-                {showPluralLabels && <TrackedEntityTypesLabelField />}
+                {showPluralLabels && (
+                    <TrackedEntityTypesLabelField section={schemaSection} />
+                )}
 
                 <StandardFormField>
                     <ShortNameField schemaSection={schemaSection} />
@@ -112,10 +115,7 @@ export function TrackedEntityTypeFormFields() {
                 </StandardFormField>
             </SectionedFormSection>
 
-            <CustomAttributesSection
-                schemaSection={SECTIONS_MAP.trackedEntityType}
-                sectionedLayout
-            />
+            <CustomAttributesSection schemaSection={section} sectionedLayout />
         </SectionedFormSections>
     )
 }

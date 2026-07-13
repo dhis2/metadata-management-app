@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-06-24T08:16:08.895Z\n"
-"PO-Revision-Date: 2026-06-24T08:16:08.895Z\n"
+"POT-Creation-Date: 2026-06-29T13:37:24.549Z\n"
+"PO-Revision-Date: 2026-06-29T13:37:24.550Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -565,6 +565,9 @@ msgstr "Submit"
 msgid "Save"
 msgstr "Save"
 
+msgid "Save and close"
+msgstr "Save and close"
+
 msgid "Required"
 msgstr "Required"
 
@@ -582,9 +585,6 @@ msgstr "Hide error details"
 
 msgid "Show error details"
 msgstr "Show error details"
-
-msgid "Save and close"
-msgstr "Save and close"
 
 msgid "Name: {{- displayName}} (Translated)"
 msgstr "Name: {{- displayName}} (Translated)"
@@ -907,6 +907,9 @@ msgstr "At least one source is required"
 msgid "Loading..."
 msgstr "Loading..."
 
+msgid "Add new {{name}}"
+msgstr "Add new {{name}}"
+
 msgid "Available {{name}}"
 msgstr "Available {{name}}"
 
@@ -918,9 +921,6 @@ msgstr "Filter available {{name}}"
 
 msgid "Filter selected {{name}}"
 msgstr "Filter selected {{name}}"
-
-msgid "Add new {{name}}"
-msgstr "Add new {{name}}"
 
 msgid "Filter available items"
 msgstr "Filter available items"
@@ -3102,18 +3102,6 @@ msgid ""
 msgstr ""
 "Choose legends to visually categorize values in Data entry and Analytics "
 "apps."
-
-msgid "Available legends"
-msgstr "Available legends"
-
-msgid "Selected legends"
-msgstr "Selected legends"
-
-msgid "Filter available legends"
-msgstr "Filter available legends"
-
-msgid "Filter selected legends"
-msgstr "Filter selected legends"
 
 msgid "Available data elements"
 msgstr "Available data elements"

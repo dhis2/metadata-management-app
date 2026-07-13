@@ -13,21 +13,38 @@ import { initialValues, validate } from './form/optionSetSchema'
 
 const section = SECTIONS_MAP.optionSet
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
-            onSubmit={useOnSubmitNew({ section })}
+            onSubmit={useOnSubmitNew({
+                section,
+                onSubmitted,
+                redirectOnSubmitted,
+            })}
             initialValues={initialValues}
             validate={validate}
+            section={section}
         >
             {({ handleSubmit }) => (
                 <SectionedFormProvider formDescriptor={OptionSetFormDescriptor}>
                     <SectionedFormLayout
                         sidebar={<DefaultSectionedFormSidebar />}
+                        footer={footer}
+                        dataTest="optionSetNewForm"
                     >
                         <form onSubmit={handleSubmit}>
                             <OptionSetFormContents />
-                            <DefaultFormFooter cancelTo="/optionSets" />
+                            {!footer && (
+                                <DefaultFormFooter cancelTo="/optionSets" />
+                            )}
                         </form>
                         <SectionedFormErrorNotice />
                     </SectionedFormLayout>

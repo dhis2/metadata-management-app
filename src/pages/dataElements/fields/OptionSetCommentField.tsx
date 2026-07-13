@@ -1,6 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
+import { SECTIONS_MAP } from '../../../lib'
 
 export function OptionSetCommentField() {
     return (
@@ -20,7 +21,7 @@ export function OptionSetCommentField() {
             helpText={i18n.t(
                 'Choose a set of predefined comments for data entry.'
             )}
-            refreshResource="optionSets"
+            section={SECTIONS_MAP.optionSet}
         />
     )
 }

@@ -2,10 +2,10 @@ import i18n from '@dhis2/d2-i18n'
 import React from 'react'
 import {
     ModelSingleSelect,
-    ModelSingleSelectFormField,
     ModelSingleSelectProps,
 } from '../../../components/metadataFormControls/ModelSingleSelect'
-import { DEFAULT_CATEGORY_COMBO } from '../../../lib'
+import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
+import { DEFAULT_CATEGORY_COMBO, SECTIONS_MAP } from '../../../lib'
 import { PlainResourceQuery } from '../../../types'
 import { DisplayableModel } from '../../../types/models'
 
@@ -27,11 +27,12 @@ const addDefaultCategoryComboTransform = <TCatCombo extends DisplayableModel>(
 
 export function CategoryComboField() {
     return (
-        <ModelSingleSelectFormField
+        <ModelSingleSelectRefreshableFormField
             name="categoryCombo"
             label={i18n.t('Category combination')}
             query={CATEGORY_COMBOS_QUERY}
             transform={addDefaultCategoryComboTransform}
+            section={SECTIONS_MAP.categoryCombo}
         />
     )
 }

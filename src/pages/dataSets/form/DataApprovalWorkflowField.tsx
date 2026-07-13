@@ -1,7 +1,8 @@
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
-import { useField, useFormState } from 'react-final-form'
-import { ModelSingleSelectField } from '../../../components/metadataFormControls/ModelSingleSelect'
+import { useFormState } from 'react-final-form'
+import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
+import { SECTIONS_MAP } from '../../../lib'
 
 export type WorkflowTypes = {
     dataApprovalWorkflows: [{ displayName: string; id: string }]
@@ -22,15 +23,13 @@ export function DataApprovalWorkflowField() {
         },
     }
 
-    const { input, meta } = useField('workflow')
-
     return (
-        <ModelSingleSelectField
+        <ModelSingleSelectRefreshableFormField
             clearable
-            input={input}
-            meta={meta}
+            name="workflow"
             label={i18n.t('Approval workflow')}
             query={APPROVAL_WORKFLOWS_QUERY}
+            section={SECTIONS_MAP.dataApprovalWorkflow}
         />
     )
 }

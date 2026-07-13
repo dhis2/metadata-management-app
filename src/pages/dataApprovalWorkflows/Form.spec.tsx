@@ -1,9 +1,16 @@
 import { faker } from '@faker-js/faker'
-import { render, waitFor } from '@testing-library/react'
+import { act, render, waitFor, within } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
+import categoryCombosSchema from '../../__mocks__/schema/categoryCombosSchema.json'
 import schemaMock from '../../__mocks__/schema/dataApprovalWorkflowSchema.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
-import { DEFAULT_CATEGORYCOMBO_SELECT_OPTION, SECTIONS_MAP } from '../../lib'
+import {
+    DEFAULT_CATEGORYCOMBO_SELECT_OPTION,
+    ModelSchemas,
+    SECTIONS_MAP,
+} from '../../lib'
+import { useSchemaStore } from '../../lib/schemas/schemaStore'
 import {
     randomDhis2Id,
     randomLongString,
@@ -155,6 +162,38 @@ describe('Data approval workflows form tests', () => {
             )
             await uiActions.submitForm(screen)
             expect(createMock).not.toHaveBeenCalled()
+        })
+
+        it('should open the category combo new form in a drawer when clicking the "Add new" button', async () => {
+            const { screen } = await renderForm()
+
+            useSchemaStore.getState().setSchemas({
+                ...useSchemaStore.getState().schemas,
+                categoryCombo: categoryCombosSchema,
+            } as unknown as ModelSchemas)
+
+            // Flush the useEffect dynamic import in ModelSingleSelectRefreshableFormField
+            await act(async () => {})
+
+            const categoryComboField = screen.getByTestId(
+                'formfields-categorycombo'
+            )
+
+            const addNewButton =
+                within(categoryComboField).getAllByRole('button')[1]
+            await userEvent.click(addNewButton)
+
+            expect(
+                await screen.findByText('Add new Category combination')
+            ).toBeInTheDocument()
+            expect(
+                screen.getByTestId('categoryComboNewForm')
+            ).toBeInTheDocument()
+            expect(
+                within(screen.getByTestId('categoryComboNewForm')).getByTestId(
+                    'form-submit-button'
+                )
+            ).toHaveTextContent('Save and close')
         })
     })
 

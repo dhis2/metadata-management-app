@@ -9,7 +9,8 @@ import {
     StandardFormSectionDescription,
     StandardFormSectionTitle,
 } from '../../../../components'
-import { ModelSingleSelectFormField } from '../../../../components/metadataFormControls/ModelSingleSelect'
+import { ModelSingleSelectRefreshableFormField } from '../../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
+import { SECTIONS_MAP } from '../../../../lib'
 import styles from './EnrollmentSettingsFormContents.module.css'
 
 export const EnrollmentSettingsFormContents = React.memo(
@@ -46,9 +47,8 @@ export const EnrollmentSettingsFormContents = React.memo(
                     {i18n.t('Configure enrollment options for this program.')}
                 </StandardFormSectionDescription>
                 <StandardFormField>
-                    <ModelSingleSelectFormField
+                    <ModelSingleSelectRefreshableFormField
                         required
-                        inputWidth="500px"
                         name="trackedEntityType"
                         label={i18n.t('Tracked entity type')}
                         query={{
@@ -58,6 +58,7 @@ export const EnrollmentSettingsFormContents = React.memo(
                                 paging: false,
                             },
                         }}
+                        section={SECTIONS_MAP.trackedEntityType}
                     />
                 </StandardFormField>
                 <StandardFormField>

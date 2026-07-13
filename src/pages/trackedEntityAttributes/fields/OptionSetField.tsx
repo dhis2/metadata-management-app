@@ -1,11 +1,12 @@
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
-import { ModelSingleSelectFormField } from '../../../components/metadataFormControls/ModelSingleSelect'
+import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
+import { SECTIONS_MAP } from '../../../lib'
 
 export function OptionSetField() {
     return (
-        <div style={{ width: '400px' }}>
-            <ModelSingleSelectFormField
+        <div>
+            <ModelSingleSelectRefreshableFormField
                 dataTest="formfields-optionSet"
                 name="optionSet"
                 label={i18n.t('Option set')}
@@ -21,6 +22,7 @@ export function OptionSetField() {
                 }}
                 clearable
                 clearText={i18n.t('Clear')}
+                section={SECTIONS_MAP.optionSet}
             />
         </div>
     )

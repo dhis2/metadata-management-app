@@ -32,3 +32,9 @@
     display: flex;
     flex-direction: column;
 }
+
+.addNewDrawerFormWrapper {
+    position: 'sticky';
+    bottom: 0;
+    z-index: 1;
+}

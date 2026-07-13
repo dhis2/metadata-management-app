@@ -16,13 +16,26 @@ import {
 
 const section = SECTIONS_MAP.trackedEntityType
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     return (
         <FormBase
-            onSubmit={useOnSubmitNew({ section })}
+            onSubmit={useOnSubmitNew({
+                section,
+                onSubmitted,
+                redirectOnSubmitted,
+            })}
             initialValues={initialTrackedEntityTypeValues}
             validate={validateTrackedEntityType}
             subscription={{}}
+            section={section}
         >
             {({ handleSubmit }) => {
                 return (
@@ -31,10 +44,14 @@ export const Component = () => {
                     >
                         <SectionedFormLayout
                             sidebar={<DefaultSectionedFormSidebar />}
+                            footer={footer}
+                            dataTest="trackedEntityTypeNewForm"
                         >
                             <form onSubmit={handleSubmit}>
                                 <TrackedEntityTypeFormFields />
-                                <DefaultFormFooter cancelTo="/trackedEntityTypes" />
+                                {!footer && (
+                                    <DefaultFormFooter cancelTo="/trackedEntityTypes" />
+                                )}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>

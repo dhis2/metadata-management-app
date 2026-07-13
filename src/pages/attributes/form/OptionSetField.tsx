@@ -1,6 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
+import { SECTIONS_MAP } from '../../../lib'
 
 export const OptionSetField = () => {
     return (
@@ -21,7 +22,7 @@ export const OptionSetField = () => {
             clearable={true}
             clearText={i18n.t('Remove option set')}
             dataTest="formfields-optionSet"
-            refreshResource="optionSets"
+            section={SECTIONS_MAP.optionSet}
         />
     )
 }

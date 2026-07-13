@@ -1,3 +1,57 @@
+# [0.166.0](https://github.com/dhis2/metadata-management-app/compare/v0.165.0...v0.166.0) (2026-07-09)
+
+
+### Bug Fixes
+
+* do not skip contracts test ([#992](https://github.com/dhis2/metadata-management-app/issues/992)) ([7d11023](https://github.com/dhis2/metadata-management-app/commit/7d1102371813315a26ebbe5da789383f28267ce2))
+
+
+### Features
+
+* merge data elements ([#989](https://github.com/dhis2/metadata-management-app/issues/989)) ([559b647](https://github.com/dhis2/metadata-management-app/commit/559b6476bb95246dab1a78a993b5959219690513))
+
+# [0.165.0](https://github.com/dhis2/metadata-management-app/compare/v0.164.0...v0.165.0) (2026-07-08)
+
+
+### Features
+
+* make drawers size depend on how many drawers are open ([#978](https://github.com/dhis2/metadata-management-app/issues/978)) ([e74ec28](https://github.com/dhis2/metadata-management-app/commit/e74ec28ccc5af2ba8f723556eefec0075f0fa9ba))
+
+# [0.164.0](https://github.com/dhis2/metadata-management-app/compare/v0.163.3...v0.164.0) (2026-07-02)
+
+
+### Features
+
+* add drawer footer with info on saving forms ([#984](https://github.com/dhis2/metadata-management-app/issues/984)) ([6a144ba](https://github.com/dhis2/metadata-management-app/commit/6a144ba1dec440cecf4cab8c0b0ddd2faf8b70a3))
+
+## [0.163.3](https://github.com/dhis2/metadata-management-app/compare/v0.163.2...v0.163.3) (2026-06-30)
+
+
+### Bug Fixes
+
+* url check ([#983](https://github.com/dhis2/metadata-management-app/issues/983)) ([45a88ad](https://github.com/dhis2/metadata-management-app/commit/45a88ad6f2d7d3100ad56bde79be7436aa1980f2))
+
+## [0.163.2](https://github.com/dhis2/metadata-management-app/compare/v0.163.1...v0.163.2) (2026-06-30)
+
+
+### Bug Fixes
+
+* expression builder buttons ([#982](https://github.com/dhis2/metadata-management-app/issues/982)) ([391dcc9](https://github.com/dhis2/metadata-management-app/commit/391dcc9e265a0c4ee800c93eda5febb7c84bd770))
+
+## [0.163.1](https://github.com/dhis2/metadata-management-app/compare/v0.163.0...v0.163.1) (2026-06-29)
+
+
+### Bug Fixes
+
+* prigram stages attributes ([#980](https://github.com/dhis2/metadata-management-app/issues/980)) ([723eb75](https://github.com/dhis2/metadata-management-app/commit/723eb75aa281ecaca6eb3453608891cfcf9858e4))
+
+# [0.163.0](https://github.com/dhis2/metadata-management-app/compare/v0.162.0...v0.163.0) (2026-06-24)
+
+
+### Features
+
+* refreshable single select, in drawer [DHIS2-21575] ([#973](https://github.com/dhis2/metadata-management-app/issues/973)) ([e2c416a](https://github.com/dhis2/metadata-management-app/commit/e2c416a7458ae096f68a231132b330b9a45711c9))
+
 # [0.162.0](https://github.com/dhis2/metadata-management-app/compare/v0.161.1...v0.162.0) (2026-06-23)
 
 

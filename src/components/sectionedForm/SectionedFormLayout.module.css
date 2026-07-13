@@ -16,6 +16,12 @@
     background-color: var(--colors-grey200);
 }
 
+.layoutGridInWrapper {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+}
+
 .main {
     grid-area: main;
     width: 100%;

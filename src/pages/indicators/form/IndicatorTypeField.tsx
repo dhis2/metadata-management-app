@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
-import { required } from '../../../lib'
+import { required, SECTIONS_MAP } from '../../../lib'
 
 type IndicatorTypeFieldsProps = {
     helpText?: string
@@ -23,7 +23,7 @@ export const IndicatorTypeField = ({ helpText }: IndicatorTypeFieldsProps) => {
                     order: 'displayName:iasc',
                 },
             }}
-            refreshResource="indicatorTypes"
+            section={SECTIONS_MAP.indicatorType}
         />
     )
 }

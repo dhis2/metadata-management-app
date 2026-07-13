@@ -2,6 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import { Button, ButtonStrip } from '@dhis2/ui'
 import { IconInfo16 } from '@dhis2/ui-icons'
 import React from 'react'
+import { useForm, useFormState } from 'react-final-form'
 import css from './Drawer.module.css'
 
 export type DrawerFormFooterProps = {
@@ -71,3 +72,29 @@ export const DrawerFormFooter: React.FC<DrawerFormFooterProps> = ({
         )}
     </div>
 )
+
+export const AddNewDrawerFormFooter = ({
+    onCancel,
+    newItemFormFooterInfo,
+}: {
+    onCancel: () => void
+    newItemFormFooterInfo?: string
+}) => {
+    const { submitting } = useFormState({
+        subscription: { submitting: true },
+    })
+    const form = useForm()
+
+    return (
+        <div className={css.drawerFooterInner}>
+            <DrawerFormFooter
+                submitLabel={i18n.t('Save and close')}
+                cancelLabel={i18n.t('Cancel')}
+                submitting={submitting ?? false}
+                onSubmitClick={() => form.submit()}
+                onCancelClick={onCancel}
+                infoMessage={newItemFormFooterInfo}
+            />
+        </div>
+    )
+}

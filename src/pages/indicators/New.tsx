@@ -45,10 +45,11 @@ export const Component = ({
                     >
                         <SectionedFormLayout
                             sidebar={<DefaultSectionedFormSidebar />}
+                            footer={footer}
                         >
                             <form onSubmit={handleSubmit}>
                                 <IndicatorFormFields />
-                                {footer ?? (
+                                {!footer && (
                                     <DefaultFormFooter cancelTo="/indicators" />
                                 )}
                             </form>

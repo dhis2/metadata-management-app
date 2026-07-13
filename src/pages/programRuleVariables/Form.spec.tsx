@@ -1,4 +1,10 @@
-import { render, waitFor, type RenderResult } from '@testing-library/react'
+import {
+    act,
+    render,
+    waitFor,
+    within,
+    type RenderResult,
+} from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/programRuleVariablesSchema.json'
@@ -308,6 +314,34 @@ describe('Program Rule Variable form tests', () => {
                     'Required',
                     screen
                 )
+            })
+        })
+
+        describe('Program "Add new" button', () => {
+            it('should open a new tab when clicking "Add new" for programs instead of opening a drawer', async () => {
+                const { screen } = await renderForm()
+
+                const windowOpenSpy = jest
+                    .spyOn(window, 'open')
+                    .mockImplementation(() => null)
+
+                // Flush the useEffect so LINK_ONLY_SECTIONS check runs and NewItemForm stays undefined
+                await act(async () => {})
+
+                const programField = screen.getByTestId('program-field')
+                const addNewButton =
+                    within(programField).getAllByRole('button')[1]
+                await userEvent.click(addNewButton)
+
+                expect(windowOpenSpy).toHaveBeenCalledWith(
+                    expect.stringContaining('/programs/new'),
+                    '_blank'
+                )
+                expect(
+                    screen.queryByText('Add new Program')
+                ).not.toBeInTheDocument()
+
+                windowOpenSpy.mockRestore()
             })
         })
     })

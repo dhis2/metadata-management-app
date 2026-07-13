@@ -24,7 +24,19 @@ import { eventProgramInitialValues, eventProgramValidate } from './form'
 import { EventProgramFormContents } from './form/eventProgram/EventProgramFormContents'
 import { EventProgramFormDescriptor } from './form/eventProgram/eventProgramFormDescriptor'
 
-const useOnSubmitEventProgram = (): EnhancedOnSubmit<ProgramValues> => {
+type NewEventProgramOptions = {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+}
+
+const useOnSubmitEventProgram = ({
+    onSubmitted,
+    redirectOnSubmitted = true,
+}: Pick<
+    NewEventProgramOptions,
+    'onSubmitted' | 'redirectOnSubmitted'
+>): EnhancedOnSubmit<ProgramValues> => {
     const createProgramStage = useCreateModel(
         SECTIONS_MAP.programStage.namePlural
     )
@@ -70,15 +82,18 @@ const useOnSubmitEventProgram = (): EnhancedOnSubmit<ProgramValues> => {
                 ],
             })
 
-            const navTo = defaultNavigateTo({
-                section: SECTIONS_MAP.program,
-                submitAction: options?.submitAction,
-                responseData: programResponse.data,
-                searchParams,
-            })
-            if (navTo) {
-                navigate(navTo)
+            if (redirectOnSubmitted) {
+                const navTo = defaultNavigateTo({
+                    section: SECTIONS_MAP.program,
+                    submitAction: options?.submitAction,
+                    responseData: programResponse.data,
+                    searchParams,
+                })
+                if (navTo) {
+                    navigate(navTo)
+                }
             }
+            onSubmitted?.()
             return programResponse
         },
         [
@@ -88,12 +103,21 @@ const useOnSubmitEventProgram = (): EnhancedOnSubmit<ProgramValues> => {
             navigate,
             saveAlert,
             searchParams,
+            onSubmitted,
+            redirectOnSubmitted,
         ]
     )
 }
 
-export const NewEventProgram = () => {
-    const onSubmit = useOnSubmitEventProgram()
+export const NewEventProgram = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: NewEventProgramOptions = {}) => {
+    const onSubmit = useOnSubmitEventProgram({
+        onSubmitted,
+        redirectOnSubmitted,
+    })
     return (
         <FormBase
             onSubmit={onSubmit}
@@ -101,6 +125,7 @@ export const NewEventProgram = () => {
             validate={eventProgramValidate}
             subscription={{}}
             mutators={{ ...arrayMutators }}
+            section={SECTIONS_MAP.program}
         >
             {({ handleSubmit }) => {
                 return (
@@ -109,10 +134,11 @@ export const NewEventProgram = () => {
                     >
                         <SectionedFormLayout
                             sidebar={<DefaultSectionedFormSidebar />}
+                            footer={footer}
                         >
                             <form onSubmit={handleSubmit}>
                                 <EventProgramFormContents />
-                                <DefaultFormFooter />
+                                {!footer && <DefaultFormFooter />}
                             </form>
                             <SectionedFormErrorNotice />
                         </SectionedFormLayout>

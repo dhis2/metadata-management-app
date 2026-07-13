@@ -2,18 +2,16 @@ import i18n from '@dhis2/d2-i18n'
 import { Button, ButtonStrip, Checkbox } from '@dhis2/ui'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import React, { useEffect, useMemo, useState } from 'react'
-import { useForm, useFormState } from 'react-final-form'
 import { useHref } from 'react-router-dom'
 import { useDebouncedCallback } from 'use-debounce'
 import { getSectionNewPath } from '../../../lib'
 import { useBoundResourceQueryFn } from '../../../lib/query/useBoundQueryFn'
-import type { SectionFormValues } from '../../../pages/dataSets/form/dataEntryForm/sectionForm'
 import { PlainResourceQuery } from '../../../types'
 import { PagedResponse } from '../../../types/generated'
 import { DisplayableModel } from '../../../types/models'
 import { ModelSection } from '../../../types/section'
 import {
-    DrawerFormFooter,
+    AddNewDrawerFormFooter,
     DrawerHeader,
     DrawerPortal,
     DrawerRoot,
@@ -46,6 +44,7 @@ export type ModelTranferProps<
     filterUnassignedTo?: string
     NewItemForm?: NewItemFormComponent
     newItemFormHeader?: string
+    newItemFormFooterInfo?: string
 }
 
 export type ModelTransferPropsFor<
@@ -99,6 +98,10 @@ export const ModelTransferFrom = <
             newItemFormHeader={i18n.t('Add new {{name}}', {
                 name: transferSection.title,
             })}
+            newItemFormFooterInfo={i18n.t(
+                "Saving this {{name}} won't apply unsaved changes in the form below.",
+                { name: transferSection.title.toLowerCase() }
+            )}
             NewItemForm={NewItemForm}
             {...rest}
         />
@@ -120,6 +123,7 @@ export const ModelTransfer = <
     filterUnassignedTo,
     NewItemForm,
     newItemFormHeader,
+    newItemFormFooterInfo,
     height = '360px',
     optionsWidth = '480px',
     selectedWidth = '480px',
@@ -219,6 +223,7 @@ export const ModelTransfer = <
                         newLink={newLink}
                         NewItemForm={NewItemForm}
                         newItemFormHeader={newItemFormHeader}
+                        newItemFormFooterInfo={newItemFormFooterInfo}
                     />
                 )
             }
@@ -239,11 +244,13 @@ export const DefaultTransferLeftFooter = ({
     newLink,
     NewItemForm,
     newItemFormHeader,
+    newItemFormFooterInfo,
 }: {
     onRefreshClick: () => void
     newLink: string
     NewItemForm?: NewItemFormComponent
     newItemFormHeader?: string
+    newItemFormFooterInfo?: string
 }) => {
     const [drawerOpen, setDrawerOpen] = useState(false)
     return (
@@ -284,37 +291,12 @@ export const DefaultTransferLeftFooter = ({
                         footer={
                             <AddNewDrawerFormFooter
                                 onCancel={() => setDrawerOpen(false)}
+                                newItemFormFooterInfo={newItemFormFooterInfo}
                             />
                         }
                     />
                 </DrawerPortal>
             )}
         </>
-    )
-}
-
-const AddNewDrawerFormFooter = ({ onCancel }: { onCancel: () => void }) => {
-    const { submitting } = useFormState({
-        subscription: { submitting: true, values: true },
-    })
-    const form = useForm<SectionFormValues>()
-
-    return (
-        <div
-            style={{
-                position: 'sticky',
-                bottom: 0,
-                zIndex: 1,
-                marginTop: 'var(--spacers-dp16)',
-            }}
-        >
-            <DrawerFormFooter
-                submitLabel={i18n.t('Save and close')}
-                cancelLabel={i18n.t('Cancel')}
-                submitting={submitting ?? false}
-                onSubmitClick={() => form.submit()}
-                onCancelClick={onCancel}
-            />
-        </div>
     )
 }

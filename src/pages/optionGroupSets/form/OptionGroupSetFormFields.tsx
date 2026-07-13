@@ -14,7 +14,7 @@ import {
     StandardFormSectionTitle,
 } from '../../../components'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
-import { useSchemaSectionHandleOrThrow } from '../../../lib'
+import { useSchemaSectionHandleOrThrow, SECTIONS_MAP } from '../../../lib'
 import styles from './OptionGroupSetFormFields.module.css'
 
 function OptionGroupSetFormFields() {
@@ -85,7 +85,7 @@ function OptionGroupSetFormFields() {
                             optionGroupsInput.onChange([])
                         }}
                         dataTest="formfields-optionSet"
-                        refreshResource="optionSets"
+                        section={SECTIONS_MAP.optionSet}
                     />
                 </StandardFormField>
 

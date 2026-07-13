@@ -45,6 +45,14 @@
     width: 80%;
 }
 
+.drawerTertiary {
+    width: 70%;
+}
+
+.drawerQuaternary {
+    width: 60%;
+}
+
 .drawer.open {
     transform: translateX(0);
 }
@@ -141,6 +149,12 @@
     display: flex;
     align-items: center;
     gap: var(--spacers-dp16);
+}
+
+.drawerFooterInner {
+    position: 'sticky';
+    bottom: 0;
+    z-index: 1;
 }
 
 .drawerFooterActions {

@@ -3,7 +3,15 @@ import { useLocationSearchState } from '../../lib'
 import { NewEventProgram } from './NewEventProgram'
 import { NewTrackerProgram } from './NewTrackerProgram'
 
-export const Component = () => {
+export const Component = ({
+    onSubmitted,
+    footer,
+    redirectOnSubmitted = true,
+}: {
+    readonly onSubmitted?: () => void
+    readonly footer?: React.ReactNode
+    readonly redirectOnSubmitted?: boolean
+} = {}) => {
     const locationState = useLocationSearchState()
     const queryParams = new URLSearchParams(locationState?.search)
     const programType =
@@ -11,8 +19,16 @@ export const Component = () => {
         ('WITHOUT_REGISTRATION' as 'WITHOUT_REGISTRATION' | 'WITH_REGISTRATION')
 
     return programType === 'WITH_REGISTRATION' ? (
-        <NewTrackerProgram />
+        <NewTrackerProgram
+            onSubmitted={onSubmitted}
+            footer={footer}
+            redirectOnSubmitted={redirectOnSubmitted}
+        />
     ) : (
-        <NewEventProgram />
+        <NewEventProgram
+            onSubmitted={onSubmitted}
+            footer={footer}
+            redirectOnSubmitted={redirectOnSubmitted}
+        />
     )
 }
