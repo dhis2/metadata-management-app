@@ -151,6 +151,7 @@ export const EnrollmentDataFormContents = React.memo(
                 >
                     <ModelTransferFrom
                         transferSection={SECTIONS_MAP.trackedEntityAttribute}
+                        disableNewItemForm
                         selected={input.value.map((attribute) => {
                             const tea = attribute.trackedEntityAttribute
                             return {

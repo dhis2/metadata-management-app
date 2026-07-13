@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-06-29T13:37:24.549Z\n"
-"PO-Revision-Date: 2026-06-29T13:37:24.550Z\n"
+"POT-Creation-Date: 2026-07-13T09:09:18.438Z\n"
+"PO-Revision-Date: 2026-07-13T09:09:18.438Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -868,6 +868,15 @@ msgstr "Merging cannot be undone"
 msgid "Confirmation code does not match"
 msgstr "Confirmation code does not match"
 
+msgid "Move data values to the target data element"
+msgstr "Move data values to the target data element"
+
+msgid "Delete the source data values"
+msgstr "Delete the source data values"
+
+msgid "At least one source must be specified to merge"
+msgstr "At least one source must be specified to merge"
+
 msgid "Target must be specified to merge"
 msgstr "Target must be specified to merge"
 
@@ -909,6 +918,9 @@ msgstr "Loading..."
 
 msgid "Add new {{name}}"
 msgstr "Add new {{name}}"
+
+msgid "Saving this {{name}} won't apply unsaved changes in the form below."
+msgstr "Saving this {{name}} won't apply unsaved changes in the form below."
 
 msgid "Available {{name}}"
 msgstr "Available {{name}}"
@@ -2846,6 +2858,15 @@ msgstr "Set up the information for this data element group."
 msgid "Choose the data elements to include in this data element group."
 msgstr "Choose the data elements to include in this data element group."
 
+msgid "Configure data element merge"
+msgstr "Configure data element merge"
+
+msgid "The data element merge operation is complete."
+msgstr "The data element merge operation is complete."
+
+msgid "All selected data elements were merged successfully."
+msgstr "All selected data elements were merged successfully."
+
 msgid "Aggregation level(s)"
 msgstr "Aggregation level(s)"
 
@@ -2950,6 +2971,54 @@ msgstr ""
 
 msgid "Choose the groups this data element belongs to."
 msgstr "Choose the groups this data element belongs to."
+
+msgid ""
+"The merge operation will merge the source data elements into\n"
+"                the target data element. One or many source data elements\n"
+"                can be specified"
+msgstr ""
+"The merge operation will merge the source data elements into\n"
+"                the target data element. One or many source data elements\n"
+"                can be specified"
+
+msgid ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the data element metadata associations to "
+"the\n"
+"                source data elements over to the target data element."
+msgstr ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the data element metadata associations to "
+"the\n"
+"                source data elements over to the target data element."
+
+msgid "Data elements to be merged (source)"
+msgstr "Data elements to be merged (source)"
+
+msgid "Select data elements to merge"
+msgstr "Select data elements to merge"
+
+msgid "Data element to merge into (target)"
+msgstr "Data element to merge into (target)"
+
+msgid "Select data element to merge into"
+msgstr "Select data element to merge into"
+
+msgid "No data elements available. Remove one from source."
+msgstr "No data elements available. Remove one from source."
+
+msgid "What should happen to the source data elements after the merge is complete?"
+msgstr "What should happen to the source data elements after the merge is complete?"
+
+msgid "What should happen to the data values recorded for the source data elements?"
+msgstr "What should happen to the data values recorded for the source data elements?"
+
+msgid ""
+"Where source and target have the same data value, the most recently updated "
+"is kept."
+msgstr ""
+"Where source and target have the same data value, the most recently updated "
+"is kept."
 
 msgid "Error"
 msgstr "Error"
@@ -5538,6 +5607,9 @@ msgstr "Configure data collection for events in this program stage."
 
 msgid "Configure data collection for events in this program."
 msgstr "Configure data collection for events in this program."
+
+msgid "Add new data element"
+msgstr "Add new data element"
 
 msgid "Configure data items"
 msgstr "Configure data items"

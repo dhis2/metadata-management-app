@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { Button, ButtonStrip, Checkbox } from '@dhis2/ui'
 import { useInfiniteQuery } from '@tanstack/react-query'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useHref } from 'react-router-dom'
 import { useDebouncedCallback } from 'use-debounce'
 import { getSectionNewPath } from '../../../lib'
@@ -35,6 +35,31 @@ export type NewItemFormComponent = React.ComponentType<{
     redirectOnSubmitted?: boolean
 }>
 
+/** Lazily loads a "New" page's exported `Component` for use as a drawer's
+ *  `NewItemForm`. Pass `undefined` (e.g. when the drawer shouldn't be
+ *  offered in the current context) to skip loading and clear it. */
+export function useNewItemFormComponent(
+    loadComponent:
+        | (() => Promise<{ Component: NewItemFormComponent }>)
+        | undefined
+) {
+    const [NewItemForm, setNewItemForm] = useState<
+        NewItemFormComponent | undefined
+    >()
+
+    useEffect(() => {
+        if (!loadComponent) {
+            setNewItemForm(undefined)
+            return
+        }
+        loadComponent()
+            .then((m) => setNewItemForm(() => m.Component))
+            .catch(() => setNewItemForm(undefined))
+    }, [loadComponent])
+
+    return NewItemForm
+}
+
 export type ModelTranferProps<
     TModel extends DisplayableModel,
     TModelData
@@ -60,6 +85,11 @@ export type ModelTransferPropsFor<
     | 'NewItemForm'
 > & {
     transferSection: ModelSection
+    /** Skip loading the "Add new" drawer form and fall back to opening the
+     *  new-item page in a separate tab. Useful when embedding the transfer
+     *  in a context (e.g. a tracker program form) that shouldn't nest a
+     *  drawer within a drawer. */
+    disableNewItemForm?: boolean
 }
 
 export const ModelTransferFrom = <
@@ -67,19 +97,16 @@ export const ModelTransferFrom = <
     TModelData extends DisplayableModel = TModel
 >({
     transferSection,
+    disableNewItemForm = false,
     ...rest
 }: ModelTransferPropsFor<TModel, TModelData>) => {
-    const [NewItemForm, setNewItemForm] = useState<
-        NewItemFormComponent | undefined
-    >()
-
-    useEffect(() => {
-        import(`../../../pages/${transferSection.namePlural}/New`)
-            .then((m: { Component: NewItemFormComponent }) =>
-                setNewItemForm(() => m.Component)
-            )
-            .catch(() => setNewItemForm(undefined))
-    }, [transferSection.namePlural])
+    const loadComponent = useCallback(
+        () => import(`../../../pages/${transferSection.namePlural}/New`),
+        [transferSection.namePlural]
+    )
+    const NewItemForm = useNewItemFormComponent(
+        disableNewItemForm ? undefined : loadComponent
+    )
 
     return (
         <ModelTransfer

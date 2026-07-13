@@ -30,7 +30,7 @@ function DefaultFormContents({
     const listPath = `/${getSectionPath(section)}`
 
     return (
-        <div data-test={dataTest}>
+        <div data-test={dataTest} className={classes.formWrapper}>
             <div className={classes.form}>
                 {showTranslatedFieldsNotice && <TranslatedFieldsNoticeBox />}
                 {showCloneNotice && <CloneNoticeBox section={section} />}

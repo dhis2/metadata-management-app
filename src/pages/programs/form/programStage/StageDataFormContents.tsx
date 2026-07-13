@@ -8,16 +8,16 @@ import {
     TableHead,
     TableRow,
 } from '@dhis2/ui'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
 import { Field as FieldRFF, useField } from 'react-final-form'
 import {
     ModelTransferField,
-    NewItemFormComponent,
     RenderingOptionsSelect,
     SectionedFormSection,
     StandardFormSectionDescription,
     StandardFormSectionTitle,
     StandardFormSubsectionTitle,
+    useNewItemFormComponent,
 } from '../../../../components'
 import { DataElement } from '../../../../types/generated'
 
@@ -65,19 +65,13 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
         validateFields: [],
     })
 
-    const [NewItemForm, setNewItemForm] = useState<
-        NewItemFormComponent | undefined
-    >()
-
-    useEffect(() => {
-        if (!isTrackerProgram) {
-            import('../../../dataElements/New')
-                .then((m: { Component: NewItemFormComponent }) => {
-                    setNewItemForm(() => m.Component)
-                })
-                .catch(() => setNewItemForm(undefined))
-        }
-    }, [isTrackerProgram])
+    const loadDataElementForm = useCallback(
+        () => import('../../../dataElements/New'),
+        []
+    )
+    const NewItemForm = useNewItemFormComponent(
+        isTrackerProgram ? undefined : loadDataElementForm
+    )
 
     const stageHasDateDataElements = input.value.some(
         (psde) => getValueType(psde) === 'DATE'
