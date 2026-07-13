@@ -807,6 +807,38 @@ const PROGRAM_RULE_VARIABLE_ELEMENTS: Element[] = PROGRAM_RULE_VARIABLE_IDS.map(
     (id) => ({ id, displayName: id })
 )
 
+const ENROLLMENT_ONLY_VARIABLE_IDS = new Set([
+    'V{enrollment_date}',
+    'V{enrollment_status}',
+    'V{incident_date}',
+])
+
+const filterEnrollmentVariables = (
+    elements: Element[],
+    isEventProgram: boolean
+) =>
+    isEventProgram
+        ? elements.filter(
+              (element) => !ENROLLMENT_ONLY_VARIABLE_IDS.has(element.id)
+          )
+        : elements
+
+const withFilteredVariables = (
+    elementTypes: ElementType[],
+    isEventProgram: boolean
+): ElementType[] =>
+    elementTypes.map((elementType) =>
+        elementType.type === 'variables'
+            ? {
+                  ...elementType,
+                  elements: filterEnrollmentVariables(
+                      elementType.elements ?? [],
+                      isEventProgram
+                  ),
+              }
+            : elementType
+    )
+
 const PROGRAM_RULE_FUNCTION_ELEMENTS = [
     { id: 'd2:ceil( <number> )', displayName: 'd2:ceil( <number> )' },
     { id: 'd2:floor( <number> )', displayName: 'd2:floor( <number> )' },
@@ -1017,15 +1049,23 @@ programIndicatorElementTypesCount[1] = {
 
 export const getElementTypes = (
     type: ExpressionBuilderType,
-    { aggregationType }: { aggregationType: string | undefined }
+    {
+        aggregationType,
+        isEventProgram = false,
+    }: {
+        aggregationType: string | undefined
+        isEventProgram?: boolean
+    }
 ): ElementType[] => {
     if (type === 'programIndicator') {
-        return aggregationType === 'COUNT'
-            ? programIndicatorElementTypesCount
-            : programIndicatorElementTypes
+        const elementTypes =
+            aggregationType === 'COUNT'
+                ? programIndicatorElementTypesCount
+                : programIndicatorElementTypes
+        return withFilteredVariables(elementTypes, isEventProgram)
     }
     if (type === 'programRule') {
-        return programRuleElementTypes
+        return withFilteredVariables(programRuleElementTypes, isEventProgram)
     }
     if (type === 'indicator') {
         return indicatorElementTypes
