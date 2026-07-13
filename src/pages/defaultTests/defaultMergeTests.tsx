@@ -32,7 +32,7 @@ const pickFirstSource = async (screen: RenderResult) => {
     const option = (
         await within(menu).findAllByTestId('dhis2-uicore-multiselectoption')
     )[0]
-    const id = option.getAttribute('data-value')
+    const id = option.dataset.value
     const label = option.textContent
     await userEvent.click(within(option).getByRole('checkbox'))
     await closeSelect(sourcesField)
@@ -47,7 +47,7 @@ const pickTarget = async (screen: RenderResult) => {
     const option = (
         await within(menu).findAllByTestId('dhis2-uicore-singleselectoption')
     )[0]
-    const id = option.getAttribute('data-value')
+    const id = option.dataset.value
     const label = option.textContent
     await userEvent.click(option)
     return { id, label }
