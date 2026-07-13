@@ -1,3 +1,10 @@
+## [0.166.1](https://github.com/dhis2/metadata-management-app/compare/v0.166.0...v0.166.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* add custom attributes to data set section ([a6f3487](https://github.com/dhis2/metadata-management-app/commit/a6f3487226594fba33d3002b709391591bace3ba))
+
 # [0.166.0](https://github.com/dhis2/metadata-management-app/compare/v0.165.0...v0.166.0) (2026-07-09)
 
 
