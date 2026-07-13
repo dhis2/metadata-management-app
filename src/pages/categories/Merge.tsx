@@ -24,7 +24,7 @@ import {
 
 type CategoryDetails = {
     id: string
-    categoryCombo: { id: string }
+    categoryCombos: { id: string }[]
     categoryOptions: { id: string }[]
 }
 type CategoriesDetailsResponse = { categories: CategoryDetails[] }
@@ -41,7 +41,7 @@ export const useCategoriesDetailsQuery = ({
             {
                 resource: 'categories',
                 params: {
-                    fields: ['id', 'categoryCombo[id]', 'categoryOptions[id]'],
+                    fields: ['id', 'categoryCombos[id]', 'categoryOptions[id]'],
                     filter: [`id:in:[${selectedIdsString}]`],
                     paging: false,
                 },
@@ -89,12 +89,20 @@ export const Component = () => {
             if (!values.target || !values.sources || !categoryDetails) {
                 return undefined
             }
-            // keep target as poin of reference
+            // keep target as point of reference
             const targetCategory = categoryDetails[values.target]
             const targetCategoryOptions = targetCategory.categoryOptions
                 .map((co) => co.id)
                 .sort()
                 .join(',')
+            const allCategoryCombosSet = targetCategory.categoryCombos.reduce(
+                (acc, cc) => {
+                    acc.add(cc.id)
+                    return acc
+                },
+                new Set<string>()
+            )
+            let overlap = false
             for (const category of values.sources) {
                 const sourceCategory = categoryDetails[category]
                 const sourceCategoryOptions = sourceCategory.categoryOptions
@@ -109,18 +117,23 @@ export const Component = () => {
                         'Category options of source and target categories do not match'
                     )
                 }
-                // if category combos are not the same
-                if (
-                    sourceCategory.categoryCombo.id !==
-                    targetCategory.categoryCombo.id
-                ) {
+                // check for overlap in category combos
+                for (const sourceCategoryCombo of sourceCategory.categoryCombos) {
+                    if (allCategoryCombosSet.has(sourceCategoryCombo.id)) {
+                        overlap = true
+                        break
+                    } else {
+                        allCategoryCombosSet.add(sourceCategoryCombo.id)
+                    }
+                }
+                if (overlap) {
                     setExtraValidationResult(false)
                     return i18n.t(
-                        'Category combos of source and target categories do not match'
+                        'Categories must have unique, non-overlapping category combos'
                     )
                 }
             }
-            // if category combo of any items do not match
+
             setExtraValidationResult(true)
             return undefined
         },
