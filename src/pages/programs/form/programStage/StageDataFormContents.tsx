@@ -111,7 +111,6 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
                                 optionSet: existing.optionSet,
                             }
                         }
-                        // The query fetches valueType and optionSet alongside id/displayName
                         const dataElement = de as DataElement
                         return {
                             dataElement: {

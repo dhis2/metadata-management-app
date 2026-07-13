@@ -20,12 +20,7 @@ type ModelTransferFieldProps = {
     label?: string
     filterUnassignedTo?: string
     transferSection?: ModelSection
-    /** Override the selected items derived from the form field value. Useful when
-     *  the field stores a richer type (e.g. ProgramStageDataElement[]) and the
-     *  transfer only needs the inner DisplayableModel slice. */
     selected?: DisplayableModel[]
-    /** Override the default onChange that writes directly to the form field.
-     *  Required when the field stores a richer type than DisplayableModel[]. */
     onChange?: (params: { selected: DisplayableModel[] }) => void
     NewItemForm?: NewItemFormComponent
     newItemFormHeader?: string

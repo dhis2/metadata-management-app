@@ -35,9 +35,6 @@ export type NewItemFormComponent = React.ComponentType<{
     redirectOnSubmitted?: boolean
 }>
 
-/** Lazily loads a "New" page's exported `Component` for use as a drawer's
- *  `NewItemForm`. Pass `undefined` (e.g. when the drawer shouldn't be
- *  offered in the current context) to skip loading and clear it. */
 export function useNewItemFormComponent(
     loadComponent:
         | (() => Promise<{ Component: NewItemFormComponent }>)
@@ -85,10 +82,6 @@ export type ModelTransferPropsFor<
     | 'NewItemForm'
 > & {
     transferSection: ModelSection
-    /** Skip loading the "Add new" drawer form and fall back to opening the
-     *  new-item page in a separate tab. Useful when embedding the transfer
-     *  in a context (e.g. a tracker program form) that shouldn't nest a
-     *  drawer within a drawer. */
     disableNewItemForm?: boolean
 }
 
