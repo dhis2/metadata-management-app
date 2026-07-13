@@ -58,6 +58,29 @@ export const DefaultMergeFormContents = (
     )
 }
 
+const getTooltipContent = ({
+    failsExtraValidation,
+    extraValidationString,
+    sourcesEmpty,
+    targetInputEmpty,
+}: {
+    failsExtraValidation: boolean
+    extraValidationString: string | undefined
+    sourcesEmpty: boolean
+    targetInputEmpty: boolean
+}) => {
+    if (failsExtraValidation) {
+        return extraValidationString
+    }
+    if (sourcesEmpty) {
+        return i18n.t('At least one source must be specified to merge')
+    }
+    if (targetInputEmpty) {
+        return i18n.t('Target must be specified to merge')
+    }
+    return i18n.t('Correct confirmation code must be entered to merge')
+}
+
 const TooltipWrapper = ({
     children,
     codeConfirmInvalid,
@@ -79,13 +102,12 @@ const TooltipWrapper = ({
     ) {
         return children
     }
-    const content = failsExtraValidation
-        ? extraValidationString
-        : sourcesEmpty
-        ? i18n.t('At least one source must be specified to merge')
-        : targetInputEmpty
-        ? i18n.t('Target must be specified to merge')
-        : i18n.t('Correct confirmation code must be entered to merge')
+    const content = getTooltipContent({
+        failsExtraValidation,
+        extraValidationString,
+        sourcesEmpty,
+        targetInputEmpty,
+    })
 
     return <Tooltip content={content}>{children}</Tooltip>
 }
