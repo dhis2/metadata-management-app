@@ -48,14 +48,17 @@ export const StageProgramField = ({
                 />
                 {isEditing && (
                     <Tooltip content={i18n.t('View program')}>
-                        <Button
-                            secondary
-                            dataTest={`${DATA_TEST}-view-link`}
-                            icon={<IconLaunch16 />}
-                            onClick={() => {
-                                window.open(programHref, '_blank')
-                            }}
-                        ></Button>
+                        <a
+                            href={programHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Button
+                                secondary
+                                dataTest={`${DATA_TEST}-view-link`}
+                                icon={<IconLaunch16 />}
+                            />
+                        </a>
                     </Tooltip>
                 )}
             </div>
