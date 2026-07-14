@@ -9,7 +9,7 @@ const getSourcesField = (screen: RenderResult) =>
     screen.getByTestId(SOURCES_TEST_ID)
 const getTargetField = (screen: RenderResult) =>
     screen.getByTestId(TARGET_TEST_ID)
-const getMergeButton = (screen: RenderResult) =>
+export const getMergeButton = (screen: RenderResult) =>
     screen.getByRole('button', { name: 'Merge' })
 
 const openSelect = async (container: HTMLElement, screen: RenderResult) => {
@@ -26,7 +26,7 @@ const closeSelect = async (container: HTMLElement) => {
 }
 
 // picks the first available source, returns its id and displayed label
-const pickFirstSource = async (screen: RenderResult) => {
+export const pickFirstSource = async (screen: RenderResult) => {
     const sourcesField = getSourcesField(screen)
     const menu = await openSelect(sourcesField, screen)
     const option = (
@@ -41,7 +41,7 @@ const pickFirstSource = async (screen: RenderResult) => {
 
 // picks the first available target, returns its id and displayed label
 // (single-select closes itself on selection, unlike multi-select)
-const pickTarget = async (screen: RenderResult) => {
+export const pickTarget = async (screen: RenderResult) => {
     const targetField = getTargetField(screen)
     const menu = await openSelect(targetField, screen)
     const option = (

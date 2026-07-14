@@ -4,6 +4,7 @@ import { useFilterKeys } from '../useFilterKeys'
 import { FormNameFilter } from './FormNameFilter'
 import { IndicatorFilter } from './IndicatorFilter'
 import { ProgramTypeFilter } from './ProgramTypeFilter'
+import { TrackerProgramFilter } from './TrackerProgramFilter'
 import {
     AggregationTypeFilter,
     CategoryComboFilter,
@@ -62,6 +63,7 @@ const filterKeyToComponentMap: FilterKeyToComponentMap = {
     organisationUnitGroup: OrganisationUnitGroupFilter,
     organisationUnitGroupSet: OrganisationUnitGroupSetFilter,
     program: ProgramFilter,
+    trackerProgram: TrackerProgramFilter,
     programType: ProgramTypeFilter,
     programIndicator: ProgramIndicatorFilter,
     programIndicatorGroup: ProgramIndicatorGroupFilter,
