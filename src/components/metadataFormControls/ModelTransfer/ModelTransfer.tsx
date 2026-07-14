@@ -49,9 +49,21 @@ export function useNewItemFormComponent(
             setNewItemForm(undefined)
             return
         }
+        let cancelled = false
         loadComponent()
-            .then((m) => setNewItemForm(() => m.Component))
-            .catch(() => setNewItemForm(undefined))
+            .then((m) => {
+                if (!cancelled) {
+                    setNewItemForm(() => m.Component)
+                }
+            })
+            .catch(() => {
+                if (!cancelled) {
+                    setNewItemForm(undefined)
+                }
+            })
+        return () => {
+            cancelled = true
+        }
     }, [loadComponent])
 
     return NewItemForm

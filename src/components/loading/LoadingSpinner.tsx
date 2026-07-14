@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './Loader.module.css'
 
 export const LoadingSpinner = ({
-    centered = true,
+    centered = false,
     ...rest
 }: {
     centered?: boolean

@@ -2636,6 +2636,15 @@ msgstr "Mandatory: all objects must have a value for this attribute"
 msgid "Unique values only"
 msgstr "Unique values only"
 
+msgid "Configure category merge"
+msgstr "Configure category merge"
+
+msgid "The category merge operation is complete."
+msgstr "The category merge operation is complete."
+
+msgid "All selected categories were merged successfully."
+msgstr "All selected categories were merged successfully."
+
 msgid "Set up the basic information for this category."
 msgstr "Set up the basic information for this category."
 
@@ -2650,6 +2659,45 @@ msgstr "Show as data dimension in analytics apps"
 
 msgid "Choose the options to include in this category."
 msgstr "Choose the options to include in this category."
+
+msgid ""
+"The merge operation will merge the source categories into\n"
+"                the target category. One or many source categories\n"
+"                can be specified"
+msgstr ""
+"The merge operation will merge the source categories into\n"
+"                the target category. One or many source categories\n"
+"                can be specified"
+
+msgid ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the category metadata associations to the\n"
+"                source categories over to the target category."
+msgstr ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the category metadata associations to the\n"
+"                source categories over to the target category."
+
+msgid "Categories to be merged (source)"
+msgstr "Categories to be merged (source)"
+
+msgid "Select categories to merge"
+msgstr "Select categories to merge"
+
+msgid "Category to merge into (target)"
+msgstr "Category to merge into (target)"
+
+msgid "Select category to merge into"
+msgstr "Select category to merge into"
+
+msgid "No categories available. Remove one from source."
+msgstr "No categories available. Remove one from source."
+
+msgid "Merge settings"
+msgstr "Merge settings"
+
+msgid "What should happen to the source categories after the merge is complete?"
+msgstr "What should happen to the source categories after the merge is complete?"
 
 msgid "More than 4 Categories"
 msgstr "More than 4 Categories"
@@ -2812,9 +2860,6 @@ msgstr "Select category option to merge into"
 
 msgid "No category options available. Remove one from source."
 msgstr "No category options available. Remove one from source."
-
-msgid "Merge settings"
-msgstr "Merge settings"
 
 msgid ""
 "What should happen to the source category options after the merge is "
