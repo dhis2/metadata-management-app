@@ -4,13 +4,9 @@ import { ModelTransferField } from '../../metadataFormControls'
 
 type GroupMembershipFieldProps = Readonly<{
     resource: string
-    hideAddNew?: boolean
 }>
 
-export function GroupMembershipField({
-    resource,
-    hideAddNew,
-}: GroupMembershipFieldProps) {
+export function GroupMembershipField({ resource }: GroupMembershipFieldProps) {
     return (
         <ModelTransferField
             dataTest={`formfields-${resource}`}
@@ -25,7 +21,7 @@ export function GroupMembershipField({
             rightHeader={i18n.t('Selected groups')}
             filterPlaceholder={i18n.t('Filter available groups')}
             filterPlaceholderPicked={i18n.t('Filter selected groups')}
-            hideAddNew={hideAddNew}
+            leftFooter={<></>}
         />
     )
 }

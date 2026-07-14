@@ -156,10 +156,7 @@ export function DataElementFormFields() {
                 </StandardFormSectionDescription>
 
                 <StandardFormField>
-                    <GroupMembershipField
-                        resource="dataElementGroups"
-                        hideAddNew={true}
-                    />
+                    <GroupMembershipField resource="dataElementGroups" />
                 </StandardFormField>
             </StandardFormSection>
 
