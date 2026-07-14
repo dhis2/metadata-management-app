@@ -136,7 +136,7 @@ const expectTransferFieldToHideAddNewButton = (
     screen: RenderResult
 ) => {
     const transfer = screen.getByTestId(transferTestId)
-    expect(within(transfer).getByText('Refresh list')).toBeVisible()
+    expect(within(transfer).queryByText('Refresh list')).not.toBeInTheDocument()
     expect(within(transfer).queryByText('Add new')).not.toBeInTheDocument()
 }
 
