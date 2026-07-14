@@ -1,8 +1,8 @@
 import i18n from '@dhis2/d2-i18n'
 import { InputFieldFF } from '@dhis2/ui'
-import React from 'react'
+import React, { useState } from 'react'
 import { Field as FieldRFF } from 'react-final-form'
-import { SchemaSection } from '../../../lib'
+import { SchemaSection, getTrailingWhitespaceWarning } from '../../../lib'
 import { useValidator } from '../../../lib/models/useFieldValidators'
 
 export function CodeField({
@@ -19,21 +19,39 @@ export function CodeField({
     disabled?: boolean
 }) {
     const validator = useValidator({ schemaSection, property: 'code', modelId })
+    const [warning, setWarning] = useState<string | undefined>()
 
     const helpString = helpText || i18n.t('An optional unique identifier.')
 
     return (
         <FieldRFF
-            component={InputFieldFF}
-            dataTest="formfields-code"
-            inputWidth="150px"
             name="code"
-            label={i18n.t('Code')}
-            helpText={helpString}
             validateFields={[]}
             validate={(code?: string) => validator(code)}
-            required={required}
-            disabled={disabled}
-        />
+        >
+            {({ input, meta }) => {
+                const hasBlockingError = meta.touched && meta.invalid
+                return (
+                    <InputFieldFF
+                        input={{
+                            ...input,
+                            onChange: (value: string) => {
+                                input.onChange(value)
+                                setWarning(getTrailingWhitespaceWarning(value))
+                            },
+                        }}
+                        meta={meta}
+                        dataTest="formfields-code"
+                        inputWidth="150px"
+                        label={i18n.t('Code')}
+                        helpText={helpString}
+                        required={required}
+                        disabled={disabled}
+                        validationText={hasBlockingError ? undefined : warning}
+                        warning={!hasBlockingError && !!warning}
+                    />
+                )
+            }}
+        </FieldRFF>
     )
 }
