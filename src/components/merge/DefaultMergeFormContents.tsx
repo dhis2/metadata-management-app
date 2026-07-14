@@ -1,6 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import { Button, ButtonStrip, CircularLoader, Tooltip } from '@dhis2/ui'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useField, useFormState } from 'react-final-form'
 import { useModelSectionHandleOrThrow } from '../../lib'
 import { ModelSection } from '../../types'
@@ -10,11 +10,17 @@ import { StandardFormSectionTitle } from '../standardForm'
 import css from './MergeForm.module.css'
 import { MergeFormValuesBase } from './mergeSchemaBase'
 
+type ExtraValidationFunction = (values: {
+    target: string
+    sources: string[]
+}) => string | undefined
+
 export const DefaultMergeFormContents = (
     props: React.PropsWithChildren<{
         title?: React.ReactNode
         mergeCompleteElement?: React.ReactElement
         mergeInProgressElement?: React.ReactElement
+        extraValidation?: ExtraValidationFunction
     }>
 ) => {
     const { children, title, mergeCompleteElement, mergeInProgressElement } =
@@ -47,9 +53,32 @@ export const DefaultMergeFormContents = (
             {title}
             {children}
             <DefaultFormErrorNotice />
-            <MergeActions />
+            <MergeActions extraValidation={props.extraValidation} />
         </>
     )
+}
+
+const getTooltipContent = ({
+    failsExtraValidation,
+    extraValidationString,
+    sourcesEmpty,
+    targetInputEmpty,
+}: {
+    failsExtraValidation: boolean
+    extraValidationString: string | undefined
+    sourcesEmpty: boolean
+    targetInputEmpty: boolean
+}) => {
+    if (failsExtraValidation) {
+        return extraValidationString
+    }
+    if (sourcesEmpty) {
+        return i18n.t('At least one source must be specified to merge')
+    }
+    if (targetInputEmpty) {
+        return i18n.t('Target must be specified to merge')
+    }
+    return i18n.t('Correct confirmation code must be entered to merge')
 }
 
 const TooltipWrapper = ({
@@ -57,27 +86,52 @@ const TooltipWrapper = ({
     codeConfirmInvalid,
     targetInputEmpty,
     sourcesEmpty,
+    extraValidationString,
 }: React.PropsWithChildren<{
     codeConfirmInvalid: boolean
     targetInputEmpty: boolean
     sourcesEmpty: boolean
+    extraValidationString: string | undefined
 }>) => {
-    if (!codeConfirmInvalid && !targetInputEmpty && !sourcesEmpty) {
+    const failsExtraValidation = Boolean(extraValidationString)
+    if (
+        !codeConfirmInvalid &&
+        !targetInputEmpty &&
+        !sourcesEmpty &&
+        !failsExtraValidation
+    ) {
         return children
     }
-    const content = sourcesEmpty
-        ? i18n.t('At least one source must be specified to merge')
-        : targetInputEmpty
-        ? i18n.t('Target must be specified to merge')
-        : i18n.t('Correct confirmation code must be entered to merge')
+    const content = getTooltipContent({
+        failsExtraValidation,
+        extraValidationString,
+        sourcesEmpty,
+        targetInputEmpty,
+    })
 
     return <Tooltip content={content}>{children}</Tooltip>
 }
 
-export const MergeActions = () => {
+export const MergeActions = ({
+    extraValidation,
+}: {
+    extraValidation?: ExtraValidationFunction
+}) => {
     const codeConfirmInvalid = useField<string[]>('confirmation').meta?.invalid
-    const targetInputEmpty = !useField<string[]>('target').input?.value
-    const sourcesEmpty = !useField<string[]>('sources').input?.value?.length
+    const targetInput = useField<{ id: string }>('target').input?.value
+    const sourcesInputs = useField<{ id: string }[]>('sources').input?.value
+    const targetInputEmpty = !useField<{ id: string }>('target').input?.value
+    const sourcesEmpty =
+        !useField<{ id: string }[]>('sources').input?.value?.length
+    // validate extra validation if provided and source and target are not empty
+    const extraValidationString = useMemo(() => {
+        return extraValidation && !targetInputEmpty && !sourcesEmpty
+            ? extraValidation({
+                  target: targetInput?.id,
+                  sources: sourcesInputs?.map((option) => option.id),
+              })
+            : undefined
+    }, [extraValidation, targetInput, sourcesInputs])
 
     return (
         <ButtonStrip className={css.mergeActions}>
@@ -85,12 +139,16 @@ export const MergeActions = () => {
                 codeConfirmInvalid={codeConfirmInvalid ?? false}
                 targetInputEmpty={targetInputEmpty}
                 sourcesEmpty={sourcesEmpty}
+                extraValidationString={extraValidationString}
             >
                 <Button
                     primary
                     type="submit"
                     disabled={
-                        sourcesEmpty || targetInputEmpty || codeConfirmInvalid
+                        sourcesEmpty ||
+                        targetInputEmpty ||
+                        codeConfirmInvalid ||
+                        Boolean(extraValidationString?.length)
                     }
                 >
                     {i18n.t('Merge')}
