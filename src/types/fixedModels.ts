@@ -1,4 +1,4 @@
-import type { ErrorReportLegacy } from './generated'
+import type { ErrorReport as GeneratedErrorReport } from './generated'
 // Some of the generated models are wrong, or outdated
 // The import summaries and error reports changed in 2.41
 export type ImportSummary = {
@@ -17,7 +17,7 @@ export type ImportResponse = {
 }
 
 export type ErrorReport = Pick<
-    ErrorReportLegacy,
+    GeneratedErrorReport,
     'errorCode' | 'errorProperties' | 'errorKlass' | 'mainKlass' | 'message'
 > & {
     args: string[]

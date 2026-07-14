@@ -75,7 +75,7 @@ export const useGetPeriodInformation = (
     calendar: SupportedCalendar,
     locale: string
 ) => {
-    const sortedDipIDs = dips.map((dip) => dip.period.id).sort()
+    const sortedDipIDs = dips.map((dip) => dip.period!.id).sort()
     const stringifiedDipIDs = JSON.stringify(sortedDipIDs)
 
     // create a map with details for each period
@@ -97,7 +97,7 @@ export const useGetPeriodInformation = (
     // return data input period with additional period information and sort
     return dips
         .map((dip) => {
-            const periodInformation = periodInformationMap.get(dip.period.id)
+            const periodInformation = periodInformationMap.get(dip.period!.id)
             return { periodInformation, ...dip }
         })
         .sort((a, b) =>

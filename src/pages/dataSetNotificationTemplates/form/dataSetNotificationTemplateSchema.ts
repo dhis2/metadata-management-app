@@ -5,7 +5,11 @@ import {
     getDefaultsOld,
     modelFormSchemas,
 } from '../../../lib'
-import { DataSetNotificationTemplate } from '../../../types/generated'
+import {
+    DataSetNotificationTrigger,
+    DataSetNotificationRecipient,
+    SendStrategy,
+} from '../../../types/generated'
 import { DataSetNotificationResult } from '../Edit'
 
 const { identifiable, withDefaultListColumns, referenceCollection } =
@@ -14,10 +18,10 @@ const { identifiable, withDefaultListColumns, referenceCollection } =
 const dataSetNotificationTemplateBaseSchema = z.object({
     code: z.string().optional(),
     dataSetNotificationTrigger: z
-        .nativeEnum(DataSetNotificationTemplate.dataSetNotificationTrigger)
+        .nativeEnum(DataSetNotificationTrigger)
         .optional(),
     notificationRecipient: z
-        .nativeEnum(DataSetNotificationTemplate.notificationRecipient)
+        .nativeEnum(DataSetNotificationRecipient)
         .optional(),
     deliveryChannels: z.array(z.enum(['SMS', 'EMAIL', 'HTTP'])).default([]),
     messageTemplate: z.string(),
@@ -39,20 +43,14 @@ const dataSetNotificationTemplateBaseSchema = z.object({
         .optional()
         .default({}),
     dataSets: referenceCollection.default([]),
-    sendStrategy: z
-        .nativeEnum(DataSetNotificationTemplate.sendStrategy)
-        .optional(),
+    sendStrategy: z.nativeEnum(SendStrategy).optional(),
     notifyUsersInHierarchyOnly: z.boolean().optional(),
 })
 
 export const dataSetNotificationTemplateFormSchema =
     dataSetNotificationTemplateBaseSchema.merge(identifiable).extend({
-        dataSetNotificationTrigger: z.nativeEnum(
-            DataSetNotificationTemplate.dataSetNotificationTrigger
-        ),
-        notificationRecipient: z.nativeEnum(
-            DataSetNotificationTemplate.notificationRecipient
-        ),
+        dataSetNotificationTrigger: z.nativeEnum(DataSetNotificationTrigger),
+        notificationRecipient: z.nativeEnum(DataSetNotificationRecipient),
     })
 
 export const dataSetNotificationTemplateListSchema =

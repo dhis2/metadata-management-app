@@ -17,7 +17,11 @@ import { generateRenderer } from '../../testUtils/generateRenderer'
 import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
 import { uiActions } from '../../testUtils/uiActions'
 import { uiAssertions } from '../../testUtils/uiAssertions'
-import { Program, ProgramTrackedEntityAttribute } from '../../types/generated'
+import {
+    BaseIdentifiableObject,
+    ProgramTrackedEntityAttributeParams,
+    ProgramType,
+} from '../../types/generated'
 import { Component as Edit } from './Edit'
 import { staticOptions } from './form/OrgUnitField'
 import { PROGRAM_INDICATOR_SPECIFIC_TRANSLATIONS } from './form/ProgramIndicatorFormFields'
@@ -215,9 +219,9 @@ describe('Program indicator form tests', () => {
                         id: randomDhis2Id(),
                     },
                 },
-            ] as unknown as ProgramTrackedEntityAttribute[]
+            ] as unknown as BaseIdentifiableObject[]
             const programWithRegistration = testProgram({
-                programType: 'WITH_REGISTRATION' as Program.programType,
+                programType: 'WITH_REGISTRATION' as ProgramType,
                 programTrackedEntityAttributes,
             })
             const programStageDataElements = [
@@ -278,8 +282,9 @@ describe('Program indicator form tests', () => {
                 {
                     options: [
                         { displayName: staticOptions.eventDefault.label },
-                        programTrackedEntityAttributes[0]
-                            .trackedEntityAttribute,
+                        (
+                            programTrackedEntityAttributes[0] as unknown as ProgramTrackedEntityAttributeParams
+                        ).trackedEntityAttribute,
                         programStageDataElements[1].dataElement,
                         { displayName: staticOptions.registration.label },
                         { displayName: staticOptions.enrollment.label },
@@ -306,9 +311,9 @@ describe('Program indicator form tests', () => {
                         id: randomDhis2Id(),
                     },
                 },
-            ] as unknown as ProgramTrackedEntityAttribute[]
+            ] as unknown as BaseIdentifiableObject[]
             const programWithRegistration = testProgram({
-                programType: 'WITH_REGISTRATION' as Program.programType,
+                programType: 'WITH_REGISTRATION' as ProgramType,
                 programTrackedEntityAttributes,
             })
             const programStageDataElements = [
@@ -369,8 +374,9 @@ describe('Program indicator form tests', () => {
                 {
                     options: [
                         { displayName: staticOptions.enrollmentDefault.label },
-                        programTrackedEntityAttributes[0]
-                            .trackedEntityAttribute,
+                        (
+                            programTrackedEntityAttributes[0] as unknown as ProgramTrackedEntityAttributeParams
+                        ).trackedEntityAttribute,
                         { displayName: staticOptions.registration.label },
                         { displayName: staticOptions.ownerAtStart.label },
                         { displayName: staticOptions.ownerAtEnd.label },
@@ -381,7 +387,7 @@ describe('Program indicator form tests', () => {
         })
         it('should show the org unit field when there is a program selected with type WITHOUT_REGISTRATION', async () => {
             const programWithoutRegistration = testProgram({
-                programType: 'WITHOUT_REGISTRATION' as Program.programType,
+                programType: 'WITHOUT_REGISTRATION' as ProgramType,
             })
             const programStageDataElements = [
                 {
@@ -781,7 +787,7 @@ describe('Program indicator form tests', () => {
         })
         it('should submit the basic information and configuration data', async () => {
             const programWithoutRegistration = testProgram({
-                programType: 'WITHOUT_REGISTRATION' as Program.programType,
+                programType: 'WITHOUT_REGISTRATION' as ProgramType,
             })
             const aName = faker.internet.userName()
             const aShortName = faker.internet.userName()
@@ -901,7 +907,7 @@ describe('Program indicator form tests', () => {
         })
         it('should submit the expression and a filter', async () => {
             const programWithoutRegistration = testProgram({
-                programType: 'WITHOUT_REGISTRATION' as Program.programType,
+                programType: 'WITHOUT_REGISTRATION' as ProgramType,
             })
             const aName = faker.internet.userName()
             const aShortName = faker.internet.userName()
@@ -994,7 +1000,7 @@ describe('Program indicator form tests', () => {
         })
         it('should submit analytics period boundaries', async () => {
             const programWithoutRegistration = testProgram({
-                programType: 'WITHOUT_REGISTRATION' as Program.programType,
+                programType: 'WITHOUT_REGISTRATION' as ProgramType,
             })
             const aName = faker.internet.userName()
             const aShortName = faker.internet.userName()
@@ -1087,7 +1093,7 @@ describe('Program indicator form tests', () => {
         })
         it('should submit the advanced options', async () => {
             const programWithoutRegistration = testProgram({
-                programType: 'WITHOUT_REGISTRATION' as Program.programType,
+                programType: 'WITHOUT_REGISTRATION' as ProgramType,
             })
             const aName = faker.internet.userName()
             const aShortName = faker.internet.userName()
@@ -1186,7 +1192,7 @@ describe('Program indicator form tests', () => {
         })
         it('should submit the legends', async () => {
             const programWithoutRegistration = testProgram({
-                programType: 'WITHOUT_REGISTRATION' as Program.programType,
+                programType: 'WITHOUT_REGISTRATION' as ProgramType,
             })
             const aName = faker.internet.userName()
             const aShortName = faker.internet.userName()
@@ -1272,7 +1278,7 @@ describe('Program indicator form tests', () => {
         })
         it('should submit the attributes', async () => {
             const programWithoutRegistration = testProgram({
-                programType: 'WITHOUT_REGISTRATION' as Program.programType,
+                programType: 'WITHOUT_REGISTRATION' as ProgramType,
             })
             const aName = faker.internet.userName()
             const aShortName = faker.internet.userName()
@@ -1376,7 +1382,7 @@ describe('Program indicator form tests', () => {
                 } = {}
             ) => {
                 const programWithoutRegistration = testProgram({
-                    programType: 'WITHOUT_REGISTRATION' as Program.programType,
+                    programType: 'WITHOUT_REGISTRATION' as ProgramType,
                 })
                 const programs = overridePrograms ?? [
                     programWithoutRegistration,
@@ -1599,14 +1605,16 @@ describe('Program indicator form tests', () => {
                         id: randomDhis2Id(),
                     },
                 },
-            ] as unknown as ProgramTrackedEntityAttribute[]
+            ] as unknown as BaseIdentifiableObject[]
             const programWithRegistration = testProgram({
-                programType: 'WITH_REGISTRATION' as Program.programType,
+                programType: 'WITH_REGISTRATION' as ProgramType,
                 programTrackedEntityAttributes,
             })
             const orgUnitOptions = [
                 { displayName: staticOptions.eventDefault.label },
-                programTrackedEntityAttributes[0].trackedEntityAttribute,
+                (
+                    programTrackedEntityAttributes[0] as unknown as ProgramTrackedEntityAttributeParams
+                ).trackedEntityAttribute,
                 { displayName: staticOptions.registration.label },
                 { displayName: staticOptions.enrollment.label },
                 { displayName: staticOptions.ownerAtStart.label },
@@ -1662,14 +1670,16 @@ describe('Program indicator form tests', () => {
                         id: randomDhis2Id(),
                     },
                 },
-            ] as unknown as ProgramTrackedEntityAttribute[]
+            ] as unknown as BaseIdentifiableObject[]
             const programWithRegistration = testProgram({
-                programType: 'WITH_REGISTRATION' as Program.programType,
+                programType: 'WITH_REGISTRATION' as ProgramType,
                 programTrackedEntityAttributes,
             })
             const orgUnitOptions = [
                 { displayName: staticOptions.eventDefault.label },
-                programTrackedEntityAttributes[0].trackedEntityAttribute,
+                (
+                    programTrackedEntityAttributes[0] as unknown as ProgramTrackedEntityAttributeParams
+                ).trackedEntityAttribute,
                 { displayName: staticOptions.registration.label },
                 { displayName: staticOptions.enrollment.label },
                 { displayName: staticOptions.ownerAtStart.label },
@@ -1797,7 +1807,7 @@ describe('Program indicator form tests', () => {
         })
         it('shows null orgUnitField value with appropriate label', async () => {
             const programWithRegistration = testProgram({
-                programType: 'WITH_REGISTRATION' as Program.programType,
+                programType: 'WITH_REGISTRATION' as ProgramType,
             })
             const { screen } = await renderForm({
                 programIndicatorOverwrites: {
@@ -1814,7 +1824,7 @@ describe('Program indicator form tests', () => {
             const orgUnitOption = staticOptions.ownerAtStart
 
             const programWithRegistration = testProgram({
-                programType: 'WITH_REGISTRATION' as Program.programType,
+                programType: 'WITH_REGISTRATION' as ProgramType,
             })
             const { screen } = await renderForm({
                 programIndicatorOverwrites: {

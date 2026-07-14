@@ -61,7 +61,7 @@ export const Component = () => {
                 ? (omit(
                       validationNotificationTemplateQuery.data,
                       'id'
-                  ) as ValidationNotificationTemplate)
+                  ) as unknown as ValidationNotificationTemplate)
                 : undefined,
         [validationNotificationTemplateQuery.data]
     )
@@ -69,7 +69,7 @@ export const Component = () => {
     return (
         <SectionedFormWrapper
             onSubmit={onSubmit}
-            initialValues={initialValues}
+            initialValues={initialValues as any}
             validate={validate}
             cancelTo={`/${getSectionPath(section)}`}
             fetchError={!!validationNotificationTemplateQuery.error}

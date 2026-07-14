@@ -120,6 +120,7 @@ const mockedSchemas = {
 } as unknown as ModelSchemas
 
 const baseMockedCurrentUser = {
+    avatar: undefined as never,
     organisationUnits: [
         {
             id: 'ImspTQPwCqd',

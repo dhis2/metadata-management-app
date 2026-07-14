@@ -1,11 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import React, { useCallback } from 'react'
 import { ModelSingleSelect } from '../../../components/metadataFormControls/ModelSingleSelect'
-import {
-    Category,
-    CategoryCombo,
-    PickWithFieldFilters,
-} from '../../../types/generated'
+import { DataDimensionType } from '../../../types/generated'
 import css from './CategoriesSelector.module.css'
 
 export const categoriesFieldFilter = [
@@ -21,14 +17,20 @@ export const categoryComboFieldFilter = [
     'dataDimensionType',
     'categories[id,displayName,name,dataDimensionType,categoryOptions[id,displayName]]',
 ] as const
-export type CategoryComboFromSelect = PickWithFieldFilters<
-    CategoryCombo,
-    typeof categoryComboFieldFilter
->
-export type CategoryFromSelect = PickWithFieldFilters<
-    Category,
-    typeof categoriesFieldFilter
->
+
+export type CategoryFromSelect = {
+    id: string
+    displayName: string
+    name: string
+    dataDimensionType: DataDimensionType
+    categoryOptions: Array<{ id: string; displayName: string }>
+}
+export type CategoryComboFromSelect = {
+    id: string
+    displayName: string
+    dataDimensionType: DataDimensionType
+    categories: Array<CategoryFromSelect>
+}
 
 export const CategoriesSelector = ({
     categoriesWithMappings,

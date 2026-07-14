@@ -47,12 +47,17 @@ const dataSetSectionSchemaSection = {
     parentSectionKey: 'dataSet',
 } satisfies SchemaSection
 
-export type SectionFormValues = PickWithFieldFilters<
-    Section,
-    typeof fieldFilters
+export type SectionFormValues = Omit<
+    PickWithFieldFilters<Section, typeof fieldFilters>,
+    'dataElements'
 > & {
     dataSet: { id: string }
     displayOptions?: string
+    dataElements?: {
+        id: string
+        displayName: string
+        categoryCombo?: { id: string }
+    }[]
 }
 type PartialSectionFormValues = Partial<SectionFormValues>
 type SubmittedSectionFormValues = PartialSectionFormValues & DisplayableModel
@@ -74,14 +79,18 @@ export const DataSetSectionForm = ({
                 ...dataSetSection,
                 displayOptions:
                     dataSetSection?.displayOptions &&
-                    JSON.parse(dataSetSection?.displayOptions),
+                    (typeof dataSetSection.displayOptions === 'string'
+                        ? JSON.parse(dataSetSection.displayOptions)
+                        : dataSetSection.displayOptions),
             }
         }
         return {
             ...initialSectionValues,
             displayOptions:
                 initialSectionValues?.displayOptions &&
-                JSON.parse(initialSectionValues?.displayOptions),
+                (typeof initialSectionValues.displayOptions === 'string'
+                    ? JSON.parse(initialSectionValues.displayOptions)
+                    : initialSectionValues.displayOptions),
         }
     }, [dataSetSection])
 
