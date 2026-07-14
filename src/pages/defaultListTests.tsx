@@ -2,9 +2,9 @@ import { FetchError } from '@dhis2/app-runtime'
 import { render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
-import { getSchemaProperty } from '../../components/sectionList/modelValue/ModelValue'
-import { longTextFields } from '../../components/sectionList/translation/TranslatableFields'
-import { getTranslateableFieldsForSchema } from '../../components/sectionList/translation/TranslationForm'
+import { getSchemaProperty } from '../components/sectionList/modelValue/ModelValue'
+import { longTextFields } from '../components/sectionList/translation/TranslatableFields'
+import { getTranslateableFieldsForSchema } from '../components/sectionList/translation/TranslationForm'
 import {
     defaultModelViewConfig,
     modelListViewsConfig,
@@ -12,23 +12,23 @@ import {
     Schema,
     toModelPropertyDescriptor,
     BaseListModel,
-} from '../../lib'
-import { camelCaseToConstantCase } from '../../lib/utils'
+} from '../lib'
+import { camelCaseToConstantCase } from '../lib/utils'
 import {
     testAccess,
     testLocale,
     testUser,
     testUserGroup,
-} from '../../testUtils/builders'
+} from '../testUtils/builders'
 import {
     defaultUserDataStoreData,
     error404,
     generateRenderer,
-} from '../../testUtils/generateRenderer'
-import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
-import { uiActions } from '../../testUtils/uiActions'
-import { ModelSection } from '../../types'
-import { DefaultSectionListProps } from '../DefaultSectionList'
+} from '../testUtils/generateRenderer'
+import TestComponentWithRouter from '../testUtils/TestComponentWithRouter'
+import { uiActions } from '../testUtils/uiActions'
+import { ModelSection } from '../types'
+import { DefaultSectionListProps } from './DefaultSectionList'
 
 type TestConfig = {
     section: ModelSection

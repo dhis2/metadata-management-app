@@ -1,7 +1,7 @@
 import categorySchemaMock from '../../__mocks__/schema/categoriesSchema.json'
 import { SECTIONS_MAP } from '../../lib'
 import { testCategory, testCategoryCombo } from '../../testUtils/builders'
-import { generateDefaultListTests } from '../defaultTests/defaultListTests'
+import { generateDefaultListTests } from '../defaultListTests'
 import { Component as CategoryList } from './List'
 
 const section = SECTIONS_MAP.category

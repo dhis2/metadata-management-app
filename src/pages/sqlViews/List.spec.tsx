@@ -11,7 +11,7 @@ import {
 import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
 import { uiActions } from '../../testUtils/uiActions'
 import { SqlView } from '../../types/generated'
-import { generateDefaultListTests } from '../defaultTests/defaultListTests'
+import { generateDefaultListTests } from '../defaultListTests'
 import { Component } from './List'
 
 const section = SECTIONS_MAP.sqlView

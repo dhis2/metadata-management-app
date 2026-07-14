@@ -1,7 +1,7 @@
 import schemaMock from '../../__mocks__/schema/dataElements.json'
 import { SECTIONS_MAP } from '../../lib'
 import { testDataElement } from '../../testUtils/builders'
-import { generateDefaultListTests } from '../defaultTests/defaultListTests'
+import { generateDefaultListTests } from '../defaultListTests'
 import { Component } from './List'
 
 const section = SECTIONS_MAP.dataElement
