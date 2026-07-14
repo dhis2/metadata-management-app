@@ -2,7 +2,12 @@ import i18n from '@dhis2/d2-i18n'
 import { InputFieldFF } from '@dhis2/ui'
 import React, { useState } from 'react'
 import { Field as FieldRFF } from 'react-final-form'
-import { SchemaSection, useIsFieldValueUnique, useSchema } from '../../../lib'
+import {
+    SchemaSection,
+    getTrailingWhitespaceWarning,
+    useIsFieldValueUnique,
+    useSchema,
+} from '../../../lib'
 import { useValidator } from '../../../lib/models/useFieldValidators'
 
 export function NameFieldWithAdditionalUniquenessConstraint({
@@ -38,39 +43,47 @@ export function NameFieldWithAdditionalUniquenessConstraint({
         caseSensitive: caseSensitiveUniqueness,
     })
 
-    const uniquenessWarner =
-        propertyDetails.unique || additionalNameUniquenessConstraint
-            ? undefined
-            : checkNameDuplicate
+    const needsUniquenessCheck =
+        !propertyDetails.unique && !additionalNameUniquenessConstraint
+
+    const updateWarning = async (value: string) => {
+        const trimWarning = getTrailingWhitespaceWarning(value)
+        setWarning(
+            trimWarning ??
+                (needsUniquenessCheck
+                    ? await checkNameDuplicate(value)
+                    : undefined)
+        )
+    }
 
     return (
         <FieldRFF name="name" validate={validator}>
-            {({ input, meta }) => (
-                <InputFieldFF
-                    input={{
-                        ...input,
-                        onChange: async (value: string) => {
-                            input.onChange(value)
-                            if (uniquenessWarner) {
-                                const warning = await uniquenessWarner(value)
-                                setWarning(warning)
-                            }
-                        },
-                    }}
-                    meta={meta}
-                    loading={meta.validating}
-                    validateFields={[]}
-                    dataTest="formfields-name"
-                    required
-                    inputWidth="400px"
-                    label={i18n.t('{{fieldLabel}}', {
-                        fieldLabel: i18n.t('Name'),
-                    })}
-                    helpText={helpText}
-                    validationText={warning}
-                    warning={!!warning}
-                />
-            )}
+            {({ input, meta }) => {
+                const hasBlockingError = meta.touched && meta.invalid
+                return (
+                    <InputFieldFF
+                        input={{
+                            ...input,
+                            onChange: (value: string) => {
+                                input.onChange(value)
+                                updateWarning(value)
+                            },
+                        }}
+                        meta={meta}
+                        loading={meta.validating}
+                        validateFields={[]}
+                        dataTest="formfields-name"
+                        required
+                        inputWidth="400px"
+                        label={i18n.t('{{fieldLabel}}', {
+                            fieldLabel: i18n.t('Name'),
+                        })}
+                        helpText={helpText}
+                        validationText={hasBlockingError ? undefined : warning}
+                        warning={!hasBlockingError && !!warning}
+                    />
+                )
+            }}
         </FieldRFF>
     )
 }

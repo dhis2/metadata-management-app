@@ -2,7 +2,12 @@ import i18n from '@dhis2/d2-i18n'
 import { InputFieldFF } from '@dhis2/ui'
 import React, { useState } from 'react'
 import { Field as FieldRFF } from 'react-final-form'
-import { SchemaSection, useIsFieldValueUnique, useSchema } from '../../../lib'
+import {
+    SchemaSection,
+    getTrailingWhitespaceWarning,
+    useIsFieldValueUnique,
+    useSchema,
+} from '../../../lib'
 import { useValidator } from '../../../lib/models/useFieldValidators'
 
 export function NameField({
@@ -46,10 +51,17 @@ export function NameField({
                         ...input,
                         onChange: async (value: string) => {
                             input.onChange(value)
-                            if (uniquenessWarner) {
-                                const warning = await uniquenessWarner(value)
-                                setWarning(warning)
+                            const trimWarning =
+                                getTrailingWhitespaceWarning(value)
+                            if (trimWarning) {
+                                setWarning(trimWarning)
+                                return
                             }
+                            setWarning(
+                                uniquenessWarner
+                                    ? await uniquenessWarner(value)
+                                    : undefined
+                            )
                         },
                     }}
                     meta={meta}
@@ -62,8 +74,10 @@ export function NameField({
                         fieldLabel: i18n.t('Name'),
                     })}
                     helpText={helpText}
-                    validationText={warning}
-                    warning={!!warning}
+                    validationText={
+                        meta.touched && meta.invalid ? undefined : warning
+                    }
+                    warning={!(meta.touched && meta.invalid) && !!warning}
                 />
             )}
         </FieldRFF>

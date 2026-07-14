@@ -10,6 +10,7 @@ import { useCreateModel } from './useCreateModel'
 import {
     EnhancedOnSubmit,
     getNavigateTo,
+    trimTrimmableFields,
     useOnEditCompletedSuccessfully,
     useOnNewCompletedSuccessfullyOrSkipped,
 } from './useOnSubmit'
@@ -66,7 +67,7 @@ export const useOnSubmitEditWithGroups = <
             const valuesForPatch = (() => {
                 const copy = { ...values } as Record<string, unknown>
                 delete copy[groupResource]
-                return copy as TFormValues
+                return trimTrimmableFields(copy as TFormValues)
             })()
 
             const jsonPatchOperations = createJsonPatchOperations({
@@ -173,7 +174,7 @@ export const useOnSubmitNewWithGroups = <
             const valuesForCreate = (() => {
                 const copy = { ...values } as Record<string, unknown>
                 delete copy[groupResource]
-                return copy
+                return trimTrimmableFields(copy)
             })()
 
             const response = await createModel(valuesForCreate)

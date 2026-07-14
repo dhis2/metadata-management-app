@@ -3,14 +3,13 @@ import i18n from '@dhis2/d2-i18n'
 import memoize from 'lodash/memoize'
 import { useCallback, useMemo, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
+import { Pager } from '../../../types/generated'
 
 interface QueryResponse {
-    result: Record<string, Array<Record<string, unknown>>>
+    result: {
+        pager: Pager
+    }
 }
-
-// eq/ieq can't match stored values with padding, so widen to a substring
-// match and confirm the real duplicate by trimming candidates client-side
-const MATCH_CANDIDATES_PAGE_SIZE = 10
 
 export function useIsFieldValueUnique({
     model,
@@ -31,13 +30,11 @@ export function useIsFieldValueUnique({
         result: {
             resource: model,
             params: (variables: Record<string, string>) => {
-                const trimmed = variables.value.trim()
-                const isNumeric = !Number.isNaN(Number(trimmed))
-                const useCaseSensitiveMatch = isNumeric || caseSensitive
-                const matchOperation = useCaseSensitiveMatch ? 'like' : 'ilike'
-                const filter = [
-                    `${variables.field}:${matchOperation}:${trimmed}`,
-                ]
+                const value = variables.value
+                const isNumeric = !Number.isNaN(Number(value.trim()))
+                const useExactMatch = isNumeric || caseSensitive
+                const equalOperation = useExactMatch ? 'eq' : 'ieq'
+                const filter = [`${variables.field}:${equalOperation}:${value}`]
 
                 if (variables.id) {
                     filter.push(`id:ne:${variables.id}`)
@@ -46,11 +43,7 @@ export function useIsFieldValueUnique({
                     filter.push(variables.customFilter)
                 }
 
-                return {
-                    pageSize: MATCH_CANDIDATES_PAGE_SIZE,
-                    fields: `id,${variables.field}`,
-                    filter,
-                }
+                return { pageSize: 1, fields: 'id', filter }
             },
         },
     })
@@ -63,23 +56,11 @@ export function useIsFieldValueUnique({
                     return undefined
                 }
 
-                const trimmed = value.trim()
                 const data = (await engine.query(HAS_FIELD_VALUE_QUERY, {
                     variables: { field, value, id, customFilter },
                 })) as unknown as QueryResponse
 
-                const hasDuplicate = data.result[model].some((object) => {
-                    const candidate = object[field]
-                    if (typeof candidate !== 'string') {
-                        return false
-                    }
-                    return caseSensitive
-                        ? candidate.trim() === trimmed
-                        : candidate.trim().toLowerCase() ===
-                              trimmed.toLowerCase()
-                })
-
-                if (hasDuplicate) {
+                if (data.result.pager.total > 0) {
                     return (
                         message ??
                         i18n.t(
@@ -88,16 +69,7 @@ export function useIsFieldValueUnique({
                     )
                 }
             }),
-        [
-            model,
-            field,
-            engine,
-            id,
-            HAS_FIELD_VALUE_QUERY,
-            message,
-            customFilter,
-            caseSensitive,
-        ]
+        [field, engine, id, HAS_FIELD_VALUE_QUERY, message, customFilter]
     )
 
     // Doing it this way to prevent extra arguments to be passed.
