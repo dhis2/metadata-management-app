@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react'
+import { render, within } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/programStages.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
@@ -222,6 +223,46 @@ describe('Program Stage form tests', () => {
 
             const programField = screen.getByTestId(PROGRAM_FIELD)
             expect(programField).toHaveTextContent('Test Program 1')
+        })
+
+        it('disables the program select', async () => {
+            const { screen } = await renderForm()
+
+            const programField = await screen.findByTestId(PROGRAM_FIELD)
+            const selectInput = programField.querySelector(
+                '[data-test="dhis2-uicore-select-input"]'
+            ) as HTMLElement
+
+            const isDisabled =
+                selectInput.hasAttribute('disabled') ||
+                selectInput.getAttribute('aria-disabled') === 'true' ||
+                selectInput.closest('[aria-disabled="true"]') !== null ||
+                selectInput.classList.contains('disabled')
+            expect(isDisabled).toBe(true)
+        })
+
+        it('shows a link button to the program ', async () => {
+            const openSpy = jest
+                .spyOn(window, 'open')
+                .mockImplementation(() => null)
+
+            const { screen } = await renderForm()
+
+            const programField = await screen.findByTestId(PROGRAM_FIELD)
+            const viewProgramLink = await within(programField).findByTestId(
+                `${PROGRAM_FIELD}-view-link`
+            )
+
+            expect(viewProgramLink).toBeVisible()
+
+            await userEvent.click(viewProgramLink)
+
+            expect(openSpy).toHaveBeenCalledWith(
+                expect.stringContaining('/programs/program1'),
+                '_blank'
+            )
+
+            openSpy.mockRestore()
         })
     })
 })

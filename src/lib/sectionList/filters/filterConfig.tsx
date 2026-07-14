@@ -13,7 +13,6 @@ export const filterParamsSchema = z
     .object({
         [IDENTIFIABLE_FILTER_KEY]: z.string(),
         formName: z.string(),
-
         aggregationType: z.array(z.nativeEnum(DataElement.aggregationType)),
         category: zodArrayIds,
         categoryCombo: zodArrayIds,
@@ -40,6 +39,7 @@ export const filterParamsSchema = z
             z.string().refine((val) => parseAccessString(val) !== null)
         ),
         program: zodArrayIds,
+        trackerProgram: zodArrayIds,
         programType: z.string(),
         programIndicator: zodArrayIds,
         programIndicatorGroup: zodArrayIds,
@@ -78,6 +78,7 @@ export const filterQueryParamType = {
     organisationUnitGroupSet: CustomDelimitedArrayParam,
     publicAccess: CustomDelimitedArrayParam,
     program: CustomDelimitedArrayParam,
+    trackerProgram: CustomDelimitedArrayParam,
     programType: StringParam,
     programIndicator: CustomDelimitedArrayParam,
     programIndicatorGroup: CustomDelimitedArrayParam,

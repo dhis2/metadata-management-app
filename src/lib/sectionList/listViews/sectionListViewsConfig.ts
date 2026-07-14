@@ -854,7 +854,7 @@ export const modelListViewsConfig = {
             overrideDefaultAvailable: true,
         },
         filters: {
-            default: ['program'],
+            default: ['trackerProgram'],
             available: [],
             overrideDefaultAvailable: true,
         },
