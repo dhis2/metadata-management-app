@@ -1,3 +1,22 @@
+## [0.166.1](https://github.com/dhis2/metadata-management-app/compare/v0.166.0...v0.166.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* add custom attributes to data set section ([a6f3487](https://github.com/dhis2/metadata-management-app/commit/a6f3487226594fba33d3002b709391591bace3ba))
+
+# [0.166.0](https://github.com/dhis2/metadata-management-app/compare/v0.165.0...v0.166.0) (2026-07-09)
+
+
+### Bug Fixes
+
+* do not skip contracts test ([#992](https://github.com/dhis2/metadata-management-app/issues/992)) ([7d11023](https://github.com/dhis2/metadata-management-app/commit/7d1102371813315a26ebbe5da789383f28267ce2))
+
+
+### Features
+
+* merge data elements ([#989](https://github.com/dhis2/metadata-management-app/issues/989)) ([559b647](https://github.com/dhis2/metadata-management-app/commit/559b6476bb95246dab1a78a993b5959219690513))
+
 # [0.165.0](https://github.com/dhis2/metadata-management-app/compare/v0.164.0...v0.165.0) (2026-07-08)
 
 
