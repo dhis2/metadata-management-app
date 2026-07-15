@@ -18,7 +18,7 @@ import { DeliveryChannelsField } from '../../../dataSetNotificationTemplates/for
 
 const programRecipientOptions = [
     {
-        label: getConstantTranslation('TRACKED_ENTITY_INSTANCE'),
+        label: i18n.t('Tracked entity'),
         value: 'TRACKED_ENTITY_INSTANCE',
     },
     {
@@ -104,14 +104,26 @@ export const RecipientSection = ({
         if (!isStageNotification && recipientInput.value === 'DATA_ELEMENT') {
             form.change('notificationRecipient', undefined)
         }
-    }, [isStageNotification, recipientInput, form])
+        if (
+            !isTrackerProgram &&
+            recipientInput.value === 'TRACKED_ENTITY_INSTANCE'
+        ) {
+            form.change('notificationRecipient', undefined)
+        }
+    }, [isStageNotification, isTrackerProgram, recipientInput, form])
 
     const recipientOptions = useMemo(() => {
-        return isStageNotification || recipientInput.value === 'DATA_ELEMENT'
-            ? programStageRecipientOptions.filter((opt) =>
-                  isTrackerProgram ? true : opt.value !== 'PROGRAM_ATTRIBUTE'
-              )
-            : programRecipientOptions
+        const baseOptions =
+            isStageNotification || recipientInput.value === 'DATA_ELEMENT'
+                ? programStageRecipientOptions
+                : programRecipientOptions
+
+        return baseOptions.filter((opt) =>
+            isTrackerProgram
+                ? true
+                : opt.value !== 'PROGRAM_ATTRIBUTE' &&
+                  opt.value !== 'TRACKED_ENTITY_INSTANCE'
+        )
     }, [isStageNotification, recipientInput.value, isTrackerProgram])
 
     return (
