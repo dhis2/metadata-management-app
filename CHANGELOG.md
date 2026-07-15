@@ -1,3 +1,34 @@
+# [0.167.0](https://github.com/dhis2/metadata-management-app/compare/v0.166.1...v0.167.0) (2026-07-14)
+
+
+### Bug Fixes
+
+* program stage selector ([#995](https://github.com/dhis2/metadata-management-app/issues/995)) ([d41f1d7](https://github.com/dhis2/metadata-management-app/commit/d41f1d78ed30a623bbcd33994bc997e84fdfc2b4))
+
+
+### Features
+
+* categories merge with validation [DHIS2-18292] ([#994](https://github.com/dhis2/metadata-management-app/issues/994)) ([a62d3cd](https://github.com/dhis2/metadata-management-app/commit/a62d3cd860ae85beb209310807cb93d4bf5400b2))
+
+## [0.166.1](https://github.com/dhis2/metadata-management-app/compare/v0.166.0...v0.166.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* add custom attributes to data set section ([a6f3487](https://github.com/dhis2/metadata-management-app/commit/a6f3487226594fba33d3002b709391591bace3ba))
+
+# [0.166.0](https://github.com/dhis2/metadata-management-app/compare/v0.165.0...v0.166.0) (2026-07-09)
+
+
+### Bug Fixes
+
+* do not skip contracts test ([#992](https://github.com/dhis2/metadata-management-app/issues/992)) ([7d11023](https://github.com/dhis2/metadata-management-app/commit/7d1102371813315a26ebbe5da789383f28267ce2))
+
+
+### Features
+
+* merge data elements ([#989](https://github.com/dhis2/metadata-management-app/issues/989)) ([559b647](https://github.com/dhis2/metadata-management-app/commit/559b6476bb95246dab1a78a993b5959219690513))
+
 # [0.165.0](https://github.com/dhis2/metadata-management-app/compare/v0.164.0...v0.165.0) (2026-07-08)
 
 
