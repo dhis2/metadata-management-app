@@ -1,6 +1,7 @@
 import { useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import React, { useMemo } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import React, { useCallback, useMemo, useState } from 'react'
 import { Form } from 'react-final-form'
 import {
     DefaultMergeFormContents,
@@ -8,7 +9,11 @@ import {
     StyledMergeForm,
     Title,
 } from '../../components/merge'
-import { getDefaultsOld, useLocationWithState } from '../../lib'
+import {
+    getDefaultsOld,
+    useBoundResourceQueryFn,
+    useLocationWithState,
+} from '../../lib'
 import { createFormError } from '../../lib/form/createFormError'
 import { CategoryComboMergeFormFields } from './merge/CategoryComboMergeFormFields'
 import {
@@ -16,6 +21,42 @@ import {
     mergeFormSchema,
     validate,
 } from './merge/categoryComboMergeSchema'
+
+type CategoryComboDetails = {
+    id: string
+    categories: { id: string }[]
+}
+
+type CategoryCombosDetailsResponse = { categoryCombos: CategoryComboDetails[] }
+
+export const useCategoriesCombosDetailsQuery = ({
+    selectedIdsString,
+}: {
+    selectedIdsString: string
+}) => {
+    const queryFn = useBoundResourceQueryFn()
+
+    return useQuery({
+        queryKey: [
+            {
+                resource: 'categoryCombos',
+                params: {
+                    fields: ['id', 'categories[id]'],
+                    filter: [`id:in:[${selectedIdsString}]`],
+                    paging: false,
+                },
+            },
+        ],
+        enabled: !!selectedIdsString,
+        queryFn: queryFn<CategoryCombosDetailsResponse>,
+        select: useCallback((data: CategoryCombosDetailsResponse) => {
+            return data.categoryCombos.reduce((acc, categoryCombo) => {
+                acc[categoryCombo.id] = categoryCombo
+                return acc
+            }, {} as Record<string, CategoryComboDetails>)
+        }, []),
+    })
+}
 
 export const Component = () => {
     const location = useLocationWithState<{ selectedModels: Set<string> }>()
@@ -32,6 +73,48 @@ export const Component = () => {
             sources: [],
         }),
         []
+    )
+
+    const [extraValidationResult, setExtraValidationResult] =
+        useState<boolean>(true)
+
+    const { data: categoryComboDetails } = useCategoriesCombosDetailsQuery({
+        selectedIdsString: selectedIds.join(','),
+    })
+
+    const extraValidate: (values: {
+        target: string
+        sources: string[]
+    }) => string | undefined = useCallback(
+        (values) => {
+            if (!values.target || !values.sources || !categoryComboDetails) {
+                return undefined
+            }
+
+            const targetCategories = categoryComboDetails[values.target]
+            const targetCategoryIds = targetCategories.categories
+                .map((c) => c.id)
+                .sort()
+                .join(',')
+
+            for (const s of values.sources) {
+                const sourceCategoryIds = categoryComboDetails[s].categories
+                    .map((c) => c.id)
+                    .sort()
+                    .join(',')
+
+                if (sourceCategoryIds !== targetCategoryIds) {
+                    setExtraValidationResult(false)
+                    return i18n.t(
+                        'Categories of source and target category combinations do not match'
+                    )
+                }
+            }
+
+            setExtraValidationResult(true)
+            return undefined
+        },
+        [categoryComboDetails, setExtraValidationResult]
     )
 
     const onSubmit = async (values: CategoryComboMergeFormValues) => {
@@ -84,9 +167,11 @@ export const Component = () => {
                                 </p>
                             </MergeComplete>
                         }
+                        extraValidation={extraValidate}
                     >
                         <CategoryComboMergeFormFields
                             selectedIds={selectedIds}
+                            hideConfirmation={!extraValidationResult}
                         />
                     </DefaultMergeFormContents>
                 </StyledMergeForm>
