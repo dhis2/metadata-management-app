@@ -1,10 +1,11 @@
 import i18n from '@dhis2/d2-i18n'
 import { InputFieldFF } from '@dhis2/ui'
-import React, { useState } from 'react'
-import { Field as FieldRFF } from 'react-final-form'
+import React from 'react'
+import { useField } from 'react-final-form'
 import {
     SchemaSection,
     getTrailingWhitespaceWarning,
+    useFieldWarning,
     useIsFieldValueUnique,
     useSchema,
 } from '../../../lib'
@@ -32,7 +33,10 @@ export function NameFieldWithAdditionalUniquenessConstraint({
     })
     const schema = useSchema(schemaSection.name)
     const propertyDetails = schema.properties['name']
-    const [warning, setWarning] = useState<string | undefined>()
+    const { input, meta } = useField<string>('name', {
+        validate: validator,
+        validateFields: [],
+    })
 
     const checkNameDuplicate = useIsFieldValueUnique({
         model: schemaSection.namePlural,
@@ -46,44 +50,33 @@ export function NameFieldWithAdditionalUniquenessConstraint({
     const needsUniquenessCheck =
         !propertyDetails.unique && !additionalNameUniquenessConstraint
 
-    const updateWarning = async (value: string) => {
-        const trimWarning = getTrailingWhitespaceWarning(value)
-        setWarning(
-            trimWarning ??
-                (needsUniquenessCheck
-                    ? await checkNameDuplicate(value)
-                    : undefined)
-        )
-    }
+    const { onChange, validationText, warning } = useFieldWarning(
+        meta,
+        async (value) =>
+            getTrailingWhitespaceWarning(value) ??
+            (needsUniquenessCheck ? await checkNameDuplicate(value) : undefined)
+    )
 
     return (
-        <FieldRFF name="name" validate={validator}>
-            {({ input, meta }) => {
-                const hasBlockingError = meta.touched && meta.invalid
-                return (
-                    <InputFieldFF
-                        input={{
-                            ...input,
-                            onChange: (value: string) => {
-                                input.onChange(value)
-                                updateWarning(value)
-                            },
-                        }}
-                        meta={meta}
-                        loading={meta.validating}
-                        validateFields={[]}
-                        dataTest="formfields-name"
-                        required
-                        inputWidth="400px"
-                        label={i18n.t('{{fieldLabel}}', {
-                            fieldLabel: i18n.t('Name'),
-                        })}
-                        helpText={helpText}
-                        validationText={hasBlockingError ? undefined : warning}
-                        warning={!hasBlockingError && !!warning}
-                    />
-                )
+        <InputFieldFF
+            input={{
+                ...input,
+                onChange: (value: string) => {
+                    input.onChange(value)
+                    onChange(value)
+                },
             }}
-        </FieldRFF>
+            meta={meta}
+            loading={meta.validating}
+            dataTest="formfields-name"
+            required
+            inputWidth="400px"
+            label={i18n.t('{{fieldLabel}}', {
+                fieldLabel: i18n.t('Name'),
+            })}
+            helpText={helpText}
+            validationText={validationText}
+            warning={warning}
+        />
     )
 }

@@ -1,10 +1,11 @@
 import i18n from '@dhis2/d2-i18n'
 import { InputFieldFF } from '@dhis2/ui'
-import React, { useState } from 'react'
-import { Field as FieldRFF } from 'react-final-form'
+import React from 'react'
+import { useField } from 'react-final-form'
 import {
     SchemaSection,
     getTrailingWhitespaceWarning,
+    useFieldWarning,
     useIsFieldValueUnique,
     useSchema,
 } from '../../../lib'
@@ -29,7 +30,10 @@ export function NameField({
     })
     const schema = useSchema(schemaSection.name)
     const propertyDetails = schema.properties['name']
-    const [warning, setWarning] = useState<string | undefined>()
+    const { input, meta } = useField<string>('name', {
+        validate: validator,
+        validateFields: [],
+    })
 
     const checkNameDuplicate = useIsFieldValueUnique({
         model: schemaSection.namePlural,
@@ -39,47 +43,35 @@ export function NameField({
         ),
         caseSensitive: caseSensitiveUniqueness,
     })
-    const uniquenessWarner = propertyDetails.unique
-        ? undefined
-        : checkNameDuplicate
+    const needsUniquenessCheck = !propertyDetails.unique
+
+    const { onChange, validationText, warning } = useFieldWarning(
+        meta,
+        async (value) =>
+            getTrailingWhitespaceWarning(value) ??
+            (needsUniquenessCheck ? await checkNameDuplicate(value) : undefined)
+    )
 
     return (
-        <FieldRFF name="name" validate={validator}>
-            {({ input, meta }) => (
-                <InputFieldFF
-                    input={{
-                        ...input,
-                        onChange: async (value: string) => {
-                            input.onChange(value)
-                            const trimWarning =
-                                getTrailingWhitespaceWarning(value)
-                            if (trimWarning) {
-                                setWarning(trimWarning)
-                                return
-                            }
-                            setWarning(
-                                uniquenessWarner
-                                    ? await uniquenessWarner(value)
-                                    : undefined
-                            )
-                        },
-                    }}
-                    meta={meta}
-                    loading={meta.validating}
-                    validateFields={[]}
-                    dataTest="formfields-name"
-                    required
-                    inputWidth="400px"
-                    label={i18n.t('{{fieldLabel}}', {
-                        fieldLabel: i18n.t('Name'),
-                    })}
-                    helpText={helpText}
-                    validationText={
-                        meta.touched && meta.invalid ? undefined : warning
-                    }
-                    warning={!(meta.touched && meta.invalid) && !!warning}
-                />
-            )}
-        </FieldRFF>
+        <InputFieldFF
+            input={{
+                ...input,
+                onChange: (value: string) => {
+                    input.onChange(value)
+                    onChange(value)
+                },
+            }}
+            meta={meta}
+            loading={meta.validating}
+            dataTest="formfields-name"
+            required
+            inputWidth="400px"
+            label={i18n.t('{{fieldLabel}}', {
+                fieldLabel: i18n.t('Name'),
+            })}
+            helpText={helpText}
+            validationText={validationText}
+            warning={warning}
+        />
     )
 }
