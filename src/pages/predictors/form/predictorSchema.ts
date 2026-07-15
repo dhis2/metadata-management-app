@@ -1,3 +1,4 @@
+import i18n from '@dhis2/d2-i18n'
 import { z } from 'zod'
 import { modelFormSchemas } from '../../../lib'
 import { createFormValidate } from '../../../lib/form/validate'
@@ -11,10 +12,8 @@ const predictorBaseSchema = z.object({
     shortName: z.string().trim(),
     code: z.string().trim().optional(),
     description: z.string().trim().optional(),
-    output: modelReference.extend({ displayName: z.string().optional() }),
-    outputCombo: modelReference
-        .extend({ displayName: z.string().optional() })
-        .optional(),
+    output: modelReference,
+    outputCombo: modelReference.optional(),
     periodType: z.nativeEnum(Predictor.periodType),
     organisationUnitLevels: z.array(modelReference),
     organisationUnitDescendants: z.nativeEnum(
@@ -64,4 +63,10 @@ export const initialValues = getDefaults(predictorFormSchema, {
     annualSampleCount: 0,
     predictorGroups: [],
 })
-export const validate = createFormValidate(predictorFormSchema)
+
+const validatingPredictorFormSchema = predictorFormSchema.extend({
+    organisationUnitLevels: z
+        .array(modelReference)
+        .min(1, i18n.t('At least one organisation unit level is required')),
+})
+export const validate = createFormValidate(validatingPredictorFormSchema)
