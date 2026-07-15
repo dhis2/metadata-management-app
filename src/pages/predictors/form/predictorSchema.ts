@@ -1,14 +1,11 @@
 import { z } from 'zod'
-import { getDefaultsOld, modelFormSchemas } from '../../../lib'
+import { modelFormSchemas } from '../../../lib'
 import { createFormValidate } from '../../../lib/form/validate'
+import { getDefaults } from '../../../lib/zod/getDefaults'
 import { Predictor, Expression } from '../../../types/generated/models'
 
-const {
-    identifiable,
-    withDefaultListColumns,
-    modelReference,
-    referenceCollection,
-} = modelFormSchemas
+const { identifiable, withDefaultListColumns, modelReference } =
+    modelFormSchemas
 
 const predictorBaseSchema = z.object({
     shortName: z.string().trim(),
@@ -18,17 +15,15 @@ const predictorBaseSchema = z.object({
     outputCombo: modelReference
         .extend({ displayName: z.string().optional() })
         .optional(),
-    periodType: z
-        .nativeEnum(Predictor.periodType)
-        .default(Predictor.periodType.MONTHLY),
-    organisationUnitLevels: z.array(modelReference).default([]),
-    organisationUnitDescendants: z
-        .nativeEnum(Predictor.organisationUnitDescendants)
-        .default(Predictor.organisationUnitDescendants.SELECTED),
-    sequentialSampleCount: z.number().int().default(0),
-    annualSampleCount: z.number().int().min(0).max(10).default(0),
+    periodType: z.nativeEnum(Predictor.periodType),
+    organisationUnitLevels: z.array(modelReference),
+    organisationUnitDescendants: z.nativeEnum(
+        Predictor.organisationUnitDescendants
+    ),
+    sequentialSampleCount: z.number().int(),
+    annualSampleCount: z.number().int().min(0).max(10),
     sequentialSkipCount: z.number().int().optional(),
-    predictorGroups: z.array(modelReference).default([]),
+    predictorGroups: z.array(modelReference),
 })
 
 export const predictorListSchema = predictorBaseSchema
@@ -58,8 +53,15 @@ export const predictorFormSchema = predictorBaseSchema
                     .optional(),
             })
             .optional(),
-        organisationUnitLevel: referenceCollection.default([]),
     })
 
-export const initialValues = getDefaultsOld(predictorFormSchema)
+// export const initialValues = getDefaultsOld(predictorFormSchema)
+export const initialValues = getDefaults(predictorFormSchema, {
+    periodType: Predictor.periodType.MONTHLY,
+    organisationUnitLevels: [],
+    organisationUnitDescendants: Predictor.organisationUnitDescendants.SELECTED,
+    sequentialSampleCount: 0,
+    annualSampleCount: 0,
+    predictorGroups: [],
+})
 export const validate = createFormValidate(predictorFormSchema)
