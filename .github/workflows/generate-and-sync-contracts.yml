@@ -135,6 +135,7 @@ jobs:
                   echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
 
     check-contracts-pr:
+        needs: generate-and-sync
         runs-on: ubuntu-latest
         if: github.event_name == 'pull_request'
         steps:
