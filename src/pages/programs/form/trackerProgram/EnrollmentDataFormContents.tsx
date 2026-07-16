@@ -13,11 +13,12 @@ import {
 import React, { useEffect, useRef } from 'react'
 import { Field as FieldRFF, useField } from 'react-final-form'
 import {
-    ModelTransferFrom,
+    ModelTransfer,
     RenderingOptionsSelect,
     SectionedFormSection,
     StandardFormSectionDescription,
     StandardFormSectionTitle,
+    getTransferSectionLabels,
 } from '../../../../components'
 import css from '../../../../components/metadataFormControls/ModelTransfer/ModelTransfer.module.css'
 import {
@@ -149,9 +150,10 @@ export const EnrollmentDataFormContents = React.memo(
                     name={name}
                     className={css.moduleTransferField}
                 >
-                    <ModelTransferFrom
-                        transferSection={SECTIONS_MAP.trackedEntityAttribute}
-                        disableNewItemForm
+                    <ModelTransfer
+                        {...getTransferSectionLabels(
+                            SECTIONS_MAP.trackedEntityAttribute
+                        )}
                         selected={input.value.map((attribute) => {
                             const tea = attribute.trackedEntityAttribute
                             return {

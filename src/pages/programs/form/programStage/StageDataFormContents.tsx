@@ -1,6 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import {
     CheckboxFieldFF,
+    Field,
     Table,
     TableBody,
     TableCell,
@@ -11,7 +12,7 @@ import {
 import React, { useCallback } from 'react'
 import { Field as FieldRFF, useField } from 'react-final-form'
 import {
-    ModelTransferField,
+    ModelTransfer,
     RenderingOptionsSelect,
     SectionedFormSection,
     StandardFormSectionDescription,
@@ -19,6 +20,7 @@ import {
     StandardFormSubsectionTitle,
     useNewItemFormComponent,
 } from '../../../../components'
+import css from '../../../../components/metadataFormControls/ModelTransfer/ModelTransfer.module.css'
 import { DataElement } from '../../../../types/generated'
 
 type ProgramStageDataElementFormValue = {
@@ -60,10 +62,13 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
     const fieldName = isTrackerProgram
         ? 'programStageDataElements'
         : 'programStages[0].programStageDataElements'
-    const { input } = useField<ProgramStageDataElementFormValue[]>(fieldName, {
-        multiple: true,
-        validateFields: [],
-    })
+    const { input, meta } = useField<ProgramStageDataElementFormValue[]>(
+        fieldName,
+        {
+            multiple: true,
+            validateFields: [],
+        }
+    )
 
     const loadDataElementForm = useCallback(
         () => import('../../../dataElements/New'),
@@ -94,61 +99,76 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
                           'Configure data collection for events in this program.'
                       )}
             </StandardFormSectionDescription>
-            <ModelTransferField
+            <Field
+                error={meta.invalid}
+                validationText={(meta.touched && meta.error?.toString()) || ''}
                 name={fieldName}
-                selected={input.value.map((psde) => psde.dataElement)}
-                onChange={({ selected }) => {
-                    const existingDataElementsMap = new Map(
-                        input.value.map((psde) => [psde.dataElement.id, psde])
-                    )
-                    const selectedDataElements = selected.map((de) => {
-                        const existing = existingDataElementsMap.get(de.id)
-                        if (existing) {
-                            return {
-                                ...existing,
-                                renderType:
-                                    existing.renderType || defaultRenderType,
-                                optionSet: existing.optionSet,
+                className={css.moduleTransferField}
+            >
+                <ModelTransfer
+                    selected={input.value.map((psde) => psde.dataElement)}
+                    onChange={({ selected }) => {
+                        const existingDataElementsMap = new Map(
+                            input.value.map((psde) => [
+                                psde.dataElement.id,
+                                psde,
+                            ])
+                        )
+                        const selectedDataElements = selected.map((de) => {
+                            const existing = existingDataElementsMap.get(de.id)
+                            if (existing) {
+                                return {
+                                    ...existing,
+                                    renderType:
+                                        existing.renderType ||
+                                        defaultRenderType,
+                                    optionSet: existing.optionSet,
+                                }
                             }
-                        }
-                        const dataElement = de as DataElement
-                        return {
-                            dataElement: {
-                                id: dataElement.id,
-                                displayName: dataElement.displayName,
+                            const dataElement = de as DataElement
+                            return {
+                                dataElement: {
+                                    id: dataElement.id,
+                                    displayName: dataElement.displayName,
+                                    optionSet: dataElement.optionSet,
+                                },
+                                valueType: dataElement.valueType,
                                 optionSet: dataElement.optionSet,
-                            },
-                            valueType: dataElement.valueType,
-                            optionSet: dataElement.optionSet,
-                            compulsory: false,
-                            displayInReports: false,
-                            allowFutureDate: false,
-                            skipAnalytics: false,
-                            skipSynchronization: false,
-                            renderType: defaultRenderType,
-                        }
-                    })
-                    input.onChange(selectedDataElements)
-                    input.onBlur()
-                }}
-                leftHeader={i18n.t('Available data elements')}
-                rightHeader={i18n.t('Selected data elements')}
-                filterPlaceholder={i18n.t('Filter available data elements')}
-                filterPlaceholderPicked={i18n.t(
-                    'Filter selected data elements'
-                )}
-                maxSelections={Infinity}
-                enableOrderChange={false}
-                NewItemForm={NewItemForm}
-                newItemFormHeader={i18n.t('Add new data element')}
-                query={{
-                    resource: 'dataElements',
-                    params: {
-                        fields: ['id', 'displayName', 'valueType', 'optionSet'],
-                        filter: ['domainType:eq:TRACKER'],
-                    },
-                }}
-            />
+                                compulsory: false,
+                                displayInReports: false,
+                                allowFutureDate: false,
+                                skipAnalytics: false,
+                                skipSynchronization: false,
+                                renderType: defaultRenderType,
+                            }
+                        })
+                        input.onChange(selectedDataElements)
+                        input.onBlur()
+                    }}
+                    leftHeader={i18n.t('Available data elements')}
+                    rightHeader={i18n.t('Selected data elements')}
+                    filterPlaceholder={i18n.t('Filter available data elements')}
+                    filterPlaceholderPicked={i18n.t(
+                        'Filter selected data elements'
+                    )}
+                    maxSelections={Infinity}
+                    enableOrderChange={false}
+                    NewItemForm={NewItemForm}
+                    newItemFormHeader={i18n.t('Add new data element')}
+                    query={{
+                        resource: 'dataElements',
+                        params: {
+                            fields: [
+                                'id',
+                                'displayName',
+                                'valueType',
+                                'optionSet',
+                            ],
+                            filter: ['domainType:eq:TRACKER'],
+                        },
+                    }}
+                />
+            </Field>
             <StandardFormSubsectionTitle>
                 {i18n.t('Configure data items')}
             </StandardFormSubsectionTitle>

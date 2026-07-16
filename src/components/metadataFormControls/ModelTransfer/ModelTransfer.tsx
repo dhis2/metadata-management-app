@@ -94,7 +94,30 @@ export type ModelTransferPropsFor<
     | 'NewItemForm'
 > & {
     transferSection: ModelSection
-    disableNewItemForm?: boolean
+}
+
+export function getTransferSectionLabels(transferSection: ModelSection) {
+    return {
+        leftHeader: i18n.t('Available {{name}}', {
+            name: transferSection.titlePlural,
+        }),
+        rightHeader: i18n.t('Selected {{name}}', {
+            name: transferSection.titlePlural,
+        }),
+        filterPlaceholder: i18n.t('Filter available {{name}}', {
+            name: transferSection.titlePlural,
+        }),
+        filterPlaceholderPicked: i18n.t('Filter selected {{name}}', {
+            name: transferSection.titlePlural,
+        }),
+        newItemFormHeader: i18n.t('Add new {{name}}', {
+            name: transferSection.title,
+        }),
+        newItemFormFooterInfo: i18n.t(
+            "Saving this {{name}} won't apply unsaved changes in the form below.",
+            { name: transferSection.title.toLowerCase() }
+        ),
+    }
 }
 
 export const ModelTransferFrom = <
@@ -102,38 +125,17 @@ export const ModelTransferFrom = <
     TModelData extends DisplayableModel = TModel
 >({
     transferSection,
-    disableNewItemForm = false,
     ...rest
 }: ModelTransferPropsFor<TModel, TModelData>) => {
     const loadComponent = useCallback(
         () => import(`../../../pages/${transferSection.namePlural}/New`),
         [transferSection.namePlural]
     )
-    const NewItemForm = useNewItemFormComponent(
-        disableNewItemForm ? undefined : loadComponent
-    )
+    const NewItemForm = useNewItemFormComponent(loadComponent)
 
     return (
         <ModelTransfer
-            leftHeader={i18n.t('Available {{name}}', {
-                name: transferSection.titlePlural,
-            })}
-            rightHeader={i18n.t('Selected {{name}}', {
-                name: transferSection.titlePlural,
-            })}
-            filterPlaceholder={i18n.t('Filter available {{name}}', {
-                name: transferSection.titlePlural,
-            })}
-            filterPlaceholderPicked={i18n.t('Filter selected {{name}}', {
-                name: transferSection.titlePlural,
-            })}
-            newItemFormHeader={i18n.t('Add new {{name}}', {
-                name: transferSection.title,
-            })}
-            newItemFormFooterInfo={i18n.t(
-                "Saving this {{name}} won't apply unsaved changes in the form below.",
-                { name: transferSection.title.toLowerCase() }
-            )}
+            {...getTransferSectionLabels(transferSection)}
             NewItemForm={NewItemForm}
             {...rest}
         />
