@@ -22,7 +22,6 @@ const predictorBaseSchema = z.object({
     sequentialSampleCount: z.number().int(),
     annualSampleCount: z.number().int().min(0).max(10),
     sequentialSkipCount: z.number().int().optional(),
-    predictorGroups: z.array(modelReference),
 })
 
 export const predictorListSchema = predictorBaseSchema
@@ -61,7 +60,6 @@ export const initialValues = getDefaults(predictorFormSchema, {
     organisationUnitDescendants: Predictor.organisationUnitDescendants.SELECTED,
     sequentialSampleCount: 0,
     annualSampleCount: 0,
-    predictorGroups: [],
 })
 
 const validatingPredictorFormSchema = predictorFormSchema.extend({
