@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-07-09T13:25:24.666Z\n"
-"PO-Revision-Date: 2026-07-09T13:25:24.666Z\n"
+"POT-Creation-Date: 2026-07-14T08:54:19.403Z\n"
+"PO-Revision-Date: 2026-07-14T08:54:19.403Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -2635,6 +2635,12 @@ msgstr "Mandatory: all objects must have a value for this attribute"
 
 msgid "Unique values only"
 msgstr "Unique values only"
+
+msgid "Category options of source and target categories do not match"
+msgstr "Category options of source and target categories do not match"
+
+msgid "Categories must have unique, non-overlapping category combos"
+msgstr "Categories must have unique, non-overlapping category combos"
 
 msgid "Configure category merge"
 msgstr "Configure category merge"
@@ -5770,6 +5776,9 @@ msgstr "None (report date will be empty)"
 msgid "A program is required"
 msgstr "A program is required"
 
+msgid "View program"
+msgstr "View program"
+
 msgid "The number of days between repeated events."
 msgstr "The number of days between repeated events."
 
@@ -6494,3 +6503,195 @@ msgstr "Skip form validation"
 msgctxt ")"
 msgid "Key may only contain letters, numbers, hyphens (-) and underscores ("
 msgstr "Key may only contain letters, numbers, hyphens (-) and underscores (_)"
+
+msgctxt "Application title"
+msgid "__MANIFEST_APP_TITLE"
+msgstr "Metadata Management"
+
+msgctxt "Application description"
+msgid "__MANIFEST_APP_DESCRIPTION"
+msgstr ""
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Maintenance"
+msgstr "Maintenance"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Categories"
+msgstr "Categories"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Category options"
+msgstr "Category options"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Category combinations"
+msgstr "Category combinations"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Category option combinations"
+msgstr "Category option combinations"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Category option groups"
+msgstr "Category option groups"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Category option group sets"
+msgstr "Category option group sets"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Data elements"
+msgstr "Data elements"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Data element groups"
+msgstr "Data element groups"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Data element group sets"
+msgstr "Data element group sets"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Data sets"
+msgstr "Data sets"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Data set notifications"
+msgstr "Data set notifications"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Indicators"
+msgstr "Indicators"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Indicator types"
+msgstr "Indicator types"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Indicator groups"
+msgstr "Indicator groups"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Indicator group sets"
+msgstr "Indicator group sets"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Program indicators"
+msgstr "Program indicators"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Program indicator groups"
+msgstr "Program indicator groups"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Organisation units"
+msgstr "Organisation units"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Organisation unit groups"
+msgstr "Organisation unit groups"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Organisation unit group sets"
+msgstr "Organisation unit group sets"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Organisation unit levels"
+msgstr "Organisation unit levels"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Programs"
+msgstr "Programs"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Tracked entity attributes"
+msgstr "Tracked entity attributes"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Relationship types"
+msgstr "Relationship types"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Tracked entity types"
+msgstr "Tracked entity types"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Program rules"
+msgstr "Program rules"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Program rule variables"
+msgstr "Program rule variables"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Validation rules"
+msgstr "Validation rules"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Validation rule groups"
+msgstr "Validation rule groups"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Validation notifications"
+msgstr "Validation notifications"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Constants"
+msgstr "Constants"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Attributes"
+msgstr "Attributes"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Option sets"
+msgstr "Option sets"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Option groups"
+msgstr "Option groups"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Option group sets"
+msgstr "Option group sets"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Legends"
+msgstr "Legends"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Predictors"
+msgstr "Predictors"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Predictor groups"
+msgstr "Predictor groups"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_External map layers"
+msgstr "External map layers"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Data approval levels"
+msgstr "Data approval levels"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Data approval workflows"
+msgstr "Data approval workflows"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Locales"
+msgstr "Locales"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_SQL views"
+msgstr "SQL views"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Icons"
+msgstr "Icons"
+
+msgctxt "Title for shortcut used by command palette"
+msgid "__MANIFEST_SHORTCUT_Analytics table hooks"
+msgstr "Analytics table hooks"

@@ -1,3 +1,15 @@
+# [0.167.0](https://github.com/dhis2/metadata-management-app/compare/v0.166.1...v0.167.0) (2026-07-14)
+
+
+### Bug Fixes
+
+* program stage selector ([#995](https://github.com/dhis2/metadata-management-app/issues/995)) ([d41f1d7](https://github.com/dhis2/metadata-management-app/commit/d41f1d78ed30a623bbcd33994bc997e84fdfc2b4))
+
+
+### Features
+
+* categories merge with validation [DHIS2-18292] ([#994](https://github.com/dhis2/metadata-management-app/issues/994)) ([a62d3cd](https://github.com/dhis2/metadata-management-app/commit/a62d3cd860ae85beb209310807cb93d4bf5400b2))
+
 ## [0.166.1](https://github.com/dhis2/metadata-management-app/compare/v0.166.0...v0.166.1) (2026-07-13)
 
 

@@ -1,5 +1,4 @@
 import { render, within } from '@testing-library/react'
-import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/programStages.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
@@ -242,27 +241,20 @@ describe('Program Stage form tests', () => {
         })
 
         it('shows a link button to the program ', async () => {
-            const openSpy = jest
-                .spyOn(window, 'open')
-                .mockImplementation(() => null)
-
             const { screen } = await renderForm()
 
             const programField = await screen.findByTestId(PROGRAM_FIELD)
-            const viewProgramLink = await within(programField).findByTestId(
+            const viewProgramButton = await within(programField).findByTestId(
                 `${PROGRAM_FIELD}-view-link`
             )
+            const viewProgramLink = viewProgramButton.closest('a')
 
             expect(viewProgramLink).toBeVisible()
-
-            await userEvent.click(viewProgramLink)
-
-            expect(openSpy).toHaveBeenCalledWith(
-                expect.stringContaining('/programs/program1'),
-                '_blank'
+            expect(viewProgramLink).toHaveAttribute(
+                'href',
+                expect.stringContaining('/programs/program1')
             )
-
-            openSpy.mockRestore()
+            expect(viewProgramLink).toHaveAttribute('target', '_blank')
         })
     })
 })

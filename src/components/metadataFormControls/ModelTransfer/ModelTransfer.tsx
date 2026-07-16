@@ -44,6 +44,7 @@ export type ModelTranferProps<
     filterUnassignedTo?: string
     NewItemForm?: NewItemFormComponent
     newItemFormHeader?: string
+    hideAddNew?: boolean
     newItemFormFooterInfo?: string
 }
 
@@ -123,6 +124,7 @@ export const ModelTransfer = <
     filterUnassignedTo,
     NewItemForm,
     newItemFormHeader,
+    hideAddNew = false,
     newItemFormFooterInfo,
     height = '360px',
     optionsWidth = '480px',
@@ -223,6 +225,7 @@ export const ModelTransfer = <
                         newLink={newLink}
                         NewItemForm={NewItemForm}
                         newItemFormHeader={newItemFormHeader}
+                        hideAddNew={hideAddNew}
                         newItemFormFooterInfo={newItemFormFooterInfo}
                     />
                 )
@@ -244,12 +247,14 @@ export const DefaultTransferLeftFooter = ({
     newLink,
     NewItemForm,
     newItemFormHeader,
+    hideAddNew = false,
     newItemFormFooterInfo,
 }: {
     onRefreshClick: () => void
     newLink: string
     NewItemForm?: NewItemFormComponent
     newItemFormHeader?: string
+    hideAddNew?: boolean
     newItemFormFooterInfo?: string
 }) => {
     const [drawerOpen, setDrawerOpen] = useState(false)
@@ -261,15 +266,16 @@ export const DefaultTransferLeftFooter = ({
                     {i18n.t('Refresh list')}
                 </Button>
 
-                {NewItemForm ? (
-                    <Button small onClick={() => setDrawerOpen(true)}>
-                        {i18n.t('Add new')}
-                    </Button>
-                ) : (
-                    <LinkButton small href={newLink} target="_blank">
-                        {i18n.t('Add new')}
-                    </LinkButton>
-                )}
+                {!hideAddNew &&
+                    (NewItemForm ? (
+                        <Button small onClick={() => setDrawerOpen(true)}>
+                            {i18n.t('Add new')}
+                        </Button>
+                    ) : (
+                        <LinkButton small href={newLink} target="_blank">
+                            {i18n.t('Add new')}
+                        </LinkButton>
+                    ))}
             </ButtonStrip>
             {NewItemForm && (
                 <DrawerPortal
