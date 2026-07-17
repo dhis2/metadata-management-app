@@ -193,6 +193,7 @@ export const ProgramIndicatorsFormFields = () => {
                             validationResource="programIndicators/expression/description"
                             clearable={true}
                             programId={programInput?.value?.id}
+                            programType={programInput?.value?.programType}
                             type="programIndicator"
                             validateSchemaSection={section}
                         />
@@ -219,6 +220,7 @@ export const ProgramIndicatorsFormFields = () => {
                             validationResource="programIndicators/filter/description"
                             clearable={true}
                             programId={programInput?.value?.id}
+                            programType={programInput?.value?.programType}
                             type="programIndicator"
                             validateSchemaSection={section}
                         />

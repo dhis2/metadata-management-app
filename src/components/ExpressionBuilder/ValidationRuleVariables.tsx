@@ -823,22 +823,6 @@ const filterEnrollmentVariables = (
           )
         : elements
 
-const withFilteredVariables = (
-    elementTypes: ElementType[],
-    isEventProgram: boolean
-): ElementType[] =>
-    elementTypes.map((elementType) =>
-        elementType.type === 'variables'
-            ? {
-                  ...elementType,
-                  elements: filterEnrollmentVariables(
-                      elementType.elements ?? [],
-                      isEventProgram
-                  ),
-              }
-            : elementType
-    )
-
 const PROGRAM_RULE_FUNCTION_ELEMENTS = [
     { id: 'd2:ceil( <number> )', displayName: 'd2:ceil( <number> )' },
     { id: 'd2:floor( <number> )', displayName: 'd2:floor( <number> )' },
@@ -981,7 +965,9 @@ const PROGRAM_RULE_OPERATOR_ELEMENTS = [
     { id: '||', displayName: 'OR' },
 ]
 
-const programIndicatorElementTypes: ElementType[] = [
+const programIndicatorElementTypes = (
+    isEventProgram: boolean
+): ElementType[] => [
     {
         type: 'operator',
         name: i18n.t('Operators'),
@@ -991,7 +977,10 @@ const programIndicatorElementTypes: ElementType[] = [
     {
         type: 'variables',
         name: i18n.t('Variables'),
-        elements: PI_VARIABLE_ELEMENTS,
+        elements: filterEnrollmentVariables(
+            PI_VARIABLE_ELEMENTS,
+            isEventProgram
+        ),
         component: DefaultList,
     },
     {
@@ -1011,7 +1000,23 @@ const programIndicatorElementTypes: ElementType[] = [
     },
 ]
 
-const programRuleElementTypes: ElementType[] = [
+const programIndicatorElementTypesCount = (
+    isEventProgram: boolean
+): ElementType[] => {
+    const types = programIndicatorElementTypes(isEventProgram)
+    types[1] = {
+        type: 'variables',
+        name: i18n.t('Variables'),
+        elements: filterEnrollmentVariables(
+            PI_VARIABLE_ELEMENTS_COUNT,
+            isEventProgram
+        ),
+        component: DefaultList,
+    }
+    return types
+}
+
+const programRuleElementTypes = (isEventProgram: boolean): ElementType[] => [
     {
         type: 'operator',
         name: i18n.t('Operators'),
@@ -1021,7 +1026,10 @@ const programRuleElementTypes: ElementType[] = [
     {
         type: 'variables',
         name: i18n.t('Variables'),
-        elements: PROGRAM_RULE_VARIABLE_ELEMENTS,
+        elements: filterEnrollmentVariables(
+            PROGRAM_RULE_VARIABLE_ELEMENTS,
+            isEventProgram
+        ),
         component: DefaultList,
     },
     {
@@ -1037,16 +1045,6 @@ const programRuleElementTypes: ElementType[] = [
     },
 ]
 
-const programIndicatorElementTypesCount: ElementType[] = [
-    ...programIndicatorElementTypes,
-]
-programIndicatorElementTypesCount[1] = {
-    type: 'variables',
-    name: i18n.t('Variables'),
-    elements: PI_VARIABLE_ELEMENTS_COUNT,
-    component: DefaultList,
-}
-
 export const getElementTypes = (
     type: ExpressionBuilderType,
     {
@@ -1058,14 +1056,12 @@ export const getElementTypes = (
     }
 ): ElementType[] => {
     if (type === 'programIndicator') {
-        const elementTypes =
-            aggregationType === 'COUNT'
-                ? programIndicatorElementTypesCount
-                : programIndicatorElementTypes
-        return withFilteredVariables(elementTypes, isEventProgram)
+        return aggregationType === 'COUNT'
+            ? programIndicatorElementTypesCount(isEventProgram)
+            : programIndicatorElementTypes(isEventProgram)
     }
     if (type === 'programRule') {
-        return withFilteredVariables(programRuleElementTypes, isEventProgram)
+        return programRuleElementTypes(isEventProgram)
     }
     if (type === 'indicator') {
         return indicatorElementTypes

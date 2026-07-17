@@ -195,8 +195,10 @@ const useCategories = ({
 }
 export const CategoryMappingSection = ({
     dataDimensionType,
+    programType,
 }: {
     dataDimensionType: DataDimensionType
+    programType?: string
 }) => {
     const formApi = useForm()
 
@@ -277,6 +279,7 @@ export const CategoryMappingSection = ({
                     <CategoryMappingList
                         key={category.id}
                         category={category}
+                        programType={programType}
                         initiallyExpanded={addedCategories.some(
                             (c) => c.id === category.id
                         )}
@@ -324,10 +327,12 @@ const SuggestedCategory = ({
 type DisaggregationCategoryProps = {
     category: CategoryFromSelect
     initiallyExpanded?: boolean
+    programType?: string
 }
 export const CategoryMappingList = ({
     category,
     initiallyExpanded = false,
+    programType,
 }: DisaggregationCategoryProps) => {
     const array = useFieldArray(`categoryMappings.${category.id}`)
     const { input: categoryMappingsDeleted } =
@@ -407,6 +412,7 @@ export const CategoryMappingList = ({
                         fieldName={fieldName}
                         categoryOptionArray={category.categoryOptions ?? []}
                         showSoftDelete={showSoftDelete}
+                        programType={programType}
                     />
                 </div>
             ))}

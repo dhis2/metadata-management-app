@@ -8,7 +8,11 @@ import {
     TrackedEntityAttributeField,
 } from '../../../fields'
 
-export function assign(programId: string): ReactNode {
+export function assign(
+    programId: string,
+    isEdit?: boolean,
+    programType?: string
+): ReactNode {
     return (
         <>
             <StandardFormField>
@@ -29,6 +33,7 @@ export function assign(programId: string): ReactNode {
             <StandardFormField>
                 <ExpressionField
                     programId={programId}
+                    programType={programType}
                     label={i18n.t('Expression to evaluate and assign')}
                     clearable={false}
                     required

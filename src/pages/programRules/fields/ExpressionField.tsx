@@ -16,6 +16,7 @@ export function ExpressionField({
     fieldName = 'data',
     label,
     programId,
+    programType,
     clearable = true,
     disabled = false,
     required = false,
@@ -23,6 +24,7 @@ export function ExpressionField({
     fieldName?: string
     label: string
     programId?: string
+    programType?: string
     clearable?: boolean
     disabled?: boolean
     required?: boolean
@@ -46,6 +48,7 @@ export function ExpressionField({
                         validationResource="programRuleActions/data/expression/description"
                         clearable={clearable}
                         programId={programId}
+                        programType={programType}
                         type="programRule"
                         validateSchemaSection={programRuleActionSchemaSection}
                         validateProperty={fieldName}

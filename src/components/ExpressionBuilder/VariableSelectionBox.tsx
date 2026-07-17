@@ -1,16 +1,9 @@
 import { IconChevronDown16, IconChevronRight16 } from '@dhis2/ui'
-import { useQuery } from '@tanstack/react-query'
 import React, { useCallback, useState, RefObject } from 'react'
 import { useField } from 'react-final-form'
-import { useBoundResourceQueryFn } from '../../lib'
 import styles from './ExpressionBuilder.module.css'
 import { ExpressionBuilderType } from './types'
 import { ElementType, getElementTypes } from './ValidationRuleVariables'
-
-type ProgramTypeResponse = {
-    id: string
-    programType?: string
-}
 
 const insertElementNonClosure = ({
     elementText,
@@ -42,11 +35,13 @@ export const VariableSelectionBox = ({
     elementRef,
     clearValidationState,
     programId,
+    programType,
     type,
 }: {
     elementRef: RefObject<HTMLInputElement | HTMLTextAreaElement>
     clearValidationState: () => void
     programId?: string
+    programType?: string
     type: ExpressionBuilderType
 }) => {
     const { input: aggregationTypeInput } = useField<string>(
@@ -54,21 +49,7 @@ export const VariableSelectionBox = ({
         { subscription: { value: true } }
     )
 
-    const queryFn = useBoundResourceQueryFn()
-    const hasVariables = type === 'programIndicator' || type === 'programRule'
-    const programInfo = useQuery({
-        queryKey: [
-            {
-                resource: 'programs',
-                id: programId,
-                params: { fields: ['id', 'programType'] },
-            },
-        ],
-        queryFn: queryFn<ProgramTypeResponse>,
-        enabled: !!programId && hasVariables,
-    })
-    const isEventProgram =
-        programInfo.data?.programType === 'WITHOUT_REGISTRATION'
+    const isEventProgram = programType !== 'WITH_REGISTRATION'
 
     const elementTypes = getElementTypes(type, {
         aggregationType: aggregationTypeInput?.value,

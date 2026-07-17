@@ -86,6 +86,7 @@ export const ExpressionBuilder = ({
     title,
     initialValue,
     programId,
+    programType,
     type,
     clearable,
     clearExpression,
@@ -96,6 +97,7 @@ export const ExpressionBuilder = ({
     title: string
     initialValue: string
     programId?: string
+    programType?: string
     type: ExpressionBuilderType
     clearable: boolean
     clearExpression?: () => void
@@ -210,6 +212,7 @@ export const ExpressionBuilder = ({
                             elementRef={expressionRef}
                             clearValidationState={clearValidationState}
                             programId={programId}
+                            programType={programType}
                             type={type}
                         />
                     </div>
