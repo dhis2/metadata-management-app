@@ -19,6 +19,7 @@ import {
 import { useParams } from 'react-router-dom'
 import {
     CodeField,
+    CustomAttributesSection,
     DescriptionField,
     DrawerFormFooter,
     DrawerLayout,
@@ -381,6 +382,11 @@ export const DataSetSectionFormContents = ({
                         </StandardFormField>
                     </div>
                 </SectionedFormSection>
+
+                <CustomAttributesSection
+                    schemaSection={dataSetSectionSchemaSection}
+                    sectionedLayout={true}
+                />
             </SectionedFormSections>
             <SectionedFormErrorNotice />
         </>

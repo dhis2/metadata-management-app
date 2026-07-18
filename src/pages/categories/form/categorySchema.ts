@@ -29,6 +29,7 @@ export const categoryFormSchema = identifiable
 export const categoryListSchema = categoryBaseSchema
     .merge(withDefaultListColumns)
     .extend({
+        name: z.string(),
         displayShortName: z.string(),
     })
 

@@ -36,6 +36,7 @@ export const fieldFilters = [
     'displayOptions',
     'dataElements[id,displayName,categoryCombo[id]]',
     'greyedFields[dataElement, categoryOptionCombo]',
+    'attributeValues[value,attribute[id]]',
 ] as const
 
 const dataSetSectionSchemaSection = {
@@ -110,7 +111,7 @@ export const DataSetSectionForm = ({
             initialValues={{ ...initialValues, dataSet: { id: dataSetId } }}
             onSubmit={onSubmit}
             valueFormatter={valueFormatter}
-            includeAttributes={false}
+            section={dataSetSectionSchemaSection}
             mutators={{ ...arrayMutators }}
         >
             <DataSetSectionFormContents onCancel={onCancel} />
