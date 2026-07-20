@@ -15099,6 +15099,8 @@ export type TrackerUser = {
 export enum Transform {
     AUTO = 'AUTO',
     NONE = 'NONE',
+    TRANSLATE = 'TRANSLATE',
+    ATTRIBUTE = 'ATTRIBUTE',
     IS_EMPTY = 'IS_EMPTY',
     IS_NOT_EMPTY = 'IS_NOT_EMPTY',
     SIZE = 'SIZE',
@@ -15259,6 +15261,12 @@ export type UpdateFollowUpForDataValuesRequest = {
 export type UpdateIconRequest = {
     description: string
     keywords: Array<string>
+}
+
+export type UpdatePasswordRequest = {
+    newPassword: string
+    oldPassword: string
+    username: string
 }
 
 export type User = {
