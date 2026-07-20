@@ -90,6 +90,9 @@ export const DataElementMergeFormFields = ({
                     helpText={i18n.t(
                         'Where source and target have the same data value, the most recently updated is kept.'
                     )}
+                    moveToTargetLabel={i18n.t(
+                        'Move data values to the target data element'
+                    )}
                 />
             </FormSection>
             <FormSection>

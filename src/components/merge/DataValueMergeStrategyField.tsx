@@ -6,11 +6,11 @@ import { Field } from 'react-final-form'
 export const DataValueMergeStrategyField = ({
     label,
     helpText,
-    moveToTargetLabel = i18n.t('Move data values to the target data element'),
+    moveToTargetLabel,
 }: {
     label?: string
     helpText?: string
-    moveToTargetLabel?: string
+    moveToTargetLabel: string
 }) => (
     <FieldGroup label={label} helpText={helpText}>
         <Field<string | undefined>
