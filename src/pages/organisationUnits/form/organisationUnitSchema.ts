@@ -120,6 +120,7 @@ export const organisationUnitListSchema = withDefaultListColumns
         displayShortName: z.string(),
         level: z.number().or(z.null()),
         childCount: z.number(),
+        name: z.string(),
     })
 
 export const initialValues = getDefaultsOld(
