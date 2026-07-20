@@ -44,9 +44,11 @@ export const categoryComboFormSchema = identifiable
             .default([]),
     })
 
-export const categoryComboListSchema = categoryComboBaseSchema.merge(
-    withDefaultListColumns
-)
+export const categoryComboListSchema = categoryComboBaseSchema
+    .merge(withDefaultListColumns)
+    .extend({
+        name: z.string(),
+    })
 
 export const initialValues = getDefaultsOld(categoryComboFormSchema)
 
