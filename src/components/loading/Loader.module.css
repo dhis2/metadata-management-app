@@ -1,3 +1,17 @@
 .loadingSpinner {
     margin: var(--spacers-dp8) auto;
 }
+
+.centeredContainer {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: row !important;
+    overflow: visible !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.centeredContainer > .loadingSpinner {
+    flex: none !important;
+}
