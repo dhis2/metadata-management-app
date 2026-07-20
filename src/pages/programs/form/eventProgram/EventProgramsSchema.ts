@@ -38,6 +38,7 @@ const eventProgramBaseSchema = z.object({
                 id: z.string().optional(),
                 name: z.string().optional(),
                 displayName: z.string().optional(),
+                executionDateLabel: z.string().optional(),
                 sharing: sharingSettingsSchema.optional(),
                 enableUserAssignment: z.boolean().optional(),
                 blockEntryForm: z.boolean().optional(),

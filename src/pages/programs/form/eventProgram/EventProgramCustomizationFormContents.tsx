@@ -9,6 +9,7 @@ import {
     StandardFormSectionTitle,
 } from '../../../../components'
 import {
+    SCHEMA_SECTIONS,
     Section,
     useGivenShemaOrSchemaSectionHandleOrThrow,
     useValidator,
@@ -22,12 +23,12 @@ export const EventProgramCustomizationFormContents = React.memo(
         name: string
         section?: Section
     }) {
-        const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({
-            section,
-        })
+        // this section only applies to event programs, which are limited to
+        // a single program stage, so it's always safe to reference [0] here
+        useGivenShemaOrSchemaSectionHandleOrThrow({ section })
         const reportDateLabelValidator = useValidator({
-            schemaSection,
-            property: 'incidentDateLabel',
+            schemaSection: SCHEMA_SECTIONS.programStage,
+            property: 'executionDateLabel',
         })
 
         return (
@@ -44,13 +45,13 @@ export const EventProgramCustomizationFormContents = React.memo(
                 <StandardFormField>
                     <Field
                         component={InputFieldFF}
-                        name="incidentDateLabel"
+                        name="programStages[0].executionDateLabel"
                         inputWidth="400px"
                         label={i18n.t('Custom label for "Report date"')}
                         helpText={i18n.t(
-                            'Used as the default registration date for events'
+                            'Used as the label for the event date (report date) shown in the Capture app'
                         )}
-                        dataTest="formfields-incidentDateLabel"
+                        dataTest="formfields-executionDateLabel"
                         validate={reportDateLabelValidator}
                     />
                 </StandardFormField>
