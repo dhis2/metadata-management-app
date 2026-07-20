@@ -1,3 +1,10 @@
+# [0.169.0](https://github.com/dhis2/metadata-management-app/compare/v0.168.0...v0.169.0) (2026-07-20)
+
+
+### Features
+
+* merge cat combos ([#993](https://github.com/dhis2/metadata-management-app/issues/993)) ([f3413b7](https://github.com/dhis2/metadata-management-app/commit/f3413b7029673378471727ce97949f7470539ce5))
+
 # [0.168.0](https://github.com/dhis2/metadata-management-app/compare/v0.167.0...v0.168.0) (2026-07-20)
 
 
