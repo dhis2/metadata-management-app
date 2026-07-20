@@ -10,6 +10,7 @@ const categoryOptionComboSchema = z.object({
 })
 
 export const mergeFormSchema = mergeFormSchemaBase
+    .omit({ deleteSources: true })
     .extend({
         sources: z
             .array(categoryOptionComboSchema)

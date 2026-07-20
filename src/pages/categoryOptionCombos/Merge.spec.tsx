@@ -38,6 +38,7 @@ generateDefaultMergeTests({
     componentName: 'Category option combination',
     mergeResource: 'categoryOptionCombos/merge',
     renderMerge,
+    hasDeleteSources: false,
 })
 
 describe('category option combination merge additional tests', () => {

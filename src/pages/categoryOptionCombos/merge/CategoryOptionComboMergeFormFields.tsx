@@ -5,7 +5,6 @@ import {
     BaseSourcesField,
     BaseTargetField,
     MergeSourcesTargetWrapper,
-    DeleteSourcesFields,
     Description,
     FormSection,
     FormSections,
@@ -74,27 +73,6 @@ export const CategoryOptionComboMergeFormFields = ({
                     {i18n.t('Merge settings')}
                 </StandardFormSectionTitle>
 
-                <DeleteSourcesFields
-                    groupLabel={i18n.t(
-                        'What should happen to the source category option combinations after the merge is complete?'
-                    )}
-                    getKeepLabel={(count) =>
-                        i18n.t(
-                            'Keep {{ count }} source category option combinations',
-                            {
-                                count,
-                            }
-                        )
-                    }
-                    getDeleteLabel={(count) =>
-                        i18n.t(
-                            'Delete {{ count }} source category option combinations',
-                            {
-                                count,
-                            }
-                        )
-                    }
-                />
                 <DataValueMergeStrategyField
                     label={i18n.t(
                         'What should happen to the data values recorded for the source category option combinations?'
