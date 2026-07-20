@@ -91,8 +91,8 @@ export const Component = () => {
                 return undefined
             }
 
-            const targetCategories = categoryComboDetails[values.target]
-            const targetCategoryIds = targetCategories.categories
+            const targetCategoryCombos = categoryComboDetails[values.target]
+            const targetCategoryIds = targetCategoryCombos.categories
                 .map((c) => c.id)
                 .sort()
                 .join(',')
