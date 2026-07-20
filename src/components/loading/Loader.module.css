@@ -2,16 +2,16 @@
     margin: var(--spacers-dp8) auto;
 }
 
-.centeredContainer.centeredContainer {
+.centeredContainer {
     flex: 1;
     min-height: 0;
     display: flex;
-    flex-direction: row;
-    overflow: visible;
+    flex-direction: row !important;
+    overflow: visible !important;
     align-items: center;
     justify-content: center;
 }
 
-.centeredContainer.centeredContainer > .loadingSpinner {
-    flex: none;
+.centeredContainer > .loadingSpinner {
+    flex: none !important;
 }
