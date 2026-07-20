@@ -1,3 +1,10 @@
+# [0.170.0](https://github.com/dhis2/metadata-management-app/compare/v0.169.0...v0.170.0) (2026-07-20)
+
+
+### Features
+
+* open dataelements in drawers ([#979](https://github.com/dhis2/metadata-management-app/issues/979)) ([357f69b](https://github.com/dhis2/metadata-management-app/commit/357f69b1c6d8e8cc70d26eedf796de2cdc11c4c7))
+
 # [0.169.0](https://github.com/dhis2/metadata-management-app/compare/v0.168.0...v0.169.0) (2026-07-20)
 
 
