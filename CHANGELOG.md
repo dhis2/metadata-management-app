@@ -1,3 +1,18 @@
+# [0.169.0](https://github.com/dhis2/metadata-management-app/compare/v0.168.0...v0.169.0) (2026-07-20)
+
+
+### Features
+
+* merge cat combos ([#993](https://github.com/dhis2/metadata-management-app/issues/993)) ([f3413b7](https://github.com/dhis2/metadata-management-app/commit/f3413b7029673378471727ce97949f7470539ce5))
+
+# [0.168.0](https://github.com/dhis2/metadata-management-app/compare/v0.167.0...v0.168.0) (2026-07-20)
+
+
+### Features
+
+* hide add new group assignment ([#987](https://github.com/dhis2/metadata-management-app/issues/987)) ([2e725ba](https://github.com/dhis2/metadata-management-app/commit/2e725ba44443262cb07fd73ba1e5dcfad96f7f4e))
+* org unit merge first draft ([#1000](https://github.com/dhis2/metadata-management-app/issues/1000)) ([98e9a52](https://github.com/dhis2/metadata-management-app/commit/98e9a5272af06f3d5247c0c810e6e079cd293177))
+
 # [0.167.0](https://github.com/dhis2/metadata-management-app/compare/v0.166.1...v0.167.0) (2026-07-14)
 
 
