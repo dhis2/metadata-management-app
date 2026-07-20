@@ -23,8 +23,6 @@ export const EventProgramCustomizationFormContents = React.memo(
         name: string
         section?: Section
     }) {
-        // this section only applies to event programs, which are limited to
-        // a single program stage, so it's always safe to reference [0] here
         useGivenShemaOrSchemaSectionHandleOrThrow({ section })
         const reportDateLabelValidator = useValidator({
             schemaSection: SCHEMA_SECTIONS.programStage,
