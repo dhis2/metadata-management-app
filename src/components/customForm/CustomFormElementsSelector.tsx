@@ -49,6 +49,7 @@ const ElementList = ({
             {elements.map((element) => (
                 <li key={`element_${element.id}`}>
                     <button
+                        type="button"
                         className={styles.elementButton}
                         onClick={() => {
                             insertElement({
