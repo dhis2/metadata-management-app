@@ -21,10 +21,15 @@ import {
     FormType,
     TabbedFormTypePicker,
 } from '../../../../components/formCreators/TabbedFormTypePicker'
-import { FORM_SECTION_PARAM_KEY, scrollToSection } from '../../../../lib'
+import { UnsavedDataElementsNotice } from '../../../../components/formCreators/UnsavedDataElementsNotice'
+import {
+    FORM_SECTION_PARAM_KEY,
+    hasUnsavedDataElements,
+    scrollToSection,
+} from '../../../../lib'
 import { SchemaName } from '../../../../types'
 import { DisplayOptionsField } from '../DisplayOptionsField'
-import { useDataSetField } from '../formHooks'
+import { useDataSetField, useDataSetFormState } from '../formHooks'
 import classes from './DataEntryFormContents.module.css'
 import { EditOrNewDataSetSectionForm } from './sectionForm'
 
@@ -38,6 +43,17 @@ export const DataEntryFromContents = React.memo(function FormFormContents({
     const sections = useDataSetField('sections').input.value
     const dataEntryForm = useDataSetField('dataEntryForm').input.value
     const dataSetElements = useDataSetField('dataSetElements').input.value
+    const { initialValues } = useDataSetFormState({
+        subscription: { initialValues: true },
+    })
+    const hasUnsavedNewDataElements = useMemo(
+        () =>
+            hasUnsavedDataElements(
+                dataSetElements,
+                initialValues?.dataSetElements
+            ),
+        [dataSetElements, initialValues?.dataSetElements]
+    )
     const [selectedFormType, setSelectedFormType] = useState<FormType>(
         FormType.DEFAULT
     )
@@ -133,23 +149,43 @@ export const DataEntryFromContents = React.memo(function FormFormContents({
                     </div>
                 )}
                 {selectedFormType === FormType.SECTION && (
-                    <SectionFormSectionsList
-                        sectionsFieldName={'sections'}
-                        SectionFormComponent={EditOrNewDataSetSectionForm}
-                        schemaName={SchemaName.section}
-                        level={'primary'}
-                        withReordering
-                    />
+                    <>
+                        {hasUnsavedNewDataElements && (
+                            <UnsavedDataElementsNotice
+                                message={i18n.t(
+                                    'Save changes to this data set before editing sections'
+                                )}
+                            />
+                        )}
+                        <SectionFormSectionsList
+                            sectionsFieldName={'sections'}
+                            SectionFormComponent={EditOrNewDataSetSectionForm}
+                            schemaName={SchemaName.section}
+                            level={'primary'}
+                            withReordering
+                            disabled={hasUnsavedNewDataElements}
+                        />
+                    </>
                 )}
                 {selectedFormType === FormType.CUSTOM && (
-                    <CustomFormEditEntry
-                        level={'primary'}
-                        loading={loading}
-                        elementTypes={elementTypes}
-                        refetch={refetch}
-                        updateCustomForm={updateDataSetCustomForm}
-                        customFormTarget="data set"
-                    />
+                    <>
+                        {hasUnsavedNewDataElements && (
+                            <UnsavedDataElementsNotice
+                                message={i18n.t(
+                                    'Save changes to this data set before editing sections'
+                                )}
+                            />
+                        )}
+                        <CustomFormEditEntry
+                            level={'primary'}
+                            loading={loading}
+                            elementTypes={elementTypes}
+                            refetch={refetch}
+                            updateCustomForm={updateDataSetCustomForm}
+                            customFormTarget="data set"
+                            disabled={hasUnsavedNewDataElements}
+                        />
+                    </>
                 )}
                 {hasDisplayOptions && (
                     <div className={classes.displayOptions}>

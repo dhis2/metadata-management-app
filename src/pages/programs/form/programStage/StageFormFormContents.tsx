@@ -17,7 +17,12 @@ import {
     FormType,
     TabbedFormTypePicker,
 } from '../../../../components/formCreators/TabbedFormTypePicker'
-import { SchemaName, scrollToSection } from '../../../../lib'
+import { UnsavedDataElementsNotice } from '../../../../components/formCreators/UnsavedDataElementsNotice'
+import {
+    hasUnsavedDataElements,
+    SchemaName,
+    scrollToSection,
+} from '../../../../lib'
 import styles from '../trackerProgram/EnrollmentFormFormContents.module.css'
 import { MandatoryDataElementsWarning } from './MandatoryDataElementsWarning'
 import { getMandatoryDataElementsMissingFromSections } from './mandatoryStageDataElements'
@@ -44,9 +49,10 @@ export const StageFormFormContents = ({
         ? values.dataEntryForm
         : values.programStages?.[0]?.dataEntryForm
     const stageId = isTrackerProgram ? values.id : values.programStages[0]?.id
-    const hasDataElements = isTrackerProgram
-        ? values.programStageDataElements?.length > 0
-        : values.programStages?.[0]?.programStageDataElements?.length > 0
+    const currentDataElements = isTrackerProgram
+        ? values.programStageDataElements
+        : values.programStages?.[0]?.programStageDataElements
+    const hasDataElements = currentDataElements?.length > 0
 
     const initialDataElements = isTrackerProgram
         ? initialValues.programStageDataElements
@@ -59,6 +65,11 @@ export const StageFormFormContents = ({
                 programStageSections: currentSections,
             }),
         [initialDataElements, currentSections]
+    )
+
+    const hasUnsavedNewDataElements = useMemo(
+        () => hasUnsavedDataElements(currentDataElements, initialDataElements),
+        [currentDataElements, initialDataElements]
     )
 
     const [selectedFormType, setSelectedFormType] = useState<FormType>(
@@ -225,6 +236,13 @@ export const StageFormFormContents = ({
                             selectedFormType !== FormType.SECTION,
                     })}
                 >
+                    {hasUnsavedNewDataElements && (
+                        <UnsavedDataElementsNotice
+                            message={i18n.t(
+                                'Save changes to this program before editing stages'
+                            )}
+                        />
+                    )}
                     <SectionFormSectionsList
                         sectionsFieldName={
                             isTrackerProgram
@@ -247,6 +265,7 @@ export const StageFormFormContents = ({
                                 className={styles.sectionWarningNotice}
                             />
                         }
+                        disabled={hasUnsavedNewDataElements}
                     />
                 </div>
                 <div
@@ -255,6 +274,13 @@ export const StageFormFormContents = ({
                             selectedFormType !== FormType.CUSTOM,
                     })}
                 >
+                    {hasUnsavedNewDataElements && (
+                        <UnsavedDataElementsNotice
+                            message={i18n.t(
+                                'Save changes to this program before editing stages'
+                            )}
+                        />
+                    )}
                     <CustomFormEditEntry
                         level={isSubsection ? 'secondary' : 'primary'}
                         loading={loading}
@@ -264,6 +290,7 @@ export const StageFormFormContents = ({
                         customFormTarget={
                             isTrackerProgram ? 'program stage' : 'program'
                         }
+                        disabled={hasUnsavedNewDataElements}
                         fieldName={
                             isTrackerProgram
                                 ? 'dataEntryForm'
