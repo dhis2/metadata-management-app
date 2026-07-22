@@ -43,9 +43,12 @@ const orderedTranslatableFields = [
     'eventsLabel',
     'orgUnitLabel',
     'trackedEntityAttributeLabel',
+    'trackedEntityAttributesLabel',
     'relationshipLabel',
+    'relationshipsLabel',
     'followUpLabel',
     'noteLabel',
+    'notesLabel',
 ]
 
 const validEventFields: Set<string> = new Set([

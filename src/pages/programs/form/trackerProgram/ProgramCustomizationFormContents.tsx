@@ -18,6 +18,9 @@ import {
     EnrollmentsLabelField,
     EventsLabelField,
     ProgramStagesLabelField,
+    NotesLabelField,
+    RelationshipsLabelField,
+    TrackedEntityAttributesLabelField,
 } from './fields'
 
 export const ProgramCustomizationFormContents = React.memo(
@@ -61,6 +64,10 @@ export const ProgramCustomizationFormContents = React.memo(
         const noteLabelValidator = useValidator({
             schemaSection,
             property: 'noteLabel',
+        })
+        const trackedEntityAttributeLabelValidator = useValidator({
+            schemaSection,
+            property: 'trackedEntityAttributeLabel',
         })
 
         return (
@@ -194,6 +201,8 @@ export const ProgramCustomizationFormContents = React.memo(
                     />
                 </StandardFormField>
 
+                {showPluralLabels && <RelationshipsLabelField />}
+
                 <StandardFormField>
                     <Field
                         component={InputFieldFF}
@@ -207,6 +216,24 @@ export const ProgramCustomizationFormContents = React.memo(
                         validate={noteLabelValidator}
                     />
                 </StandardFormField>
+
+                {showPluralLabels && <NotesLabelField />}
+
+                <StandardFormField>
+                    <Field
+                        component={InputFieldFF}
+                        name="trackedEntityAttributeLabel"
+                        inputWidth="400px"
+                        label={i18n.t('Custom label for "Attribute"')}
+                        helpText={i18n.t(
+                            'Used to customize the label for tracked entity attributes'
+                        )}
+                        dataTest="formfields-trackedEntityAttributeLabel"
+                        validate={trackedEntityAttributeLabelValidator}
+                    />
+                </StandardFormField>
+
+                {showPluralLabels && <TrackedEntityAttributesLabelField />}
             </SectionedFormSection>
         )
     }

@@ -1,3 +1,6 @@
 export { EnrollmentsLabelField } from './EnrollmentsLabelField'
 export { EventsLabelField } from './EventsLabelField'
 export { ProgramStagesLabelField } from './ProgramStagesLabelField'
+export { NotesLabelField } from './NotesLabelField'
+export { RelationshipsLabelField } from './RelationshipsLabelField'
+export { TrackedEntityAttributesLabelField } from './TrackedEntityAttributesLabelField'
