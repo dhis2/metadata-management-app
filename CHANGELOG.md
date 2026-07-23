@@ -1,3 +1,10 @@
+## [0.170.1](https://github.com/dhis2/metadata-management-app/compare/v0.170.0...v0.170.1) (2026-07-23)
+
+
+### Bug Fixes
+
+* reduce cache time in org unit so list is updated after merge ([#1008](https://github.com/dhis2/metadata-management-app/issues/1008)) ([f2e00ba](https://github.com/dhis2/metadata-management-app/commit/f2e00ba318441993a91661a33a3e94453b7234f3))
+
 # [0.170.0](https://github.com/dhis2/metadata-management-app/compare/v0.169.0...v0.170.0) (2026-07-20)
 
 
