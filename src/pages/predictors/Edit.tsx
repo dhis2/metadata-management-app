@@ -68,7 +68,7 @@ export const Component = () => {
             predictorQuery.data && {
                 ...predictorQuery.data,
                 outputCombo: isDefaultOutputComboCoC
-                    ? {}
+                    ? undefined
                     : predictorQuery?.data?.outputCombo,
             }
         )
