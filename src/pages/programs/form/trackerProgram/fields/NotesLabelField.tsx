@@ -18,7 +18,7 @@ export function NotesLabelField() {
                 component={InputFieldFF}
                 name="notesLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Note" (plural)')}
+                label={i18n.t('Custom label for "Notes"')}
                 helpText={i18n.t('Example use: See all notes', {
                     nsSeparator: '~:~',
                 })}

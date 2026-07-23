@@ -18,7 +18,7 @@ export function EnrollmentsLabelField() {
                 component={InputFieldFF}
                 name="enrollmentsLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Enrollment" (plural)')}
+                label={i18n.t('Custom label for "Enrollments"')}
                 helpText={i18n.t('Example use: See all enrollments', {
                     nsSeparator: '~:~',
                 })}

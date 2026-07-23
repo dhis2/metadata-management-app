@@ -18,7 +18,7 @@ export function EventsLabelField() {
                 component={InputFieldFF}
                 name="eventsLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Event" (plural)')}
+                label={i18n.t('Custom label for "Events"')}
                 helpText={i18n.t('Example use: See all events', {
                     nsSeparator: '~:~',
                 })}

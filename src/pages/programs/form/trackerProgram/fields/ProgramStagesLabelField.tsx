@@ -18,7 +18,7 @@ export function ProgramStagesLabelField() {
                 component={InputFieldFF}
                 name="programStagesLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Program stage" (plural)')}
+                label={i18n.t('Custom label for "Program stages"')}
                 helpText={i18n.t('Example use: See all program stages', {
                     nsSeparator: '~:~',
                 })}

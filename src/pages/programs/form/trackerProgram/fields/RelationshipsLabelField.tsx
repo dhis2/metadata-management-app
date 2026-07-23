@@ -18,7 +18,7 @@ export function RelationshipsLabelField() {
                 component={InputFieldFF}
                 name="relationshipsLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Relationship" (plural)')}
+                label={i18n.t('Custom label for "Relationships"')}
                 helpText={i18n.t('Example use: See all relationships', {
                     nsSeparator: '~:~',
                 })}
