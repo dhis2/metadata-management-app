@@ -1,3 +1,10 @@
+## [0.170.2](https://github.com/dhis2/metadata-management-app/compare/v0.170.1...v0.170.2) (2026-07-23)
+
+
+### Bug Fixes
+
+* require organisation unit levels for predictors [DHIS2-12090] ([#1001](https://github.com/dhis2/metadata-management-app/issues/1001)) ([919a09a](https://github.com/dhis2/metadata-management-app/commit/919a09a77d5ca1503ca441e860ee65b6718e6ee6))
+
 ## [0.170.1](https://github.com/dhis2/metadata-management-app/compare/v0.170.0...v0.170.1) (2026-07-23)
 
 
