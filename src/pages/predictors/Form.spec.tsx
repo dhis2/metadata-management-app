@@ -732,6 +732,7 @@ describe('Predictors form tests', () => {
                     customTestData = {},
                     matchingExistingElementFilter = undefined,
                     useDefaultCCOutputDE = false,
+                    useDefaultCategoryOptionCombo = false,
                 } = {}
             ) => {
                 const attributes = [testCustomAttribute()]
@@ -771,7 +772,15 @@ describe('Predictors form tests', () => {
                     ? dataElementWithDefaultCategoryCombo
                     : dataElementWithCategoryCombo
                 if (!useDefaultCCOutputDE) {
-                    predictor.outputCombo = categoryOptionCombos[0]
+                    predictor.outputCombo = useDefaultCategoryOptionCombo
+                        ? testCategoryOptionCombo({
+                              categoryCombo: {
+                                  id: randomDhis2Id(),
+                                  isDefault: true,
+                              },
+                              isDefault: true,
+                          })
+                        : categoryOptionCombos[0]
                 }
                 predictor.organisationUnitLevels = organisationUnitLevels
                 predictor.periodType = periodTypes[1] as Predictor.periodType
@@ -1013,6 +1022,33 @@ describe('Predictors form tests', () => {
                 expect(
                     screen.queryByTestId('formfields-outputCombo')
                 ).not.toBeInTheDocument()
+            })
+        })
+
+        it('does not show a required error for the output combo field when it is the default COC', async () => {
+            const { screen, predictor } = await renderForm({
+                useDefaultCategoryOptionCombo: true,
+            })
+
+            expect(
+                screen.queryByTestId('formfields-outputCombo-validation')
+            ).not.toBeInTheDocument()
+
+            const newName = faker.internet.userName()
+            await uiActions.enterName(newName, screen)
+            await uiActions.submitForm(screen)
+
+            expect(updateMock).toHaveBeenCalledWith({
+                data: [
+                    {
+                        op: 'replace',
+                        path: '/name',
+                        value: newName,
+                    },
+                ],
+                id: predictor.id,
+                params: undefined,
+                resource: 'predictors',
             })
         })
 
