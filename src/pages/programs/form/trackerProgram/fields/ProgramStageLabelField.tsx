@@ -19,9 +19,12 @@ export function ProgramStageLabelField() {
                 name="programStageLabel"
                 inputWidth="400px"
                 label={i18n.t('Custom label for "Program stage"')}
-                helpText={i18n.t('Example use: See all data in this program stage', {
-                    nsSeparator: '~:~',
-                })}
+                helpText={i18n.t(
+                    'Example use: See all data in this program stage',
+                    {
+                        nsSeparator: '~:~',
+                    }
+                )}
                 dataTest="formfields-programStageLabel"
                 validate={validate}
             />

@@ -19,9 +19,12 @@ export function EnrollmentLabelField() {
                 name="enrollmentLabel"
                 inputWidth="400px"
                 label={i18n.t('Custom label for "Enrollment"')}
-                helpText={i18n.t('Example use: See all data in this enrollment', {
-                    nsSeparator: '~:~',
-                })}
+                helpText={i18n.t(
+                    'Example use: See all data in this enrollment',
+                    {
+                        nsSeparator: '~:~',
+                    }
+                )}
                 dataTest="formfields-enrollmentLabel"
                 validate={validate}
             />
