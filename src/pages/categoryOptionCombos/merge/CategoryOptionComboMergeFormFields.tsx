@@ -5,7 +5,6 @@ import {
     BaseSourcesField,
     BaseTargetField,
     MergeSourcesTargetWrapper,
-    DeleteSourcesFields,
     Description,
     FormSection,
     FormSections,
@@ -13,7 +12,7 @@ import {
 } from '../../../components/merge'
 import { DataValueMergeStrategyField } from '../../../components/merge/DataValueMergeStrategyField'
 
-export const DataElementMergeFormFields = ({
+export const CategoryOptionComboMergeFormFields = ({
     selectedIds,
 }: {
     selectedIds: string[]
@@ -23,22 +22,26 @@ export const DataElementMergeFormFields = ({
             <FormSection>
                 <Description>
                     <p>
-                        {i18n.t(`The merge operation will merge the source data elements into
-                the target data element. One or many source data elements
+                        {i18n.t(`The merge operation will merge the source category option combinations into
+                the target category option combination. One or many source category option combinations
                 can be specified`)}
                     </p>
                     <p>
                         {i18n.t(`Only one target should be specified. The merge operation will
-                transfer all of the data element metadata associations to the
-                source data elements over to the target data element.`)}
+                transfer all of the category option combination metadata associations to the
+                source category option combinations over to the target category option combination.`)}
                     </p>
                 </Description>
                 <MergeSourcesTargetWrapper>
                     <BaseSourcesField
-                        label={i18n.t('Data elements to be merged (source)')}
-                        placeholder={i18n.t('Select data elements to merge')}
+                        label={i18n.t(
+                            'Category option combinations to be merged (source)'
+                        )}
+                        placeholder={i18n.t(
+                            'Select category option combinations to merge'
+                        )}
                         query={{
-                            resource: 'dataElements',
+                            resource: 'categoryOptionCombos',
                             params: {
                                 fields: ['id', 'displayName', 'name'],
                                 filter: `id:in:[${selectedIds.join(',')}]`,
@@ -46,19 +49,21 @@ export const DataElementMergeFormFields = ({
                         }}
                     />
                     <BaseTargetField
-                        label={i18n.t('Data element to merge into (target)')}
+                        label={i18n.t(
+                            'Category option combination to merge into (target)'
+                        )}
                         placeholder={i18n.t(
-                            'Select data element to merge into'
+                            'Select category option combination to merge into'
                         )}
                         query={{
-                            resource: 'dataElements',
+                            resource: 'categoryOptionCombos',
                             params: {
                                 fields: ['id', 'displayName', 'name'],
                                 filter: `id:in:[${selectedIds.join(',')}]`,
                             },
                         }}
                         noMatchWithoutFilterText={i18n.t(
-                            'No data elements available. Remove one from source.'
+                            'No category option combinations available. Remove one from source.'
                         )}
                     />
                 </MergeSourcesTargetWrapper>
@@ -68,30 +73,15 @@ export const DataElementMergeFormFields = ({
                     {i18n.t('Merge settings')}
                 </StandardFormSectionTitle>
 
-                <DeleteSourcesFields
-                    groupLabel={i18n.t(
-                        'What should happen to the source data elements after the merge is complete?'
-                    )}
-                    getKeepLabel={(count) =>
-                        i18n.t('Keep {{ count }} source data elements', {
-                            count,
-                        })
-                    }
-                    getDeleteLabel={(count) =>
-                        i18n.t('Delete {{ count }} source data elements', {
-                            count,
-                        })
-                    }
-                />
                 <DataValueMergeStrategyField
                     label={i18n.t(
-                        'What should happen to the data values recorded for the source data elements?'
+                        'What should happen to the data values recorded for the source category option combinations?'
                     )}
                     helpText={i18n.t(
                         'Where source and target have the same data value, the most recently updated is kept.'
                     )}
                     moveToTargetLabel={i18n.t(
-                        'Move data values to the target data element'
+                        'Move data values to the target category option combination'
                     )}
                 />
             </FormSection>
