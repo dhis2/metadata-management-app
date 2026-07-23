@@ -29,6 +29,7 @@ export type TranslationFormValues = Record<Locale, TranslationValues>
 const orderedTranslatableFields = [
     'name',
     'shortName',
+    'trackedEntityTypesLabel',
     'formName',
     'description',
     'executionDateLabel',
