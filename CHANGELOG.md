@@ -1,3 +1,15 @@
+# [0.171.0](https://github.com/dhis2/metadata-management-app/compare/v0.170.2...v0.171.0) (2026-07-23)
+
+
+### Bug Fixes
+
+* custom form event propagation and footer layout ([#1005](https://github.com/dhis2/metadata-management-app/issues/1005)) ([b29a2cf](https://github.com/dhis2/metadata-management-app/commit/b29a2cf84fff6f8a10f11afe0eba5dbe2f244653))
+
+
+### Features
+
+* cat option combo merge ([#1004](https://github.com/dhis2/metadata-management-app/issues/1004)) ([b4d2f6d](https://github.com/dhis2/metadata-management-app/commit/b4d2f6d819823d621d36c43be3f8c0949631b2d6))
+
 ## [0.170.2](https://github.com/dhis2/metadata-management-app/compare/v0.170.1...v0.170.2) (2026-07-23)
 
 
