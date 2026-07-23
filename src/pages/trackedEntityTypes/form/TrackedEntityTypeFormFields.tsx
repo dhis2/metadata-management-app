@@ -28,8 +28,6 @@ import {
     MinAttributesRequiredField,
     MaxTeiCountField,
     TrackedEntityTypesLabelField,
-    TrackedEntityAttributeLabelField,
-    TrackedEntityAttributesLabelField,
 } from '../fields'
 import { TrackedEntityTypeFormDescriptor } from './formDescriptor'
 
@@ -107,12 +105,6 @@ export function TrackedEntityTypeFormFields() {
                         'Choose and configure what data can be collected for this tracked entity type.'
                     )}
                 </StandardFormSectionDescription>
-
-                <TrackedEntityAttributeLabelField section={schemaSection} />
-
-                {showPluralLabels && (
-                    <TrackedEntityAttributesLabelField section={schemaSection} />
-                )}
 
                 <StandardFormField>
                     <AttributesTransferField />

@@ -2,19 +2,11 @@ import i18n from '@dhis2/d2-i18n'
 import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
-import { StandardFormField } from '../../../components'
-import {
-    SchemaSection,
-    useGivenShemaOrSchemaSectionHandleOrThrow,
-    useValidator,
-} from '../../../lib'
+import { StandardFormField } from '../../../../../components'
+import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../../lib'
 
-export function TrackedEntityAttributesLabelField({
-    section,
-}: {
-    readonly section?: SchemaSection
-}) {
-    const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({ section })
+export function TrackedEntityAttributesLabelField() {
+    const schemaSection = useSchemaSectionHandleOrThrow()
     const validate = useValidator({
         schemaSection,
         property: 'trackedEntityAttributesLabel',
