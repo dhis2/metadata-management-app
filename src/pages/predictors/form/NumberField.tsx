@@ -33,6 +33,7 @@ export const NumberField = ({
             label={label}
             helpText={helpText}
             required={required}
+            dataTest={`formfields-${fieldName}`}
         />
     )
 }

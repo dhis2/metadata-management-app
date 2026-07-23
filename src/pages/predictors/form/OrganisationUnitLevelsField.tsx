@@ -25,6 +25,7 @@ export const OrganisationUnitLevelsField = () => {
                         order: ['level'],
                     },
                 }}
+                required
             />
         </div>
     )
