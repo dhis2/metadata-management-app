@@ -1,7 +1,7 @@
 {
-    "httpMethod": "GET",
-    "jsonSchema": "contracts/metadata-management-app/category/json-schema.json",
     "name": "category",
+    "httpMethod": "GET",
     "requestUrl": "/categories/{id}",
-    "responseStatus": 200
+    "responseStatus": 200,
+    "jsonSchema": "contracts/metadata-management-app/category/json-schema.json"
 }
