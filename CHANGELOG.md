@@ -1,3 +1,10 @@
+## [0.171.1](https://github.com/dhis2/metadata-management-app/compare/v0.171.0...v0.171.1) (2026-07-23)
+
+
+### Bug Fixes
+
+* predictor edit issue ([#1010](https://github.com/dhis2/metadata-management-app/issues/1010)) ([5fdba50](https://github.com/dhis2/metadata-management-app/commit/5fdba50d0839764db0a4bd8663a88892bd8c0e6b))
+
 # [0.171.0](https://github.com/dhis2/metadata-management-app/compare/v0.170.2...v0.171.0) (2026-07-23)
 
 
