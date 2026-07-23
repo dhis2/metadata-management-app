@@ -64,8 +64,8 @@ export const useFilteredOrgUnits = ({
         enabled,
         queryKey: [resourceQuery],
         queryFn: boundQueryFn<OrganisationUnitResponse>,
-        staleTime: 20000,
-        cacheTime: 20000,
+        staleTime: 60000,
+        cacheTime: 60000,
         keepPreviousData: true,
     })
 }
@@ -132,8 +132,8 @@ export const usePaginatedChildrenOrgUnitsController = (
                     enabled: options.enabled,
                     queryKey: [resourceQuery],
                     queryFn: boundQueryFn<OrganisationUnitResponse>,
-                    staleTime: 20000,
-                    cacheTime: 20000,
+                    staleTime: 60000,
+                    cacheTime: 60000,
                     meta: { parent: id },
                 } as const
                 return queryOptions

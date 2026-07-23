@@ -1,5 +1,6 @@
 import { useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
+import { useQueryClient } from '@tanstack/react-query'
 import React, { useMemo } from 'react'
 import { Form } from 'react-final-form'
 import {
@@ -21,6 +22,7 @@ export const Component = () => {
     const location = useLocationWithState<{ selectedModels: Set<string> }>()
 
     const dataEngine = useDataEngine()
+    const queryClient = useQueryClient()
     const selectedIds: string[] = useMemo(
         () => Array.from(location.state?.selectedModels ?? []),
         [location.state?.selectedModels]
@@ -41,6 +43,9 @@ export const Component = () => {
                 resource: 'organisationUnits/merge',
                 type: 'create',
                 data,
+            })
+            await queryClient.invalidateQueries({
+                queryKey: [{ resource: 'organisationUnits' }],
             })
             return undefined
         } catch (e) {
