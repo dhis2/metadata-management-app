@@ -106,11 +106,12 @@ export const RecipientSection = ({
         }
         if (
             !isTrackerProgram &&
-            recipientInput.value === 'TRACKED_ENTITY_INSTANCE'
+            (recipientInput.value === 'TRACKED_ENTITY_INSTANCE' ||
+                recipientInput.value === 'PROGRAM_ATTRIBUTE')
         ) {
             form.change('notificationRecipient', undefined)
         }
-    }, [isStageNotification, isTrackerProgram, recipientInput, form])
+    }, [isStageNotification, isTrackerProgram, recipientInput.value, form])
 
     const recipientOptions = useMemo(() => {
         const baseOptions =
@@ -118,8 +119,12 @@ export const RecipientSection = ({
                 ? programStageRecipientOptions
                 : programRecipientOptions
 
+        // Keep the currently-selected value as an option even when it would
+        // otherwise be hidden: a stale stored value is cleared by the effect
+        // above only after this render, and @dhis2/ui throws if the select is
+        // handed a value with no matching option.
         return baseOptions.filter((opt) =>
-            isTrackerProgram
+            isTrackerProgram || opt.value === recipientInput.value
                 ? true
                 : opt.value !== 'PROGRAM_ATTRIBUTE' &&
                   opt.value !== 'TRACKED_ENTITY_INSTANCE'
