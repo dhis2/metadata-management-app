@@ -1,10 +1,7 @@
-type DataItemWithDataElement = {
-    dataElement: { id: string }
-}
-
-export const hasUnsavedDataElements = (
-    currentItems: DataItemWithDataElement[] | undefined,
-    initialItems: DataItemWithDataElement[] | undefined
+const hasUnsavedItems = <TKey extends string>(
+    key: TKey,
+    currentItems: Array<Record<TKey, { id: string }>> | undefined,
+    initialItems: Array<Record<TKey, { id: string }>> | undefined
 ): boolean => {
     const current = currentItems ?? []
     const initial = initialItems ?? []
@@ -13,15 +10,22 @@ export const hasUnsavedDataElements = (
         return false
     }
 
-    const initialIds = new Set(initial.map((item) => item.dataElement.id))
-    const currentIds = new Set(current.map((item) => item.dataElement.id))
+    const initialIds = new Set(initial.map((item) => item[key].id))
+    const currentIds = new Set(current.map((item) => item[key].id))
 
-    const hasAdditions = current.some(
-        (item) => !initialIds.has(item.dataElement.id)
-    )
-    const hasRemovals = initial.some(
-        (item) => !currentIds.has(item.dataElement.id)
-    )
+    const hasAdditions = current.some((item) => !initialIds.has(item[key].id))
+    const hasRemovals = initial.some((item) => !currentIds.has(item[key].id))
 
     return hasAdditions || hasRemovals
 }
+
+export const hasUnsavedDataElements = (
+    currentItems: Array<{ dataElement: { id: string } }> | undefined,
+    initialItems: Array<{ dataElement: { id: string } }> | undefined
+): boolean => hasUnsavedItems('dataElement', currentItems, initialItems)
+
+export const hasUnsavedTrackedEntityAttributes = (
+    currentItems: Array<{ trackedEntityAttribute: { id: string } }> | undefined,
+    initialItems: Array<{ trackedEntityAttribute: { id: string } }> | undefined
+): boolean =>
+    hasUnsavedItems('trackedEntityAttribute', currentItems, initialItems)

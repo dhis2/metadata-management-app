@@ -15,7 +15,10 @@ export {
     useOnSubmitNewWithGroups,
 } from './useOnSubmitWithGroups'
 export { modelFormSchemas } from './modelFormSchemas'
-export { hasUnsavedDataElements } from './hasUnsavedDataElements'
+export {
+    hasUnsavedDataElements,
+    hasUnsavedTrackedEntityAttributes,
+} from './hasUnsavedDataElements'
 export * from './sectionedForm'
 export * from './useCreateModel'
 export * from './createFormError'
