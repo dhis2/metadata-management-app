@@ -239,7 +239,7 @@ export const StageFormFormContents = ({
                     {hasUnsavedNewDataElements && (
                         <UnsavedDataElementsNotice
                             message={i18n.t(
-                                'Save changes to this program before editing stages'
+                                'Save changes to this program before editing sections'
                             )}
                         />
                     )}
@@ -277,7 +277,7 @@ export const StageFormFormContents = ({
                     {hasUnsavedNewDataElements && (
                         <UnsavedDataElementsNotice
                             message={i18n.t(
-                                'Save changes to this program before editing stages'
+                                'Save changes to this program before editing the form'
                             )}
                         />
                     )}

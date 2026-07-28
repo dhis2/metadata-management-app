@@ -172,7 +172,7 @@ export const DataEntryFromContents = React.memo(function FormFormContents({
                         {hasUnsavedNewDataElements && (
                             <UnsavedDataElementsNotice
                                 message={i18n.t(
-                                    'Save changes to this data set before editing sections'
+                                    'Save changes to this data set before editing the form'
                                 )}
                             />
                         )}
