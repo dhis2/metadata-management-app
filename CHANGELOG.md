@@ -1,3 +1,19 @@
+# [0.172.0](https://github.com/dhis2/metadata-management-app/compare/v0.171.1...v0.172.0) (2026-07-29)
+
+
+### Bug Fixes
+
+* fix text in unsaved notice box ([6eb18a2](https://github.com/dhis2/metadata-management-app/commit/6eb18a223747f9b897eb3f98c08a95d4591a8783))
+* footer drawer elements alignment ([cb61758](https://github.com/dhis2/metadata-management-app/commit/cb61758bf284824efe467ff6037f9c89cf91c468))
+
+
+### Features
+
+* add unsaved attributes warning for programs ([c3092cd](https://github.com/dhis2/metadata-management-app/commit/c3092cdce4612b726cfa5d7f3083f387c6056ae2))
+* unsaved element notice box ([a656ba1](https://github.com/dhis2/metadata-management-app/commit/a656ba12098a0d4656f12313fd8dc5605da897dd))
+* unsaved elements for custom and section form ([7a92517](https://github.com/dhis2/metadata-management-app/commit/7a925174543c5dc0ff03da47358316fc75cc107f))
+* unsaved elements in program stages and data sets ([b4e9bb3](https://github.com/dhis2/metadata-management-app/commit/b4e9bb368338b6f1fc3c84aad4b137b3aab2537b))
+
 ## [0.171.1](https://github.com/dhis2/metadata-management-app/compare/v0.171.0...v0.171.1) (2026-07-23)
 
 
