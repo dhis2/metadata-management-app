@@ -65,7 +65,10 @@ import { organisationUnitGroupListSchema } from '../pages/organisationUnitGroups
 import { organisationUnitGroupSetListSchema } from '../pages/organisationUnitGroupSets/form/organisationUnitGroupSetSchema'
 import { organisationUnitListSchema } from '../pages/organisationUnits/form/organisationUnitSchema'
 import { predictorGroupListSchema } from '../pages/predictorGroups/form/predictorGroupSchema'
-import { predictorListSchema } from '../pages/predictors/form/predictorSchema'
+import {
+    predictorFormSchema,
+    predictorListSchema,
+} from '../pages/predictors/form/predictorSchema'
 import { programIndicatorGroupListSchema } from '../pages/programIndicatorGroups/form'
 import { programIndicatorsListSchema } from '../pages/programIndicators/form/programIndicatorsFormSchema'
 import { programRuleListSchema } from '../pages/programRules/form/programRuleSchema'
@@ -597,6 +600,13 @@ export const testValidationRule = (overwrites: Record<any, any> = {}) => ({
 
 export const testPredictorList = (overwrites: Record<any, any> = {}) => ({
     ...generateMock(predictorListSchema, {
+        stringMap,
+    }),
+    ...overwrites,
+})
+
+export const testPredictor = (overwrites: Record<any, any> = {}) => ({
+    ...generateMock(predictorFormSchema, {
         stringMap,
     }),
     ...overwrites,

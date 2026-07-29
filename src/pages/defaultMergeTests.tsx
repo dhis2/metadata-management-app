@@ -94,25 +94,36 @@ export const generateDefaultMergeTests = ({
     componentName,
     mergeResource,
     renderMerge,
+    hasDeleteSources = true,
 }: {
     componentName: string
     // the resource-key used for the merge mutation, eg. "dataElements/merge"
     mergeResource: string
     renderMerge: (customData?: CustomData) => Promise<RenderResult>
+    // some sections (eg. category option combos) don't allow choosing whether to
+    // delete the source objects after merging, so they don't render this field at all
+    hasDeleteSources?: boolean
 }) => {
     describe(`${componentName} default merge tests`, () => {
-        it('shows a component to pick the source objects, a component to pick the target object and a radio group to keep or delete the sources', async () => {
+        it('shows a component to pick the source objects and a component to pick the target object', async () => {
             const screen = await renderMerge()
 
             expect(getSourcesField(screen)).toBeVisible()
             expect(getTargetField(screen)).toBeVisible()
-            expect(
-                screen.getByRole('radio', { name: /^delete \d/i })
-            ).toBeInTheDocument()
-            expect(
-                screen.getByRole('radio', { name: /^keep \d/i })
-            ).toBeInTheDocument()
         })
+
+        if (hasDeleteSources) {
+            it('shows a radio group to keep or delete the sources', async () => {
+                const screen = await renderMerge()
+
+                expect(
+                    screen.getByRole('radio', { name: /^delete \d/i })
+                ).toBeInTheDocument()
+                expect(
+                    screen.getByRole('radio', { name: /^keep \d/i })
+                ).toBeInTheDocument()
+            })
+        }
 
         it('does not allow to pick as a target an object that already has been picked as a source', async () => {
             const screen = await renderMerge()
@@ -132,13 +143,15 @@ export const generateDefaultMergeTests = ({
             expect(availableSourceLabels).not.toContain(pickedTarget.label)
         })
 
-        it('should default to deleting sources', async () => {
-            const screen = await renderMerge()
-            const deleteSourcesRadio = screen.getByRole('radio', {
-                name: /^delete \d/i,
+        if (hasDeleteSources) {
+            it('should default to deleting sources', async () => {
+                const screen = await renderMerge()
+                const deleteSourcesRadio = screen.getByRole('radio', {
+                    name: /^delete \d/i,
+                })
+                expect(deleteSourcesRadio).toBeChecked()
             })
-            expect(deleteSourcesRadio).toBeChecked()
-        })
+        }
 
         it('shows a confirmation component once a source and a target have been selected', async () => {
             const screen = await renderMerge()
@@ -222,7 +235,7 @@ export const generateDefaultMergeTests = ({
                     data: expect.objectContaining({
                         sources: [source.id],
                         target: target.id,
-                        deleteSources: true,
+                        ...(hasDeleteSources && { deleteSources: true }),
                     }),
                 }),
                 { signal: undefined }
