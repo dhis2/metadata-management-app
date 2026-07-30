@@ -61,9 +61,6 @@ jobs:
               id: push
               if: steps.diff.outputs.changed == 'true'
               run: |
-                  git config --global user.name "github-actions[bot]"
-                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
                   git clone https://x-access-token:${{ secrets.CONTRACTS_PAT }}@github.com/dhis2/dhis2-api-contracts.git
                   cd dhis2-api-contracts
 
