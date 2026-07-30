@@ -22,6 +22,7 @@ import {
 } from '../../../../components'
 import css from '../../../../components/metadataFormControls/ModelTransfer/ModelTransfer.module.css'
 import { DataElement } from '../../../../types/generated'
+import stageDataFormCss from './StageDataFormContents.module.css'
 
 type ProgramStageDataElementFormValue = {
     id?: string
@@ -177,123 +178,154 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
                     'Data elements can be collected in different ways with different options.'
                 )}
             </StandardFormSectionDescription>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCellHead>{i18n.t('Name')}</TableCellHead>
-                        <TableCellHead>{i18n.t('Required')}</TableCellHead>
-                        {!isTrackerProgram && (
-                            <TableCellHead>
-                                {i18n.t('Allow provided elsewhere')}
+            <div className={stageDataFormCss.tableWrapper}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCellHead
+                                className={stageDataFormCss.stickyHead}
+                            >
+                                {i18n.t('Name')}
                             </TableCellHead>
-                        )}
-                        <TableCellHead>
-                            {i18n.t('Display in reports')}
-                        </TableCellHead>
-                        <TableCellHead>
-                            {i18n.t('Skip in analytics')}
-                        </TableCellHead>
-                        <TableCellHead>{i18n.t('Skip sync')}</TableCellHead>
-                        {stageHasDateDataElements && (
-                            <TableCellHead>
-                                {i18n.t('Allow future dates')}
+                            <TableCellHead
+                                className={stageDataFormCss.stickyHead}
+                            >
+                                {i18n.t('Required')}
                             </TableCellHead>
-                        )}
-                        <TableCellHead>
-                            {i18n.t('Desktop Display')}
-                        </TableCellHead>
-                        <TableCellHead>
-                            {i18n.t('Mobile Display')}
-                        </TableCellHead>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {input.value.map((dataElement, index) => {
-                        const dataElementId = dataElement.dataElement.id
-                        const isDateType = getValueType(dataElement) === 'DATE'
-                        const rowKey = dataElement.id || dataElementId
+                            {!isTrackerProgram && (
+                                <TableCellHead
+                                    className={stageDataFormCss.stickyHead}
+                                >
+                                    {i18n.t('Allow provided elsewhere')}
+                                </TableCellHead>
+                            )}
+                            <TableCellHead
+                                className={stageDataFormCss.stickyHead}
+                            >
+                                {i18n.t('Display in reports')}
+                            </TableCellHead>
+                            <TableCellHead
+                                className={stageDataFormCss.stickyHead}
+                            >
+                                {i18n.t('Skip in analytics')}
+                            </TableCellHead>
+                            <TableCellHead
+                                className={stageDataFormCss.stickyHead}
+                            >
+                                {i18n.t('Skip sync')}
+                            </TableCellHead>
+                            {stageHasDateDataElements && (
+                                <TableCellHead
+                                    className={stageDataFormCss.stickyHead}
+                                >
+                                    {i18n.t('Allow future dates')}
+                                </TableCellHead>
+                            )}
+                            <TableCellHead
+                                className={stageDataFormCss.stickyHead}
+                            >
+                                {i18n.t('Desktop Display')}
+                            </TableCellHead>
+                            <TableCellHead
+                                className={stageDataFormCss.stickyHead}
+                            >
+                                {i18n.t('Mobile Display')}
+                            </TableCellHead>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {input.value.map((dataElement, index) => {
+                            const dataElementId = dataElement.dataElement.id
+                            const isDateType =
+                                getValueType(dataElement) === 'DATE'
+                            const rowKey = dataElement.id || dataElementId
 
-                        return (
-                            <TableRow key={rowKey}>
-                                <TableCell>
-                                    {dataElement.dataElement.displayName}
-                                </TableCell>
-                                <TableCell>
-                                    <FieldRFF
-                                        component={CheckboxFieldFF}
-                                        name={`${fieldName}[${index}].compulsory`}
-                                        type="checkbox"
-                                    />
-                                </TableCell>
-                                {!isTrackerProgram && (
+                            return (
+                                <TableRow key={rowKey}>
+                                    <TableCell>
+                                        {dataElement.dataElement.displayName}
+                                    </TableCell>
                                     <TableCell>
                                         <FieldRFF
                                             component={CheckboxFieldFF}
-                                            name={`${fieldName}[${index}].allowProvidedElsewhere`}
+                                            name={`${fieldName}[${index}].compulsory`}
                                             type="checkbox"
                                         />
                                     </TableCell>
-                                )}
-                                <TableCell>
-                                    <FieldRFF
-                                        component={CheckboxFieldFF}
-                                        name={`${fieldName}[${index}].displayInReports`}
-                                        type="checkbox"
-                                    />
-                                </TableCell>
-                                <TableCell>
-                                    <FieldRFF
-                                        component={CheckboxFieldFF}
-                                        name={`${fieldName}[${index}].skipAnalytics`}
-                                        type="checkbox"
-                                    />
-                                </TableCell>
-                                <TableCell>
-                                    <FieldRFF
-                                        component={CheckboxFieldFF}
-                                        name={`${fieldName}[${index}].skipSynchronization`}
-                                        type="checkbox"
-                                    />
-                                </TableCell>
-                                {stageHasDateDataElements && (
+                                    {!isTrackerProgram && (
+                                        <TableCell>
+                                            <FieldRFF
+                                                component={CheckboxFieldFF}
+                                                name={`${fieldName}[${index}].allowProvidedElsewhere`}
+                                                type="checkbox"
+                                            />
+                                        </TableCell>
+                                    )}
                                     <TableCell>
                                         <FieldRFF
                                             component={CheckboxFieldFF}
-                                            name={`${fieldName}[${index}].allowFutureDate`}
+                                            name={`${fieldName}[${index}].displayInReports`}
                                             type="checkbox"
-                                            disabled={!isDateType}
                                         />
                                     </TableCell>
-                                )}
-                                <TableCell>
-                                    <RenderingOptionsSelect
-                                        fieldName={fieldName}
-                                        index={index}
-                                        device="DESKTOP"
-                                        valueType={getValueType(dataElement)}
-                                        required
-                                        hasOptionSet={
-                                            !!getOptionSet(dataElement)
-                                        }
-                                    />
-                                </TableCell>
-                                <TableCell>
-                                    <RenderingOptionsSelect
-                                        fieldName={fieldName}
-                                        index={index}
-                                        device="MOBILE"
-                                        valueType={getValueType(dataElement)}
-                                        required
-                                        hasOptionSet={
-                                            !!getOptionSet(dataElement)
-                                        }
-                                    />
-                                </TableCell>
-                            </TableRow>
-                        )
-                    })}
-                </TableBody>
-            </Table>
+                                    <TableCell>
+                                        <FieldRFF
+                                            component={CheckboxFieldFF}
+                                            name={`${fieldName}[${index}].skipAnalytics`}
+                                            type="checkbox"
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <FieldRFF
+                                            component={CheckboxFieldFF}
+                                            name={`${fieldName}[${index}].skipSynchronization`}
+                                            type="checkbox"
+                                        />
+                                    </TableCell>
+                                    {stageHasDateDataElements && (
+                                        <TableCell>
+                                            <FieldRFF
+                                                component={CheckboxFieldFF}
+                                                name={`${fieldName}[${index}].allowFutureDate`}
+                                                type="checkbox"
+                                                disabled={!isDateType}
+                                            />
+                                        </TableCell>
+                                    )}
+                                    <TableCell>
+                                        <RenderingOptionsSelect
+                                            fieldName={fieldName}
+                                            index={index}
+                                            device="DESKTOP"
+                                            valueType={getValueType(
+                                                dataElement
+                                            )}
+                                            required
+                                            hasOptionSet={
+                                                !!getOptionSet(dataElement)
+                                            }
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <RenderingOptionsSelect
+                                            fieldName={fieldName}
+                                            index={index}
+                                            device="MOBILE"
+                                            valueType={getValueType(
+                                                dataElement
+                                            )}
+                                            required
+                                            hasOptionSet={
+                                                !!getOptionSet(dataElement)
+                                            }
+                                        />
+                                    </TableCell>
+                                </TableRow>
+                            )
+                        })}
+                    </TableBody>
+                </Table>
+            </div>
         </SectionedFormSection>
     )
 })

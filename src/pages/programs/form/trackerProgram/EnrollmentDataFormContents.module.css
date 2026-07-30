@@ -1,0 +1,11 @@
+.tableWrapper {
+    max-height: 480px;
+    overflow-y: auto;
+}
+
+.stickyHead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--colors-white);
+}
