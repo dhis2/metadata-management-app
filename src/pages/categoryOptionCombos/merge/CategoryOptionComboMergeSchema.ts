@@ -1,0 +1,32 @@
+import i18n from '@dhis2/d2-i18n'
+import { z } from 'zod'
+import { mergeFormSchemaBase } from '../../../components/merge'
+import { createFormValidate } from '../../../lib'
+
+const categoryOptionComboSchema = z.object({
+    id: z.string(),
+    displayName: z.string(),
+    name: z.string(),
+})
+
+export const mergeFormSchema = mergeFormSchemaBase
+    .omit({ deleteSources: true })
+    .extend({
+        sources: z
+            .array(categoryOptionComboSchema)
+            .min(1, i18n.t('At least one source is required'))
+            .default([]),
+        target: categoryOptionComboSchema,
+        dataMergeStrategy: z
+            .enum(['LAST_UPDATED', 'DISCARD'])
+            .default('LAST_UPDATED'),
+    })
+    .transform((data) => ({
+        ...data,
+        sources: data.sources.map((source) => source.id),
+        target: data.target.id,
+    }))
+
+export type CategoryOptionComboMergeFormValues = z.input<typeof mergeFormSchema>
+
+export const validate = createFormValidate(mergeFormSchema)

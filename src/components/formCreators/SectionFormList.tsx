@@ -43,6 +43,7 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
     withReordering,
     otherProps,
     warningNotice,
+    disabled = false,
 }: Readonly<{
     sectionsFieldName: string
     schemaName: SchemaName
@@ -51,6 +52,7 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
     withReordering: boolean
     otherProps?: TExtraProps
     warningNotice?: React.ReactNode
+    disabled?: boolean
 }>) {
     const [sectionFormOpen, setSectionFormOpen] = useState<
         DisplayableModel | null | undefined
@@ -167,6 +169,7 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
                             schemaName={schemaName}
                             onClick={() => setSectionFormOpen(section)}
                             onDelete={() => handleDeletedSection(index)}
+                            disabled={disabled}
                         />
                     )
                 })}
@@ -179,6 +182,7 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
                         small
                         icon={<IconAdd16 />}
                         onClick={() => setSectionFormOpen(null)}
+                        disabled={disabled}
                     >
                         {i18n.t('Add section')}
                     </Button>
@@ -239,7 +243,9 @@ export const ListInFormItem = ({
                     onClick={() => {
                         // we dont want click handler on the wrapping "sectionItem" div
                         // since that will cause annoying issues with bubbling events in dropdown menu etc
-                        onClick?.()
+                        if (!disabled) {
+                            onClick?.()
+                        }
                     }}
                 >
                     <div className={css.sectionIdentifiers}>
@@ -271,7 +277,6 @@ export const ListInFormItem = ({
                             onClick={() => {
                                 navigator.clipboard.writeText(item.id)
                             }}
-                            disabled={disabled}
                         />
                         <MoreDropdownDivider />
                         <MoreDropdownItem
