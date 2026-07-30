@@ -1,3 +1,10 @@
+## [0.172.1](https://github.com/dhis2/metadata-management-app/compare/v0.172.0...v0.172.1) (2026-07-30)
+
+
+### Bug Fixes
+
+* contract workflow ([7be8b2c](https://github.com/dhis2/metadata-management-app/commit/7be8b2cc2705f6353389c25ac40a92142bd8e32d))
+
 # [0.172.0](https://github.com/dhis2/metadata-management-app/compare/v0.171.1...v0.172.0) (2026-07-29)
 
 
