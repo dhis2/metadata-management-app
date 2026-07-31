@@ -17,7 +17,7 @@ export function EventsLabelField() {
                 component={InputFieldFF}
                 name="eventsLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Events"')}
+                label={i18n.t('Custom label for "Events (Plural)"')}
                 dataTest="formfields-eventsLabel"
                 validate={validate}
             />

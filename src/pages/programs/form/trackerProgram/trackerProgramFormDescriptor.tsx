@@ -157,7 +157,7 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'enrollmentsLabel',
-                    label: i18n.t('Custom label for "Enrollment" (plural)'),
+                    label: i18n.t('Custom label for "Enrollments (Plural)"'),
                 },
                 {
                     name: 'eventLabel',
@@ -165,7 +165,7 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'eventsLabel',
-                    label: i18n.t('Custom label for "Event" (plural)'),
+                    label: i18n.t('Custom label for "Events (Plural)"'),
                 },
                 {
                     name: 'programStageLabel',
@@ -173,7 +173,7 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'programStagesLabel',
-                    label: i18n.t('Custom label for "Program stage" (plural)'),
+                    label: i18n.t('Custom label for "Program stages (Plural)"'),
                 },
                 {
                     name: 'followUpLabel',

@@ -23,8 +23,8 @@ export const PROGRAM_STAGE_PROPERTY_LABELS = {
     minDaysFromStart: i18n.t('Scheduled days from reference date'),
     generatedByEnrollmentDate: i18n.t('Reference date for scheduling'),
     hideDueDate: i18n.t('Hide scheduled date'),
-    executionDateLabel: i18n.t('Custom label for report date'),
-    dueDateLabel: i18n.t('Custom label for due date'),
-    programStageLabel: i18n.t('Custom label for program stage'),
-    eventLabel: i18n.t('Custom label for event'),
+    executionDateLabel: i18n.t('Custom label for "Report date"'),
+    dueDateLabel: i18n.t('Custom label for "Due date"'),
+    programStageLabel: i18n.t('Custom label for "Program stage"'),
+    eventLabel: i18n.t('Custom label for "Event"'),
 } as const

@@ -133,7 +133,7 @@ export const StageFormDescriptor = {
                 },
                 {
                     name: 'eventsLabel',
-                    label: i18n.t('Custom label for event (plural)'),
+                    label: i18n.t('Custom label for "Events (Plural)"'),
                 },
             ],
         },

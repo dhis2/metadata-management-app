@@ -18,7 +18,7 @@ export function TrackedEntityAttributesLabelField() {
                 component={InputFieldFF}
                 name="trackedEntityAttributesLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Attributes"')}
+                label={i18n.t('Custom label for "Attributes (Plural)"')}
                 helpText={i18n.t('Example use: See all attributes', {
                     nsSeparator: '~:~',
                 })}
