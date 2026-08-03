@@ -1,0 +1,5 @@
+.unsavedNoticeBox {
+    padding-block: var(--spacers-dp8);
+    margin-bottom: var(--spacers-dp16);
+    margin-top: var(--spacers-dp16);
+}

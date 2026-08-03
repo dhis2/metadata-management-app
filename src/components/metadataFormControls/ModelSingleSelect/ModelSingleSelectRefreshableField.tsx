@@ -1,6 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import { Field } from '@dhis2/ui'
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { useField } from 'react-final-form'
 import { useHref } from 'react-router'
 import {
@@ -15,6 +15,7 @@ import {
     DrawerRoot,
 } from '../../drawer'
 import { EditableInputWrapper } from '../../EditableInputWrapper'
+import { NewItemFormComponent, useNewItemFormComponent } from '../ModelTransfer'
 import {
     ModelSingleSelectFF,
     ModelSingleSelectFieldProps,
@@ -24,13 +25,6 @@ import {
 import { useRefreshModelSingleSelect } from './useRefreshSingleSelect'
 
 const LINK_ONLY_SECTIONS = new Set(['programs'])
-
-// refactor this to be common for ModelTransfer
-type NewItemFormComponent = React.ComponentType<{
-    onSubmitted?: () => void
-    footer?: React.ReactNode
-    redirectOnSubmitted?: boolean
-}>
 
 export function ModelSingleSelectRefreshableField<
     TModel extends PartialLoadedDisplayableModel
@@ -142,20 +136,13 @@ export function ModelSingleSelectRefreshableFormField<
         data,
     })
     const newLink = useHref(`/${section.namePlural ?? ''}/new`)
-    const [NewItemForm, setNewItemForm] = useState<
-        NewItemFormComponent | undefined
-    >()
-
-    useEffect(() => {
-        import(`../../../pages/${section.namePlural ?? ''}/New`)
-            .then((m: { Component: NewItemFormComponent }) => {
-                if (LINK_ONLY_SECTIONS.has(section.namePlural)) {
-                    return
-                }
-                setNewItemForm(() => m.Component)
-            })
-            .catch(() => setNewItemForm(undefined))
-    }, [section.namePlural])
+    const loadComponent = useCallback(
+        () => import(`../../../pages/${section.namePlural ?? ''}/New`),
+        [section.namePlural]
+    )
+    const NewItemForm = useNewItemFormComponent(
+        LINK_ONLY_SECTIONS.has(section.namePlural) ? undefined : loadComponent
+    )
 
     return (
         <ModelSingleSelectRefreshableField

@@ -1,6 +1,5 @@
 import { useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { useQueryClient } from '@tanstack/react-query'
 import React, { useMemo } from 'react'
 import { Form } from 'react-final-form'
 import {
@@ -11,18 +10,17 @@ import {
 } from '../../components/merge'
 import { getDefaultsOld, useLocationWithState } from '../../lib'
 import { createFormError } from '../../lib/form/createFormError'
-import { OrganisationUnitMergeFormFields } from './merge/OrganisationUnitMergeFormFields'
+import { CategoryOptionComboMergeFormFields } from './merge/CategoryOptionComboMergeFormFields'
 import {
-    OrganisationUnitMergeFormValues,
+    CategoryOptionComboMergeFormValues,
     mergeFormSchema,
     validate,
-} from './merge/OrganisationUnitMergeSchema'
+} from './merge/CategoryOptionComboMergeSchema'
 
 export const Component = () => {
     const location = useLocationWithState<{ selectedModels: Set<string> }>()
 
     const dataEngine = useDataEngine()
-    const queryClient = useQueryClient()
     const selectedIds: string[] = useMemo(
         () => Array.from(location.state?.selectedModels ?? []),
         [location.state?.selectedModels]
@@ -36,16 +34,13 @@ export const Component = () => {
         []
     )
 
-    const onSubmit = async (values: OrganisationUnitMergeFormValues) => {
+    const onSubmit = async (values: CategoryOptionComboMergeFormValues) => {
         try {
             const data = mergeFormSchema.parse(values)
             await dataEngine.mutate({
-                resource: 'organisationUnits/merge',
+                resource: 'categoryOptionCombos/merge',
                 type: 'create',
                 data,
-            })
-            await queryClient.invalidateQueries({
-                queryKey: [{ resource: 'organisationUnits' }],
             })
             return undefined
         } catch (e) {
@@ -70,25 +65,27 @@ export const Component = () => {
                     <DefaultMergeFormContents
                         title={
                             <Title>
-                                {i18n.t('Configure organisation unit merge')}
+                                {i18n.t(
+                                    'Configure category option combination merge'
+                                )}
                             </Title>
                         }
                         mergeCompleteElement={
                             <MergeComplete>
                                 <p>
                                     {i18n.t(
-                                        'The organisation unit merge operation is complete.'
+                                        'The category option combination merge operation is complete.'
                                     )}
                                 </p>
                                 <p>
                                     {i18n.t(
-                                        'All selected organisation units were merged successfully.'
+                                        'All selected category option combinations were merged successfully.'
                                     )}
                                 </p>
                             </MergeComplete>
                         }
                     >
-                        <OrganisationUnitMergeFormFields
+                        <CategoryOptionComboMergeFormFields
                             selectedIds={selectedIds}
                         />
                     </DefaultMergeFormContents>

@@ -63,7 +63,7 @@ export const ExpressionFields = ({
                         component={InputFieldFF}
                         inputWidth="400px"
                         name={`${fieldName}.description`}
-                        dataTest={`formfields-denominatorDescription`}
+                        dataTest={`formfields-${fieldName}.description`}
                         label={i18n.t('Description')}
                         helpText={i18n.t(
                             'Summarize what this {{objectName}} measures.',

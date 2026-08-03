@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import {
     DefaultFormFooter,
@@ -9,7 +9,7 @@ import {
     SectionedFormLayout,
 } from '../../components'
 import {
-    DEFAULT_FIELD_FILTERS,
+    DEFAULT_IDENTIFIABLE,
     SectionedFormProvider,
     SECTIONS_MAP,
     useOnSubmitEdit,
@@ -21,13 +21,13 @@ import { PredictorFormFields } from './form/PredictorFormFields'
 import { validate } from './form/predictorSchema'
 
 const fieldFilters = [
-    ...DEFAULT_FIELD_FILTERS,
+    ...DEFAULT_IDENTIFIABLE,
     'name',
     'shortName',
     'code',
     'description',
     'periodType',
-    'output',
+    'output[id,categoryCombo[id,isDefault]]',
     'outputCombo[id,displayName,categoryCombo[id,displayName,isDefault]]',
     'organisationUnitDescendants',
     'sequentialSampleCount',
@@ -60,7 +60,19 @@ export const Component = () => {
         queryKey: [query],
         queryFn: queryFn<PredictorFormValues>,
     })
-    const initialValues = predictorQuery.data
+    // const initialValues = predictorQuery.data
+    const initialValues = useMemo(() => {
+        const isDefaultOutputComboCoC =
+            predictorQuery?.data?.outputCombo?.categoryCombo?.isDefault
+        return (
+            predictorQuery.data && {
+                ...predictorQuery.data,
+                outputCombo: isDefaultOutputComboCoC
+                    ? undefined
+                    : predictorQuery?.data?.outputCombo,
+            }
+        )
+    }, [predictorQuery.data])
 
     return (
         <FormBase

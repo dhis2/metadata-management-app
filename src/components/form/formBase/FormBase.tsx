@@ -98,7 +98,7 @@ export function FormBase<TInitialValues extends MaybeModelWithAttributes>({
     }
 
     if (!initialValuesWithAttributes || customAttributes.loading) {
-        return <LoadingSpinner />
+        return <LoadingSpinner centered />
     }
 
     const { children } = reactFinalFormProps

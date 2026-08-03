@@ -9,7 +9,7 @@ import {
     TableHead,
     TableRow,
 } from '@dhis2/ui'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Field as FieldRFF, useField } from 'react-final-form'
 import {
     ModelTransfer,
@@ -18,6 +18,7 @@ import {
     StandardFormSectionDescription,
     StandardFormSectionTitle,
     StandardFormSubsectionTitle,
+    useNewItemFormComponent,
 } from '../../../../components'
 import css from '../../../../components/metadataFormControls/ModelTransfer/ModelTransfer.module.css'
 import { DataElement } from '../../../../types/generated'
@@ -69,6 +70,14 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
         }
     )
 
+    const loadDataElementForm = useCallback(
+        () => import('../../../dataElements/New'),
+        []
+    )
+    const NewItemForm = useNewItemFormComponent(
+        isTrackerProgram ? undefined : loadDataElementForm
+    )
+
     const stageHasDateDataElements = input.value.some(
         (psde) => getValueType(psde) === 'DATE'
     )
@@ -93,7 +102,7 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
             <Field
                 error={meta.invalid}
                 validationText={(meta.touched && meta.error?.toString()) || ''}
-                name={name}
+                name={fieldName}
                 className={css.moduleTransferField}
             >
                 <ModelTransfer
@@ -105,7 +114,6 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
                                 psde,
                             ])
                         )
-
                         const selectedDataElements = selected.map((de) => {
                             const existing = existingDataElementsMap.get(de.id)
                             if (existing) {
@@ -117,15 +125,15 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
                                     optionSet: existing.optionSet,
                                 }
                             }
-
+                            const dataElement = de as DataElement
                             return {
                                 dataElement: {
-                                    id: de.id,
-                                    displayName: de.displayName,
-                                    optionSet: de.optionSet,
+                                    id: dataElement.id,
+                                    displayName: dataElement.displayName,
+                                    optionSet: dataElement.optionSet,
                                 },
-                                valueType: de.valueType,
-                                optionSet: de.optionSet,
+                                valueType: dataElement.valueType,
+                                optionSet: dataElement.optionSet,
                                 compulsory: false,
                                 displayInReports: false,
                                 allowFutureDate: false,
@@ -134,7 +142,6 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
                                 renderType: defaultRenderType,
                             }
                         })
-
                         input.onChange(selectedDataElements)
                         input.onBlur()
                     }}
@@ -146,6 +153,8 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
                     )}
                     maxSelections={Infinity}
                     enableOrderChange={false}
+                    NewItemForm={NewItemForm}
+                    newItemFormHeader={i18n.t('Add new data element')}
                     query={{
                         resource: 'dataElements',
                         params: {
