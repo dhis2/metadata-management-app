@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { Button, ButtonStrip, Checkbox } from '@dhis2/ui'
 import { useInfiniteQuery } from '@tanstack/react-query'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useHref } from 'react-router-dom'
 import { useDebouncedCallback } from 'use-debounce'
 import { getSectionNewPath } from '../../../lib'
@@ -35,6 +35,40 @@ export type NewItemFormComponent = React.ComponentType<{
     redirectOnSubmitted?: boolean
 }>
 
+export function useNewItemFormComponent(
+    loadComponent:
+        | (() => Promise<{ Component: NewItemFormComponent }>)
+        | undefined
+) {
+    const [NewItemForm, setNewItemForm] = useState<
+        NewItemFormComponent | undefined
+    >()
+
+    useEffect(() => {
+        if (!loadComponent) {
+            setNewItemForm(undefined)
+            return
+        }
+        let cancelled = false
+        loadComponent()
+            .then((m) => {
+                if (!cancelled) {
+                    setNewItemForm(() => m.Component)
+                }
+            })
+            .catch(() => {
+                if (!cancelled) {
+                    setNewItemForm(undefined)
+                }
+            })
+        return () => {
+            cancelled = true
+        }
+    }, [loadComponent])
+
+    return NewItemForm
+}
+
 export type ModelTranferProps<
     TModel extends DisplayableModel,
     TModelData
@@ -44,6 +78,7 @@ export type ModelTranferProps<
     filterUnassignedTo?: string
     NewItemForm?: NewItemFormComponent
     newItemFormHeader?: string
+    hideAddNew?: boolean
     newItemFormFooterInfo?: string
 }
 
@@ -62,6 +97,30 @@ export type ModelTransferPropsFor<
     transferSection: ModelSection
 }
 
+export function getTransferSectionLabels(transferSection: ModelSection) {
+    return {
+        leftHeader: i18n.t('Available {{name}}', {
+            name: transferSection.titlePlural,
+        }),
+        rightHeader: i18n.t('Selected {{name}}', {
+            name: transferSection.titlePlural,
+        }),
+        filterPlaceholder: i18n.t('Filter available {{name}}', {
+            name: transferSection.titlePlural,
+        }),
+        filterPlaceholderPicked: i18n.t('Filter selected {{name}}', {
+            name: transferSection.titlePlural,
+        }),
+        newItemFormHeader: i18n.t('Add new {{name}}', {
+            name: transferSection.title,
+        }),
+        newItemFormFooterInfo: i18n.t(
+            "Saving this {{name}} won't apply unsaved changes in the form below.",
+            { name: transferSection.title.toLowerCase() }
+        ),
+    }
+}
+
 export const ModelTransferFrom = <
     TModel extends DisplayableModel,
     TModelData extends DisplayableModel = TModel
@@ -69,39 +128,15 @@ export const ModelTransferFrom = <
     transferSection,
     ...rest
 }: ModelTransferPropsFor<TModel, TModelData>) => {
-    const [NewItemForm, setNewItemForm] = useState<
-        NewItemFormComponent | undefined
-    >()
-
-    useEffect(() => {
-        import(`../../../pages/${transferSection.namePlural}/New`)
-            .then((m: { Component: NewItemFormComponent }) =>
-                setNewItemForm(() => m.Component)
-            )
-            .catch(() => setNewItemForm(undefined))
-    }, [transferSection.namePlural])
+    const loadComponent = useCallback(
+        () => import(`../../../pages/${transferSection.namePlural}/New`),
+        [transferSection.namePlural]
+    )
+    const NewItemForm = useNewItemFormComponent(loadComponent)
 
     return (
         <ModelTransfer
-            leftHeader={i18n.t('Available {{name}}', {
-                name: transferSection.titlePlural,
-            })}
-            rightHeader={i18n.t('Selected {{name}}', {
-                name: transferSection.titlePlural,
-            })}
-            filterPlaceholder={i18n.t('Filter available {{name}}', {
-                name: transferSection.titlePlural,
-            })}
-            filterPlaceholderPicked={i18n.t('Filter selected {{name}}', {
-                name: transferSection.titlePlural,
-            })}
-            newItemFormHeader={i18n.t('Add new {{name}}', {
-                name: transferSection.title,
-            })}
-            newItemFormFooterInfo={i18n.t(
-                "Saving this {{name}} won't apply unsaved changes in the form below.",
-                { name: transferSection.title.toLowerCase() }
-            )}
+            {...getTransferSectionLabels(transferSection)}
             NewItemForm={NewItemForm}
             {...rest}
         />
@@ -123,6 +158,7 @@ export const ModelTransfer = <
     filterUnassignedTo,
     NewItemForm,
     newItemFormHeader,
+    hideAddNew = false,
     newItemFormFooterInfo,
     height = '360px',
     optionsWidth = '480px',
@@ -223,6 +259,7 @@ export const ModelTransfer = <
                         newLink={newLink}
                         NewItemForm={NewItemForm}
                         newItemFormHeader={newItemFormHeader}
+                        hideAddNew={hideAddNew}
                         newItemFormFooterInfo={newItemFormFooterInfo}
                     />
                 )
@@ -244,12 +281,14 @@ export const DefaultTransferLeftFooter = ({
     newLink,
     NewItemForm,
     newItemFormHeader,
+    hideAddNew = false,
     newItemFormFooterInfo,
 }: {
     onRefreshClick: () => void
     newLink: string
     NewItemForm?: NewItemFormComponent
     newItemFormHeader?: string
+    hideAddNew?: boolean
     newItemFormFooterInfo?: string
 }) => {
     const [drawerOpen, setDrawerOpen] = useState(false)
@@ -261,15 +300,16 @@ export const DefaultTransferLeftFooter = ({
                     {i18n.t('Refresh list')}
                 </Button>
 
-                {NewItemForm ? (
-                    <Button small onClick={() => setDrawerOpen(true)}>
-                        {i18n.t('Add new')}
-                    </Button>
-                ) : (
-                    <LinkButton small href={newLink} target="_blank">
-                        {i18n.t('Add new')}
-                    </LinkButton>
-                )}
+                {!hideAddNew &&
+                    (NewItemForm ? (
+                        <Button small onClick={() => setDrawerOpen(true)}>
+                            {i18n.t('Add new')}
+                        </Button>
+                    ) : (
+                        <LinkButton small href={newLink} target="_blank">
+                            {i18n.t('Add new')}
+                        </LinkButton>
+                    ))}
             </ButtonStrip>
             {NewItemForm && (
                 <DrawerPortal

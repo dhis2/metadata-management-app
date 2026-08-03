@@ -21,6 +21,7 @@ export function GroupMembershipField({ resource }: GroupMembershipFieldProps) {
             rightHeader={i18n.t('Selected groups')}
             filterPlaceholder={i18n.t('Filter available groups')}
             filterPlaceholderPicked={i18n.t('Filter selected groups')}
+            leftFooter={<></>}
         />
     )
 }

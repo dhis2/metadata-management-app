@@ -1,3 +1,134 @@
+## [0.173.1](https://github.com/dhis2/metadata-management-app/compare/v0.173.0...v0.173.1) (2026-08-03)
+
+
+### Bug Fixes
+
+* correct mapping of report date ([#1003](https://github.com/dhis2/metadata-management-app/issues/1003)) ([1b82bd0](https://github.com/dhis2/metadata-management-app/commit/1b82bd03a36589a4e44008b23f11a407149887e0))
+
+# [0.173.0](https://github.com/dhis2/metadata-management-app/compare/v0.172.1...v0.173.0) (2026-08-03)
+
+
+### Features
+
+* fix workflow ([5ddfcd8](https://github.com/dhis2/metadata-management-app/commit/5ddfcd8fc95c1e57297e1d2e434dd5dc7eb5e8ec))
+* update help text in data set sections ([b4b7302](https://github.com/dhis2/metadata-management-app/commit/b4b7302a95f378a88b3a475dc9f75a59e6defd6f))
+
+## [0.172.1](https://github.com/dhis2/metadata-management-app/compare/v0.172.0...v0.172.1) (2026-07-30)
+
+
+### Bug Fixes
+
+* contract workflow ([7be8b2c](https://github.com/dhis2/metadata-management-app/commit/7be8b2cc2705f6353389c25ac40a92142bd8e32d))
+
+# [0.172.0](https://github.com/dhis2/metadata-management-app/compare/v0.171.1...v0.172.0) (2026-07-29)
+
+
+### Bug Fixes
+
+* fix text in unsaved notice box ([6eb18a2](https://github.com/dhis2/metadata-management-app/commit/6eb18a223747f9b897eb3f98c08a95d4591a8783))
+* footer drawer elements alignment ([cb61758](https://github.com/dhis2/metadata-management-app/commit/cb61758bf284824efe467ff6037f9c89cf91c468))
+
+
+### Features
+
+* add unsaved attributes warning for programs ([c3092cd](https://github.com/dhis2/metadata-management-app/commit/c3092cdce4612b726cfa5d7f3083f387c6056ae2))
+* unsaved element notice box ([a656ba1](https://github.com/dhis2/metadata-management-app/commit/a656ba12098a0d4656f12313fd8dc5605da897dd))
+* unsaved elements for custom and section form ([7a92517](https://github.com/dhis2/metadata-management-app/commit/7a925174543c5dc0ff03da47358316fc75cc107f))
+* unsaved elements in program stages and data sets ([b4e9bb3](https://github.com/dhis2/metadata-management-app/commit/b4e9bb368338b6f1fc3c84aad4b137b3aab2537b))
+
+## [0.171.1](https://github.com/dhis2/metadata-management-app/compare/v0.171.0...v0.171.1) (2026-07-23)
+
+
+### Bug Fixes
+
+* predictor edit issue ([#1010](https://github.com/dhis2/metadata-management-app/issues/1010)) ([5fdba50](https://github.com/dhis2/metadata-management-app/commit/5fdba50d0839764db0a4bd8663a88892bd8c0e6b))
+
+# [0.171.0](https://github.com/dhis2/metadata-management-app/compare/v0.170.2...v0.171.0) (2026-07-23)
+
+
+### Bug Fixes
+
+* custom form event propagation and footer layout ([#1005](https://github.com/dhis2/metadata-management-app/issues/1005)) ([b29a2cf](https://github.com/dhis2/metadata-management-app/commit/b29a2cf84fff6f8a10f11afe0eba5dbe2f244653))
+
+
+### Features
+
+* cat option combo merge ([#1004](https://github.com/dhis2/metadata-management-app/issues/1004)) ([b4d2f6d](https://github.com/dhis2/metadata-management-app/commit/b4d2f6d819823d621d36c43be3f8c0949631b2d6))
+
+## [0.170.2](https://github.com/dhis2/metadata-management-app/compare/v0.170.1...v0.170.2) (2026-07-23)
+
+
+### Bug Fixes
+
+* require organisation unit levels for predictors [DHIS2-12090] ([#1001](https://github.com/dhis2/metadata-management-app/issues/1001)) ([919a09a](https://github.com/dhis2/metadata-management-app/commit/919a09a77d5ca1503ca441e860ee65b6718e6ee6))
+
+## [0.170.1](https://github.com/dhis2/metadata-management-app/compare/v0.170.0...v0.170.1) (2026-07-23)
+
+
+### Bug Fixes
+
+* reduce cache time in org unit so list is updated after merge ([#1008](https://github.com/dhis2/metadata-management-app/issues/1008)) ([f2e00ba](https://github.com/dhis2/metadata-management-app/commit/f2e00ba318441993a91661a33a3e94453b7234f3))
+
+# [0.170.0](https://github.com/dhis2/metadata-management-app/compare/v0.169.0...v0.170.0) (2026-07-20)
+
+
+### Features
+
+* open dataelements in drawers ([#979](https://github.com/dhis2/metadata-management-app/issues/979)) ([357f69b](https://github.com/dhis2/metadata-management-app/commit/357f69b1c6d8e8cc70d26eedf796de2cdc11c4c7))
+
+# [0.169.0](https://github.com/dhis2/metadata-management-app/compare/v0.168.0...v0.169.0) (2026-07-20)
+
+
+### Features
+
+* merge cat combos ([#993](https://github.com/dhis2/metadata-management-app/issues/993)) ([f3413b7](https://github.com/dhis2/metadata-management-app/commit/f3413b7029673378471727ce97949f7470539ce5))
+
+# [0.168.0](https://github.com/dhis2/metadata-management-app/compare/v0.167.0...v0.168.0) (2026-07-20)
+
+
+### Features
+
+* hide add new group assignment ([#987](https://github.com/dhis2/metadata-management-app/issues/987)) ([2e725ba](https://github.com/dhis2/metadata-management-app/commit/2e725ba44443262cb07fd73ba1e5dcfad96f7f4e))
+* org unit merge first draft ([#1000](https://github.com/dhis2/metadata-management-app/issues/1000)) ([98e9a52](https://github.com/dhis2/metadata-management-app/commit/98e9a5272af06f3d5247c0c810e6e079cd293177))
+
+# [0.167.0](https://github.com/dhis2/metadata-management-app/compare/v0.166.1...v0.167.0) (2026-07-14)
+
+
+### Bug Fixes
+
+* program stage selector ([#995](https://github.com/dhis2/metadata-management-app/issues/995)) ([d41f1d7](https://github.com/dhis2/metadata-management-app/commit/d41f1d78ed30a623bbcd33994bc997e84fdfc2b4))
+
+
+### Features
+
+* categories merge with validation [DHIS2-18292] ([#994](https://github.com/dhis2/metadata-management-app/issues/994)) ([a62d3cd](https://github.com/dhis2/metadata-management-app/commit/a62d3cd860ae85beb209310807cb93d4bf5400b2))
+
+## [0.166.1](https://github.com/dhis2/metadata-management-app/compare/v0.166.0...v0.166.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* add custom attributes to data set section ([a6f3487](https://github.com/dhis2/metadata-management-app/commit/a6f3487226594fba33d3002b709391591bace3ba))
+
+# [0.166.0](https://github.com/dhis2/metadata-management-app/compare/v0.165.0...v0.166.0) (2026-07-09)
+
+
+### Bug Fixes
+
+* do not skip contracts test ([#992](https://github.com/dhis2/metadata-management-app/issues/992)) ([7d11023](https://github.com/dhis2/metadata-management-app/commit/7d1102371813315a26ebbe5da789383f28267ce2))
+
+
+### Features
+
+* merge data elements ([#989](https://github.com/dhis2/metadata-management-app/issues/989)) ([559b647](https://github.com/dhis2/metadata-management-app/commit/559b6476bb95246dab1a78a993b5959219690513))
+
+# [0.165.0](https://github.com/dhis2/metadata-management-app/compare/v0.164.0...v0.165.0) (2026-07-08)
+
+
+### Features
+
+* make drawers size depend on how many drawers are open ([#978](https://github.com/dhis2/metadata-management-app/issues/978)) ([e74ec28](https://github.com/dhis2/metadata-management-app/commit/e74ec28ccc5af2ba8f723556eefec0075f0fa9ba))
+
 # [0.164.0](https://github.com/dhis2/metadata-management-app/compare/v0.163.3...v0.164.0) (2026-07-02)
 
 

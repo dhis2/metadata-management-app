@@ -92,7 +92,10 @@ export const StageFormContents = ({
                     </StandardFormSectionDescription>
                     {withProgramSelector && (
                         <StandardFormField>
-                            <StageProgramField />
+                            <StageProgramField
+                                isEditing={values?.id}
+                                programId={values.program?.id}
+                            />
                         </StandardFormField>
                     )}
                     <NameField schemaSection={SCHEMA_SECTIONS.programStage} />

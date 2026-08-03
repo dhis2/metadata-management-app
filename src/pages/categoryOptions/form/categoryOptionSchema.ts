@@ -44,6 +44,7 @@ export const categoryOptionFormSchema = identifiable
 
 export const categoryOptionListSchema = withDefaultListColumns.extend({
     displayShortName: z.string(),
+    name: z.string(),
 })
 
 export const initialValues = getDefaultsOld(

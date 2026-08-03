@@ -1,7 +1,7 @@
 const config = {
     setupFiles: ['whatwg-fetch'],
     setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
-    testPathIgnorePatterns: ['/node_modules/', '<rootDir>/src/contracts/'],
+    testPathIgnorePatterns: ['/node_modules/'],
     coverageThreshold: {
         global: {
             // TODO: The following should be 50

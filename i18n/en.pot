@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-06-29T13:37:24.549Z\n"
-"PO-Revision-Date: 2026-06-29T13:37:24.550Z\n"
+"POT-Creation-Date: 2026-07-20T13:02:05.156Z\n"
+"PO-Revision-Date: 2026-07-20T13:02:05.156Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -868,6 +868,15 @@ msgstr "Merging cannot be undone"
 msgid "Confirmation code does not match"
 msgstr "Confirmation code does not match"
 
+msgid "Move data values to the target data element"
+msgstr "Move data values to the target data element"
+
+msgid "Delete the source data values"
+msgstr "Delete the source data values"
+
+msgid "At least one source must be specified to merge"
+msgstr "At least one source must be specified to merge"
+
 msgid "Target must be specified to merge"
 msgstr "Target must be specified to merge"
 
@@ -909,6 +918,9 @@ msgstr "Loading..."
 
 msgid "Add new {{name}}"
 msgstr "Add new {{name}}"
+
+msgid "Saving this {{name}} won't apply unsaved changes in the form below."
+msgstr "Saving this {{name}} won't apply unsaved changes in the form below."
 
 msgid "Available {{name}}"
 msgstr "Available {{name}}"
@@ -2624,6 +2636,21 @@ msgstr "Mandatory: all objects must have a value for this attribute"
 msgid "Unique values only"
 msgstr "Unique values only"
 
+msgid "Category options of source and target categories do not match"
+msgstr "Category options of source and target categories do not match"
+
+msgid "Categories must have unique, non-overlapping category combos"
+msgstr "Categories must have unique, non-overlapping category combos"
+
+msgid "Configure category merge"
+msgstr "Configure category merge"
+
+msgid "The category merge operation is complete."
+msgstr "The category merge operation is complete."
+
+msgid "All selected categories were merged successfully."
+msgstr "All selected categories were merged successfully."
+
 msgid "Set up the basic information for this category."
 msgstr "Set up the basic information for this category."
 
@@ -2638,6 +2665,45 @@ msgstr "Show as data dimension in analytics apps"
 
 msgid "Choose the options to include in this category."
 msgstr "Choose the options to include in this category."
+
+msgid ""
+"The merge operation will merge the source categories into\n"
+"                the target category. One or many source categories\n"
+"                can be specified"
+msgstr ""
+"The merge operation will merge the source categories into\n"
+"                the target category. One or many source categories\n"
+"                can be specified"
+
+msgid ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the category metadata associations to the\n"
+"                source categories over to the target category."
+msgstr ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the category metadata associations to the\n"
+"                source categories over to the target category."
+
+msgid "Categories to be merged (source)"
+msgstr "Categories to be merged (source)"
+
+msgid "Select categories to merge"
+msgstr "Select categories to merge"
+
+msgid "Category to merge into (target)"
+msgstr "Category to merge into (target)"
+
+msgid "Select category to merge into"
+msgstr "Select category to merge into"
+
+msgid "No categories available. Remove one from source."
+msgstr "No categories available. Remove one from source."
+
+msgid "Merge settings"
+msgstr "Merge settings"
+
+msgid "What should happen to the source categories after the merge is complete?"
+msgstr "What should happen to the source categories after the merge is complete?"
 
 msgid "More than 4 Categories"
 msgstr "More than 4 Categories"
@@ -2801,9 +2867,6 @@ msgstr "Select category option to merge into"
 msgid "No category options available. Remove one from source."
 msgstr "No category options available. Remove one from source."
 
-msgid "Merge settings"
-msgstr "Merge settings"
-
 msgid ""
 "What should happen to the source category options after the merge is "
 "complete?"
@@ -2845,6 +2908,15 @@ msgstr "Set up the information for this data element group."
 
 msgid "Choose the data elements to include in this data element group."
 msgstr "Choose the data elements to include in this data element group."
+
+msgid "Configure data element merge"
+msgstr "Configure data element merge"
+
+msgid "The data element merge operation is complete."
+msgstr "The data element merge operation is complete."
+
+msgid "All selected data elements were merged successfully."
+msgstr "All selected data elements were merged successfully."
 
 msgid "Aggregation level(s)"
 msgstr "Aggregation level(s)"
@@ -2950,6 +3022,54 @@ msgstr ""
 
 msgid "Choose the groups this data element belongs to."
 msgstr "Choose the groups this data element belongs to."
+
+msgid ""
+"The merge operation will merge the source data elements into\n"
+"                the target data element. One or many source data elements\n"
+"                can be specified"
+msgstr ""
+"The merge operation will merge the source data elements into\n"
+"                the target data element. One or many source data elements\n"
+"                can be specified"
+
+msgid ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the data element metadata associations to "
+"the\n"
+"                source data elements over to the target data element."
+msgstr ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the data element metadata associations to "
+"the\n"
+"                source data elements over to the target data element."
+
+msgid "Data elements to be merged (source)"
+msgstr "Data elements to be merged (source)"
+
+msgid "Select data elements to merge"
+msgstr "Select data elements to merge"
+
+msgid "Data element to merge into (target)"
+msgstr "Data element to merge into (target)"
+
+msgid "Select data element to merge into"
+msgstr "Select data element to merge into"
+
+msgid "No data elements available. Remove one from source."
+msgstr "No data elements available. Remove one from source."
+
+msgid "What should happen to the source data elements after the merge is complete?"
+msgstr "What should happen to the source data elements after the merge is complete?"
+
+msgid "What should happen to the data values recorded for the source data elements?"
+msgstr "What should happen to the data values recorded for the source data elements?"
+
+msgid ""
+"Where source and target have the same data value, the most recently updated "
+"is kept."
+msgstr ""
+"Where source and target have the same data value, the most recently updated "
+"is kept."
 
 msgid "Error"
 msgstr "Error"
@@ -5539,6 +5659,9 @@ msgstr "Configure data collection for events in this program stage."
 msgid "Configure data collection for events in this program."
 msgstr "Configure data collection for events in this program."
 
+msgid "Add new data element"
+msgstr "Add new data element"
+
 msgid "Configure data items"
 msgstr "Configure data items"
 
@@ -5655,6 +5778,9 @@ msgstr "None (report date will be empty)"
 
 msgid "A program is required"
 msgstr "A program is required"
+
+msgid "View program"
+msgstr "View program"
 
 msgid "The number of days between repeated events."
 msgstr "The number of days between repeated events."

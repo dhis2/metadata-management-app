@@ -19,6 +19,7 @@ import {
 import { useParams } from 'react-router-dom'
 import {
     CodeField,
+    CustomAttributesSection,
     DescriptionField,
     DrawerFormFooter,
     DrawerLayout,
@@ -351,7 +352,7 @@ export const DataSetSectionFormContents = ({
                                     'Content to display before a section'
                                 )}
                                 helpText={i18n.t(
-                                    'HTML links and basic styling can be included'
+                                    'Markdown formatting is supported'
                                 )}
                                 format={(value) =>
                                     typeof value === 'string'
@@ -370,7 +371,7 @@ export const DataSetSectionFormContents = ({
                                 )}
                                 validateFields={[]}
                                 helpText={i18n.t(
-                                    'HTML links and basic styling can be included'
+                                    'Markdown formatting is supported'
                                 )}
                                 format={(value) =>
                                     typeof value === 'string'
@@ -381,6 +382,11 @@ export const DataSetSectionFormContents = ({
                         </StandardFormField>
                     </div>
                 </SectionedFormSection>
+
+                <CustomAttributesSection
+                    schemaSection={dataSetSectionSchemaSection}
+                    sectionedLayout={true}
+                />
             </SectionedFormSections>
             <SectionedFormErrorNotice />
         </>

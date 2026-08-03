@@ -7,6 +7,11 @@ const sectionAuthorityMap = new Map<ModelSection, string>([
     [SECTIONS_MAP.indicator, 'F_INDICATOR_MERGE'],
     [SECTIONS_MAP.indicatorType, 'F_INDICATOR_TYPE_MERGE'],
     [SECTIONS_MAP.categoryOption, 'F_CATEGORY_OPTION_MERGE'],
+    [SECTIONS_MAP.category, 'F_CATEGORY_MERGE'],
+    [SECTIONS_MAP.categoryCombo, 'F_CATEGORY_COMBO_MERGE'],
+    [SECTIONS_MAP.categoryOptionCombo, 'F_CATEGORY_OPTION_COMBO_MERGE'],
+    [SECTIONS_MAP.dataElement, 'F_DATA_ELEMENT_MERGE'],
+    [SECTIONS_MAP.organisationUnit, 'F_ORGANISATION_UNIT_MERGE'],
 ])
 
 export const getMergeAuthority = (

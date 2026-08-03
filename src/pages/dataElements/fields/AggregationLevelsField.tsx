@@ -26,6 +26,7 @@ export function AggregationLevelsField() {
             name="aggregationLevels"
             label={i18n.t('Aggregation level(s)')}
             dataTest="formfields-aggregationlevels"
+            inputWidth="400px"
             query={{
                 resource: 'organisationUnitLevels',
                 params: {
