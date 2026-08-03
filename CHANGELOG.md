@@ -1,3 +1,15 @@
+# [0.174.0](https://github.com/dhis2/metadata-management-app/compare/v0.173.1...v0.174.0) (2026-08-03)
+
+
+### Bug Fixes
+
+* refactor for rootJunction issues ([#990](https://github.com/dhis2/metadata-management-app/issues/990)) ([b4ece71](https://github.com/dhis2/metadata-management-app/commit/b4ece71019d84144fd7e1d1bd816d7d7d3f185b3))
+
+
+### Features
+
+* freeze header row in programs attributes and stage de tables ([#1013](https://github.com/dhis2/metadata-management-app/issues/1013)) ([9529652](https://github.com/dhis2/metadata-management-app/commit/9529652a2003ac14991a092bc230b8cb7f5e3739))
+
 ## [0.173.1](https://github.com/dhis2/metadata-management-app/compare/v0.173.0...v0.173.1) (2026-08-03)
 
 
