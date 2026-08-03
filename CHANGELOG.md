@@ -1,3 +1,10 @@
+## [0.173.1](https://github.com/dhis2/metadata-management-app/compare/v0.173.0...v0.173.1) (2026-08-03)
+
+
+### Bug Fixes
+
+* correct mapping of report date ([#1003](https://github.com/dhis2/metadata-management-app/issues/1003)) ([1b82bd0](https://github.com/dhis2/metadata-management-app/commit/1b82bd03a36589a4e44008b23f11a407149887e0))
+
 # [0.173.0](https://github.com/dhis2/metadata-management-app/compare/v0.172.1...v0.173.0) (2026-08-03)
 
 
