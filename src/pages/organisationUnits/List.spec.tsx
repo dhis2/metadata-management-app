@@ -55,6 +55,25 @@ const renderList = async ({
             customData={{
                 organisationUnits: (type: any, params: any) => {
                     if (type === 'read' && params.id !== undefined) {
+                        if (
+                            typeof params.id === 'string' &&
+                            params.id.endsWith('/children')
+                        ) {
+                            const parentId = params.id.split('/')?.[0]
+                            const children = organisationUnits.filter(
+                                (ou) =>
+                                    ou.parent?.id === parentId ||
+                                    ou.id === parentId
+                            )
+                            return {
+                                organisationUnits: children,
+                                pager: {
+                                    page: params.params?.page ?? 1,
+                                    pageCount: children.length ? 1 : 0,
+                                    total: children.length,
+                                },
+                            }
+                        }
                         const foundOrgUnit = organisationUnits.find(
                             (ou) => ou.id === params.id
                         )
@@ -406,6 +425,11 @@ describe('Organisation unit list', () => {
             otherOrgUnits: [child1, child2],
         })
 
+        const setOrganisationUnitsSpy = jest.spyOn(
+            useSystemOrgUnitsStore.getState(),
+            'setOrganisationUnits'
+        )
+
         const tableRows = screen.getAllByTestId('dhis2-uicore-datatablerow')
         expect(tableRows.length).toBe(4)
 
@@ -433,6 +457,56 @@ describe('Organisation unit list', () => {
                 expect.objectContaining({ id: child1.id })
             )
         })
+        expect(setOrganisationUnitsSpy).not.toHaveBeenCalled()
+        setOrganisationUnitsSpy.mockRestore()
+    })
+
+    it('resets system organisation units when root org unit is deleted', async () => {
+        const rootOrg = testOrgUnit({
+            level: 1,
+            childCount: 0,
+            access: testAccess({ delete: true }),
+        })
+
+        const screen = await renderList({
+            rootOrgUnits: [rootOrg],
+            otherOrgUnits: [],
+        })
+
+        const setOrganisationUnitsSpy = jest.spyOn(
+            useSystemOrgUnitsStore.getState(),
+            'setOrganisationUnits'
+        )
+
+        const tableRows = screen.getAllByTestId('dhis2-uicore-datatablerow')
+        expect(tableRows.length).toBe(2)
+
+        expect(tableRows[1]).toHaveTextContent(rootOrg.displayName!)
+        const actionButton = within(tableRows[1]).getByTestId(
+            'row-actions-menu-button'
+        )
+        await userEvent.click(actionButton)
+        const actionsMenu = screen.getByTestId('row-actions-menu')
+        expect(actionsMenu).toBeVisible()
+        await userEvent.click(within(actionsMenu).getByText('Delete'))
+
+        const deleteConfirmationModal = await screen.findByTestId(
+            'delete-confirmation-modal'
+        )
+        expect(deleteConfirmationModal).toBeVisible()
+
+        await userEvent.click(
+            within(deleteConfirmationModal).getByRole('button', {
+                name: 'Confirm deletion',
+            })
+        )
+        await waitFor(() => {
+            expect(deleteOrgUnitMock).toHaveBeenCalledWith(
+                expect.objectContaining({ id: rootOrg.id })
+            )
+        })
+        expect(setOrganisationUnitsSpy).toHaveBeenLastCalledWith([])
+        setOrganisationUnitsSpy.mockRestore()
     })
 
     it('has a link to an org unit edit page in the row actions menu', async () => {
@@ -690,7 +764,7 @@ describe('Organisation unit list', () => {
 
         const tableRows = screen.getAllByTestId('dhis2-uicore-datatablerow')
         // header row + systemRoot row only
-        expect(tableRows.length).toBe(2)
+        expect(tableRows).toHaveLength(2)
         expect(tableRows[1]).toHaveTextContent('SystemRoot')
         expect(screen.queryByText('UserRoot')).not.toBeInTheDocument()
     })
