@@ -1,3 +1,11 @@
+# [0.173.0](https://github.com/dhis2/metadata-management-app/compare/v0.172.1...v0.173.0) (2026-08-03)
+
+
+### Features
+
+* fix workflow ([5ddfcd8](https://github.com/dhis2/metadata-management-app/commit/5ddfcd8fc95c1e57297e1d2e434dd5dc7eb5e8ec))
+* update help text in data set sections ([b4b7302](https://github.com/dhis2/metadata-management-app/commit/b4b7302a95f378a88b3a475dc9f75a59e6defd6f))
+
 ## [0.172.1](https://github.com/dhis2/metadata-management-app/compare/v0.172.0...v0.172.1) (2026-07-30)
 
 
