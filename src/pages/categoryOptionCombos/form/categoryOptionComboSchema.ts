@@ -15,9 +15,11 @@ export const categoryOptionComboFormSchema = withAttributeValues
         id: z.string(),
         ignoreApproval: z.boolean().optional().default(false),
     })
-export const categoryOptionComboListSchema = categoryOptionComboBaeSchema.merge(
-    withDefaultListColumns
-)
+export const categoryOptionComboListSchema = categoryOptionComboBaeSchema
+    .merge(withDefaultListColumns)
+    .extend({
+        name: z.string(),
+    })
 
 export const initialValues = getDefaultsOld(categoryOptionComboFormSchema)
 

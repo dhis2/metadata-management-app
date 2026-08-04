@@ -1,16 +1,20 @@
 import { CircularLoader } from '@dhis2/ui'
-import cx from 'classnames'
 import React from 'react'
 import styles from './Loader.module.css'
 
 export const LoadingSpinner = ({
-    centered = true,
+    centered = false,
     ...rest
 }: {
     centered?: boolean
-}) => (
-    <CircularLoader
-        {...rest}
-        className={cx(styles.loadingSpinner, { [styles.centered]: centered })}
-    />
-)
+}) => {
+    const loader = (
+        <CircularLoader {...rest} className={styles.loadingSpinner} />
+    )
+
+    return centered ? (
+        <div className={styles.centeredContainer}>{loader}</div>
+    ) : (
+        loader
+    )
+}

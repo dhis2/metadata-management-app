@@ -22,6 +22,10 @@ import {
 import { TooltipWrapper } from '../../../components/tooltip'
 import { BaseListModel, TOOLTIPS, useLocationSearchState } from '../../../lib'
 import { canDeleteModel } from '../../../lib/models/access'
+import {
+    useSetSystemOrganisationUnits,
+    useSystemOrgUnitsStore,
+} from '../../../lib/systemOrgUnits/systemOrgUnitsStore'
 
 type OrganisationUnitListActionProps = {
     model: BaseListModel
@@ -36,8 +40,17 @@ export const OrganisationUnitListActions = ({
 }: OrganisationUnitListActionProps) => {
     const deletable = canDeleteModel(model)
     const queryClient = useQueryClient()
+    const isLastSystemOrgUnit = useSystemOrgUnitsStore(
+        (state) =>
+            state.organisationUnits?.length === 1 &&
+            state.organisationUnits[0].id === model.id
+    )
+    const setSystemOrganisationUnits = useSetSystemOrganisationUnits()
 
     const handleDeleteSuccess = () => {
+        if (isLastSystemOrgUnit) {
+            setSystemOrganisationUnits([])
+        }
         queryClient.invalidateQueries({
             queryKey: [{ resource: 'organisationUnits' }],
         })

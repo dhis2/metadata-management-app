@@ -1,6 +1,6 @@
 import { useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { Button, NoticeBox } from '@dhis2/ui'
+import { Button } from '@dhis2/ui'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useField, UseFieldConfig, useFormState } from 'react-final-form'
 import {
@@ -22,7 +22,12 @@ import {
     FormType,
     TabbedFormTypePicker,
 } from '../../../../components/formCreators/TabbedFormTypePicker'
-import { FORM_SECTION_PARAM_KEY, scrollToSection } from '../../../../lib'
+import { UnsavedDataElementsNotice } from '../../../../components/formCreators/UnsavedDataElementsNotice'
+import {
+    FORM_SECTION_PARAM_KEY,
+    hasUnsavedTrackedEntityAttributes,
+    scrollToSection,
+} from '../../../../lib'
 import { SchemaName } from '../../../../types'
 import { ProgramValues } from '../../EditTrackerProgram'
 import { EditOrNewEnrollmentSectionForm } from '../sectionForm/EntrollmentSectionForm'
@@ -42,6 +47,9 @@ export const EnrollmentFormFormContents = React.memo(function FormFormContents({
 }) {
     const sections = useProgramField('programSections').input.value
     const dataEntryForm = useProgramField('dataEntryForm').input.value
+    const trackedEntityAttributes = useProgramField(
+        'programTrackedEntityAttributes'
+    ).input.value
     const { initialValues } = useFormState({
         subscription: { initialValues: true },
     })
@@ -53,6 +61,14 @@ export const EnrollmentFormFormContents = React.memo(function FormFormContents({
                 programSections: sections,
             }),
         [initialValues?.programTrackedEntityAttributes, sections]
+    )
+    const hasUnsavedNewAttributes = useMemo(
+        () =>
+            hasUnsavedTrackedEntityAttributes(
+                trackedEntityAttributes,
+                initialValues?.programTrackedEntityAttributes
+            ),
+        [trackedEntityAttributes, initialValues?.programTrackedEntityAttributes]
     )
     const [selectedFormType, setSelectedFormType] = useState<FormType>(
         FormType.DEFAULT
@@ -213,30 +229,54 @@ export const EnrollmentFormFormContents = React.memo(function FormFormContents({
                     </div>
                 )}
                 {selectedFormType === FormType.SECTION && (
-                    <SectionFormSectionsList
-                        sectionsFieldName={'programSections'}
-                        SectionFormComponent={EditOrNewEnrollmentSectionForm}
-                        schemaName={SchemaName.programSection}
-                        level={'primary'}
-                        otherProps={{ sectionsLength: sections.length }}
-                        withReordering
-                        warningNotice={
-                            <MandatoryAttributesWarning
-                                missingAttributes={missingMandatoryAttributes}
-                                className={styles.sectionWarningNotice}
+                    <>
+                        {hasUnsavedNewAttributes && (
+                            <UnsavedDataElementsNotice
+                                message={i18n.t(
+                                    'Save changes to this program before editing sections'
+                                )}
                             />
-                        }
-                    />
+                        )}
+                        <SectionFormSectionsList
+                            sectionsFieldName={'programSections'}
+                            SectionFormComponent={
+                                EditOrNewEnrollmentSectionForm
+                            }
+                            schemaName={SchemaName.programSection}
+                            level={'primary'}
+                            otherProps={{ sectionsLength: sections.length }}
+                            withReordering
+                            warningNotice={
+                                <MandatoryAttributesWarning
+                                    missingAttributes={
+                                        missingMandatoryAttributes
+                                    }
+                                    className={styles.sectionWarningNotice}
+                                />
+                            }
+                            disabled={hasUnsavedNewAttributes}
+                        />
+                    </>
                 )}
                 {selectedFormType === FormType.CUSTOM && (
-                    <CustomFormEditEntry
-                        level={'primary'}
-                        loading={loading}
-                        refetch={refetch}
-                        elementTypes={elementTypes}
-                        updateCustomForm={updateOrCreateCustomForm}
-                        customFormTarget="program enrollment"
-                    />
+                    <>
+                        {hasUnsavedNewAttributes && (
+                            <UnsavedDataElementsNotice
+                                message={i18n.t(
+                                    'Save changes to this program before editing the form'
+                                )}
+                            />
+                        )}
+                        <CustomFormEditEntry
+                            level={'primary'}
+                            loading={loading}
+                            refetch={refetch}
+                            elementTypes={elementTypes}
+                            updateCustomForm={updateOrCreateCustomForm}
+                            customFormTarget="program enrollment"
+                            disabled={hasUnsavedNewAttributes}
+                        />
+                    </>
                 )}
             </TabbedFormTypePicker>
         </SectionedFormSection>

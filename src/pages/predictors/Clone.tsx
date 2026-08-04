@@ -12,7 +12,7 @@ import {
     CloneNoticeBox,
 } from '../../components'
 import {
-    DEFAULT_FIELD_FILTERS,
+    DEFAULT_IDENTIFIABLE,
     SectionedFormProvider,
     SECTIONS_MAP,
     useOnSubmitNew,
@@ -24,7 +24,7 @@ import { PredictorFormFields } from './form/PredictorFormFields'
 import { validate } from './form/predictorSchema'
 
 const fieldFilters = [
-    ...DEFAULT_FIELD_FILTERS,
+    ...DEFAULT_IDENTIFIABLE,
     'name',
     'shortName',
     'code',
