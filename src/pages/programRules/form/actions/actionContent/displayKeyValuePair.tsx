@@ -7,7 +7,11 @@ import {
     LocationField,
 } from '../../../fields'
 
-export function displayKeyValuePair(programId: string): ReactNode {
+export function displayKeyValuePair(
+    programId: string,
+    isEdit?: boolean,
+    programType?: string
+): ReactNode {
     return (
         <>
             <StandardFormField>
@@ -23,6 +27,7 @@ export function displayKeyValuePair(programId: string): ReactNode {
             <StandardFormField>
                 <ExpressionField
                     programId={programId}
+                    programType={programType}
                     label={i18n.t(
                         'Expression to evaluate and display as value.'
                     )}

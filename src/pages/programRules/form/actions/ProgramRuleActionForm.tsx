@@ -356,6 +356,7 @@ function ProgramRuleActionFormBody({
                 {programId && (
                     <ActionTypeFieldsContent
                         programId={programId}
+                        programType={programType}
                         isEdit={isEdit}
                         actionType={actionType}
                     />

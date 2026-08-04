@@ -7,7 +7,11 @@ import {
     LocationField,
 } from '../../../fields'
 
-export function displayText(programId: string): ReactNode {
+export function displayText(
+    programId: string,
+    isEdit?: boolean,
+    programType?: string
+): ReactNode {
     return (
         <>
             <StandardFormField>
@@ -23,6 +27,7 @@ export function displayText(programId: string): ReactNode {
             <StandardFormField>
                 <ExpressionField
                     programId={programId}
+                    programType={programType}
                     label={i18n.t(
                         'Expression to evaluate and display after static text.'
                     )}
