@@ -3,14 +3,10 @@ import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { StandardFormField } from '../../../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../../lib'
+import { useLabelValidator } from './useLabelValidator'
 
 export function EventsLabelField() {
-    const schemaSection = useSchemaSectionHandleOrThrow()
-    const validate = useValidator({
-        schemaSection,
-        property: 'eventsLabel',
-    })
+    const validate = useLabelValidator('eventsLabel')
 
     return (
         <StandardFormField>
@@ -18,7 +14,7 @@ export function EventsLabelField() {
                 component={InputFieldFF}
                 name="eventsLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Events (Plural)"')}
+                label={i18n.t('Custom label for "Event" (plural)')}
                 helpText={i18n.t('Example use: See all events', {
                     nsSeparator: '~:~',
                 })}

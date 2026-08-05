@@ -3,14 +3,10 @@ import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { StandardFormField } from '../../../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../../lib'
+import { useLabelValidator } from './useLabelValidator'
 
 export function EnrollmentsLabelField() {
-    const schemaSection = useSchemaSectionHandleOrThrow()
-    const validate = useValidator({
-        schemaSection,
-        property: 'enrollmentsLabel',
-    })
+    const validate = useLabelValidator('enrollmentsLabel')
 
     return (
         <StandardFormField>
@@ -18,7 +14,7 @@ export function EnrollmentsLabelField() {
                 component={InputFieldFF}
                 name="enrollmentsLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Enrollments (Plural)"')}
+                label={i18n.t('Custom label for "Enrollment" (plural)')}
                 helpText={i18n.t('Example use: See all enrollments', {
                     nsSeparator: '~:~',
                 })}

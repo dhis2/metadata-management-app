@@ -157,7 +157,7 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'enrollmentsLabel',
-                    label: i18n.t('Custom label for "Enrollments (Plural)"'),
+                    label: i18n.t('Custom label for "Enrollment" (plural)'),
                 },
                 {
                     name: 'eventLabel',
@@ -165,7 +165,7 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'eventsLabel',
-                    label: i18n.t('Custom label for "Events (Plural)"'),
+                    label: i18n.t('Custom label for "Event" (plural)'),
                 },
                 {
                     name: 'programStageLabel',
@@ -173,7 +173,7 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'programStagesLabel',
-                    label: i18n.t('Custom label for "Program stages (Plural)"'),
+                    label: i18n.t('Custom label for "Program stage" (plural)'),
                 },
                 {
                     name: 'followUpLabel',
@@ -189,12 +189,12 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'relationshipsLabel',
-                    label: i18n.t('Custom label for "Relationships (Plural)"'),
+                    label: i18n.t('Custom label for "Relationship" (plural)'),
                 },
                 { name: 'noteLabel', label: i18n.t('Custom label for "Note"') },
                 {
                     name: 'notesLabel',
-                    label: i18n.t('Custom label for "Notes (Plural)"'),
+                    label: i18n.t('Custom label for "Note" (plural)'),
                 },
                 {
                     name: 'trackedEntityAttributeLabel',
@@ -202,7 +202,7 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'trackedEntityAttributesLabel',
-                    label: i18n.t('Custom label for "Attributes (Plural)"'),
+                    label: i18n.t('Custom label for "Attribute" (plural)'),
                 },
             ],
         },

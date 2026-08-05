@@ -3,14 +3,10 @@ import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { StandardFormField } from '../../../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../../lib'
+import { useLabelValidator } from './useLabelValidator'
 
 export function RelationshipsLabelField() {
-    const schemaSection = useSchemaSectionHandleOrThrow()
-    const validate = useValidator({
-        schemaSection,
-        property: 'relationshipsLabel',
-    })
+    const validate = useLabelValidator('relationshipsLabel')
 
     return (
         <StandardFormField>
@@ -18,7 +14,7 @@ export function RelationshipsLabelField() {
                 component={InputFieldFF}
                 name="relationshipsLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Relationships (Plural)"')}
+                label={i18n.t('Custom label for "Relationship" (plural)')}
                 helpText={i18n.t('Example use: See all relationships', {
                     nsSeparator: '~:~',
                 })}

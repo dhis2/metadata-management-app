@@ -3,14 +3,10 @@ import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { StandardFormField } from '../../../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../../lib'
+import { useLabelValidator } from './useLabelValidator'
 
 export function NotesLabelField() {
-    const schemaSection = useSchemaSectionHandleOrThrow()
-    const validate = useValidator({
-        schemaSection,
-        property: 'notesLabel',
-    })
+    const validate = useLabelValidator('notesLabel')
 
     return (
         <StandardFormField>
@@ -18,7 +14,7 @@ export function NotesLabelField() {
                 component={InputFieldFF}
                 name="notesLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Notes (Plural)"')}
+                label={i18n.t('Custom label for "Note" (plural)')}
                 helpText={i18n.t('Example use: See all notes', {
                     nsSeparator: '~:~',
                 })}

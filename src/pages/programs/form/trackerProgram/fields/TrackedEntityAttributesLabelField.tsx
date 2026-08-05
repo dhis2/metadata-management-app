@@ -3,14 +3,10 @@ import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { StandardFormField } from '../../../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../../lib'
+import { useLabelValidator } from './useLabelValidator'
 
 export function TrackedEntityAttributesLabelField() {
-    const schemaSection = useSchemaSectionHandleOrThrow()
-    const validate = useValidator({
-        schemaSection,
-        property: 'trackedEntityAttributesLabel',
-    })
+    const validate = useLabelValidator('trackedEntityAttributesLabel')
 
     return (
         <StandardFormField>
@@ -18,7 +14,7 @@ export function TrackedEntityAttributesLabelField() {
                 component={InputFieldFF}
                 name="trackedEntityAttributesLabel"
                 inputWidth="400px"
-                label={i18n.t('Custom label for "Attributes (Plural)"')}
+                label={i18n.t('Custom label for "Attribute" (plural)')}
                 helpText={i18n.t('Example use: See all attributes', {
                     nsSeparator: '~:~',
                 })}

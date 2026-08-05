@@ -3,14 +3,10 @@ import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { StandardFormField } from '../../../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../../lib'
+import { useLabelValidator } from './useLabelValidator'
 
 export function FollowUpLabelField() {
-    const schemaSection = useSchemaSectionHandleOrThrow()
-    const validate = useValidator({
-        schemaSection,
-        property: 'followUpLabel',
-    })
+    const validate = useLabelValidator('followUpLabel')
 
     return (
         <StandardFormField>
@@ -20,7 +16,7 @@ export function FollowUpLabelField() {
                 inputWidth="400px"
                 label={i18n.t('Custom label for "Follow-up"')}
                 helpText={i18n.t(
-                    'Used to customize the label for follow-up events or activities'
+                    'Used to customize the label for a follow-up event or activity'
                 )}
                 dataTest="formfields-followUpLabel"
                 validate={validate}

@@ -3,14 +3,10 @@ import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
 import { StandardFormField } from '../../../../../components'
-import { useSchemaSectionHandleOrThrow, useValidator } from '../../../../../lib'
+import { useLabelValidator } from './useLabelValidator'
 
 export function RelationshipLabelField() {
-    const schemaSection = useSchemaSectionHandleOrThrow()
-    const validate = useValidator({
-        schemaSection,
-        property: 'relationshipLabel',
-    })
+    const validate = useLabelValidator('relationshipLabel')
 
     return (
         <StandardFormField>
@@ -20,7 +16,7 @@ export function RelationshipLabelField() {
                 inputWidth="400px"
                 label={i18n.t('Custom label for "Relationship"')}
                 helpText={i18n.t(
-                    'Used to customize the label for relationships between tracked entities'
+                    'Used to customize the label for a relationship between tracked entities'
                 )}
                 dataTest="formfields-relationshipLabel"
                 validate={validate}

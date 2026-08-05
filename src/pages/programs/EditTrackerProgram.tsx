@@ -19,9 +19,11 @@ import {
     createFormError,
     ATTRIBUTE_VALUES_FIELD_FILTERS,
     DEFAULT_FIELD_FILTERS,
+    FEATURES,
     SectionedFormProvider,
     SECTIONS_MAP,
     useBoundResourceQueryFn,
+    useFeatureAvailable,
     useOnSubmitEdit,
 } from '../../lib'
 import { EnhancedOnSubmit } from '../../lib/form/useOnSubmit'
@@ -35,6 +37,15 @@ import { ProgramNotificationListItem } from './form/common/ProgramNotificationsF
 import { ProgramStageListItem } from './form/trackerProgram/ProgramStagesFormContents'
 import { TrackerProgramFormContents } from './form/trackerProgram/TrackerProgramFormContents'
 import { TrackerProgramFormDescriptor } from './form/trackerProgram/trackerProgramFormDescriptor'
+
+const PLURAL_LABEL_FIELD_FILTERS = [
+    'enrollmentsLabel',
+    'eventsLabel',
+    'programStagesLabel',
+    'relationshipsLabel',
+    'notesLabel',
+    'trackedEntityAttributesLabel',
+] as const
 
 const fieldFilters = [
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
@@ -64,19 +75,14 @@ const fieldFilters = [
     'incidentDateLabel',
     'enrollmentDateLabel',
     'enrollmentLabel',
-    'enrollmentsLabel',
     'eventLabel',
-    'eventsLabel',
     'programStageLabel',
-    'programStagesLabel',
     'followUpLabel',
     'orgUnitLabel',
     'relationshipLabel',
-    'relationshipsLabel',
     'noteLabel',
-    'notesLabel',
     'trackedEntityAttributeLabel',
-    'trackedEntityAttributesLabel',
+    ...PLURAL_LABEL_FIELD_FILTERS,
     'displayFrontPageList',
     'programStages[id,displayName,access,description,program[id],sharing, notificationTemplates[id,name,displayName,access]]',
     'organisationUnits[id,displayName,path]',
@@ -270,6 +276,17 @@ export const useOnSubmitProgramEdit = (modelId: string) => {
 export const EditTrackerProgram = () => {
     const queryFn = useBoundResourceQueryFn()
     const modelId = useParams().id as string
+    const showPluralLabels = useFeatureAvailable(
+        FEATURES.customTerminologyPlurals
+    )
+
+    const requestedFields = useMemo(() => {
+        if (showPluralLabels) {
+            return fieldFilters.concat()
+        }
+        const pluralFilters: readonly string[] = PLURAL_LABEL_FIELD_FILTERS
+        return fieldFilters.filter((f) => !pluralFilters.includes(f))
+    }, [showPluralLabels])
 
     const program = useQuery({
         queryFn: queryFn<ProgramValues>,
@@ -278,7 +295,7 @@ export const EditTrackerProgram = () => {
                 resource: 'programs',
                 id: modelId,
                 params: {
-                    fields: fieldFilters.concat(),
+                    fields: requestedFields,
                 },
             },
         ] as const,
