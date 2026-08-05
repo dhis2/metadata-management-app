@@ -10,7 +10,8 @@ import {
 
 export function messageActionFields(
     programId: string,
-    isWarning: boolean
+    isWarning: boolean,
+    programType?: string
 ): ReactNode {
     const dataElementLabel = isWarning
         ? i18n.t('Data element to display warning next to')
@@ -42,6 +43,7 @@ export function messageActionFields(
             <StandardFormField>
                 <ExpressionField
                     programId={programId}
+                    programType={programType}
                     label={i18n.t(
                         'Expression to evaluate and display after static text.'
                     )}

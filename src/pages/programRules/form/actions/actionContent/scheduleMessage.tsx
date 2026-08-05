@@ -5,7 +5,8 @@ import { ExpressionField, NotificationTemplateField } from '../../../fields'
 
 export function scheduleMessage(
     programId: string,
-    isEdit?: boolean
+    isEdit?: boolean,
+    programType?: string
 ): ReactNode {
     return (
         <>
@@ -19,6 +20,7 @@ export function scheduleMessage(
             <StandardFormField>
                 <ExpressionField
                     programId={programId}
+                    programType={programType}
                     disabled={isEdit}
                     label={i18n.t('Date to send message.')}
                     required

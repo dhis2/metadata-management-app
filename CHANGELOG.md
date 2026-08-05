@@ -1,3 +1,11 @@
+## [0.174.1](https://github.com/dhis2/metadata-management-app/compare/v0.174.0...v0.174.1) (2026-08-04)
+
+
+### Bug Fixes
+
+* add programType to expression builder ([0d446f5](https://github.com/dhis2/metadata-management-app/commit/0d446f51e51406628744fbb98ce1fc1d773fce75))
+* filter variables for events expression builder ([6e2b79b](https://github.com/dhis2/metadata-management-app/commit/6e2b79b5765401a76a4c1d6bd6f07d0338fbb87a))
+
 # [0.174.0](https://github.com/dhis2/metadata-management-app/compare/v0.173.1...v0.174.0) (2026-08-03)
 
 

@@ -87,7 +87,10 @@ export const ProgramRuleFormFields = () => {
                     )}
                 </StandardFormSectionDescription>
                 <StandardFormField>
-                    <ConditionField programId={programInput?.value?.id} />
+                    <ConditionField
+                        programId={programInput?.value?.id}
+                        programType={programInput?.value?.programType}
+                    />
                 </StandardFormField>
             </SectionedFormSection>
             <ProgramRuleActionsFormContents
