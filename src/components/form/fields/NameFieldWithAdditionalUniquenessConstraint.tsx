@@ -53,8 +53,9 @@ export function NameFieldWithAdditionalUniquenessConstraint({
     const { onChange, validationText, warning } = useFieldWarning(
         meta,
         async (value) =>
-            getTrailingWhitespaceWarning(value) ??
-            (needsUniquenessCheck ? await checkNameDuplicate(value) : undefined)
+            (needsUniquenessCheck
+                ? await checkNameDuplicate(value)
+                : undefined) ?? getTrailingWhitespaceWarning(value)
     )
 
     return (

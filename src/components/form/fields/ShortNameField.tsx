@@ -47,10 +47,9 @@ export function ShortNameField({
     const { onChange, validationText, warning } = useFieldWarning(
         meta,
         async (value) =>
-            getTrailingWhitespaceWarning(value) ??
             (needsUniquenessCheck
                 ? await checkShortNameDuplicate(value)
-                : undefined)
+                : undefined) ?? getTrailingWhitespaceWarning(value)
     )
 
     const helpString =

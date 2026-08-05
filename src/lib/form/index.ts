@@ -11,6 +11,7 @@ export {
     useOnSubmitNew,
     useOnEditCompletedSuccessfully,
     defaultValueFormatter,
+    trimTrimmableFields,
 } from './useOnSubmit'
 export {
     useOnSubmitEditWithGroups,

@@ -95,7 +95,7 @@ export const getNavigateTo = (options?: Navigateable) => {
 }
 
 // avoid saving "Fever" and "Fever " as distinct values
-const TRIMMABLE_FIELDS = ['name', 'shortName', 'code'] as const
+const TRIMMABLE_FIELDS = ['name', 'shortName', 'code', 'description'] as const
 
 export const trimTrimmableFields = <TValues>(values: TValues): TValues => {
     const result = { ...(values as unknown as Record<string, unknown>) }
