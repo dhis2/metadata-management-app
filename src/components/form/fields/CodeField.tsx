@@ -3,6 +3,7 @@ import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { useField } from 'react-final-form'
 import {
+    combineWarnings,
     SchemaSection,
     getTrailingWhitespaceWarning,
     useFieldWarning,
@@ -24,7 +25,15 @@ export function CodeField({
 }) {
     const validator = useValidator({ schemaSection, property: 'code', modelId })
     const { input, meta } = useField<string>('code', {
-        validate: (code?: string) => validator(code),
+        validate: async (code?: string) => {
+            const validationError = await validator(code)
+            return validationError
+                ? combineWarnings(
+                      validationError,
+                      getTrailingWhitespaceWarning(code)
+                  )
+                : undefined
+        },
         validateFields: [],
     })
     const { onChange, validationText, warning } = useFieldWarning(

@@ -12,8 +12,7 @@ jest.mock('use-debounce', () => ({
     useDebouncedCallback: (fn: any) => fn,
 }))
 
-// The indicator schema has `shortName.unique: false`, so ShortNameField's
-// soft, async duplicate-check warning path is exercised.
+// indicator schema has `shortName.unique: false`, exercising the soft warning path
 const schemaSection = SECTIONS_MAP.indicator
 
 describe('ShortNameField', () => {
@@ -35,12 +34,12 @@ describe('ShortNameField', () => {
 
         uiAssertions.expectInputFieldToHaveWarning(
             'formfields-shortName',
-            'Leading and trailing spaces will be removed when saving',
+            'Leading and trailing spaces will be removed when saving.',
             screen
         )
     })
 
-    it('prioritizes the duplicate warning over the trailing space warning', async () => {
+    it('combines the duplicate warning and the trailing space warning when both apply', async () => {
         const existingShortName = faker.company.name()
         const screen = renderFormField({
             schemaSection,
@@ -66,6 +65,42 @@ describe('ShortNameField', () => {
         await uiActions.enterInputFieldValue(
             'shortName',
             `  ${existingShortName}  `,
+            screen
+        )
+
+        uiAssertions.expectInputFieldToHaveWarning(
+            'formfields-shortName',
+            'This short name is already in use. Consider updating the name to avoid a duplication. Leading and trailing spaces will be removed when saving.',
+            screen
+        )
+    })
+
+    it('shows only the duplicate warning when there are no extra spaces', async () => {
+        const existingShortName = faker.company.name()
+        const screen = renderFormField({
+            schemaSection,
+            mockSchema: indicatorsSchemaMock,
+            customData: {
+                indicators: (type: any, params: any) => {
+                    if (
+                        params?.params?.filter?.includes(
+                            `shortName:ieq:${existingShortName}`
+                        )
+                    ) {
+                        return {
+                            pager: { total: 1 },
+                            indicators: [testIndicator()],
+                        }
+                    }
+                    return { pager: { total: 0 }, indicators: [] }
+                },
+            },
+            children: <ShortNameField schemaSection={schemaSection} />,
+        })
+
+        await uiActions.enterInputFieldValue(
+            'shortName',
+            existingShortName,
             screen
         )
 

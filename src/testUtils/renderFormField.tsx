@@ -6,10 +6,6 @@ import { useSchemaStore } from '../lib/schemas/schemaStore'
 import { SchemaSection } from '../types'
 import TestComponentWithRouter, { CustomData } from './TestComponentWithRouter'
 
-/**
- * Renders a single form field component in isolation (inside a react-final-form
- * Form, with the app data/router providers it needs) rather than a whole page.
- */
 export const renderFormField = ({
     schemaSection,
     mockSchema,

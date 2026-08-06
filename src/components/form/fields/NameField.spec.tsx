@@ -12,9 +12,7 @@ jest.mock('use-debounce', () => ({
     useDebouncedCallback: (fn: any) => fn,
 }))
 
-// The indicator schema has `name.unique: false`, so NameField's soft,
-// async duplicate-check warning path is exercised (as opposed to a model
-// where uniqueness is enforced by a blocking schema validator).
+// indicator schema has `name.unique: false`, exercising the soft warning path
 const schemaSection = SECTIONS_MAP.indicator
 
 describe('NameField', () => {
@@ -32,12 +30,12 @@ describe('NameField', () => {
 
         uiAssertions.expectInputFieldToHaveWarning(
             'formfields-name',
-            'Leading and trailing spaces will be removed when saving',
+            'Leading and trailing spaces will be removed when saving.',
             screen
         )
     })
 
-    it('prioritizes the duplicate warning over the trailing space warning', async () => {
+    it('combines the duplicate warning and the trailing space warning when both apply', async () => {
         const existingName = faker.company.name()
         const screen = renderFormField({
             schemaSection,
@@ -61,6 +59,38 @@ describe('NameField', () => {
         })
 
         await uiActions.enterName(`  ${existingName}  `, screen)
+
+        uiAssertions.expectInputFieldToHaveWarning(
+            'formfields-name',
+            'This name is already in use. Consider updating the name to avoid a duplication. Leading and trailing spaces will be removed when saving.',
+            screen
+        )
+    })
+
+    it('shows only the duplicate warning when there are no extra spaces', async () => {
+        const existingName = faker.company.name()
+        const screen = renderFormField({
+            schemaSection,
+            mockSchema: indicatorsSchemaMock,
+            customData: {
+                indicators: (type: any, params: any) => {
+                    if (
+                        params?.params?.filter?.includes(
+                            `name:ieq:${existingName}`
+                        )
+                    ) {
+                        return {
+                            pager: { total: 1 },
+                            indicators: [testIndicator()],
+                        }
+                    }
+                    return { pager: { total: 0 }, indicators: [] }
+                },
+            },
+            children: <NameField schemaSection={schemaSection} />,
+        })
+
+        await uiActions.enterName(existingName, screen)
 
         uiAssertions.expectInputFieldToHaveWarning(
             'formfields-name',

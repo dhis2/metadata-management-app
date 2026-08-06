@@ -30,6 +30,7 @@ import {
     usePatchModel,
     createFormError,
     createJsonPatchOperations,
+    trimTrimmableFields,
     useCreateModel,
     ATTRIBUTE_VALUES_FIELD_FILTERS,
 } from '../../../../lib'
@@ -211,8 +212,9 @@ export const EditOptionForm = ({
     )
 
     const onFormSubmit: OnOptionFormSubmit = async (values, form) => {
+        const trimmedValues = trimTrimmableFields(values)
         const jsonPatchOperations = createJsonPatchOperations({
-            values,
+            values: trimmedValues,
             dirtyFields: form.getState().dirtyFields,
             originalValue: form.getState().initialValues,
         })
@@ -221,7 +223,7 @@ export const EditOptionForm = ({
             return createFormError(response.error)
         }
 
-        onSubmitted?.(values)
+        onSubmitted?.(trimmedValues)
         return undefined
     }
 
@@ -266,14 +268,15 @@ export const NewOptionForm = ({
     const handleCreate = useCreateModel(optionSchemaSection.namePlural)
 
     const onFormSubmit: OnOptionFormSubmit = async (values) => {
-        const res = await handleCreate(values)
+        const trimmedValues = trimTrimmableFields(values)
+        const res = await handleCreate(trimmedValues)
         if (res.error) {
             return createFormError(res.error)
         }
         const newId = (res.data as { response: { uid: string } }).response.uid
 
         onSubmitted?.({
-            ...values,
+            ...trimmedValues,
             id: newId,
         })
         return undefined

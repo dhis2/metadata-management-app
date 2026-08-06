@@ -200,6 +200,22 @@ describe('Indicators form tests', () => {
             expect(createMock).not.toHaveBeenCalled()
         })
 
+        it('should combine the duplicate error and the trailing space notice for the code field', async () => {
+            const existingCode = faker.science.chemicalElement().symbol
+            const { screen } = await renderForm({
+                matchingExistingElementFilter: `code:ieq:${existingCode}`,
+            })
+            await uiActions.enterCode(`  ${existingCode}  `, screen)
+            await userEvent.click(screen.getByTestId('formfields-code-label'))
+            uiAssertions.expectFieldToHaveError(
+                'formfields-code',
+                'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving.',
+                screen
+            )
+            await uiActions.submitForm(screen)
+            expect(createMock).not.toHaveBeenCalled()
+        })
+
         it('should show an error if numerator expression is malformed', async () => {
             const { screen } = await renderForm({
                 customTestData: {

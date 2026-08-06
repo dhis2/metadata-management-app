@@ -4,6 +4,7 @@ import React from 'react'
 import { useField } from 'react-final-form'
 import {
     SchemaSection,
+    combineWarnings,
     getTrailingWhitespaceWarning,
     useFieldWarning,
     useIsFieldValueUnique,
@@ -53,9 +54,12 @@ export function NameFieldWithAdditionalUniquenessConstraint({
     const { onChange, validationText, warning } = useFieldWarning(
         meta,
         async (value) =>
-            (needsUniquenessCheck
-                ? await checkNameDuplicate(value)
-                : undefined) ?? getTrailingWhitespaceWarning(value)
+            combineWarnings(
+                needsUniquenessCheck
+                    ? await checkNameDuplicate(value)
+                    : undefined,
+                getTrailingWhitespaceWarning(value)
+            )
     )
 
     return (
