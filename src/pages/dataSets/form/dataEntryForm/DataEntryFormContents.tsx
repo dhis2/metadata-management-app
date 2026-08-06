@@ -59,6 +59,7 @@ export const DataEntryFromContents = React.memo(function FormFormContents({
     )
     const modelId = useParams().id
     const [searchParams] = useSearchParams()
+    const isClone = !!searchParams.get('clonedId')
     const toDataSearchParam = useMemo(
         () =>
             createSearchParams({
@@ -150,7 +151,7 @@ export const DataEntryFromContents = React.memo(function FormFormContents({
                 )}
                 {selectedFormType === FormType.SECTION && (
                     <>
-                        {hasUnsavedNewDataElements && (
+                        {(hasUnsavedNewDataElements || isClone) && (
                             <UnsavedDataElementsNotice
                                 message={i18n.t(
                                     'Save changes to this data set before editing sections'
@@ -163,13 +164,13 @@ export const DataEntryFromContents = React.memo(function FormFormContents({
                             schemaName={SchemaName.section}
                             level={'primary'}
                             withReordering
-                            disabled={hasUnsavedNewDataElements}
+                            disabled={hasUnsavedNewDataElements || isClone}
                         />
                     </>
                 )}
                 {selectedFormType === FormType.CUSTOM && (
                     <>
-                        {hasUnsavedNewDataElements && (
+                        {(hasUnsavedNewDataElements || isClone) && (
                             <UnsavedDataElementsNotice
                                 message={i18n.t(
                                     'Save changes to this data set before editing the form'
@@ -183,7 +184,7 @@ export const DataEntryFromContents = React.memo(function FormFormContents({
                             refetch={refetch}
                             updateCustomForm={updateDataSetCustomForm}
                             customFormTarget="data set"
-                            disabled={hasUnsavedNewDataElements}
+                            disabled={hasUnsavedNewDataElements || isClone}
                         />
                     </>
                 )}
