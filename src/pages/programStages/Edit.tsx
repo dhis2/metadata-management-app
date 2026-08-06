@@ -10,13 +10,16 @@ import {
     SectionedFormLayout,
 } from '../../components'
 import {
+    FEATURES,
     getSectionPath,
     SectionedFormProvider,
     SECTIONS_MAP,
     useBoundResourceQueryFn,
+    useFeatureAvailable,
     useOnSubmitEdit,
 } from '../../lib'
 import { EnhancedOnSubmit } from '../../lib/form/useOnSubmit'
+import { PLURAL_LABEL_FIELD_FILTERS } from '../programs/form/programStage/stageFormShared'
 import { useTrimStageValuesOnDelete } from '../programs/form/programStage/useTrimStageValuesOnDelete'
 import {
     fieldFilters,
@@ -55,6 +58,17 @@ const useOnSubmitStageEdit = (modelId: string) => {
 export const Component = () => {
     const queryFn = useBoundResourceQueryFn()
     const modelId = useParams().id as string
+    const showPluralLabels = useFeatureAvailable(
+        FEATURES.customTerminologyPlurals
+    )
+
+    const requestedFields = useMemo(() => {
+        if (showPluralLabels) {
+            return editFieldFilters.concat()
+        }
+        const pluralFilters: readonly string[] = PLURAL_LABEL_FIELD_FILTERS
+        return editFieldFilters.filter((f) => !pluralFilters.includes(f))
+    }, [showPluralLabels])
 
     const stage = useQuery({
         queryFn: queryFn<StageFormValues>,
@@ -63,7 +77,7 @@ export const Component = () => {
                 resource: 'programStages',
                 id: modelId,
                 params: {
-                    fields: editFieldFilters.concat(),
+                    fields: requestedFields,
                 },
             },
         ] as const,

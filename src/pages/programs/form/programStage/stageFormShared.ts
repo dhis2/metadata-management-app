@@ -9,6 +9,8 @@ import {
     ProgramStage,
 } from '../../../../types/models'
 
+export const PLURAL_LABEL_FIELD_FILTERS = ['eventsLabel'] as const
+
 export const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
@@ -23,7 +25,7 @@ export const fieldFilters = [
     'dueDateLabel',
     'programStageLabel',
     'eventLabel',
-    'eventsLabel',
+    ...PLURAL_LABEL_FIELD_FILTERS,
     'programStageSections[id,displayName,dataElements[id]]',
     'programStageDataElements[id,dataElement[id,displayName,valueType,optionSet],compulsory,displayInReports,allowFutureDate,skipAnalytics,skipSynchronization,renderType,sortOrder]',
     'dataEntryForm[id,displayName,htmlCode]',

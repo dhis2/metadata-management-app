@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-08-06T06:44:21.768Z\n"
-"PO-Revision-Date: 2026-08-06T06:44:21.768Z\n"
+"POT-Creation-Date: 2026-08-06T07:26:15.709Z\n"
+"PO-Revision-Date: 2026-08-06T07:26:15.709Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -6066,18 +6066,6 @@ msgstr ""
 "The following attributes are marked as required but not assigned to any "
 "section:"
 
-msgid "Custom label for \"Incident date\""
-msgstr "Custom label for \"Incident date\""
-
-msgid "Used as an additional registration date for enrollments"
-msgstr "Used as an additional registration date for enrollments"
-
-msgid "Custom label for \"Enrollment date\""
-msgstr "Custom label for \"Enrollment date\""
-
-msgid "Used as the default registration date for enrollments"
-msgstr "Used as the default registration date for enrollments"
-
 msgid "Program Stages"
 msgstr "Program Stages"
 
@@ -6105,6 +6093,12 @@ msgstr "Restore stage"
 msgid "Add a program stage"
 msgstr "Add a program stage"
 
+msgid "Custom label for \"Enrollment date\""
+msgstr "Custom label for \"Enrollment date\""
+
+msgid "Used as the default registration date for enrollments"
+msgstr "Used as the default registration date for enrollments"
+
 msgid "Custom label for \"Enrollment\""
 msgstr "Custom label for \"Enrollment\""
 
@@ -6128,6 +6122,12 @@ msgstr "Custom label for \"Follow-up\""
 
 msgid "Used to customize the label for a follow-up event or activity"
 msgstr "Used to customize the label for a follow-up event or activity"
+
+msgid "Custom label for \"Incident date\""
+msgstr "Custom label for \"Incident date\""
+
+msgid "Used as an additional registration date for enrollments"
+msgstr "Used as an additional registration date for enrollments"
 
 msgid "Custom label for \"Note\""
 msgstr "Custom label for \"Note\""

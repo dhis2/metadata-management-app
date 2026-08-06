@@ -19,12 +19,14 @@ import { LoadingSpinner } from '../../../../components/loading/LoadingSpinner'
 import {
     createFormError,
     createJsonPatchOperations,
+    FEATURES,
     getAllAttributeValues,
     SECTIONS_MAP,
     SectionedFormProvider,
     useBoundResourceQueryFn,
     useCreateModel,
     useCustomAttributesQuery,
+    useFeatureAvailable,
     usePatchModel,
 } from '../../../../lib'
 import { DisplayableModel } from '../../../../types/models'
@@ -33,6 +35,7 @@ import { StageFormDescriptor } from './stageFormDescriptor'
 import {
     fieldFilters,
     PartialStageFormValues,
+    PLURAL_LABEL_FIELD_FILTERS,
     StageFormValues,
     SubmittedStageFormValues,
 } from './stageFormShared'
@@ -202,6 +205,18 @@ export const EditStageForm = ({
         success: true,
     })
 
+    const showPluralLabels = useFeatureAvailable(
+        FEATURES.customTerminologyPlurals
+    )
+
+    const requestedFields = useMemo(() => {
+        if (showPluralLabels) {
+            return fieldFilters.concat()
+        }
+        const pluralFilters: readonly string[] = PLURAL_LABEL_FIELD_FILTERS
+        return fieldFilters.filter((f) => !pluralFilters.includes(f))
+    }, [showPluralLabels])
+
     const stageValues = useQuery({
         queryFn: queryFn<StageFormValues>,
         queryKey: [
@@ -209,7 +224,7 @@ export const EditStageForm = ({
                 resource: 'programStages',
                 id: stage.id,
                 params: {
-                    fields: fieldFilters.concat(),
+                    fields: requestedFields,
                 },
             },
         ],
