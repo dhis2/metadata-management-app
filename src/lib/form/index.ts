@@ -1,7 +1,6 @@
 export { usePatchModel } from './usePatchModel'
 export { useClearFormFields } from './useClearFormFields'
 export { getTrailingWhitespaceWarning } from './getTrailingWhitespaceWarning'
-export { combineWarnings } from './combineWarnings'
 export { useFieldWarning } from './useFieldWarning'
 export { composeAsyncValidators } from './composeAsyncValidators'
 export type { FormFieldValidator } from './composeAsyncValidators'

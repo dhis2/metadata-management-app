@@ -4,7 +4,6 @@ import React from 'react'
 import { useField } from 'react-final-form'
 import {
     SchemaSection,
-    combineWarnings,
     getTrailingWhitespaceWarning,
     useFieldWarning,
     useIsFieldValueUnique,
@@ -31,7 +30,13 @@ export function ShortNameField({
     const schema = useSchema(schemaSection.name)
     const propertyDetails = schema.properties['shortName']
     const { input, meta } = useField<string>('shortName', {
-        validate: validator,
+        validate: async (shortName?: string) => {
+            const validationError = await validator(shortName)
+            const whitespaceWarning = getTrailingWhitespaceWarning(shortName)
+            return validationError && whitespaceWarning
+                ? `${validationError} ${whitespaceWarning}`
+                : validationError
+        },
         validateFields: [],
     })
 
@@ -47,13 +52,15 @@ export function ShortNameField({
 
     const { onChange, validationText, warning } = useFieldWarning(
         meta,
-        async (value) =>
-            combineWarnings(
-                needsUniquenessCheck
-                    ? await checkShortNameDuplicate(value)
-                    : undefined,
-                getTrailingWhitespaceWarning(value)
-            )
+        async (value) => {
+            const duplicateWarning = needsUniquenessCheck
+                ? await checkShortNameDuplicate(value)
+                : undefined
+            const whitespaceWarning = getTrailingWhitespaceWarning(value)
+            return duplicateWarning && whitespaceWarning
+                ? `${duplicateWarning} ${whitespaceWarning}`
+                : duplicateWarning ?? whitespaceWarning
+        }
     )
 
     const helpString =

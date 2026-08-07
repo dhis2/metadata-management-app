@@ -4,7 +4,6 @@ import React from 'react'
 import { useField } from 'react-final-form'
 import {
     SchemaSection,
-    combineWarnings,
     getTrailingWhitespaceWarning,
     useFieldWarning,
     useIsFieldValueUnique,
@@ -32,7 +31,13 @@ export function NameField({
     const schema = useSchema(schemaSection.name)
     const propertyDetails = schema.properties['name']
     const { input, meta } = useField<string>('name', {
-        validate: validator,
+        validate: async (name?: string) => {
+            const validationError = await validator(name)
+            const whitespaceWarning = getTrailingWhitespaceWarning(name)
+            return validationError && whitespaceWarning
+                ? `${validationError} ${whitespaceWarning}`
+                : validationError
+        },
         validateFields: [],
     })
 
@@ -48,13 +53,15 @@ export function NameField({
 
     const { onChange, validationText, warning } = useFieldWarning(
         meta,
-        async (value) =>
-            combineWarnings(
-                needsUniquenessCheck
-                    ? await checkNameDuplicate(value)
-                    : undefined,
-                getTrailingWhitespaceWarning(value)
-            )
+        async (value) => {
+            const duplicateWarning = needsUniquenessCheck
+                ? await checkNameDuplicate(value)
+                : undefined
+            const whitespaceWarning = getTrailingWhitespaceWarning(value)
+            return duplicateWarning && whitespaceWarning
+                ? `${duplicateWarning} ${whitespaceWarning}`
+                : duplicateWarning ?? whitespaceWarning
+        }
     )
 
     return (

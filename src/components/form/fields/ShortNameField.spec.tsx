@@ -34,12 +34,12 @@ describe('ShortNameField', () => {
 
         uiAssertions.expectInputFieldToHaveWarning(
             'formfields-shortName',
-            'Leading and trailing spaces will be removed when saving.',
+            'Leading and trailing spaces will be removed when saving',
             screen
         )
     })
 
-    it('combines the duplicate warning and the trailing space warning when both apply', async () => {
+    it('shows both the duplicate warning and the trailing space warning when both apply', async () => {
         const existingShortName = faker.company.name()
         const screen = renderFormField({
             schemaSection,
@@ -70,7 +70,7 @@ describe('ShortNameField', () => {
 
         uiAssertions.expectInputFieldToHaveWarning(
             'formfields-shortName',
-            'This short name is already in use. Consider updating the name to avoid a duplication. Leading and trailing spaces will be removed when saving.',
+            'This short name is already in use. Consider updating the name to avoid a duplication. Leading and trailing spaces will be removed when saving',
             screen
         )
     })
