@@ -66,7 +66,7 @@ export function useIsFieldValueUnique({
                     return (
                         message ??
                         i18n.t(
-                            'This field requires a unique value, please choose another one'
+                            'This field requires a unique value, please choose another one.'
                         )
                     )
                 }
