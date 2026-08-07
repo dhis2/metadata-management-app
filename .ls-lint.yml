@@ -30,5 +30,6 @@ ignore:
     - src/app/__snapshots__
     - src/__mocks__
     - src/pages/dataElements/__mocks__
+    - src/components/metadataFormControls/ModelTransfer/__mocks__
     - i18n
     - src/locales

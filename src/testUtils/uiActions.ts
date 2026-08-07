@@ -1,18 +1,33 @@
 import { RenderResult, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
-type inputFieldValueTypeOptions = { type?: string; supressTab?: boolean }
+type inputFieldValueTypeOptions = {
+    type?: string
+    supressTab?: boolean
+    paste?: boolean
+}
 const enterInputFieldValue = async (
     fieldName: string,
     text: string,
     screen: RenderResult,
     options?: inputFieldValueTypeOptions
 ) => {
-    const { type, supressTab } = options ?? {}
+    const { type, supressTab, paste } = options ?? {}
     const field = screen.getByTestId(`formfields-${fieldName}`)
     const input = within(field).getByRole(type ?? 'textbox') as HTMLInputElement
     await clearInputField(fieldName, screen, type ?? 'textbox')
-    await userEvent.type(input, text)
+
+    if (paste) {
+        // Typing character-by-character is slow (a synthetic event + React
+        // re-render per character), which adds up badly for very long
+        // strings. Pasting fires a single change event with the same
+        // resulting value, which is all that callers only asserting on the
+        // final value (e.g. max-length checks) care about.
+        await userEvent.click(input)
+        await userEvent.paste(text)
+    } else {
+        await userEvent.type(input, text)
+    }
 
     if (!supressTab) {
         await userEvent.tab()
@@ -244,10 +259,16 @@ export const uiActions = {
     submitForm,
     submitAndCloseForm,
     enterInputFieldValue,
-    enterName: async (text: string, screen: RenderResult) =>
-        await enterInputFieldValue('name', text, screen),
-    enterCode: async (text: string, screen: RenderResult) =>
-        await enterInputFieldValue('code', text, screen),
+    enterName: async (
+        text: string,
+        screen: RenderResult,
+        options?: inputFieldValueTypeOptions
+    ) => await enterInputFieldValue('name', text, screen, options),
+    enterCode: async (
+        text: string,
+        screen: RenderResult,
+        options?: inputFieldValueTypeOptions
+    ) => await enterInputFieldValue('code', text, screen, options),
     pickOptionInTransfer,
     clearInputField,
     // pickColor, Need to fix this
