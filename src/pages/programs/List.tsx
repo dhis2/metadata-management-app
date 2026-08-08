@@ -24,6 +24,7 @@ import {
 } from '../../lib'
 import { DefaultSectionList } from '../DefaultSectionList'
 import css from './List.module.css'
+import { ProgramListActions } from './ProgramListActions'
 
 const EventIcon = () => (
     <svg
@@ -215,5 +216,8 @@ const ProgramToolbar = ({
 }
 
 export const Component = () => (
-    <DefaultSectionList ToolbarComponent={ProgramToolbar} />
+    <DefaultSectionList
+        ToolbarComponent={ProgramToolbar}
+        ActionsComponent={ProgramListActions}
+    />
 )

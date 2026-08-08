@@ -1,0 +1,9 @@
+{
+    "permissions": {
+        "allow": [
+            "WebFetch(domain:github.com)",
+            "Bash(curl -sL \"https://github.com/dhis2/metadata-management-app/pull/1019.diff\" -o /private/tmp/claude-501/-Users-chisom-Documents-code-dhis2-metadata-management-app/1ff2cef2-57f5-4158-b478-44e2160c043d/scratchpad/pr1019.diff)",
+            "Bash(yarn test *)"
+        ]
+    }
+}
