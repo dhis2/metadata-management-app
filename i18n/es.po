@@ -7,18 +7,18 @@
 # ericbp <ericbarredap@gmail.com>, 2025
 # Alison Andrade <aandrade@ippfwhr.org>, 2025
 # William Aviles <waviles@clintonhealthaccess.org>, 2026
-# Bruno Raimbault, 2026
 # Juan M Alcantara Acosta <jmalcantara1@gmail.com>, 2026
 # Enzo Nicolas Rossi <enzo@dhis2.org>, 2026
 # Pablo Del Médico, 2026
 # Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2026
-# Alejandra Avila <alejandra@dhis2.org>, 2026
 # Marta Vila <marta@dhis2.org>, 2026
-# Philip Larsen Donnelly, 2026
-# Janeth Cruz, 2026
-# Viktor Varland <viktor@dhis2.org>, 2026
 # Carlos Tejo Alonso, 2026
 # Prabhjot Singh, 2026
+# Philip Larsen Donnelly, 2026
+# Viktor Varland <viktor@dhis2.org>, 2026
+# Alejandra Avila <alejandra@dhis2.org>, 2026
+# Bruno Raimbault, 2026
+# Janeth Cruz, 2026
 # Milagros Rodríguez, 2026
 # 
 msgid ""
@@ -1191,7 +1191,7 @@ msgid "Show details"
 msgstr "Mostrar detalles"
 
 msgid "Clone"
-msgstr ""
+msgstr "Clonar"
 
 msgid "Sharing settings"
 msgstr "Ajustes de uso compartido"
@@ -2388,7 +2388,7 @@ msgid "SQL type"
 msgstr ""
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Estrategia de caché"
 
 msgid "SQL query"
 msgstr ""
@@ -2556,7 +2556,7 @@ msgid "Organisation unit providing data"
 msgstr ""
 
 msgid "Key"
-msgstr ""
+msgstr "Clave"
 
 msgid "Keywords"
 msgstr ""
@@ -2798,7 +2798,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Grupos"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
@@ -3559,7 +3559,7 @@ msgid "Icon preview"
 msgstr ""
 
 msgid "Change icon"
-msgstr ""
+msgstr "Cambiar icono"
 
 msgid "Upload icon"
 msgstr ""
@@ -5208,7 +5208,7 @@ msgid "Group"
 msgstr "Grupo"
 
 msgid "{{prefix}}: {{name}}"
-msgstr ""
+msgstr "{{prefix}}: {{name}}"
 
 msgid "Set up how users can access program data outside their capture scope."
 msgstr ""
@@ -5852,16 +5852,16 @@ msgid "SQL view results"
 msgstr ""
 
 msgid "Excel (.xlsx)"
-msgstr ""
+msgstr "Excel (.xlsx)"
 
 msgid "CSV (.csv)"
-msgstr ""
+msgstr "CSV (.csv)"
 
 msgid "PDF (.pdf)"
-msgstr ""
+msgstr "PDF (.pdf)"
 
 msgid "HTML (.html)"
-msgstr ""
+msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
 msgstr ""
@@ -5956,7 +5956,7 @@ msgid "SQL view created or updated."
 msgstr ""
 
 msgid "An unknown error occurred."
-msgstr ""
+msgstr "Se ha producido un error desconocido."
 
 msgid "Could not run SQL view: {{error}}"
 msgstr ""

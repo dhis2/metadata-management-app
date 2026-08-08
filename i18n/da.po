@@ -2368,7 +2368,7 @@ msgid "SQL type"
 msgstr ""
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Cache strategy"
 
 msgid "SQL query"
 msgstr ""

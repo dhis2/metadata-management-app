@@ -1,15 +1,16 @@
 # Translators:
-# Philip Larsen Donnelly, 2026
 # Mozafar Haider, 2026
+# Philip Larsen Donnelly, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
 # Hamza <7amza.it@gmail.com>, 2026
+# Nadiia <semchuk@aph.org.ua>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-07-20T13:02:05.156Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Hamza <7amza.it@gmail.com>, 2026\n"
+"Last-Translator: Nadiia <semchuk@aph.org.ua>, 2026\n"
 "Language-Team: Arabic (https://app.transifex.com/hisp-uio/teams/100509/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1174,7 +1175,7 @@ msgid "Show details"
 msgstr "إظهار التفاصيل"
 
 msgid "Clone"
-msgstr ""
+msgstr "نسخ"
 
 msgid "Sharing settings"
 msgstr "إعدادات المشاركة"
@@ -2368,13 +2369,13 @@ msgid "Receiving entity type"
 msgstr ""
 
 msgid "SQL type"
-msgstr ""
+msgstr "نوع SQL"
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "إستراتيجية ذاكرة التخزين المؤقت"
 
 msgid "SQL query"
-msgstr ""
+msgstr "استعلام SQL"
 
 msgid "Unique"
 msgstr "فريد"
@@ -2781,7 +2782,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "المجموعات"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
@@ -3542,7 +3543,7 @@ msgid "Icon preview"
 msgstr ""
 
 msgid "Change icon"
-msgstr ""
+msgstr "تغيير الأيقونة"
 
 msgid "Upload icon"
 msgstr ""
@@ -5841,13 +5842,13 @@ msgid "Excel (.xlsx)"
 msgstr ""
 
 msgid "CSV (.csv)"
-msgstr ""
+msgstr "CSV (.csv)"
 
 msgid "PDF (.pdf)"
-msgstr ""
+msgstr "بي دي اف (.pdf)"
 
 msgid "HTML (.html)"
-msgstr ""
+msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
 msgstr ""
@@ -5942,7 +5943,7 @@ msgid "SQL view created or updated."
 msgstr ""
 
 msgid "An unknown error occurred."
-msgstr ""
+msgstr "حدث خطأ غير معروف."
 
 msgid "Could not run SQL view: {{error}}"
 msgstr ""

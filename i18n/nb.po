@@ -1,15 +1,15 @@
 # Translators:
 # Yury Rogachev <yury@dhis2.org>, 2025
 # Merethe Wollan Blisten, 2026
-# Karoline Tufte Lien <karoline@dhis2.org>, 2026
 # Caroline Hesthagen Holen <caroline@devotta.no>, 2026
+# Karoline Tufte Lien <karoline@dhis2.org>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-07-20T13:02:05.156Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Caroline Hesthagen Holen <caroline@devotta.no>, 2026\n"
+"Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2026\n"
 "Language-Team: Norwegian Bokmål (https://app.transifex.com/hisp-uio/teams/100509/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1174,7 +1174,7 @@ msgid "Show details"
 msgstr "Vis detaljer"
 
 msgid "Clone"
-msgstr ""
+msgstr "Klon"
 
 msgid "Sharing settings"
 msgstr "Deleinnstillinger"
@@ -2368,13 +2368,13 @@ msgid "Receiving entity type"
 msgstr ""
 
 msgid "SQL type"
-msgstr ""
+msgstr "SQL type"
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Bufferstrategi"
 
 msgid "SQL query"
-msgstr ""
+msgstr "SQL spørring"
 
 msgid "Unique"
 msgstr "Unik"
@@ -2539,7 +2539,7 @@ msgid "Organisation unit providing data"
 msgstr ""
 
 msgid "Key"
-msgstr ""
+msgstr "Nøkkel"
 
 msgid "Keywords"
 msgstr ""
@@ -2781,7 +2781,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Grupper"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
@@ -3542,7 +3542,7 @@ msgid "Icon preview"
 msgstr ""
 
 msgid "Change icon"
-msgstr ""
+msgstr "Endre ikon"
 
 msgid "Upload icon"
 msgstr ""
@@ -5847,13 +5847,13 @@ msgid "Excel (.xlsx)"
 msgstr ""
 
 msgid "CSV (.csv)"
-msgstr ""
+msgstr "CSV (.csv)"
 
 msgid "PDF (.pdf)"
-msgstr ""
+msgstr "PDF (.pdf)"
 
 msgid "HTML (.html)"
-msgstr ""
+msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
 msgstr ""

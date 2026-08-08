@@ -2,9 +2,9 @@
 # Mykhailo Siusko <m.siusko@redcross.org.ua>, 2025
 # Nancy Espinoza, 2026
 # Wanda <wanda@frontlineaids.org>, 2026
-# Philip Larsen Donnelly, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
 # Nadiia <semchuk@aph.org.ua>, 2026
+# Philip Larsen Donnelly, 2026
 # Éva Tamási, 2026
 # 
 msgid ""
@@ -1177,7 +1177,7 @@ msgid "Show details"
 msgstr "Показати деталі"
 
 msgid "Clone"
-msgstr ""
+msgstr "Клонувати"
 
 msgid "Sharing settings"
 msgstr "Налаштування спільного доступу"
@@ -2374,7 +2374,7 @@ msgid "SQL type"
 msgstr ""
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Стратегія кешування"
 
 msgid "SQL query"
 msgstr ""
@@ -2784,7 +2784,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Групи"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
@@ -5817,13 +5817,13 @@ msgid "Excel (.xlsx)"
 msgstr ""
 
 msgid "CSV (.csv)"
-msgstr ""
+msgstr "CSV (.csv)"
 
 msgid "PDF (.pdf)"
-msgstr ""
+msgstr "PDF (.pdf)"
 
 msgid "HTML (.html)"
-msgstr ""
+msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
 msgstr ""

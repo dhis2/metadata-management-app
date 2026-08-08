@@ -1172,7 +1172,7 @@ msgid "Show details"
 msgstr "تفصیل دیکھاؤ"
 
 msgid "Clone"
-msgstr ""
+msgstr "کلون"
 
 msgid "Sharing settings"
 msgstr "شیئر سیٹنگ"
@@ -2366,13 +2366,13 @@ msgid "Receiving entity type"
 msgstr ""
 
 msgid "SQL type"
-msgstr ""
+msgstr "SQL قسم"
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "کیش کی حکمت عملی"
 
 msgid "SQL query"
-msgstr ""
+msgstr "SQL سوال"
 
 msgid "Unique"
 msgstr "منفرد"
@@ -2779,7 +2779,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "گروپ"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""

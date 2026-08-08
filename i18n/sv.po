@@ -1174,7 +1174,7 @@ msgid "Show details"
 msgstr "Visa detaljer"
 
 msgid "Clone"
-msgstr ""
+msgstr "Klona"
 
 msgid "Sharing settings"
 msgstr "Delningsinställningar inställningar~~POS\\=HEADCOMP"
@@ -2371,7 +2371,7 @@ msgid "SQL type"
 msgstr ""
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "cache strategi"
 
 msgid "SQL query"
 msgstr ""
@@ -2781,7 +2781,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Grupper"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""

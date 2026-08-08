@@ -1175,7 +1175,7 @@ msgid "Show details"
 msgstr "အတိအကျပြသပါ"
 
 msgid "Clone"
-msgstr ""
+msgstr "ပုံတူပွားသည်"
 
 msgid "Sharing settings"
 msgstr "စာရင်းတည်ဆောက်ထားသည့်အနေအထားကိုမျှဝေခြင်း"
@@ -2372,7 +2372,7 @@ msgid "SQL type"
 msgstr ""
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Cache strategy"
 
 msgid "SQL query"
 msgstr ""

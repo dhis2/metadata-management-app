@@ -2372,7 +2372,7 @@ msgid "SQL type"
 msgstr ""
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Estratégia de cache"
 
 msgid "SQL query"
 msgstr ""
@@ -2782,7 +2782,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Grupos"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""

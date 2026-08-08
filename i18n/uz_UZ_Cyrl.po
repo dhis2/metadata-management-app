@@ -1171,7 +1171,7 @@ msgid "Show details"
 msgstr "Тафсилотларни кўрсатинг"
 
 msgid "Clone"
-msgstr ""
+msgstr "Клон"
 
 msgid "Sharing settings"
 msgstr "Созламаларни улашиш"
@@ -2366,13 +2366,13 @@ msgid "Receiving entity type"
 msgstr ""
 
 msgid "SQL type"
-msgstr ""
+msgstr "SQL тури"
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Кешлаш стратегияси"
 
 msgid "SQL query"
-msgstr ""
+msgstr "SQL сўрови"
 
 msgid "Unique"
 msgstr "Ноёб"
@@ -2537,10 +2537,10 @@ msgid "Organisation unit providing data"
 msgstr ""
 
 msgid "Key"
-msgstr ""
+msgstr "Калит"
 
 msgid "Keywords"
-msgstr ""
+msgstr "Калит сўзлар"
 
 msgid "Which resource table"
 msgstr ""
@@ -2779,7 +2779,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Гуруҳлар"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
@@ -3544,7 +3544,7 @@ msgid "Icon preview"
 msgstr ""
 
 msgid "Change icon"
-msgstr ""
+msgstr "Белгини ўзгартириш"
 
 msgid "Upload icon"
 msgstr ""
@@ -5852,13 +5852,13 @@ msgid "Excel (.xlsx)"
 msgstr ""
 
 msgid "CSV (.csv)"
-msgstr ""
+msgstr "CSV (.csv)"
 
 msgid "PDF (.pdf)"
-msgstr ""
+msgstr "PDF (.pdf)"
 
 msgid "HTML (.html)"
-msgstr ""
+msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
 msgstr ""

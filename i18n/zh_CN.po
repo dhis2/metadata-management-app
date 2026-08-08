@@ -1175,7 +1175,7 @@ msgid "Show details"
 msgstr "显示详情"
 
 msgid "Clone"
-msgstr ""
+msgstr "克隆"
 
 msgid "Sharing settings"
 msgstr "共享设置"
@@ -2369,13 +2369,13 @@ msgid "Receiving entity type"
 msgstr "接收实体类型"
 
 msgid "SQL type"
-msgstr ""
+msgstr "类型"
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "缓冲策略"
 
 msgid "SQL query"
-msgstr ""
+msgstr "SQL查询"
 
 msgid "Unique"
 msgstr "唯一"
@@ -2540,7 +2540,7 @@ msgid "Organisation unit providing data"
 msgstr "提供数据的组织单位"
 
 msgid "Key"
-msgstr ""
+msgstr "键值"
 
 msgid "Keywords"
 msgstr ""
@@ -2782,7 +2782,7 @@ msgid ""
 msgstr "选择何时以及哪些组织单位可以使用该类别选项。"
 
 msgid "Groups"
-msgstr ""
+msgstr "组"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
@@ -3551,7 +3551,7 @@ msgid "Icon preview"
 msgstr ""
 
 msgid "Change icon"
-msgstr ""
+msgstr "改变图标"
 
 msgid "Upload icon"
 msgstr ""
@@ -5201,7 +5201,7 @@ msgid "Group"
 msgstr "组"
 
 msgid "{{prefix}}: {{name}}"
-msgstr ""
+msgstr "{{prefix}}:{{name}}"
 
 msgid "Set up how users can access program data outside their capture scope."
 msgstr "设置用户如何访问其捕获范围之外的程序数据。"
@@ -5848,13 +5848,13 @@ msgid "Excel (.xlsx)"
 msgstr ""
 
 msgid "CSV (.csv)"
-msgstr ""
+msgstr "CSV (.csv)"
 
 msgid "PDF (.pdf)"
-msgstr ""
+msgstr "PDF (.pdf)"
 
 msgid "HTML (.html)"
-msgstr ""
+msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
 msgstr ""
@@ -5949,7 +5949,7 @@ msgid "SQL view created or updated."
 msgstr ""
 
 msgid "An unknown error occurred."
-msgstr ""
+msgstr "出现未知错误。"
 
 msgid "Could not run SQL view: {{error}}"
 msgstr ""

@@ -1,16 +1,16 @@
 # Translators:
-# Mai Nguyen <thanhmai.jica@gmail.com>, 2026
 # Philip Larsen Donnelly, 2026
-# Em Le <em.hispvietnam@gmail.com>, 2026
-# Thuy Nguyen <thuynguyen@hispvietnam.org>, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
+# Em Le <em.hispvietnam@gmail.com>, 2026
+# Mai Nguyen <thanhmai.jica@gmail.com>, 2026
+# Thuy Nguyen <thuynguyen@hispvietnam.org>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-07-20T13:02:05.156Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
+"Last-Translator: Thuy Nguyen <thuynguyen@hispvietnam.org>, 2026\n"
 "Language-Team: Vietnamese (https://app.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1175,7 +1175,7 @@ msgid "Show details"
 msgstr "Hiển thị chi tiết"
 
 msgid "Clone"
-msgstr ""
+msgstr "Bản sao"
 
 msgid "Sharing settings"
 msgstr "Cài đặt chia sẻ"
@@ -2369,13 +2369,13 @@ msgid "Receiving entity type"
 msgstr ""
 
 msgid "SQL type"
-msgstr ""
+msgstr "Kiểu truy vấn"
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Chiến lược cho bộ nhớ cache"
 
 msgid "SQL query"
-msgstr ""
+msgstr "Lệnh truy vấn"
 
 msgid "Unique"
 msgstr "Duy nhất"
@@ -2782,7 +2782,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Nhóm"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
@@ -5192,7 +5192,7 @@ msgid "Group"
 msgstr "Nhóm"
 
 msgid "{{prefix}}: {{name}}"
-msgstr ""
+msgstr "{{prefix}}: {{name}}"
 
 msgid "Set up how users can access program data outside their capture scope."
 msgstr ""
@@ -5836,16 +5836,16 @@ msgid "SQL view results"
 msgstr ""
 
 msgid "Excel (.xlsx)"
-msgstr ""
+msgstr "Excel (.xlsx)"
 
 msgid "CSV (.csv)"
-msgstr ""
+msgstr "CSV (.csv)"
 
 msgid "PDF (.pdf)"
-msgstr ""
+msgstr "PDF (.pdf)"
 
 msgid "HTML (.html)"
-msgstr ""
+msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
 msgstr ""
@@ -5940,7 +5940,7 @@ msgid "SQL view created or updated."
 msgstr ""
 
 msgid "An unknown error occurred."
-msgstr ""
+msgstr "Một lỗi không xác định đã xuất hiện."
 
 msgid "Could not run SQL view: {{error}}"
 msgstr ""

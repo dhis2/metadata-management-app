@@ -1179,7 +1179,7 @@ msgid "Show details"
 msgstr "Ukázat detaily"
 
 msgid "Clone"
-msgstr ""
+msgstr "Klonovat"
 
 msgid "Sharing settings"
 msgstr "Nastavení sdílení"
@@ -2375,13 +2375,13 @@ msgid "Receiving entity type"
 msgstr ""
 
 msgid "SQL type"
-msgstr ""
+msgstr "Typ SQL"
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Strategie mezipaměti"
 
 msgid "SQL query"
-msgstr ""
+msgstr "SQL dotaz"
 
 msgid "Unique"
 msgstr "Unikátní"
@@ -2546,10 +2546,10 @@ msgid "Organisation unit providing data"
 msgstr ""
 
 msgid "Key"
-msgstr ""
+msgstr "Klíč"
 
 msgid "Keywords"
-msgstr ""
+msgstr "Klíčová slova"
 
 msgid "Which resource table"
 msgstr ""
@@ -2802,7 +2802,7 @@ msgstr ""
 "dispozici."
 
 msgid "Groups"
-msgstr ""
+msgstr "Skupiny"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
@@ -3581,10 +3581,10 @@ msgid "Icon preview"
 msgstr ""
 
 msgid "Change icon"
-msgstr ""
+msgstr "Změnit ikonu"
 
 msgid "Upload icon"
-msgstr ""
+msgstr "Ikona nahrávání"
 
 msgid "Key cannot be \"new\""
 msgstr ""
@@ -4536,7 +4536,7 @@ msgid "All metadata types"
 msgstr ""
 
 msgid "Load more for {{schema}}"
-msgstr ""
+msgstr "Načíst další pro {{schema}}"
 
 msgid "Set up the basic information for this predictor group."
 msgstr ""
@@ -5308,7 +5308,7 @@ msgid "Group"
 msgstr "Skupina"
 
 msgid "{{prefix}}: {{name}}"
-msgstr ""
+msgstr "{{prefix}}: {{name}}"
 
 msgid "Set up how users can access program data outside their capture scope."
 msgstr ""
@@ -5955,13 +5955,13 @@ msgid "Excel (.xlsx)"
 msgstr ""
 
 msgid "CSV (.csv)"
-msgstr ""
+msgstr "CSV (.csv)"
 
 msgid "PDF (.pdf)"
-msgstr ""
+msgstr "PDF (.pdf)"
 
 msgid "HTML (.html)"
-msgstr ""
+msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
 msgstr ""
@@ -6056,7 +6056,7 @@ msgid "SQL view created or updated."
 msgstr ""
 
 msgid "An unknown error occurred."
-msgstr ""
+msgstr "Nastala neznámá chyba."
 
 msgid "Could not run SQL view: {{error}}"
 msgstr ""

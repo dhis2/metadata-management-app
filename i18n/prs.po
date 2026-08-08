@@ -1171,7 +1171,7 @@ msgid "Show details"
 msgstr "نمایش جزییات"
 
 msgid "Clone"
-msgstr ""
+msgstr "کلون"
 
 msgid "Sharing settings"
 msgstr "تنظیمات اشتراک گذشتن"
@@ -2365,13 +2365,13 @@ msgid "Receiving entity type"
 msgstr ""
 
 msgid "SQL type"
-msgstr ""
+msgstr "SQL type"
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "استراتیژی ذخیره"
 
 msgid "SQL query"
-msgstr ""
+msgstr "SQL query"
 
 msgid "Unique"
 msgstr "یکتا"
@@ -2778,7 +2778,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "ګروپونه"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""

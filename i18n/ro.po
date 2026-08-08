@@ -2778,7 +2778,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Grupuri"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""

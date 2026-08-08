@@ -4,26 +4,26 @@
 # Miguel Vasco Macamo, 2025
 # Sheila André <sandre@saudigitus.org>, 2025
 # Laurência Luís, 2026
-# Helton Dias, 2026
 # António Fernando Macaringue, 2026
 # David Mondlane, 2026
 # Shelsea Chumaio, 2026
 # Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2026
 # David Júnior <davidjr.mondlane@gmail.com>, 2026
-# Philip Larsen Donnelly, 2026
 # Fernando Domingos Inacio <nando.inaciio1996@gmail.com>, 2026
 # Mozafar Haider, 2026
-# Ge Joao <gsimango@saudigitus.org>, 2026
 # Carlos Macaneta, 2026
-# Viktor Varland <viktor@dhis2.org>, 2026
 # Edson Nhancale, 2026
+# Philip Larsen Donnelly, 2026
+# Viktor Varland <viktor@dhis2.org>, 2026
+# Ge Joao <gsimango@saudigitus.org>, 2026
+# Helton Dias, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-07-20T13:02:05.156Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Edson Nhancale, 2026\n"
+"Last-Translator: Helton Dias, 2026\n"
 "Language-Team: Portuguese (https://app.transifex.com/hisp-uio/teams/100509/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1188,7 +1188,7 @@ msgid "Show details"
 msgstr "Mostrar detalhes"
 
 msgid "Clone"
-msgstr ""
+msgstr "Duplicar"
 
 msgid "Sharing settings"
 msgstr "Definições de partilha"
@@ -2385,13 +2385,13 @@ msgid "Receiving entity type"
 msgstr ""
 
 msgid "SQL type"
-msgstr ""
+msgstr "Tipo SQL"
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Estratégia de cache"
 
 msgid "SQL query"
-msgstr ""
+msgstr "Consulta SQL"
 
 msgid "Unique"
 msgstr "Único"
@@ -2556,7 +2556,7 @@ msgid "Organisation unit providing data"
 msgstr ""
 
 msgid "Key"
-msgstr ""
+msgstr "Chave "
 
 msgid "Keywords"
 msgstr ""
@@ -2798,7 +2798,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Grupos"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
@@ -3559,7 +3559,7 @@ msgid "Icon preview"
 msgstr ""
 
 msgid "Change icon"
-msgstr ""
+msgstr "Trocar icone "
 
 msgid "Upload icon"
 msgstr ""
@@ -5864,13 +5864,13 @@ msgid "Excel (.xlsx)"
 msgstr ""
 
 msgid "CSV (.csv)"
-msgstr ""
+msgstr "CSV (.csv)"
 
 msgid "PDF (.pdf)"
-msgstr ""
+msgstr "PDF (.pdf)"
 
 msgid "HTML (.html)"
-msgstr ""
+msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
 msgstr ""
@@ -5965,7 +5965,7 @@ msgid "SQL view created or updated."
 msgstr ""
 
 msgid "An unknown error occurred."
-msgstr ""
+msgstr " Ocorreu um erro desconhecido."
 
 msgid "Could not run SQL view: {{error}}"
 msgstr ""

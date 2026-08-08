@@ -1,13 +1,13 @@
 # Translators:
-# Khurshid Ibatov <x.ibatov@dtsj.uz>, 2026
 # Yury Rogachev <yury@dhis2.org>, 2026
+# Khurshid Ibatov <x.ibatov@dtsj.uz>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-07-20T13:02:05.156Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Yury Rogachev <yury@dhis2.org>, 2026\n"
+"Last-Translator: Khurshid Ibatov <x.ibatov@dtsj.uz>, 2026\n"
 "Language-Team: Uzbek (Latin) (https://app.transifex.com/hisp-uio/teams/100509/uz@Latn/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1172,7 +1172,7 @@ msgid "Show details"
 msgstr "Tafsilotlarni koʼrsating"
 
 msgid "Clone"
-msgstr ""
+msgstr "Klon"
 
 msgid "Sharing settings"
 msgstr "Sozlamalarni ulashish"
@@ -2369,7 +2369,7 @@ msgid "SQL type"
 msgstr ""
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Keshlash strategiyasi"
 
 msgid "SQL query"
 msgstr ""
@@ -2537,7 +2537,7 @@ msgid "Organisation unit providing data"
 msgstr ""
 
 msgid "Key"
-msgstr ""
+msgstr "Kalit"
 
 msgid "Keywords"
 msgstr ""
@@ -2779,7 +2779,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Гуруҳлар"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
@@ -5814,13 +5814,13 @@ msgid "Excel (.xlsx)"
 msgstr ""
 
 msgid "CSV (.csv)"
-msgstr ""
+msgstr "CSV (.csv)"
 
 msgid "PDF (.pdf)"
-msgstr ""
+msgstr "PDF (.pdf)"
 
 msgid "HTML (.html)"
-msgstr ""
+msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
 msgstr ""
@@ -5915,7 +5915,7 @@ msgid "SQL view created or updated."
 msgstr ""
 
 msgid "An unknown error occurred."
-msgstr ""
+msgstr "Номаълум хатолик юз берди"
 
 msgid "Could not run SQL view: {{error}}"
 msgstr ""

@@ -1172,7 +1172,7 @@ msgid "Show details"
 msgstr "Нишон додани маълумоти муфассал"
 
 msgid "Clone"
-msgstr ""
+msgstr "Клон"
 
 msgid "Sharing settings"
 msgstr "Танзимоти датсрасии муштарак"
@@ -2369,7 +2369,7 @@ msgid "SQL type"
 msgstr ""
 
 msgid "Cache strategy"
-msgstr ""
+msgstr "Стратегияи кэш"
 
 msgid "SQL query"
 msgstr ""
@@ -2779,7 +2779,7 @@ msgid ""
 msgstr ""
 
 msgid "Groups"
-msgstr ""
+msgstr "Гурӯҳҳо"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
