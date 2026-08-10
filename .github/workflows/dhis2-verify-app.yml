@@ -69,10 +69,10 @@ jobs:
             - run: yarn install --frozen-lockfile
 
             - name: Test
-              run: yarn d2-app-scripts test --coverage --quiet
+              run: yarn d2-app-scripts test --quiet
 
-            - name: Upload coverage to Codecov
-              uses: codecov/codecov-action@v3
+            # - name: Upload coverage to Codecov
+            #   uses: codecov/codecov-action@v3
 
     # e2e:
     #     runs-on: ubuntu-latest
