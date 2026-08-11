@@ -22,6 +22,7 @@ import {
     getAllAttributeValues,
     SECTIONS_MAP,
     SectionedFormProvider,
+    trimTrimmableFields,
     useBoundResourceQueryFn,
     useCreateModel,
     useCustomAttributesQuery,
@@ -225,10 +226,12 @@ export const EditStageForm = ({
     ) => {
         const formValues = form.getState().values
 
-        const { trimmedValues, error } = await trimValuesOnDelete(values, form)
+        const { trimmedValues: deletionTrimmedValues, error } =
+            await trimValuesOnDelete(values, form)
         if (error) {
             return error
         }
+        const trimmedValues = trimTrimmableFields(deletionTrimmedValues)
         const nonDeletedProgramStageSections =
             trimmedValues.programStageSections ?? []
 
@@ -260,7 +263,10 @@ export const EditStageForm = ({
             (op) => op.path === '/name' && op.op === 'replace'
         )?.value as string | undefined
         const resolvedDisplayName =
-            updatedName || values?.displayName || values.name || ''
+            updatedName ||
+            trimmedValues?.displayName ||
+            trimmedValues.name ||
+            ''
 
         onSubmitted?.(
             {
@@ -303,16 +309,18 @@ export const NewStageForm = ({
         c,
         closeOnSubmit?: boolean
     ) => {
-        const res = await handleCreate(values)
+        const trimmedValues = trimTrimmableFields(values)
+        const res = await handleCreate(trimmedValues)
         if (res.error) {
             return createFormError(res.error)
         }
         const newId = (res.data as { response: { uid: string } }).response.uid
         onSubmitted?.(
             {
-                ...values,
+                ...trimmedValues,
                 id: newId,
-                displayName: values?.displayName || values.name || '',
+                displayName:
+                    trimmedValues?.displayName || trimmedValues.name || '',
             },
             closeOnSubmit ?? true
         )

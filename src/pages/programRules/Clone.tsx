@@ -20,6 +20,7 @@ import {
     getSectionPath,
     SectionedFormProvider,
     SECTIONS_MAP,
+    trimTrimmableFields,
     useBoundResourceQueryFn,
     useCreateModel,
     useNavigateWithSearchState,
@@ -69,7 +70,9 @@ export const Component = () => {
                 | undefined
             const ruleValues = omit(allValues, 'programRuleActions')
 
-            const ruleResponse = await createRule(ruleValues)
+            const ruleResponse = await createRule(
+                trimTrimmableFields(ruleValues)
+            )
             if (ruleResponse.error) {
                 return createFormError(ruleResponse.error)
             }

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-07-20T13:02:05.156Z\n"
-"PO-Revision-Date: 2026-07-20T13:02:05.156Z\n"
+"POT-Creation-Date: 2026-08-11T12:10:52.795Z\n"
+"PO-Revision-Date: 2026-08-11T12:10:52.795Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -867,9 +867,6 @@ msgstr "Merging cannot be undone"
 
 msgid "Confirmation code does not match"
 msgstr "Confirmation code does not match"
-
-msgid "Move data values to the target data element"
-msgstr "Move data values to the target data element"
 
 msgid "Delete the source data values"
 msgstr "Delete the source data values"
@@ -2278,6 +2275,9 @@ msgstr "Unknown error"
 msgid "Unknown"
 msgstr "Unknown"
 
+msgid "Leading and trailing spaces will be removed when saving"
+msgstr "Leading and trailing spaces will be removed when saving"
+
 msgid "{{label}} (required)"
 msgstr "{{label}} (required)"
 
@@ -2299,8 +2299,8 @@ msgstr "Group assignment failed. Other values have been saved/updated"
 msgid "Created successfully, but failed to update groups"
 msgstr "Created successfully, but failed to update groups"
 
-msgid "This field requires a unique value, please choose another one"
-msgstr "This field requires a unique value, please choose another one"
+msgid "This field requires a unique value, please choose another one."
+msgstr "This field requires a unique value, please choose another one."
 
 msgid "Please provide a positive integer"
 msgstr "Please provide a positive integer"
@@ -2705,6 +2705,18 @@ msgstr "Merge settings"
 msgid "What should happen to the source categories after the merge is complete?"
 msgstr "What should happen to the source categories after the merge is complete?"
 
+msgid "Categories of source and target category combinations do not match"
+msgstr "Categories of source and target category combinations do not match"
+
+msgid "Configure category combinations merge"
+msgstr "Configure category combinations merge"
+
+msgid "The category combinations merge operation is complete."
+msgstr "The category combinations merge operation is complete."
+
+msgid "All selected category combinations were merged successfully."
+msgstr "All selected category combinations were merged successfully."
+
 msgid "More than 4 Categories"
 msgstr "More than 4 Categories"
 
@@ -2754,8 +2766,119 @@ msgstr ""
 "The number of generated category option combinations exceeds the limit of "
 "{{limit}}"
 
+msgid ""
+"The merge operation will merge the source category combinations into\n"
+"                the target category combination. One or many source "
+"category combinations\n"
+"                can be specified"
+msgstr ""
+"The merge operation will merge the source category combinations into\n"
+"                the target category combination. One or many source "
+"category combinations\n"
+"                can be specified"
+
+msgid ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the category combinations metadata "
+"associations to the\n"
+"                source category combinations over to the target category "
+"combination."
+msgstr ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the category combinations metadata "
+"associations to the\n"
+"                source category combinations over to the target category "
+"combination."
+
+msgid "Category combinations to be merged (source)"
+msgstr "Category combinations to be merged (source)"
+
+msgid "Select category combinations to merge"
+msgstr "Select category combinations to merge"
+
+msgid "Category combination to merge into (target)"
+msgstr "Category combination to merge into (target)"
+
+msgid "Select category combination to merge into"
+msgstr "Select category combination to merge into"
+
+msgid "No category combinations available. Remove one from source."
+msgstr "No category combinations available. Remove one from source."
+
+msgid ""
+"What should happen to the source category combinations after the merge is "
+"complete?"
+msgstr ""
+"What should happen to the source category combinations after the merge is "
+"complete?"
+
+msgid "Configure category option combination merge"
+msgstr "Configure category option combination merge"
+
+msgid "The category option combination merge operation is complete."
+msgstr "The category option combination merge operation is complete."
+
+msgid "All selected category option combinations were merged successfully."
+msgstr "All selected category option combinations were merged successfully."
+
 msgid "Set up the basic information for this category option combination."
 msgstr "Set up the basic information for this category option combination."
+
+msgid ""
+"The merge operation will merge the source category option combinations into\n"
+"                the target category option combination. One or many source "
+"category option combinations\n"
+"                can be specified"
+msgstr ""
+"The merge operation will merge the source category option combinations into\n"
+"                the target category option combination. One or many source "
+"category option combinations\n"
+"                can be specified"
+
+msgid ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the category option combination metadata "
+"associations to the\n"
+"                source category option combinations over to the target "
+"category option combination."
+msgstr ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the category option combination metadata "
+"associations to the\n"
+"                source category option combinations over to the target "
+"category option combination."
+
+msgid "Category option combinations to be merged (source)"
+msgstr "Category option combinations to be merged (source)"
+
+msgid "Select category option combinations to merge"
+msgstr "Select category option combinations to merge"
+
+msgid "Category option combination to merge into (target)"
+msgstr "Category option combination to merge into (target)"
+
+msgid "Select category option combination to merge into"
+msgstr "Select category option combination to merge into"
+
+msgid "No category option combinations available. Remove one from source."
+msgstr "No category option combinations available. Remove one from source."
+
+msgid ""
+"What should happen to the data values recorded for the source category "
+"option combinations?"
+msgstr ""
+"What should happen to the data values recorded for the source category "
+"option combinations?"
+
+msgid ""
+"Where source and target have the same data value, the most recently updated "
+"is kept."
+msgstr ""
+"Where source and target have the same data value, the most recently updated "
+"is kept."
+
+msgid "Move data values to the target category option combination"
+msgstr "Move data values to the target category option combination"
 
 msgid "Set up the basic information for this category option group set."
 msgstr "Set up the basic information for this category option group set."
@@ -3064,12 +3187,8 @@ msgstr "What should happen to the source data elements after the merge is comple
 msgid "What should happen to the data values recorded for the source data elements?"
 msgstr "What should happen to the data values recorded for the source data elements?"
 
-msgid ""
-"Where source and target have the same data value, the most recently updated "
-"is kept."
-msgstr ""
-"Where source and target have the same data value, the most recently updated "
-"is kept."
+msgid "Move data values to the target data element"
+msgstr "Move data values to the target data element"
 
 msgid "Error"
 msgstr "Error"
@@ -3422,6 +3541,12 @@ msgstr ""
 msgid "Manage data elements"
 msgstr "Manage data elements"
 
+msgid "Save changes to this data set before editing sections"
+msgstr "Save changes to this data set before editing sections"
+
+msgid "Save changes to this data set before editing the form"
+msgstr "Save changes to this data set before editing the form"
+
 msgid "Display options"
 msgstr "Display options"
 
@@ -3520,8 +3645,8 @@ msgstr "Category to move to rows"
 msgid "Content to display before a section"
 msgstr "Content to display before a section"
 
-msgid "HTML links and basic styling can be included"
-msgstr "HTML links and basic styling can be included"
+msgid "Markdown formatting is supported"
+msgstr "Markdown formatting is supported"
 
 msgid "Content to display after a section"
 msgstr "Content to display after a section"
@@ -4112,6 +4237,15 @@ msgstr "Choose the organisation units to include in this group."
 msgid "Error saving organisation unit levels"
 msgstr "Error saving organisation unit levels"
 
+msgid "Configure organisation unit merge"
+msgstr "Configure organisation unit merge"
+
+msgid "The organisation unit merge operation is complete."
+msgstr "The organisation unit merge operation is complete."
+
+msgid "All selected organisation units were merged successfully."
+msgstr "All selected organisation units were merged successfully."
+
 msgid "Organisation units successfully moved"
 msgstr "Organisation units successfully moved"
 
@@ -4226,6 +4360,78 @@ msgstr "No organisation units available"
 
 msgid "Load more for {{orgUnitName}}"
 msgstr "Load more for {{orgUnitName}}"
+
+msgid "Move data approvals to the target organisation unit"
+msgstr "Move data approvals to the target organisation unit"
+
+msgid "Delete the source data approvals"
+msgstr "Delete the source data approvals"
+
+msgid "Move data values to the target organisation unit"
+msgstr "Move data values to the target organisation unit"
+
+msgid ""
+"The merge operation will merge the source organisation units into\n"
+"                the target organisation unit. One or many source "
+"organisation units\n"
+"                can be specified"
+msgstr ""
+"The merge operation will merge the source organisation units into\n"
+"                the target organisation unit. One or many source "
+"organisation units\n"
+"                can be specified"
+
+msgid ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the organisation unit metadata associations "
+"to the\n"
+"                source organisation units over to the target organisation "
+"unit."
+msgstr ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the organisation unit metadata associations "
+"to the\n"
+"                source organisation units over to the target organisation "
+"unit."
+
+msgid "Organisation units to be merged (source)"
+msgstr "Organisation units to be merged (source)"
+
+msgid "Select organisation units to merge"
+msgstr "Select organisation units to merge"
+
+msgid "Organisation unit to merge into (target)"
+msgstr "Organisation unit to merge into (target)"
+
+msgid "Select organisation unit to merge into"
+msgstr "Select organisation unit to merge into"
+
+msgid "No organisation units available. Remove one from source."
+msgstr "No organisation units available. Remove one from source."
+
+msgid ""
+"What should happen to the source organisation units after the merge is "
+"complete?"
+msgstr ""
+"What should happen to the source organisation units after the merge is "
+"complete?"
+
+msgid ""
+"What should happen to the data values recorded for the source organisation "
+"units?"
+msgstr ""
+"What should happen to the data values recorded for the source organisation "
+"units?"
+
+msgid "What should happen to the data approvals for the source organisation units?"
+msgstr "What should happen to the data approvals for the source organisation units?"
+
+msgid ""
+"Where source and target have the same data approval, the most recently "
+"updated is kept."
+msgstr ""
+"Where source and target have the same data approval, the most recently "
+"updated is kept."
 
 msgid ""
 "Choose the organisation units to move and their new position in the "
@@ -4699,6 +4905,9 @@ msgstr "Generator missing value strategy"
 
 msgid "Output category combo"
 msgstr "Output category combo"
+
+msgid "At least one organisation unit level is required"
+msgstr "At least one organisation unit level is required"
 
 msgid "Program Disaggregation Form"
 msgstr "Program Disaggregation Form"
@@ -5528,8 +5737,8 @@ msgstr "Override default labels with program-specific terms."
 msgid "Custom label for \"Report date\""
 msgstr "Custom label for \"Report date\""
 
-msgid "Used as the default registration date for events"
-msgstr "Used as the default registration date for events"
+msgid "Used as the label for the event date (report date) shown in the Capture app"
+msgstr "Used as the label for the event date (report date) shown in the Capture app"
 
 msgid "Only integers are allowed"
 msgstr "Only integers are allowed"
@@ -5741,6 +5950,12 @@ msgstr ""
 
 msgid "Edit or rearrange the data elements"
 msgstr "Edit or rearrange the data elements"
+
+msgid "Save changes to this program before editing sections"
+msgstr "Save changes to this program before editing sections"
+
+msgid "Save changes to this program before editing the form"
+msgstr "Save changes to this program before editing the form"
 
 msgid "Custom label for event (plural)"
 msgstr "Custom label for event (plural)"

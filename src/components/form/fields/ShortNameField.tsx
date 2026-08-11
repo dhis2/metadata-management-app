@@ -1,8 +1,14 @@
 import i18n from '@dhis2/d2-i18n'
 import { InputFieldFF } from '@dhis2/ui'
-import React, { useState } from 'react'
-import { Field as FieldRFF } from 'react-final-form'
-import { SchemaSection, useIsFieldValueUnique, useSchema } from '../../../lib'
+import React from 'react'
+import { useField } from 'react-final-form'
+import {
+    SchemaSection,
+    getTrailingWhitespaceWarning,
+    useFieldWarning,
+    useIsFieldValueUnique,
+    useSchema,
+} from '../../../lib'
 import { useValidator } from '../../../lib/models/useFieldValidators'
 
 export function ShortNameField({
@@ -23,7 +29,16 @@ export function ShortNameField({
     })
     const schema = useSchema(schemaSection.name)
     const propertyDetails = schema.properties['shortName']
-    const [warning, setWarning] = useState<string | undefined>()
+    const { input, meta } = useField<string>('shortName', {
+        validate: async (shortName?: string) => {
+            const validationError = await validator(shortName)
+            const whitespaceWarning = getTrailingWhitespaceWarning(shortName)
+            return validationError && whitespaceWarning
+                ? `${validationError} ${whitespaceWarning}`
+                : validationError
+        },
+        validateFields: [],
+    })
 
     const checkShortNameDuplicate = useIsFieldValueUnique({
         model: schemaSection.namePlural,
@@ -33,9 +48,20 @@ export function ShortNameField({
         ),
         caseSensitive: caseSensitiveUniqueness,
     })
-    const uniquenessWarner = propertyDetails.unique
-        ? undefined
-        : checkShortNameDuplicate
+    const needsUniquenessCheck = !propertyDetails.unique
+
+    const { onChange, validationText, warning } = useFieldWarning(
+        meta,
+        async (value) => {
+            const duplicateWarning = needsUniquenessCheck
+                ? await checkShortNameDuplicate(value)
+                : undefined
+            const whitespaceWarning = getTrailingWhitespaceWarning(value)
+            return duplicateWarning && whitespaceWarning
+                ? `${duplicateWarning} ${whitespaceWarning}`
+                : duplicateWarning ?? whitespaceWarning
+        }
+    )
 
     const helpString =
         helpText ||
@@ -44,31 +70,23 @@ export function ShortNameField({
         )
 
     return (
-        <FieldRFF name="shortName" validate={validator}>
-            {({ input, meta }) => (
-                <InputFieldFF
-                    input={{
-                        ...input,
-                        onChange: async (value: string) => {
-                            input.onChange(value)
-                            if (uniquenessWarner) {
-                                const warning = await uniquenessWarner(value)
-                                setWarning(warning)
-                            }
-                        },
-                    }}
-                    meta={meta}
-                    loading={meta.validating}
-                    validateFields={[]}
-                    dataTest="formfields-shortName"
-                    required={isRequired}
-                    inputWidth="400px"
-                    label={i18n.t('Short name')}
-                    helpText={helpString}
-                    validationText={warning}
-                    warning={!!warning}
-                />
-            )}
-        </FieldRFF>
+        <InputFieldFF
+            input={{
+                ...input,
+                onChange: (value: string) => {
+                    input.onChange(value)
+                    onChange(value)
+                },
+            }}
+            meta={meta}
+            loading={meta.validating}
+            dataTest="formfields-shortName"
+            required={isRequired}
+            inputWidth="400px"
+            label={i18n.t('Short name')}
+            helpText={helpString}
+            validationText={validationText}
+            warning={warning}
+        />
     )
 }

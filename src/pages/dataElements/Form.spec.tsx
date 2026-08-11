@@ -238,6 +238,57 @@ describe('Data elements form tests', () => {
             await uiActions.submitForm(screen)
             expect(createMock).not.toHaveBeenCalled()
         })
+        it('should show both the duplicate error and the trailing space notice for the name field', async () => {
+            const existingName = faker.company.name()
+            const { screen } = await renderForm({
+                matchingExistingElementFilter: `name:ieq:${existingName}`,
+            })
+            await uiActions.enterName(`  ${existingName}  `, screen)
+            await userEvent.click(screen.getByTestId('formfields-name-label'))
+            uiAssertions.expectFieldToHaveError(
+                'formfields-name',
+                'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
+                screen
+            )
+            await uiActions.submitForm(screen)
+            expect(createMock).not.toHaveBeenCalled()
+        })
+        it('should show both the duplicate error and the trailing space notice for the short name field', async () => {
+            const existingShortName = faker.company.name()
+            const { screen } = await renderForm({
+                matchingExistingElementFilter: `shortName:ieq:${existingShortName}`,
+            })
+            await uiActions.enterInputFieldValue(
+                'shortName',
+                `  ${existingShortName}  `,
+                screen
+            )
+            await userEvent.click(
+                screen.getByTestId('formfields-shortName-label')
+            )
+            uiAssertions.expectFieldToHaveError(
+                'formfields-shortName',
+                'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
+                screen
+            )
+            await uiActions.submitForm(screen)
+            expect(createMock).not.toHaveBeenCalled()
+        })
+        it('should show both the duplicate error and the trailing space notice for the code field', async () => {
+            const existingCode = faker.science.chemicalElement().symbol
+            const { screen } = await renderForm({
+                matchingExistingElementFilter: `code:ieq:${existingCode}`,
+            })
+            await uiActions.enterCode(`  ${existingCode}  `, screen)
+            await userEvent.click(screen.getByTestId('formfields-code-label'))
+            uiAssertions.expectFieldToHaveError(
+                'formfields-code',
+                'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
+                screen
+            )
+            await uiActions.submitForm(screen)
+            expect(createMock).not.toHaveBeenCalled()
+        })
         it('should change cat combo to default and disable cat combo field if domain is tracker', async () => {
             const { screen } = await renderForm()
             const aName = faker.animal.bird()

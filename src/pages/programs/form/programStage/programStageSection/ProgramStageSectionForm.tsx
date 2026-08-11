@@ -18,6 +18,7 @@ import {
     DEFAULT_FIELD_FILTERS,
     SchemaName,
     SchemaSection,
+    trimTrimmableFields,
     useBoundResourceQueryFn,
     useCreateModel,
     usePatchModel,
@@ -148,8 +149,9 @@ export const EditStageSectionForm = ({
     })
 
     const onFormSubmit: OnFormSubmit = async (values, form) => {
+        const trimmedValues = trimTrimmableFields(values)
         const jsonPatchOperations = createJsonPatchOperations({
-            values,
+            values: trimmedValues,
             dirtyFields: form.getState().dirtyFields,
             originalValue: form.getState().initialValues,
         })
@@ -163,10 +165,13 @@ export const EditStageSectionForm = ({
             (op) => op.path === '/name' && op.op === 'replace'
         )?.value as string | undefined
         const resolvedDisplayName =
-            updatedName || values?.displayName || values.name || ''
+            updatedName ||
+            trimmedValues?.displayName ||
+            trimmedValues.name ||
+            ''
 
         onSubmitted?.({
-            ...values,
+            ...trimmedValues,
             id: section.id,
             displayName: resolvedDisplayName,
         })
@@ -218,7 +223,8 @@ export const NewStageSectionForm = ({
     })
 
     const onFormSubmit: OnFormSubmit = async (values) => {
-        const res = await handleCreate(values)
+        const trimmedValues = trimTrimmableFields(values)
+        const res = await handleCreate(trimmedValues)
         if (res.error) {
             return createFormError(res.error)
         }
@@ -226,9 +232,9 @@ export const NewStageSectionForm = ({
         const newId = (res.data as { response: { uid: string } }).response.uid
 
         onSubmitted?.({
-            ...values,
+            ...trimmedValues,
             id: newId,
-            displayName: values?.displayName || values.name || '',
+            displayName: trimmedValues?.displayName || trimmedValues.name || '',
         })
         return undefined
     }

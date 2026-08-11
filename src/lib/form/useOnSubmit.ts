@@ -94,6 +94,20 @@ export const getNavigateTo = (options?: Navigateable) => {
         : options.navigateTo
 }
 
+// avoid saving "Fever" and "Fever " as distinct values
+const TRIMMABLE_FIELDS = ['name', 'shortName', 'code', 'description'] as const
+
+export const trimTrimmableFields = <TValues>(values: TValues): TValues => {
+    const result = { ...(values as unknown as Record<string, unknown>) }
+    for (const field of TRIMMABLE_FIELDS) {
+        const value = result[field]
+        if (typeof value === 'string') {
+            result[field] = value.trim()
+        }
+    }
+    return result as TValues
+}
+
 export type UseOnSubmitEditOptions = {
     modelId: string
     section: ModelSection
@@ -164,7 +178,7 @@ export const useOnSubmitEdit = <TFormValues extends IdentifiableObject>({
     return useMemo<EnhancedOnSubmit<TFormValues>>(
         () => async (values, form, options) => {
             const jsonPatchOperations = createJsonPatchOperations({
-                values,
+                values: trimTrimmableFields(values),
                 dirtyFields: form.getState().dirtyFields,
                 originalValue: form.getState().initialValues,
             })
@@ -286,7 +300,7 @@ export const useOnSubmitNew = <
             if (!values) {
                 return onNewCompletedSuccessfully({ withChanges: false })
             }
-            const response = await createModel(values)
+            const response = await createModel(trimTrimmableFields(values))
             if (response.error) {
                 return createFormError(response.error)
             }
