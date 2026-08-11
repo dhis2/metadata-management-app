@@ -1,3 +1,10 @@
+## [0.174.2](https://github.com/dhis2/metadata-management-app/compare/v0.174.1...v0.174.2) (2026-08-11)
+
+
+### Bug Fixes
+
+* org unit response processing [DHIS2-21965] ([#1022](https://github.com/dhis2/metadata-management-app/issues/1022)) ([6f26f9b](https://github.com/dhis2/metadata-management-app/commit/6f26f9bd590b8a74cccd6b2f81a5a9dd3c43450d))
+
 ## [0.174.1](https://github.com/dhis2/metadata-management-app/compare/v0.174.0...v0.174.1) (2026-08-04)
 
 
