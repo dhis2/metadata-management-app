@@ -74,7 +74,9 @@ const query = {
     },
     currentUser: {
         resource: 'me',
-        params: {},
+        // params: {
+        //     fields: ':all,organisationUnits[id,displayName,path,level]',
+        // },
     },
     systemSettings: {
         resource: 'systemSettings',
