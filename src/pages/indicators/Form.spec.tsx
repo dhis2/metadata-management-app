@@ -209,7 +209,7 @@ describe('Indicators form tests', () => {
             await userEvent.click(screen.getByTestId('formfields-code-label'))
             uiAssertions.expectFieldToHaveError(
                 'formfields-code',
-                'This field requires a unique value, please choose another one Leading and trailing spaces will be removed when saving',
+                'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
                 screen
             )
             await uiActions.submitForm(screen)
