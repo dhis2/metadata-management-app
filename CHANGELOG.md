@@ -1,3 +1,10 @@
+## [0.174.3](https://github.com/dhis2/metadata-management-app/compare/v0.174.2...v0.174.3) (2026-08-11)
+
+
+### Bug Fixes
+
+* add the uniqueness check ([#981](https://github.com/dhis2/metadata-management-app/issues/981)) ([4c0212c](https://github.com/dhis2/metadata-management-app/commit/4c0212c071171fa21857b80742b95c69fcfd8672))
+
 ## [0.174.2](https://github.com/dhis2/metadata-management-app/compare/v0.174.1...v0.174.2) (2026-08-11)
 
 
