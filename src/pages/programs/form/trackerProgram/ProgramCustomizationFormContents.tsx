@@ -125,10 +125,9 @@ export const ProgramCustomizationFormContents = React.memo(
                         label={i18n.t(
                             'Custom label for "Relationship" (plural)'
                         )}
-                        helpText={i18n.t(
-                            'Example use: See all relationships',
-                            { nsSeparator: '~:~' }
-                        )}
+                        helpText={i18n.t('Example use: See all relationships', {
+                            nsSeparator: '~:~',
+                        })}
                     />
                 )}
 

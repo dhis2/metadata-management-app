@@ -8,11 +8,11 @@ export function LabelField({
     name,
     label,
     helpText,
-}: {
+}: Readonly<{
     name: string
     label: string
     helpText?: string
-}) {
+}>) {
     const schemaSection = useSchemaSectionHandleOrThrow()
     const validate = useValidator({ schemaSection, property: name })
 
