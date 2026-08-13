@@ -27,4 +27,5 @@ export const PROGRAM_STAGE_PROPERTY_LABELS = {
     dueDateLabel: i18n.t('Custom label for "Due date"'),
     programStageLabel: i18n.t('Custom label for "Program stage"'),
     eventLabel: i18n.t('Custom label for "Event"'),
+    eventsLabel: i18n.t('Custom label for "Event" (plural)'),
 } as const
