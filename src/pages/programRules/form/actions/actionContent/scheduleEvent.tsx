@@ -3,7 +3,11 @@ import React, { ReactNode } from 'react'
 import { StandardFormField } from '../../../../../components'
 import { ExpressionField, ProgramStageSelectField } from '../../../fields'
 
-export function scheduleEvent(programId: string): ReactNode {
+export function scheduleEvent(
+    programId: string,
+    isEdit?: boolean,
+    programType?: string
+): ReactNode {
     return (
         <>
             <StandardFormField>
@@ -12,6 +16,7 @@ export function scheduleEvent(programId: string): ReactNode {
             <StandardFormField>
                 <ExpressionField
                     programId={programId}
+                    programType={programType}
                     label={i18n.t('Program rule variable for scheduled date')}
                     required
                 />

@@ -2,7 +2,8 @@ import type { ReactNode } from 'react'
 
 export type ActionFieldsRenderer = (
     programId: string,
-    isEdit?: boolean
+    isEdit?: boolean,
+    programType?: string
 ) => ReactNode
 
 export { assign } from './assign'

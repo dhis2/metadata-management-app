@@ -35,11 +35,13 @@ export const VariableSelectionBox = ({
     elementRef,
     clearValidationState,
     programId,
+    programType,
     type,
 }: {
     elementRef: RefObject<HTMLInputElement | HTMLTextAreaElement>
     clearValidationState: () => void
     programId?: string
+    programType?: string
     type: ExpressionBuilderType
 }) => {
     const { input: aggregationTypeInput } = useField<string>(
@@ -47,8 +49,11 @@ export const VariableSelectionBox = ({
         { subscription: { value: true } }
     )
 
+    const isEventProgram = programType !== 'WITH_REGISTRATION'
+
     const elementTypes = getElementTypes(type, {
         aggregationType: aggregationTypeInput?.value,
+        isEventProgram,
     })
     const [selectedElementType, setSelectedElementType] = useState<
         string | undefined

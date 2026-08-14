@@ -14,9 +14,11 @@ import { ProgramIndicatorMappingSection } from './ProgramIndicatorMappingSection
 export const ProgramDisaggregationFormFields = ({
     initialProgramIndicators,
     programName,
+    programType,
 }: {
     initialProgramIndicators: ProgramIndicatorWithMapping[]
     programName?: string
+    programType?: string
 }) => {
     useSyncSelectedSectionWithScroll()
 
@@ -38,6 +40,7 @@ export const ProgramDisaggregationFormFields = ({
                     </StandardFormSectionDescription>
                     <CategoryMappingSection
                         dataDimensionType={'DISAGGREGATION'}
+                        programType={programType}
                     />
                 </SectionedFormSection>
                 <SectionedFormSection name="attributeCategories">
@@ -49,7 +52,10 @@ export const ProgramDisaggregationFormFields = ({
                             'Define expressions to map individual data to category options.'
                         )}
                     </StandardFormSectionDescription>
-                    <CategoryMappingSection dataDimensionType={'ATTRIBUTE'} />
+                    <CategoryMappingSection
+                        dataDimensionType={'ATTRIBUTE'}
+                        programType={programType}
+                    />
                 </SectionedFormSection>
             </SectionedFormSections>
         </div>

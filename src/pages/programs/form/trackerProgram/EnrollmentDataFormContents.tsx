@@ -28,6 +28,7 @@ import {
 import { SECTIONS_MAP } from '../../../../lib'
 import { ProgramTrackedEntityAttribute } from '../../../../types/generated'
 import { ProgramsFromFilters } from '../../EditTrackerProgram'
+import enrollmentDataFormCss from './EnrollmentDataFormContents.module.css'
 
 const defaultRenderType = {
     MOBILE: { type: 'DEFAULT' },
@@ -243,160 +244,188 @@ export const EnrollmentDataFormContents = React.memo(
                         'Manage how the chosen attributes are collected and displayed.'
                     )}
                 </StandardFormSectionDescription>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCellHead>{i18n.t('Name')}</TableCellHead>
-                            <TableCellHead>{i18n.t('Required')}</TableCellHead>
-                            <TableCellHead>
-                                {i18n.t('Searchable')}
-                            </TableCellHead>
-                            <TableCellHead>
-                                {i18n.t('Display in list')}
-                            </TableCellHead>
-                            {programHasDateAttributes && (
-                                <TableCellHead>
-                                    {i18n.t('Allow future dates')}
+                <div className={enrollmentDataFormCss.tableWrapper}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCellHead
+                                    className={enrollmentDataFormCss.stickyHead}
+                                >
+                                    {i18n.t('Name')}
                                 </TableCellHead>
-                            )}
-                            <TableCellHead>
-                                {i18n.t('Desktop Display')}
-                            </TableCellHead>
-                            <TableCellHead>
-                                {i18n.t('Mobile Display')}
-                            </TableCellHead>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {input.value.map((attribute, index) => {
-                            const attributeId =
-                                attribute.trackedEntityAttribute.id
-                            const teta = tetaMap.get(attributeId)
-                            const isMandatoryDisabled = teta?.mandatory === true
+                                <TableCellHead
+                                    className={enrollmentDataFormCss.stickyHead}
+                                >
+                                    {i18n.t('Required')}
+                                </TableCellHead>
+                                <TableCellHead
+                                    className={enrollmentDataFormCss.stickyHead}
+                                >
+                                    {i18n.t('Searchable')}
+                                </TableCellHead>
+                                <TableCellHead
+                                    className={enrollmentDataFormCss.stickyHead}
+                                >
+                                    {i18n.t('Display in list')}
+                                </TableCellHead>
+                                {programHasDateAttributes && (
+                                    <TableCellHead
+                                        className={
+                                            enrollmentDataFormCss.stickyHead
+                                        }
+                                    >
+                                        {i18n.t('Allow future dates')}
+                                    </TableCellHead>
+                                )}
+                                <TableCellHead
+                                    className={enrollmentDataFormCss.stickyHead}
+                                >
+                                    {i18n.t('Desktop Display')}
+                                </TableCellHead>
+                                <TableCellHead
+                                    className={enrollmentDataFormCss.stickyHead}
+                                >
+                                    {i18n.t('Mobile Display')}
+                                </TableCellHead>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {input.value.map((attribute, index) => {
+                                const attributeId =
+                                    attribute.trackedEntityAttribute.id
+                                const teta = tetaMap.get(attributeId)
+                                const isMandatoryDisabled =
+                                    teta?.mandatory === true
 
-                            const tetDisplayName =
-                                trackedEntityTypeField.input.value?.displayName
+                                const tetDisplayName =
+                                    trackedEntityTypeField.input.value
+                                        ?.displayName
 
-                            return (
-                                <TableRow key={attribute.id || attributeId}>
-                                    <TableCell>
-                                        <span
-                                            style={{
-                                                display: 'flex',
-                                                gap: '6px',
-                                            }}
-                                        >
-                                            {
-                                                attribute.trackedEntityAttribute
-                                                    .displayName
-                                            }
-                                            {teta && tetDisplayName && (
-                                                <InfoIconWithTooltip
-                                                    content={i18n.t(
-                                                        'This attribute is defined at the tracked entity type level'
-                                                    )}
-                                                    text={`${tetDisplayName} attribute`}
+                                return (
+                                    <TableRow key={attribute.id || attributeId}>
+                                        <TableCell>
+                                            <span
+                                                style={{
+                                                    display: 'flex',
+                                                    gap: '6px',
+                                                }}
+                                            >
+                                                {
+                                                    attribute
+                                                        .trackedEntityAttribute
+                                                        .displayName
+                                                }
+                                                {teta && tetDisplayName && (
+                                                    <InfoIconWithTooltip
+                                                        content={i18n.t(
+                                                            'This attribute is defined at the tracked entity type level'
+                                                        )}
+                                                        text={`${tetDisplayName} attribute`}
+                                                    />
+                                                )}
+                                            </span>
+                                        </TableCell>
+                                        <TableCell>
+                                            <TooltipWrapper
+                                                condition={isMandatoryDisabled}
+                                                content={i18n.t(
+                                                    'This attribute is marked as required at the tracked entity type level'
+                                                )}
+                                            >
+                                                <FieldRFF
+                                                    component={CheckboxFieldFF}
+                                                    name={`programTrackedEntityAttributes[${index}].mandatory`}
+                                                    type="checkbox"
+                                                    disabled={
+                                                        isMandatoryDisabled
+                                                    }
                                                 />
-                                            )}
-                                        </span>
-                                    </TableCell>
-                                    <TableCell>
-                                        <TooltipWrapper
-                                            condition={isMandatoryDisabled}
-                                            content={i18n.t(
-                                                'This attribute is marked as required at the tracked entity type level'
-                                            )}
-                                        >
-                                            <FieldRFF
-                                                component={CheckboxFieldFF}
-                                                name={`programTrackedEntityAttributes[${index}].mandatory`}
-                                                type="checkbox"
-                                                disabled={isMandatoryDisabled}
-                                            />
-                                        </TooltipWrapper>
-                                    </TableCell>
-                                    <TableCell>
-                                        <TooltipWrapper
-                                            condition={
-                                                attribute.trackedEntityAttribute
-                                                    .unique
-                                            }
-                                            content={i18n.t(
-                                                'Unique attributes are always searchable'
-                                            )}
-                                        >
-                                            <FieldRFF
-                                                component={CheckboxFieldFF}
-                                                name={`programTrackedEntityAttributes[${index}].searchable`}
-                                                type="checkbox"
-                                                disabled={
+                                            </TooltipWrapper>
+                                        </TableCell>
+                                        <TableCell>
+                                            <TooltipWrapper
+                                                condition={
                                                     attribute
                                                         .trackedEntityAttribute
                                                         .unique
                                                 }
-                                                format={(value) =>
-                                                    attribute
-                                                        .trackedEntityAttribute
-                                                        .unique
-                                                        ? true
-                                                        : value
-                                                }
-                                            />
-                                        </TooltipWrapper>
-                                    </TableCell>
-                                    <TableCell>
-                                        <FieldRFF
-                                            component={CheckboxFieldFF}
-                                            name={`programTrackedEntityAttributes[${index}].displayInList`}
-                                            type="checkbox"
-                                        />
-                                    </TableCell>
-                                    {programHasDateAttributes && (
+                                                content={i18n.t(
+                                                    'Unique attributes are always searchable'
+                                                )}
+                                            >
+                                                <FieldRFF
+                                                    component={CheckboxFieldFF}
+                                                    name={`programTrackedEntityAttributes[${index}].searchable`}
+                                                    type="checkbox"
+                                                    disabled={
+                                                        attribute
+                                                            .trackedEntityAttribute
+                                                            .unique
+                                                    }
+                                                    format={(value) =>
+                                                        attribute
+                                                            .trackedEntityAttribute
+                                                            .unique
+                                                            ? true
+                                                            : value
+                                                    }
+                                                />
+                                            </TooltipWrapper>
+                                        </TableCell>
                                         <TableCell>
                                             <FieldRFF
                                                 component={CheckboxFieldFF}
-                                                name={`programTrackedEntityAttributes[${index}].allowFutureDate`}
+                                                name={`programTrackedEntityAttributes[${index}].displayInList`}
                                                 type="checkbox"
-                                                disabled={
-                                                    attribute?.valueType !==
-                                                    'DATE'
+                                            />
+                                        </TableCell>
+                                        {programHasDateAttributes && (
+                                            <TableCell>
+                                                <FieldRFF
+                                                    component={CheckboxFieldFF}
+                                                    name={`programTrackedEntityAttributes[${index}].allowFutureDate`}
+                                                    type="checkbox"
+                                                    disabled={
+                                                        attribute?.valueType !==
+                                                        'DATE'
+                                                    }
+                                                />
+                                            </TableCell>
+                                        )}
+                                        <TableCell>
+                                            <RenderingOptionsSelect
+                                                fieldName="programTrackedEntityAttributes"
+                                                index={index}
+                                                device="DESKTOP"
+                                                valueType={attribute.valueType}
+                                                hasOptionSet={
+                                                    !!attribute.optionSet?.id ||
+                                                    !!attribute
+                                                        .trackedEntityAttribute
+                                                        .optionSet?.id
                                                 }
                                             />
                                         </TableCell>
-                                    )}
-                                    <TableCell>
-                                        <RenderingOptionsSelect
-                                            fieldName="programTrackedEntityAttributes"
-                                            index={index}
-                                            device="DESKTOP"
-                                            valueType={attribute.valueType}
-                                            hasOptionSet={
-                                                !!attribute.optionSet?.id ||
-                                                !!attribute
-                                                    .trackedEntityAttribute
-                                                    .optionSet?.id
-                                            }
-                                        />
-                                    </TableCell>
-                                    <TableCell>
-                                        <RenderingOptionsSelect
-                                            fieldName="programTrackedEntityAttributes"
-                                            index={index}
-                                            device="MOBILE"
-                                            valueType={attribute.valueType}
-                                            hasOptionSet={
-                                                !!attribute.optionSet?.id ||
-                                                !!attribute
-                                                    .trackedEntityAttribute
-                                                    .optionSet?.id
-                                            }
-                                        />
-                                    </TableCell>
-                                </TableRow>
-                            )
-                        })}
-                    </TableBody>
-                </Table>
+                                        <TableCell>
+                                            <RenderingOptionsSelect
+                                                fieldName="programTrackedEntityAttributes"
+                                                index={index}
+                                                device="MOBILE"
+                                                valueType={attribute.valueType}
+                                                hasOptionSet={
+                                                    !!attribute.optionSet?.id ||
+                                                    !!attribute
+                                                        .trackedEntityAttribute
+                                                        .optionSet?.id
+                                                }
+                                            />
+                                        </TableCell>
+                                    </TableRow>
+                                )
+                            })}
+                        </TableBody>
+                    </Table>
+                </div>
             </SectionedFormSection>
         )
     }
