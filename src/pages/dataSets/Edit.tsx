@@ -27,7 +27,7 @@ import { validate } from './form/dataSetFormSchema'
 import { DataSetFormDescriptor } from './form/formDescriptor'
 import { dataSetValueFormatter } from './New'
 const section = SECTIONS_MAP.dataSet
-const fieldFilters = [
+export const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
     ':owner',
     'organisationUnits[id,displayName,path]',
@@ -46,7 +46,7 @@ const fieldFilters = [
     'sections[id,displayName,description,access]',
 ] as const
 
-type DataSetValuesFromFilters = PickWithFieldFilters<
+export type DataSetValuesFromFilters = PickWithFieldFilters<
     DataSet,
     typeof fieldFilters
 >
