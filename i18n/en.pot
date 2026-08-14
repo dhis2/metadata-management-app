@@ -5755,9 +5755,6 @@ msgstr "Customization"
 msgid "Override default labels with program-specific terms."
 msgstr "Override default labels with program-specific terms."
 
-msgid "Custom label for \"Report date\""
-msgstr "Custom label for \"Report date\""
-
 msgid "Used as the label for the event date (report date) shown in the Capture app"
 msgstr "Used as the label for the event date (report date) shown in the Capture app"
 
@@ -5977,9 +5974,6 @@ msgstr "Save changes to this program before editing sections"
 
 msgid "Save changes to this program before editing the form"
 msgstr "Save changes to this program before editing the form"
-
-msgid "Custom label for event (plural)"
-msgstr "Custom label for event (plural)"
 
 msgid ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
