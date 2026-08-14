@@ -165,6 +165,7 @@ export const DataEntryFromContents = React.memo(function FormFormContents({
                             level={'primary'}
                             withReordering
                             disabled={hasUnsavedNewDataElements || isClone}
+                            isClone={isClone}
                         />
                     </>
                 )}
