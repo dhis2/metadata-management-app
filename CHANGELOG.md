@@ -1,3 +1,10 @@
+# [0.175.0](https://github.com/dhis2/metadata-management-app/compare/v0.174.3...v0.175.0) (2026-08-14)
+
+
+### Features
+
+* clone data sets ([#1019](https://github.com/dhis2/metadata-management-app/issues/1019)) ([c991a6e](https://github.com/dhis2/metadata-management-app/commit/c991a6ea0e7e577c3cc8a2cf9a1f241b747e4e4e))
+
 ## [0.174.3](https://github.com/dhis2/metadata-management-app/compare/v0.174.2...v0.174.3) (2026-08-11)
 
 
