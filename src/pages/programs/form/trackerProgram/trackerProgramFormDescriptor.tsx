@@ -187,7 +187,23 @@ export const TrackerProgramFormDescriptor = {
                     name: 'relationshipLabel',
                     label: i18n.t('Custom label for "Relationship"'),
                 },
+                {
+                    name: 'relationshipsLabel',
+                    label: i18n.t('Custom label for "Relationship" (plural)'),
+                },
                 { name: 'noteLabel', label: i18n.t('Custom label for "Note"') },
+                {
+                    name: 'notesLabel',
+                    label: i18n.t('Custom label for "Note" (plural)'),
+                },
+                {
+                    name: 'trackedEntityAttributeLabel',
+                    label: i18n.t('Custom label for "Attribute"'),
+                },
+                {
+                    name: 'trackedEntityAttributesLabel',
+                    label: i18n.t('Custom label for "Attribute" (plural)'),
+                },
             ],
         },
     ],

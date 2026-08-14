@@ -102,6 +102,11 @@ const TRANSLATED_PROPERTY: Record<string, string> = {
     eventsLabel: i18n.t('Event label (Plural)'),
     programStagesLabel: i18n.t('Program stage label (Plural)'),
     trackedEntityTypesLabel: i18n.t('Name (Plural)'),
+    notesLabel: i18n.t('Note label (Plural)'),
+    relationshipsLabel: i18n.t('Relationship label (Plural)'),
+    trackedEntityAttributesLabel: i18n.t(
+        'Tracked entity attribute label (Plural)'
+    ),
 }
 
 const camelCaseToSentenceCase = (camelCase: string) =>

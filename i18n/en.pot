@@ -1342,17 +1342,20 @@ msgstr "Reference date for scheduling"
 msgid "Hide scheduled date"
 msgstr "Hide scheduled date"
 
-msgid "Custom label for report date"
-msgstr "Custom label for report date"
+msgid "Custom label for \"Report date\""
+msgstr "Custom label for \"Report date\""
 
-msgid "Custom label for due date"
-msgstr "Custom label for due date"
+msgid "Custom label for \"Due date\""
+msgstr "Custom label for \"Due date\""
 
-msgid "Custom label for program stage"
-msgstr "Custom label for program stage"
+msgid "Custom label for \"Program stage\""
+msgstr "Custom label for \"Program stage\""
 
-msgid "Custom label for event"
-msgstr "Custom label for event"
+msgid "Custom label for \"Event\""
+msgstr "Custom label for \"Event\""
+
+msgid "Custom label for \"Event\" (plural)"
+msgstr "Custom label for \"Event\" (plural)"
 
 msgid "Categories"
 msgstr "Categories"
@@ -2268,6 +2271,15 @@ msgstr "Program stage label (Plural)"
 
 msgid "Name (Plural)"
 msgstr "Name (Plural)"
+
+msgid "Note label (Plural)"
+msgstr "Note label (Plural)"
+
+msgid "Relationship label (Plural)"
+msgstr "Relationship label (Plural)"
+
+msgid "Tracked entity attribute label (Plural)"
+msgstr "Tracked entity attribute label (Plural)"
 
 msgid "Unknown error"
 msgstr "Unknown error"
@@ -3303,6 +3315,15 @@ msgstr "Recipient user group"
 
 msgid "Delivery channels"
 msgstr "Delivery channels"
+
+msgid "Data set created but ID cannot be determined"
+msgstr "Data set created but ID cannot be determined"
+
+msgid "Data entry form failed to save"
+msgstr "Data entry form failed to save"
+
+msgid "Some data set sections failed to save"
+msgstr "Some data set sections failed to save"
 
 msgid "Send complete notifications"
 msgstr "Send complete notifications"
@@ -5734,9 +5755,6 @@ msgstr "Customization"
 msgid "Override default labels with program-specific terms."
 msgstr "Override default labels with program-specific terms."
 
-msgid "Custom label for \"Report date\""
-msgstr "Custom label for \"Report date\""
-
 msgid "Used as the label for the event date (report date) shown in the Capture app"
 msgstr "Used as the label for the event date (report date) shown in the Capture app"
 
@@ -5957,9 +5975,6 @@ msgstr "Save changes to this program before editing sections"
 msgid "Save changes to this program before editing the form"
 msgstr "Save changes to this program before editing the form"
 
-msgid "Custom label for event (plural)"
-msgstr "Custom label for event (plural)"
-
 msgid ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
 "scheduling, but scheduled dates will not be editable."
@@ -6154,23 +6169,32 @@ msgstr "Custom label for \"Enrollment\""
 msgid "Example use: See all data in this enrollment"
 msgstr "Example use: See all data in this enrollment"
 
-msgid "Custom label for \"Event\""
-msgstr "Custom label for \"Event\""
+msgid "Custom label for \"Enrollment\" (plural)"
+msgstr "Custom label for \"Enrollment\" (plural)"
+
+msgid "Example use: See all enrollments"
+msgstr "Example use: See all enrollments"
 
 msgid "Example use: Schedule a new event"
 msgstr "Example use: Schedule a new event"
 
-msgid "Custom label for \"Program stage\""
-msgstr "Custom label for \"Program stage\""
+msgid "Example use: See all events"
+msgstr "Example use: See all events"
 
 msgid "Example use: See all data in this program stage"
 msgstr "Example use: See all data in this program stage"
 
+msgid "Custom label for \"Program stage\" (plural)"
+msgstr "Custom label for \"Program stage\" (plural)"
+
+msgid "Example use: See all program stages"
+msgstr "Example use: See all program stages"
+
 msgid "Custom label for \"Follow-up\""
 msgstr "Custom label for \"Follow-up\""
 
-msgid "Used to customize the label for follow-up events or activities"
-msgstr "Used to customize the label for follow-up events or activities"
+msgid "Used to customize the label for a follow-up event or activity"
+msgstr "Used to customize the label for a follow-up event or activity"
 
 msgid "Custom label for \"Registering unit\""
 msgstr "Custom label for \"Registering unit\""
@@ -6185,18 +6209,42 @@ msgstr ""
 msgid "Custom label for \"Relationship\""
 msgstr "Custom label for \"Relationship\""
 
-msgid "Used to customize the label for relationships between tracked entities"
-msgstr "Used to customize the label for relationships between tracked entities"
+msgid "Used to customize the label for a relationship between tracked entities"
+msgstr "Used to customize the label for a relationship between tracked entities"
+
+msgid "Custom label for \"Relationship\" (plural)"
+msgstr "Custom label for \"Relationship\" (plural)"
+
+msgid "Example use: See all relationships"
+msgstr "Example use: See all relationships"
 
 msgid "Custom label for \"Note\""
 msgstr "Custom label for \"Note\""
 
 msgid ""
-"Used to customize the label for notes or comments added to enrollments or "
-"events"
+"Used to customize the label for a note or comment added to an enrollment or "
+"event"
 msgstr ""
-"Used to customize the label for notes or comments added to enrollments or "
-"events"
+"Used to customize the label for a note or comment added to an enrollment or "
+"event"
+
+msgid "Custom label for \"Note\" (plural)"
+msgstr "Custom label for \"Note\" (plural)"
+
+msgid "Example use: See all notes"
+msgstr "Example use: See all notes"
+
+msgid "Custom label for \"Attribute\""
+msgstr "Custom label for \"Attribute\""
+
+msgid "Used to customize the label for a tracked entity attribute"
+msgstr "Used to customize the label for a tracked entity attribute"
+
+msgid "Custom label for \"Attribute\" (plural)"
+msgstr "Custom label for \"Attribute\" (plural)"
+
+msgid "Example use: See all attributes"
+msgstr "Example use: See all attributes"
 
 msgid "Program Stages"
 msgstr "Program Stages"
@@ -6224,24 +6272,6 @@ msgstr "Restore stage"
 
 msgid "Add a program stage"
 msgstr "Add a program stage"
-
-msgid "Custom label for \"Enrollment\" (plural)"
-msgstr "Custom label for \"Enrollment\" (plural)"
-
-msgid "Example use: See all enrollments"
-msgstr "Example use: See all enrollments"
-
-msgid "Custom label for \"Event\" (plural)"
-msgstr "Custom label for \"Event\" (plural)"
-
-msgid "Example use: See all events"
-msgstr "Example use: See all events"
-
-msgid "Custom label for \"Program stage\" (plural)"
-msgstr "Custom label for \"Program stage\" (plural)"
-
-msgid "Example use: See all program stages"
-msgstr "Example use: See all program stages"
 
 msgid "Access Level"
 msgstr "Access Level"
@@ -6421,6 +6451,9 @@ msgstr "Could not run SQL view: {{error}}"
 
 msgid "Materialized view data refreshed."
 msgstr "Materialized view data refreshed."
+
+msgid "Could not refresh materialized view: {{error}}"
+msgstr "Could not refresh materialized view: {{error}}"
 
 msgid "View results"
 msgstr "View results"
