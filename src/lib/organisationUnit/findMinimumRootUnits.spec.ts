@@ -93,4 +93,10 @@ describe('findMinimumRootUnits', () => {
         const result = findMinimumRootUnits(units)
         expect(result).toEqual([])
     })
+
+    it('should return all org units for org unit input where only id is provided', () => {
+        const units = [{ id: 'a' }, { id: 'b' }] as unknown as PartialUnit[]
+        const result = findMinimumRootUnits(units)
+        expect(result).toEqual(units)
+    })
 })

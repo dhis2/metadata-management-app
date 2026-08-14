@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-08-06T07:26:15.709Z\n"
-"PO-Revision-Date: 2026-08-06T07:26:15.709Z\n"
+"POT-Creation-Date: 2026-08-14T14:38:17.442Z\n"
+"PO-Revision-Date: 2026-08-14T14:38:17.442Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -868,9 +868,6 @@ msgstr "Merging cannot be undone"
 msgid "Confirmation code does not match"
 msgstr "Confirmation code does not match"
 
-msgid "Move data values to the target data element"
-msgstr "Move data values to the target data element"
-
 msgid "Delete the source data values"
 msgstr "Delete the source data values"
 
@@ -1356,6 +1353,9 @@ msgstr "Custom label for \"Program stage\""
 
 msgid "Custom label for \"Event\""
 msgstr "Custom label for \"Event\""
+
+msgid "Custom label for \"Event\" (plural)"
+msgstr "Custom label for \"Event\" (plural)"
 
 msgid "Categories"
 msgstr "Categories"
@@ -2287,6 +2287,9 @@ msgstr "Unknown error"
 msgid "Unknown"
 msgstr "Unknown"
 
+msgid "Leading and trailing spaces will be removed when saving"
+msgstr "Leading and trailing spaces will be removed when saving"
+
 msgid "{{label}} (required)"
 msgstr "{{label}} (required)"
 
@@ -2308,8 +2311,8 @@ msgstr "Group assignment failed. Other values have been saved/updated"
 msgid "Created successfully, but failed to update groups"
 msgstr "Created successfully, but failed to update groups"
 
-msgid "This field requires a unique value, please choose another one"
-msgstr "This field requires a unique value, please choose another one"
+msgid "This field requires a unique value, please choose another one."
+msgstr "This field requires a unique value, please choose another one."
 
 msgid "Please provide a positive integer"
 msgstr "Please provide a positive integer"
@@ -2821,8 +2824,73 @@ msgstr ""
 "What should happen to the source category combinations after the merge is "
 "complete?"
 
+msgid "Configure category option combination merge"
+msgstr "Configure category option combination merge"
+
+msgid "The category option combination merge operation is complete."
+msgstr "The category option combination merge operation is complete."
+
+msgid "All selected category option combinations were merged successfully."
+msgstr "All selected category option combinations were merged successfully."
+
 msgid "Set up the basic information for this category option combination."
 msgstr "Set up the basic information for this category option combination."
+
+msgid ""
+"The merge operation will merge the source category option combinations into\n"
+"                the target category option combination. One or many source "
+"category option combinations\n"
+"                can be specified"
+msgstr ""
+"The merge operation will merge the source category option combinations into\n"
+"                the target category option combination. One or many source "
+"category option combinations\n"
+"                can be specified"
+
+msgid ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the category option combination metadata "
+"associations to the\n"
+"                source category option combinations over to the target "
+"category option combination."
+msgstr ""
+"Only one target should be specified. The merge operation will\n"
+"                transfer all of the category option combination metadata "
+"associations to the\n"
+"                source category option combinations over to the target "
+"category option combination."
+
+msgid "Category option combinations to be merged (source)"
+msgstr "Category option combinations to be merged (source)"
+
+msgid "Select category option combinations to merge"
+msgstr "Select category option combinations to merge"
+
+msgid "Category option combination to merge into (target)"
+msgstr "Category option combination to merge into (target)"
+
+msgid "Select category option combination to merge into"
+msgstr "Select category option combination to merge into"
+
+msgid "No category option combinations available. Remove one from source."
+msgstr "No category option combinations available. Remove one from source."
+
+msgid ""
+"What should happen to the data values recorded for the source category "
+"option combinations?"
+msgstr ""
+"What should happen to the data values recorded for the source category "
+"option combinations?"
+
+msgid ""
+"Where source and target have the same data value, the most recently updated "
+"is kept."
+msgstr ""
+"Where source and target have the same data value, the most recently updated "
+"is kept."
+
+msgid "Move data values to the target category option combination"
+msgstr "Move data values to the target category option combination"
 
 msgid "Set up the basic information for this category option group set."
 msgstr "Set up the basic information for this category option group set."
@@ -3131,12 +3199,8 @@ msgstr "What should happen to the source data elements after the merge is comple
 msgid "What should happen to the data values recorded for the source data elements?"
 msgstr "What should happen to the data values recorded for the source data elements?"
 
-msgid ""
-"Where source and target have the same data value, the most recently updated "
-"is kept."
-msgstr ""
-"Where source and target have the same data value, the most recently updated "
-"is kept."
+msgid "Move data values to the target data element"
+msgstr "Move data values to the target data element"
 
 msgid "Error"
 msgstr "Error"
@@ -3251,6 +3315,15 @@ msgstr "Recipient user group"
 
 msgid "Delivery channels"
 msgstr "Delivery channels"
+
+msgid "Data set created but ID cannot be determined"
+msgstr "Data set created but ID cannot be determined"
+
+msgid "Data entry form failed to save"
+msgstr "Data entry form failed to save"
+
+msgid "Some data set sections failed to save"
+msgstr "Some data set sections failed to save"
 
 msgid "Send complete notifications"
 msgstr "Send complete notifications"
@@ -3489,6 +3562,12 @@ msgstr ""
 msgid "Manage data elements"
 msgstr "Manage data elements"
 
+msgid "Save changes to this data set before editing sections"
+msgstr "Save changes to this data set before editing sections"
+
+msgid "Save changes to this data set before editing the form"
+msgstr "Save changes to this data set before editing the form"
+
 msgid "Display options"
 msgstr "Display options"
 
@@ -3587,8 +3666,8 @@ msgstr "Category to move to rows"
 msgid "Content to display before a section"
 msgstr "Content to display before a section"
 
-msgid "HTML links and basic styling can be included"
-msgstr "HTML links and basic styling can be included"
+msgid "Markdown formatting is supported"
+msgstr "Markdown formatting is supported"
 
 msgid "Content to display after a section"
 msgstr "Content to display after a section"
@@ -4848,6 +4927,9 @@ msgstr "Generator missing value strategy"
 msgid "Output category combo"
 msgstr "Output category combo"
 
+msgid "At least one organisation unit level is required"
+msgstr "At least one organisation unit level is required"
+
 msgid "Program Disaggregation Form"
 msgstr "Program Disaggregation Form"
 
@@ -5673,8 +5755,8 @@ msgstr "Customization"
 msgid "Override default labels with program-specific terms."
 msgstr "Override default labels with program-specific terms."
 
-msgid "Used as the default registration date for events"
-msgstr "Used as the default registration date for events"
+msgid "Used as the label for the event date (report date) shown in the Capture app"
+msgstr "Used as the label for the event date (report date) shown in the Capture app"
 
 msgid "Only integers are allowed"
 msgstr "Only integers are allowed"
@@ -5887,8 +5969,11 @@ msgstr ""
 msgid "Edit or rearrange the data elements"
 msgstr "Edit or rearrange the data elements"
 
-msgid "Custom label for \"Event\" (plural)"
-msgstr "Custom label for \"Event\" (plural)"
+msgid "Save changes to this program before editing sections"
+msgstr "Save changes to this program before editing sections"
+
+msgid "Save changes to this program before editing the form"
+msgstr "Save changes to this program before editing the form"
 
 msgid ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
@@ -6066,6 +6151,101 @@ msgstr ""
 "The following attributes are marked as required but not assigned to any "
 "section:"
 
+msgid "Custom label for \"Incident date\""
+msgstr "Custom label for \"Incident date\""
+
+msgid "Used as an additional registration date for enrollments"
+msgstr "Used as an additional registration date for enrollments"
+
+msgid "Custom label for \"Enrollment date\""
+msgstr "Custom label for \"Enrollment date\""
+
+msgid "Used as the default registration date for enrollments"
+msgstr "Used as the default registration date for enrollments"
+
+msgid "Custom label for \"Enrollment\""
+msgstr "Custom label for \"Enrollment\""
+
+msgid "Example use: See all data in this enrollment"
+msgstr "Example use: See all data in this enrollment"
+
+msgid "Custom label for \"Enrollment\" (plural)"
+msgstr "Custom label for \"Enrollment\" (plural)"
+
+msgid "Example use: See all enrollments"
+msgstr "Example use: See all enrollments"
+
+msgid "Example use: Schedule a new event"
+msgstr "Example use: Schedule a new event"
+
+msgid "Example use: See all events"
+msgstr "Example use: See all events"
+
+msgid "Example use: See all data in this program stage"
+msgstr "Example use: See all data in this program stage"
+
+msgid "Custom label for \"Program stage\" (plural)"
+msgstr "Custom label for \"Program stage\" (plural)"
+
+msgid "Example use: See all program stages"
+msgstr "Example use: See all program stages"
+
+msgid "Custom label for \"Follow-up\""
+msgstr "Custom label for \"Follow-up\""
+
+msgid "Used to customize the label for a follow-up event or activity"
+msgstr "Used to customize the label for a follow-up event or activity"
+
+msgid "Custom label for \"Registering unit\""
+msgstr "Custom label for \"Registering unit\""
+
+msgid ""
+"Used to customize the label for the organisation unit that registers the "
+"enrollment or event"
+msgstr ""
+"Used to customize the label for the organisation unit that registers the "
+"enrollment or event"
+
+msgid "Custom label for \"Relationship\""
+msgstr "Custom label for \"Relationship\""
+
+msgid "Used to customize the label for a relationship between tracked entities"
+msgstr "Used to customize the label for a relationship between tracked entities"
+
+msgid "Custom label for \"Relationship\" (plural)"
+msgstr "Custom label for \"Relationship\" (plural)"
+
+msgid "Example use: See all relationships"
+msgstr "Example use: See all relationships"
+
+msgid "Custom label for \"Note\""
+msgstr "Custom label for \"Note\""
+
+msgid ""
+"Used to customize the label for a note or comment added to an enrollment or "
+"event"
+msgstr ""
+"Used to customize the label for a note or comment added to an enrollment or "
+"event"
+
+msgid "Custom label for \"Note\" (plural)"
+msgstr "Custom label for \"Note\" (plural)"
+
+msgid "Example use: See all notes"
+msgstr "Example use: See all notes"
+
+msgid "Custom label for \"Attribute\""
+msgstr "Custom label for \"Attribute\""
+
+msgid "Used to customize the label for a tracked entity attribute"
+msgstr "Used to customize the label for a tracked entity attribute"
+
+msgid "Custom label for \"Attribute\" (plural)"
+msgstr "Custom label for \"Attribute\" (plural)"
+
+msgid "Example use: See all attributes"
+msgstr "Example use: See all attributes"
+
 msgid "Program Stages"
 msgstr "Program Stages"
 
@@ -6092,101 +6272,6 @@ msgstr "Restore stage"
 
 msgid "Add a program stage"
 msgstr "Add a program stage"
-
-msgid "Custom label for \"Enrollment date\""
-msgstr "Custom label for \"Enrollment date\""
-
-msgid "Used as the default registration date for enrollments"
-msgstr "Used as the default registration date for enrollments"
-
-msgid "Custom label for \"Enrollment\""
-msgstr "Custom label for \"Enrollment\""
-
-msgid "Example use: See all data in this enrollment"
-msgstr "Example use: See all data in this enrollment"
-
-msgid "Custom label for \"Enrollment\" (plural)"
-msgstr "Custom label for \"Enrollment\" (plural)"
-
-msgid "Example use: See all enrollments"
-msgstr "Example use: See all enrollments"
-
-msgid "Example use: Schedule a new event"
-msgstr "Example use: Schedule a new event"
-
-msgid "Example use: See all events"
-msgstr "Example use: See all events"
-
-msgid "Custom label for \"Follow-up\""
-msgstr "Custom label for \"Follow-up\""
-
-msgid "Used to customize the label for a follow-up event or activity"
-msgstr "Used to customize the label for a follow-up event or activity"
-
-msgid "Custom label for \"Incident date\""
-msgstr "Custom label for \"Incident date\""
-
-msgid "Used as an additional registration date for enrollments"
-msgstr "Used as an additional registration date for enrollments"
-
-msgid "Custom label for \"Note\""
-msgstr "Custom label for \"Note\""
-
-msgid ""
-"Used to customize the label for a note or comment added to an enrollment or "
-"event"
-msgstr ""
-"Used to customize the label for a note or comment added to an enrollment or "
-"event"
-
-msgid "Custom label for \"Note\" (plural)"
-msgstr "Custom label for \"Note\" (plural)"
-
-msgid "Example use: See all notes"
-msgstr "Example use: See all notes"
-
-msgid "Custom label for \"Registering unit\""
-msgstr "Custom label for \"Registering unit\""
-
-msgid ""
-"Used to customize the label for the organisation unit that registers the "
-"enrollment or event"
-msgstr ""
-"Used to customize the label for the organisation unit that registers the "
-"enrollment or event"
-
-msgid "Example use: See all data in this program stage"
-msgstr "Example use: See all data in this program stage"
-
-msgid "Custom label for \"Program stage\" (plural)"
-msgstr "Custom label for \"Program stage\" (plural)"
-
-msgid "Example use: See all program stages"
-msgstr "Example use: See all program stages"
-
-msgid "Custom label for \"Relationship\""
-msgstr "Custom label for \"Relationship\""
-
-msgid "Used to customize the label for a relationship between tracked entities"
-msgstr "Used to customize the label for a relationship between tracked entities"
-
-msgid "Custom label for \"Relationship\" (plural)"
-msgstr "Custom label for \"Relationship\" (plural)"
-
-msgid "Example use: See all relationships"
-msgstr "Example use: See all relationships"
-
-msgid "Custom label for \"Attribute\""
-msgstr "Custom label for \"Attribute\""
-
-msgid "Used to customize the label for a tracked entity attribute"
-msgstr "Used to customize the label for a tracked entity attribute"
-
-msgid "Custom label for \"Attribute\" (plural)"
-msgstr "Custom label for \"Attribute\" (plural)"
-
-msgid "Example use: See all attributes"
-msgstr "Example use: See all attributes"
 
 msgid "Access Level"
 msgstr "Access Level"

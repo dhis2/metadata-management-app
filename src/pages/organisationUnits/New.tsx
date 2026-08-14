@@ -6,6 +6,7 @@ import { DefaultNewFormContents } from '../../components/form/DefaultFormContent
 import {
     getSectionPath,
     SECTIONS_MAP,
+    trimTrimmableFields,
     useBoundResourceQueryFn,
     useNavigateWithSearchState,
 } from '../../lib'
@@ -36,7 +37,9 @@ export const useOnSaveOrgUnits = () => {
         () => async (values: Partial<OrgUnitFormValues>) => {
             const { dataSets, programs, ...restFields } = values
 
-            const { data, error } = await createModel(restFields)
+            const { data, error } = await createModel(
+                trimTrimmableFields(restFields)
+            )
             if (error) {
                 return createFormError(error)
             }

@@ -15,6 +15,7 @@ import {
     createFormError,
     SectionedFormProvider,
     SECTIONS_MAP,
+    trimTrimmableFields,
     useCreateModel,
     useNavigateWithSearchState,
 } from '../../lib'
@@ -53,7 +54,9 @@ const useOnSubmitEventProgram = ({
         () => async (values, _form, options) => {
             const { programStages, ...programValues } = values
 
-            const programResponse = await createProgram(programValues)
+            const programResponse = await createProgram(
+                trimTrimmableFields(programValues)
+            )
             if (programResponse.error) {
                 return createFormError(programResponse.error)
             }

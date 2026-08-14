@@ -13,7 +13,7 @@ export const findMinimumRootUnits = <TOrgUnit extends PartialUnit>(
     units: TOrgUnit[]
 ): TOrgUnit[] => {
     // first sort the units by level, so lowest level comes first
-    const sorted = units.sort((a, b) => a.level - b.level)
+    const sorted = units.sort((a, b) => a?.level - b?.level)
 
     const minimumRoots = sorted.filter((ou, index, array) => {
         // since the array is sorted by level we can just check the previous units,
@@ -21,7 +21,7 @@ export const findMinimumRootUnits = <TOrgUnit extends PartialUnit>(
         const previousUnits = array.slice(0, index)
         // if a previous unit has a path that is a prefix of the current path,
         // then the current path is a child and should not be included
-        return !previousUnits.some((pu) => ou.path.startsWith(pu.path))
+        return !previousUnits.some((pu) => ou?.path?.startsWith(pu?.path))
     })
 
     return minimumRoots
