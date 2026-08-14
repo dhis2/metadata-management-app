@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-08-14T14:38:17.442Z\n"
-"PO-Revision-Date: 2026-08-14T14:38:17.442Z\n"
+"POT-Creation-Date: 2026-08-11T12:10:52.795Z\n"
+"PO-Revision-Date: 2026-08-11T12:10:52.795Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -5755,6 +5755,9 @@ msgstr "Customization"
 msgid "Override default labels with program-specific terms."
 msgstr "Override default labels with program-specific terms."
 
+msgid "Custom label for \"Report date\""
+msgstr "Custom label for \"Report date\""
+
 msgid "Used as the label for the event date (report date) shown in the Capture app"
 msgstr "Used as the label for the event date (report date) shown in the Capture app"
 
@@ -5974,6 +5977,9 @@ msgstr "Save changes to this program before editing sections"
 
 msgid "Save changes to this program before editing the form"
 msgstr "Save changes to this program before editing the form"
+
+msgid "Custom label for event (plural)"
+msgstr "Custom label for event (plural)"
 
 msgid ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
