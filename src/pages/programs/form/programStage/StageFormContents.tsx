@@ -215,7 +215,7 @@ export const StageFormContents = ({
                             component={InputFieldFF}
                             name="executionDateLabel"
                             inputWidth="400px"
-                            label={i18n.t('Custom label for "Report date"')}
+                            label={i18n.t('Custom label for "report date"')}
                             dataTest="formfields-executionDateLabel"
                             validate={executionDateLabelValidator}
                         />
@@ -225,7 +225,7 @@ export const StageFormContents = ({
                             component={InputFieldFF}
                             name="dueDateLabel"
                             inputWidth="400px"
-                            label={i18n.t('Custom label for "Due date"')}
+                            label={i18n.t('Custom label for "due date"')}
                             dataTest="formfields-dueDateLabel"
                             validate={dueDateLabelValidator}
                         />
@@ -235,7 +235,7 @@ export const StageFormContents = ({
                             component={InputFieldFF}
                             name="programStageLabel"
                             inputWidth="400px"
-                            label={i18n.t('Custom label for "Program stage"')}
+                            label={i18n.t('Custom label for "program stage"')}
                             dataTest="formfields-programStageLabel"
                             validate={programStageLabelValidator}
                         />
@@ -245,7 +245,7 @@ export const StageFormContents = ({
                             component={InputFieldFF}
                             name="eventLabel"
                             inputWidth="400px"
-                            label={i18n.t('Custom label for "Event"')}
+                            label={i18n.t('Custom label for "event"')}
                             dataTest="formfields-eventLabel"
                             validate={eventLabelValidator}
                         />
