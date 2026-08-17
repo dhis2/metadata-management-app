@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-08-11T12:10:52.795Z\n"
-"PO-Revision-Date: 2026-08-11T12:10:52.795Z\n"
+"POT-Creation-Date: 2026-08-15T18:22:27.752Z\n"
+"PO-Revision-Date: 2026-08-15T18:22:27.752Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -1342,20 +1342,20 @@ msgstr "Reference date for scheduling"
 msgid "Hide scheduled date"
 msgstr "Hide scheduled date"
 
-msgid "Custom label for \"Report date\""
-msgstr "Custom label for \"Report date\""
+msgid "Custom label for \"report date\""
+msgstr "Custom label for \"report date\""
 
-msgid "Custom label for \"Due date\""
-msgstr "Custom label for \"Due date\""
+msgid "Custom label for \"due date\""
+msgstr "Custom label for \"due date\""
 
-msgid "Custom label for \"Program stage\""
-msgstr "Custom label for \"Program stage\""
+msgid "Custom label for \"program stage\""
+msgstr "Custom label for \"program stage\""
 
-msgid "Custom label for \"Event\""
-msgstr "Custom label for \"Event\""
+msgid "Custom label for \"event\""
+msgstr "Custom label for \"event\""
 
-msgid "Custom label for \"Event\" (plural)"
-msgstr "Custom label for \"Event\" (plural)"
+msgid "Custom label for \"event\" (plural)"
+msgstr "Custom label for \"event\" (plural)"
 
 msgid "Categories"
 msgstr "Categories"
@@ -6151,26 +6151,26 @@ msgstr ""
 "The following attributes are marked as required but not assigned to any "
 "section:"
 
-msgid "Custom label for \"Incident date\""
-msgstr "Custom label for \"Incident date\""
+msgid "Custom label for \"incident date\""
+msgstr "Custom label for \"incident date\""
 
 msgid "Used as an additional registration date for enrollments"
 msgstr "Used as an additional registration date for enrollments"
 
-msgid "Custom label for \"Enrollment date\""
-msgstr "Custom label for \"Enrollment date\""
+msgid "Custom label for \"enrollment date\""
+msgstr "Custom label for \"enrollment date\""
 
 msgid "Used as the default registration date for enrollments"
 msgstr "Used as the default registration date for enrollments"
 
-msgid "Custom label for \"Enrollment\""
-msgstr "Custom label for \"Enrollment\""
+msgid "Custom label for \"enrollment\""
+msgstr "Custom label for \"enrollment\""
 
 msgid "Example use: See all data in this enrollment"
 msgstr "Example use: See all data in this enrollment"
 
-msgid "Custom label for \"Enrollment\" (plural)"
-msgstr "Custom label for \"Enrollment\" (plural)"
+msgid "Custom label for \"enrollment\" (plural)"
+msgstr "Custom label for \"enrollment\" (plural)"
 
 msgid "Example use: See all enrollments"
 msgstr "Example use: See all enrollments"
@@ -6184,20 +6184,20 @@ msgstr "Example use: See all events"
 msgid "Example use: See all data in this program stage"
 msgstr "Example use: See all data in this program stage"
 
-msgid "Custom label for \"Program stage\" (plural)"
-msgstr "Custom label for \"Program stage\" (plural)"
+msgid "Custom label for \"program stage\" (plural)"
+msgstr "Custom label for \"program stage\" (plural)"
 
 msgid "Example use: See all program stages"
 msgstr "Example use: See all program stages"
 
-msgid "Custom label for \"Follow-up\""
-msgstr "Custom label for \"Follow-up\""
+msgid "Custom label for \"follow-up\""
+msgstr "Custom label for \"follow-up\""
 
 msgid "Used to customize the label for a follow-up event or activity"
 msgstr "Used to customize the label for a follow-up event or activity"
 
-msgid "Custom label for \"Registering unit\""
-msgstr "Custom label for \"Registering unit\""
+msgid "Custom label for \"registering unit\""
+msgstr "Custom label for \"registering unit\""
 
 msgid ""
 "Used to customize the label for the organisation unit that registers the "
@@ -6206,20 +6206,20 @@ msgstr ""
 "Used to customize the label for the organisation unit that registers the "
 "enrollment or event"
 
-msgid "Custom label for \"Relationship\""
-msgstr "Custom label for \"Relationship\""
+msgid "Custom label for \"relationship\""
+msgstr "Custom label for \"relationship\""
 
 msgid "Used to customize the label for a relationship between tracked entities"
 msgstr "Used to customize the label for a relationship between tracked entities"
 
-msgid "Custom label for \"Relationship\" (plural)"
-msgstr "Custom label for \"Relationship\" (plural)"
+msgid "Custom label for \"relationship\" (plural)"
+msgstr "Custom label for \"relationship\" (plural)"
 
 msgid "Example use: See all relationships"
 msgstr "Example use: See all relationships"
 
-msgid "Custom label for \"Note\""
-msgstr "Custom label for \"Note\""
+msgid "Custom label for \"note\""
+msgstr "Custom label for \"note\""
 
 msgid ""
 "Used to customize the label for a note or comment added to an enrollment or "
@@ -6228,20 +6228,20 @@ msgstr ""
 "Used to customize the label for a note or comment added to an enrollment or "
 "event"
 
-msgid "Custom label for \"Note\" (plural)"
-msgstr "Custom label for \"Note\" (plural)"
+msgid "Custom label for \"note\" (plural)"
+msgstr "Custom label for \"note\" (plural)"
 
 msgid "Example use: See all notes"
 msgstr "Example use: See all notes"
 
-msgid "Custom label for \"Attribute\""
-msgstr "Custom label for \"Attribute\""
+msgid "Custom label for \"attribute\""
+msgstr "Custom label for \"attribute\""
 
 msgid "Used to customize the label for a tracked entity attribute"
 msgstr "Used to customize the label for a tracked entity attribute"
 
-msgid "Custom label for \"Attribute\" (plural)"
-msgstr "Custom label for \"Attribute\" (plural)"
+msgid "Custom label for \"attribute\" (plural)"
+msgstr "Custom label for \"attribute\" (plural)"
 
 msgid "Example use: See all attributes"
 msgstr "Example use: See all attributes"
