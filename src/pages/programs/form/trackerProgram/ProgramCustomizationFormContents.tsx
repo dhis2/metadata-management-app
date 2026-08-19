@@ -1,67 +1,18 @@
 import i18n from '@dhis2/d2-i18n'
-import { InputFieldFF } from '@dhis2/ui'
 import React from 'react'
-import { Field } from 'react-final-form'
 import {
     SectionedFormSection,
-    StandardFormField,
     StandardFormSectionDescription,
     StandardFormSectionTitle,
 } from '../../../../components'
-import {
-    FEATURES,
-    useFeatureAvailable,
-    useSchemaSectionHandleOrThrow,
-    useValidator,
-} from '../../../../lib'
-import {
-    EnrollmentsLabelField,
-    EventsLabelField,
-    ProgramStagesLabelField,
-} from './fields'
+import { FEATURES, useFeatureAvailable } from '../../../../lib'
+import { LabelField } from './fields'
 
 export const ProgramCustomizationFormContents = React.memo(
     function ProgramCustomizationFormContents({ name }: { name: string }) {
-        const schemaSection = useSchemaSectionHandleOrThrow()
         const showPluralLabels = useFeatureAvailable(
             FEATURES.customTerminologyPlurals
         )
-        const incidentDateLabelValidator = useValidator({
-            schemaSection,
-            property: 'incidentDateLabel',
-        })
-        const enrollmentDateLabelValidator = useValidator({
-            schemaSection,
-            property: 'enrollmentDateLabel',
-        })
-        const enrollmentLabelValidator = useValidator({
-            schemaSection,
-            property: 'enrollmentLabel',
-        })
-        const eventLabelValidator = useValidator({
-            schemaSection,
-            property: 'eventLabel',
-        })
-        const programStageLabelValidator = useValidator({
-            schemaSection,
-            property: 'programStageLabel',
-        })
-        const followUpLabelValidator = useValidator({
-            schemaSection,
-            property: 'followUpLabel',
-        })
-        const orgUnitLabelValidator = useValidator({
-            schemaSection,
-            property: 'orgUnitLabel',
-        })
-        const relationshipLabelValidator = useValidator({
-            schemaSection,
-            property: 'relationshipLabel',
-        })
-        const noteLabelValidator = useValidator({
-            schemaSection,
-            property: 'noteLabel',
-        })
 
         return (
             <SectionedFormSection name={name}>
@@ -74,139 +25,145 @@ export const ProgramCustomizationFormContents = React.memo(
                     )}
                 </StandardFormSectionDescription>
 
-                <StandardFormField>
-                    <Field
-                        component={InputFieldFF}
-                        name="incidentDateLabel"
-                        inputWidth="400px"
-                        label={i18n.t('Custom label for "Incident date"')}
-                        helpText={i18n.t(
-                            'Used as an additional registration date for enrollments'
-                        )}
-                        dataTest="formfields-incidentDateLabel"
-                        validate={incidentDateLabelValidator}
-                    />
-                </StandardFormField>
+                <LabelField
+                    name="incidentDateLabel"
+                    label={i18n.t('Custom label for "incident date"')}
+                    helpText={i18n.t(
+                        'Used as an additional registration date for enrollments'
+                    )}
+                />
+                <LabelField
+                    name="enrollmentDateLabel"
+                    label={i18n.t('Custom label for "enrollment date"')}
+                    helpText={i18n.t(
+                        'Used as the default registration date for enrollments'
+                    )}
+                />
 
-                <StandardFormField>
-                    <Field
-                        component={InputFieldFF}
-                        name="enrollmentDateLabel"
-                        inputWidth="400px"
-                        label={i18n.t('Custom label for "Enrollment date"')}
-                        helpText={i18n.t(
-                            'Used as the default registration date for enrollments'
-                        )}
-                        dataTest="formfields-enrollmentDateLabel"
-                        validate={enrollmentDateLabelValidator}
-                    />
-                </StandardFormField>
-
-                <StandardFormField>
-                    <Field
-                        component={InputFieldFF}
-                        name="enrollmentLabel"
-                        inputWidth="400px"
-                        label={i18n.t('Custom label for "Enrollment"')}
-                        helpText={i18n.t(
-                            'Example use: See all data in this enrollment',
-                            { nsSeparator: '~:~' }
-                        )}
-                        dataTest="formfields-enrollmentLabel"
-                        validate={enrollmentLabelValidator}
-                    />
-                </StandardFormField>
-
-                {showPluralLabels && <EnrollmentsLabelField />}
-
-                <StandardFormField>
-                    <Field
-                        component={InputFieldFF}
-                        name="eventLabel"
-                        inputWidth="400px"
-                        label={i18n.t('Custom label for "Event"')}
-                        helpText={i18n.t('Example use: Schedule a new event', {
+                <LabelField
+                    name="enrollmentLabel"
+                    label={i18n.t('Custom label for "enrollment"')}
+                    helpText={i18n.t(
+                        'Example use: See all data in this enrollment',
+                        { nsSeparator: '~:~' }
+                    )}
+                />
+                {showPluralLabels && (
+                    <LabelField
+                        name="enrollmentsLabel"
+                        label={i18n.t('Custom label for "enrollment" (plural)')}
+                        helpText={i18n.t('Example use: See all enrollments', {
                             nsSeparator: '~:~',
                         })}
-                        dataTest="formfields-eventLabel"
-                        validate={eventLabelValidator}
                     />
-                </StandardFormField>
+                )}
 
-                {showPluralLabels && <EventsLabelField />}
+                <LabelField
+                    name="eventLabel"
+                    label={i18n.t('Custom label for "event"')}
+                    helpText={i18n.t('Example use: Schedule a new event', {
+                        nsSeparator: '~:~',
+                    })}
+                />
+                {showPluralLabels && (
+                    <LabelField
+                        name="eventsLabel"
+                        label={i18n.t('Custom label for "event" (plural)')}
+                        helpText={i18n.t('Example use: See all events', {
+                            nsSeparator: '~:~',
+                        })}
+                    />
+                )}
 
-                <StandardFormField>
-                    <Field
-                        component={InputFieldFF}
-                        name="programStageLabel"
-                        inputWidth="400px"
-                        label={i18n.t('Custom label for "Program stage"')}
+                <LabelField
+                    name="programStageLabel"
+                    label={i18n.t('Custom label for "program stage"')}
+                    helpText={i18n.t(
+                        'Example use: See all data in this program stage',
+                        { nsSeparator: '~:~' }
+                    )}
+                />
+                {showPluralLabels && (
+                    <LabelField
+                        name="programStagesLabel"
+                        label={i18n.t(
+                            'Custom label for "program stage" (plural)'
+                        )}
                         helpText={i18n.t(
-                            'Example use: See all data in this program stage',
+                            'Example use: See all program stages',
                             { nsSeparator: '~:~' }
                         )}
-                        dataTest="formfields-programStageLabel"
-                        validate={programStageLabelValidator}
                     />
-                </StandardFormField>
+                )}
 
-                {showPluralLabels && <ProgramStagesLabelField />}
+                <LabelField
+                    name="followUpLabel"
+                    label={i18n.t('Custom label for "follow-up"')}
+                    helpText={i18n.t(
+                        'Used to customize the label for a follow-up event or activity'
+                    )}
+                />
 
-                <StandardFormField>
-                    <Field
-                        component={InputFieldFF}
-                        name="followUpLabel"
-                        inputWidth="400px"
-                        label={i18n.t('Custom label for "Follow-up"')}
-                        helpText={i18n.t(
-                            'Used to customize the label for follow-up events or activities'
+                <LabelField
+                    name="orgUnitLabel"
+                    label={i18n.t('Custom label for "registering unit"')}
+                    helpText={i18n.t(
+                        'Used to customize the label for the organisation unit that registers the enrollment or event'
+                    )}
+                />
+
+                <LabelField
+                    name="relationshipLabel"
+                    label={i18n.t('Custom label for "relationship"')}
+                    helpText={i18n.t(
+                        'Used to customize the label for a relationship between tracked entities'
+                    )}
+                />
+                {showPluralLabels && (
+                    <LabelField
+                        name="relationshipsLabel"
+                        label={i18n.t(
+                            'Custom label for "relationship" (plural)'
                         )}
-                        dataTest="formfields-followUpLabel"
-                        validate={followUpLabelValidator}
+                        helpText={i18n.t('Example use: See all relationships', {
+                            nsSeparator: '~:~',
+                        })}
                     />
-                </StandardFormField>
+                )}
 
-                <StandardFormField>
-                    <Field
-                        component={InputFieldFF}
-                        name="orgUnitLabel"
-                        inputWidth="400px"
-                        label={i18n.t('Custom label for "Registering unit"')}
-                        helpText={i18n.t(
-                            'Used to customize the label for the organisation unit that registers the enrollment or event'
-                        )}
-                        dataTest="formfields-orgUnitLabel"
-                        validate={orgUnitLabelValidator}
+                <LabelField
+                    name="noteLabel"
+                    label={i18n.t('Custom label for "note"')}
+                    helpText={i18n.t(
+                        'Used to customize the label for a note or comment added to an enrollment or event'
+                    )}
+                />
+                {showPluralLabels && (
+                    <LabelField
+                        name="notesLabel"
+                        label={i18n.t('Custom label for "note" (plural)')}
+                        helpText={i18n.t('Example use: See all notes', {
+                            nsSeparator: '~:~',
+                        })}
                     />
-                </StandardFormField>
+                )}
 
-                <StandardFormField>
-                    <Field
-                        component={InputFieldFF}
-                        name="relationshipLabel"
-                        inputWidth="400px"
-                        label={i18n.t('Custom label for "Relationship"')}
-                        helpText={i18n.t(
-                            'Used to customize the label for relationships between tracked entities'
-                        )}
-                        dataTest="formfields-relationshipLabel"
-                        validate={relationshipLabelValidator}
+                <LabelField
+                    name="trackedEntityAttributeLabel"
+                    label={i18n.t('Custom label for "attribute"')}
+                    helpText={i18n.t(
+                        'Used to customize the label for a tracked entity attribute'
+                    )}
+                />
+                {showPluralLabels && (
+                    <LabelField
+                        name="trackedEntityAttributesLabel"
+                        label={i18n.t('Custom label for "attribute" (plural)')}
+                        helpText={i18n.t('Example use: See all attributes', {
+                            nsSeparator: '~:~',
+                        })}
                     />
-                </StandardFormField>
-
-                <StandardFormField>
-                    <Field
-                        component={InputFieldFF}
-                        name="noteLabel"
-                        inputWidth="400px"
-                        label={i18n.t('Custom label for "Note"')}
-                        helpText={i18n.t(
-                            'Used to customize the label for notes or comments added to enrollments or events'
-                        )}
-                        dataTest="formfields-noteLabel"
-                        validate={noteLabelValidator}
-                    />
-                </StandardFormField>
+                )}
             </SectionedFormSection>
         )
     }

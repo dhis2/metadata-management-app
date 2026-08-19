@@ -98,6 +98,7 @@ export const SCHEMA_SECTIONS = {
         title: i18n.t('Data set'),
         titlePlural: i18n.t('Data sets'),
         parentSectionKey: 'dataSet',
+        clonable: true,
     },
     dataSetNotificationTemplate: {
         name: SchemaName.dataSetNotificationTemplate,

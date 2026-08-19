@@ -244,7 +244,7 @@ const expectInputToErrorWhenDuplicate = async (
     await userEvent.click(screen.getByTestId(`formfields-${fieldName}-label`))
     expectInputFieldToHaveError(
         `formfields-${fieldName}`,
-        `This field requires a unique value, please choose another one`,
+        'This field requires a unique value, please choose another one.',
         screen
     )
 }

@@ -1,3 +1,24 @@
+# [0.175.0](https://github.com/dhis2/metadata-management-app/compare/v0.174.3...v0.175.0) (2026-08-14)
+
+
+### Features
+
+* clone data sets ([#1019](https://github.com/dhis2/metadata-management-app/issues/1019)) ([c991a6e](https://github.com/dhis2/metadata-management-app/commit/c991a6ea0e7e577c3cc8a2cf9a1f241b747e4e4e))
+
+## [0.174.3](https://github.com/dhis2/metadata-management-app/compare/v0.174.2...v0.174.3) (2026-08-11)
+
+
+### Bug Fixes
+
+* add the uniqueness check ([#981](https://github.com/dhis2/metadata-management-app/issues/981)) ([4c0212c](https://github.com/dhis2/metadata-management-app/commit/4c0212c071171fa21857b80742b95c69fcfd8672))
+
+## [0.174.2](https://github.com/dhis2/metadata-management-app/compare/v0.174.1...v0.174.2) (2026-08-11)
+
+
+### Bug Fixes
+
+* org unit response processing [DHIS2-21965] ([#1022](https://github.com/dhis2/metadata-management-app/issues/1022)) ([6f26f9b](https://github.com/dhis2/metadata-management-app/commit/6f26f9bd590b8a74cccd6b2f81a5a9dd3c43450d))
+
 ## [0.174.1](https://github.com/dhis2/metadata-management-app/compare/v0.174.0...v0.174.1) (2026-08-04)
 
 

@@ -24,6 +24,7 @@ import {
     SchemaSection,
     SectionedFormProvider,
     SECTIONS_MAP,
+    trimTrimmableFields,
     useBoundResourceQueryFn,
     useCreateModel,
     usePatchModel,
@@ -263,8 +264,9 @@ export const EditNotificationForm = ({
         c,
         closeOnSubmit?: boolean
     ) => {
+        const trimmedValues = trimTrimmableFields(values)
         const jsonPatchOperations = createJsonPatchOperations({
-            values,
+            values: trimmedValues,
             dirtyFields: form.getState().dirtyFields,
             originalValue: form.getState().initialValues,
         })
@@ -279,11 +281,14 @@ export const EditNotificationForm = ({
             (op) => op.path === '/name' && op.op === 'replace'
         )?.value as string | undefined
         const resolvedDisplayName =
-            updatedName || values?.displayName || values.name || ''
+            updatedName ||
+            trimmedValues?.displayName ||
+            trimmedValues.name ||
+            ''
 
         onSubmitted?.(
             {
-                ...values,
+                ...trimmedValues,
                 id: notification.id,
                 displayName: resolvedDisplayName,
             },
@@ -341,29 +346,30 @@ export const NewNotificationForm = ({
         c,
         closeOnSubmit?: boolean
     ) => {
-        const res = await handleCreate(values)
+        const trimmedValues = trimTrimmableFields(values)
+        const res = await handleCreate(trimmedValues)
         if (res.error) {
             return createFormError(res.error)
         }
         const newId = (res.data as { response: { uid: string } }).response.uid
 
-        if (values.program?.id) {
+        if (trimmedValues.program?.id) {
             const patchOperations = {
                 type: 'json-patch',
-                resource: values.programStage
+                resource: trimmedValues.programStage
                     ? SECTIONS_MAP.programStage.namePlural
                     : SECTIONS_MAP.program.namePlural,
-                id: values.programStage
-                    ? values.programStage.id
-                    : values.program.id,
+                id: trimmedValues.programStage
+                    ? trimmedValues.programStage.id
+                    : trimmedValues.program.id,
                 data: [
                     {
                         op: 'replace',
                         path: '/notificationTemplates',
-                        value: values.programStage
+                        value: trimmedValues.programStage
                             ? [
                                   ...stagesNotificationList[
-                                      values.programStage.id
+                                      trimmedValues.programStage.id
                                   ],
                                   { id: newId },
                               ]
@@ -380,9 +386,10 @@ export const NewNotificationForm = ({
 
         onSubmitted?.(
             {
-                ...values,
+                ...trimmedValues,
                 id: newId,
-                displayName: values?.displayName || values.name || '',
+                displayName:
+                    trimmedValues?.displayName || trimmedValues.name || '',
             },
             closeOnSubmit ?? true
         )

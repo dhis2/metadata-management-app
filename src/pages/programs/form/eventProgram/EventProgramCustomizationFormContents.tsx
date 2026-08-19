@@ -45,7 +45,7 @@ export const EventProgramCustomizationFormContents = React.memo(
                         component={InputFieldFF}
                         name="programStages[0].executionDateLabel"
                         inputWidth="400px"
-                        label={i18n.t('Custom label for "Report date"')}
+                        label={i18n.t('Custom label for "report date"')}
                         helpText={i18n.t(
                             'Used as the label for the event date (report date) shown in the Capture app'
                         )}

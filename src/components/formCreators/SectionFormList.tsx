@@ -44,6 +44,7 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
     otherProps,
     warningNotice,
     disabled = false,
+    isClone = false,
 }: Readonly<{
     sectionsFieldName: string
     schemaName: SchemaName
@@ -53,6 +54,7 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
     otherProps?: TExtraProps
     warningNotice?: React.ReactNode
     disabled?: boolean
+    isClone?: boolean
 }>) {
     const [sectionFormOpen, setSectionFormOpen] = useState<
         DisplayableModel | null | undefined
@@ -170,6 +172,7 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
                             onClick={() => setSectionFormOpen(section)}
                             onDelete={() => handleDeletedSection(index)}
                             disabled={disabled}
+                            isClone={isClone}
                         />
                     )
                 })}
@@ -217,6 +220,7 @@ export const ListInFormItem = ({
     onDelete,
     translatable = true,
     disabled = false,
+    isClone = false,
 }: {
     item: ListItem
     schemaName: SchemaName
@@ -224,6 +228,7 @@ export const ListInFormItem = ({
     onDelete?: () => void
     translatable?: boolean
     disabled?: boolean
+    isClone?: boolean
 }) => {
     const [translationDialogModel, setTranslationDialogModel] = useState<
         BaseListModel | undefined
@@ -270,6 +275,7 @@ export const ListInFormItem = ({
                             <MoreDropdownItem
                                 label={i18n.t('Translate')}
                                 onClick={openTranslationDialog}
+                                disabled={isClone}
                             />
                         )}
                         <MoreDropdownItem

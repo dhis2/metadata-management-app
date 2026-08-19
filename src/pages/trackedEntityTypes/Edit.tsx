@@ -13,8 +13,10 @@ import {
 import {
     ATTRIBUTE_VALUES_FIELD_FILTERS,
     DEFAULT_FIELD_FILTERS,
+    FEATURES,
     SectionedFormProvider,
     SECTIONS_MAP,
+    useFeatureAvailable,
     useOnSubmitEdit,
     useBoundResourceQueryFn,
 } from '../../lib'
@@ -25,11 +27,13 @@ import {
     TrackedEntityTypeFormFields,
     validateTrackedEntityType,
 } from './form'
+const PLURAL_LABEL_FIELD_FILTERS = ['trackedEntityTypesLabel'] as const
+
 const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
     'name',
-    'trackedEntityTypesLabel',
+    ...PLURAL_LABEL_FIELD_FILTERS,
     'shortName',
     'description',
     'style[color,icon]',
@@ -62,12 +66,23 @@ export const Component = () => {
         ({ message }) => message,
         (options) => options
     )
+    const showPluralLabels = useFeatureAvailable(
+        FEATURES.customTerminologyPlurals
+    )
+
+    const requestedFields = useMemo(() => {
+        if (showPluralLabels) {
+            return fieldFilters.concat()
+        }
+        const pluralFilters: readonly string[] = PLURAL_LABEL_FIELD_FILTERS
+        return fieldFilters.filter((f) => !pluralFilters.includes(f))
+    }, [showPluralLabels])
 
     const query = {
         resource: 'trackedEntityTypes',
         id: modelId,
         params: {
-            fields: fieldFilters.concat(),
+            fields: requestedFields,
         },
     }
     const trackedEntityType = useQuery({

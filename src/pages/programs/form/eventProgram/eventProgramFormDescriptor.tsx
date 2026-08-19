@@ -128,7 +128,7 @@ export const EventProgramFormDescriptor = {
             fields: [
                 {
                     name: 'programStages[0].executionDateLabel',
-                    label: i18n.t('Custom label for "Report date"'),
+                    label: i18n.t('Custom label for "report date"'),
                 },
             ],
         },

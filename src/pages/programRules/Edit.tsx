@@ -17,6 +17,7 @@ import {
     createFormError,
     SectionedFormProvider,
     SECTIONS_MAP,
+    trimTrimmableFields,
     useBoundResourceQueryFn,
     usePatchModel,
     useOnEditCompletedSuccessfully,
@@ -87,7 +88,7 @@ export const Component = () => {
                 : valuesWithoutActions
 
             const jsonPatchOperations = createJsonPatchOperations({
-                values: valuesToPatch,
+                values: trimTrimmableFields(valuesToPatch),
                 dirtyFields: actionsChanged
                     ? { ...dirtyFields, programRuleActions: true }
                     : dirtyFields,

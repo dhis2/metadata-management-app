@@ -136,6 +136,7 @@ export const useRefreshMaterializedView = () => {
                         'Could not refresh materialized view: {{error}}',
                         {
                             error: errorMessage,
+                            nsSeparator: '~:~',
                         }
                     ),
                 })
