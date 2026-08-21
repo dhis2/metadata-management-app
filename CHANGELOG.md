@@ -1,3 +1,10 @@
+## [0.176.1](https://github.com/dhis2/metadata-management-app/compare/v0.176.0...v0.176.1) (2026-08-21)
+
+
+### Bug Fixes
+
+* program stage reordering ([#1021](https://github.com/dhis2/metadata-management-app/issues/1021)) ([bf56f55](https://github.com/dhis2/metadata-management-app/commit/bf56f55526327d5417aee103b9fd4b22268bad7a))
+
 # [0.176.0](https://github.com/dhis2/metadata-management-app/compare/v0.175.0...v0.176.0) (2026-08-21)
 
 
