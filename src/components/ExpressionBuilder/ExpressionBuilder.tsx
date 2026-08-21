@@ -186,17 +186,23 @@ export const ExpressionBuilder = ({
                                     />
                                 </StandardFormField>
                             </div>
-                            <div>
-                                {initiallyValidated && (
-                                    <ValidationBox
-                                        response={validationResponse}
-                                        validating={validating}
-                                        validatedValue={validatedValue}
-                                        validate={validateCurrentState}
-                                        isEmpty={isEmpty}
-                                        clearable={clearable}
-                                    />
-                                )}
+                            <div className={styles.expressionMetaContainer}>
+                                <div
+                                    className={
+                                        styles.expressionValidationContainer
+                                    }
+                                >
+                                    {initiallyValidated && (
+                                        <ValidationBox
+                                            response={validationResponse}
+                                            validating={validating}
+                                            validatedValue={validatedValue}
+                                            validate={validateCurrentState}
+                                            isEmpty={isEmpty}
+                                            clearable={clearable}
+                                        />
+                                    )}
+                                </div>
 
                                 <div className={styles.fieldHelpText}>
                                     <IconInfo16 />

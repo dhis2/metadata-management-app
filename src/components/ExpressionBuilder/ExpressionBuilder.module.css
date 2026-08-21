@@ -66,6 +66,19 @@
     min-width: 0;
 }
 
+.expressionMetaContainer {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    max-height: 40%;
+    min-height: 0;
+}
+
+.expressionValidationContainer {
+    overflow-y: auto;
+    min-height: 0;
+}
+
 .expressionField > * {
     flex: 1;
     min-width: 0;
