@@ -804,17 +804,29 @@ msgstr "Copy ID"
 msgid "Delete"
 msgstr "Delete"
 
+msgid "New program stages order saved successfully"
+msgstr "New program stages order saved successfully"
+
 msgid "New sections order saved successfully"
 msgstr "New sections order saved successfully"
 
+msgid "Error saving new program stages order."
+msgstr "Error saving new program stages order."
+
 msgid "Error saving new sections order."
 msgstr "Error saving new sections order."
+
+msgid "Reorder program stages"
+msgstr "Reorder program stages"
 
 msgid "Reorder form sections"
 msgstr "Reorder form sections"
 
 msgid "(marked for deletion)"
 msgstr "(marked for deletion)"
+
+msgid "Save program stage ordering"
+msgstr "Save program stage ordering"
 
 msgid "Save section ordering"
 msgstr "Save section ordering"
@@ -5755,6 +5767,9 @@ msgstr "Customization"
 msgid "Override default labels with program-specific terms."
 msgstr "Override default labels with program-specific terms."
 
+msgid "Custom label for \"Report date\""
+msgstr "Custom label for \"Report date\""
+
 msgid "Used as the label for the event date (report date) shown in the Capture app"
 msgstr "Used as the label for the event date (report date) shown in the Capture app"
 
@@ -5974,6 +5989,9 @@ msgstr "Save changes to this program before editing sections"
 
 msgid "Save changes to this program before editing the form"
 msgstr "Save changes to this program before editing the form"
+
+msgid "Custom label for event (plural)"
+msgstr "Custom label for event (plural)"
 
 msgid ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
@@ -6272,6 +6290,27 @@ msgstr "Restore stage"
 
 msgid "Add a program stage"
 msgstr "Add a program stage"
+
+msgid "Reorder stages"
+msgstr "Reorder stages"
+
+msgid "Custom label for \"Enrollment\" (plural)"
+msgstr "Custom label for \"Enrollment\" (plural)"
+
+msgid "Example use: See all enrollments"
+msgstr "Example use: See all enrollments"
+
+msgid "Custom label for \"Event\" (plural)"
+msgstr "Custom label for \"Event\" (plural)"
+
+msgid "Example use: See all events"
+msgstr "Example use: See all events"
+
+msgid "Custom label for \"Program stage\" (plural)"
+msgstr "Custom label for \"Program stage\" (plural)"
+
+msgid "Example use: See all program stages"
+msgstr "Example use: See all program stages"
 
 msgid "Access Level"
 msgstr "Access Level"
