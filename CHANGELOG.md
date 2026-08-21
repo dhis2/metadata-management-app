@@ -1,3 +1,16 @@
+# [0.176.0](https://github.com/dhis2/metadata-management-app/compare/v0.175.0...v0.176.0) (2026-08-21)
+
+
+### Bug Fixes
+
+* expression builder css update ([#1026](https://github.com/dhis2/metadata-management-app/issues/1026)) ([981e2ec](https://github.com/dhis2/metadata-management-app/commit/981e2ec7c24517f61e6bd7046b4d32da59b011a0))
+* lowercase quoted terms in custom label help text ([#1023](https://github.com/dhis2/metadata-management-app/issues/1023)) ([efee02c](https://github.com/dhis2/metadata-management-app/commit/efee02c29f3e13a49f3b75db47ba6267d7cca3e4))
+
+
+### Features
+
+* [DHIS2-21877] Add new plural terminology fields ([#1006](https://github.com/dhis2/metadata-management-app/issues/1006)) ([a4626f7](https://github.com/dhis2/metadata-management-app/commit/a4626f7fc659c159aa485b35ea1e133509cd0213))
+
 # [0.175.0](https://github.com/dhis2/metadata-management-app/compare/v0.174.3...v0.175.0) (2026-08-14)
 
 
