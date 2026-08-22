@@ -1,16 +1,16 @@
 # Translators:
 # channara rin, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
-# Kiry Heng, 2026
 # Philip Larsen Donnelly, 2026
 # Em Le <em.hispvietnam@gmail.com>, 2026
+# Kiry Heng, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-08-11T12:10:52.795Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2026\n"
+"Last-Translator: Kiry Heng, 2026\n"
 "Language-Team: Khmer (https://app.transifex.com/hisp-uio/teams/100509/km/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -554,7 +554,7 @@ msgid "Insert grey (disabled) fields"
 msgstr ""
 
 msgid "Date of enrollment"
-msgstr ""
+msgstr "កាលបរិច្ឆេទនៃការចុះឈ្មោះ"
 
 msgid "Date of incident"
 msgstr ""
@@ -584,7 +584,7 @@ msgid "Please enter a GeoJSON value"
 msgstr ""
 
 msgid "Validation errors"
-msgstr ""
+msgstr "កំហុសការផ្ទៀងផ្ទាត់"
 
 msgid "Some fields have validation errors. Please fix them before saving."
 msgstr ""
@@ -1220,7 +1220,7 @@ msgid "Event"
 msgstr ""
 
 msgid "Enrollment"
-msgstr ""
+msgstr "ការចុះឈ្មោះ"
 
 msgid "Tracked entity"
 msgstr ""

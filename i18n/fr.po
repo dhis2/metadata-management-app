@@ -67,13 +67,13 @@ msgid "The page you are looking for does not exist."
 msgstr "La page que vous recherchez n'existe pas."
 
 msgid "Cloning not available yet."
-msgstr ""
+msgstr "Le clonage n'est pas encore disponible."
 
 msgid "{{-sectionName}} cannot be cloned."
-msgstr ""
+msgstr "{{-sectionName}} ne peut pas être cloné. "
 
 msgid "Edit: {{objectName}}"
-msgstr ""
+msgstr "Modifier: {{objectName}}"
 
 msgid "Edit"
 msgstr "Modifier"
@@ -85,34 +85,34 @@ msgid "Merge {{modelName}}"
 msgstr "Fusionner {{modelName}}"
 
 msgid "Move organisation units"
-msgstr ""
+msgstr "Déplacer les unités d'organisation"
 
 msgid "Clone {{modelName}}"
-msgstr ""
+msgstr "Cloner {{modelName}}"
 
 msgid "Metadata Integrity Checks"
-msgstr ""
+msgstr "Vérifier l'intégrité des métadonnées"
 
 msgid "Import Metadata"
-msgstr ""
+msgstr "Importer les métadonnées"
 
 msgid "Export Metadata"
-msgstr ""
+msgstr "Exporter les métadonnées"
 
 msgid "Metadata Overview"
 msgstr "Aperçu des métadonnées"
 
 msgid "All metadata"
-msgstr ""
+msgstr "Toutes les métadonnées"
 
 msgid "No menu items found for"
 msgstr "Aucun élément de menu n'a été trouvé pour"
 
 msgid "Overview"
-msgstr "Général"
+msgstr "Aperçu"
 
 msgid "Hierarchy operations"
-msgstr "Opérations de hiérarchie"
+msgstr "Opérations hiérarchiques"
 
 msgid "Search menu items"
 msgstr "Rechercher des éléments de menu"
@@ -124,7 +124,7 @@ msgid "Color"
 msgstr "Couleur"
 
 msgid "Color: none selected"
-msgstr ""
+msgstr "Couleur: aucune sélection"
 
 msgid "Remove color"
 msgstr "Retirer la couleur"
@@ -133,10 +133,10 @@ msgid "Icon"
 msgstr "Icône"
 
 msgid "Icon: none selected"
-msgstr ""
+msgstr "Icône: aucune sélection"
 
 msgid "Choose an icon"
-msgstr ""
+msgstr "Choisir une icône"
 
 msgid "All"
 msgstr "Tout"
@@ -148,19 +148,19 @@ msgid "Negative"
 msgstr "Négatif"
 
 msgid "Outline"
-msgstr "Contour"
+msgstr "Présentation générale"
 
 msgid "Search icons"
 msgstr "Rechercher des icônes"
 
 msgid "Available icons"
-msgstr ""
+msgstr "icônes disponibles"
 
 msgid "No icons found"
-msgstr ""
+msgstr "Aucune icône trouvée"
 
 msgid "Choose icon"
-msgstr ""
+msgstr "Icône choisie"
 
 msgid "Remove icon"
 msgstr "Supprimer l'icone"
@@ -175,10 +175,10 @@ msgid "Add new"
 msgstr "Ajouter nouveau"
 
 msgid "Expression cannot be empty"
-msgstr ""
+msgstr "L'expression ne peut pas être vide"
 
 msgid "Expression not yet validated"
-msgstr ""
+msgstr "L'expression n'est pas encore validée"
 
 msgid "Validate"
 msgstr "Valider"
@@ -191,6 +191,8 @@ msgstr "Expression valide"
 
 msgid "Add operators, variables or program data from the right sidebar"
 msgstr ""
+"Ajoutez des opérateurs, des variables ou des données de programme à partir "
+"de la barre latérale de droite"
 
 msgid "Apply"
 msgstr "Appliquer"
@@ -202,7 +204,7 @@ msgid "(No Value)"
 msgstr "(Sans valeur)"
 
 msgid "Filter list"
-msgstr ""
+msgstr "Filtrer la liste"
 
 msgid "No matches"
 msgstr "Aucune correspondance"
@@ -223,13 +225,13 @@ msgid "Skip if all values are missing"
 msgstr "Ignorer si toutes les valeurs sont manquantes"
 
 msgid "Program has not been selected"
-msgstr ""
+msgstr "Le programme n'est pas sélectionné"
 
 msgid "Data elements"
 msgstr "Éléments de données"
 
 msgid "Program tracked entity attributes"
-msgstr "Attributs de l'entité suivie du program"
+msgstr "Attributs de l'entité suivie du programme"
 
 msgid "Indicators"
 msgstr "Indicateurs"
@@ -238,160 +240,160 @@ msgid "Select a Program"
 msgstr "Sélectionner un programme"
 
 msgid "Select a Program stage"
-msgstr ""
+msgstr "Sélectionner un stade de programme"
 
 msgid "+ (add)"
-msgstr ""
+msgstr "+ (ajouter)"
 
 msgid "- (subtract)"
-msgstr ""
+msgstr "- (soustraire)"
 
 msgid "* (multiply)"
-msgstr ""
+msgstr "* (multiplier)"
 
 msgid "/ (divide)"
-msgstr ""
+msgstr "/ (diviser)"
 
 msgid "% (percent)"
-msgstr ""
+msgstr "% (pourcentage)"
 
 msgid "("
-msgstr ""
+msgstr "("
 
 msgid ")"
-msgstr ""
+msgstr ")"
 
 msgid "days"
 msgstr "jours"
 
 msgid "if("
-msgstr ""
+msgstr "if("
 
 msgid "isNull("
-msgstr ""
+msgstr "isNull("
 
 msgid "isNotNull("
-msgstr ""
+msgstr "isNotNull("
 
 msgid "firstNonNull("
-msgstr ""
+msgstr "firstNonNull("
 
 msgid "greatest("
-msgstr ""
+msgstr "plus grand("
 
 msgid "least("
-msgstr ""
+msgstr "moins("
 
 msgid "log("
-msgstr ""
+msgstr "journal("
 
 msgid "log10("
-msgstr ""
+msgstr "journal10("
 
 msgid "> (greater than)"
-msgstr ""
+msgstr "> (supérieur à)"
 
 msgid ">= (greater than or equal to)"
-msgstr ""
+msgstr ">= (supérieur ou égal à)"
 
 msgid "< (less than)"
-msgstr ""
+msgstr "< (linférieur à)"
 
 msgid "<= (less than or equal to)"
-msgstr ""
+msgstr "<= (inférieur ou égal à)"
 
 msgid "== (equals)"
-msgstr ""
+msgstr "== (égal)"
 
 msgid "!= (does not equal)"
-msgstr ""
+msgstr "!= (n'est pas égal)"
 
 msgid "! (not)"
-msgstr ""
+msgstr "! (pas)"
 
 msgid "&& (and)"
-msgstr ""
+msgstr "&& (et)"
 
 msgid "|| (or)"
-msgstr ""
+msgstr "|| (ou)"
 
 msgid ".periodOffset("
-msgstr ""
+msgstr ".periodOffset("
 
 msgid "avg("
-msgstr ""
+msgstr "moyen("
 
 msgid "count("
-msgstr ""
+msgstr "nombre("
 
 msgid "max("
-msgstr ""
+msgstr "max("
 
 msgid "median("
-msgstr ""
+msgstr "median("
 
 msgid "min("
-msgstr ""
+msgstr "min("
 
 msgid "percentileCont("
-msgstr ""
+msgstr "percentileCont("
 
 msgid "stddev("
-msgstr ""
+msgstr "écart-type("
 
 msgid "stddevPop("
-msgstr ""
+msgstr "stddevPop("
 
 msgid "stddevSamp("
-msgstr ""
+msgstr "stddevSamp("
 
 msgid "sum("
-msgstr ""
+msgstr "somme("
 
 msgid "contains("
-msgstr ""
+msgstr "contient("
 
 msgid "containsItems("
-msgstr ""
+msgstr "containsItems("
 
 msgid "is("
-msgstr ""
+msgstr "is("
 
 msgid "normDistCum("
-msgstr ""
+msgstr "normDistCum("
 
 msgid "normDistDen("
-msgstr ""
+msgstr "normDistDen("
 
 msgid "null"
-msgstr ""
+msgstr "null"
 
 msgid "orgUnit.ancestor("
-msgstr ""
+msgstr "orgUnit.ancestor("
 
 msgid "orgUnit.dataSet("
-msgstr ""
+msgstr "orgUnit.dataSet("
 
 msgid "orgUnit.group("
-msgstr ""
+msgstr "orgUnit.group("
 
 msgid "orgUnit.program("
-msgstr ""
+msgstr "orgUnit.program("
 
 msgid "removeZeros("
-msgstr ""
+msgstr "removeZeros("
 
 msgid ".maxDate("
-msgstr ""
+msgstr ".maxDate("
 
 msgid ".minDate("
-msgstr ""
+msgstr ".minDate("
 
 msgid "Program data"
-msgstr ""
+msgstr "Données du programme"
 
 msgid "Org unit counts"
-msgstr "Org unit counts"
+msgstr "Nombre d'Unités d'Organisation"
 
 msgid "Constants"
 msgstr "Constantes"
@@ -403,10 +405,10 @@ msgid "Operators"
 msgstr "Les opérateurs"
 
 msgid "Analytics period end"
-msgstr "Fin de la période d'analytique"
+msgstr "Fin de la période d'analyse"
 
 msgid "Analytics period start"
-msgstr "Début de la période d'analytique"
+msgstr "Début de la période d'analyse"
 
 msgid "Completed date"
 msgstr "Date d'achèvement"
@@ -442,10 +444,10 @@ msgid "Sync date"
 msgstr "Date de synchronisation"
 
 msgid "Value count"
-msgstr "Compte de valeurs"
+msgstr "Nombre de valeurs"
 
 msgid "Zero or positive value count"
-msgstr "Compte valeur zéro ou positif"
+msgstr "Nombre de valeur zéro ou positif"
 
 msgid "Enrollment count"
 msgstr "Nombre d'inscriptions"
@@ -463,7 +465,7 @@ msgid "Variables"
 msgstr "Variables"
 
 msgid "Attributes"
-msgstr "Les attributs"
+msgstr "Attributs"
 
 msgid "Program rule variables"
 msgstr "Variables de règle de programme"
@@ -478,7 +480,7 @@ msgid "Message subject"
 msgstr "Objet du message"
 
 msgid "Message body *"
-msgstr ""
+msgstr "Corps du message *"
 
 msgid "Message body"
 msgstr "Corps du message"
@@ -493,10 +495,10 @@ msgid "Filter options"
 msgstr "Options de filtre"
 
 msgid "Change this field"
-msgstr ""
+msgstr "Modifier ce champ"
 
 msgid "Are you sure you want to change this?"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir modifier ceci?"
 
 msgid "Change"
 msgstr "Modifier"
@@ -513,6 +515,8 @@ msgstr "Formulaire personnalisé"
 msgid ""
 "Define a custom form for this {{customFormTarget}} by editing HTML below."
 msgstr ""
+"Définir un formulaire personnalisé pour ceci {{customFormTarget}} en éditant"
+" le code HTML ci-dessous."
 
 msgid "Preview"
 msgstr "Aperçu"
@@ -532,9 +536,11 @@ msgstr "Enregistrer le formulaire personnalisé"
 msgid ""
 "Saving a custom form does not save other changes to the {{customFormTarget}}"
 msgstr ""
+"L'enregistrement d'un formulaire personnalisé n'entraîne pas "
+"l'enregistrement des autres modifications apportées à {{customFormTarget}}"
 
 msgid "New custom form"
-msgstr ""
+msgstr "Nouveau formulaire personnalisé"
 
 msgid "Edit custom form"
 msgstr "Modifier le formulaire personnalisé"
@@ -543,9 +549,13 @@ msgid ""
 "No custom form has been added yet. Create a custom form to use it for web "
 "data entry."
 msgstr ""
+"Aucun formulaire personnalisé n'a encore été ajouté. Créez un formulaire "
+"personnalisé afin de l'utiliser pour la saisie de données sur le Web."
 
 msgid "This data set uses a custom form for web data entry."
 msgstr ""
+"Cet ensemble de données utilise un formulaire personnalisé pour la saisie de"
+" données sur le Web."
 
 msgid "Custom form will be removed on save"
 msgstr "Le formulaire personnalisé sera supprimé lors de l'enregistrement"
@@ -618,12 +628,15 @@ msgid "Show error details"
 msgstr "Afficher les détails de l'erreur"
 
 msgid "Name: {{- displayName}} (Translated)"
-msgstr ""
+msgstr "Nom: {{- displayName}} (Traduit)"
 
 msgid ""
 "Translatable fields appear in the default language in this form, not in your"
 " selected database language."
 msgstr ""
+"Les champs traduisibles apparaissent dans ce formulaire dans la langue par "
+"défaut, et non dans la langue de la base de données que vous avez "
+"sélectionnée."
 
 msgid "<No value>"
 msgstr "<No value>"
@@ -632,15 +645,17 @@ msgid "Set up information for the attributes assigned to {{modelName}}."
 msgstr "Définir les informations pour les attributs assignés à {{modelName}}."
 
 msgid "Cloning {{- clonedModelName}}"
-msgstr ""
+msgstr "Clonage {{- clonedModelName}}"
 
 msgid ""
 "All values from the original {{-sectionName}} are included. Values that must"
 " be unique need to be updated."
 msgstr ""
+"Toutes les valeurs de {{-sectionName}} original sont incluses. Les valeurs "
+"qui doivent être uniques doivent être mises à jour."
 
 msgid "The default way to aggregate in analytics."
-msgstr ""
+msgstr "La méthode par défaut pour agréger les données dans les analyses."
 
 msgid "Disabled for the selected value type."
 msgstr "Désactivé pour le type de valeur sélectionné."
@@ -649,69 +664,70 @@ msgid "Aggregation type"
 msgstr "Type d'agrégation"
 
 msgid "An optional unique identifier."
-msgstr ""
+msgstr "Un identifiant unique facultatif."
 
 msgid "Code"
 msgstr "Code"
 
 msgid "Visual configuration"
-msgstr ""
+msgstr "Configuration visuelle"
 
 msgid "Description"
 msgstr "Description"
 
 msgid "Location type"
-msgstr ""
+msgstr "Type d'emplacement"
 
 msgid "Point"
 msgstr "Point"
 
 msgid "Polygon/Area"
-msgstr ""
+msgstr "Polygone/Zone"
 
 msgid "Do not collect location data"
-msgstr ""
+msgstr "Ne collectez pas de données de localisation"
 
 msgid "Available groups"
-msgstr ""
+msgstr "Groupes disponibles"
 
 msgid "Selected groups"
-msgstr ""
+msgstr "Groupes sélectionnés"
 
 msgid "Filter available groups"
-msgstr ""
+msgstr "Filtrer les groupes disponibles"
 
 msgid "Filter selected groups"
-msgstr ""
+msgstr "Filtrer les groupes sélectionnés"
 
 msgid ""
 "This name is already in use. Consider updating the name to avoid a "
 "duplication."
 msgstr ""
+"Ce nom est déjà utilisé. Pensez à le modifier pour éviter tout doublon."
 
 msgid "{{fieldLabel}}"
-msgstr ""
+msgstr "{{fieldLabel}}"
 
 msgid "Name"
 msgstr "Nom"
 
 msgid "Select by level"
-msgstr ""
+msgstr "Sélectionner par niveau"
 
 msgid "Select by group"
-msgstr ""
+msgstr "Sélectionner par groupe"
 
 msgid "Deselect by level"
-msgstr ""
+msgstr "Désélectionner par niveau"
 
 msgid "Deselect by group"
-msgstr ""
+msgstr "Désélectionner par groupe"
 
 msgid "Deselect all"
 msgstr "Désélectionner tout"
 
 msgid "Select/deselect by group or level"
-msgstr ""
+msgstr "Sélectionner/désélectionner par groupe ou par niveau"
 
 msgid "Search"
 msgstr "Rechercher"
@@ -742,54 +758,64 @@ msgid ""
 "This short name is already in use. Consider updating the name to avoid a "
 "duplication."
 msgstr ""
+"Ce nom court est déjà utilisé. Pensez à le modifier pour éviter tout "
+"doublon."
 
 msgid ""
 "A short, unique name. Displayed in analytics apps where space is limited, "
 "depending on user or system settings."
 msgstr ""
+"Un nom court et unique. Affiché dans les applications d'analyse où l'espace "
+"est limité, en fonction des paramètres utilisateur ou système."
 
 msgid "Short name"
 msgstr "Nom court"
 
 msgid "Choose the kind of data to collect."
-msgstr ""
+msgstr "Choisir le type de données à collecter."
 
 msgid ""
 "Disabled as the value type must match the value type of the selected option "
 "set."
 msgstr ""
+"Désactivé car le type de valeur doit correspondre au type de valeur de "
+"l'ensemble d'options sélectionné."
 
 msgid "Value type"
 msgstr "Type de valeur"
 
 msgid "variable"
-msgstr ""
+msgstr "variable"
 
 msgid "Change value type?"
-msgstr ""
+msgstr "Modifier le type de valeur?"
 
 msgid ""
 "If this {{objectType}} already has data, changing its type can make existing"
 " values incompatible and affect analytics tables."
 msgstr ""
+"Si cet {{objectType}} contient déjà des données, la modification de son type"
+" peut rendre les valeurs existantes incompatibles et avoir des répercussions"
+" sur les tables d'analyse."
 
 msgid "Change value type from {{currentSelection}} to {{newObjectTypeValue}}?"
 msgstr ""
+"Changer le type de valeur de {{currentSelection}} à{{newObjectTypeValue}}?"
 
 msgid "undefined"
-msgstr ""
+msgstr "indéfini"
 
 msgid "Change to {{newValue}}"
-msgstr ""
+msgstr "Modifier en {{newValue}}"
 
 msgid "Failed to load data"
-msgstr ""
+msgstr "Échec du chargement des données"
 
 msgid "Failed to load custom attributes"
-msgstr ""
+msgstr "Échec du chargement des attributs personnalisés"
 
 msgid "New section"
-msgstr ""
+msgstr "Nouvelle section"
 
 msgid "Edit section"
 msgstr "Modifier la section"
@@ -838,35 +864,44 @@ msgstr "Enregistrer l'ordre des sections"
 
 msgid "You need to save before this form type can be configured."
 msgstr ""
+"Pour pouvoir configurer ce type de formulaire, vous devez d'abord "
+"l'enregistrer."
 
 msgid "Section form"
 msgstr "Formulaire à sections"
 
 msgid "Basic form"
-msgstr ""
+msgstr "Formulaire de base"
 
 msgid "Show data items in a simple list."
-msgstr ""
+msgstr "Afficher les éléments de données sous forme de liste simple."
 
 msgid "Form type based on current setup"
-msgstr ""
+msgstr "Type de formulaire en fonction de la configuration actuelle"
 
 msgid "Web: {{webFormType}}"
-msgstr ""
+msgstr "Web: {{webFormType}}"
 
 msgid "Android: {{androidFormType}}"
-msgstr ""
+msgstr "Android: {{androidFormType}}"
 
 msgid ""
 "Organise data items into sections for easier entry. Section forms are used "
 "when no custom form is available."
 msgstr ""
+"Regroupez les éléments de données en sections pour faciliter leur saisie. "
+"Les formulaires par section sont utilisés lorsqu'aucun formulaire "
+"personnalisé n'est disponible."
 
 msgid ""
 "Design a custom layout for data entry. On web, custom forms are used when "
 "available. On Android, section forms are used instead, or the basic form if "
 "no section form exists."
 msgstr ""
+"Concevez une mise en page personnalisée pour la saisie des données. Sur le "
+"Web, les formulaires personnalisés sont utilisés lorsqu'ils sont "
+"disponibles. Sur Android, les formulaires par section sont utilisés à la "
+"place, ou le formulaire de base si aucun formulaire par section n'existe."
 
 msgid "Failed to load {{label}}"
 msgstr "Échec du chargement {{label}}"
@@ -881,10 +916,10 @@ msgid "Confirmation code does not match"
 msgstr "Le code de confirmation ne correspond pas"
 
 msgid "Delete the source data values"
-msgstr ""
+msgstr "Supprimer les valeurs des données source"
 
 msgid "At least one source must be specified to merge"
-msgstr ""
+msgstr "Une source au moins doit être spécifiée pour effectuer la fusion"
 
 msgid "Target must be specified to merge"
 msgstr "La cible doit être spécifiée avant la fusion"
@@ -926,22 +961,24 @@ msgid "Loading..."
 msgstr "Chargement…"
 
 msgid "Add new {{name}}"
-msgstr ""
+msgstr "Ajouter nouveau {{name}}"
 
 msgid "Saving this {{name}} won't apply unsaved changes in the form below."
 msgstr ""
+"En enregistrant ce {{name}}, les modifications non enregistrées dans le "
+"formulaire ci-dessous ne seront pas prises en compte."
 
 msgid "Available {{name}}"
-msgstr ""
+msgstr "Disponible {{name}}"
 
 msgid "Selected {{name}}"
-msgstr ""
+msgstr "Sélectionné {{name}}"
 
 msgid "Filter available {{name}}"
-msgstr ""
+msgstr "Filtre disponible {{name}}"
 
 msgid "Filter selected {{name}}"
-msgstr ""
+msgstr "Filtre sélectionné {{name}}"
 
 msgid "Filter available items"
 msgstr "Filtrer les éléments disponibles"
@@ -998,13 +1035,13 @@ msgid "Failed to update sharing"
 msgstr "Échec de la mise à jour du partage"
 
 msgid "Update public sharing"
-msgstr ""
+msgstr "Mettre à jour le partage public"
 
 msgid "Update sharing for users and groups"
 msgstr "Mettre à jour le partage pour les utilisateurs et les groupes"
 
 msgid "Public sharing"
-msgstr ""
+msgstr "Partage public"
 
 msgid "User or group"
 msgstr "Utilisateur ou groupe"
@@ -1153,10 +1190,10 @@ msgid "Program indicator group"
 msgstr "Groupe d'indicateurs de programme"
 
 msgid "Select source type"
-msgstr ""
+msgstr "Sélectionner un type de source"
 
 msgid "All source types"
-msgstr ""
+msgstr "Tous les types de source"
 
 msgid "Tracker program"
 msgstr "Programme tracker"
@@ -1165,10 +1202,10 @@ msgid "Event program"
 msgstr "Programme d'évènement"
 
 msgid "Select program type"
-msgstr ""
+msgstr "Sélectionner un type de programme"
 
 msgid "All program types"
-msgstr ""
+msgstr "Tous les types de programme"
 
 msgid "Public access"
 msgstr "Accès public"
@@ -1180,7 +1217,7 @@ msgid "Successfully deleted {{modelType}} \"{{displayName}}\""
 msgstr "Suppression réussie du {{modelType}} \"{{displayName}}\""
 
 msgid "Are you sure that you want to delete \"{{- displayName}}\"?"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir supprimer \"{{- displayName}}\"?"
 
 msgid "Something went wrong deleting the {{modelType}}"
 msgstr "Une erreur s'est produite lors de la suppression du {{modelType}}"
@@ -1229,7 +1266,7 @@ msgid "Failed to save"
 msgstr "Échec de sauvegarde"
 
 msgid "Reset to default"
-msgstr "Retour aux valeurs par défaut"
+msgstr "Réinitialiser les paramètres par défaut"
 
 msgid "Manage {{section}} view"
 msgstr "Gérer la vue de {{section}}"
@@ -1259,7 +1296,7 @@ msgid "Public can view"
 msgstr "Accès public à la visualisation"
 
 msgid "Public cannot access"
-msgstr "Pas d'accès publicpublic n'a pas accès"
+msgstr "Pas d'accès public "
 
 msgid "New"
 msgstr "Nouveau"
@@ -1274,7 +1311,7 @@ msgid "Merge..."
 msgstr "Fusionner..."
 
 msgid "Move..."
-msgstr ""
+msgstr "Déplacer..."
 
 msgid "Choose a Locale to translate from the menu above"
 msgstr "Choisir une langue pour la traduction dans le menu ci-dessus."
@@ -1307,13 +1344,13 @@ msgid "Search for a user or group"
 msgstr "Recherche d'un utilisateur ou d'un groupe"
 
 msgid "Feature type"
-msgstr "Type d'entité géographique"
+msgstr "Type d'élément"
 
 msgid "Allow events to be assigned to users"
-msgstr ""
+msgstr "Autoriser l'attribution d'événements aux utilisateurs"
 
 msgid "Allow multiple events in this stage"
-msgstr ""
+msgstr "Autoriser plusieurs événements à ce stade"
 
 msgid "Standard interval days"
 msgstr "Jours d'intervalle standard"
@@ -1328,49 +1365,53 @@ msgid "Validation strategy"
 msgstr "Stratégie de validation"
 
 msgid "Generate offline event IDs"
-msgstr ""
+msgstr "Générer des identifiants d'événements hors ligne"
 
 msgid "Ask user to create a new event after completion"
 msgstr ""
+"Demander à l'utilisateur de créer un nouvel événement une fois l'opération "
+"terminée"
 
 msgid "Ask user to complete enrollment after completion"
 msgstr ""
+"Demander à l'utilisateur de finaliser son inscription une fois l'opération "
+"terminée"
 
 msgid "Block data entry after completion"
-msgstr ""
+msgstr "Bloquer la saisie des données une fois terminée"
 
 msgid "Create an event in this stage on enrollment"
-msgstr ""
+msgstr "Créer un événement à ce stade lors de l'inscription"
 
 msgid "Open data entry form after enrollment"
-msgstr "Ouvrir le formulaire de saisie après enrôlement"
+msgstr "Ouvrir le formulaire de saisie après l'inscription"
 
 msgid "Date to use for created event report date"
-msgstr ""
+msgstr "Date à utiliser comme date de création du rapport d'événements"
 
 msgid "Scheduled days from reference date"
-msgstr ""
+msgstr "Jours prévus à compter de la date de référence"
 
 msgid "Reference date for scheduling"
-msgstr ""
+msgstr "Date de référence pour la planification"
 
 msgid "Hide scheduled date"
-msgstr ""
+msgstr "Masquer la date prévue"
 
 msgid "Custom label for \"Report date\""
-msgstr ""
+msgstr "Étiquette personnalisée pour la \"date du rapport\""
 
 msgid "Custom label for \"Due date\""
-msgstr ""
+msgstr "Étiquette personnalisée pour la \"date d'échéance\""
 
 msgid "Custom label for \"Program stage\""
-msgstr ""
+msgstr "Étiquette personnalisée pour \"l'étape du programme\""
 
 msgid "Custom label for \"Event\""
-msgstr ""
+msgstr "Étiquette personnalisée pour \"l'événement\""
 
 msgid "Custom label for \"Event\" (plural)"
-msgstr ""
+msgstr "Étiquette personnalisée pour \"l'événement\" (pluriel)"
 
 msgid "Categories"
 msgstr "Catégories"
@@ -1565,10 +1606,10 @@ msgid "Legends"
 msgstr "Légendes"
 
 msgid "Analytics table hook"
-msgstr ""
+msgstr "Crochet du tableau d'analyses"
 
 msgid "Analytics table hooks"
-msgstr "Crochets du tableau analytique"
+msgstr "Crochets du tableau d'analyses"
 
 msgid "Icons"
 msgstr "Les Icônes"
@@ -1580,25 +1621,25 @@ msgid "Predictor groups"
 msgstr "Groupes de prédicteurs"
 
 msgid "Categories overview"
-msgstr ""
+msgstr "Aperçu des catégories"
 
 msgid "Data elements overview"
-msgstr ""
+msgstr "Aperçu des éléments de données"
 
 msgid "Data sets overview"
-msgstr ""
+msgstr "Aperçu des ensembles de données"
 
 msgid "Indicators and Predictors"
-msgstr ""
+msgstr "Indicateurs et Prédicteurs"
 
 msgid "Organisation units overview"
-msgstr ""
+msgstr "Aperçu des unités d'organisations"
 
 msgid "Programs overview"
-msgstr ""
+msgstr "Aperçu des programmes"
 
 msgid "Option sets overview"
-msgstr ""
+msgstr "Aperçu des ensembles de données"
 
 msgid "Validation"
 msgstr "Validation"
@@ -1613,7 +1654,7 @@ msgid "Other"
 msgstr "Autre"
 
 msgid "Locale"
-msgstr "Localisation"
+msgstr "Langue"
 
 msgid "Locales"
 msgstr "Langues"
@@ -1628,7 +1669,7 @@ msgid "You do not have access to edit this item."
 msgstr "Vous n'êtes pas autorisé à modifier cet élément."
 
 msgid "You do not have access to clone this item."
-msgstr ""
+msgstr "Vous n'êtes pas autorisé à cloner cet élément."
 
 msgid "You do not have access to delete this item."
 msgstr "Vous n'êtes pas autorisé à supprimer cet élément."
@@ -1817,34 +1858,34 @@ msgid "Bi-weekly"
 msgstr "Bimensuel"
 
 msgid "Daily"
-msgstr "Daily"
+msgstr "Quotidien"
 
 msgid "Financial Year February"
-msgstr ""
+msgstr "Année fiscale Février"
 
 msgid "Financial Year April"
-msgstr ""
+msgstr "Année fiscale Avril"
 
 msgid "Financial Year July"
-msgstr ""
+msgstr "Année fiscale Juillet"
 
 msgid "Financial Year August"
-msgstr ""
+msgstr "Année fiscale Août"
 
 msgid "Financial Year September"
-msgstr ""
+msgstr "Année fiscale Septembre"
 
 msgid "Financial Year November"
-msgstr ""
+msgstr "Année fiscale Novembre"
 
 msgid "Financial Year Octobter"
-msgstr ""
+msgstr "Année fiscale Octobre"
 
 msgid "Monthly"
-msgstr "Monthly"
+msgstr "Mensuel"
 
 msgid "Quarterly"
-msgstr "Quarterly"
+msgstr "Trimestriel"
 
 msgid "Quarterly November"
 msgstr "Trimestrielle Novembre"
@@ -1859,13 +1900,13 @@ msgid "Six-Monthly"
 msgstr "Semestriel"
 
 msgid "Two-Yearly"
-msgstr ""
+msgstr "Biennale"
 
 msgid "Weekly"
 msgstr "Weekly"
 
 msgid "Weekly Friday"
-msgstr ""
+msgstr "Chaque semaine, le vendredi"
 
 msgid "Weekly Saturday"
 msgstr "Chaque semaine, le samedi"
@@ -1898,7 +1939,7 @@ msgid "Less than"
 msgstr "Inférieur à"
 
 msgid "Less than or equal to"
-msgstr "<\\="
+msgstr "Inférieur ou égal à"
 
 msgid "Compulsory pair"
 msgstr "Paire obligatoire"
@@ -1958,7 +1999,7 @@ msgid "Program attribute"
 msgstr "Attribut de programme"
 
 msgid "Web hook"
-msgstr ""
+msgstr "Web hook"
 
 msgid "Dropdown"
 msgstr "Menu déroulant"
@@ -1982,7 +2023,7 @@ msgid "Icons as buttons"
 msgstr "Icônes en forme de boutons"
 
 msgid "Spinner"
-msgstr "Boucle de progression"
+msgstr "Spinner"
 
 msgid "Toggle"
 msgstr "Basculer"
@@ -2000,16 +2041,16 @@ msgid "Autocomplete"
 msgstr ""
 
 msgid "Qr code"
-msgstr ""
+msgstr "Code QR"
 
 msgid "Bar code"
 msgstr "Code-barre"
 
 msgid "Gs1 datamatrix"
-msgstr ""
+msgstr "Gs1 datamatrix"
 
 msgid "Canvas"
-msgstr ""
+msgstr "Canvas"
 
 msgid "Reporting rate"
 msgstr "Taux de notification"
@@ -2039,10 +2080,10 @@ msgid "On update and insert"
 msgstr "Lors de la mise à jour et de l'insertion"
 
 msgid "Resource tables"
-msgstr "Tables ressources"
+msgstr "Tableaux de ressources"
 
 msgid "Analytics tables"
-msgstr "Tables d'analytique"
+msgstr "Tableaux d'analyses"
 
 msgid "Data value"
 msgstr "Valeur des données"
@@ -2099,25 +2140,26 @@ msgid "Date period structure"
 msgstr "Structure de la période de date"
 
 msgid "Data element category option combo"
-msgstr ""
+msgstr "Combinaison d'options de catégorie de l'élément de données"
 
 msgid "Data approval remap level"
 msgstr "Niveau de remappage d'approbation des données"
 
 msgid "Data approval min level"
-msgstr ""
+msgstr "Niveau minimum d'approbation des données"
 
 msgid "Tracked entity instance relationship count"
-msgstr ""
+msgstr "Nombre de relations d'instance d'entités suivies"
 
 msgid "Data element in newest event in program stage"
 msgstr ""
+"Élément de données de l'événement le plus récent au stade du programme"
 
 msgid "Data element in newest event in program"
-msgstr ""
+msgstr "Élément de données de l'événement le plus récent du programme"
 
 msgid "Data element from current event"
-msgstr ""
+msgstr "Élément de données issu de l'événement en cours"
 
 msgid "Data element from previous event"
 msgstr "Elément de donnée dans l’événement précédent"
@@ -2140,10 +2182,10 @@ msgid "Attribute category combination"
 msgstr "Combinaison de catégories d'attributs"
 
 msgid "Analytics type"
-msgstr "Type d'analyse"
+msgstr "Type d'analyses"
 
 msgid "Analytics table type"
-msgstr ""
+msgstr "Type de tableau d'analyses"
 
 msgid "Bidirectional"
 msgstr "Bidirectionnel"
@@ -2179,7 +2221,7 @@ msgid "Filter"
 msgstr "Filtre"
 
 msgid "Form name"
-msgstr "Nom dans le formulaire"
+msgstr "Nom du formulaire"
 
 msgid "Form type"
 msgstr "Type de formulaire"
@@ -2191,7 +2233,7 @@ msgid "Ignore data approval"
 msgstr "Ignorer l'approbation des données"
 
 msgid "Phase"
-msgstr ""
+msgstr "Phase"
 
 msgid "Source type"
 msgstr "Type de source"
@@ -2212,7 +2254,7 @@ msgid "SQL"
 msgstr "SQL"
 
 msgid "Resource table type"
-msgstr ""
+msgstr "Type de tableaux de ressource"
 
 msgid "Relationship name seen from receiving entity"
 msgstr "Nom de la relation vu depuis l’entité de réception"
@@ -2227,7 +2269,7 @@ msgid "Zero is significant"
 msgstr "Le zéro est pertinent "
 
 msgid "Enable tracked entity instance audit log"
-msgstr "Activer le journal d'audit pour instance d'entité suivie"
+msgstr "Activer le journal d'audit pour l'instance d'entité suivie"
 
 msgid "Program type"
 msgstr "Type de programme"

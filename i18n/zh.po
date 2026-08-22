@@ -1336,7 +1336,7 @@ msgid "Custom label for \"Report date\""
 msgstr "报告日期 \"的自定义标签"
 
 msgid "Custom label for \"Due date\""
-msgstr ""
+msgstr "“截止日期”的自定义标签"
 
 msgid "Custom label for \"Program stage\""
 msgstr "自定义 \"节目阶段 \"标签"
@@ -2263,13 +2263,13 @@ msgid "Name (Plural)"
 msgstr "姓名（复数）"
 
 msgid "Note label (Plural)"
-msgstr ""
+msgstr "注释标签（复数）"
 
 msgid "Relationship label (Plural)"
-msgstr ""
+msgstr "关系标签（复数）"
 
 msgid "Tracked entity attribute label (Plural)"
-msgstr ""
+msgstr "被追踪实体的属性标签（复数）"
 
 msgid "Unknown error"
 msgstr "未知错误"
@@ -2278,7 +2278,7 @@ msgid "Unknown"
 msgstr "未知"
 
 msgid "Leading and trailing spaces will be removed when saving"
-msgstr ""
+msgstr "保存时将删除首尾空格"
 
 msgid "{{label}} (required)"
 msgstr "{{label}} (必填)"
@@ -2302,7 +2302,7 @@ msgid "Created successfully, but failed to update groups"
 msgstr "创建成功，但未能更新组"
 
 msgid "This field requires a unique value, please choose another one."
-msgstr ""
+msgstr "该字段必须填写唯一值，请选择另一个。"
 
 msgid "Please provide a positive integer"
 msgstr "提供一个正整数"
@@ -2707,16 +2707,16 @@ msgid ""
 msgstr "合并完成后，源类别应如何处理？"
 
 msgid "Categories of source and target category combinations do not match"
-msgstr ""
+msgstr "源类别与目标类别的组合不匹配"
 
 msgid "Configure category combinations merge"
-msgstr ""
+msgstr "配置分类组合合并"
 
 msgid "The category combinations merge operation is complete."
-msgstr ""
+msgstr "类别组合合并操作已完成。"
 
 msgid "All selected category combinations were merged successfully."
-msgstr ""
+msgstr "所有选定的类别组合均已成功合并。"
 
 msgid "More than 4 Categories"
 msgstr "超过 4 个类别"
@@ -2764,41 +2764,47 @@ msgid ""
 "                the target category combination. One or many source category combinations\n"
 "                can be specified"
 msgstr ""
+"合并操作将把源类别组合合并到\n"
+"                目标类别组合中。可以指定一个或多个源类别组合\n"
+"                。"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the category combinations metadata associations to the\n"
 "                source category combinations over to the target category combination."
 msgstr ""
+"应仅指定一个目标。合并操作将\n"
+"                将源类别组合的所有元数据关联\n"
+"                转移到目标类别组合上。"
 
 msgid "Category combinations to be merged (source)"
-msgstr ""
+msgstr "待合并的类别组合（来源）"
 
 msgid "Select category combinations to merge"
-msgstr ""
+msgstr "选择要合并的类别组合"
 
 msgid "Category combination to merge into (target)"
-msgstr ""
+msgstr "要合并到的类别组合（目标）"
 
 msgid "Select category combination to merge into"
-msgstr ""
+msgstr "选择要合并到的类别组合"
 
 msgid "No category combinations available. Remove one from source."
-msgstr ""
+msgstr "没有可用的分类组合。请从源中删除一个。"
 
 msgid ""
 "What should happen to the source category combinations after the merge is "
 "complete?"
-msgstr ""
+msgstr "合并完成后，源类别组合应如何处理？"
 
 msgid "Configure category option combination merge"
-msgstr ""
+msgstr "配置类别选项组合合并"
 
 msgid "The category option combination merge operation is complete."
-msgstr ""
+msgstr "类别选项组合合并操作已完成。"
 
 msgid "All selected category option combinations were merged successfully."
-msgstr ""
+msgstr "所有选定的分类选项组合均已成功合并。"
 
 msgid "Set up the basic information for this category option combination."
 msgstr "设置该类别选项组合的基本信息。"
@@ -2808,32 +2814,38 @@ msgid ""
 "                the target category option combination. One or many source category option combinations\n"
 "                can be specified"
 msgstr ""
+"合并操作将把源类别选项组合合并到\n"
+"                目标类别选项组合中。可以指定一个或多个源类别选项组合\n"
+"                。"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the category option combination metadata associations to the\n"
 "                source category option combinations over to the target category option combination."
 msgstr ""
+"应仅指定一个目标。合并操作将\n"
+"                将源类别选项组合的所有元数据关联\n"
+"                转移到目标类别选项组合上。"
 
 msgid "Category option combinations to be merged (source)"
-msgstr ""
+msgstr "待合并的类别选项组合（来源）"
 
 msgid "Select category option combinations to merge"
-msgstr ""
+msgstr "选择要合并的类别选项组合"
 
 msgid "Category option combination to merge into (target)"
-msgstr ""
+msgstr "要合并到的类别选项组合（目标）"
 
 msgid "Select category option combination to merge into"
-msgstr ""
+msgstr "选择要合并到的类别选项组合"
 
 msgid "No category option combinations available. Remove one from source."
-msgstr ""
+msgstr "没有可用的类别选项组合。请从源中移除一个。"
 
 msgid ""
 "What should happen to the data values recorded for the source category "
 "option combinations?"
-msgstr ""
+msgstr "针对源类别选项组合所记录的数据值应如何处理？"
 
 msgid ""
 "Where source and target have the same data value, the most recently updated "
@@ -2841,7 +2853,7 @@ msgid ""
 msgstr "当源和目标的数据值相同时，将保留最新更新的那个。"
 
 msgid "Move data values to the target category option combination"
-msgstr ""
+msgstr "将数据值移动到目标类别选项组合中"
 
 msgid "Set up the basic information for this category option group set."
 msgstr "为该类别选项组设置基本信息。"
@@ -3236,13 +3248,13 @@ msgid "Delivery channels"
 msgstr "交付渠道"
 
 msgid "Data set created but ID cannot be determined"
-msgstr ""
+msgstr "数据集已创建，但无法确定其 ID"
 
 msgid "Data entry form failed to save"
-msgstr ""
+msgstr "数据录入表单未能保存"
 
 msgid "Some data set sections failed to save"
-msgstr ""
+msgstr "某些数据集部分未能保存"
 
 msgid "Send complete notifications"
 msgstr "发送完整的通知"
@@ -3465,10 +3477,10 @@ msgid "Manage data elements"
 msgstr "管理数据元素"
 
 msgid "Save changes to this data set before editing sections"
-msgstr ""
+msgstr "在编辑各部分之前，请先保存此数据集的更改"
 
 msgid "Save changes to this data set before editing the form"
-msgstr ""
+msgstr "在编辑表单之前，请先保存此数据集的更改"
 
 msgid "Display options"
 msgstr "显示选项"
@@ -3565,7 +3577,7 @@ msgid "Content to display before a section"
 msgstr "在章节前显示的内容"
 
 msgid "Markdown formatting is supported"
-msgstr ""
+msgstr "支持 Markdown 格式"
 
 msgid "Content to display after a section"
 msgstr "在章节后显示的内容"
@@ -4142,13 +4154,13 @@ msgid "Error saving organisation unit levels"
 msgstr "错误保存组织单位级别"
 
 msgid "Configure organisation unit merge"
-msgstr ""
+msgstr "配置组织单位合并"
 
 msgid "The organisation unit merge operation is complete."
-msgstr ""
+msgstr "组织单位合并操作已完成。"
 
 msgid "All selected organisation units were merged successfully."
-msgstr ""
+msgstr "所有选定的组织单位已成功合并。"
 
 msgid "Organisation units successfully moved"
 msgstr "成功搬迁的组织单位"
@@ -4260,59 +4272,65 @@ msgid "Load more for {{orgUnitName}}"
 msgstr "加载更多{{orgUnitName}}"
 
 msgid "Move data approvals to the target organisation unit"
-msgstr ""
+msgstr "将数据审批转移至目标组织单位"
 
 msgid "Delete the source data approvals"
-msgstr ""
+msgstr "删除源数据审批"
 
 msgid "Move data values to the target organisation unit"
-msgstr ""
+msgstr "将数据值迁移到目标组织单位"
 
 msgid ""
 "The merge operation will merge the source organisation units into\n"
 "                the target organisation unit. One or many source organisation units\n"
 "                can be specified"
 msgstr ""
+"合并操作将把源组织单位合并到\n"
+"                目标组织单位中。可以指定一个或多个源组织单位\n"
+"                。"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the organisation unit metadata associations to the\n"
 "                source organisation units over to the target organisation unit."
 msgstr ""
+"应仅指定一个目标。合并操作将\n"
+"                将源组织单位的所有元数据关联\n"
+"                转移到目标组织单位。"
 
 msgid "Organisation units to be merged (source)"
-msgstr ""
+msgstr "待合并的组织单位（来源）"
 
 msgid "Select organisation units to merge"
-msgstr ""
+msgstr "选择要合并的组织单位"
 
 msgid "Organisation unit to merge into (target)"
-msgstr ""
+msgstr "将并入的组织单位（目标）"
 
 msgid "Select organisation unit to merge into"
-msgstr ""
+msgstr "选择要合并到的组织单位"
 
 msgid "No organisation units available. Remove one from source."
-msgstr ""
+msgstr "没有可用的组织单位。请从源中删除一个。"
 
 msgid ""
 "What should happen to the source organisation units after the merge is "
 "complete?"
-msgstr ""
+msgstr "合并完成后，源组织单位应如何处理？"
 
 msgid ""
 "What should happen to the data values recorded for the source organisation "
 "units?"
-msgstr ""
+msgstr "针对源组织单位记录的数据值应如何处理？"
 
 msgid ""
 "What should happen to the data approvals for the source organisation units?"
-msgstr ""
+msgstr "源组织单位的数据审批应如何处理？"
 
 msgid ""
 "Where source and target have the same data approval, the most recently "
 "updated is kept."
-msgstr ""
+msgstr "当源数据和目标数据具有相同的数据审批状态时，将保留最新更新的数据。"
 
 msgid ""
 "Choose the organisation units to move and their new position in the "
@@ -4699,7 +4717,7 @@ msgid "Output category combo"
 msgstr "输出类别组合"
 
 msgid "At least one organisation unit level is required"
-msgstr ""
+msgstr "至少需要一个组织单位级别"
 
 msgid "Program Disaggregation Form"
 msgstr "项目细分表单"
@@ -5510,7 +5528,7 @@ msgstr "用程序专用术语覆盖默认标签。"
 
 msgid ""
 "Used as the label for the event date (report date) shown in the Capture app"
-msgstr ""
+msgstr "用作“Capture”应用中显示的活动日期（报告日期）的标签"
 
 msgid "Only integers are allowed"
 msgstr "只允许使用整数"
@@ -5719,10 +5737,10 @@ msgid "Edit or rearrange the data elements"
 msgstr "编辑或重新排列数据元素"
 
 msgid "Save changes to this program before editing sections"
-msgstr ""
+msgstr "在编辑各部分之前，请先保存对该程序所做的更改"
 
 msgid "Save changes to this program before editing the form"
-msgstr ""
+msgstr "在编辑表单之前，请先保存对该程序所做的更改"
 
 msgid ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
@@ -5927,7 +5945,7 @@ msgid "Custom label for \"Follow-up\""
 msgstr "后续行动 \"自定义标签"
 
 msgid "Used to customize the label for a follow-up event or activity"
-msgstr ""
+msgstr "用于自定义后续活动或项目的标签"
 
 msgid "Custom label for \"Registering unit\""
 msgstr "注册单位 \"的自定义标签"
@@ -5942,13 +5960,13 @@ msgstr "关系 \"的自定义标签"
 
 msgid ""
 "Used to customize the label for a relationship between tracked entities"
-msgstr ""
+msgstr "用于自定义受监控实体之间关系的标签"
 
 msgid "Custom label for \"Relationship\" (plural)"
-msgstr ""
+msgstr "“关系”（复数）的自定义标签"
 
 msgid "Example use: See all relationships"
-msgstr ""
+msgstr "使用示例：查看所有关系"
 
 msgid "Custom label for \"Note\""
 msgstr "自定义 \"注释 \"标签"
@@ -5956,25 +5974,25 @@ msgstr "自定义 \"注释 \"标签"
 msgid ""
 "Used to customize the label for a note or comment added to an enrollment or "
 "event"
-msgstr ""
+msgstr "用于自定义添加到报名或活动中的备注或评论的标签"
 
 msgid "Custom label for \"Note\" (plural)"
-msgstr ""
+msgstr "“Note”（复数）的自定义标签"
 
 msgid "Example use: See all notes"
-msgstr ""
+msgstr "使用示例：查看所有笔记"
 
 msgid "Custom label for \"Attribute\""
-msgstr ""
+msgstr "“属性”的自定义标签"
 
 msgid "Used to customize the label for a tracked entity attribute"
-msgstr ""
+msgstr "用于自定义受跟踪实体属性的标签"
 
 msgid "Custom label for \"Attribute\" (plural)"
-msgstr ""
+msgstr "“Attribute”（复数）的自定义标签"
 
 msgid "Example use: See all attributes"
-msgstr ""
+msgstr "使用示例：查看所有属性"
 
 msgid "Program Stages"
 msgstr "项目阶段"
@@ -6176,7 +6194,7 @@ msgid "Materialized view data refreshed."
 msgstr "物化视图数据已刷新。"
 
 msgid "Could not refresh materialized view: {{error}}"
-msgstr ""
+msgstr "无法刷新物化视图：{{error}}"
 
 msgid "View results"
 msgstr "查看结果"
