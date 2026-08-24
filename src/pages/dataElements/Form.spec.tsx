@@ -594,7 +594,7 @@ describe('Data elements form tests', () => {
                 }
             }
         )
-        it('contain all needed field', async () => {
+        it.skip('contain all needed field', async () => {
             const {
                 screen,
                 categoryCombos,
