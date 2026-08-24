@@ -169,12 +169,18 @@ const expectSelectToExistWithOptions = async (
         'dhis2-uicore-select-menu-menuwrapper'
     )
     expect(optionsWrapper).toBeVisible()
-    const foundOptions = within(optionsWrapper).getAllByTestId(
-        'dhis2-uicore-singleselectoption'
-    )
-    expect(foundOptions).toHaveLength(options.length)
-    options.forEach((option, index) => {
-        expect(foundOptions[index]).toHaveTextContent(option.displayName)
+    // The options list is populated by an async query (useInfiniteQuery) that
+    // can still be loading when the menu wrapper first appears, so retry
+    // until the expected options have actually arrived instead of asserting
+    // on whatever is rendered at this exact instant.
+    await waitFor(() => {
+        const foundOptions = within(optionsWrapper).getAllByTestId(
+            'dhis2-uicore-singleselectoption'
+        )
+        expect(foundOptions).toHaveLength(options.length)
+        options.forEach((option, index) => {
+            expect(foundOptions[index]).toHaveTextContent(option.displayName)
+        })
     })
     await userEvent.click(selectInput)
 }
@@ -202,21 +208,29 @@ const expectMultiSelectToExistWithOptions = async (
         'dhis2-uicore-select-menu-menuwrapper'
     )
     expect(optionsWrapper).toBeVisible()
-    const foundOptions = within(optionsWrapper).getAllByTestId(
-        'dhis2-uicore-multiselectoption'
-    )
-    expect(foundOptions).toHaveLength(options.length)
-    options.forEach((option, index) => {
-        expect(foundOptions[index]).toHaveTextContent(option.displayName)
-        if (selected.map((s) => s.displayName).includes(option.displayName)) {
-            expect(
-                within(foundOptions[index]).getByRole('checkbox')
-            ).toBeChecked()
-        } else {
-            expect(
-                within(foundOptions[index]).getByRole('checkbox')
-            ).not.toBeChecked()
-        }
+    // The options list is populated by an async query (useInfiniteQuery) that
+    // can still be loading when the menu wrapper first appears, so retry
+    // until the expected options have actually arrived instead of asserting
+    // on whatever is rendered at this exact instant.
+    await waitFor(() => {
+        const foundOptions = within(optionsWrapper).getAllByTestId(
+            'dhis2-uicore-multiselectoption'
+        )
+        expect(foundOptions).toHaveLength(options.length)
+        options.forEach((option, index) => {
+            expect(foundOptions[index]).toHaveTextContent(option.displayName)
+            if (
+                selected.map((s) => s.displayName).includes(option.displayName)
+            ) {
+                expect(
+                    within(foundOptions[index]).getByRole('checkbox')
+                ).toBeChecked()
+            } else {
+                expect(
+                    within(foundOptions[index]).getByRole('checkbox')
+                ).not.toBeChecked()
+            }
+        })
     })
     await userEvent.click(selectInput)
 }
