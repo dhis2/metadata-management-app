@@ -183,6 +183,11 @@ const expectSelectToExistWithOptions = async (
         })
     })
     await userEvent.click(selectInput)
+    await waitFor(() => {
+        expect(
+            screen.queryByTestId('dhis2-uicore-select-menu-menuwrapper')
+        ).not.toBeInTheDocument()
+    })
 }
 
 const expectMultiSelectToExistWithOptions = async (
@@ -233,6 +238,11 @@ const expectMultiSelectToExistWithOptions = async (
         })
     })
     await userEvent.click(selectInput)
+    await waitFor(() => {
+        expect(
+            screen.queryByTestId('dhis2-uicore-select-menu-menuwrapper')
+        ).not.toBeInTheDocument()
+    })
 }
 const expectInputToErrorWhenExceedsLength = async (
     fieldName: string,
