@@ -1,3 +1,10 @@
+## [0.176.2](https://github.com/dhis2/metadata-management-app/compare/v0.176.1...v0.176.2) (2026-08-24)
+
+
+### Bug Fixes
+
+* add minor patch for plural translation labels [DHIS2-22006] ([#1027](https://github.com/dhis2/metadata-management-app/issues/1027)) ([1f09c93](https://github.com/dhis2/metadata-management-app/commit/1f09c93c5ac2f4e60dbb203d07c53db7fba51d2b))
+
 ## [0.176.1](https://github.com/dhis2/metadata-management-app/compare/v0.176.0...v0.176.1) (2026-08-21)
 
 
