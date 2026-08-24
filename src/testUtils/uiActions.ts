@@ -1,4 +1,4 @@
-import { RenderResult, within } from '@testing-library/react'
+import { RenderResult, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 type inputFieldValueTypeOptions = { type?: string; supressTab?: boolean }
@@ -145,6 +145,11 @@ const closeSingleSelectIfOpen = async (
         await userEvent.click(
             within(triggeringDiv).getByTestId('dhis2-uicore-select-input')
         )
+        await waitFor(() => {
+            expect(
+                screen.queryByTestId('dhis2-uicore-select-menu-menuwrapper')
+            ).not.toBeInTheDocument()
+        })
     }
 }
 
