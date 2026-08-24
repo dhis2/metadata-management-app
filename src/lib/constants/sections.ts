@@ -498,15 +498,24 @@ export const NON_SCHEMA_SECTION = {
         authorities: [
             {
                 type: SchemaAuthorityType.CREATE_PUBLIC,
-                authorities: ['F_SYSTEM_SETTING', 'F_LOCALE_ADD'],
+                authorities: [
+                    'F_PROGRAM_PUBLIC_ADD',
+                    'F_PROGRAM_INDICATOR_PUBLIC_ADD',
+                ],
             },
             {
                 type: SchemaAuthorityType.CREATE_PRIVATE,
-                authorities: ['F_SYSTEM_SETTING', 'F_LOCALE_ADD'],
+                authorities: [
+                    'F_PROGRAM_PRIVATE_ADD',
+                    'F_PROGRAM_INDICATOR_PRIVATE_ADD',
+                ],
             },
             {
                 type: SchemaAuthorityType.DELETE,
-                authorities: ['F_SYSTEM_SETTING'],
+                authorities: [
+                    'F_PROGRAM_PUBLIC_ADD',
+                    'F_PROGRAM_INDICATOR_PUBLIC_ADD',
+                ],
             },
         ],
     },
