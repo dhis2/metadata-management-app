@@ -709,7 +709,12 @@ describe('Data elements form tests', () => {
                     screen.getByTestId(`attribute-${attribute.id}`)
                 ).toBeVisible()
             })
-        })
+            // This test opens/closes many selects in sequence, each one now
+            // waiting for its menu to fully unmount before the next opens
+            // (see uiAssertions/uiActions fixes for the menuwrapper race).
+            // That's reliable but pushes total runtime close to the default
+            // 20s timeout on slower CI runners, so give it more headroom.
+        }, 40000)
         it('should not show an "Add new" button for data element groups', async () => {
             const { screen } = await renderForm()
 
