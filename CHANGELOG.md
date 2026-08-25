@@ -1,3 +1,10 @@
+## [0.176.3](https://github.com/dhis2/metadata-management-app/compare/v0.176.2...v0.176.3) (2026-08-25)
+
+
+### Bug Fixes
+
+* program disaggregations authorities ([#1028](https://github.com/dhis2/metadata-management-app/issues/1028)) ([9594f50](https://github.com/dhis2/metadata-management-app/commit/9594f5010d9ff442207a8cafe064f1a674a13361))
+
 ## [0.176.2](https://github.com/dhis2/metadata-management-app/compare/v0.176.1...v0.176.2) (2026-08-24)
 
 
