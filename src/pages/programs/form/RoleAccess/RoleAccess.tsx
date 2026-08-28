@@ -65,14 +65,9 @@ export const RoleAccess = ({
             })) as { sharing: { object: SharingSettings } }
 
             await Promise.all(
-                programStages.map((stage, index) => {
-                    form.change(
-                        `programStages[${index}].sharing`,
-                        values.sharing
-                    )
-
+                programStages.map(async (stage, index) => {
                     // @ts-expect-error id passes as a param instead of in data.object, so type doesn't match
-                    return dataEngine.mutate({
+                    await dataEngine.mutate({
                         resource: 'sharing',
                         type: 'update',
                         params: { type: 'programStage', id: stage.id },
@@ -88,6 +83,11 @@ export const RoleAccess = ({
                             },
                         },
                     })
+
+                    form.change(
+                        `programStages[${index}].sharing`,
+                        values.sharing
+                    )
                 })
             )
 
