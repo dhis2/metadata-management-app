@@ -2288,19 +2288,19 @@ msgid "Message template"
 msgstr "Modèle de message"
 
 msgid "Program stage label"
-msgstr ""
+msgstr "Étiquette du stade de programme"
 
 msgid "Scheduled date label"
-msgstr ""
+msgstr "Étiquette de la date prévue"
 
 msgid "Report date label"
-msgstr ""
+msgstr "Étiquette de date du rapport"
 
 msgid "Event label"
-msgstr ""
+msgstr "Étiquette de l'événement"
 
 msgid "Tracked entity attribute label"
-msgstr ""
+msgstr "Étiquette d'attributs d'entité suivie"
 
 msgid "Enrollment date label"
 msgstr "Étiquette de date d’inscription"
@@ -2309,40 +2309,40 @@ msgid "Incident date label"
 msgstr "Étiquette de date d’incident"
 
 msgid "Note label"
-msgstr ""
+msgstr "Étiquette de remarque"
 
 msgid "Enrollment label"
-msgstr ""
+msgstr "Étiquette d'enrôlement"
 
 msgid "Follow up label"
-msgstr ""
+msgstr "Étiquette de suivi"
 
 msgid "Organisation unit label"
-msgstr ""
+msgstr "Étiquette de l'unité d'organisation"
 
 msgid "Relationship label"
-msgstr ""
+msgstr "Étiquette de relations"
 
 msgid "Enrollment label (Plural)"
-msgstr ""
+msgstr "Étiquette d'enrôlement (pluriel)"
 
 msgid "Event label (Plural)"
-msgstr ""
+msgstr "Étiquette de l'événement (Pluriel)"
 
 msgid "Program stage label (Plural)"
-msgstr ""
+msgstr "Étiquette du stade de programme (Pluriel)"
 
 msgid "Name (Plural)"
-msgstr ""
+msgstr "Nom (Pluriel)"
 
 msgid "Note label (Plural)"
-msgstr ""
+msgstr "Étiquette de remarque (Pluriel)"
 
 msgid "Relationship label (Plural)"
-msgstr ""
+msgstr "Étiquette de relations (Pluriel)"
 
 msgid "Tracked entity attribute label (Plural)"
-msgstr ""
+msgstr "Étiquette d'attributs d'entité suivie (Pluriel)"
 
 msgid "Unknown error"
 msgstr "Erreur inconnue"
@@ -2352,6 +2352,7 @@ msgstr "Inconnu"
 
 msgid "Leading and trailing spaces will be removed when saving"
 msgstr ""
+"Les espaces de début et de fin seront supprimés lors de l'enregistrement"
 
 msgid "{{label}} (required)"
 msgstr "{{label}} (obligatoire)"
@@ -2370,12 +2371,14 @@ msgstr "Création réussie avec succès"
 
 msgid "Group assignment failed. Other values have been saved/updated"
 msgstr ""
+"L'affectation de groupe a échoué. D'autres valeurs ont été "
+"enregistrées/mises à jour."
 
 msgid "Created successfully, but failed to update groups"
-msgstr ""
+msgstr "Création réussie, mais échec de la mise à jour des groupes"
 
 msgid "This field requires a unique value, please choose another one."
-msgstr ""
+msgstr "Ce champ requiert une valeur unique, veuillez en choisir une autre"
 
 msgid "Please provide a positive integer"
 msgstr "Veuillez saisir un entier positif"
@@ -2393,10 +2396,10 @@ msgid "Please provide valid unit interval (0-1)."
 msgstr "Veuillez fournir un intervalle d'unités valide (0-1)."
 
 msgid "Please provide a positive number for age"
-msgstr ""
+msgstr "Veuillez indiquer un nombre positif pour l'âge"
 
 msgid "Please provide a single letter (A-Z)"
-msgstr ""
+msgstr "Veuillez saisir une seule lettre (A-Z)"
 
 msgid "Must be checked"
 msgstr "Vérification requise"
@@ -2441,19 +2444,19 @@ msgid "Program name"
 msgstr "Nom du programme"
 
 msgid "Category Combination (PI Disaggregation)"
-msgstr ""
+msgstr "Combinaison de Catégories (Désagrégation PI)"
 
 msgid "Attribute Combination (PI Disaggregation)"
-msgstr ""
+msgstr "Combinaison d'Attributs (Désagrégation PI)"
 
 msgid "Decimals in data output"
-msgstr "Décimaux dans dans la sortie"
+msgstr "Décimaux dans la sortie"
 
 msgid "Initiating entity type"
-msgstr ""
+msgstr "Type d'entité initiatrice"
 
 msgid "Receiving entity type"
-msgstr ""
+msgstr "Type d'entité destinataire"
 
 msgid "SQL type"
 msgstr "Type SQL"
@@ -2471,13 +2474,13 @@ msgid "Display in list"
 msgstr "Afficher dans la liste"
 
 msgid "Trigram indexable"
-msgstr ""
+msgstr "Indexable par trigramme"
 
 msgid "Version"
 msgstr "Version"
 
 msgid "Program Type"
-msgstr ""
+msgstr "Type de Programme"
 
 msgid "Access level"
 msgstr "Niveau d'accès"
@@ -2486,7 +2489,7 @@ msgid "Completed events expiry days"
 msgstr "Jours d'expiration des événements terminés"
 
 msgid "Display front page list"
-msgstr "Display front page list"
+msgstr "Afficher la liste de la page d'accueil"
 
 msgid "Mandatory"
 msgstr "Obligatoire"
@@ -2612,7 +2615,7 @@ msgid "Output"
 msgstr "Sortie"
 
 msgid "Output option combo"
-msgstr ""
+msgstr "Combinaison d'options de sortie"
 
 msgid "Sequential sample count"
 msgstr "Nombre d'échantillons séquentiels"
@@ -2624,7 +2627,7 @@ msgid "Sequential skip count"
 msgstr "Nombre de sauts séquentiels"
 
 msgid "Organisation unit providing data"
-msgstr ""
+msgstr "Unité d'organisation fournissant des données"
 
 msgid "Key"
 msgstr "Clé"
@@ -2640,12 +2643,13 @@ msgstr "Quelles tables analytiques"
 
 msgid "An analytics table hook with this table and SQL already exists."
 msgstr ""
+"Un hook de table d'analyses pour cette table et ce code SQL existe déjà."
 
 msgid "Basic information"
 msgstr "Informations de base"
 
 msgid "Set up the basic information for this analytics table hook."
-msgstr ""
+msgstr "Définir les informations de base pour ce hook de tableau d'analyse."
 
 msgid "Data and options"
 msgstr "Données et options"
@@ -2678,24 +2682,28 @@ msgid "Visualization"
 msgstr "Visualisation"
 
 msgid "Applies to"
-msgstr ""
+msgstr "S'applique à"
 
 msgid "Choose objects"
-msgstr ""
+msgstr "Choisir des objets"
 
 msgid ""
 "Limit input to a set of predefined options. An option set will automatically"
 " set the value type."
 msgstr ""
+"Limitez la saisie à un ensemble d'options prédéfinies. Un ensemble d'options"
+" déterminera automatiquement le type de valeur."
 
 msgid "Remove option set"
 msgstr "Supprimer l'ensemble d'options"
 
 msgid "Display order"
-msgstr ""
+msgstr "Afficher l'ordre"
 
 msgid "Enter a number to set this attribute’s position in lists and forms."
 msgstr ""
+"Saisir un nombre pour définir la position de cet attribut dans les listes et"
+" les formulaires."
 
 msgid "Set up the basic information for this attribute."
 msgstr "Définir les informations de base pour cet attribut."
@@ -2706,30 +2714,33 @@ msgstr ""
 
 msgid "Mandatory: all objects must have a value for this attribute"
 msgstr ""
+"Obligatoire : tous les objets doivent avoir une valeur pour cet attribut"
 
 msgid "Unique values only"
-msgstr ""
+msgstr "Uniquement des valeurs uniques"
 
 msgid "Category options of source and target categories do not match"
-msgstr ""
+msgstr "Les options de catégorie source et cible ne correspondent pas"
 
 msgid "Categories must have unique, non-overlapping category combos"
 msgstr ""
+"Les catégories doivent comporter des combinaisons de catégories uniques et "
+"sans chevauchement."
 
 msgid "Configure category merge"
-msgstr ""
+msgstr "Configurer la fusion de catégorie"
 
 msgid "The category merge operation is complete."
-msgstr ""
+msgstr "L'opération de fusion des catégories est terminée."
 
 msgid "All selected categories were merged successfully."
-msgstr ""
+msgstr "Toutes les catégories sélectionnées ont été fusionnées avec succès."
 
 msgid "Set up the basic information for this category."
 msgstr "Définir les informations de base pour cette catégorie."
 
 msgid "Category usage"
-msgstr ""
+msgstr "Utilisation de la catégorie"
 
 msgid "Choose how this category will be used to capture and analyze data."
 msgstr ""
@@ -2738,6 +2749,7 @@ msgstr ""
 
 msgid "Show as data dimension in analytics apps"
 msgstr ""
+"Afficher en tant que dimension de données dans les applications d'analyses"
 
 msgid "Choose the options to include in this category."
 msgstr "Choisir les options à inclure dans cette catégorie."
@@ -2747,46 +2759,54 @@ msgid ""
 "                the target category. One or many source categories\n"
 "                can be specified"
 msgstr ""
+"L'opération de fusion permettra de fusionner les catégories sources dans\n"
+"la catégorie cible. Il est possible de spécifier une ou plusieurs \n"
+"catégories sources."
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the category metadata associations to the\n"
 "                source categories over to the target category."
 msgstr ""
+"Une seule catégorie cible doit être spécifiée. L'opération de fusion\n"
+"transférera toutes les associations de métadonnées des catégories\n"
+"sources vers la catégorie cible."
 
 msgid "Categories to be merged (source)"
-msgstr ""
+msgstr "Catégorie à fusionner (source)"
 
 msgid "Select categories to merge"
-msgstr ""
+msgstr "Sélectionner les catégories à fusionner"
 
 msgid "Category to merge into (target)"
-msgstr ""
+msgstr "Catégorie dans laquelle effectuer la fusion (cible)"
 
 msgid "Select category to merge into"
-msgstr ""
+msgstr "Sélectionnez la catégorie dans laquelle effectuer la fusion"
 
 msgid "No categories available. Remove one from source."
-msgstr ""
+msgstr "Aucune catégorie disponible. Supprimez-en une de la source."
 
 msgid "Merge settings"
 msgstr "Fusionner les paramètres"
 
 msgid ""
 "What should happen to the source categories after the merge is complete?"
-msgstr ""
+msgstr "Qu'advient-il des catégories source une fois la fusion terminée ?"
 
 msgid "Categories of source and target category combinations do not match"
-msgstr ""
+msgstr "Les combinaisons de catégories source et cible ne correspondent pas"
 
 msgid "Configure category combinations merge"
-msgstr ""
+msgstr "Configurer la fusion des combinaisons de catégorie"
 
 msgid "The category combinations merge operation is complete."
-msgstr ""
+msgstr "L'opération de fusion des combinaisons de catégorie est terminée."
 
 msgid "All selected category combinations were merged successfully."
 msgstr ""
+"Toutes les combinaisons de catégorie sélectionnées ont été fusionnées avec "
+"succès."
 
 msgid "More than 4 Categories"
 msgstr "Plus de 4 catégories"
@@ -2803,13 +2823,15 @@ msgid ""
 "One or more Category combinations with the same categories already exist in the system.\n"
 "        It is strongly discouraged to have more than one Category combination with the same categories."
 msgstr ""
+"Une ou plusieurs combinaisons de catégories avec les mêmes catégories existent déjà dans le système. \n"
+"        Il est fortement déconseillé d'avoir plus d'une combinaison de catégories avec les mêmes catégories."
 
 msgid "Set up the basic information for this category combination."
 msgstr ""
 "Définir les informations de base pour cette combinaison de catégories."
 
 msgid "Category combination usage"
-msgstr ""
+msgstr "Utilisation des combinaisons de catégories"
 
 msgid ""
 "Choose how this category combination will be used to capture and analyze "
@@ -2840,41 +2862,54 @@ msgid ""
 "                the target category combination. One or many source category combinations\n"
 "                can be specified"
 msgstr ""
+"L'opération de fusion permettra de fusionner les combinaisons de catégories source dans\n"
+"la combinaison de catégories cible. Une ou plusieurs combinaisons de catégories source\n"
+"peuvent être spécifiées"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the category combinations metadata associations to the\n"
 "                source category combinations over to the target category combination."
 msgstr ""
+"Une seule cible doit être spécifiée. L'opération de fusion\n"
+"transférera toutes les associations de métadonnées des combinaisons de catégories de la source vers \n"
+"la combinaison de catégories cible."
 
 msgid "Category combinations to be merged (source)"
-msgstr ""
+msgstr "Combinaisons de catégorie à fusionner (source)"
 
 msgid "Select category combinations to merge"
-msgstr ""
+msgstr "Sélectionnez les combinaisons de catégories à fusionner"
 
 msgid "Category combination to merge into (target)"
-msgstr ""
+msgstr "Combinaison de catégorie dans laquelle effectuer la fusion (cible)"
 
 msgid "Select category combination to merge into"
 msgstr ""
+"Sélectionnez la combinaison de catégorie dans laquelle effectuer la fusion"
 
 msgid "No category combinations available. Remove one from source."
 msgstr ""
+"Aucune combinaison de catégorie disponible. Supprimez-en une de la source."
 
 msgid ""
 "What should happen to the source category combinations after the merge is "
 "complete?"
 msgstr ""
+"Qu'advient-il des combinaisons de catégorie source une fois la fusion "
+"terminée ?"
 
 msgid "Configure category option combination merge"
-msgstr ""
+msgstr "Configurer la fusion des combinaisons d'options de catégorie"
 
 msgid "The category option combination merge operation is complete."
 msgstr ""
+"L'opération de fusion des combinaisons d'options de catégorie est terminée."
 
 msgid "All selected category option combinations were merged successfully."
 msgstr ""
+"Toutes les combinaisons d'options de catégorie sélectionnées ont été "
+"fusionnées avec succès."
 
 msgid "Set up the basic information for this category option combination."
 msgstr ""
@@ -2886,40 +2921,57 @@ msgid ""
 "                the target category option combination. One or many source category option combinations\n"
 "                can be specified"
 msgstr ""
+"L'opération de fusion permettra de fusionner les combinaisons d'options de la catégorie source dans\n"
+"la combinaison d'options de la catégorie cible. Une ou plusieurs combinaisons d'options de la catégorie source\n"
+"peuvent être spécifiées"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the category option combination metadata associations to the\n"
 "                source category option combinations over to the target category option combination."
 msgstr ""
+"Une seule cible doit être spécifiée. L'opération de fusion permettra de\n"
+"transférer toutes les associations de métadonnées des combinaisons d'options de catégorie de la\n"
+"combinaison d'options de catégorie source vers la combinaison d'options de catégorie cible."
 
 msgid "Category option combinations to be merged (source)"
-msgstr ""
+msgstr "Combinaisons d'options de catégorie à fusionner (source)"
 
 msgid "Select category option combinations to merge"
-msgstr ""
+msgstr "Sélectionnez les combinaisons d'options de catégories à fusionner"
 
 msgid "Category option combination to merge into (target)"
 msgstr ""
+"Combinaison d'options de catégorie dans laquelle effectuer la fusion (cible)"
 
 msgid "Select category option combination to merge into"
 msgstr ""
+"Sélectionnez la combinaison d'options de catégorie dans laquelle effectuer "
+"la fusion"
 
 msgid "No category option combinations available. Remove one from source."
 msgstr ""
+"Aucune combinaison d'options de catégorie disponible. Supprimez-en une de la"
+" source."
 
 msgid ""
 "What should happen to the data values recorded for the source category "
 "option combinations?"
 msgstr ""
+"Que doit-on faire des valeurs enregistrées pour les combinaisons d'options "
+"de la catégorie source ?"
 
 msgid ""
 "Where source and target have the same data value, the most recently updated "
 "is kept."
 msgstr ""
+"Lorsque la source et la cible ont la même valeur, celle qui a été mise à "
+"jour en dernier est conservée."
 
 msgid "Move data values to the target category option combination"
 msgstr ""
+"Déplacer les valeurs des données vers la combinaison d'options de la "
+"catégorie cible"
 
 msgid "Set up the basic information for this category option group set."
 msgstr ""
@@ -2927,7 +2979,7 @@ msgstr ""
 "catégorie."
 
 msgid "Category option group set usage"
-msgstr ""
+msgstr "Utilisation des ensembles de groupes d'options de catégorie"
 
 msgid ""
 "Choose how this category option group set will be used to capture and "
@@ -2948,12 +3000,14 @@ msgstr ""
 "Définir les informations de base pour ce groupe d'options de catégorie."
 
 msgid "Category option group usage"
-msgstr ""
+msgstr "Utilisation des groupes d'options de catégorie"
 
 msgid ""
 "Choose how this category option group will be used to capture and analyze "
 "data."
 msgstr ""
+"Choisir le mode d'utilisation de ce groupe d'options de catégorie pour la "
+"collecte et l'analyse des données."
 
 msgid "Choose the options to include in this category option group."
 msgstr "Choisir les options à inclure dans ce groupe d'options de catégorie."
@@ -2973,7 +3027,7 @@ msgid "Set up the basic information for this category option."
 msgstr "Définir les informations de base pour cette option de catégorie."
 
 msgid "An alternative name used in data entry forms."
-msgstr ""
+msgstr "Nom alternatif utilisé dans les formulaires de saisie de données."
 
 msgid "Availability configuration"
 msgstr "Configuration de la disponibilité"
@@ -2990,6 +3044,7 @@ msgstr "Groupes"
 
 msgid "Choose the groups this category option belongs to."
 msgstr ""
+"Sélectionnez les groupes auxquels appartient cette option de catégorie."
 
 msgid "Form name should not exceed 230 characters"
 msgstr "Le nom du formulaire ne doit pas dépasser 230 caractères"
@@ -3040,20 +3095,24 @@ msgid "Set up the basic information for this constant."
 msgstr "Définir les informations de base pour cette constante."
 
 msgid "The numeric value to be used as the constant."
-msgstr ""
+msgstr "La valeur numérique à utiliser comme constante."
 
 msgid "Please enter a number"
-msgstr ""
+msgstr "Veuillez saisir un nombre"
 
 msgid ""
 "An approval level for this organisation unit level and category option group"
 " set combination already exists."
 msgstr ""
+"Un niveau d'approbation pour ce niveau d'unité d'organisation et cette "
+"combinaison de groupes d'options de catégorie existe déjà."
 
 msgid ""
 "Compulsory: all data elements must belong to at least one group in this "
 "group set."
 msgstr ""
+"Obligatoire : tous les éléments de données doivent appartenir à au moins un "
+"groupe de cet ensemble de groupes."
 
 msgid "Set up the information for this data element group set."
 msgstr ""
@@ -3062,21 +3121,26 @@ msgstr ""
 msgid ""
 "Choose the data element groups to include in this data element group set."
 msgstr ""
+"Sélectionnez les groupes d'éléments de données à inclure dans cet ensemble "
+"de groupes d'éléments de données."
 
 msgid "Set up the information for this data element group."
 msgstr "Définir les informations pour ce groupe d'éléments de données."
 
 msgid "Choose the data elements to include in this data element group."
 msgstr ""
+"Sélectionnez les éléments de données à inclure dans ce groupe d'éléments de "
+"données."
 
 msgid "Configure data element merge"
-msgstr ""
+msgstr "Configurer la fusion des éléments de données"
 
 msgid "The data element merge operation is complete."
-msgstr ""
+msgstr "L'opération de fusion des éléments de données est terminée."
 
 msgid "All selected data elements were merged successfully."
 msgstr ""
+"Tous les éléments de données sélectionnés ont été fusionnés avec succès."
 
 msgid "Aggregation level(s)"
 msgstr "Niveau(x) d'agrégation"
@@ -3094,6 +3158,8 @@ msgid ""
 "Use a pattern to limit what information can be entered. See documentation "
 "for details."
 msgstr ""
+"Utilisez un modèle pour limiter les informations qui peuvent être saisies. "
+"Consultez la documentation pour plus de détails."
 
 msgid "Option set comment"
 msgstr "Commentaire sur l'ensemble d'options"
@@ -3106,9 +3172,11 @@ msgid ""
 "Limit data entry to a predefined list of options. Overrides value type "
 "selection to match the option set."
 msgstr ""
+"Limiter la saisie des données à une liste d'options prédéfinie. Remplace la "
+"sélection du type de valeur pour qu'elle corresponde à l'ensemble d'options."
 
 msgid "Change option set and value type?"
-msgstr ""
+msgstr "Modifier l'ensemble d'options et le type de valeur ?"
 
 msgid ""
 "Current option set {{currentOptionSet}} uses value type "
@@ -3116,18 +3184,23 @@ msgid ""
 " If this data element already has data, making this change can make existing"
 " values incompatible and affect analytics tables. Continue anyway?"
 msgstr ""
+"L'ensemble d'options actuel {{currentOptionSet}} utilise le type de valeur "
+"{{currentValueType}} , mais {{newOptionSet}} utilise le type de valeur "
+"{{newValueType}}  . Si cet élément de données contient déjà des données, "
+"cette modification risque de rendre les valeurs existantes incompatibles et "
+"d'affecter les tables d'analyse. Voulez-vous quand même continuer ?"
 
 msgid "current option set"
-msgstr ""
+msgstr "ensemble d'options actuel"
 
 msgid "new option set"
-msgstr ""
+msgstr "nouvel ensemble d'options"
 
 msgid "Change option set"
-msgstr ""
+msgstr "Modifier l'ensemble d'options"
 
 msgid "Shown with description when collecting data."
-msgstr ""
+msgstr "Affiché avec une description lors de la collecte des données."
 
 msgid "Store zero data values"
 msgstr "Enregistrer les valeurs nulles"
@@ -3137,12 +3210,13 @@ msgstr "Définir les informations pour cet élément de données."
 
 msgid "Used to provide more information when collecting data."
 msgstr ""
+"Utilisé pour fournir plus d'informations lors de la collecte de données."
 
 msgid "Data collection"
-msgstr ""
+msgstr "Collecte des données"
 
 msgid "Configure how this data element is collected."
-msgstr ""
+msgstr "Configurez la manière dont cet élément de données est collecté."
 
 msgid "Disaggregation and Option sets"
 msgstr "Désagrégation et ensembles d'options"
@@ -3171,45 +3245,54 @@ msgstr ""
 "inférieurs ne seront pas incluses dans l'agrégation."
 
 msgid "Choose the groups this data element belongs to."
-msgstr ""
+msgstr "Sélectionnez les groupes auxquels cet élément de données appartient."
 
 msgid ""
 "The merge operation will merge the source data elements into\n"
 "                the target data element. One or many source data elements\n"
 "                can be specified"
 msgstr ""
+"L'opération de fusion permettra de fusionner les éléments de données source dans\n"
+"l'élément de données cible. Un ou plusieurs éléments de données source\n"
+"peuvent être spécifiés"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the data element metadata associations to the\n"
 "                source data elements over to the target data element."
 msgstr ""
+"Une seule cible doit être spécifiée. L'opération de fusion\n"
+"transférera toutes les associations de métadonnées des éléments de données\n"
+"provenant des éléments de données sources vers l'élément de données cible."
 
 msgid "Data elements to be merged (source)"
-msgstr ""
+msgstr "Éléments de données à fusionner (source)"
 
 msgid "Select data elements to merge"
-msgstr ""
+msgstr "Sélectionnez les éléments de données à fusionner"
 
 msgid "Data element to merge into (target)"
-msgstr ""
+msgstr "Élément de données dans lequel effectuer la fusion (cible)"
 
 msgid "Select data element to merge into"
-msgstr ""
+msgstr "Sélectionnez l'élément de données dans lequel effectuer la fusion"
 
 msgid "No data elements available. Remove one from source."
-msgstr ""
+msgstr "Aucun élément de données disponible. Supprimez-en un de la source."
 
 msgid ""
 "What should happen to the source data elements after the merge is complete?"
 msgstr ""
+"Qu'advient-il des éléments de données source une fois la fusion terminée ?"
 
 msgid ""
 "What should happen to the data values recorded for the source data elements?"
 msgstr ""
+"Que doit-on faire des valeurs enregistrées pour les éléments de données "
+"source ?"
 
 msgid "Move data values to the target data element"
-msgstr ""
+msgstr "Déplacer les valeurs des données vers l'élément de données cible"
 
 msgid "Error"
 msgstr "Erreur"
@@ -3243,13 +3326,13 @@ msgid "Complete registration att opt combo"
 msgstr "Compléter le combo d’options d’att. d’inscription"
 
 msgid "Set up the basic information for this notification."
-msgstr ""
+msgstr "Configurez les informations de base pour cette notification."
 
 msgid "Message content"
 msgstr "Contenu du message"
 
 msgid "Configure templates for the notification message."
-msgstr ""
+msgstr "Configurer les modèles de message pour les notifications."
 
 msgid "Notification timing"
 msgstr "Délai de notification"
@@ -3262,19 +3345,19 @@ msgid "Recipient"
 msgstr "Destinataire"
 
 msgid "Choose who receives the notification."
-msgstr ""
+msgstr "Choisir qui reçoit la notification."
 
 msgid "Send as SMS"
-msgstr ""
+msgstr "Envoyer un SMS"
 
 msgid "Send as Email"
-msgstr ""
+msgstr "Envoyer un e-mail"
 
 msgid "When to send notification"
 msgstr "Quand envoyer une notification"
 
 msgid "Send before or after scheduled date"
-msgstr ""
+msgstr "Envoyer avant ou après la date prévue"
 
 msgid "Before"
 msgstr "Avant"
@@ -3284,6 +3367,8 @@ msgstr "Après"
 
 msgid "Number of days {{beforeOrAfter}} scheduled date to send notification"
 msgstr ""
+"Nombre de jours {{beforeOrAfter}} entre la date prévue et l'envoi de la "
+"notification"
 
 msgid "before"
 msgstr "avant"
@@ -3295,7 +3380,7 @@ msgid "Recipient type"
 msgstr "Type de destinataire"
 
 msgid "User Group Recipient"
-msgstr ""
+msgstr "Destinataire du groupe d'utilisateurs"
 
 msgid "Used as the template for the subject field."
 msgstr "Utilisé comme modèle pour le champ de l'objet."
@@ -3325,50 +3410,61 @@ msgid "Recipient user group"
 msgstr "Groupe d'utilisateurs destinataire"
 
 msgid "Delivery channels"
-msgstr "Canaux d'envoie distribution"
+msgstr "Canaux de distribution"
 
 msgid "Data set created but ID cannot be determined"
 msgstr ""
+"L'ensemble de données a été créé, mais l'identifiant ne peut pas être "
+"déterminé"
 
 msgid "Data entry form failed to save"
-msgstr ""
+msgstr "Échec de l'enregistrement du formulaire de saisie de données"
 
 msgid "Some data set sections failed to save"
 msgstr ""
+"Certaines sections de l'ensemble de données n'ont pas pu être enregistrées"
 
 msgid "Send complete notifications"
 msgstr "Envoyer des notifications d'achèvement"
 
 msgid "Send notification to completing user"
-msgstr "Envoyer la notification à l'utilisateur qui a achevé la saisie"
+msgstr ""
+"Envoyer une notification à l'utilisateur qui vient de terminer l'opération"
 
 msgid "Advanced options"
 msgstr "Options avancées"
 
 msgid "Used for advanced data set configurations."
-msgstr ""
+msgstr "Utilisé pour les configurations avancées d'ensembles de données."
 
 msgid "Do not save this data set to offline storage"
 msgstr ""
+"Ne sauvegardez pas cet ensemble de données sur un support de stockage hors "
+"ligne"
 
 msgid "Include data element descriptions in offline storage"
 msgstr ""
+"Inclure les descriptions des éléments de données dans le stockage hors ligne"
 
 msgid "Use this data set with the Java mobile client"
-msgstr ""
+msgstr "Utilisez cet ensemble de données avec le client mobile Java"
 
 msgid "Completion notifcations"
-msgstr ""
+msgstr "Notifications d'achèvement"
 
 msgid ""
 "Send notifications when this data set is marked complete using the DHIS2 "
 "Messages app."
 msgstr ""
+"Envoyez des notifications lorsque cet ensemble de données est marqué comme «"
+" terminé » à l'aide de l'application « Messages » de DHIS2."
 
 msgid ""
 "Choose legends to visually categorize values in Data entry and Analytics "
 "apps."
 msgstr ""
+"Choisissez des légendes pour classer visuellement les valeurs dans les "
+"applications de saisie de données et d'analyse."
 
 msgid "Available data elements"
 msgstr "Éléments de données disponibles"
@@ -3380,7 +3476,7 @@ msgid "Filter available data elements"
 msgstr "Filtrer les éléments de données disponibles"
 
 msgid "Filter compulsory data elements"
-msgstr ""
+msgstr "Filtrer les éléments de données obligatoires"
 
 msgid "Approval workflow"
 msgstr "Flux d’approbation"
@@ -3392,12 +3488,14 @@ msgid "Choose what data is collected for this data set."
 msgstr "Choisir les données à collecter pour cet ensemble de données."
 
 msgid "Data set attribution"
-msgstr ""
+msgstr "Attribution des ensembles de données"
 
 msgid ""
 "Choose an optional attribute category combination to assign a data dimension"
 " for the entire data set."
 msgstr ""
+"Choisissez une combinaison d'attributs de catégorie facultative afin "
+"d'attribuer une dimension de données à l'ensemble des données."
 
 msgid "Choose indicators to calculate and show in the data entry form."
 msgstr ""
@@ -3420,7 +3518,7 @@ msgid "Should not exceed {{maxLength}} characters"
 msgstr "Ne doit pas dépasser {{maxLength}} caractères"
 
 msgid "Show title / subtitle"
-msgstr ""
+msgstr "Afficher le titre / le sous-titre"
 
 msgid "Title"
 msgstr "Titre"
@@ -3441,13 +3539,13 @@ msgid "Line end"
 msgstr "Fin de ligne"
 
 msgid "Section layout"
-msgstr ""
+msgstr "Disposition des sections"
 
 msgid "Single page: Show all sections on one page"
-msgstr ""
+msgstr "Page unique : afficher toutes les sections sur une seule page"
 
 msgid "Tabs: Show one tab for each section"
-msgstr ""
+msgstr "Onglets : afficher un onglet pour chaque section"
 
 msgid "Horizontal tabs"
 msgstr "Onglets horizontaux"
@@ -3457,12 +3555,17 @@ msgstr "Onglets verticaux"
 
 msgid "Use a vertical layout for multi-organisation unit forms"
 msgstr ""
+"Utilisez une disposition verticale pour les formulaires destinés à plusieurs"
+" unités d'organisation"
 
 msgid "Only applies to section forms with multiple organisation units"
 msgstr ""
+"S'applique uniquement aux formulaires de section ayant plusieurs unités "
+"d'organisation"
 
 msgid "Choose which organisation units can collect data."
 msgstr ""
+"Sélectionnez les unités d'organisations autorisées à collecter des données."
 
 msgid "Change period type"
 msgstr "Modifier le type de période"
@@ -3479,21 +3582,22 @@ msgid ""
 "Are you sure you want to change the {{objectType}} to "
 "{{newObjectTypeValue}}?"
 msgstr ""
+"Êtes-vous sûr de vouloir changer le {{objectType}} en{{newObjectTypeValue}}?"
 
 msgid "period type"
-msgstr ""
+msgstr "Type de période"
 
 msgid "Data entry periods"
-msgstr ""
+msgstr "Périodes de saisie des données"
 
 msgid "Choose available time periods for data entry."
-msgstr ""
+msgstr "Sélectionnez les périodes disponibles pour la saisie des données."
 
 msgid "Allow data entry in future periods"
-msgstr ""
+msgstr "Autoriser la saisie de données pour les périodes futures"
 
 msgid "Number of future periods"
-msgstr ""
+msgstr "Nombre de périodes futures"
 
 msgid ""
 "Close data entry a certain number of days after period end (expiry days)"
@@ -3508,6 +3612,9 @@ msgid ""
 "Close data entry after \"{{categoryComboName}}\" category option end date "
 "(if category option exist and has end date)"
 msgstr ""
+"Fermer la saisie des données après «{{categoryComboName}} » la date de fin "
+"de l'option de catégorie (si l'option de catégorie existe et comporte une "
+"date de fin)"
 
 msgid "Limit data entry by period"
 msgstr "Limiter la saisie de données par période"
@@ -3529,6 +3636,9 @@ msgid ""
 "Submissions made within this many days after the period end qualify as \"on "
 "time\" in reporting rates. Enter 0 to ignore."
 msgstr ""
+"Les déclarations effectuées dans ce délai de jours après la fin de la "
+"période sont considérées comme « dans les délais » pour le calcul des taux "
+"de déclaration. Saisissez 0 pour ignorer cette règle."
 
 msgid "Value should be bigger than 0"
 msgstr "La valeur doit être supérieure à 0"
@@ -3538,40 +3648,53 @@ msgstr "Validation et limites"
 
 msgid "Configure data entry rules and requirements."
 msgstr ""
+"Configurer les règles et les exigences relatives à la saisie des données."
 
 msgid "Completing requires passing validation"
-msgstr ""
+msgstr "Pour terminer, il faut réussir la validation."
 
 msgid "Completing requires all empty values to have a comment"
 msgstr ""
+"Pour terminer, toutes les valeurs vides doivent être accompagnées d'un "
+"commentaire."
 
 msgid "Completing requires compulsory fields to have a value"
-msgstr ""
+msgstr "Pour terminer, les champs obligatoires doivent comporter une valeur."
 
 msgid ""
 "If one category combination field has a value, require all for that category"
 " combination to have a value"
 msgstr ""
+"Si un champ de combinaison de catégories contient une valeur, exiger que "
+"tous les champs de cette combinaison de catégories contiennent une valeur"
 
 msgid "Data entry form"
 msgstr "Formulaire de saisie"
 
 msgid "Choose and configure how the data entry form looks and works."
 msgstr ""
+"Choisir et configurer l'aspect et le fonctionnement du formulaire de saisie "
+"de données."
 
 msgid ""
 "Displays a form with the data elements in the order they were added to this "
 "data set."
 msgstr ""
+"Affiche un formulaire contenant les éléments de données dans l'ordre où ils "
+"ont été ajoutés à cet ensemble de données."
 
 msgid "Manage data elements"
-msgstr ""
+msgstr "Gérer les éléments de données"
 
 msgid "Save changes to this data set before editing sections"
 msgstr ""
+"Enregistrer les modifications apportées à cet ensemble de données avant de "
+"modifier les sections"
 
 msgid "Save changes to this data set before editing the form"
 msgstr ""
+"Enregistrer les modifications apportées à cet ensemble de données avant de "
+"modifier le formulaire"
 
 msgid "Display options"
 msgstr "Options d'affichage"
@@ -3589,15 +3712,17 @@ msgid "Manage enabled/disabled fields"
 msgstr "Gérer les champs activés/désactivés"
 
 msgid "Filter selected data elements"
-msgstr ""
+msgstr "Filtrer les éléments de données sélectionnés"
 
 msgid ""
 "No data elements available. Add data elements to this data set to use them "
 "in sections."
 msgstr ""
+"Aucun élément de données n'est disponible. Ajouter des éléments de données à"
+" cet ensemble de données pour pouvoir les utiliser dans les sections."
 
 msgid "Data set section form saved"
-msgstr ""
+msgstr "Formulaire de la section « Ensemble de données » enregistré"
 
 msgid "Section setup"
 msgstr "Configuration de la section"
@@ -3607,6 +3732,7 @@ msgstr "Définir les informations de base pour cette section."
 
 msgid "Shown in the data entry form with the section title."
 msgstr ""
+"Affiché dans le formulaire de saisie de données avec le titre de la section."
 
 msgid "Section data elements"
 msgstr "Éléments de données de la section"
