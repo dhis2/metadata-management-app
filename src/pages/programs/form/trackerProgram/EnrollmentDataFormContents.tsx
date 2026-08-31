@@ -32,9 +32,8 @@ import enrollmentDataFormCss from './EnrollmentDataFormContents.module.css'
 
 type ProgramAttribute =
     ProgramsFromFilters['programTrackedEntityAttributes'][number]
-// PickWithFieldFilters cannot resolve a nested bracket followed by sibling
-// fields (trackedEntityTypeAttributes[trackedEntityAttribute[...],mandatory,...]),
-// so this shape is declared explicitly to match the fieldFilters in EditTrackerProgram.
+// Declared explicitly: PickWithFieldFilters can't resolve a nested bracket with
+// sibling fields. Must match the trackedEntityTypeAttributes fieldFilters in EditTrackerProgram.
 type TrackedEntityTypeAttribute = {
     trackedEntityAttribute: {
         id: string

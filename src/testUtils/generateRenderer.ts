@@ -38,7 +38,6 @@ export const generateRenderer =
             name: faker.person.fullName(),
             email: faker.internet.email(),
             settings: {},
-            avatar: undefined as never,
         })
         useSystemSettingsStore
             .getState()

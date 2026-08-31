@@ -42,7 +42,9 @@ type UseOnSubmitEditWithGroupsOptions = {
     groupResource: string
 }
 
-export const useOnSubmitEditWithGroups = <TFormValues = unknown>({
+export const useOnSubmitEditWithGroups = <
+    TFormValues extends ModelWithAttributeValues = ModelWithAttributeValues
+>({
     section,
     modelId,
     groupResource,
@@ -71,7 +73,7 @@ export const useOnSubmitEditWithGroups = <TFormValues = unknown>({
             })()
 
             const jsonPatchOperations = createJsonPatchOperations({
-                values: valuesForPatch as unknown as ModelWithAttributeValues,
+                values: valuesForPatch,
                 dirtyFields,
                 originalValue: initialValues,
             })

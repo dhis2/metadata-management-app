@@ -1,4 +1,18 @@
-import { Configuration } from './models'
+import {
+    BulkSmsGatewayConfig,
+    ClickatellGatewayConfig,
+    GenericHttpGatewayConfig,
+    SMPPGatewayConfig,
+} from './models'
+
+type SmsConfiguration = {
+    gateways: Array<
+        | BulkSmsGatewayConfig
+        | GenericHttpGatewayConfig
+        | ClickatellGatewayConfig
+        | SMPPGatewayConfig
+    >
+}
 
 export type SystemSettings = {
     keyDateFormat: string
@@ -85,7 +99,7 @@ export type SystemSettings = {
     syncMaxRemoteServerAvailabilityCheckAttempts: number
     keyAllowObjectAssignment: boolean
     keyStopMetadataSync: boolean
-    keySmsSetting: Configuration
+    keySmsSetting: SmsConfiguration
     keyDataImportStrictDataElements: boolean
     keyLastSuccessfulDataSynch: string
     keyApplicationIntro: string

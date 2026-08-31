@@ -1,8 +1,6 @@
 import type { ErrorReport as GeneratedErrorReport } from './generated'
-// The import summary shape returned by the API (httpStatus/response/...) is not
-// described by the generated schema, so ImportSummary/ImportResponse stay hand-written.
-// ErrorReport below is just narrowed to the fields we use (the generated type now
-// includes `args`, so this is no longer a correctness fix).
+
+// The import summary response shape is not described by the generated schema.
 export type ImportSummary = {
     httpStatus: string
     httpStatusCode: number

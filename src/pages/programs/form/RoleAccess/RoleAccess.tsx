@@ -173,7 +173,7 @@ export const RoleAccess = ({
                         nsSeparator: '~:~',
                     })}
                     type="program"
-                    sharing={values.sharing as SharingSettings}
+                    sharing={values.sharing}
                     onApplyToAllStages={
                         showStageAccess ? handleApplyToAllStages : undefined
                     }
@@ -191,11 +191,11 @@ export const RoleAccess = ({
                                 nsSeparator: '~:~',
                             })}
                             type="stage"
-                            sharing={stage.sharing as SharingSettings}
+                            sharing={stage.sharing}
                             isDifferentFromProgram={
                                 !areSharingPropertiesSimilar(
-                                    stage.sharing as SharingSettings,
-                                    values.sharing as SharingSettings
+                                    stage.sharing,
+                                    values.sharing
                                 )
                             }
                             onApplyProgramAccessRules={() =>

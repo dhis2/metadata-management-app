@@ -6,7 +6,7 @@ properties the types actually consist of for complex objects/types
 https://www.totaltypescript.com/concepts/the-prettify-helper  */
 export type Prettify<T> = {
     [K in keyof T]: T[K]
-} & {}
+} & unknown
 
 export type ModelCollection<T = IdentifiableObject> = Array<T>
 type ModelReference = IdentifiableObject | ModelCollection

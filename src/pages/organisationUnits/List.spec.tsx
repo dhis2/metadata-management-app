@@ -47,7 +47,6 @@ const renderList = async ({
         name: 'Test User',
         email: 'test@dhis2.org',
         settings: {},
-        avatar: undefined as never,
     })
 
     const result = render(
