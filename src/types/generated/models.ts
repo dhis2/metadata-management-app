@@ -2942,8 +2942,11 @@ export enum DataEntryFormPropertyNames {
     TRANSLATIONS = 'translations',
 }
 export type DataInputPeriod = {
-    closingDate: string
-    openingDate: string
+    // Hand-corrected: the OpenAPI spec marks none of these fields required.
+    // dhis2-open-api-ts' setPropertiesRequired transformer forces them required
+    // on every regen, so re-apply the `?` after regenerating this file.
+    closingDate?: string
+    openingDate?: string
     period?: {
         id: string
     }

@@ -105,12 +105,12 @@ export const dataSetFormSchema = identifiable
             .array(
                 z.object({
                     period: modelReference,
-                    openingDate: z
-                        .string()
-                        .min(1, i18n.t('Opening date is required')),
-                    closingDate: z
-                        .string()
-                        .min(1, i18n.t('Closing date is required')),
+                    // openingDate/closingDate are optional in the OpenAPI spec
+                    // (the generated `required` flag is a dhis2-open-api-ts
+                    // artifact, not a real constraint). The API accepts a period
+                    // entry with only a period reference.
+                    openingDate: z.string().optional(),
+                    closingDate: z.string().optional(),
                 })
             )
             .default([]),
