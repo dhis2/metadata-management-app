@@ -38,8 +38,6 @@ export type AggregateDataExchange = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -63,8 +61,6 @@ export type AggregateDataExchangeParams = {
         id: UID_User
     }
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -84,8 +80,6 @@ export enum AggregateDataExchangePropertyNames {
     CREATED = 'created',
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -163,8 +157,6 @@ export type AnalyticsPeriodBoundary = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -216,8 +208,6 @@ export type AnalyticsPeriodBoundaryParams = {
         id: UID_User
     }
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -275,8 +265,6 @@ export type AnalyticsTableHook = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -298,8 +286,6 @@ export type AnalyticsTableHookParams = {
         id: UID_User
     }
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -321,8 +307,6 @@ export enum AnalyticsTableHookPropertyNames {
     CREATED = 'created',
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -387,8 +371,6 @@ export type ApiToken = {
     createdBy: UserDto
     displayName: string
     expire: number
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -422,8 +404,6 @@ export type ApiTokenParams = {
     }
     displayName: string
     expire: number
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -445,8 +425,6 @@ export enum ApiTokenPropertyNames {
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
     EXPIRE = 'expire',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -619,8 +597,6 @@ export type Attribute = {
     documentAttribute: boolean
     eventChartAttribute: boolean
     eventReportAttribute: boolean
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -685,8 +661,6 @@ export type AttributeParams = {
     documentAttribute: boolean
     eventChartAttribute: boolean
     eventReportAttribute: boolean
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     indicatorAttribute: boolean
@@ -752,8 +726,6 @@ export enum AttributePropertyNames {
     DOCUMENT_ATTRIBUTE = 'documentAttribute',
     EVENT_CHART_ATTRIBUTE = 'eventChartAttribute',
     EVENT_REPORT_ATTRIBUTE = 'eventReportAttribute',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
@@ -884,8 +856,6 @@ export type BaseIdentifiableObject = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -1121,7 +1091,7 @@ export type CategoryOption = {
 export type CategoryOptionCombo = {
     access: Access
     aggregationType: AggregationType
-    attributeValues: Array<AttributeValue>
+    attributeValues: AttributeValues
     categoryCombo: CategoryCombo
     categoryOptions: Array<CategoryOption>
     code: string
@@ -1134,8 +1104,6 @@ export type CategoryOptionCombo = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -1144,6 +1112,7 @@ export type CategoryOptionCombo = {
     lastUpdatedBy: UserDto
     legendSet: LegendSet
     legendSets: Array<LegendSet>
+    name: string
     queryMods: QueryModifiers
     sharing: Sharing
     translations: Array<Translation>
@@ -1151,7 +1120,7 @@ export type CategoryOptionCombo = {
 
 export type CategoryOptionComboParams = {
     aggregationType: AggregationType
-    attributeValues: Array<AttributeValueParams>
+    attributeValues: AttributeValues
     categoryCombo?: {
         id: UID_CategoryCombo
     }
@@ -1170,9 +1139,8 @@ export type CategoryOptionComboParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
+    href: string
     id: string
     ignoreApproval: boolean
     lastUpdated: string
@@ -1185,6 +1153,7 @@ export type CategoryOptionComboParams = {
     legendSets?: Array<{
         id: UID_LegendSet
     }>
+    name: string
     queryMods: QueryModifiers
     sharing: Sharing
     translations: Array<Translation>
@@ -1206,8 +1175,6 @@ export enum CategoryOptionComboPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
@@ -1216,6 +1183,7 @@ export enum CategoryOptionComboPropertyNames {
     LAST_UPDATED_BY = 'lastUpdatedBy',
     LEGEND_SET = 'legendSet',
     LEGEND_SETS = 'legendSets',
+    NAME = 'name',
     QUERY_MODS = 'queryMods',
     SHARING = 'sharing',
     TRANSLATIONS = 'translations',
@@ -1236,8 +1204,6 @@ export type CategoryOptionGroup = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     groupSets: Array<CategoryOptionGroupSet>
     href: string
@@ -1271,8 +1237,6 @@ export type CategoryOptionGroupParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     groupSets?: Array<{
         id: UID_CategoryOptionGroupSet
@@ -1310,8 +1274,6 @@ export enum CategoryOptionGroupPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     GROUP_SETS = 'groupSets',
     HREF = 'href',
@@ -1345,8 +1307,6 @@ export type CategoryOptionGroupSet = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     filter: string
     formName: string
     href: string
@@ -1401,8 +1361,6 @@ export type CategoryOptionGroupSetParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     filter: string
     formName: string
     id: string
@@ -1451,8 +1409,6 @@ export enum CategoryOptionGroupSetPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FILTER = 'filter',
     FORM_NAME = 'formName',
     HREF = 'href',
@@ -1769,8 +1725,6 @@ export type Constant = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -1795,8 +1749,6 @@ export type ConstantParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     lastUpdated: string
@@ -1821,8 +1773,6 @@ export enum ConstantPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
@@ -2458,8 +2408,6 @@ export type DataElementGroup = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     groupSets: Array<DataElementGroupSet>
     href: string
@@ -2491,8 +2439,6 @@ export type DataElementGroupParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     groupSets?: Array<{
         id: UID_DataElementGroupSet
@@ -2528,8 +2474,6 @@ export enum DataElementGroupPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     GROUP_SETS = 'groupSets',
     HREF = 'href',
@@ -2564,8 +2508,6 @@ export type DataElementGroupSet = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     filter: string
     formName: string
     href: string
@@ -2621,8 +2563,6 @@ export type DataElementGroupSetParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     filter: string
     formName: string
     id: string
@@ -2672,8 +2612,6 @@ export enum DataElementGroupSetPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FILTER = 'filter',
     FORM_NAME = 'formName',
     HREF = 'href',
@@ -2705,8 +2643,6 @@ export type DataElementOperand = {
     description: string
     displayDescription: string
     displayFormName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     lastUpdated: string
@@ -2737,8 +2673,6 @@ export type DataElementOperandParams = {
     description: string
     displayDescription: string
     displayFormName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -2767,8 +2701,6 @@ export enum DataElementOperandPropertyNames {
     DESCRIPTION = 'description',
     DISPLAY_DESCRIPTION = 'displayDescription',
     DISPLAY_FORM_NAME = 'displayFormName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     LAST_UPDATED = 'lastUpdated',
@@ -2884,8 +2816,6 @@ export type DataEntryForm = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     format: number
     href: string
     htmlCode: string
@@ -2906,8 +2836,6 @@ export type DataEntryFormParams = {
         id: UID_User
     }
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     format: number
     htmlCode: string
     id: string
@@ -2928,8 +2856,6 @@ export enum DataEntryFormPropertyNames {
     CREATED = 'created',
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORMAT = 'format',
     HREF = 'href',
     HTML_CODE = 'htmlCode',
@@ -3035,8 +2961,6 @@ export type DataSet = {
     displayOptions: Record<string, any>
     displayShortName: string
     expiryDays: number
-    favorite: boolean
-    favorites: Array<string>
     fieldCombinationRequired: boolean
     formName: string
     formType: FormType
@@ -3145,8 +3069,6 @@ export type DataSetNotificationTemplate = {
     displayMessageTemplate: string
     displayName: string
     displaySubjectTemplate: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -3179,8 +3101,6 @@ export type DataSetNotificationTemplateParams = {
     displayMessageTemplate: string
     displayName: string
     displaySubjectTemplate: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -3213,8 +3133,6 @@ export enum DataSetNotificationTemplatePropertyNames {
     DISPLAY_MESSAGE_TEMPLATE = 'displayMessageTemplate',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SUBJECT_TEMPLATE = 'displaySubjectTemplate',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -3263,8 +3181,6 @@ export type DataSetParams = {
     displayOptions: Record<string, any>
     displayShortName: string
     expiryDays: number
-    favorite: boolean
-    favorites: Array<string>
     fieldCombinationRequired: boolean
     formName: string
     formType: FormType
@@ -3369,8 +3285,6 @@ export enum DataSetPropertyNames {
     DISPLAY_OPTIONS = 'displayOptions',
     DISPLAY_SHORT_NAME = 'displayShortName',
     EXPIRY_DAYS = 'expiryDays',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FIELD_COMBINATION_REQUIRED = 'fieldCombinationRequired',
     FORM_NAME = 'formName',
     FORM_TYPE = 'formType',
@@ -3425,8 +3339,6 @@ export type DatastoreEntry = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     key: string
@@ -3687,8 +3599,6 @@ export type Dhis2OAuth2Authorization = {
     deviceCodeExpiresAt: string
     deviceCodeIssuedAt: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -3714,8 +3624,6 @@ export type Dhis2OAuth2AuthorizationConsent = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -3735,8 +3643,6 @@ export enum Dhis2OAuth2AuthorizationConsentPropertyNames {
     CREATED = 'created',
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -3764,8 +3670,6 @@ export enum Dhis2OAuth2AuthorizationPropertyNames {
     DEVICE_CODE_EXPIRES_AT = 'deviceCodeExpiresAt',
     DEVICE_CODE_ISSUED_AT = 'deviceCodeIssuedAt',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -3797,8 +3701,6 @@ export type Dhis2OAuth2Client = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -3826,8 +3728,6 @@ export type Dhis2OAuth2ClientParams = {
         id: UID_User
     }
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -3855,8 +3755,6 @@ export enum Dhis2OAuth2ClientPropertyNames {
     CREATED = 'created',
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -4015,8 +3913,6 @@ export type Document = {
     createdBy: UserDto
     displayName: string
     external: boolean
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -4038,8 +3934,6 @@ export type DocumentParams = {
     }
     displayName: string
     external: boolean
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -4061,8 +3955,6 @@ export enum DocumentPropertyNames {
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
     EXTERNAL = 'external',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -4421,6 +4313,7 @@ export enum ErrorCode {
     E4056 = 'E4056',
     E4055 = 'E4055',
     E4050 = 'E4050',
+    E4093 = 'E4093',
     E4051 = 'E4051',
     E4052 = 'E4052',
     E4053 = 'E4053',
@@ -4646,6 +4539,8 @@ export enum ErrorCode {
     E7243 = 'E7243',
     E7244 = 'E7244',
     E7245 = 'E7245',
+    E7246 = 'E7246',
+    E7247 = 'E7247',
     E7250 = 'E7250',
     E7251 = 'E7251',
     E7252 = 'E7252',
@@ -4653,6 +4548,7 @@ export enum ErrorCode {
     E7254 = 'E7254',
     E7255 = 'E7255',
     E7256 = 'E7256',
+    E7257 = 'E7257',
     E7300 = 'E7300',
     E7301 = 'E7301',
     E7302 = 'E7302',
@@ -4923,6 +4819,15 @@ export enum EventDataType {
     EVENTS = 'EVENTS',
 }
 
+export type EventDataValue = {
+    created: string
+    createdByUserInfo: UserInfoSnapshot
+    lastUpdated: string
+    lastUpdatedByUserInfo: UserInfoSnapshot
+    providedElsewhere: boolean
+    value: string
+}
+
 export type EventFilter = {
     access: Access
     attributeValues: Array<AttributeValue>
@@ -4933,8 +4838,6 @@ export type EventFilter = {
     displayDescription: string
     displayName: string
     eventQueryCriteria: EventQueryCriteria
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -4965,8 +4868,6 @@ export type EventFilterParams = {
     displayDescription: string
     displayName: string
     eventQueryCriteria: EventQueryCriteria
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -4989,8 +4890,6 @@ export enum EventFilterPropertyNames {
     DISPLAY_DESCRIPTION = 'displayDescription',
     DISPLAY_NAME = 'displayName',
     EVENT_QUERY_CRITERIA = 'eventQueryCriteria',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -5011,8 +4910,6 @@ export type EventHook = {
     description: string
     disabled: boolean
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -5034,8 +4931,6 @@ export type EventHookParams = {
     description: string
     disabled: boolean
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -5057,8 +4952,6 @@ export enum EventHookPropertyNames {
     DESCRIPTION = 'description',
     DISABLED = 'disabled',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -5679,8 +5572,6 @@ export type ExpressionDimensionItem = {
     displayName: string
     displayShortName: string
     expression: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -5714,8 +5605,6 @@ export type ExpressionDimensionItemParams = {
     displayName: string
     displayShortName: string
     expression: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     lastUpdated: string
@@ -5753,8 +5642,6 @@ export enum ExpressionDimensionItemPropertyNames {
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
     EXPRESSION = 'expression',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
@@ -5779,8 +5666,6 @@ export type ExternalMapLayer = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     imageFormat: ImageFormat
@@ -5806,8 +5691,6 @@ export type ExternalMapLayerParams = {
         id: UID_User
     }
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     imageFormat: ImageFormat
     lastUpdated: string
@@ -5835,8 +5718,6 @@ export enum ExternalMapLayerPropertyNames {
     CREATED = 'created',
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     IMAGE_FORMAT = 'imageFormat',
@@ -5897,8 +5778,6 @@ export type FileResource = {
     createdBy: UserDto
     displayName: string
     domain: FileResourceDomain
-    favorite: boolean
-    favorites: Array<string>
     hasMultipleStorageFiles: boolean
     href: string
     id: string
@@ -5941,8 +5820,6 @@ export enum FileResourcePropertyNames {
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
     DOMAIN = 'domain',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HAS_MULTIPLE_STORAGE_FILES = 'hasMultipleStorageFiles',
     HREF = 'href',
     ID = 'id',
@@ -6257,8 +6134,6 @@ export type I18nLocale = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -6573,8 +6448,6 @@ export type IncomingSms = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     gatewayid: string
     href: string
     id: string
@@ -6599,8 +6472,6 @@ export type IncomingSmsParams = {
         id: UID_User
     }
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     gatewayid: string
     id: string
     lastUpdated: string
@@ -6625,8 +6496,6 @@ export enum IncomingSmsPropertyNames {
     CREATED = 'created',
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     GATEWAYID = 'gatewayid',
     HREF = 'href',
     ID = 'id',
@@ -6677,8 +6546,6 @@ export type Indicator = {
     displayShortName: string
     explodedDenominator: string
     explodedNumerator: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -6863,8 +6730,6 @@ export type IndicatorParams = {
     displayShortName: string
     explodedDenominator: string
     explodedNumerator: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     indicatorGroups?: Array<{
@@ -6918,8 +6783,6 @@ export enum IndicatorPropertyNames {
     DISPLAY_SHORT_NAME = 'displayShortName',
     EXPLODED_DENOMINATOR = 'explodedDenominator',
     EXPLODED_NUMERATOR = 'explodedNumerator',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
@@ -6948,8 +6811,6 @@ export type IndicatorType = {
     createdBy: UserDto
     displayName: string
     factor: number
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -6969,8 +6830,6 @@ export type IndicatorTypeParams = {
     }
     displayName: string
     factor: number
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -6990,8 +6849,6 @@ export enum IndicatorTypePropertyNames {
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
     FACTOR = 'factor',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -7008,7 +6865,7 @@ export type InfoObject = {
     title: string
 }
 
-export type Instant = string | number
+export type Instant = number | string
 
 export type Internal = {
     entityTypeAttributes: Array<string>
@@ -7028,8 +6885,6 @@ export type Interpretation = {
     eventChart: EventChart
     eventReport: EventReport
     eventVisualization: EventVisualization
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -7056,8 +6911,6 @@ export type InterpretationComment = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -7092,8 +6945,6 @@ export type InterpretationParams = {
     eventVisualization?: {
         id: UID_EventVisualization
     }
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -7132,8 +6983,6 @@ export enum InterpretationPropertyNames {
     EVENT_CHART = 'eventChart',
     EVENT_REPORT = 'eventReport',
     EVENT_VISUALIZATION = 'eventVisualization',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -7205,8 +7054,6 @@ export type JobConfiguration = {
     enabled: boolean
     errorCodes: string
     executedBy: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     jobParameters:
@@ -7264,8 +7111,6 @@ export type JobConfigurationParams = {
     displayName: string
     enabled: boolean
     executedBy: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     jobParameters:
         | MetadataImportParams
@@ -7313,8 +7158,6 @@ export enum JobConfigurationPropertyNames {
     ENABLED = 'enabled',
     ERROR_CODES = 'errorCodes',
     EXECUTED_BY = 'executedBy',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     JOB_PARAMETERS = 'jobParameters',
@@ -7866,8 +7709,6 @@ export type MapView = {
     eventPointColor: string
     eventPointRadius: number
     eventStatus: EventStatus
-    favorite: boolean
-    favorites: Array<string>
     filterDimensions: Array<string>
     filters: Array<DimensionalObject>
     followUp: boolean
@@ -7996,8 +7837,6 @@ export type MapViewParams = {
     eventPointColor: string
     eventPointRadius: number
     eventStatus: EventStatus
-    favorite: boolean
-    favorites: Array<string>
     filterDimensions: Array<string>
     filters?: Array<{
         id: UID_DimensionalObject
@@ -8143,8 +7982,6 @@ export enum MapViewPropertyNames {
     EVENT_POINT_COLOR = 'eventPointColor',
     EVENT_POINT_RADIUS = 'eventPointRadius',
     EVENT_STATUS = 'eventStatus',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FILTER_DIMENSIONS = 'filterDimensions',
     FILTERS = 'filters',
     FOLLOW_UP = 'followUp',
@@ -8247,7 +8084,6 @@ export type CurrentUser = {
     emailVerified: boolean
     employer: string
     facebookMessenger: string
-    favorites: Array<string>
     firstName: string
     gender: string
     id: string
@@ -8296,7 +8132,6 @@ export enum MeDtoPropertyNames {
     EMAIL_VERIFIED = 'emailVerified',
     EMPLOYER = 'employer',
     FACEBOOK_MESSENGER = 'facebookMessenger',
-    FAVORITES = 'favorites',
     FIRST_NAME = 'firstName',
     GENDER = 'gender',
     ID = 'id',
@@ -8395,8 +8230,6 @@ export type MessageConversation = {
     createdBy: UserDto
     displayName: string
     extMessageId: string
-    favorite: boolean
-    favorites: Array<string>
     followUp: boolean
     href: string
     id: string
@@ -8449,8 +8282,6 @@ export type MessageConversationParams = {
     }
     displayName: string
     extMessageId: string
-    favorite: boolean
-    favorites: Array<string>
     followUp: boolean
     id: string
     lastMessage: string
@@ -8494,8 +8325,6 @@ export enum MessageConversationPropertyNames {
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
     EXT_MESSAGE_ID = 'extMessageId',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FOLLOW_UP = 'followUp',
     HREF = 'href',
     ID = 'id',
@@ -8682,8 +8511,6 @@ export type MetadataVersion = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     hashCode: string
     href: string
     id: string
@@ -8778,8 +8605,6 @@ export type Note = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -8911,8 +8736,6 @@ export type Option = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -8940,8 +8763,6 @@ export type OptionGroup = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -8972,8 +8793,6 @@ export type OptionGroupParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     lastUpdated: string
@@ -9012,8 +8831,6 @@ export enum OptionGroupPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
@@ -9047,8 +8864,6 @@ export type OptionGroupSet = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     filter: string
     formName: string
     href: string
@@ -9087,8 +8902,6 @@ export type OptionGroupSetParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     filter: string
     formName: string
     id: string
@@ -9139,8 +8952,6 @@ export enum OptionGroupSetPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FILTER = 'filter',
     FORM_NAME = 'formName',
     HREF = 'href',
@@ -9173,8 +8984,6 @@ export type OptionParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     lastUpdated: string
@@ -9203,8 +9012,6 @@ export enum OptionPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
@@ -9314,8 +9121,6 @@ export type OrganisationUnit = {
     displayName: string
     displayShortName: string
     email: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     geometry: Record<string, any>
     href: string
@@ -9363,8 +9168,6 @@ export type OrganisationUnitGroup = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     featureType: FeatureType
     formName: string
     geometry: Record<string, any>
@@ -9399,8 +9202,6 @@ export type OrganisationUnitGroupParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     featureType: FeatureType
     formName: string
     geometry: Record<string, any>
@@ -9443,8 +9244,6 @@ export enum OrganisationUnitGroupPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FEATURE_TYPE = 'featureType',
     FORM_NAME = 'formName',
     GEOMETRY = 'geometry',
@@ -9482,8 +9281,6 @@ export type OrganisationUnitGroupSet = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     filter: string
     formName: string
     href: string
@@ -9538,8 +9335,6 @@ export type OrganisationUnitGroupSetParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     filter: string
     formName: string
     id: string
@@ -9592,8 +9387,6 @@ export enum OrganisationUnitGroupSetPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FILTER = 'filter',
     FORM_NAME = 'formName',
     HREF = 'href',
@@ -9622,8 +9415,6 @@ export type OrganisationUnitLevel = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -9643,8 +9434,6 @@ export type OrganisationUnitLevelParams = {
         id: UID_User
     }
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -9664,8 +9453,6 @@ export enum OrganisationUnitLevelPropertyNames {
     CREATED = 'created',
     CREATED_BY = 'createdBy',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -9705,8 +9492,6 @@ export type OrganisationUnitParams = {
     displayName: string
     displayShortName: string
     email: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     geometry: Record<string, any>
     id: string
@@ -9768,8 +9553,6 @@ export enum OrganisationUnitPropertyNames {
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
     EMAIL = 'email',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     GEOMETRY = 'geometry',
     HREF = 'href',
@@ -9883,8 +9666,6 @@ export type OutboundSms = {
     createdBy: UserDto
     date: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -9908,8 +9689,6 @@ export type OutboundSmsParams = {
     }
     date: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -9933,8 +9712,6 @@ export enum OutboundSmsPropertyNames {
     CREATED_BY = 'createdBy',
     DATE = 'date',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -10149,8 +9926,6 @@ export type Predictor = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     generator: Expression
     href: string
@@ -10210,8 +9985,6 @@ export type PredictorGroup = {
     createdBy: UserDto
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -10231,8 +10004,6 @@ export type PredictorGroupParams = {
     }
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -10254,8 +10025,6 @@ export enum PredictorGroupPropertyNames {
     CREATED_BY = 'createdBy',
     DESCRIPTION = 'description',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -10286,8 +10055,6 @@ export type PredictorParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     generator: Expression
     id: string
@@ -10360,8 +10127,6 @@ export enum PredictorPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     GENERATOR = 'generator',
     HREF = 'href',
@@ -10453,12 +10218,15 @@ export type Program = {
     displayIncidentDateLabel: string
     displayName: string
     displayNoteLabel: string
+    displayNotesLabel: string
     displayOrgUnitLabel: string
     displayProgramStageLabel: string
     displayProgramStagesLabel: string
     displayRelationshipLabel: string
+    displayRelationshipsLabel: string
     displayShortName: string
     displayTrackedEntityAttributeLabel: string
+    displayTrackedEntityAttributesLabel: string
     enableChangeLog: boolean
     enrollmentCategoryCombo: CategoryCombo
     enrollmentDateLabel: string
@@ -10481,6 +10249,7 @@ export type Program = {
     minAttributesRequiredToSearch: number
     name: string
     noteLabel: string
+    notesLabel: string
     notificationTemplates: Array<ProgramNotificationTemplate>
     onlyEnrollOnce: boolean
     openDaysAfterCoEndDate: number
@@ -10497,6 +10266,7 @@ export type Program = {
     registration: boolean
     relatedProgram: Program
     relationshipLabel: string
+    relationshipsLabel: string
     selectEnrollmentDatesInFuture: boolean
     selectIncidentDatesInFuture: boolean
     sharing: Sharing
@@ -10504,6 +10274,7 @@ export type Program = {
     skipOffline: boolean
     style: ObjectStyle
     trackedEntityAttributeLabel: string
+    trackedEntityAttributesLabel: string
     trackedEntityType: TrackedEntityType
     translations: Array<Translation>
     useFirstStageDuringRegistration: boolean
@@ -10566,8 +10337,6 @@ export type ProgramDataElementDimensionItem = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -10596,8 +10365,6 @@ export type ProgramDataElementDimensionItemParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     lastUpdated: string
@@ -10628,8 +10395,6 @@ export enum ProgramDataElementDimensionItemPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
@@ -10655,8 +10420,6 @@ export type ProgramDataElementOptionDimensionItem = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -10686,8 +10449,6 @@ export type ProgramDataElementOptionDimensionItemParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     lastUpdated: string
@@ -10733,8 +10494,6 @@ export type ProgramIndicator = {
     displayName: string
     displayShortName: string
     expression: string
-    favorite: boolean
-    favorites: Array<string>
     filter: string
     formName: string
     href: string
@@ -10762,8 +10521,6 @@ export type ProgramIndicatorGroup = {
     createdBy: UserDto
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -10783,8 +10540,6 @@ export type ProgramIndicatorGroupParams = {
     }
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -10806,8 +10561,6 @@ export enum ProgramIndicatorGroupPropertyNames {
     CREATED_BY = 'createdBy',
     DESCRIPTION = 'description',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -10847,8 +10600,6 @@ export type ProgramIndicatorParams = {
     displayName: string
     displayShortName: string
     expression: string
-    favorite: boolean
-    favorites: Array<string>
     filter: string
     formName: string
     id: string
@@ -10901,8 +10652,6 @@ export enum ProgramIndicatorPropertyNames {
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
     EXPRESSION = 'expression',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FILTER = 'filter',
     FORM_NAME = 'formName',
     HREF = 'href',
@@ -11020,8 +10769,6 @@ export type ProgramNotificationTemplate = {
     displayMessageTemplate: string
     displayName: string
     displaySubjectTemplate: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -11053,8 +10800,6 @@ export type ProgramNotificationTemplateParams = {
     displayMessageTemplate: string
     displayName: string
     displaySubjectTemplate: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -11092,8 +10837,6 @@ export enum ProgramNotificationTemplatePropertyNames {
     DISPLAY_MESSAGE_TEMPLATE = 'displayMessageTemplate',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SUBJECT_TEMPLATE = 'displaySubjectTemplate',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -11153,12 +10896,15 @@ export type ProgramParams = {
     displayIncidentDateLabel: string
     displayName: string
     displayNoteLabel: string
+    displayNotesLabel: string
     displayOrgUnitLabel: string
     displayProgramStageLabel: string
     displayProgramStagesLabel: string
     displayRelationshipLabel: string
+    displayRelationshipsLabel: string
     displayShortName: string
     displayTrackedEntityAttributeLabel: string
+    displayTrackedEntityAttributesLabel: string
     enableChangeLog: boolean
     enrollmentCategoryCombo?: {
         id: UID_CategoryCombo
@@ -11185,6 +10931,7 @@ export type ProgramParams = {
     minAttributesRequiredToSearch: number
     name: string
     noteLabel: string
+    notesLabel: string
     notificationTemplates?: Array<{
         id: UID_ProgramNotificationTemplate
     }>
@@ -11215,6 +10962,7 @@ export type ProgramParams = {
         id: UID_Program
     }
     relationshipLabel: string
+    relationshipsLabel: string
     selectEnrollmentDatesInFuture: boolean
     selectIncidentDatesInFuture: boolean
     sharing: Sharing
@@ -11222,6 +10970,7 @@ export type ProgramParams = {
     skipOffline: boolean
     style: ObjectStyle
     trackedEntityAttributeLabel: string
+    trackedEntityAttributesLabel: string
     trackedEntityType?: {
         id: UID_TrackedEntityType
     }
@@ -11289,12 +11038,15 @@ export enum ProgramPropertyNames {
     DISPLAY_INCIDENT_DATE_LABEL = 'displayIncidentDateLabel',
     DISPLAY_NAME = 'displayName',
     DISPLAY_NOTE_LABEL = 'displayNoteLabel',
+    DISPLAY_NOTES_LABEL = 'displayNotesLabel',
     DISPLAY_ORG_UNIT_LABEL = 'displayOrgUnitLabel',
     DISPLAY_PROGRAM_STAGE_LABEL = 'displayProgramStageLabel',
     DISPLAY_PROGRAM_STAGES_LABEL = 'displayProgramStagesLabel',
     DISPLAY_RELATIONSHIP_LABEL = 'displayRelationshipLabel',
+    DISPLAY_RELATIONSHIPS_LABEL = 'displayRelationshipsLabel',
     DISPLAY_SHORT_NAME = 'displayShortName',
     DISPLAY_TRACKED_ENTITY_ATTRIBUTE_LABEL = 'displayTrackedEntityAttributeLabel',
+    DISPLAY_TRACKED_ENTITY_ATTRIBUTES_LABEL = 'displayTrackedEntityAttributesLabel',
     ENABLE_CHANGE_LOG = 'enableChangeLog',
     ENROLLMENT_CATEGORY_COMBO = 'enrollmentCategoryCombo',
     ENROLLMENT_DATE_LABEL = 'enrollmentDateLabel',
@@ -11317,6 +11069,7 @@ export enum ProgramPropertyNames {
     MIN_ATTRIBUTES_REQUIRED_TO_SEARCH = 'minAttributesRequiredToSearch',
     NAME = 'name',
     NOTE_LABEL = 'noteLabel',
+    NOTES_LABEL = 'notesLabel',
     NOTIFICATION_TEMPLATES = 'notificationTemplates',
     ONLY_ENROLL_ONCE = 'onlyEnrollOnce',
     OPEN_DAYS_AFTER_CO_END_DATE = 'openDaysAfterCoEndDate',
@@ -11333,6 +11086,7 @@ export enum ProgramPropertyNames {
     REGISTRATION = 'registration',
     RELATED_PROGRAM = 'relatedProgram',
     RELATIONSHIP_LABEL = 'relationshipLabel',
+    RELATIONSHIPS_LABEL = 'relationshipsLabel',
     SELECT_ENROLLMENT_DATES_IN_FUTURE = 'selectEnrollmentDatesInFuture',
     SELECT_INCIDENT_DATES_IN_FUTURE = 'selectIncidentDatesInFuture',
     SHARING = 'sharing',
@@ -11340,6 +11094,7 @@ export enum ProgramPropertyNames {
     SKIP_OFFLINE = 'skipOffline',
     STYLE = 'style',
     TRACKED_ENTITY_ATTRIBUTE_LABEL = 'trackedEntityAttributeLabel',
+    TRACKED_ENTITY_ATTRIBUTES_LABEL = 'trackedEntityAttributesLabel',
     TRACKED_ENTITY_TYPE = 'trackedEntityType',
     TRANSLATIONS = 'translations',
     USE_FIRST_STAGE_DURING_REGISTRATION = 'useFirstStageDuringRegistration',
@@ -11357,8 +11112,6 @@ export type ProgramRule = {
     createdBy: UserDto
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -11383,8 +11136,6 @@ export type ProgramRuleAction = {
     dataElement: DataElement
     displayContent: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -11432,8 +11183,6 @@ export type ProgramRuleActionParams = {
     }
     displayContent: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -11485,8 +11234,6 @@ export enum ProgramRuleActionPropertyNames {
     DATA_ELEMENT = 'dataElement',
     DISPLAY_CONTENT = 'displayContent',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -11540,8 +11287,6 @@ export type ProgramRuleParams = {
     }
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -11571,8 +11316,6 @@ export enum ProgramRulePropertyNames {
     CREATED_BY = 'createdBy',
     DESCRIPTION = 'description',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -11594,8 +11337,6 @@ export type ProgramRuleVariable = {
     createdBy: UserDto
     dataElement: DataElement
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -11622,8 +11363,6 @@ export type ProgramRuleVariableParams = {
         id: UID_DataElement
     }
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -11654,8 +11393,6 @@ export enum ProgramRuleVariablePropertyNames {
     CREATED_BY = 'createdBy',
     DATA_ELEMENT = 'dataElement',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -11690,8 +11427,6 @@ export type ProgramSection = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -11723,8 +11458,6 @@ export type ProgramSectionParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     lastUpdated: string
@@ -11760,8 +11493,6 @@ export enum ProgramSectionPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
@@ -11804,8 +11535,6 @@ export type ProgramStage = {
     eventLabel: string
     eventsLabel: string
     executionDateLabel: string
-    favorite: boolean
-    favorites: Array<string>
     featureType: FeatureType
     formName: string
     formType: FormType
@@ -11881,8 +11610,6 @@ export type ProgramStageDataElement = {
     dataElement: DataElement
     displayInReports: boolean
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -11916,8 +11643,6 @@ export type ProgramStageDataElementParams = {
     }
     displayInReports: boolean
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -11968,8 +11693,6 @@ export type ProgramStageParams = {
     eventLabel: string
     eventsLabel: string
     executionDateLabel: string
-    favorite: boolean
-    favorites: Array<string>
     featureType: FeatureType
     formName: string
     formType: FormType
@@ -12068,8 +11791,6 @@ export enum ProgramStagePropertyNames {
     EVENT_LABEL = 'eventLabel',
     EVENTS_LABEL = 'eventsLabel',
     EXECUTION_DATE_LABEL = 'executionDateLabel',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FEATURE_TYPE = 'featureType',
     FORM_NAME = 'formName',
     FORM_TYPE = 'formType',
@@ -12134,8 +11855,6 @@ export type ProgramStageSection = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -12170,8 +11889,6 @@ export type ProgramStageSectionParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     lastUpdated: string
@@ -12208,8 +11925,6 @@ export enum ProgramStageSectionPropertyNames {
     DISPLAY_FORM_NAME = 'displayFormName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
@@ -12235,8 +11950,6 @@ export type ProgramStageWorkingList = {
     description: string
     displayDescription: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -12259,8 +11972,6 @@ export type ProgramStageWorkingListParams = {
     description: string
     displayDescription: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -12287,8 +11998,6 @@ export enum ProgramStageWorkingListPropertyNames {
     DESCRIPTION = 'description',
     DISPLAY_DESCRIPTION = 'displayDescription',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -12311,8 +12020,6 @@ export type ProgramTrackedEntityAttribute = {
     displayInList: boolean
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -12342,8 +12049,6 @@ export type ProgramTrackedEntityAttributeDimensionItem = {
     description: string
     displayDescription: string
     displayFormName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -12370,8 +12075,6 @@ export type ProgramTrackedEntityAttributeDimensionItemParams = {
     description: string
     displayDescription: string
     displayFormName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     lastUpdated: string
@@ -12402,8 +12105,6 @@ export type ProgramTrackedEntityAttributeOptionDimensionItem = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -12432,8 +12133,6 @@ export type ProgramTrackedEntityAttributeOptionDimensionItemParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     lastUpdated: string
@@ -12465,8 +12164,6 @@ export type ProgramTrackedEntityAttributeParams = {
     displayInList: boolean
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -12638,29 +12335,13 @@ export enum RegressionType {
 }
 
 export type Relationship = {
-    access: Access
-    attributeValues: Array<AttributeValue>
-    code: string
-    created: string
     createdAtClient: string
-    createdBy: UserDto
-    deleted: boolean
     description: string
-    displayName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     from: RelationshipItem
-    href: string
-    id: string
-    lastUpdated: string
-    lastUpdatedBy: UserDto
-    name: string
     relationshipType: RelationshipType
-    sharing: Sharing
     style: ObjectStyle
     to: RelationshipItem
-    translations: Array<Translation>
 }
 
 export type RelationshipConstraint = {
@@ -12711,8 +12392,6 @@ export type RelationshipType = {
     displayFromToName: string
     displayName: string
     displayToFromName: string
-    favorite: boolean
-    favorites: Array<string>
     fromConstraint: RelationshipConstraint
     fromToName: string
     href: string
@@ -12739,8 +12418,6 @@ export type RelationshipTypeParams = {
     displayFromToName: string
     displayName: string
     displayToFromName: string
-    favorite: boolean
-    favorites: Array<string>
     fromConstraint: RelationshipConstraintParams
     fromToName: string
     id: string
@@ -12767,8 +12444,6 @@ export enum RelationshipTypePropertyNames {
     DISPLAY_FROM_TO_NAME = 'displayFromToName',
     DISPLAY_NAME = 'displayName',
     DISPLAY_TO_FROM_NAME = 'displayToFromName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FROM_CONSTRAINT = 'fromConstraint',
     FROM_TO_NAME = 'fromToName',
     HREF = 'href',
@@ -12906,8 +12581,6 @@ export type Report = {
     createdBy: UserDto
     designContent: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -12941,8 +12614,6 @@ export type ReportingRate = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     lastUpdated: string
@@ -12978,8 +12649,6 @@ export type ReportingRateParams = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -13004,8 +12673,6 @@ export type ReportParams = {
     }
     designContent: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -13031,8 +12698,6 @@ export enum ReportPropertyNames {
     CREATED_BY = 'createdBy',
     DESIGN_CONTENT = 'designContent',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -13101,8 +12766,6 @@ export type Route = {
     description: string
     disabled: boolean
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     headers: Record<string, string>
     href: string
     id: string
@@ -13132,8 +12795,6 @@ export type RouteParams = {
     description: string
     disabled: boolean
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     headers: Record<string, string>
     id: string
     lastUpdated: string
@@ -13158,8 +12819,6 @@ export enum RoutePropertyNames {
     DESCRIPTION = 'description',
     DISABLED = 'disabled',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HEADERS = 'headers',
     HREF = 'href',
     ID = 'id',
@@ -13437,8 +13096,6 @@ export type SimpleEventVisualizationView = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -13460,8 +13117,6 @@ export type SimpleVisualizationView = {
     created: string
     createdBy: UserDto
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -13474,21 +13129,40 @@ export type SimpleVisualizationView = {
 
 export type SingleEvent = {
     access: Access
-    attributeValues: Array<AttributeValue>
+    assignedUser: User
+    attributeOptionCombo: CategoryOptionCombo
+    attributeValues: AttributeValues
     code: string
+    completedBy: string
+    completedDate: string
     created: string
-    createdBy: UserDto
+    createdAtClient: string
+    createdBy: User
+    createdByUserInfo: UserInfoSnapshot
     deleted: boolean
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
+    eventDataValues: Array<EventDataValue>
+    geometry: Record<string, any>
     href: string
-    id: string
+    id: number
+    lastSynchronized: string
     lastUpdated: string
-    lastUpdatedBy: UserDto
+    lastUpdatedAtClient: string
+    lastUpdatedBy: User
+    lastUpdatedByUserInfo: UserInfoSnapshot
     name: string
+    notes: Array<Note>
+    occurredDate: string
+    organisationUnit: OrganisationUnit
+    owner: string
+    programStage: ProgramStage
+    relationshipItems: Array<RelationshipItem>
     sharing: Sharing
+    status: EventStatus
     translations: Array<Translation>
+    uID: string
+    uid: string
+    user: User
 }
 
 export type SingleEventDataSynchronizationJobParameters = {
@@ -13551,8 +13225,6 @@ export type SMSCommand = {
     dataset: DataSet
     defaultMessage: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -13589,8 +13261,6 @@ export type SMSCommandParams = {
     }
     defaultMessage: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -13631,8 +13301,6 @@ export enum SMSCommandPropertyNames {
     DATASET = 'dataset',
     DEFAULT_MESSAGE = 'defaultMessage',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -13739,8 +13407,6 @@ export type SqlView = {
     createdBy: UserDto
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -13763,8 +13429,6 @@ export type SqlViewParams = {
     }
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -13787,8 +13451,6 @@ export enum SqlViewPropertyNames {
     CREATED_BY = 'createdBy',
     DESCRIPTION = 'description',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -13863,8 +13525,6 @@ export type SubexpressionDimensionItem = {
     displayFormName: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -14204,8 +13864,6 @@ export type TrackedEntityAttribute = {
     displayOnVisitSchedule: boolean
     displayShortName: string
     expression: string
-    favorite: boolean
-    favorites: Array<string>
     fieldMask: string
     formName: string
     generated: boolean
@@ -14284,8 +13942,6 @@ export type TrackedEntityAttributeParams = {
     displayOnVisitSchedule: boolean
     displayShortName: string
     expression: string
-    favorite: boolean
-    favorites: Array<string>
     fieldMask: string
     formName: string
     generated: boolean
@@ -14351,8 +14007,6 @@ export enum TrackedEntityAttributePropertyNames {
     DISPLAY_ON_VISIT_SCHEDULE = 'displayOnVisitSchedule',
     DISPLAY_SHORT_NAME = 'displayShortName',
     EXPRESSION = 'expression',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FIELD_MASK = 'fieldMask',
     FORM_NAME = 'formName',
     GENERATED = 'generated',
@@ -14427,8 +14081,6 @@ export type TrackedEntityFilter = {
     enrollmentStatus: EnrollmentStatus
     entityQueryCriteria: EntityQueryCriteria
     eventFilters: Array<EventFilterInfo>
-    favorite: boolean
-    favorites: Array<string>
     followup: boolean
     href: string
     id: string
@@ -14456,8 +14108,6 @@ export type TrackedEntityFilterParams = {
     enrollmentStatus: EnrollmentStatus
     entityQueryCriteria: EntityQueryCriteria
     eventFilters: Array<EventFilterInfo>
-    favorite: boolean
-    favorites: Array<string>
     followup: boolean
     id: string
     lastUpdated: string
@@ -14487,8 +14137,6 @@ export enum TrackedEntityFilterPropertyNames {
     ENROLLMENT_STATUS = 'enrollmentStatus',
     ENTITY_QUERY_CRITERIA = 'entityQueryCriteria',
     EVENT_FILTERS = 'eventFilters',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FOLLOWUP = 'followup',
     HREF = 'href',
     ID = 'id',
@@ -14538,8 +14186,6 @@ export type TrackedEntityType = {
     displayShortName: string
     displayTrackedEntityTypesLabel: string
     enableChangeLog: boolean
-    favorite: boolean
-    favorites: Array<string>
     featureType: FeatureType
     formName: string
     href: string
@@ -14566,8 +14212,6 @@ export type TrackedEntityTypeAttribute = {
     displayInList: boolean
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -14591,8 +14235,6 @@ export type TrackedEntityTypeAttributeParams = {
     displayInList: boolean
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -14626,8 +14268,6 @@ export type TrackedEntityTypeParams = {
     displayShortName: string
     displayTrackedEntityTypesLabel: string
     enableChangeLog: boolean
-    favorite: boolean
-    favorites: Array<string>
     featureType: FeatureType
     formName: string
     id: string
@@ -14660,8 +14300,6 @@ export enum TrackedEntityTypePropertyNames {
     DISPLAY_SHORT_NAME = 'displayShortName',
     DISPLAY_TRACKED_ENTITY_TYPES_LABEL = 'displayTrackedEntityTypesLabel',
     ENABLE_CHANGE_LOG = 'enableChangeLog',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FEATURE_TYPE = 'featureType',
     FORM_NAME = 'formName',
     HREF = 'href',
@@ -14750,21 +14388,43 @@ export type TrackerEnrollment = {
 
 export type TrackerEvent = {
     access: Access
-    attributeValues: Array<AttributeValue>
+    assignedUser: User
+    attributeOptionCombo: CategoryOptionCombo
+    attributeValues: AttributeValues
     code: string
+    completedBy: string
+    completedDate: string
+    creatableInSearchScope: boolean
     created: string
-    createdBy: UserDto
+    createdAtClient: string
+    createdBy: User
+    createdByUserInfo: UserInfoSnapshot
     deleted: boolean
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
+    enrollment: Enrollment
+    eventDataValues: Array<EventDataValue>
+    geometry: Record<string, any>
     href: string
-    id: string
+    id: number
+    lastSynchronized: string
     lastUpdated: string
-    lastUpdatedBy: UserDto
+    lastUpdatedAtClient: string
+    lastUpdatedBy: User
+    lastUpdatedByUserInfo: UserInfoSnapshot
     name: string
+    notes: Array<Note>
+    occurredDate: string
+    organisationUnit: OrganisationUnit
+    owner: string
+    programStage: ProgramStage
+    relationshipItems: Array<RelationshipItem>
+    scheduledDate: string
     sharing: Sharing
+    status: EventStatus
     translations: Array<Translation>
+    uID: string
+    uid: string
+    user: User
 }
 
 export enum TrackerFlushMode {
@@ -14831,6 +14491,7 @@ export type TrackerRelationship = {
     bidirectional: boolean
     createdAt: Instant
     createdAtClient: Instant
+    deleted: boolean
     from: TrackerRelationshipItem
     relationship: UID_Relationship
     relationshipName: string
@@ -15292,8 +14953,6 @@ export type User = {
     employer: string
     externalAuth: boolean
     facebookMessenger: string
-    favorite: boolean
-    favorites: Array<string>
     firstName: string
     gender: string
     href: string
@@ -15388,8 +15047,6 @@ export type UserGroup = {
     createdBy: UserDto
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -15417,8 +15074,6 @@ export type UserGroupParams = {
     }
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -15444,8 +15099,6 @@ export enum UserGroupPropertyNames {
     CREATED_BY = 'createdBy',
     DESCRIPTION = 'description',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -15537,8 +15190,6 @@ export type UserParams = {
     employer: string
     externalAuth: boolean
     facebookMessenger: string
-    favorite: boolean
-    favorites: Array<string>
     firstName: string
     gender: string
     id: string
@@ -15607,8 +15258,6 @@ export enum UserPropertyNames {
     EMPLOYER = 'employer',
     EXTERNAL_AUTH = 'externalAuth',
     FACEBOOK_MESSENGER = 'facebookMessenger',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FIRST_NAME = 'firstName',
     GENDER = 'gender',
     HREF = 'href',
@@ -15664,8 +15313,6 @@ export type UserRole = {
     createdBy: UserDto
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -15687,8 +15334,6 @@ export type UserRoleParams = {
     }
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -15710,8 +15355,6 @@ export enum UserRolePropertyNames {
     CREATED_BY = 'createdBy',
     DESCRIPTION = 'description',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -15721,6 +15364,13 @@ export enum UserRolePropertyNames {
     SHARING = 'sharing',
     TRANSLATIONS = 'translations',
     USERS = 'users',
+}
+export type UserSessionInfo = {
+    created: string
+    expired: boolean
+    id: string
+    lastRequest: string
+    username: string
 }
 
 export type UserSettings = {
@@ -15748,8 +15398,6 @@ export type ValidationNotificationTemplate = {
     displayMessageTemplate: string
     displayName: string
     displaySubjectTemplate: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -15776,8 +15424,6 @@ export type ValidationNotificationTemplateParams = {
     displayMessageTemplate: string
     displayName: string
     displaySubjectTemplate: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -15808,8 +15454,6 @@ export enum ValidationNotificationTemplatePropertyNames {
     DISPLAY_MESSAGE_TEMPLATE = 'displayMessageTemplate',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SUBJECT_TEMPLATE = 'displaySubjectTemplate',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -15880,8 +15524,6 @@ export type ValidationRule = {
     displayInstruction: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     href: string
     id: string
@@ -15949,8 +15591,6 @@ export type ValidationRuleGroup = {
     createdBy: UserDto
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     href: string
     id: string
     lastUpdated: string
@@ -15970,8 +15610,6 @@ export type ValidationRuleGroupParams = {
     }
     description: string
     displayName: string
-    favorite: boolean
-    favorites: Array<string>
     id: string
     lastUpdated: string
     lastUpdatedBy?: {
@@ -15993,8 +15631,6 @@ export enum ValidationRuleGroupPropertyNames {
     CREATED_BY = 'createdBy',
     DESCRIPTION = 'description',
     DISPLAY_NAME = 'displayName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     HREF = 'href',
     ID = 'id',
     LAST_UPDATED = 'lastUpdated',
@@ -16023,8 +15659,6 @@ export type ValidationRuleParams = {
     displayInstruction: string
     displayName: string
     displayShortName: string
-    favorite: boolean
-    favorites: Array<string>
     formName: string
     id: string
     importance: Importance
@@ -16105,8 +15739,6 @@ export enum ValidationRulePropertyNames {
     DISPLAY_INSTRUCTION = 'displayInstruction',
     DISPLAY_NAME = 'displayName',
     DISPLAY_SHORT_NAME = 'displayShortName',
-    FAVORITE = 'favorite',
-    FAVORITES = 'favorites',
     FORM_NAME = 'formName',
     HREF = 'href',
     ID = 'id',
