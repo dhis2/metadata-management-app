@@ -3,10 +3,19 @@ import { useMemo } from 'react'
 import { hasAPISupportForFeature } from './support'
 
 export const useFeatureAvailable = (featureName: string): boolean => {
-    const { serverVersion: { minor: minorVersion } = { minor: 0 } } =
-        useConfig()
+    const {
+        serverVersion: { minor: minorVersion, patch: patchVersion } = {
+            minor: 0,
+            patch: 0,
+        },
+    } = useConfig()
     return useMemo(
-        () => hasAPISupportForFeature(minorVersion, featureName),
+        () =>
+            hasAPISupportForFeature({
+                minorVersion,
+                featureName,
+                patchVersion,
+            }),
         [minorVersion, featureName]
     )
 }

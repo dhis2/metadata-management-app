@@ -80,11 +80,13 @@ type CategoryMappingProps = {
     fieldName: string
     categoryOptionArray: CategoryOption[]
     showSoftDelete: boolean
+    programType?: string
 }
 export const CategoryMapping = React.memo(function CategoryMapping({
     fieldName,
     categoryOptionArray,
     showSoftDelete = true,
+    programType,
 }: CategoryMappingProps) {
     const categoryMapping = useField(fieldName)
     const categoryMappingOnChange = categoryMapping?.input?.onChange
@@ -183,6 +185,7 @@ export const CategoryMapping = React.memo(function CategoryMapping({
                     fieldName={fieldName}
                     opt={opt}
                     categoryOptionInformation={categoryOptionInformation}
+                    programType={programType}
                 />
             ))}
         </CategoryMappingWrapper>
@@ -193,10 +196,12 @@ const CategoryMappingInput = ({
     fieldName,
     opt,
     categoryOptionInformation,
+    programType,
 }: {
     fieldName: string
     opt: CategoryOption
     categoryOptionInformation: Record<string, string>
+    programType?: string
 }) => {
     const programId = useParams()?.id
     const expressionSchemaSection = {
@@ -216,6 +221,7 @@ const CategoryMappingInput = ({
                 validationResource="programIndicators/filter/description"
                 clearable={true}
                 programId={programId}
+                programType={programType}
                 type="programIndicator"
                 validateSchemaSection={expressionSchemaSection}
                 validateProperty="expression"

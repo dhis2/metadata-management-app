@@ -75,6 +75,16 @@ export function getDefaults<T extends z.AnyZodObject | z.ZodEffects<any>>(
             return providedValue
         }
 
+        // if it's optional/nullable and nothing was provided, it's simply
+        // unset - don't drill into the inner type to synthesize a default
+        // object/array (e.g. `{ id: undefined }` for an optional model reference)
+        if (
+            innerSchema instanceof z.ZodOptional ||
+            innerSchema instanceof z.ZodNullable
+        ) {
+            return undefined
+        }
+
         const unwrapped = unwrap(innerSchema)
         if (unwrapped !== innerSchema) {
             return getDefaultValue(unwrapped, providedValue)

@@ -23,6 +23,7 @@ type ExpressionBuilderEntryProps = Readonly<{
     validateProperty?: string
     clearable?: boolean
     programId?: string
+    programType?: string
     type?: ExpressionBuilderType
     disabled?: boolean
 }>
@@ -38,6 +39,7 @@ export const ExpressionBuilderEntry = ({
     validateProperty,
     clearable = false,
     programId,
+    programType,
     type = 'default',
     disabled = false,
 }: ExpressionBuilderEntryProps) => {
@@ -137,6 +139,7 @@ export const ExpressionBuilderEntry = ({
                     fieldName={fieldName}
                     validationResource={validationResource}
                     programId={programId}
+                    programType={programType}
                     type={type}
                     clearable={clearable}
                     clearExpression={clearExpression}

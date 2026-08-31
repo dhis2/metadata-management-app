@@ -43,6 +43,8 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
     withReordering,
     otherProps,
     warningNotice,
+    disabled = false,
+    isClone = false,
 }: Readonly<{
     sectionsFieldName: string
     schemaName: SchemaName
@@ -51,6 +53,8 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
     withReordering: boolean
     otherProps?: TExtraProps
     warningNotice?: React.ReactNode
+    disabled?: boolean
+    isClone?: boolean
 }>) {
     const [sectionFormOpen, setSectionFormOpen] = useState<
         DisplayableModel | null | undefined
@@ -167,6 +171,8 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
                             schemaName={schemaName}
                             onClick={() => setSectionFormOpen(section)}
                             onDelete={() => handleDeletedSection(index)}
+                            disabled={disabled}
+                            isClone={isClone}
                         />
                     )
                 })}
@@ -179,6 +185,7 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
                         small
                         icon={<IconAdd16 />}
                         onClick={() => setSectionFormOpen(null)}
+                        disabled={disabled}
                     >
                         {i18n.t('Add section')}
                     </Button>
@@ -213,6 +220,7 @@ export const ListInFormItem = ({
     onDelete,
     translatable = true,
     disabled = false,
+    isClone = false,
 }: {
     item: ListItem
     schemaName: SchemaName
@@ -220,6 +228,7 @@ export const ListInFormItem = ({
     onDelete?: () => void
     translatable?: boolean
     disabled?: boolean
+    isClone?: boolean
 }) => {
     const [translationDialogModel, setTranslationDialogModel] = useState<
         BaseListModel | undefined
@@ -239,7 +248,9 @@ export const ListInFormItem = ({
                     onClick={() => {
                         // we dont want click handler on the wrapping "sectionItem" div
                         // since that will cause annoying issues with bubbling events in dropdown menu etc
-                        onClick?.()
+                        if (!disabled) {
+                            onClick?.()
+                        }
                     }}
                 >
                     <div className={css.sectionIdentifiers}>
@@ -264,6 +275,7 @@ export const ListInFormItem = ({
                             <MoreDropdownItem
                                 label={i18n.t('Translate')}
                                 onClick={openTranslationDialog}
+                                disabled={isClone}
                             />
                         )}
                         <MoreDropdownItem
@@ -271,7 +283,6 @@ export const ListInFormItem = ({
                             onClick={() => {
                                 navigator.clipboard.writeText(item.id)
                             }}
-                            disabled={disabled}
                         />
                         <MoreDropdownDivider />
                         <MoreDropdownItem

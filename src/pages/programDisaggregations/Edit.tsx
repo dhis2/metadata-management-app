@@ -35,6 +35,7 @@ const fieldFilters = [
     'name',
     'shortName',
     'code',
+    'programType',
     'categoryMappings',
 ] as const
 
@@ -212,6 +213,9 @@ export const Component = () => {
                                         }
                                         programName={
                                             programQuery?.data?.displayName
+                                        }
+                                        programType={
+                                            programQuery?.data?.programType
                                         }
                                     />
                                     <ProgramDisaggregationFooter

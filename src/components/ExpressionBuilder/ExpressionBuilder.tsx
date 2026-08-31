@@ -86,6 +86,7 @@ export const ExpressionBuilder = ({
     title,
     initialValue,
     programId,
+    programType,
     type,
     clearable,
     clearExpression,
@@ -96,6 +97,7 @@ export const ExpressionBuilder = ({
     title: string
     initialValue: string
     programId?: string
+    programType?: string
     type: ExpressionBuilderType
     clearable: boolean
     clearExpression?: () => void
@@ -184,17 +186,23 @@ export const ExpressionBuilder = ({
                                     />
                                 </StandardFormField>
                             </div>
-                            <div>
-                                {initiallyValidated && (
-                                    <ValidationBox
-                                        response={validationResponse}
-                                        validating={validating}
-                                        validatedValue={validatedValue}
-                                        validate={validateCurrentState}
-                                        isEmpty={isEmpty}
-                                        clearable={clearable}
-                                    />
-                                )}
+                            <div className={styles.expressionMetaContainer}>
+                                <div
+                                    className={
+                                        styles.expressionValidationContainer
+                                    }
+                                >
+                                    {initiallyValidated && (
+                                        <ValidationBox
+                                            response={validationResponse}
+                                            validating={validating}
+                                            validatedValue={validatedValue}
+                                            validate={validateCurrentState}
+                                            isEmpty={isEmpty}
+                                            clearable={clearable}
+                                        />
+                                    )}
+                                </div>
 
                                 <div className={styles.fieldHelpText}>
                                     <IconInfo16 />
@@ -210,6 +218,7 @@ export const ExpressionBuilder = ({
                             elementRef={expressionRef}
                             clearValidationState={clearValidationState}
                             programId={programId}
+                            programType={programType}
                             type={type}
                         />
                     </div>

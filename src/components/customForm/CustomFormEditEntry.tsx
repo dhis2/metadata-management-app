@@ -15,6 +15,7 @@ export const CustomFormEditEntry = ({
     updateCustomForm,
     customFormTarget,
     fieldName = 'dataEntryForm',
+    disabled = false,
 }: {
     level: 'primary' | 'secondary'
     loading: boolean
@@ -28,6 +29,7 @@ export const CustomFormEditEntry = ({
     ) => Promise<unknown>
     customFormTarget: string
     fieldName?: string
+    disabled?: boolean
 }) => {
     const [customFormEditOpen, setCustomFormEditOpen] =
         React.useState<boolean>(false)
@@ -99,6 +101,7 @@ export const CustomFormEditEntry = ({
                             secondary
                             small
                             onClick={() => setCustomFormEditOpen(true)}
+                            disabled={disabled}
                         >
                             {addMode
                                 ? i18n.t('Create custom form')
@@ -110,7 +113,7 @@ export const CustomFormEditEntry = ({
                                 small
                                 destructive
                                 onClick={() => setCustomFormDeletedState(true)}
-                                disabled={!formInput?.value?.id}
+                                disabled={disabled || !formInput?.value?.id}
                             >
                                 {i18n.t('Delete custom form')}
                             </Button>

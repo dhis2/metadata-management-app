@@ -10,6 +10,7 @@ import {
     DEFAULT_FIELD_FILTERS,
     getSectionPath,
     SECTIONS_MAP,
+    trimTrimmableFields,
     useNavigateWithSearchState,
     usePatchModel,
 } from '../../lib'
@@ -80,7 +81,7 @@ export const useOnEditOrgUnits = (modelId: string) => {
                     dataSetsDirty || programsDirty
 
                 const orgUnitJsonPatchOperations = createJsonPatchOperations({
-                    values,
+                    values: trimTrimmableFields(values),
                     dirtyFields: restDirty,
                     originalValue: form.getState().initialValues,
                 })

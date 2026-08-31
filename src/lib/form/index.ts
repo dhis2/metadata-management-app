@@ -1,5 +1,7 @@
 export { usePatchModel } from './usePatchModel'
 export { useClearFormFields } from './useClearFormFields'
+export { getTrailingWhitespaceWarning } from './getTrailingWhitespaceWarning'
+export { useFieldWarning } from './useFieldWarning'
 export { composeAsyncValidators } from './composeAsyncValidators'
 export type { FormFieldValidator } from './composeAsyncValidators'
 export { required } from './validators'
@@ -9,12 +11,17 @@ export {
     useOnSubmitNew,
     useOnEditCompletedSuccessfully,
     defaultValueFormatter,
+    trimTrimmableFields,
 } from './useOnSubmit'
 export {
     useOnSubmitEditWithGroups,
     useOnSubmitNewWithGroups,
 } from './useOnSubmitWithGroups'
 export { modelFormSchemas } from './modelFormSchemas'
+export {
+    hasUnsavedDataElements,
+    hasUnsavedTrackedEntityAttributes,
+} from './hasUnsavedDataElements'
 export * from './sectionedForm'
 export * from './useCreateModel'
 export * from './createFormError'

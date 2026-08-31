@@ -6,9 +6,13 @@ import { SCHEMA_SECTIONS } from '../../../lib'
 
 type ConditionFieldProps = Readonly<{
     programId?: string
+    programType?: string
 }>
 
-export function ConditionField({ programId }: ConditionFieldProps) {
+export function ConditionField({
+    programId,
+    programType,
+}: ConditionFieldProps) {
     return (
         <PaddedContainer>
             <ExpressionBuilderEntry
@@ -19,6 +23,7 @@ export function ConditionField({ programId }: ConditionFieldProps) {
                 validationResource="programRules/condition/description"
                 clearable={true}
                 programId={programId}
+                programType={programType}
                 type="programRule"
                 validateSchemaSection={SCHEMA_SECTIONS.programRule}
             />
