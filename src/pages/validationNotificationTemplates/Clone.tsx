@@ -12,7 +12,7 @@ import {
 import { useBoundResourceQueryFn } from '../../lib/query/useBoundQueryFn'
 import { PickWithFieldFilters } from '../../types/generated'
 import { ValidationNotificationTemplate } from '../../types/models'
-import { ValidationNotificationTemplateFormValues as EditFormValues } from './Edit'
+import { ValidationNotificationTemplateFormValues as ValidationNotificationTemplateEditFormValues } from './Edit'
 import { ValidationNotificationTemplateFormFields, validate } from './form'
 import { SectionedFormWrapper } from './SectionedFormWrapper'
 
@@ -62,7 +62,7 @@ export const Component = () => {
                 ? (omit(
                       validationNotificationTemplateQuery.data,
                       'id'
-                  ) as EditFormValues)
+                  ) as ValidationNotificationTemplateEditFormValues)
                 : undefined,
         [validationNotificationTemplateQuery.data]
     )

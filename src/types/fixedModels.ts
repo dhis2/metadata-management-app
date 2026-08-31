@@ -1,6 +1,8 @@
 import type { ErrorReport as GeneratedErrorReport } from './generated'
-// Some of the generated models are wrong, or outdated
-// The import summaries and error reports changed in 2.41
+// The import summary shape returned by the API (httpStatus/response/...) is not
+// described by the generated schema, so ImportSummary/ImportResponse stay hand-written.
+// ErrorReport below is just narrowed to the fields we use (the generated type now
+// includes `args`, so this is no longer a correctness fix).
 export type ImportSummary = {
     httpStatus: string
     httpStatusCode: number
@@ -18,7 +20,10 @@ export type ImportResponse = {
 
 export type ErrorReport = Pick<
     GeneratedErrorReport,
-    'errorCode' | 'errorProperties' | 'errorKlass' | 'mainKlass' | 'message'
-> & {
-    args: string[]
-}
+    | 'errorCode'
+    | 'errorProperties'
+    | 'errorKlass'
+    | 'mainKlass'
+    | 'message'
+    | 'args'
+>

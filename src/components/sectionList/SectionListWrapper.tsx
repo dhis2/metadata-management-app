@@ -40,7 +40,9 @@ export const DefaultSectionListMessage = ({
     data,
 }: {
     error?: FetchError
-    data?: unknown[]
+    // Call sites pass different model shapes (BaseListModel here, LocaleModel
+    // from the locales list); this component only needs the length.
+    data?: readonly unknown[]
 }) => {
     if (error) {
         return <SectionListError />
