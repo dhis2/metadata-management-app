@@ -3741,12 +3741,6 @@ msgstr "Add a period entry rule"
 msgid "The number should not have decimals"
 msgstr "The number should not have decimals"
 
-msgid "Opening date is required"
-msgstr "Opening date is required"
-
-msgid "Closing date is required"
-msgstr "Closing date is required"
-
 msgid "Setup"
 msgstr "Setup"
 
