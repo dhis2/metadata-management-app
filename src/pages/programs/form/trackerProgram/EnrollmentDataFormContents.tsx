@@ -26,25 +26,9 @@ import {
     TooltipWrapper,
 } from '../../../../components/tooltip'
 import { SECTIONS_MAP } from '../../../../lib'
-import { ValueType } from '../../../../types/generated'
+import { ProgramTrackedEntityAttribute } from '../../../../types/generated'
 import { ProgramsFromFilters } from '../../EditTrackerProgram'
 import enrollmentDataFormCss from './EnrollmentDataFormContents.module.css'
-
-type ProgramAttribute =
-    ProgramsFromFilters['programTrackedEntityAttributes'][number]
-// Declared explicitly: PickWithFieldFilters can't resolve a nested bracket with
-// sibling fields. Must match the trackedEntityTypeAttributes fieldFilters in EditTrackerProgram.
-type TrackedEntityTypeAttribute = {
-    trackedEntityAttribute: {
-        id: string
-        displayName: string
-        unique?: boolean
-        valueType: ValueType
-    }
-    mandatory: boolean
-    searchable: boolean
-    displayInList: boolean
-}
 
 const defaultRenderType = {
     MOBILE: { type: 'DEFAULT' },
@@ -54,7 +38,7 @@ const defaultRenderType = {
 export const EnrollmentDataFormContents = React.memo(
     function SetupFormContents({ name }: { name: string }) {
         const { input, meta } = useField<
-            (ProgramAttribute & {
+            (ProgramsFromFilters['programTrackedEntityAttributes'][0] & {
                 optionSet?: { id: string }
             })[]
         >('programTrackedEntityAttributes', {
@@ -74,8 +58,8 @@ export const EnrollmentDataFormContents = React.memo(
             trackedEntityTypeField.input.value?.trackedEntityTypeAttributes ||
             []
 
-        const tetaMap = new Map<string, TrackedEntityTypeAttribute>(
-            tetas.map((teta: TrackedEntityTypeAttribute) => [
+        const tetaMap = new Map<string, ProgramTrackedEntityAttribute>(
+            tetas.map((teta: ProgramTrackedEntityAttribute) => [
                 teta.trackedEntityAttribute.id,
                 teta,
             ])
@@ -98,7 +82,7 @@ export const EnrollmentDataFormContents = React.memo(
             )
 
             const convertedTetas = tetas.map(
-                (teta: TrackedEntityTypeAttribute) => {
+                (teta: ProgramTrackedEntityAttribute) => {
                     const existing = existingProgramAttributesMap.get(
                         teta.trackedEntityAttribute.id
                     )

@@ -1,6 +1,6 @@
 import React from 'react'
 import { SECTIONS_MAP, useOnSubmitNew, getSectionPath } from '../../lib'
-import { ValidationNotificationTemplateFormValues } from './Edit'
+import { ValidationNotificationTemplate } from '../../types/generated'
 import {
     ValidationNotificationTemplateFormFields,
     initialValues,
@@ -14,9 +14,7 @@ export const Component = () => {
     return (
         <SectionedFormWrapper
             onSubmit={useOnSubmitNew({ section })}
-            initialValues={
-                initialValues as ValidationNotificationTemplateFormValues
-            }
+            initialValues={initialValues as ValidationNotificationTemplate}
             validate={validate}
             cancelTo={`/${getSectionPath(section)}`}
         >

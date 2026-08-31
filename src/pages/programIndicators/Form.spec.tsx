@@ -281,9 +281,8 @@ describe('Program indicator form tests', () => {
                 {
                     options: [
                         { displayName: staticOptions.eventDefault.label },
-                        (
-                            programTrackedEntityAttributes[0] as unknown as ProgramTrackedEntityAttribute
-                        ).trackedEntityAttribute,
+                        programTrackedEntityAttributes[0]
+                            .trackedEntityAttribute,
                         programStageDataElements[1].dataElement,
                         { displayName: staticOptions.registration.label },
                         { displayName: staticOptions.enrollment.label },
@@ -373,9 +372,8 @@ describe('Program indicator form tests', () => {
                 {
                     options: [
                         { displayName: staticOptions.enrollmentDefault.label },
-                        (
-                            programTrackedEntityAttributes[0] as unknown as ProgramTrackedEntityAttribute
-                        ).trackedEntityAttribute,
+                        programTrackedEntityAttributes[0]
+                            .trackedEntityAttribute,
                         { displayName: staticOptions.registration.label },
                         { displayName: staticOptions.ownerAtStart.label },
                         { displayName: staticOptions.ownerAtEnd.label },
@@ -1611,9 +1609,7 @@ describe('Program indicator form tests', () => {
             })
             const orgUnitOptions = [
                 { displayName: staticOptions.eventDefault.label },
-                (
-                    programTrackedEntityAttributes[0] as unknown as ProgramTrackedEntityAttribute
-                ).trackedEntityAttribute,
+                programTrackedEntityAttributes[0].trackedEntityAttribute,
                 { displayName: staticOptions.registration.label },
                 { displayName: staticOptions.enrollment.label },
                 { displayName: staticOptions.ownerAtStart.label },
@@ -1676,9 +1672,7 @@ describe('Program indicator form tests', () => {
             })
             const orgUnitOptions = [
                 { displayName: staticOptions.eventDefault.label },
-                (
-                    programTrackedEntityAttributes[0] as unknown as ProgramTrackedEntityAttribute
-                ).trackedEntityAttribute,
+                programTrackedEntityAttributes[0].trackedEntityAttribute,
                 { displayName: staticOptions.registration.label },
                 { displayName: staticOptions.enrollment.label },
                 { displayName: staticOptions.ownerAtStart.label },

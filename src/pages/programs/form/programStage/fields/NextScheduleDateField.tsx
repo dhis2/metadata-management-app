@@ -11,10 +11,7 @@ export function NextScheduleDateField() {
     const options = useMemo(() => {
         const dataElements =
             stage?.programStageDataElements
-                ?.map(
-                    (psde) =>
-                        (psde as { dataElement?: DataElement }).dataElement
-                )
+                ?.map((psde) => psde.dataElement)
                 .filter(
                     (de): de is DataElement => !!de && de.valueType === 'DATE'
                 ) || []

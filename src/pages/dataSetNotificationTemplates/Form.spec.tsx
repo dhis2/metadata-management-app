@@ -567,9 +567,7 @@ describe('DataSetNotificationTemplate form tests', () => {
                 dataSetNotificationTemplate.recipientUserGroup = {
                     id: userGroups[0].id,
                 }
-                dataSetNotificationTemplate.dataSets = [
-                    dataSets[0] as { id: string; displayName?: string },
-                ]
+                dataSetNotificationTemplate.dataSets = [dataSets[0]]
                 const id = dataSetNotificationTemplate.id
                 const screen = render(
                     <TestComponentWithRouter

@@ -69,14 +69,10 @@ export const TrackedEntityAttributesField = ({
                 .filter((attr): attr is DisplayableModel => !!attr) || []
 
         const tetAttributes = getAttributes(
-            trackedEntityType?.trackedEntityTypeAttributes as
-                | Array<{ trackedEntityAttribute?: DisplayableModel }>
-                | undefined
+            trackedEntityType?.trackedEntityTypeAttributes
         )
         const programAttributes = getAttributes(
-            program?.programTrackedEntityAttributes as
-                | Array<{ trackedEntityAttribute?: DisplayableModel }>
-                | undefined
+            program?.programTrackedEntityAttributes
         )
 
         return uniqueBy(
