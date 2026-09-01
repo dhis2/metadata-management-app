@@ -21,11 +21,13 @@ export const SectionsOrderingModal = ({
     sections,
     onReorder,
     sectionsFieldName,
+    programStage = false,
 }: {
     onClose: () => void
     sections: Section[]
     onReorder: (index: number, value: Section) => void
     sectionsFieldName: string
+    programStage?: boolean
 }) => {
     const [orderedSections, setOrderedSections] =
         React.useState<Section[]>(sections)
@@ -57,13 +59,17 @@ export const SectionsOrderingModal = ({
                 onReorder(index, section)
             }
             saveAlert.show({
-                message: i18n.t('New sections order saved successfully'),
+                message: programStage
+                    ? i18n.t('New program stages order saved successfully')
+                    : i18n.t('New sections order saved successfully'),
                 success: true,
             })
             onClose()
         } catch {
             saveAlert.show({
-                message: i18n.t('Error saving new sections order.'),
+                message: programStage
+                    ? i18n.t('Error saving new program stages order.')
+                    : i18n.t('Error saving new sections order.'),
                 error: true,
             })
         } finally {
@@ -85,7 +91,11 @@ export const SectionsOrderingModal = ({
 
     return (
         <Modal onClose={onClose} large dataTest="bulk-sharing-dialog">
-            <ModalTitle>{i18n.t('Reorder form sections')}</ModalTitle>
+            <ModalTitle>
+                {programStage
+                    ? i18n.t('Reorder program stages')
+                    : i18n.t('Reorder form sections')}
+            </ModalTitle>
             <ModalContent className={css.sectionRows}>
                 {orderedSections.map((section, index) => (
                     <React.Fragment key={section.id}>
@@ -134,7 +144,9 @@ export const SectionsOrderingModal = ({
                         loading={isSaving}
                         disabled={isUnchanged}
                     >
-                        {i18n.t('Save section ordering')}
+                        {programStage
+                            ? i18n.t('Save program stage ordering')
+                            : i18n.t('Save section ordering')}
                     </Button>
                 </ButtonStrip>
             </ModalActions>

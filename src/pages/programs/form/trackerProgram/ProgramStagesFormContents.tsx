@@ -1,6 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
-import { Button, IconAdd16, NoticeBox } from '@dhis2/ui'
-import React from 'react'
+import { Button, ButtonStrip, IconAdd16, NoticeBox } from '@dhis2/ui'
+import React, { useState } from 'react'
 import { useFieldArray } from 'react-final-form-arrays'
 import { useParams } from 'react-router-dom'
 import {
@@ -11,6 +11,7 @@ import {
     StandardFormSectionTitle,
 } from '../../../../components'
 import { ListInFormItem } from '../../../../components/formCreators/SectionFormList'
+import { SectionsOrderingModal } from '../../../../components/formCreators/SectionsOrderingModal'
 import { SchemaName } from '../../../../types'
 import { Access, DisplayableModel } from '../../../../types/models'
 import {
@@ -56,10 +57,11 @@ const ProgramStageListNewOrEdit = () => {
     const modelId = useParams().id as string
     const stagesFieldArray =
         useFieldArray<ProgramStageListItem>('programStages').fields
-    const [stageFormOpen, setStageFormOpen] = React.useState<
+    const [stageFormOpen, setStageFormOpen] = useState<
         DisplayableModel | null | undefined
     >()
     const isStageFormOpen = !!stageFormOpen || stageFormOpen === null
+    const [orderSectionsFormOpen, setOrderSectionsFormOpen] = useState(false)
 
     const handleDeletedStage = (index: number) => {
         stagesFieldArray.update(index, {
@@ -137,6 +139,16 @@ const ProgramStageListNewOrEdit = () => {
                 )}
             </DrawerPortal>
 
+            {orderSectionsFormOpen && (
+                <SectionsOrderingModal
+                    onClose={() => setOrderSectionsFormOpen(false)}
+                    sections={stagesFieldArray.value}
+                    onReorder={stagesFieldArray.update}
+                    sectionsFieldName={'programStages'}
+                    programStage={true}
+                />
+            )}
+
             <div className={css.listWrapper}>
                 {stagesFieldArray.value.length === 0 && (
                     <NoticeBox className={css.formTypeInfo}>
@@ -184,16 +196,27 @@ const ProgramStageListNewOrEdit = () => {
                 </div>
 
                 <div>
-                    <Button
-                        secondary
-                        small
-                        icon={<IconAdd16 />}
-                        onClick={() => {
-                            setStageFormOpen(null)
-                        }}
-                    >
-                        {i18n.t('Add a program stage')}
-                    </Button>
+                    <ButtonStrip>
+                        <Button
+                            secondary
+                            small
+                            icon={<IconAdd16 />}
+                            onClick={() => {
+                                setStageFormOpen(null)
+                            }}
+                        >
+                            {i18n.t('Add a program stage')}
+                        </Button>
+
+                        <Button
+                            secondary
+                            small
+                            onClick={() => setOrderSectionsFormOpen(true)}
+                            disabled={stagesFieldArray.value?.length <= 1}
+                        >
+                            {i18n.t('Reorder stages')}
+                        </Button>
+                    </ButtonStrip>
                 </div>
             </div>
         </>

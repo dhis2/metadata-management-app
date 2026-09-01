@@ -6,18 +6,33 @@ export const FEATURES = Object.freeze({
     customTerminologyPlurals: 'customTerminologyPlurals',
 } as const)
 
-const MINOR_VERSION_SUPPORT = Object.freeze({
-    [FEATURES.searchPerformance]: 43,
-    [FEATURES.validationStrategy]: 42,
-    [FEATURES.programRuleActionPriority]: 43,
-    [FEATURES.skipAnalytics]: 43,
-    [FEATURES.customTerminologyPlurals]: 43,
-} as Record<string, number>)
+const VERSION_SUPPORT = Object.freeze({
+    [FEATURES.searchPerformance]: { minor: 43 },
+    [FEATURES.validationStrategy]: { minor: 42 },
+    [FEATURES.programRuleActionPriority]: { minor: 43 },
+    [FEATURES.skipAnalytics]: { minor: 43 },
+    [FEATURES.customTerminologyPlurals]: { minor: 43, patch: 2 },
+} as Record<string, { minor: number; patch?: number }>)
 
-export const hasAPISupportForFeature = (
-    minorVersion: string | number,
+export const hasAPISupportForFeature = ({
+    minorVersion,
+    featureName,
+    patchVersion,
+}: {
+    minorVersion: string | number
     featureName: string
-): boolean => {
-    const requiredVersion = MINOR_VERSION_SUPPORT[featureName]
-    return requiredVersion <= Number(minorVersion) || false
+    patchVersion?: string | number
+}): boolean => {
+    const requiredMinorVersion = VERSION_SUPPORT[featureName].minor
+    const requiredPatchVersion = VERSION_SUPPORT[featureName].patch
+
+    if (requiredPatchVersion !== undefined) {
+        return (
+            requiredMinorVersion < Number(minorVersion) ||
+            (requiredMinorVersion === Number(minorVersion) &&
+                requiredPatchVersion <= Number(patchVersion))
+        )
+    }
+
+    return requiredMinorVersion <= Number(minorVersion) || false
 }
