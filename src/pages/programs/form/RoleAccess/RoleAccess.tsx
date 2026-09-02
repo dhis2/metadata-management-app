@@ -1,9 +1,8 @@
 import { useAlert, useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { SharingDialog } from '@dhis2/ui'
-import { useQueryClient } from '@tanstack/react-query'
 import React, { useCallback, useMemo, useState } from 'react'
-import { useFormState } from 'react-final-form'
+import { useField, useForm, useFormState } from 'react-final-form'
 import { useParams } from 'react-router-dom'
 import { useDebouncedCallback } from 'use-debounce'
 import type { SharingSettings } from '../../../../lib'
@@ -31,9 +30,12 @@ export const RoleAccess = ({
     showStageAccess = true,
 }: RoleAccessProps = {}) => {
     const { values } = useFormState<ProgramValues>()
+    const form = useForm()
+    const { input: sharingInput } = useField<SharingSettings | undefined>(
+        'sharing'
+    )
     const { id: programId } = useParams()
     const dataEngine = useDataEngine()
-    const queryClient = useQueryClient()
     const { show: showSuccess } = useAlert(
         i18n.t('Access updated successfully'),
         { success: true }
@@ -63,9 +65,9 @@ export const RoleAccess = ({
             })) as { sharing: { object: SharingSettings } }
 
             await Promise.all(
-                programStages.map((stage) => {
+                programStages.map(async (stage, index) => {
                     // @ts-expect-error id passes as a param instead of in data.object, so type doesn't match
-                    return dataEngine.mutate({
+                    await dataEngine.mutate({
                         resource: 'sharing',
                         type: 'update',
                         params: { type: 'programStage', id: stage.id },
@@ -81,13 +83,15 @@ export const RoleAccess = ({
                             },
                         },
                     })
+
+                    form.change(
+                        `programStages[${index}].sharing`,
+                        values.sharing
+                    )
                 })
             )
 
             showSuccess()
-            queryClient.invalidateQueries({
-                queryKey: [{ resource: 'programs', id: programId }],
-            })
         } catch (error) {
             showError(
                 error instanceof Error
@@ -99,7 +103,8 @@ export const RoleAccess = ({
         programId,
         programStages,
         dataEngine,
-        queryClient,
+        form,
+        values.sharing,
         showSuccess,
         showError,
     ])
@@ -110,7 +115,8 @@ export const RoleAccess = ({
                 return
             }
 
-            const stage = programStages.find((s) => s.id === stageId)
+            const index = programStages.findIndex((s) => s.id === stageId)
+            const stage = programStages[index]
             if (!stage) {
                 return
             }
@@ -141,10 +147,9 @@ export const RoleAccess = ({
                     },
                 })
 
+                form.change(`programStages[${index}].sharing`, values.sharing)
+
                 showSuccess()
-                queryClient.invalidateQueries({
-                    queryKey: [{ resource: 'programs', id: programId }],
-                })
             } catch (error) {
                 showError(
                     error instanceof Error
@@ -156,13 +161,47 @@ export const RoleAccess = ({
         250
     )
 
-    const handleSaveSharing = useCallback(() => {
-        if (programId) {
-            queryClient.invalidateQueries({
-                queryKey: [{ resource: 'programs', id: programId }],
-            })
-        }
-    }, [programId, queryClient])
+    const handleSaveSharing = useCallback(
+        async (dialog: SharingDialogState) => {
+            if (!dialog) {
+                return
+            }
+
+            try {
+                const resource =
+                    dialog.type === 'program' ? 'programs' : 'programStages'
+
+                const { sharingResponse } = (await dataEngine.query({
+                    sharingResponse: {
+                        resource,
+                        id: dialog.id,
+                        params: { fields: 'sharing' },
+                    },
+                })) as { sharingResponse: { sharing: SharingSettings } }
+
+                if (dialog.type === 'program') {
+                    sharingInput.onChange(sharingResponse.sharing)
+                } else {
+                    const index = programStages.findIndex(
+                        (s) => s.id === dialog.id
+                    )
+                    if (index !== -1) {
+                        form.change(
+                            `programStages[${index}].sharing`,
+                            sharingResponse.sharing
+                        )
+                    }
+                }
+            } catch (error) {
+                showError(
+                    error instanceof Error
+                        ? error.message
+                        : i18n.t('Failed to refresh access settings')
+                )
+            }
+        },
+        [dataEngine, form, sharingInput, programStages, showError]
+    )
 
     return (
         <>
@@ -218,7 +257,7 @@ export const RoleAccess = ({
                         id={sharingDialog.id}
                         onClose={() => {
                             setSharingDialog(null)
-                            handleSaveSharing()
+                            handleSaveSharing(sharingDialog)
                         }}
                         dataSharing
                         metadataSharing={sharingDialog.type !== 'programStage'}
