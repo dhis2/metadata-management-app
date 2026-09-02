@@ -14,6 +14,10 @@ const config = {
             url: '#/overview',
         },
         {
+            name: 'All metadata',
+            url: '#/overview/all',
+        },
+        {
             name: 'Categories',
             url: '#/categories',
         },
@@ -102,6 +106,10 @@ const config = {
             url: '#/programs',
         },
         {
+            name: 'Program stages',
+            url: '#/programStages',
+        },
+        {
             name: 'Tracked entity attributes',
             url: '#/trackedEntityAttributes',
         },
@@ -119,7 +127,11 @@ const config = {
         },
         {
             name: 'Program rule variables',
-            url: '#programRuleVariables',
+            url: '#/programRuleVariables',
+        },
+        {
+            name: 'Program disaggregations',
+            url: '#/programDisaggregations',
         },
         {
             name: 'Validation rules',
