@@ -988,6 +988,22 @@ msgstr "Data view and capture"
 msgid "Data view only"
 msgstr "Data view only"
 
+msgid "Successfully deleted {{number}} items"
+msgstr "Successfully deleted {{number}} items"
+
+msgid "Some items could not be deleted"
+msgstr "Some items could not be deleted"
+
+msgid "Delete {{number}} items"
+msgstr "Delete {{number}} items"
+
+msgid ""
+"Are you sure you want to delete these {{number}} items? This cannot be "
+"undone."
+msgstr ""
+"Are you sure you want to delete these {{number}} items? This cannot be "
+"undone."
+
 msgid "Successfully updated sharing for {{number}} items"
 msgstr "Successfully updated sharing for {{number}} items"
 
