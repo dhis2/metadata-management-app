@@ -1,3 +1,10 @@
+## [0.176.4](https://github.com/dhis2/metadata-management-app/compare/v0.176.3...v0.176.4) (2026-09-03)
+
+
+### Bug Fixes
+
+* program sharing form state [DHIS2-22022] ([#1029](https://github.com/dhis2/metadata-management-app/issues/1029)) ([de72cf7](https://github.com/dhis2/metadata-management-app/commit/de72cf7b8a68f6617b4dfde02a8c70864f6847f1))
+
 ## [0.176.3](https://github.com/dhis2/metadata-management-app/compare/v0.176.2...v0.176.3) (2026-08-25)
 
 
