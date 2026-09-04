@@ -4,7 +4,7 @@ import { TextAreaFieldFF } from '@dhis2/ui'
 import React, { useCallback } from 'react'
 import { Field } from 'react-final-form'
 import { useParams } from 'react-router-dom'
-import { AnalyticsTableHook } from '../../../types/generated'
+import { AnalyticsTablePhase } from '../../../types/generated'
 import { WrapQueryResponse } from '../../../types/query'
 
 type ExistingHook = { id: string; sql: string }
@@ -16,8 +16,8 @@ type FormValues = {
 }
 
 const phaseToField = {
-    [AnalyticsTableHook.phase.RESOURCE_TABLE_POPULATED]: 'resourceTableType',
-    [AnalyticsTableHook.phase.ANALYTICS_TABLE_POPULATED]: 'analyticsTableType',
+    [AnalyticsTablePhase.RESOURCE_TABLE_POPULATED]: 'resourceTableType',
+    [AnalyticsTablePhase.ANALYTICS_TABLE_POPULATED]: 'analyticsTableType',
 } as const satisfies Record<string, 'resourceTableType' | 'analyticsTableType'>
 
 export function SqlField() {

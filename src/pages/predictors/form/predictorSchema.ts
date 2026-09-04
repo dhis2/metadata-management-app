@@ -3,7 +3,11 @@ import { z } from 'zod'
 import { modelFormSchemas } from '../../../lib'
 import { createFormValidate } from '../../../lib/form/validate'
 import { getDefaults } from '../../../lib/zod/getDefaults'
-import { Predictor, Expression } from '../../../types/generated/models'
+import {
+    MissingValueStrategy,
+    OrganisationUnitDescendants,
+    Predictor,
+} from '../../../types/generated/models'
 
 const { identifiable, withDefaultListColumns, modelReference } =
     modelFormSchemas
@@ -16,9 +20,7 @@ const predictorBaseSchema = z.object({
     outputCombo: modelReference.optional(),
     periodType: z.nativeEnum(Predictor.periodType),
     organisationUnitLevels: z.array(modelReference),
-    organisationUnitDescendants: z.nativeEnum(
-        Predictor.organisationUnitDescendants
-    ),
+    organisationUnitDescendants: z.nativeEnum(OrganisationUnitDescendants),
     sequentialSampleCount: z.number().int(),
     annualSampleCount: z.number().int().min(0).max(10),
     sequentialSkipCount: z.number().int().optional(),
@@ -37,17 +39,15 @@ export const predictorFormSchema = predictorBaseSchema
         generator: z.object({
             expression: z.string(),
             description: z.string(),
-            missingValueStrategy: z
-                .nativeEnum(Expression.missingValueStrategy)
-                .optional(),
+            missingValueStrategy: z.nativeEnum(MissingValueStrategy).optional(),
         }),
         sampleSkipTest: z
             .object({
                 expression: z.string().optional(),
                 description: z.string().optional(),
                 missingValueStrategy: z
-                    .nativeEnum(Expression.missingValueStrategy)
-                    .default(Expression.missingValueStrategy.NEVER_SKIP)
+                    .nativeEnum(MissingValueStrategy)
+                    .default(MissingValueStrategy.NEVER_SKIP)
                     .optional(),
             })
             .optional(),
@@ -57,7 +57,7 @@ export const predictorFormSchema = predictorBaseSchema
 export const initialValues = getDefaults(predictorFormSchema, {
     periodType: Predictor.periodType.MONTHLY,
     organisationUnitLevels: [],
-    organisationUnitDescendants: Predictor.organisationUnitDescendants.SELECTED,
+    organisationUnitDescendants: OrganisationUnitDescendants.SELECTED,
     sequentialSampleCount: 0,
     annualSampleCount: 0,
 })
