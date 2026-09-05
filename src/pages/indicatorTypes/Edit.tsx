@@ -3,13 +3,13 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { FormBase } from '../../components'
 import { DefaultEditFormContents } from '../../components/form/DefaultFormContents'
-import { DEFAULT_FIELD_FILTERS, SECTIONS_MAP, useOnSubmitEdit } from '../../lib'
+import { DEFAULT_IDENTIFIABLE, SECTIONS_MAP, useOnSubmitEdit } from '../../lib'
 import { useBoundResourceQueryFn } from '../../lib/query/useBoundQueryFn'
 import { IndicatorType, PickWithFieldFilters } from '../../types/models'
 import { validate } from './form'
 import { IndicatorTypesFormFields } from './form/IndicatorTypesFormFields'
 
-const fieldFilters = [...DEFAULT_FIELD_FILTERS, 'name', 'factor'] as const
+const fieldFilters = [...DEFAULT_IDENTIFIABLE, 'factor'] as const
 
 export type IndicatorTypesFormValues = PickWithFieldFilters<
     IndicatorType,
