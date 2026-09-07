@@ -42,7 +42,7 @@ export const ProgramCustomizationFormContents = React.memo(
 
                 <LabelField
                     name="enrollmentLabel"
-                    label={i18n.t('Custom label for "enrollment"')}
+                    label={i18n.t('Custom label for "enrollment" (singular)')}
                     helpText={i18n.t(
                         'Example use: See all data in this enrollment',
                         { nsSeparator: '~:~' }
@@ -51,7 +51,7 @@ export const ProgramCustomizationFormContents = React.memo(
                 {showPluralLabels && (
                     <LabelField
                         name="enrollmentsLabel"
-                        label={i18n.t('Custom label for "enrollment" (plural)')}
+                        label={i18n.t('Custom label for "enrollments" (plural)')}
                         helpText={i18n.t('Example use: See all enrollments', {
                             nsSeparator: '~:~',
                         })}
@@ -60,7 +60,7 @@ export const ProgramCustomizationFormContents = React.memo(
 
                 <LabelField
                     name="eventLabel"
-                    label={i18n.t('Custom label for "event"')}
+                    label={i18n.t('Custom label for "event" (singular)')}
                     helpText={i18n.t('Example use: Schedule a new event', {
                         nsSeparator: '~:~',
                     })}
@@ -68,7 +68,7 @@ export const ProgramCustomizationFormContents = React.memo(
                 {showPluralLabels && (
                     <LabelField
                         name="eventsLabel"
-                        label={i18n.t('Custom label for "event" (plural)')}
+                        label={i18n.t('Custom label for "events" (plural)')}
                         helpText={i18n.t('Example use: See all events', {
                             nsSeparator: '~:~',
                         })}
@@ -77,7 +77,7 @@ export const ProgramCustomizationFormContents = React.memo(
 
                 <LabelField
                     name="programStageLabel"
-                    label={i18n.t('Custom label for "program stage"')}
+                    label={i18n.t('Custom label for "program stage" (singular)')}
                     helpText={i18n.t(
                         'Example use: See all data in this program stage',
                         { nsSeparator: '~:~' }
@@ -87,7 +87,7 @@ export const ProgramCustomizationFormContents = React.memo(
                     <LabelField
                         name="programStagesLabel"
                         label={i18n.t(
-                            'Custom label for "program stage" (plural)'
+                            'Custom label for "program stages" (plural)'
                         )}
                         helpText={i18n.t(
                             'Example use: See all program stages',
@@ -106,7 +106,7 @@ export const ProgramCustomizationFormContents = React.memo(
 
                 <LabelField
                     name="orgUnitLabel"
-                    label={i18n.t('Custom label for "registering unit"')}
+                    label={i18n.t('Custom label for "organisation unit"')}
                     helpText={i18n.t(
                         'Used to customize the label for the organisation unit that registers the enrollment or event'
                     )}
@@ -114,7 +114,7 @@ export const ProgramCustomizationFormContents = React.memo(
 
                 <LabelField
                     name="relationshipLabel"
-                    label={i18n.t('Custom label for "relationship"')}
+                    label={i18n.t('Custom label for "relationship" (singular)')}
                     helpText={i18n.t(
                         'Used to customize the label for a relationship between tracked entities'
                     )}
@@ -123,7 +123,7 @@ export const ProgramCustomizationFormContents = React.memo(
                     <LabelField
                         name="relationshipsLabel"
                         label={i18n.t(
-                            'Custom label for "relationship" (plural)'
+                            'Custom label for "relationships" (plural)'
                         )}
                         helpText={i18n.t('Example use: See all relationships', {
                             nsSeparator: '~:~',
@@ -133,7 +133,7 @@ export const ProgramCustomizationFormContents = React.memo(
 
                 <LabelField
                     name="noteLabel"
-                    label={i18n.t('Custom label for "note"')}
+                    label={i18n.t('Custom label for "note" (singular)')}
                     helpText={i18n.t(
                         'Used to customize the label for a note or comment added to an enrollment or event'
                     )}
@@ -141,7 +141,7 @@ export const ProgramCustomizationFormContents = React.memo(
                 {showPluralLabels && (
                     <LabelField
                         name="notesLabel"
-                        label={i18n.t('Custom label for "note" (plural)')}
+                        label={i18n.t('Custom label for "notes" (plural)')}
                         helpText={i18n.t('Example use: See all notes', {
                             nsSeparator: '~:~',
                         })}
@@ -150,7 +150,7 @@ export const ProgramCustomizationFormContents = React.memo(
 
                 <LabelField
                     name="trackedEntityAttributeLabel"
-                    label={i18n.t('Custom label for "attribute"')}
+                    label={i18n.t('Custom label for "attribute" (singular)')}
                     helpText={i18n.t(
                         'Used to customize the label for a tracked entity attribute'
                     )}
@@ -158,7 +158,7 @@ export const ProgramCustomizationFormContents = React.memo(
                 {showPluralLabels && (
                     <LabelField
                         name="trackedEntityAttributesLabel"
-                        label={i18n.t('Custom label for "attribute" (plural)')}
+                        label={i18n.t('Custom label for "attributes" (plural)')}
                         helpText={i18n.t('Example use: See all attributes', {
                             nsSeparator: '~:~',
                         })}
