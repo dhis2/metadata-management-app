@@ -1,6 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import { Card, Button } from '@dhis2/ui'
-import { IconEdit24 } from '@dhis2/ui-icons'
+import { IconEdit24, IconQuestion16 } from '@dhis2/ui-icons'
 import React, { PropsWithChildren } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -92,6 +92,7 @@ export const SummaryCardActions = ({
     hideNew,
 }: SummaryCardActionsProps) => {
     const canCreate = useCanCreateModelInSection(section)
+    const learnMoreUrl = section.learnMoreUrl
     return (
         <div className={styles.cardActions}>
             {canCreate && !hideNew && (
@@ -106,6 +107,18 @@ export const SummaryCardActions = ({
                     {i18n.t('Manage')}
                 </Button>
             </Link>
+            {learnMoreUrl && (
+                <a
+                    className={styles.learnMoreIconLink}
+                    href={learnMoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span aria-label={i18n.t('Learn more')}>
+                        <IconQuestion16 />
+                    </span>
+                </a>
+            )}
         </div>
     )
 }
