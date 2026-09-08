@@ -19,6 +19,8 @@
 
 .expandCell {
     padding: 0 !important;
+    /* logical, not padding-left, so the inset follows the writing direction */
+    padding-inline-start: var(--spacers-dp4) !important;
 }
 
 .expandButton {
@@ -34,13 +36,46 @@
     font-weight: 500;
 }
 
+/* dim rows for metadata types without any results, so the ones with
+ * results are easier to spot when scanning the list. grey700 keeps the
+ * text at AA contrast against the grey100 row background */
+.schemaRowEmpty td {
+    color: var(--colors-grey700);
+    font-weight: 400;
+}
+
 .schemaNameCell {
     padding-inline-start: var(--spacers-dp4) !important;
 }
 
-.schemaCount {
+/* inline-block, NOT inline-flex: an inline-block's baseline is the baseline
+ * of its own text, so the digit sits on the same baseline as the type name
+ * and stays there when the font-size or padding changes. flex with
+ * align-items: center synthesizes a baseline instead, which is what makes
+ * vertical-align guesswork necessary - so no vertical-align here either */
+.count {
+    display: inline-block;
+    min-width: 20px;
+    margin-inline-start: var(--spacers-dp4);
+    border: 1px solid transparent;
+    border-radius: 9px;
+    padding: 2px 6px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.countBadge {
+    background: var(--colors-blue100);
+    color: var(--colors-blue800);
+}
+
+.countZero {
+    border-color: var(--colors-grey300);
+    background: var(--colors-grey050);
     color: var(--colors-grey600);
-    font-weight: 400;
 }
 
 .loadMoreCell {

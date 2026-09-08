@@ -7,6 +7,7 @@ import {
     IconChevronRight16,
 } from '@dhis2/ui'
 import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
+import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
 import {
     ActionShowDetails,
@@ -113,30 +114,44 @@ export const MetadataTypeList = ({
         }
     }, [total])
     const queryClient = useQueryClient()
+    const isEmpty = total === 0
 
     return (
         <>
-            <DataTableRow className={css.schemaRow}>
+            <DataTableRow
+                className={cx(css.schemaRow, { [css.schemaRowEmpty]: isEmpty })}
+            >
                 <DataTableCell width="32px" className={css.expandCell}>
-                    <Button
-                        className={css.expandButton}
-                        secondary
-                        small
-                        type="button"
-                        icon={
-                            isExpanded ? (
-                                <IconChevronDown16 />
-                            ) : (
-                                <IconChevronRight16 />
-                            )
-                        }
-                        onClick={() => setIsExpanded((prev) => !prev)}
-                    />
+                    {/* no chevron at all when there is nothing to expand - a
+                     * disabled button would imply the row does something */}
+                    {!isEmpty && (
+                        <Button
+                            className={css.expandButton}
+                            secondary
+                            small
+                            type="button"
+                            icon={
+                                isExpanded ? (
+                                    <IconChevronDown16 />
+                                ) : (
+                                    <IconChevronRight16 />
+                                )
+                            }
+                            onClick={() => setIsExpanded((prev) => !prev)}
+                        />
+                    )}
                 </DataTableCell>
                 <DataTableCell colSpan="3" className={css.schemaNameCell}>
                     {schema.displayName}
                     {total !== undefined && (
-                        <span className={css.schemaCount}> ({total})</span>
+                        <span
+                            className={cx(css.count, {
+                                [css.countBadge]: total > 0,
+                                [css.countZero]: total === 0,
+                            })}
+                        >
+                            {total}
+                        </span>
                     )}
                 </DataTableCell>
                 <DataTableCell />
