@@ -145,10 +145,7 @@ const MatrixDrawerBody = ({
                               )
                             : i18n.t('No changes yet')}
                     </span>
-                    <SizeSwitcher
-                        size={size}
-                        onSizeChange={onSizeChange}
-                    />
+                    <SizeSwitcher size={size} onSizeChange={onSizeChange} />
                 </div>
             }
         >

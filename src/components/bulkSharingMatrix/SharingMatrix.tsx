@@ -1,6 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
 import {
-    Button,
     Divider,
     MenuItem,
     Popover,
@@ -9,7 +8,6 @@ import {
 } from '@dhis2/ui'
 import {
     IconChevronDown16,
-    IconSync16,
     IconCopy16,
     IconDelete16,
     IconFileDocument16,
@@ -199,7 +197,6 @@ export const SharingMatrix = ({ api }: { api: SharingMatrixApi }) => {
         entities,
         dataShareable,
         addedEntityIds,
-        getOriginal,
         getValue,
         getRowAggregate,
         isRowTouched,
@@ -224,7 +221,7 @@ export const SharingMatrix = ({ api }: { api: SharingMatrixApi }) => {
     /* The matrix can be rotated. Rows and columns swap, but every underlying
        operation is already symmetric — a cell is an (entity, object) pair
        either way — so this is one grid parameterised, not a second grid. */
-    const [orientation, setOrientation] = useState<Orientation>('byEntity')
+    const [orientation] = useState<Orientation>('byEntity')
     const byObject = orientation === 'byObject'
 
     const scrollportRef = useRef<HTMLDivElement>(null)
@@ -239,8 +236,6 @@ export const SharingMatrix = ({ api }: { api: SharingMatrixApi }) => {
         enabled: showObjects,
     })
 
-    // Stable identity matters: changedColumnPositions below scans every cell,
-    // and a fresh array here would defeat its useMemo on every render.
     const axes = useMemo(
         () => (dataShareable ? AXES : (['metadata'] as AccessAxis[])),
         [dataShareable]
@@ -284,41 +279,12 @@ export const SharingMatrix = ({ api }: { api: SharingMatrixApi }) => {
               })()
         : undefined
 
-    /* Ticks showing where *your own* changes are, so you can navigate back to
-       them. Deliberately does not mark the seeded outliers — finding those is
-       the thing this prototype exists to test. */
-    const changedColumnPositions = useMemo(() => {
-        const positions: number[] = []
-        objects.forEach((object, index) => {
-            const changed = entities.some((entity) =>
-                axes.some(
-                    (axis) =>
-                        getValue(entity.id, object.id)[axis] !==
-                        getOriginal(entity.id, object.id)[axis]
-                )
-            )
-            if (changed) {
-                positions.push(index / objects.length)
-            }
-        })
-        return positions
-    }, [objects, entities, axes, getValue, getOriginal])
-
     return (
         <div className={cx(css.wrapper, { [css.orientByObject]: byObject })}>
             <MatrixToolbar
                 objectCount={objects.length}
-                columnCount={columnItems.length}
                 view={view}
                 onViewChange={setView}
-                orientation={orientation}
-                onToggleOrientation={() =>
-                    setOrientation((current) =>
-                        current === 'byEntity' ? 'byObject' : 'byEntity'
-                    )
-                }
-                columnWindow={columnWindow}
-                changedColumnPositions={changedColumnPositions}
             />
 
             {showObjects ? (
@@ -342,25 +308,24 @@ export const SharingMatrix = ({ api }: { api: SharingMatrixApi }) => {
                             rightSpacer={rightSpacer}
                         />
 
-                        {(byObject
-                            ? rowItems
-                            : existingEntities
-                        ).map((item) => (
-                            <MatrixRow
-                                key={item.id}
-                                api={api}
-                                item={item}
-                                axes={axes}
-                                orientation={orientation}
-                                columnWidth={columnWidth}
-                                visibleColumns={visibleColumns}
-                                leftSpacer={leftSpacer}
-                                rightSpacer={rightSpacer}
-                                isNew={false}
-                                touched={isRowTouched(item.id)}
-                                onOpenPicker={openPicker}
-                            />
-                        ))}
+                        {(byObject ? rowItems : existingEntities).map(
+                            (item) => (
+                                <MatrixRow
+                                    key={item.id}
+                                    api={api}
+                                    item={item}
+                                    axes={axes}
+                                    orientation={orientation}
+                                    columnWidth={columnWidth}
+                                    visibleColumns={visibleColumns}
+                                    leftSpacer={leftSpacer}
+                                    rightSpacer={rightSpacer}
+                                    isNew={false}
+                                    touched={isRowTouched(item.id)}
+                                    onOpenPicker={openPicker}
+                                />
+                            )
+                        )}
                         {!byObject &&
                             addedEntities.map((item, index) => (
                                 <MatrixRow
@@ -469,22 +434,12 @@ const VIEW_OPTIONS: { value: MatrixView; label: string }[] = [
 
 const MatrixToolbar = ({
     objectCount,
-    columnCount,
     view,
     onViewChange,
-    orientation,
-    onToggleOrientation,
-    columnWindow,
-    changedColumnPositions,
 }: {
     objectCount: number
-    columnCount: number
     view: MatrixView
     onViewChange: (view: MatrixView) => void
-    orientation: Orientation
-    onToggleOrientation: () => void
-    columnWindow: ColumnWindow
-    changedColumnPositions: number[]
 }) => {
     const showObjects = view === 'matrix'
     return (
@@ -496,8 +451,7 @@ const MatrixToolbar = ({
             >
                 {/* Lives here, not in the drawer header, so it sits on the
                     same line as the view switcher rather than in its own
-                    bar above it. True regardless of view or orientation, so
-                    it always uses the object count, never columnCount. */}
+                    bar above it. */}
                 <span className={css.toolbarTitle}>
                     {i18n.t('Update sharing for {{count}} objects', {
                         count: objectCount,
@@ -506,7 +460,7 @@ const MatrixToolbar = ({
 
                 <div className={css.toolbarSpacer} />
 
-<ButtonGroup
+                <ButtonGroup
                     ariaLabel={i18n.t('Choose a view')}
                     options={VIEW_OPTIONS}
                     selected={view}
@@ -1207,7 +1161,11 @@ const MatrixRow = ({
                         </span>
                     </>
                 ) : (
-                    <EntityName entity={item as SharingEntity} isNew={isNew} touched={touched} />
+                    <EntityName
+                        entity={item as SharingEntity}
+                        isNew={isNew}
+                        touched={touched}
+                    />
                 )}
             </div>
 
@@ -1331,9 +1289,7 @@ const AddEntityRow = ({
                         dense
                         filterable
                         selected=""
-                        placeholder={i18n.t(
-                            'Choose a user or group to add'
-                        )}
+                        placeholder={i18n.t('Choose a user or group to add')}
                         noMatchText={i18n.t('No matches')}
                         disabled={candidates.length === 0}
                         onChange={({ selected }) => {
