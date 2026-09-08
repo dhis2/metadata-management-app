@@ -1,0 +1,844 @@
+/* PROTOTYPE — frozen-pane matrix.
+   Widths live in custom properties so the column-windowing maths in
+   SharingMatrix.tsx and the sticky offsets here cannot drift apart. */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    --name-w: 240px;
+    --agg-w: 288px;
+    --menu-w: 48px;
+    --row-h: 44px;
+}
+
+/* Transposed, the frozen summary holds level counts rather than two badges,
+   so it needs more room. Must stay in step with AGG_W_BY_OBJECT. */
+.orientByObject {
+    --agg-w: 344px;
+}
+
+.matrixCountsCell {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp8);
+    padding-inline: var(--spacers-dp8);
+    border-inline-end: 1px dotted var(--colors-grey400);
+    overflow: hidden;
+}
+
+.matrixCountsCell:last-child {
+    border-inline-end: none;
+}
+
+/* ---------- level chips ---------- */
+
+/* Colour and glyph both encode the level, so a column reads as a pattern.
+   The diff treatment below deliberately uses a different layer — pale field
+   plus a rail — so "what it is" and "what changed" never compete. */
+.chip {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 26px;
+    block-size: 26px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.chipSmall {
+    inline-size: 24px;
+    block-size: 24px;
+}
+
+/* White fill and a dotted border, not a tint — this is the absence of
+   access, so it should recede furthest of the four, not just sit at the
+   lightest tint. */
+.chipNone {
+    background: var(--colors-white);
+    border-style: dotted;
+    border-color: var(--colors-grey400);
+    color: var(--colors-grey600);
+}
+
+.chipView {
+    background: var(--colors-blue100);
+    border-color: var(--colors-blue200);
+    color: var(--colors-blue700);
+}
+
+.chipEdit {
+    background: var(--colors-green100);
+    border-color: var(--colors-green200);
+    color: var(--colors-green700);
+}
+
+.badgeLabel {
+    min-inline-size: 0;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    color: var(--colors-grey900);
+}
+
+.badgeChevron {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    /* pinned to the far edge of the control, so the button's own border is
+       the thing that visibly spans the cell rather than the label doing it */
+    margin-inline-start: auto;
+    color: var(--colors-grey600);
+}
+
+/* ---------- toolbar above the grid ---------- */
+
+.toolbar {
+    flex: 0 0 auto;
+    padding: var(--spacers-dp8) var(--spacers-dp12);
+    border-bottom: 1px solid var(--colors-grey300);
+    background: var(--colors-grey050);
+}
+
+.toolbarPlain {
+    padding-block: var(--spacers-dp16) var(--spacers-dp8);
+    padding-inline: 0;
+    border-bottom: none;
+    background: var(--colors-white);
+}
+
+.toolbarInner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp16);
+    inline-size: 100%;
+}
+
+.toolbarTitle {
+    flex: 0 0 auto;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--colors-grey900);
+    white-space: nowrap;
+}
+
+.toolbarSpacer {
+    flex: 1;
+}
+
+.sizeSwitcher {
+    margin-inline-start: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp8);
+    font-size: 13px;
+    color: var(--colors-grey700);
+}
+
+/* ---------- horizontal position readout ---------- */
+
+.scrollReadout {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--colors-grey700);
+    min-inline-size: 210px;
+}
+
+.scrollReadoutLabel {
+    white-space: nowrap;
+}
+
+.scrollReadoutStrong {
+    color: var(--colors-grey900);
+    font-weight: 500;
+}
+
+.scrollTrack {
+    position: relative;
+    block-size: 9px;
+    overflow: hidden;
+}
+
+.scrollTrack::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    block-size: 4px;
+    border-radius: 2px;
+    background: var(--colors-grey300);
+}
+
+.scrollThumb {
+    position: absolute;
+    top: 0;
+    block-size: 4px;
+    border-radius: 2px;
+    background: var(--colors-blue600);
+}
+
+.changeTicks {
+    position: absolute;
+    inset: 0;
+}
+
+.changeTick {
+    position: absolute;
+    top: 6px;
+    bottom: 0;
+    inline-size: 2px;
+    border-radius: 1px;
+    background: var(--colors-grey800);
+}
+
+/* ---------- scroll container ---------- */
+
+.scrollport {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    position: relative;
+    background: var(--colors-white);
+}
+
+.grid {
+    width: max-content;
+    min-width: 100%;
+    font-size: 13px;
+}
+
+.row {
+    display: flex;
+    align-items: stretch;
+    block-size: var(--row-h);
+    border-bottom: 1px solid var(--colors-grey200);
+}
+
+.row:hover .stickyName,
+.row:hover .cell:not(.changed) {
+    background: var(--colors-grey100);
+}
+
+/* ---------- frozen panes ---------- */
+
+.stickyName,
+.stickyAggregate,
+.stickyMenu {
+    position: sticky;
+    z-index: 2;
+    background: var(--colors-white);
+    flex: 0 0 auto;
+}
+
+.stickyName {
+    left: 0;
+    inline-size: var(--name-w);
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp8);
+    padding-inline: var(--spacers-dp12);
+    border-right: 1px solid var(--colors-grey200);
+    overflow: hidden;
+}
+
+.stickyAggregate {
+    left: var(--name-w);
+    inline-size: var(--agg-w);
+    display: flex;
+    border-right: 1px solid var(--colors-grey400);
+    background: var(--colors-grey050);
+}
+
+.stickyMenu {
+    right: 0;
+    inline-size: var(--menu-w);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid var(--colors-grey400);
+}
+
+/* Overflow is the whole risk of this layout, so say so loudly: shadows on
+   both frozen edges, plus the readout above the grid. */
+.scrolledLeft .stickyAggregate {
+    box-shadow: 8px 0 10px -5px rgba(33, 41, 52, 0.28);
+}
+
+.canScrollRight .stickyMenu {
+    box-shadow: -8px 0 10px -5px rgba(33, 41, 52, 0.28);
+}
+
+.spacer {
+    flex: 0 0 auto;
+}
+
+/* ---------- header ---------- */
+
+.headerRow {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    block-size: auto;
+    background: var(--colors-grey100);
+    border-bottom: 1px solid var(--colors-grey400);
+}
+
+.headerRow .stickyName,
+.headerRow .stickyAggregate,
+.headerRow .stickyMenu {
+    background: var(--colors-grey100);
+    align-items: stretch;
+}
+
+.headerLabel {
+    display: flex;
+    align-items: flex-end;
+    padding-block-end: var(--spacers-dp8);
+    font-weight: 500;
+    color: var(--colors-grey800);
+}
+
+.objectHeader {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--colors-grey300);
+    min-inline-size: 0;
+}
+
+.objectHeaderName {
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp4);
+    inline-size: 100%;
+    padding: var(--spacers-dp8) var(--spacers-dp4) var(--spacers-dp4)
+        var(--spacers-dp8);
+    border: none;
+    background: none;
+    font: inherit;
+    font-weight: 500;
+    color: var(--colors-grey900);
+    text-align: start;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.objectHeaderName:hover {
+    background: var(--colors-grey300);
+}
+
+.objectHeaderIndex {
+    flex: 0 0 auto;
+    color: var(--colors-grey600);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+}
+
+.axisHeaderRow {
+    display: flex;
+    border-top: 1px solid var(--colors-grey300);
+}
+
+.aggregateHeaderName {
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    font-size: 13px;
+    padding: var(--spacers-dp8) var(--spacers-dp12) var(--spacers-dp4);
+    font-weight: 500;
+    color: var(--colors-grey900);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.axisHeader {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    padding: 3px var(--spacers-dp4);
+    border: none;
+    border-inline-end: 1px dotted var(--colors-grey400);
+    background: none;
+    font: inherit;
+    font-size: 12px;
+    color: var(--colors-grey700);
+    text-align: start;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.axisHeader:last-child {
+    border-inline-end: none;
+}
+
+.axisHeaderCompact {
+    font-size: 11px;
+    text-align: center;
+}
+
+.aggregateAxisHeader {
+    padding-inline: var(--spacers-dp12);
+}
+
+button.axisHeader {
+    cursor: pointer;
+}
+
+button.axisHeader:hover {
+    background: var(--colors-grey300);
+    color: var(--colors-grey900);
+}
+
+/* ---------- cells ---------- */
+
+.objectCell {
+    flex: 0 0 auto;
+    display: flex;
+    border-right: 1px solid var(--colors-grey200);
+}
+
+.cell {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-inline-end: 1px dotted var(--colors-grey300);
+    background: none;
+    cursor: pointer;
+}
+
+.cell:last-child {
+    border-inline-end: none;
+}
+
+.cell:hover {
+    outline: 2px solid var(--colors-blue600);
+    outline-offset: -2px;
+}
+
+/* ---------- aggregate cell ---------- */
+
+/* Borderless, but the chevron is pinned to the far right (see .badgeChevron)
+   so the control visibly spans the cell instead of reading as loose text with
+   dead space after it. A permanent border read as a stack of form fields when
+   a column of these is stacked; a hover tint is enough affordance, and it
+   keeps the diff background below full-bleed like every other cell. */
+.aggregateCell {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    inline-size: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp4);
+    padding-inline: var(--spacers-dp8) var(--spacers-dp4);
+    border: none;
+    border-radius: 6px;
+    background: none;
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* outline, not background — a hover background would outrank .added/.removed
+   (a pseudo-class beats a plain class) and mask the diff tint on hover */
+.aggregateCell:hover {
+    outline: 2px solid var(--colors-blue600);
+    outline-offset: -2px;
+}
+
+/* Diff state. Per the agreed spec: green additive, red removal, hue only.
+   Kept to the cell field and rail so it layers under the level chip rather
+   than fighting it. */
+.added {
+    background: var(--colors-green050);
+    box-shadow: inset 4px 0 0 var(--colors-green600);
+}
+
+.removed {
+    background: var(--colors-red050);
+    box-shadow: inset 4px 0 0 var(--colors-red600);
+}
+
+/* A row-axis edit can grant on some objects and revoke on others; neither
+   green nor red would be honest, so both-directions gets its own neutral. */
+.changedBoth {
+    background: var(--colors-blue050);
+    box-shadow: inset 4px 0 0 var(--colors-blue600);
+}
+
+.chipMixed {
+    background: var(--colors-yellow100);
+    border-color: var(--colors-yellow200);
+    color: var(--colors-yellow800);
+}
+
+.badgeLabelMixed {
+    font-style: italic;
+    color: var(--colors-grey700);
+    /* italics overhang their box; without this the trailing "d" is clipped
+       by the ellipsis overflow on .badgeLabel */
+    padding-inline-end: 3px;
+}
+
+/* ---------- summary (default) view ---------- */
+
+/* No frozen panes, no windowing, no horizontal scroll — and a constrained,
+   centred column rather than a full-bleed grid. Basic mode should read like a
+   settings page; only the matrix earns edge-to-edge. */
+.listPage {
+    padding-block: var(--spacers-dp8) var(--spacers-dp24);
+}
+
+.listInner {
+    box-sizing: border-box;
+    max-inline-size: 1040px;
+    margin-inline: auto;
+    padding-inline: var(--spacers-dp16);
+}
+
+.listRow {
+    display: flex;
+    align-items: center;
+    block-size: 60px;
+    border-bottom: 1px solid var(--colors-grey200);
+}
+
+.listRow:hover {
+    background: var(--colors-grey050);
+}
+
+.listHeaderRow {
+    block-size: 36px;
+    background: transparent;
+    border-bottom: 1px solid var(--colors-grey400);
+    font-size: 12px;
+    color: var(--colors-grey700);
+}
+
+.listHeaderRow:hover {
+    background: transparent;
+}
+
+.listName {
+    flex: 1 1 auto;
+    min-inline-size: 200px;
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp12);
+    overflow: hidden;
+}
+
+.listAxisCell {
+    flex: 0 0 auto;
+    inline-size: 224px;
+    display: flex;
+    padding-inline: var(--spacers-dp4);
+}
+
+.listAxisCell .aggregateCell {
+    block-size: 40px;
+}
+
+/* ---- identity block ---- */
+
+.avatar {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    inline-size: 32px;
+    block-size: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--colors-white);
+}
+
+.avatarGlyph {
+    background: var(--colors-grey200);
+    color: var(--colors-grey700);
+}
+
+.identity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-inline-size: 0;
+    gap: 1px;
+}
+
+.identityName {
+    font-size: 14px;
+    color: var(--colors-grey900);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.identityMeta {
+    font-size: 12px;
+    color: var(--colors-grey600);
+    white-space: nowrap;
+}
+
+.addRowInline {
+    position: sticky;
+    bottom: 0;
+    background: var(--colors-white);
+    border-top: 1px solid var(--colors-grey300);
+}
+
+.addRowInlineInner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp12);
+    padding-block: var(--spacers-dp8);
+    min-block-size: 48px;
+}
+
+.listAxisHeaderLabel {
+    padding-inline: var(--spacers-dp8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listMenu {
+    flex: 0 0 auto;
+    inline-size: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---- by-object overview ---- */
+
+.countsCell {
+    flex: 0 0 auto;
+    inline-size: 168px;
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp8);
+}
+
+.countItem {
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp4);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    color: var(--colors-grey800);
+}
+
+.consistencyCell {
+    flex: 0 0 auto;
+    inline-size: 190px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+.consistent {
+    color: var(--colors-grey600);
+}
+
+.differs {
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp8);
+    color: var(--colors-grey900);
+    font-weight: 500;
+}
+
+.differsDot {
+    flex: 0 0 auto;
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: 50%;
+    background: var(--colors-yellow500);
+}
+
+/* ---------- entity name cell ---------- */
+
+.entityName {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--colors-grey900);
+}
+
+.entityKind {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    color: var(--colors-grey600);
+}
+
+/* Public access is set apart by weight and a gap, not a fill colour — it is
+   the highest-blast-radius row, but a colour fill reads as a warning state,
+   and this is a pinned row, not an error. */
+.publicRow {
+    border-bottom: 2px solid var(--colors-grey400);
+    margin-block-end: var(--spacers-dp8);
+}
+
+.addedDivider {
+    border-top: 2px solid var(--colors-grey500);
+}
+
+.addedDivider.listRow {
+    border-top: 2px solid var(--colors-grey500);
+}
+
+.publicRow.listRow {
+    border-bottom: 1px solid var(--colors-grey400);
+}
+
+.publicRow .stickyName,
+.publicRow .identityName {
+    font-weight: 500;
+}
+
+.newBadge {
+    flex: 0 0 auto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--colors-grey700);
+    background: var(--colors-grey200);
+    border-radius: 3px;
+    padding: 3px 6px;
+}
+
+.iconButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 30px;
+    block-size: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    background: none;
+    color: var(--colors-grey700);
+    cursor: pointer;
+}
+
+.iconButton:hover {
+    background: var(--colors-grey300);
+    color: var(--colors-grey900);
+}
+
+/* ---------- add row ---------- */
+
+.addRow {
+    position: sticky;
+    bottom: 0;
+    z-index: 4;
+    display: flex;
+    background: var(--colors-white);
+    border-top: 1px solid var(--colors-grey400);
+    box-shadow: 0 -4px 6px -4px rgba(33, 41, 52, 0.25);
+}
+
+.addRowInner {
+    position: sticky;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp12);
+    padding: var(--spacers-dp8) var(--spacers-dp12);
+    min-block-size: 48px;
+}
+
+.addButton {
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp4);
+    padding: var(--spacers-dp4) var(--spacers-dp8);
+    border: none;
+    border-radius: 3px;
+    background: none;
+    font: inherit;
+    font-weight: 500;
+    color: var(--colors-blue800);
+    cursor: pointer;
+}
+
+.addButton:hover {
+    background: var(--colors-blue050);
+}
+
+.addHint {
+    font-size: 12px;
+    color: var(--colors-grey600);
+}
+
+/* ---------- menus ---------- */
+
+.menu {
+    min-inline-size: 280px;
+    padding-block: var(--spacers-dp4);
+}
+
+.menuSectionLabel {
+    padding: var(--spacers-dp8) var(--spacers-dp12) var(--spacers-dp4);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--colors-grey600);
+}
+
+.menuHint {
+    padding: 0 var(--spacers-dp12) var(--spacers-dp8);
+    font-size: 12px;
+    color: var(--colors-grey600);
+    max-inline-size: 280px;
+}
+
+.menuLevelRow {
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp8);
+}
+
+/* ---------- apply preview ---------- */
+
+.patchPreview {
+    max-block-size: 460px;
+    overflow: auto;
+    background: var(--colors-grey050);
+    border: 1px solid var(--colors-grey300);
+    border-radius: 3px;
+    padding: var(--spacers-dp8);
+    font-family: monospace;
+    font-size: 12px;
+    white-space: pre;
+}
+
+.previewNote {
+    margin-block-end: var(--spacers-dp8);
+    font-size: 14px;
+    color: var(--colors-grey800);
+}
+
+.footerCount {
+    font-size: 14px;
+    color: var(--colors-grey700);
+}

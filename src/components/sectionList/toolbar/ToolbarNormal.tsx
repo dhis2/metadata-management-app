@@ -9,6 +9,8 @@ import {
     useLocationSearchState,
     useModelSectionHandleOrThrow,
 } from '../../../lib'
+import { BulkSharingMatrixDrawer } from '../../bulkSharingMatrix'
+import { DrawerRoot } from '../../drawer'
 import { ManageListViewDialog } from '../listView/ManageListViewDialog'
 import css from './Toolbar.module.css'
 
@@ -20,6 +22,7 @@ export const ToolbarNormal = ({
     downloadButtonElement,
 }: ToolbarNormalProps) => {
     const [manageColumnsOpen, setManageColumnsOpen] = React.useState(false)
+    const [sharingMatrixOpen, setSharingMatrixOpen] = React.useState(false)
     const section = useModelSectionHandleOrThrow()
     const canCreateModel = useCanCreateModelInSection(section)
     const locationState = useLocationSearchState()
@@ -45,6 +48,19 @@ export const ToolbarNormal = ({
             {manageColumnsOpen && (
                 <ManageListViewDialog onClose={handleClose} />
             )}
+            {/* PROTOTYPE entry point — remove with the bulkSharingMatrix folder */}
+            <Button
+                small
+                onClick={() => setSharingMatrixOpen(true)}
+                dataTest="bulk-sharing-matrix-prototype-button"
+            >
+                {i18n.t('Bulk sharing (prototype)')}
+            </Button>
+            <DrawerRoot />
+            <BulkSharingMatrixDrawer
+                isOpen={sharingMatrixOpen}
+                onClose={() => setSharingMatrixOpen(false)}
+            />
         </DataTableToolbar>
     )
 }

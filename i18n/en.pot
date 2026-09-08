@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-08-15T18:22:27.752Z\n"
-"PO-Revision-Date: 2026-08-15T18:22:27.752Z\n"
+"POT-Creation-Date: 2026-08-31T12:46:05.836Z\n"
+"PO-Revision-Date: 2026-08-31T12:46:05.836Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -464,6 +464,150 @@ msgstr "Clear all"
 
 msgid "Filter options"
 msgstr "Filter options"
+
+msgid "Close drawer"
+msgstr "Close drawer"
+
+msgid "Prototype example"
+msgstr "Prototype example"
+
+msgid "Apply changes"
+msgstr "Apply changes"
+
+msgid "Discard all changes"
+msgstr "Discard all changes"
+
+msgid "{{edits}} access changes across {{objects}} objects"
+msgstr "{{edits}} access changes across {{objects}} objects"
+
+msgid "No changes yet"
+msgstr "No changes yet"
+
+msgid "Would send (prototype — no request)"
+msgstr "Would send (prototype — no request)"
+
+msgid "Close"
+msgstr "Close"
+
+msgid "Mixed"
+msgstr "Mixed"
+
+msgid "Metadata"
+msgstr "Metadata"
+
+msgid "Data"
+msgstr "Data"
+
+msgid "Meta"
+msgstr "Meta"
+
+msgid "Summary"
+msgstr "Summary"
+
+msgid "Detailed view"
+msgstr "Detailed view"
+
+msgid "Choose a view"
+msgstr "Choose a view"
+
+msgid "Everyone who can sign in"
+msgstr "Everyone who can sign in"
+
+msgid "User"
+msgstr "User"
+
+msgid "User group"
+msgstr "User group"
+
+msgid "New"
+msgstr "New"
+
+msgid "Edited"
+msgstr "Edited"
+
+msgid "click to set on all objects"
+msgstr "click to set on all objects"
+
+msgid "Actions for {{name}}"
+msgstr "Actions for {{name}}"
+
+msgid "Revert changes to this row"
+msgstr "Revert changes to this row"
+
+msgid "Remove from all objects"
+msgstr "Remove from all objects"
+
+msgid "Copy sharing to all objects"
+msgstr "Copy sharing to all objects"
+
+msgid "Makes every other object match this one exactly."
+msgstr "Makes every other object match this one exactly."
+
+msgid "Clear all sharing on this object"
+msgstr "Clear all sharing on this object"
+
+msgid "Removes every user and group, including public access, from this one object."
+msgstr "Removes every user and group, including public access, from this one object."
+
+msgid "Object"
+msgstr "Object"
+
+msgid "{{axis}} access"
+msgstr "{{axis}} access"
+
+msgid "Compared to the rest"
+msgstr "Compared to the rest"
+
+msgid "Differs · only one"
+msgstr "Differs · only one"
+
+msgid "People with access"
+msgstr "People with access"
+
+msgid "Revert changes to this column"
+msgstr "Revert changes to this column"
+
+msgid "User or group"
+msgstr "User or group"
+
+msgid "Set {{axis}} access down this column"
+msgstr "Set {{axis}} access down this column"
+
+msgid "Set {{axis}} access on all objects"
+msgstr "Set {{axis}} access on all objects"
+
+msgid "Set {{axis}} access for all users and groups"
+msgstr "Set {{axis}} access for all users and groups"
+
+msgid "Choose a user or group to add"
+msgstr "Choose a user or group to add"
+
+msgid "user"
+msgstr "user"
+
+msgid "group"
+msgstr "group"
+
+msgid "No access"
+msgstr "No access"
+
+msgid "View only"
+msgstr "View only"
+
+msgid "Edit and capture"
+msgstr "Edit and capture"
+
+msgid "Edit and view"
+msgstr "Edit and view"
+
+msgid "None"
+msgstr "None"
+
+msgid "View"
+msgstr "View"
+
+msgid "Capture"
+msgstr "Capture"
 
 msgid "Change this field"
 msgstr "Change this field"
@@ -994,9 +1138,6 @@ msgstr "Update sharing for users and groups"
 msgid "Public sharing"
 msgstr "Public sharing"
 
-msgid "User or group"
-msgstr "User or group"
-
 msgid "Add to actions"
 msgstr "Add to actions"
 
@@ -1222,9 +1363,6 @@ msgstr "Manage {{section}} view"
 msgid "Update view"
 msgstr "Update view"
 
-msgid "None"
-msgstr "None"
-
 msgid "No value"
 msgstr "No value"
 
@@ -1246,11 +1384,11 @@ msgstr "Public can view"
 msgid "Public cannot access"
 msgstr "Public cannot access"
 
-msgid "New"
-msgstr "New"
-
 msgid "Manage View"
 msgstr "Manage View"
+
+msgid "Bulk sharing (prototype)"
+msgstr "Bulk sharing (prototype)"
 
 msgid "{{number}} selected"
 msgstr "{{number}} selected"
@@ -1278,15 +1416,6 @@ msgstr "Save translations"
 
 msgid "Can edit and capture"
 msgstr "Can edit and capture"
-
-msgid "View only"
-msgstr "View only"
-
-msgid "No access"
-msgstr "No access"
-
-msgid "Edit and view"
-msgstr "Edit and view"
 
 msgid "Search for a user or group"
 msgstr "Search for a user or group"
@@ -1926,9 +2055,6 @@ msgstr "Days scheduled (enrollment date)"
 
 msgid "Organisation unit contact"
 msgstr "Organisation unit contact"
-
-msgid "User group"
-msgstr "User group"
 
 msgid "Tracked entity instance"
 msgstr "Tracked entity instance"
@@ -2607,9 +2733,6 @@ msgstr "Map"
 
 msgid "Option"
 msgstr "Option"
-
-msgid "User"
-msgstr "User"
 
 msgid "Visualization"
 msgstr "Visualization"
@@ -3406,9 +3529,6 @@ msgstr "Override data element category combination"
 msgid "No data elements selected"
 msgstr "No data elements selected"
 
-msgid "Close"
-msgstr "Close"
-
 msgid "Should not exceed {{maxLength}} characters"
 msgstr "Should not exceed {{maxLength}} characters"
 
@@ -3731,9 +3851,6 @@ msgstr "The number should not have decimals"
 
 msgid "Setup"
 msgstr "Setup"
-
-msgid "Data"
-msgstr "Data"
 
 msgid "Data Elements"
 msgstr "Data Elements"
