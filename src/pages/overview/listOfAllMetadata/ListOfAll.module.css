@@ -31,28 +31,37 @@
     color: var(--colors-grey900) !important;
 }
 
+.schemaRow tr {
+    padding-inline: var(--spacers-dp8);
+}
+
+/* the group row is a section header, not a data row: it spans the whole
+ * table so it no longer lines up under Name / Last updated / Public access
+ * as though it had values for them */
 .schemaRow td {
-    background: var(--colors-grey100);
+    background: var(--colors-grey050);
+    padding-block: var(--spacers-dp8);
     font-weight: 500;
 }
 
-/* dim rows for metadata types without any results, so the ones with
- * results are easier to spot when scanning the list. grey700 keeps the
- * text at AA contrast against the grey100 row background */
+.schemaRowClickable td {
+    cursor: pointer;
+}
+
+.schemaRowClickable:hover td {
+    background: var(--colors-grey200);
+}
+
 .schemaRowEmpty td {
     color: var(--colors-grey700);
     font-weight: 400;
+    cursor: default;
 }
 
 .schemaNameCell {
     padding-inline-start: var(--spacers-dp4) !important;
 }
 
-/* inline-block, NOT inline-flex: an inline-block's baseline is the baseline
- * of its own text, so the digit sits on the same baseline as the type name
- * and stays there when the font-size or padding changes. flex with
- * align-items: center synthesizes a baseline instead, which is what makes
- * vertical-align guesswork necessary - so no vertical-align here either */
 .count {
     display: inline-block;
     min-width: 20px;
@@ -78,11 +87,50 @@
     color: var(--colors-grey600);
 }
 
-.loadMoreCell {
-    text-align: center;
+/* matches .listRow in SectionList.module.css so item rows sit at the same
+ * density as every other object list page */
+.listRow td {
+    padding-block: var(--spacers-dp4);
+}
+
+.listRow.active td {
+    background-color: var(--colors-grey200);
+}
+
+.listRow.clickable td {
     cursor: pointer;
 }
 
-.loadMoreCell:hover {
-    background: var(--colors-grey200) !important;
+.listRow.clickable:hover .listRowText {
+    text-decoration: underline;
+}
+
+.listRowText {
+    min-width: 0;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.itemNameCell {
+    padding-inline-start: var(--spacers-dp16) !important;
+}
+
+/* scoped to td so it outweighs the cell colour DHIS2 injects at runtime -
+ * a bare .loadMoreCell ties on specificity and loses on order.
+ * underlined at rest, not just on hover, so it reads as the action it is */
+.loadMoreRow td {
+    padding-block: var(--spacers-dp8);
+    color: var(--colors-grey800);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.loadMoreRow:hover td {
+    background: var(--colors-grey200);
+}
+
+/* lines up with the item names above it rather than centring across the
+ * whole table */
+.loadMoreCell {
+    padding-inline-start: var(--spacers-dp16) !important;
 }
