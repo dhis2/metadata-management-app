@@ -146,6 +146,7 @@ export const sidebarLinks = {
             getSectionLinkItem(SECTIONS_MAP.constant),
             getSectionLinkItem(SECTIONS_MAP.externalMapLayer),
             getSectionLinkItem(SECTIONS_MAP.legendSet),
+            getSectionLinkItem(SECTIONS_MAP.document),
             getSectionLinkItem(SECTIONS_MAP.locale),
             getSectionLinkItem(SECTIONS_MAP.pushAnalysis),
             getSectionLinkItem(SECTIONS_MAP.analyticsTableHook),

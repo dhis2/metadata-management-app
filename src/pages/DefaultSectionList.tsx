@@ -23,12 +23,16 @@ type ModelListResponse = WrapQueryResponse<PagedResponse<BaseListModel, string>>
 export type DefaultSectionListProps = {
     filters?: string[]
     order?: string
+    /* Extra field filters to request in addition to the configured columns,
+    e.g. a property a custom ActionsComponent needs but that is not shown as a column. */
+    fields?: string[]
     ActionsComponent?: React.ComponentType<DefaultListActionProps>
     ToolbarComponent?: React.ComponentType<DefaultToolbarProps>
 }
 export const DefaultSectionList = ({
     filters,
     order,
+    fields,
     ActionsComponent,
     ToolbarComponent,
 }: DefaultSectionListProps) => {
@@ -54,7 +58,8 @@ export const DefaultSectionList = ({
                 order: initialParams.order ?? order,
                 fields: columns
                     .map((column) => getFieldFilter(schema, column.path))
-                    .concat(DEFAULT_FIELD_FILTERS),
+                    .concat(DEFAULT_FIELD_FILTERS)
+                    .concat(fields ?? []),
             },
         },
     }

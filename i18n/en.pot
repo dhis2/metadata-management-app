@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-08-21T06:59:01.635Z\n"
-"PO-Revision-Date: 2026-08-21T06:59:01.636Z\n"
+"POT-Creation-Date: 2026-09-09T18:17:23.074Z\n"
+"PO-Revision-Date: 2026-09-09T18:17:23.074Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -1570,6 +1570,12 @@ msgstr "Analytics table hooks"
 msgid "Icons"
 msgstr "Icons"
 
+msgid "Resource"
+msgstr "Resource"
+
+msgid "Resources"
+msgstr "Resources"
+
 msgid "Predictor group"
 msgstr "Predictor group"
 
@@ -2580,6 +2586,9 @@ msgstr "Key"
 
 msgid "Keywords"
 msgstr "Keywords"
+
+msgid "External"
+msgstr "External"
 
 msgid "Which resource table"
 msgstr "Which resource table"
@@ -4748,6 +4757,13 @@ msgstr ""
 "visualisations."
 
 msgid ""
+"Upload documents or link to external URLs as resources that can be "
+"referenced from other apps."
+msgstr ""
+"Upload documents or link to external URLs as resources that can be "
+"referenced from other apps."
+
+msgid ""
 "Create and manage locales for database content. A locale is a combination "
 "of language and country."
 msgstr ""
@@ -5604,6 +5620,9 @@ msgstr "Failed to apply access to all stages"
 msgid "Failed to apply program access rules"
 msgstr "Failed to apply program access rules"
 
+msgid "Failed to refresh access settings"
+msgstr "Failed to refresh access settings"
+
 msgid "Program: {{name}}"
 msgstr "Program: {{name}}"
 
@@ -5648,9 +5667,6 @@ msgstr "Edit access"
 
 msgid "Public (All users)"
 msgstr "Public (All users)"
-
-msgid "External"
-msgstr "External"
 
 msgid "Group"
 msgstr "Group"
@@ -5766,9 +5782,6 @@ msgstr "Customization"
 
 msgid "Override default labels with program-specific terms."
 msgstr "Override default labels with program-specific terms."
-
-msgid "Custom label for \"Report date\""
-msgstr "Custom label for \"Report date\""
 
 msgid "Used as the label for the event date (report date) shown in the Capture app"
 msgstr "Used as the label for the event date (report date) shown in the Capture app"
@@ -5989,9 +6002,6 @@ msgstr "Save changes to this program before editing sections"
 
 msgid "Save changes to this program before editing the form"
 msgstr "Save changes to this program before editing the form"
-
-msgid "Custom label for event (plural)"
-msgstr "Custom label for event (plural)"
 
 msgid ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
@@ -6294,24 +6304,6 @@ msgstr "Add a program stage"
 msgid "Reorder stages"
 msgstr "Reorder stages"
 
-msgid "Custom label for \"Enrollment\" (plural)"
-msgstr "Custom label for \"Enrollment\" (plural)"
-
-msgid "Example use: See all enrollments"
-msgstr "Example use: See all enrollments"
-
-msgid "Custom label for \"Event\" (plural)"
-msgstr "Custom label for \"Event\" (plural)"
-
-msgid "Example use: See all events"
-msgstr "Example use: See all events"
-
-msgid "Custom label for \"Program stage\" (plural)"
-msgstr "Custom label for \"Program stage\" (plural)"
-
-msgid "Example use: See all program stages"
-msgstr "Example use: See all program stages"
-
 msgid "Access Level"
 msgstr "Access Level"
 
@@ -6370,6 +6362,9 @@ msgid ""
 msgstr ""
 "Relationship name seen from receiving entity is required when bidirectional "
 "is checked"
+
+msgid "View resource"
+msgstr "View resource"
 
 msgid "SQL view results"
 msgstr "SQL view results"
