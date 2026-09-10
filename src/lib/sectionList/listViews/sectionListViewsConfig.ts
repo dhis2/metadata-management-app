@@ -1165,20 +1165,24 @@ export const modelListViewsConfig = {
     },
     document: {
         columns: {
+            // documents don't use "code" and rarely have lastUpdated(By) populated,
+            // so those are opt-in only; "external" (URL vs uploaded file) is the key
+            // distinguishing property of a resource
             default: [
                 DESCRIPTORS.name,
-                'code',
+                { label: i18n.t('External'), path: 'external' },
                 'createdBy',
                 'created',
-                'lastUpdatedBy',
             ],
             available: [
+                'code',
                 'href',
                 'id',
                 'lastUpdated',
+                'lastUpdatedBy',
                 { label: i18n.t('URL'), path: 'url' },
-                { label: i18n.t('External'), path: 'external' },
             ],
+            overrideDefaultAvailable: true,
         },
         filters: {},
     },
