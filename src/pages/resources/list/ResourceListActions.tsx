@@ -28,6 +28,7 @@ import {
     useSchemaFromHandle,
 } from '../../../lib'
 
+// "external" is fetched as part of the section's default columns (sectionListViewsConfig)
 type ResourceListModel = BaseListModel & {
     external?: boolean
 }

@@ -24,9 +24,6 @@ jest.mock('focus-trap-react', () => ({
     FocusTrap: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }))
 
-/* Row-actions are fully customised for resources (no Edit/Translate, adds
-"View resource"), so the shared row-actions suite does not apply - the
-resource-specific tests below cover the menu instead. */
 const defaultListTestConfig = {
     section,
     mockSchema,
