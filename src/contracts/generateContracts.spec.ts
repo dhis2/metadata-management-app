@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { z, ZodObject, ZodRawShape } from 'zod'
 import { zodToJsonSchema } from 'zod-to-json-schema'
 import { categoryFormSchema } from '../pages/categories/form'
+import { iconFormSchema } from '../pages/icons/form'
 
 const generateContract = <T extends ZodRawShape>({
     method,
@@ -46,6 +47,17 @@ describe('contracts', () => {
             path: '/categories/{id}',
             name: 'category',
             expectedSchema: categoryFormSchema,
+        })
+    })
+})
+
+describe('icons', () => {
+    it('should generate get icons contracts', () => {
+        generateContract({
+            method: 'GET',
+            path: '/icons/{key}',
+            name: 'icon',
+            expectedSchema: iconFormSchema,
         })
     })
 })
