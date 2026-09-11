@@ -1,3 +1,10 @@
+# [0.177.0](https://github.com/dhis2/metadata-management-app/compare/v0.176.4...v0.177.0) (2026-09-11)
+
+
+### Features
+
+* add resources (documents) list view ([#1036](https://github.com/dhis2/metadata-management-app/issues/1036)) ([fe15d46](https://github.com/dhis2/metadata-management-app/commit/fe15d46c86502888529b43e0142b14a09c3be2d6))
+
 ## [0.176.4](https://github.com/dhis2/metadata-management-app/compare/v0.176.3...v0.176.4) (2026-09-03)
 
 
