@@ -9,20 +9,21 @@
 # Elise Desailly, 2026
 # Djibril Dione <dione.djibril@gmail.com>, 2026
 # Yayra Gomado <ygomado@hispwca.org>, 2026
-# Philip Larsen Donnelly, 2026
-# Viktor Varland <viktor@dhis2.org>, 2026
 # Edem Kossi <ekossi@hispwca.org>, 2026
 # Cyrille Kabrane, 2026
 # Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2026
 # Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2026
 # Esther Tokouli, 2026
+# Viktor Varland <viktor@dhis2.org>, 2026
+# a270031086f2a0d3514bc0cb507b48f6, 2026
+# Philip Larsen Donnelly, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-08-11T12:10:52.795Z\n"
+"POT-Creation-Date: 2026-09-09T18:17:23.074Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Esther Tokouli, 2026\n"
+"Last-Translator: Philip Larsen Donnelly, 2026\n"
 "Language-Team: French (https://app.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -847,17 +848,29 @@ msgstr "Copier l'identifiant de l'ID"
 msgid "Delete"
 msgstr "Supprimer"
 
+msgid "New program stages order saved successfully"
+msgstr ""
+
 msgid "New sections order saved successfully"
 msgstr "L'ordre des nouvelles sections a été enregistré avec succès"
 
+msgid "Error saving new program stages order."
+msgstr ""
+
 msgid "Error saving new sections order."
 msgstr "Erreur d'enregistrement de l'ordre des nouvelles sections."
+
+msgid "Reorder program stages"
+msgstr ""
 
 msgid "Reorder form sections"
 msgstr "Réorganiser les sections du formulaire"
 
 msgid "(marked for deletion)"
 msgstr "(marqué pour suppression)"
+
+msgid "Save program stage ordering"
+msgstr ""
 
 msgid "Save section ordering"
 msgstr "Enregistrer l'ordre des sections"
@@ -1398,20 +1411,20 @@ msgstr "Date de référence pour la planification"
 msgid "Hide scheduled date"
 msgstr "Masquer la date prévue"
 
-msgid "Custom label for \"Report date\""
-msgstr "Étiquette personnalisée pour la \"date du rapport\""
+msgid "Custom label for \"report date\""
+msgstr ""
 
-msgid "Custom label for \"Due date\""
-msgstr "Étiquette personnalisée pour la \"date d'échéance\""
+msgid "Custom label for \"due date\""
+msgstr ""
 
-msgid "Custom label for \"Program stage\""
-msgstr "Étiquette personnalisée pour \"l'étape du programme\""
+msgid "Custom label for \"program stage\""
+msgstr ""
 
-msgid "Custom label for \"Event\""
-msgstr "Étiquette personnalisée pour \"l'événement\""
+msgid "Custom label for \"event\""
+msgstr ""
 
-msgid "Custom label for \"Event\" (plural)"
-msgstr "Étiquette personnalisée pour \"l'événement\" (pluriel)"
+msgid "Custom label for \"event\" (plural)"
+msgstr ""
 
 msgid "Categories"
 msgstr "Catégories"
@@ -1613,6 +1626,12 @@ msgstr "Crochets du tableau d'analyses"
 
 msgid "Icons"
 msgstr "Les Icônes"
+
+msgid "Resource"
+msgstr ""
+
+msgid "Resources"
+msgstr "Ressources"
 
 msgid "Predictor group"
 msgstr "Groupe de prédicteurs"
@@ -2634,6 +2653,9 @@ msgstr "Clé"
 
 msgid "Keywords"
 msgstr "Mots clés"
+
+msgid "External"
+msgstr "Externe"
 
 msgid "Which resource table"
 msgstr "Quelles table des ressources"
@@ -4294,68 +4316,75 @@ msgstr "Filtrer les options sélectionnées"
 
 msgid "Choose an option set to start adding options."
 msgstr ""
+"Choisissez un ensemble d'options pour commencer à ajouter des options."
 
 msgid "Basic Information"
-msgstr ""
+msgstr "Informations de Base"
 
 msgid "Set up the basic information for this option set."
-msgstr ""
+msgstr "Définir les informations de base pour cet ensemble d'options."
 
 msgid "Value type cannot be edited after an option set has been created."
 msgstr ""
+"Le type de valeur ne peut pas être modifié une fois qu'un ensemble d'options"
+" a été créé."
 
 msgid "Option Set"
 msgstr "Ensemble d'options"
 
 msgid "Set up the information for this option."
-msgstr ""
+msgstr "Définir les informations pour cette option."
 
 msgid "Save option"
-msgstr ""
+msgstr "Enregistrer l'option"
 
 msgid "Saving an option does not save other changes to the option set"
 msgstr ""
+"L'enregistrement d'une option n'entraîne pas l'enregistrement des autres "
+"modifications apportées à l'ensemble d'options"
 
 msgid "Option created"
-msgstr ""
+msgstr "Option créée"
 
 msgid "Option updated"
-msgstr ""
+msgstr "Option mise à jour"
 
 msgid "Save this option set to add options."
-msgstr ""
+msgstr "Enregistrez cet ensemble d'options pour ajouter des options."
 
 msgid "New option"
-msgstr ""
+msgstr "Nouvelle option"
 
 msgid "Edit option"
 msgstr "Éditer l'option"
 
 msgid "Create and manage options in this option set."
-msgstr ""
+msgstr "Créer et gérer les options de cet ensemble d'options."
 
 msgid "Search by name or code"
-msgstr ""
+msgstr "Recherche par nom ou par code"
 
 msgid "Add option"
 msgstr "Ajouter Option"
 
 msgid "Sort by name (A-Z)"
-msgstr ""
+msgstr "Trier par nom  (A-Z)"
 
 msgid "Sort by name (Z-A)"
-msgstr ""
+msgstr "Trier par nom  (Z-A)"
 
 msgid "Sort by code (asc)"
-msgstr ""
+msgstr "Trier par code (asc)"
 
 msgid "Sort by code (desc)"
-msgstr ""
+msgstr "Trier par code (desc)"
 
 msgid ""
 "Editing options may be slow with more than {{maximumNumberOfOptions}} "
 "options"
 msgstr ""
+"L' édition des options peut être lente lorsqu'il y a plus de "
+"{{maximumNumberOfOptions}} options"
 
 msgid ""
 "{{hiddenRowsCount}} rows are hidden due to filter. Sorting is disabled while"
@@ -4878,6 +4907,11 @@ msgid ""
 msgstr ""
 "Créer, modifier et afficher les légendes prédéfinies pour les cartes et "
 "autres visualisations"
+
+msgid ""
+"Upload documents or link to external URLs as resources that can be "
+"referenced from other apps."
+msgstr ""
 
 msgid ""
 "Create and manage locales for database content. A locale is a combination of"
@@ -5739,6 +5773,9 @@ msgstr ""
 msgid "Failed to apply program access rules"
 msgstr ""
 
+msgid "Failed to refresh access settings"
+msgstr ""
+
 msgid "Program: {{name}}"
 msgstr ""
 
@@ -5783,9 +5820,6 @@ msgstr ""
 
 msgid "Public (All users)"
 msgstr ""
-
-msgid "External"
-msgstr "Externe"
 
 msgid "Group"
 msgstr "Groupe"
@@ -6273,25 +6307,25 @@ msgid ""
 "section:"
 msgstr ""
 
-msgid "Custom label for \"Incident date\""
+msgid "Custom label for \"incident date\""
 msgstr ""
 
 msgid "Used as an additional registration date for enrollments"
 msgstr ""
 
-msgid "Custom label for \"Enrollment date\""
+msgid "Custom label for \"enrollment date\""
 msgstr ""
 
 msgid "Used as the default registration date for enrollments"
 msgstr ""
 
-msgid "Custom label for \"Enrollment\""
+msgid "Custom label for \"enrollment\""
 msgstr ""
 
 msgid "Example use: See all data in this enrollment"
 msgstr ""
 
-msgid "Custom label for \"Enrollment\" (plural)"
+msgid "Custom label for \"enrollment\" (plural)"
 msgstr ""
 
 msgid "Example use: See all enrollments"
@@ -6306,19 +6340,19 @@ msgstr ""
 msgid "Example use: See all data in this program stage"
 msgstr ""
 
-msgid "Custom label for \"Program stage\" (plural)"
+msgid "Custom label for \"program stage\" (plural)"
 msgstr ""
 
 msgid "Example use: See all program stages"
 msgstr ""
 
-msgid "Custom label for \"Follow-up\""
+msgid "Custom label for \"follow-up\""
 msgstr ""
 
 msgid "Used to customize the label for a follow-up event or activity"
 msgstr ""
 
-msgid "Custom label for \"Registering unit\""
+msgid "Custom label for \"registering unit\""
 msgstr ""
 
 msgid ""
@@ -6326,20 +6360,20 @@ msgid ""
 "enrollment or event"
 msgstr ""
 
-msgid "Custom label for \"Relationship\""
+msgid "Custom label for \"relationship\""
 msgstr ""
 
 msgid ""
 "Used to customize the label for a relationship between tracked entities"
 msgstr ""
 
-msgid "Custom label for \"Relationship\" (plural)"
+msgid "Custom label for \"relationship\" (plural)"
 msgstr ""
 
 msgid "Example use: See all relationships"
 msgstr ""
 
-msgid "Custom label for \"Note\""
+msgid "Custom label for \"note\""
 msgstr ""
 
 msgid ""
@@ -6347,19 +6381,19 @@ msgid ""
 "event"
 msgstr ""
 
-msgid "Custom label for \"Note\" (plural)"
+msgid "Custom label for \"note\" (plural)"
 msgstr ""
 
 msgid "Example use: See all notes"
 msgstr ""
 
-msgid "Custom label for \"Attribute\""
+msgid "Custom label for \"attribute\""
 msgstr ""
 
 msgid "Used to customize the label for a tracked entity attribute"
 msgstr ""
 
-msgid "Custom label for \"Attribute\" (plural)"
+msgid "Custom label for \"attribute\" (plural)"
 msgstr ""
 
 msgid "Example use: See all attributes"
@@ -6390,6 +6424,9 @@ msgid "Restore stage"
 msgstr ""
 
 msgid "Add a program stage"
+msgstr ""
+
+msgid "Reorder stages"
 msgstr ""
 
 msgid "Access Level"
@@ -6447,6 +6484,9 @@ msgid ""
 "Relationship name seen from receiving entity is required when bidirectional "
 "is checked"
 msgstr ""
+
+msgid "View resource"
+msgstr "Voir la ressource"
 
 msgid "SQL view results"
 msgstr ""
