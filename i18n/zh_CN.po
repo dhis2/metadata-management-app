@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-08-11T12:10:52.795Z\n"
+"POT-Creation-Date: 2026-09-09T18:17:23.074Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: easylin <lin_xd@126.com>, 2026\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/hisp-uio/teams/100509/zh_CN/)\n"
@@ -797,17 +797,29 @@ msgstr "复制 ID"
 msgid "Delete"
 msgstr "删除"
 
+msgid "New program stages order saved successfully"
+msgstr ""
+
 msgid "New sections order saved successfully"
 msgstr "成功保存新章节订单"
 
+msgid "Error saving new program stages order."
+msgstr ""
+
 msgid "Error saving new sections order."
 msgstr "保存新章节订单出错。"
+
+msgid "Reorder program stages"
+msgstr ""
 
 msgid "Reorder form sections"
 msgstr "重新排序表格部分"
 
 msgid "(marked for deletion)"
 msgstr "(标记为删除)"
+
+msgid "Save program stage ordering"
+msgstr ""
 
 msgid "Save section ordering"
 msgstr "保存分段订购"
@@ -1330,19 +1342,19 @@ msgstr ""
 msgid "Hide scheduled date"
 msgstr ""
 
-msgid "Custom label for \"Report date\""
-msgstr "报告日期 \"的自定义标签"
-
-msgid "Custom label for \"Due date\""
+msgid "Custom label for \"report date\""
 msgstr ""
 
-msgid "Custom label for \"Program stage\""
-msgstr "自定义 \"节目阶段 \"标签"
+msgid "Custom label for \"due date\""
+msgstr ""
 
-msgid "Custom label for \"Event\""
-msgstr "活动 \"的自定义标签"
+msgid "Custom label for \"program stage\""
+msgstr ""
 
-msgid "Custom label for \"Event\" (plural)"
+msgid "Custom label for \"event\""
+msgstr ""
+
+msgid "Custom label for \"event\" (plural)"
 msgstr ""
 
 msgid "Categories"
@@ -1545,6 +1557,12 @@ msgstr "分析表钩子"
 
 msgid "Icons"
 msgstr "图标"
+
+msgid "Resource"
+msgstr ""
+
+msgid "Resources"
+msgstr "资源管理"
 
 msgid "Predictor group"
 msgstr "预测器组"
@@ -2556,6 +2574,9 @@ msgstr "键值"
 
 msgid "Keywords"
 msgstr ""
+
+msgid "External"
+msgstr "外部"
 
 msgid "Which resource table"
 msgstr ""
@@ -4520,6 +4541,11 @@ msgid ""
 msgstr "创建、修改和查看地图预定义的图例和其它可视化属性。"
 
 msgid ""
+"Upload documents or link to external URLs as resources that can be "
+"referenced from other apps."
+msgstr ""
+
+msgid ""
 "Create and manage locales for database content. A locale is a combination of"
 " language and country."
 msgstr "创建和管理数据库方言，国家和语言的组合。"
@@ -5334,6 +5360,9 @@ msgstr "未能将访问权限应用到所有阶段"
 msgid "Failed to apply program access rules"
 msgstr "未能应用程序访问规则"
 
+msgid "Failed to refresh access settings"
+msgstr ""
+
 msgid "Program: {{name}}"
 msgstr ""
 
@@ -5378,9 +5407,6 @@ msgstr "编辑访问"
 
 msgid "Public (All users)"
 msgstr "公众（所有用户）"
-
-msgid "External"
-msgstr "外部"
 
 msgid "Group"
 msgstr "组"
@@ -5868,25 +5894,25 @@ msgid ""
 "section:"
 msgstr ""
 
-msgid "Custom label for \"Incident date\""
-msgstr "事件日期 \"的自定义标签"
+msgid "Custom label for \"incident date\""
+msgstr ""
 
 msgid "Used as an additional registration date for enrollments"
 msgstr "作为注册的附加注册日期"
 
-msgid "Custom label for \"Enrollment date\""
-msgstr "自定义 \"注册日期 \"标签"
+msgid "Custom label for \"enrollment date\""
+msgstr ""
 
 msgid "Used as the default registration date for enrollments"
 msgstr "用作注册的默认注册日期"
 
-msgid "Custom label for \"Enrollment\""
-msgstr "自定义 \"注册 \"标签"
+msgid "Custom label for \"enrollment\""
+msgstr ""
 
 msgid "Example use: See all data in this enrollment"
 msgstr "使用示例：查看本次注册的所有数据"
 
-msgid "Custom label for \"Enrollment\" (plural)"
+msgid "Custom label for \"enrollment\" (plural)"
 msgstr ""
 
 msgid "Example use: See all enrollments"
@@ -5901,60 +5927,60 @@ msgstr ""
 msgid "Example use: See all data in this program stage"
 msgstr "使用示例：查看本程序阶段的所有数据"
 
-msgid "Custom label for \"Program stage\" (plural)"
+msgid "Custom label for \"program stage\" (plural)"
 msgstr ""
 
 msgid "Example use: See all program stages"
 msgstr ""
 
-msgid "Custom label for \"Follow-up\""
-msgstr "后续行动 \"自定义标签"
+msgid "Custom label for \"follow-up\""
+msgstr ""
 
 msgid "Used to customize the label for a follow-up event or activity"
 msgstr ""
 
-msgid "Custom label for \"Registering unit\""
-msgstr "注册单位 \"的自定义标签"
+msgid "Custom label for \"registering unit\""
+msgstr ""
 
 msgid ""
 "Used to customize the label for the organisation unit that registers the "
 "enrollment or event"
 msgstr "用于自定义登记注册或事件的组织单位的标签"
 
-msgid "Custom label for \"Relationship\""
-msgstr "关系 \"的自定义标签"
+msgid "Custom label for \"relationship\""
+msgstr ""
 
 msgid ""
 "Used to customize the label for a relationship between tracked entities"
 msgstr ""
 
-msgid "Custom label for \"Relationship\" (plural)"
+msgid "Custom label for \"relationship\" (plural)"
 msgstr ""
 
 msgid "Example use: See all relationships"
 msgstr ""
 
-msgid "Custom label for \"Note\""
-msgstr "自定义 \"注释 \"标签"
+msgid "Custom label for \"note\""
+msgstr ""
 
 msgid ""
 "Used to customize the label for a note or comment added to an enrollment or "
 "event"
 msgstr ""
 
-msgid "Custom label for \"Note\" (plural)"
+msgid "Custom label for \"note\" (plural)"
 msgstr ""
 
 msgid "Example use: See all notes"
 msgstr ""
 
-msgid "Custom label for \"Attribute\""
+msgid "Custom label for \"attribute\""
 msgstr ""
 
 msgid "Used to customize the label for a tracked entity attribute"
 msgstr ""
 
-msgid "Custom label for \"Attribute\" (plural)"
+msgid "Custom label for \"attribute\" (plural)"
 msgstr ""
 
 msgid "Example use: See all attributes"
@@ -5986,6 +6012,9 @@ msgstr "恢复阶段"
 
 msgid "Add a program stage"
 msgstr "添加程序阶段"
+
+msgid "Reorder stages"
+msgstr ""
 
 msgid "Access Level"
 msgstr "访问级别"
@@ -6042,6 +6071,9 @@ msgid ""
 "Relationship name seen from receiving entity is required when bidirectional "
 "is checked"
 msgstr "选中双向时，需要从接收实体看到关系名称"
+
+msgid "View resource"
+msgstr ""
 
 msgid "SQL view results"
 msgstr ""
