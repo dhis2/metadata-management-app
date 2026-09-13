@@ -169,7 +169,9 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'programStageLabel',
-                    label: i18n.t('Custom label for "program stage" (singular)'),
+                    label: i18n.t(
+                        'Custom label for "program stage" (singular)'
+                    ),
                 },
                 {
                     name: 'programStagesLabel',

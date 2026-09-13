@@ -51,7 +51,9 @@ export const ProgramCustomizationFormContents = React.memo(
                 {showPluralLabels && (
                     <LabelField
                         name="enrollmentsLabel"
-                        label={i18n.t('Custom label for "enrollments" (plural)')}
+                        label={i18n.t(
+                            'Custom label for "enrollments" (plural)'
+                        )}
                         helpText={i18n.t('Example use: See all enrollments', {
                             nsSeparator: '~:~',
                         })}
@@ -77,7 +79,9 @@ export const ProgramCustomizationFormContents = React.memo(
 
                 <LabelField
                     name="programStageLabel"
-                    label={i18n.t('Custom label for "program stage" (singular)')}
+                    label={i18n.t(
+                        'Custom label for "program stage" (singular)'
+                    )}
                     helpText={i18n.t(
                         'Example use: See all data in this program stage',
                         { nsSeparator: '~:~' }
