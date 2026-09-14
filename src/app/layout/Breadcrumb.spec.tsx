@@ -71,6 +71,34 @@ describe('BreadcrumbItem', () => {
             '#/overview/dataElements'
         )
     })
+
+    it('should render a learn-more link next to the label when it is the current page and a learnMoreUrl is given', () => {
+        const { getByRole, getByText } = render(
+            <BreadcrumbItem
+                label={'Data elements'}
+                to={'/'}
+                learnMoreUrl={'https://docs.dhis2.org/data-elements'}
+            />,
+            { wrapper: HashRouter }
+        )
+
+        expect(getByText('Data elements')).toBeDefined()
+        const learnMoreLink = getByRole('link')
+        expect(learnMoreLink).toHaveAttribute(
+            'href',
+            'https://docs.dhis2.org/data-elements'
+        )
+        expect(learnMoreLink).toHaveAttribute('target', '_blank')
+    })
+
+    it('should not render a learn-more link when no learnMoreUrl is given', () => {
+        const { queryByRole } = render(
+            <BreadcrumbItem label={'Data elements'} to={'/'} />,
+            { wrapper: HashRouter }
+        )
+
+        expect(queryByRole('link')).not.toBeInTheDocument()
+    })
 })
 describe('Breadcrumbs', () => {
     it('should render crumb components in handle', () => {
