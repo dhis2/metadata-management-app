@@ -1,3 +1,10 @@
+# [0.178.0](https://github.com/dhis2/metadata-management-app/compare/v0.177.0...v0.178.0) (2026-09-14)
+
+
+### Features
+
+* custom terminology labels for event programs ([#1033](https://github.com/dhis2/metadata-management-app/issues/1033)) ([60f2037](https://github.com/dhis2/metadata-management-app/commit/60f203721451504944df91657835d517139c3c05))
+
 # [0.177.0](https://github.com/dhis2/metadata-management-app/compare/v0.176.4...v0.177.0) (2026-09-11)
 
 
