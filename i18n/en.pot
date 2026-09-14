@@ -1570,6 +1570,12 @@ msgstr "Analytics table hooks"
 msgid "Icons"
 msgstr "Icons"
 
+msgid "Resource"
+msgstr "Resource"
+
+msgid "Resources"
+msgstr "Resources"
+
 msgid "Predictor group"
 msgstr "Predictor group"
 
@@ -2580,6 +2586,9 @@ msgstr "Key"
 
 msgid "Keywords"
 msgstr "Keywords"
+
+msgid "External"
+msgstr "External"
 
 msgid "Which resource table"
 msgstr "Which resource table"
@@ -4748,6 +4757,13 @@ msgstr ""
 "visualisations."
 
 msgid ""
+"Upload documents or link to external URLs as resources that can be "
+"referenced from other apps."
+msgstr ""
+"Upload documents or link to external URLs as resources that can be "
+"referenced from other apps."
+
+msgid ""
 "Create and manage locales for database content. A locale is a combination "
 "of language and country."
 msgstr ""
@@ -5652,9 +5668,6 @@ msgstr "Edit access"
 msgid "Public (All users)"
 msgstr "Public (All users)"
 
-msgid "External"
-msgstr "External"
-
 msgid "Group"
 msgstr "Group"
 
@@ -6358,6 +6371,9 @@ msgid ""
 msgstr ""
 "Relationship name seen from receiving entity is required when bidirectional "
 "is checked"
+
+msgid "View resource"
+msgstr "View resource"
 
 msgid "SQL view results"
 msgstr "SQL view results"
