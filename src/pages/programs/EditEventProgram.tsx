@@ -38,6 +38,12 @@ import { EventProgramFormDescriptor } from './form/eventProgram/eventProgramForm
 import { StageFormValues } from './form/programStage/StageForm'
 import { ProgramStageListItem } from './form/trackerProgram/ProgramStagesFormContents'
 
+const PLURAL_LABEL_FIELD_FILTERS = [
+    'eventsLabel',
+    'relationshipsLabel',
+    'notesLabel',
+] as const
+
 const fieldFilters = [
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
     ...DEFAULT_FIELD_FILTERS,
@@ -51,6 +57,11 @@ const fieldFilters = [
     'categoryCombo[id,displayName]',
     'style[color,icon]',
     'incidentDateLabel',
+    'eventLabel',
+    'orgUnitLabel',
+    'relationshipLabel',
+    'noteLabel',
+    ...PLURAL_LABEL_FIELD_FILTERS,
     'programStages[id,name,displayName,executionDateLabel,enableUserAssignment,blockEntryForm,preGenerateUID,validationStrategy,notificationTemplates[id,name,displayName,access],dataEntryForm[id,displayName,htmlCode],programStageDataElements[id,dataElement[id,displayName,valueType,optionSet],compulsory,allowProvidedElsewhere,displayInReports,allowFutureDate,skipAnalytics,skipSynchronization,renderType,sortOrder],programStageSections[id,displayName,dataElements[id]]]',
     'organisationUnits[id,displayName,path]',
     'sharing',
