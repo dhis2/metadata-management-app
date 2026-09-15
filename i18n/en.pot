@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-09T18:17:23.074Z\n"
-"PO-Revision-Date: 2026-09-09T18:17:23.074Z\n"
+"POT-Creation-Date: 2026-09-11T09:16:34.781Z\n"
+"PO-Revision-Date: 2026-09-11T09:16:34.782Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -6362,6 +6362,36 @@ msgid ""
 msgstr ""
 "Relationship name seen from receiving entity is required when bidirectional "
 "is checked"
+
+msgid "File resources"
+msgstr "File resources"
+
+msgid "File resources cannot be edited. Only resources with a URL can be modified."
+msgstr "File resources cannot be edited. Only resources with a URL can be modified."
+
+msgid "Resource created successfully"
+msgstr "Resource created successfully"
+
+msgid "Resource type"
+msgstr "Resource type"
+
+msgid "Use the file as an attachment"
+msgstr "Use the file as an attachment"
+
+msgid "Change file"
+msgstr "Change file"
+
+msgid "Upload file"
+msgstr "Upload file"
+
+msgid "A URL is required"
+msgstr "A URL is required"
+
+msgid "Enter a valid URL"
+msgstr "Enter a valid URL"
+
+msgid "A file is required"
+msgstr "A file is required"
 
 msgid "View resource"
 msgstr "View resource"
