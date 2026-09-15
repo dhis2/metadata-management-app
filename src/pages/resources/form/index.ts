@@ -1,11 +1,8 @@
-export { NewResourceFormFields } from './NewResourceFormFields'
-export { EditResourceFormFields } from './EditResourceFormFields'
+export { ResourceFormFields } from './ResourceFormFields'
 export {
     ResourceType,
-    resourceTypeOptions,
-    resourceNewFormSchema,
     resourceNewInitialValues,
-    validateResourceNewForm,
-    resourceEditFormSchema,
-    validateResourceEditForm,
+    validateResourceForm,
 } from './resourceSchema'
+export { useOnSubmitResource } from './useOnSubmitResource'
+export type { ResourceSubmitValues } from './resourceSubmit'

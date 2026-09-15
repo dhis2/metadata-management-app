@@ -5,14 +5,18 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { DefaultEditFormContents, FormBase } from '../../components'
 import {
-    useOnSubmitEdit,
     useBoundResourceQueryFn,
     SECTIONS_MAP,
     DEFAULT_FIELD_FILTERS,
     ATTRIBUTE_VALUES_FIELD_FILTERS,
 } from '../../lib'
 import { Document, PickWithFieldFilters } from '../../types/generated'
-import { EditResourceFormFields, validateResourceEditForm } from './form'
+import {
+    ResourceFormFields,
+    ResourceType,
+    useOnSubmitResource,
+    validateResourceForm,
+} from './form'
 
 const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
@@ -21,15 +25,17 @@ const fieldFilters = [
     'code',
     'url',
     'external',
+    'attachment',
 ] as const
 
 export type ResourceEditFormValues = PickWithFieldFilters<
     Document,
     typeof fieldFilters
-> & { id: string }
+> & { id: string; resourceType?: ResourceType; file?: File | null }
+
+const section = SECTIONS_MAP.document
 
 export const Component = () => {
-    const section = SECTIONS_MAP.document
     const queryFn = useBoundResourceQueryFn()
     const modelId = useParams().id as string
 
@@ -44,7 +50,10 @@ export const Component = () => {
         queryKey: [query],
         queryFn: queryFn<ResourceEditFormValues>,
     })
-    const onSubmit = useOnSubmitEdit({ modelId, section })
+    const onSubmit = useOnSubmitResource({
+        modelId,
+        successMessage: i18n.t('Resource saved successfully'),
+    })
 
     if (resource.data && !resource.data.external) {
         return (
@@ -56,14 +65,19 @@ export const Component = () => {
         )
     }
 
+    const initialValues = resource.data && {
+        ...resource.data,
+        resourceType: ResourceType.URL,
+    }
+
     return (
         <FormBase
             onSubmit={onSubmit}
-            initialValues={resource.data}
-            validate={validateResourceEditForm}
+            initialValues={initialValues}
+            validate={validateResourceForm}
         >
             <DefaultEditFormContents section={section}>
-                <EditResourceFormFields />
+                <ResourceFormFields />
             </DefaultEditFormContents>
         </FormBase>
     )

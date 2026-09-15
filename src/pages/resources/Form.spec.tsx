@@ -221,8 +221,20 @@ describe('Resources form tests', () => {
                         ]}
                         customData={{
                             attributes: () => ({ attributes }),
+                            fileResources: (type: any, params: any) => {
+                                if (type === 'create') {
+                                    createFileResourceMock(params)
+                                    return {
+                                        response: {
+                                            fileResource: {
+                                                id: uploadedFileResourceId,
+                                            },
+                                        },
+                                    }
+                                }
+                            },
                             documents: (type: any, params: any) => {
-                                if (type === 'json-patch') {
+                                if (type === 'replace') {
                                     updateDocumentMock(params)
                                     return { statusCode: 204 }
                                 }
@@ -260,6 +272,7 @@ describe('Resources form tests', () => {
                 external: true,
                 url: 'https://www.dhis2.org',
                 code: 'RES_CODE',
+                attachment: false,
             })
             const { screen } = await renderForm(resource)
 
@@ -276,12 +289,72 @@ describe('Resources form tests', () => {
 
             expect(updateDocumentMock).toHaveBeenCalledWith(
                 expect.objectContaining({
-                    data: expect.arrayContaining([
-                        expect.objectContaining({
-                            path: '/name',
-                            value: newName,
-                        }),
-                    ]),
+                    data: expect.objectContaining({
+                        name: newName,
+                        type: 'EXTERNAL_URL',
+                        external: true,
+                        url: resource.url,
+                    }),
+                })
+            )
+        })
+
+        it('should default the resource type select to URL', async () => {
+            const resource = testResources({
+                external: true,
+                url: 'https://www.dhis2.org',
+                attachment: false,
+            })
+            const { screen } = await renderForm(resource)
+
+            const typeField = screen.getByTestId('formfields-resourceType')
+            const selectInput = within(typeField).getByTestId(
+                'dhis2-uicore-select-input'
+            )
+            expect(selectInput).toHaveTextContent('URL')
+        })
+
+        it('should allow switching a URL resource to a file upload', async () => {
+            const resource = testResources({
+                external: true,
+                url: 'https://www.dhis2.org',
+                attachment: false,
+            })
+            const { screen } = await renderForm(resource)
+
+            const typeField = screen.getByTestId('formfields-resourceType')
+            await uiActions.pickOptionFromSelect(typeField, 0, screen)
+
+            expect(screen.getByTestId('formfields-file')).toBeVisible()
+            expect(
+                screen.queryByTestId('formfields-url')
+            ).not.toBeInTheDocument()
+
+            const file = new File(['hello world'], 'hello.txt', {
+                type: 'text/plain',
+            })
+            const fileInput = screen
+                .getByTestId('formfields-file')
+                .querySelector('input[type="file"]') as HTMLInputElement
+            await userEvent.upload(fileInput, file)
+
+            await uiActions.submitForm(screen)
+
+            expect(createFileResourceMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    data: expect.objectContaining({
+                        file,
+                        domain: 'DOCUMENT',
+                    }),
+                })
+            )
+            expect(updateDocumentMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    data: expect.objectContaining({
+                        type: 'UPLOAD_FILE',
+                        external: false,
+                        url: uploadedFileResourceId,
+                    }),
                 })
             )
         })

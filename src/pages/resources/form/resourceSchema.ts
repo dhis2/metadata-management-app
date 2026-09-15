@@ -15,9 +15,8 @@ export const resourceTypeOptions = [
     { value: ResourceType.URL, label: i18n.t('URL') },
 ]
 
-const resourceNewBaseSchema = z
+const resourceBaseSchema = z
     .object({
-        // documents can have a null code (unlike most other schemas)
         code: z.string().trim().nullable().optional(),
         resourceType: z.nativeEnum(ResourceType),
         url: z.string().trim().optional(),
@@ -26,61 +25,45 @@ const resourceNewBaseSchema = z
     })
     .merge(identifiable)
 
-export const resourceNewFormSchema = resourceNewBaseSchema
-    .merge(withAttributeValues)
-    .superRefine((values, ctx) => {
-        if (values.resourceType === ResourceType.URL) {
-            if (!values.url) {
-                ctx.addIssue({
-                    code: z.ZodIssueCode.custom,
-                    message: i18n.t('A URL is required'),
-                    path: ['url'],
-                })
-            } else if (!z.string().url().safeParse(values.url).success) {
-                ctx.addIssue({
-                    code: z.ZodIssueCode.custom,
-                    message: i18n.t('Enter a valid URL'),
-                    path: ['url'],
-                })
-            }
-        }
-
-        if (
-            values.resourceType === ResourceType.FILE &&
-            !(values.file instanceof File)
-        ) {
+const refineResourceTypeFields = (
+    values: { resourceType: ResourceType; url?: string; file?: unknown },
+    ctx: z.RefinementCtx
+) => {
+    if (values.resourceType === ResourceType.URL) {
+        if (!values.url) {
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,
-                message: i18n.t('A file is required'),
-                path: ['file'],
+                message: i18n.t('A URL is required'),
+                path: ['url'],
+            })
+        } else if (!z.string().url().safeParse(values.url).success) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: i18n.t('Enter a valid URL'),
+                path: ['url'],
             })
         }
-    })
+    }
 
-export const resourceNewInitialValues = getDefaults(resourceNewFormSchema, {
+    if (
+        values.resourceType === ResourceType.FILE &&
+        !(values.file instanceof File)
+    ) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: i18n.t('A file is required'),
+            path: ['file'],
+        })
+    }
+}
+
+const resourceFormSchema = resourceBaseSchema
+    .merge(withAttributeValues)
+    .superRefine(refineResourceTypeFields)
+
+export const resourceNewInitialValues = getDefaults(resourceFormSchema, {
     resourceType: ResourceType.FILE,
     attachment: false,
 })
 
-export const validateResourceNewForm = createFormValidate(resourceNewFormSchema)
-
-const resourceEditBaseSchema = z
-    .object({
-        // documents can have a null code (unlike most other schemas)
-        code: z.string().trim().nullable().optional(),
-        url: z
-            .string()
-            .trim()
-            .min(1, i18n.t('A URL is required'))
-            .url({
-                message: i18n.t('Enter a valid URL'),
-            }),
-    })
-    .merge(identifiable)
-
-export const resourceEditFormSchema =
-    resourceEditBaseSchema.merge(withAttributeValues)
-
-export const validateResourceEditForm = createFormValidate(
-    resourceEditFormSchema
-)
+export const validateResourceForm = createFormValidate(resourceFormSchema)

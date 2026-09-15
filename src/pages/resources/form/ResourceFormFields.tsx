@@ -16,7 +16,7 @@ import { ResourceType, resourceTypeOptions } from './resourceSchema'
 
 const section = SCHEMA_SECTIONS.document
 
-export function NewResourceFormFields() {
+export function ResourceFormFields() {
     const { input: resourceTypeInput } = useField<ResourceType>('resourceType')
 
     return (
@@ -33,11 +33,6 @@ export function NewResourceFormFields() {
                     <CodeField schemaSection={section} />
                 </StandardFormField>
                 <StandardFormField>
-                    {/* validateOnBlur is on for this app's forms, and a select's
-                        onChange alone doesn't blur it - blur manually so the
-                        resourceType-conditional url/file requirement revalidates
-                        immediately instead of staying stale until another field
-                        is blurred. */}
                     <Field name="resourceType">
                         {({ input, meta }) => (
                             <SingleSelectFieldFF
