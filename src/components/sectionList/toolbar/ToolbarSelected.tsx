@@ -4,7 +4,6 @@ import { useQueryClient } from '@tanstack/react-query'
 import React from 'react'
 import {
     isSchemaSection,
-    isSectionBulkDeletable,
     useCanMergeModelInCurrentSection,
     useLocationState,
     useSchemaOrUndefined,
@@ -37,10 +36,12 @@ export const ToolbarSelected = ({
     const mergeable = useCanMergeModelInCurrentSection()
     const isOrgUnitSection = section?.name === 'organisationUnit'
     const bulkDeletable =
-        !!section && isSchemaSection(section) && isSectionBulkDeletable(section)
+        !!section && isSchemaSection(section) && !section.cannotBulkDelete
     const handleClose = () => setSharingDialogOpen(false)
     const handleDeleteSuccess = () => {
-        queryClient.invalidateQueries()
+        if (maybeSchema) {
+            queryClient.invalidateQueries({ queryKey: [maybeSchema.plural] })
+        }
         onDeselectAll()
     }
     const searchStateWithSelectedModels = useLocationState({
