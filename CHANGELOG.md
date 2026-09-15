@@ -1,3 +1,10 @@
+# [0.179.0](https://github.com/dhis2/metadata-management-app/compare/v0.178.0...v0.179.0) (2026-09-15)
+
+
+### Features
+
+* add bulk delete action to section list toolbar [DHIS2-22045] ([#1031](https://github.com/dhis2/metadata-management-app/issues/1031)) ([bf07fc9](https://github.com/dhis2/metadata-management-app/commit/bf07fc9dee8adbef6372a3cc3abd763a044374c3))
+
 # [0.178.0](https://github.com/dhis2/metadata-management-app/compare/v0.177.0...v0.178.0) (2026-09-14)
 
 
