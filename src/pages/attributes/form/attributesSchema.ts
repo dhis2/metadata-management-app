@@ -4,15 +4,13 @@ import {
     createFormValidate,
     modelFormSchemas,
 } from '../../../lib'
-import { Attribute } from '../../../types/generated'
+import { ValueType } from '../../../types/generated'
 
 const { identifiable, withDefaultListColumns } = modelFormSchemas
 
 const attributeBaseSchema = z.object({
     code: z.string().trim().optional(),
-    valueType: z
-        .nativeEnum(Attribute.valueType)
-        .default(Attribute.valueType.TEXT),
+    valueType: z.nativeEnum(ValueType).default(ValueType.TEXT),
     mandatory: z.boolean().default(false),
     unique: z.boolean().default(false),
 })

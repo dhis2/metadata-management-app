@@ -1,6 +1,12 @@
 import { BooleanParam, StringParam } from 'use-query-params'
 import { z } from 'zod'
-import { Category, DataElement, DataSet } from '../../../types/generated'
+import {
+    AggregationType,
+    DataDimensionType,
+    DataElementDomain,
+    FormType,
+    ValueType,
+} from '../../../types/generated'
 import { KeysOfValue } from '../../../types/utility'
 import { IDENTIFIABLE_FILTER_KEY } from '../../constants'
 import { isValidUid, parseAccessString } from '../../models'
@@ -13,7 +19,7 @@ export const filterParamsSchema = z
     .object({
         [IDENTIFIABLE_FILTER_KEY]: z.string(),
         formName: z.string(),
-        aggregationType: z.array(z.nativeEnum(DataElement.aggregationType)),
+        aggregationType: z.array(z.nativeEnum(AggregationType)),
         category: zodArrayIds,
         categoryCombo: zodArrayIds,
         categoryOption: zodArrayIds,
@@ -21,13 +27,13 @@ export const filterParamsSchema = z
         categoryOptionGroupSet: zodArrayIds,
         compulsory: z.boolean(),
         dataDimension: z.boolean(),
-        dataDimensionType: z.nativeEnum(Category.dataDimensionType),
+        dataDimensionType: z.nativeEnum(DataDimensionType),
         dataElement: zodArrayIds,
         dataElementGroup: zodArrayIds,
         dataElementGroupSet: zodArrayIds,
         dataSet: zodArrayIds,
-        domainType: z.array(z.nativeEnum(DataElement.domainType)),
-        formType: z.array(z.nativeEnum(DataSet.formType)),
+        domainType: z.array(z.nativeEnum(DataElementDomain)),
+        formType: z.array(z.nativeEnum(FormType)),
         ignoreApproval: z.boolean(),
         indicator: zodArrayIds,
         indicatorType: zodArrayIds,
@@ -45,7 +51,7 @@ export const filterParamsSchema = z
         programIndicatorGroup: zodArrayIds,
         programRuleVariableSourceType: z.string(),
         validationRuleGroup: zodArrayIds,
-        valueType: z.array(z.nativeEnum(DataElement.valueType)),
+        valueType: z.array(z.nativeEnum(ValueType)),
     })
     .partial()
 

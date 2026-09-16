@@ -5,18 +5,17 @@ import {
     getDefaultsOld,
     modelFormSchemas,
 } from '../../../../lib'
-import { ProgramNotificationTemplate } from '../../../../types/generated'
+import {
+    NotificationTrigger,
+    ProgramNotificationRecipient,
+} from '../../../../types/generated'
 
 const { identifiable } = modelFormSchemas
 
 const programNotificationTemplateBaseSchema = z.object({
     code: z.string().optional(),
-    notificationTrigger: z.nativeEnum(
-        ProgramNotificationTemplate.notificationTrigger
-    ),
-    notificationRecipient: z.nativeEnum(
-        ProgramNotificationTemplate.notificationRecipient
-    ),
+    notificationTrigger: z.nativeEnum(NotificationTrigger),
+    notificationRecipient: z.nativeEnum(ProgramNotificationRecipient),
     deliveryChannels: z.array(z.enum(['SMS', 'EMAIL', 'HTTP'])).default([]),
     messageTemplate: z.string().max(10000, {
         message: i18n.t('Please enter a maximum of {{upperBound}} characters', {
@@ -59,16 +58,11 @@ const programNotificationTemplateBaseSchema = z.object({
 export const programNotificationTemplateFormSchema =
     programNotificationTemplateBaseSchema.merge(identifiable).extend({
         notificationTrigger: z
-            .nativeEnum(ProgramNotificationTemplate.notificationTrigger)
-            .default(
-                ProgramNotificationTemplate.notificationTrigger.COMPLETION
-            ),
+            .nativeEnum(NotificationTrigger)
+            .default(NotificationTrigger.COMPLETION),
         notificationRecipient: z
-            .nativeEnum(ProgramNotificationTemplate.notificationRecipient)
-            .default(
-                ProgramNotificationTemplate.notificationRecipient
-                    .USERS_AT_ORGANISATION_UNIT
-            ),
+            .nativeEnum(ProgramNotificationRecipient)
+            .default(ProgramNotificationRecipient.USERS_AT_ORGANISATION_UNIT),
     })
 
 export const initialValues = getDefaultsOld(

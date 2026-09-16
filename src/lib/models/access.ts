@@ -61,7 +61,7 @@ export const formatAccessToString = (publicAccess: ParsedAccess): string => {
 
 export type SharingSettings = {
     owner?: string
-    external: boolean
+    external?: boolean
     public?: string
     userGroups?: Record<
         string,

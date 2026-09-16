@@ -4,17 +4,18 @@ import {
     getDefaultsOld,
     modelFormSchemas,
 } from '../../../lib'
-import { ProgramRuleVariable } from '../../../types/generated'
+import {
+    ProgramRuleVariableSourceType,
+    ValueType,
+} from '../../../types/generated'
 
 const { modelReference, withDefaultListColumns, identifiable } =
     modelFormSchemas
 
 const programRuleVariableBaseSchema = z.object({
     program: modelReference,
-    programRuleVariableSourceType: z.nativeEnum(
-        ProgramRuleVariable.programRuleVariableSourceType
-    ),
-    valueType: z.nativeEnum(ProgramRuleVariable.valueType).optional(),
+    programRuleVariableSourceType: z.nativeEnum(ProgramRuleVariableSourceType),
+    valueType: z.nativeEnum(ValueType).optional(),
     dataElement: modelReference
         .extend({ displayName: z.string().optional() })
         .optional(),

@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { ProgramRuleAction } from '../../../../types/generated'
+import { ProgramRuleActionType } from '../../../../types/generated'
 
 export const ACTION_FIELDS_TO_CLEAR = [
     'content',
@@ -15,7 +15,7 @@ export const ACTION_FIELDS_TO_CLEAR = [
     'trackedEntityAttribute',
 ] as const
 
-const { programRuleActionType } = ProgramRuleAction
+const programRuleActionType = ProgramRuleActionType
 
 export const ACTION_TYPE_OPTIONS = [
     { label: i18n.t('Assign value'), value: programRuleActionType.ASSIGN },
