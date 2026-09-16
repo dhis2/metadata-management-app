@@ -831,6 +831,11 @@ const PROGRAM_RULE_FUNCTION_ELEMENTS = [
         id: 'd2:modulus( <number> , <number> )',
         displayName: 'd2:modulus( <number> , <number> )',
     },
+    { id: 'd2:log( <number> )', displayName: 'd2:log( <number> )' },
+    {
+        id: 'd2:exponent( <number> , <number> )',
+        displayName: 'd2:exponent( <number> , <number> )',
+    },
     { id: 'd2:zing( <number> )', displayName: 'd2:zing( <number> )' },
     { id: 'd2:oizp( <number> )', displayName: 'd2:oizp( <number> )' },
     {
