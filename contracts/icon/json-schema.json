@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "key": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "keywords": {
+            "type": "string"
+        },
+        "file": {},
+        "id": {
+            "type": "string"
+        }
+    },
+    "required": ["key", "id"],
+    "additionalProperties": true
+}
