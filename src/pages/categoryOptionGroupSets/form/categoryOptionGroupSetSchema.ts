@@ -4,7 +4,7 @@ import {
     createFormValidate,
     modelFormSchemas,
 } from '../../../lib'
-import { CategoryOptionGroupSet } from '../../../types/generated'
+import { DataDimensionType } from '../../../types/generated'
 
 const {
     identifiable,
@@ -15,7 +15,7 @@ const {
 
 const categoryOptionGroupSetBaseSchema = z.object({
     code: z.string().trim().optional(),
-    dataDimensionType: z.nativeEnum(CategoryOptionGroupSet.dataDimensionType),
+    dataDimensionType: z.nativeEnum(DataDimensionType),
 })
 
 export const categoryOptionGroupSetFormSchema = identifiable

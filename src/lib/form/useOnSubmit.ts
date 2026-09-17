@@ -5,7 +5,6 @@ import { FormApi, SubmissionErrors } from 'final-form'
 import { useCallback, useMemo } from 'react'
 import { To, useSearchParams } from 'react-router-dom'
 import { ModelSection } from '../../types'
-import { IdentifiableObject } from '../../types/generated'
 import { getSectionPath, useNavigateWithSearchState } from '../routeUtils'
 import { createFormError } from './createFormError'
 import {
@@ -168,7 +167,7 @@ export const useOnEditCompletedSuccessfully = (section: ModelSection) => {
     )
 }
 
-export const useOnSubmitEdit = <TFormValues extends IdentifiableObject>({
+export const useOnSubmitEdit = <TFormValues extends ModelWithAttributeValues>({
     modelId,
     section,
 }: UseOnSubmitEditOptions) => {

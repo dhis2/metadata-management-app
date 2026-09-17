@@ -6,7 +6,7 @@ import {
     modelFormSchemas,
 } from '../../../lib'
 import { createFormValidate } from '../../../lib/form/validate'
-import { DataSet } from '../../../types/generated'
+import { DataSet, FormType } from '../../../types/generated'
 
 const {
     withAttributeValues,
@@ -22,7 +22,7 @@ const dataSetBaseSchema = z.object({
     periodType: z
         .nativeEnum(DataSet.periodType)
         .default(DataSet.periodType.MONTHLY),
-    formType: z.nativeEnum(DataSet.formType).default(DataSet.formType.DEFAULT),
+    formType: z.nativeEnum(FormType).default(FormType.DEFAULT),
 })
 
 export const dataSetFormSchema = identifiable

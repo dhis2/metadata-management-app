@@ -4,7 +4,12 @@ import {
     getDefaultsOld,
     modelFormSchemas,
 } from '../../../lib'
-import { Expression, ValidationRule } from '../../../types/generated'
+import {
+    Importance,
+    MissingValueStrategy,
+    Operator,
+    ValidationRule,
+} from '../../../types/generated'
 
 const { withDefaultListColumns, identifiable, withAttributeValues } =
     modelFormSchemas
@@ -18,28 +23,24 @@ const validationRuleBaseSchema = z.object({
         expression: z.string().optional(),
         description: z.string().optional(),
         missingValueStrategy: z
-            .nativeEnum(Expression.missingValueStrategy)
-            .default(Expression.missingValueStrategy.NEVER_SKIP),
+            .nativeEnum(MissingValueStrategy)
+            .default(MissingValueStrategy.NEVER_SKIP),
         slidingWindow: z.boolean().optional().default(false),
     }),
-    operator: z
-        .nativeEnum(ValidationRule.operator)
-        .default(ValidationRule.operator.NOT_EQUAL_TO),
+    operator: z.nativeEnum(Operator).default(Operator.NOT_EQUAL_TO),
     rightSide: z.object({
         expression: z.string().optional(),
         description: z.string().optional(),
         missingValueStrategy: z
-            .nativeEnum(Expression.missingValueStrategy)
-            .default(Expression.missingValueStrategy.NEVER_SKIP),
+            .nativeEnum(MissingValueStrategy)
+            .default(MissingValueStrategy.NEVER_SKIP),
         slidingWindow: z.boolean().optional().default(false),
     }),
     instruction: z.string().trim().optional(),
     periodType: z
         .nativeEnum(ValidationRule.periodType)
         .default(ValidationRule.periodType.MONTHLY),
-    importance: z
-        .nativeEnum(ValidationRule.importance)
-        .default(ValidationRule.importance.MEDIUM),
+    importance: z.nativeEnum(Importance).default(Importance.MEDIUM),
     skipFormValidation: z.boolean().optional().default(false),
     organisationUnitLevels: z.array(z.number()).optional().default([]),
 })

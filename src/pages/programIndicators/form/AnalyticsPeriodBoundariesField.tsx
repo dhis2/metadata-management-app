@@ -14,7 +14,10 @@ import {
 import React, { useCallback, useMemo, useState } from 'react'
 import { useField } from 'react-final-form'
 import { PeriodTypeSelect } from '../../../components/metadataFormControls/PeriodTypeSelect/PeriodTypeSelect'
-import { AnalyticsPeriodBoundary } from '../../../types/generated'
+import {
+    AnalyticsPeriodBoundary,
+    AnalyticsPeriodBoundaryType,
+} from '../../../types/generated'
 import styles from '../../dataSets/form/dataInputPeriods/DataInputPeriodsSelector.module.css'
 import classes from './AnalyticsPeriodBoundaries.module.css'
 import offsetPeriodType = AnalyticsPeriodBoundary.offsetPeriodType
@@ -41,23 +44,19 @@ const boundaryTargets = [
 const boundaryTypes = [
     {
         label: i18n.t('Before start of reporting period'),
-        value: AnalyticsPeriodBoundary.analyticsPeriodBoundaryType
-            .BEFORE_START_OF_REPORTING_PERIOD,
+        value: AnalyticsPeriodBoundaryType.BEFORE_START_OF_REPORTING_PERIOD,
     },
     {
         label: i18n.t('Before end of reporting period'),
-        value: AnalyticsPeriodBoundary.analyticsPeriodBoundaryType
-            .BEFORE_END_OF_REPORTING_PERIOD,
+        value: AnalyticsPeriodBoundaryType.BEFORE_END_OF_REPORTING_PERIOD,
     },
     {
         label: i18n.t('After start of reporting period'),
-        value: AnalyticsPeriodBoundary.analyticsPeriodBoundaryType
-            .AFTER_START_OF_REPORTING_PERIOD,
+        value: AnalyticsPeriodBoundaryType.AFTER_START_OF_REPORTING_PERIOD,
     },
     {
         label: i18n.t('After end of reporting period'),
-        value: AnalyticsPeriodBoundary.analyticsPeriodBoundaryType
-            .AFTER_END_OF_REPORTING_PERIOD,
+        value: AnalyticsPeriodBoundaryType.AFTER_END_OF_REPORTING_PERIOD,
     },
 ]
 
@@ -202,7 +201,7 @@ const PeriodBoundaryItemForm = ({
                 onChange={({ selected }) => {
                     onFieldChange({
                         analyticsPeriodBoundaryType:
-                            selected as AnalyticsPeriodBoundary.analyticsPeriodBoundaryType,
+                            selected as AnalyticsPeriodBoundaryType,
                     })
                 }}
                 label={i18n.t('Analytics period boundary type')}

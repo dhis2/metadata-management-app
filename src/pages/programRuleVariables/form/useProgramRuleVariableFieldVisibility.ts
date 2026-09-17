@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { ProgramRuleVariable } from '../../../types/generated'
+import { ProgramRuleVariableSourceType } from '../../../types/generated'
 
 type ProgramStageValue = { id: string } | undefined
 
@@ -14,7 +14,7 @@ export function useProgramRuleVariableFieldVisibility(
         DATAELEMENT_PREVIOUS_EVENT,
         TEI_ATTRIBUTE,
         CALCULATED_VALUE,
-    } = ProgramRuleVariable.programRuleVariableSourceType
+    } = ProgramRuleVariableSourceType
 
     return useMemo(
         () => ({

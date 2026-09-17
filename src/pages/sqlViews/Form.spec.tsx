@@ -14,7 +14,7 @@ import { generateRenderer } from '../../testUtils/generateRenderer'
 import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
 import { uiActions } from '../../testUtils/uiActions'
 import { uiAssertions } from '../../testUtils/uiAssertions'
-import { SqlView } from '../../types/generated'
+import { CacheStrategy, SqlViewType } from '../../types/generated'
 import { Component as Edit } from './Edit'
 import { Component as New } from './New'
 import resetAllMocks = jest.resetAllMocks
@@ -86,9 +86,7 @@ describe('SQL Views form tests', () => {
                 'dhis2-uicore-select-input'
             )
             expect(selectInput).toHaveTextContent(
-                getConstantTranslation(
-                    SqlView.cacheStrategy.RESPECT_SYSTEM_SETTING
-                )
+                getConstantTranslation(CacheStrategy.RESPECT_SYSTEM_SETTING)
             )
 
             uiAssertions.expectRadioFieldToExist(
@@ -214,7 +212,7 @@ describe('SQL Views form tests', () => {
                     data: expect.objectContaining({
                         name: aName,
                         description: aDescription,
-                        type: SqlView.type.VIEW,
+                        type: SqlViewType.VIEW,
                         sqlQuery: aSqlQuery,
                     }),
                 })
@@ -228,8 +226,8 @@ describe('SQL Views form tests', () => {
             (routeOptions) => {
                 const attributes = [testCustomAttribute({ mandatory: false })]
                 const sqlView = testSqlViews({
-                    type: SqlView.type.VIEW,
-                    cacheStrategy: SqlView.cacheStrategy.NO_CACHE,
+                    type: SqlViewType.VIEW,
+                    cacheStrategy: CacheStrategy.NO_CACHE,
                     sqlQuery: faker.lorem.sentence(),
                     description: faker.lorem.sentence(),
                 })
