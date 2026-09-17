@@ -17,7 +17,13 @@ export const objectReportWebMessageResponseSchema = z
     .object({
         errorReports: z.array(errorReportSchema),
         klass: z.string(),
-        responseType: z.literal('ObjectReportWebMessageResponse'),
+        // the OpenAPI spec names this "ObjectReportWebMessageResponse", but
+        // the API actually returns "ObjectReport" for object delete/save
+        // conflicts (e.g. E4030 association errors) - accept both.
+        responseType: z.union([
+            z.literal('ObjectReportWebMessageResponse'),
+            z.literal('ObjectReport'),
+        ]),
         uid: z.string(),
     })
     .strict()
