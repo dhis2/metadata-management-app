@@ -283,6 +283,7 @@ export const ListInFormItem = ({
                             onClick={() => {
                                 navigator.clipboard.writeText(item.id)
                             }}
+                            disabled={isClone}
                         />
                         <MoreDropdownDivider />
                         <MoreDropdownItem
