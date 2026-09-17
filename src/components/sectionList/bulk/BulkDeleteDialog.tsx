@@ -46,11 +46,6 @@ export const BulkDeleteDialog = ({
                 onDeleteSuccess()
                 onClose()
             } else {
-                // Defer onDeleteSuccess (cache invalidation + clearing the
-                // selection) until the errors dialog is closed: clearing the
-                // selection now would drop selectedModels to empty, which
-                // unmounts the toolbar's selected-state view (and this
-                // dialog along with it) before the user ever sees the error.
                 setFailedResults(results)
             }
         },
