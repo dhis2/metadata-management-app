@@ -8,9 +8,13 @@ import {
     ModalContent,
     ModalTitle,
 } from '@dhis2/ui'
-import React from 'react'
+import React, { useState } from 'react'
 import { useSchemaFromHandle } from '../../../lib'
-import { useBulkDeleteMutation } from './useBulkDeleteMutation'
+import { BulkDeleteErrorsDialog } from './BulkDeleteErrorsDialog'
+import {
+    BulkDeleteResult,
+    useBulkDeleteMutation,
+} from './useBulkDeleteMutation'
 
 type BulkDeleteDialogProps = {
     selectedModels: Set<string>
@@ -25,28 +29,45 @@ export const BulkDeleteDialog = ({
 }: BulkDeleteDialogProps) => {
     const schema = useSchemaFromHandle()
     const number = selectedModels.size
+    const [failedResults, setFailedResults] = useState<BulkDeleteResult[]>()
 
     const { show: showSuccessAlert } = useAlert(
         i18n.t('Successfully deleted {{number}} items', { number }),
         { success: true }
     )
-    const { show: showErrorAlert } = useAlert(
-        i18n.t('Some items could not be deleted'),
-        { critical: true }
-    )
 
     const mutation = useBulkDeleteMutation(schema.plural, {
-        onSuccess: () => {
-            showSuccessAlert()
-            onDeleteSuccess()
-            onClose()
-        },
-        onError: () => {
-            showErrorAlert()
-            onDeleteSuccess()
-            onClose()
+        onSuccess: (results) => {
+            const failed = results.filter(
+                (result) => result.status === 'rejected'
+            )
+            if (failed.length === 0) {
+                showSuccessAlert()
+                onDeleteSuccess()
+                onClose()
+            } else {
+                // Defer onDeleteSuccess (cache invalidation + clearing the
+                // selection) until the errors dialog is closed: clearing the
+                // selection now would drop selectedModels to empty, which
+                // unmounts the toolbar's selected-state view (and this
+                // dialog along with it) before the user ever sees the error.
+                setFailedResults(results)
+            }
         },
     })
+
+    if (failedResults) {
+        return (
+            <BulkDeleteErrorsDialog
+                schema={schema}
+                results={failedResults}
+                onClose={() => {
+                    onDeleteSuccess()
+                    onClose()
+                }}
+            />
+        )
+    }
 
     return (
         <Modal onClose={onClose} dataTest="bulk-delete-dialog">
