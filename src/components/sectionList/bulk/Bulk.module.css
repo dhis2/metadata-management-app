@@ -69,3 +69,101 @@
 .actionAccessAdd {
     color: var(--colors-green700);
 }
+
+.errorSummary {
+    margin: 0 0 var(--spacers-dp12) 0;
+    color: var(--colors-grey700);
+}
+
+.errorList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacers-dp8);
+    max-height: 420px;
+    overflow-y: auto;
+    padding: var(--spacers-dp4);
+    margin: calc(var(--spacers-dp4) * -1);
+}
+
+.errorRow {
+    border: 1px solid var(--colors-grey300);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.errorRowHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp8);
+    width: 100%;
+    padding: var(--spacers-dp8) var(--spacers-dp12);
+    background: none;
+    border: none;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: start;
+    cursor: pointer;
+}
+
+.errorRowHeader:hover {
+    background-color: var(--colors-grey050);
+}
+
+.errorRowHeader:focus-visible {
+    outline: 2px solid var(--colors-blue500);
+    outline-offset: -2px;
+}
+
+.errorRowIcon {
+    display: flex;
+    flex-shrink: 0;
+    color: var(--colors-red600);
+}
+
+.errorRowDisplayName {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.errorRowChevron {
+    display: flex;
+    flex-shrink: 0;
+    color: var(--colors-grey600);
+}
+
+.errorRowDetail {
+    padding: var(--spacers-dp16) var(--spacers-dp16) var(--spacers-dp16)
+        var(--spacers-dp40);
+    background-color: var(--colors-red050);
+    border-top: 1px solid var(--colors-grey300);
+}
+
+.errorRowMessageRaw {
+    margin: 0;
+    background-color: var(--colors-white);
+    border: 1px solid var(--colors-red200);
+    border-radius: 4px;
+    padding: var(--spacers-dp12);
+    max-height: 200px;
+    overflow: auto;
+    color: var(--colors-grey900);
+    font-family: Menlo, Courier, monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.errorRowList {
+    margin: 0;
+    padding: var(--spacers-dp4) var(--spacers-dp4) var(--spacers-dp4)
+        var(--spacers-dp16);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacers-dp8);
+    color: var(--colors-grey900);
+    line-height: 1.5;
+}

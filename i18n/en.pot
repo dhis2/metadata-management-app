@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-14T08:59:16.484Z\n"
-"PO-Revision-Date: 2026-09-14T08:59:16.484Z\n"
+"POT-Creation-Date: 2026-09-17T09:48:53.184Z\n"
+"PO-Revision-Date: 2026-09-17T09:48:53.184Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -991,9 +991,6 @@ msgstr "Data view only"
 msgid "Successfully deleted {{number}} items"
 msgstr "Successfully deleted {{number}} items"
 
-msgid "Some items could not be deleted"
-msgstr "Some items could not be deleted"
-
 msgid "Delete {{number}} items"
 msgstr "Delete {{number}} items"
 
@@ -1003,6 +1000,12 @@ msgid ""
 msgstr ""
 "Are you sure you want to delete these {{number}} items? This cannot be "
 "undone."
+
+msgid "{{failedCount}} of {{total}} items could not be deleted"
+msgstr "{{failedCount}} of {{total}} items could not be deleted"
+
+msgid "Close"
+msgstr "Close"
 
 msgid "Successfully updated sharing for {{number}} items"
 msgstr "Successfully updated sharing for {{number}} items"
@@ -3442,9 +3445,6 @@ msgstr "Override data element category combination"
 
 msgid "No data elements selected"
 msgstr "No data elements selected"
-
-msgid "Close"
-msgstr "Close"
 
 msgid "Should not exceed {{maxLength}} characters"
 msgstr "Should not exceed {{maxLength}} characters"
