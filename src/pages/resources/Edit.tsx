@@ -4,11 +4,13 @@ import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { DefaultEditFormContents, FormBase } from '../../components'
+import { DefaultFormFooter } from '../../components/form/DefaultFormFooter'
 import {
     useBoundResourceQueryFn,
     SECTIONS_MAP,
     DEFAULT_FIELD_FILTERS,
     ATTRIBUTE_VALUES_FIELD_FILTERS,
+    getSectionPath,
 } from '../../lib'
 import { Document, PickWithFieldFilters } from '../../types/generated'
 import {
@@ -76,7 +78,15 @@ export const Component = () => {
             initialValues={initialValues}
             validate={validateResourceForm}
         >
-            <DefaultEditFormContents section={section}>
+            <DefaultEditFormContents
+                section={section}
+                footer={
+                    <DefaultFormFooter
+                        cancelTo={`/${getSectionPath(section)}`}
+                        showSaveButton={false}
+                    />
+                }
+            >
                 <ResourceFormFields />
             </DefaultEditFormContents>
         </FormBase>

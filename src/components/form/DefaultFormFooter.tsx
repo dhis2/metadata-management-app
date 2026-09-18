@@ -9,7 +9,13 @@ import { StandardFormActions } from '../standardForm'
 import css from './DefaultFormContents.module.css'
 import { useFormBase } from './formBase/FormBaseContext'
 
-export const DefaultFormFooter = ({ cancelTo }: { cancelTo?: To }) => {
+export const DefaultFormFooter = ({
+    cancelTo,
+    showSaveButton = true,
+}: {
+    cancelTo?: To
+    showSaveButton?: boolean
+}) => {
     const { submit } = useForm()
     const { submitting } = useFormState({
         subscription: { submitting: true },
@@ -40,7 +46,9 @@ export const DefaultFormFooter = ({ cancelTo }: { cancelTo?: To }) => {
                 submitting={submitting}
                 activeAction={activeAction}
                 onSubmitClick={handleSubmit.bind(null, 'saveAndExit')}
-                onSaveClick={handleSubmit.bind(null, 'save')}
+                onSaveClick={
+                    showSaveButton ? handleSubmit.bind(null, 'save') : undefined
+                }
                 cancelTo={`${cancelTo ?? '../'}${location.state?.search ?? ''}`}
             />
         </FormFooterWrapper>

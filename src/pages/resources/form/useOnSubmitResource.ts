@@ -4,6 +4,7 @@ import { useMemo } from 'react'
 import {
     getSectionPath,
     SECTIONS_MAP,
+    trimTrimmableFields,
     useNavigateWithSearchState,
 } from '../../../lib'
 import { createFormError } from '../../../lib/form/createFormError'
@@ -35,7 +36,7 @@ export const useOnSubmitResource = ({
             try {
                 const data = await buildResourceDocumentPayload(
                     dataEngine,
-                    values
+                    trimTrimmableFields(values)
                 )
 
                 await dataEngine.mutate(

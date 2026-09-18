@@ -130,7 +130,7 @@ describe('Resources form tests', () => {
             const typeField = screen.getByTestId('formfields-resourceType')
             await uiActions.pickOptionFromSelect(typeField, 1, screen)
 
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
 
             expect(createDocumentMock).not.toHaveBeenCalled()
             uiAssertions.expectFieldToHaveError(
@@ -155,7 +155,7 @@ describe('Resources form tests', () => {
                 .querySelector('input[type="file"]') as HTMLInputElement
             await userEvent.upload(fileInput, file)
 
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
 
             expect(createFileResourceMock).toHaveBeenCalledWith(
                 expect.objectContaining({
@@ -192,7 +192,7 @@ describe('Resources form tests', () => {
                 screen
             )
 
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
 
             expect(createFileResourceMock).not.toHaveBeenCalled()
             expect(createDocumentMock).toHaveBeenCalledWith(
@@ -204,6 +204,29 @@ describe('Resources form tests', () => {
                         attachment: false,
                         url: 'https://www.dhis2.org',
                     }),
+                })
+            )
+        })
+
+        it('should trim leading and trailing whitespace from the name before saving', async () => {
+            const { screen } = await renderForm()
+            const aName = faker.company.name()
+
+            await uiActions.enterName(`  ${aName}  `, screen)
+
+            const typeField = screen.getByTestId('formfields-resourceType')
+            await uiActions.pickOptionFromSelect(typeField, 1, screen)
+            await uiActions.enterInputFieldValue(
+                'url',
+                'https://www.dhis2.org',
+                screen
+            )
+
+            await uiActions.submitAndCloseForm(screen)
+
+            expect(createDocumentMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    data: expect.objectContaining({ name: aName }),
                 })
             )
         })
@@ -285,7 +308,7 @@ describe('Resources form tests', () => {
 
             const newName = faker.company.name()
             await uiActions.enterName(newName, screen)
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
 
             expect(updateDocumentMock).toHaveBeenCalledWith(
                 expect.objectContaining({
@@ -338,7 +361,7 @@ describe('Resources form tests', () => {
                 .querySelector('input[type="file"]') as HTMLInputElement
             await userEvent.upload(fileInput, file)
 
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
 
             expect(createFileResourceMock).toHaveBeenCalledWith(
                 expect.objectContaining({

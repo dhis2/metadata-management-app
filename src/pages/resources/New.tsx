@@ -2,7 +2,8 @@ import i18n from '@dhis2/d2-i18n'
 import React from 'react'
 import { FormBase } from '../../components'
 import { DefaultNewFormContents } from '../../components/form/DefaultFormContents'
-import { SECTIONS_MAP } from '../../lib'
+import { DefaultFormFooter } from '../../components/form/DefaultFormFooter'
+import { SECTIONS_MAP, getSectionPath } from '../../lib'
 import {
     ResourceFormFields,
     ResourceSubmitValues,
@@ -24,7 +25,15 @@ export const Component = () => {
             onSubmit={onSubmit}
             validate={validateResourceForm}
         >
-            <DefaultNewFormContents section={section}>
+            <DefaultNewFormContents
+                section={section}
+                footer={
+                    <DefaultFormFooter
+                        cancelTo={`/${getSectionPath(section)}`}
+                        showSaveButton={false}
+                    />
+                }
+            >
                 <ResourceFormFields />
             </DefaultNewFormContents>
         </FormBase>
