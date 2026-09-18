@@ -20,6 +20,7 @@ export type SectionListRowProps<Model extends BaseListModel> = {
     ) => React.ReactNode
     onClick?: (modelData: Model) => void
     active?: boolean
+    clickable?: boolean
 }
 
 export const SectionListRow = React.memo(function SectionListRow<
@@ -33,13 +34,15 @@ export const SectionListRow = React.memo(function SectionListRow<
     selected,
     renderActions,
     renderColumnValue,
+    clickable,
 }: SectionListRowProps<Model>) {
     const editAccess = canEditModel(modelData)
+    const rowClickable = clickable ?? editAccess
     return (
         <DataTableRow
             className={cx(css.listRow, {
                 [css.active]: active,
-                [css.clickable]: editAccess,
+                [css.clickable]: rowClickable,
             })}
             dataTest={`section-list-row`}
             selected={selected}
