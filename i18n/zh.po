@@ -2,15 +2,15 @@
 # 晓东 林 <13981924470@126.com>, 2026
 # Transifex Bot <>, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
-# easylin <lin_xd@126.com>, 2026
 # Philip Larsen Donnelly, 2026
+# easylin <lin_xd@126.com>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-09-09T18:17:23.074Z\n"
+"POT-Creation-Date: 2026-09-14T08:59:16.484Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Philip Larsen Donnelly, 2026\n"
+"Last-Translator: easylin <lin_xd@126.com>, 2026\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -800,19 +800,19 @@ msgid "Delete"
 msgstr "删除"
 
 msgid "New program stages order saved successfully"
-msgstr ""
+msgstr "新项目阶段订单已成功保存"
 
 msgid "New sections order saved successfully"
 msgstr "成功保存新章节订单"
 
 msgid "Error saving new program stages order."
-msgstr ""
+msgstr "保存新项目阶段顺序时出错。"
 
 msgid "Error saving new sections order."
 msgstr "保存新章节订单出错。"
 
 msgid "Reorder program stages"
-msgstr ""
+msgstr "重新排序项目阶段"
 
 msgid "Reorder form sections"
 msgstr "重新排序表格部分"
@@ -821,7 +821,7 @@ msgid "(marked for deletion)"
 msgstr "(标记为删除)"
 
 msgid "Save program stage ordering"
-msgstr ""
+msgstr "保存项目阶段顺序"
 
 msgid "Save section ordering"
 msgstr "保存分段订购"
@@ -977,6 +977,20 @@ msgstr "数据查看和采集"
 
 msgid "Data view only"
 msgstr "仅查看数据"
+
+msgid "Successfully deleted {{number}} items"
+msgstr ""
+
+msgid "Some items could not be deleted"
+msgstr ""
+
+msgid "Delete {{number}} items"
+msgstr ""
+
+msgid ""
+"Are you sure you want to delete these {{number}} items? This cannot be "
+"undone."
+msgstr ""
 
 msgid "Successfully updated sharing for {{number}} items"
 msgstr "成功更新{{number}} 项目的共享"
@@ -1345,19 +1359,19 @@ msgid "Hide scheduled date"
 msgstr "隐藏预定日期"
 
 msgid "Custom label for \"report date\""
-msgstr ""
+msgstr "“报告日期”的自定义标签"
 
 msgid "Custom label for \"due date\""
-msgstr ""
+msgstr "“到期日”的自定义标签"
 
 msgid "Custom label for \"program stage\""
-msgstr ""
+msgstr "“项目阶段”的自定义标签"
 
 msgid "Custom label for \"event\""
-msgstr ""
+msgstr "“事件”的自定义标签"
 
 msgid "Custom label for \"event\" (plural)"
-msgstr ""
+msgstr "“event”（复数）的自定义标签"
 
 msgid "Categories"
 msgstr "分类"
@@ -1561,7 +1575,7 @@ msgid "Icons"
 msgstr "图标"
 
 msgid "Resource"
-msgstr ""
+msgstr "资源"
 
 msgid "Resources"
 msgstr "资源管理"
@@ -4577,7 +4591,7 @@ msgstr "创建、修改和查看地图预定义的图例和其它可视化属性
 msgid ""
 "Upload documents or link to external URLs as resources that can be "
 "referenced from other apps."
-msgstr ""
+msgstr "将文档或外部 URL 链接作为资源上传，以便其他应用可以引用这些资源。"
 
 msgid ""
 "Create and manage locales for database content. A locale is a combination of"
@@ -5395,7 +5409,7 @@ msgid "Failed to apply program access rules"
 msgstr "未能应用程序访问规则"
 
 msgid "Failed to refresh access settings"
-msgstr ""
+msgstr "无法刷新访问设置"
 
 msgid "Program: {{name}}"
 msgstr "节目：{{name}}"
@@ -5555,6 +5569,53 @@ msgstr "用程序专用术语覆盖默认标签。"
 msgid ""
 "Used as the label for the event date (report date) shown in the Capture app"
 msgstr "用作“Capture”应用中显示的活动日期（报告日期）的标签"
+
+msgid "Custom label for \"event\" (singular)"
+msgstr ""
+
+msgid "Example use: Schedule a new event"
+msgstr "使用示例安排新事件"
+
+msgid "Custom label for \"events\" (plural)"
+msgstr ""
+
+msgid "Example use: See all events"
+msgstr "使用示例：查看所有活动"
+
+msgid "Custom label for \"organisation unit\""
+msgstr ""
+
+msgid ""
+"Used to customize the label for the organisation unit that registers the "
+"enrollment or event"
+msgstr "用于自定义登记注册或事件的组织单位的标签"
+
+msgid "Custom label for \"relationship\" (singular)"
+msgstr ""
+
+msgid ""
+"Used to customize the label for a relationship between tracked entities"
+msgstr "用于自定义受监控实体之间关系的标签"
+
+msgid "Custom label for \"relationships\" (plural)"
+msgstr ""
+
+msgid "Example use: See all relationships"
+msgstr "使用示例：查看所有关系"
+
+msgid "Custom label for \"note\" (singular)"
+msgstr ""
+
+msgid ""
+"Used to customize the label for a note or comment added to an enrollment or "
+"event"
+msgstr "用于自定义添加到报名或活动中的备注或评论的标签"
+
+msgid "Custom label for \"notes\" (plural)"
+msgstr ""
+
+msgid "Example use: See all notes"
+msgstr "使用示例：查看所有笔记"
 
 msgid "Only integers are allowed"
 msgstr "只允许使用整数"
@@ -5929,92 +5990,54 @@ msgid ""
 msgstr "以下属性被标记为必填属性，但未分配给任何部分："
 
 msgid "Custom label for \"incident date\""
-msgstr ""
+msgstr "“事件日期”的自定义标签"
 
 msgid "Used as an additional registration date for enrollments"
 msgstr "作为注册的附加注册日期"
 
 msgid "Custom label for \"enrollment date\""
-msgstr ""
+msgstr "“注册日期”的自定义标签"
 
 msgid "Used as the default registration date for enrollments"
 msgstr "用作注册的默认注册日期"
 
-msgid "Custom label for \"enrollment\""
+msgid "Custom label for \"enrollment\" (singular)"
 msgstr ""
 
 msgid "Example use: See all data in this enrollment"
 msgstr "使用示例：查看本次注册的所有数据"
 
-msgid "Custom label for \"enrollment\" (plural)"
+msgid "Custom label for \"enrollments\" (plural)"
 msgstr ""
 
 msgid "Example use: See all enrollments"
 msgstr "使用示例：查看所有报名记录"
 
-msgid "Example use: Schedule a new event"
-msgstr "使用示例安排新事件"
-
-msgid "Example use: See all events"
-msgstr "使用示例：查看所有活动"
+msgid "Custom label for \"program stage\" (singular)"
+msgstr ""
 
 msgid "Example use: See all data in this program stage"
 msgstr "使用示例：查看本程序阶段的所有数据"
 
-msgid "Custom label for \"program stage\" (plural)"
+msgid "Custom label for \"program stages\" (plural)"
 msgstr ""
 
 msgid "Example use: See all program stages"
 msgstr "使用示例：查看所有项目阶段"
 
 msgid "Custom label for \"follow-up\""
-msgstr ""
+msgstr "“跟进”的自定义标签"
 
 msgid "Used to customize the label for a follow-up event or activity"
 msgstr "用于自定义后续活动或项目的标签"
 
-msgid "Custom label for \"registering unit\""
-msgstr ""
-
-msgid ""
-"Used to customize the label for the organisation unit that registers the "
-"enrollment or event"
-msgstr "用于自定义登记注册或事件的组织单位的标签"
-
-msgid "Custom label for \"relationship\""
-msgstr ""
-
-msgid ""
-"Used to customize the label for a relationship between tracked entities"
-msgstr "用于自定义受监控实体之间关系的标签"
-
-msgid "Custom label for \"relationship\" (plural)"
-msgstr ""
-
-msgid "Example use: See all relationships"
-msgstr "使用示例：查看所有关系"
-
-msgid "Custom label for \"note\""
-msgstr ""
-
-msgid ""
-"Used to customize the label for a note or comment added to an enrollment or "
-"event"
-msgstr "用于自定义添加到报名或活动中的备注或评论的标签"
-
-msgid "Custom label for \"note\" (plural)"
-msgstr ""
-
-msgid "Example use: See all notes"
-msgstr "使用示例：查看所有笔记"
-
-msgid "Custom label for \"attribute\""
+msgid "Custom label for \"attribute\" (singular)"
 msgstr ""
 
 msgid "Used to customize the label for a tracked entity attribute"
 msgstr "用于自定义受跟踪实体属性的标签"
 
-msgid "Custom label for \"attribute\" (plural)"
+msgid "Custom label for \"attributes\" (plural)"
 msgstr ""
 
 msgid "Example use: See all attributes"
@@ -6048,7 +6071,7 @@ msgid "Add a program stage"
 msgstr "添加程序阶段"
 
 msgid "Reorder stages"
-msgstr ""
+msgstr "重新排序阶段"
 
 msgid "Access Level"
 msgstr "访问级别"

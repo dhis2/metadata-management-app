@@ -13,7 +13,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-08-11T12:10:52.795Z\n"
+"POT-Creation-Date: 2026-09-14T08:59:16.484Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: Aprisa Chrysantina <aprisa.chrysantina@gmail.com>, 2026\n"
 "Language-Team: Indonesian (https://app.transifex.com/hisp-uio/teams/100509/id/)\n"
@@ -802,16 +802,28 @@ msgstr ""
 msgid "Delete"
 msgstr "Hapus"
 
+msgid "New program stages order saved successfully"
+msgstr ""
+
 msgid "New sections order saved successfully"
 msgstr ""
 
+msgid "Error saving new program stages order."
+msgstr ""
+
 msgid "Error saving new sections order."
+msgstr ""
+
+msgid "Reorder program stages"
 msgstr ""
 
 msgid "Reorder form sections"
 msgstr ""
 
 msgid "(marked for deletion)"
+msgstr ""
+
+msgid "Save program stage ordering"
 msgstr ""
 
 msgid "Save section ordering"
@@ -967,6 +979,20 @@ msgid "Data view and capture"
 msgstr ""
 
 msgid "Data view only"
+msgstr ""
+
+msgid "Successfully deleted {{number}} items"
+msgstr ""
+
+msgid "Some items could not be deleted"
+msgstr ""
+
+msgid "Delete {{number}} items"
+msgstr ""
+
+msgid ""
+"Are you sure you want to delete these {{number}} items? This cannot be "
+"undone."
 msgstr ""
 
 msgid "Successfully updated sharing for {{number}} items"
@@ -1335,19 +1361,19 @@ msgstr ""
 msgid "Hide scheduled date"
 msgstr ""
 
-msgid "Custom label for \"Report date\""
+msgid "Custom label for \"report date\""
 msgstr ""
 
-msgid "Custom label for \"Due date\""
+msgid "Custom label for \"due date\""
 msgstr ""
 
-msgid "Custom label for \"Program stage\""
+msgid "Custom label for \"program stage\""
 msgstr ""
 
-msgid "Custom label for \"Event\""
+msgid "Custom label for \"event\""
 msgstr ""
 
-msgid "Custom label for \"Event\" (plural)"
+msgid "Custom label for \"event\" (plural)"
 msgstr ""
 
 msgid "Categories"
@@ -1550,6 +1576,12 @@ msgstr ""
 
 msgid "Icons"
 msgstr ""
+
+msgid "Resource"
+msgstr ""
+
+msgid "Resources"
+msgstr "Sumber Daya"
 
 msgid "Predictor group"
 msgstr ""
@@ -2560,6 +2592,9 @@ msgid "Key"
 msgstr "Kunci"
 
 msgid "Keywords"
+msgstr ""
+
+msgid "External"
 msgstr ""
 
 msgid "Which resource table"
@@ -4500,6 +4535,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Upload documents or link to external URLs as resources that can be "
+"referenced from other apps."
+msgstr ""
+
+msgid ""
 "Create and manage locales for database content. A locale is a combination of"
 " language and country."
 msgstr ""
@@ -5323,6 +5363,9 @@ msgstr ""
 msgid "Failed to apply program access rules"
 msgstr ""
 
+msgid "Failed to refresh access settings"
+msgstr ""
+
 msgid "Program: {{name}}"
 msgstr ""
 
@@ -5366,9 +5409,6 @@ msgid "Edit access"
 msgstr ""
 
 msgid "Public (All users)"
-msgstr ""
-
-msgid "External"
 msgstr ""
 
 msgid "Group"
@@ -5483,6 +5523,53 @@ msgstr ""
 
 msgid ""
 "Used as the label for the event date (report date) shown in the Capture app"
+msgstr ""
+
+msgid "Custom label for \"event\" (singular)"
+msgstr ""
+
+msgid "Example use: Schedule a new event"
+msgstr ""
+
+msgid "Custom label for \"events\" (plural)"
+msgstr ""
+
+msgid "Example use: See all events"
+msgstr ""
+
+msgid "Custom label for \"organisation unit\""
+msgstr ""
+
+msgid ""
+"Used to customize the label for the organisation unit that registers the "
+"enrollment or event"
+msgstr ""
+
+msgid "Custom label for \"relationship\" (singular)"
+msgstr ""
+
+msgid ""
+"Used to customize the label for a relationship between tracked entities"
+msgstr ""
+
+msgid "Custom label for \"relationships\" (plural)"
+msgstr ""
+
+msgid "Example use: See all relationships"
+msgstr ""
+
+msgid "Custom label for \"note\" (singular)"
+msgstr ""
+
+msgid ""
+"Used to customize the label for a note or comment added to an enrollment or "
+"event"
+msgstr ""
+
+msgid "Custom label for \"notes\" (plural)"
+msgstr ""
+
+msgid "Example use: See all notes"
 msgstr ""
 
 msgid "Only integers are allowed"
@@ -5857,93 +5944,55 @@ msgid ""
 "section:"
 msgstr ""
 
-msgid "Custom label for \"Incident date\""
+msgid "Custom label for \"incident date\""
 msgstr ""
 
 msgid "Used as an additional registration date for enrollments"
 msgstr ""
 
-msgid "Custom label for \"Enrollment date\""
+msgid "Custom label for \"enrollment date\""
 msgstr ""
 
 msgid "Used as the default registration date for enrollments"
 msgstr ""
 
-msgid "Custom label for \"Enrollment\""
+msgid "Custom label for \"enrollment\" (singular)"
 msgstr ""
 
 msgid "Example use: See all data in this enrollment"
 msgstr ""
 
-msgid "Custom label for \"Enrollment\" (plural)"
+msgid "Custom label for \"enrollments\" (plural)"
 msgstr ""
 
 msgid "Example use: See all enrollments"
 msgstr ""
 
-msgid "Example use: Schedule a new event"
-msgstr ""
-
-msgid "Example use: See all events"
+msgid "Custom label for \"program stage\" (singular)"
 msgstr ""
 
 msgid "Example use: See all data in this program stage"
 msgstr ""
 
-msgid "Custom label for \"Program stage\" (plural)"
+msgid "Custom label for \"program stages\" (plural)"
 msgstr ""
 
 msgid "Example use: See all program stages"
 msgstr ""
 
-msgid "Custom label for \"Follow-up\""
+msgid "Custom label for \"follow-up\""
 msgstr ""
 
 msgid "Used to customize the label for a follow-up event or activity"
 msgstr ""
 
-msgid "Custom label for \"Registering unit\""
-msgstr ""
-
-msgid ""
-"Used to customize the label for the organisation unit that registers the "
-"enrollment or event"
-msgstr ""
-
-msgid "Custom label for \"Relationship\""
-msgstr ""
-
-msgid ""
-"Used to customize the label for a relationship between tracked entities"
-msgstr ""
-
-msgid "Custom label for \"Relationship\" (plural)"
-msgstr ""
-
-msgid "Example use: See all relationships"
-msgstr ""
-
-msgid "Custom label for \"Note\""
-msgstr ""
-
-msgid ""
-"Used to customize the label for a note or comment added to an enrollment or "
-"event"
-msgstr ""
-
-msgid "Custom label for \"Note\" (plural)"
-msgstr ""
-
-msgid "Example use: See all notes"
-msgstr ""
-
-msgid "Custom label for \"Attribute\""
+msgid "Custom label for \"attribute\" (singular)"
 msgstr ""
 
 msgid "Used to customize the label for a tracked entity attribute"
 msgstr ""
 
-msgid "Custom label for \"Attribute\" (plural)"
+msgid "Custom label for \"attributes\" (plural)"
 msgstr ""
 
 msgid "Example use: See all attributes"
@@ -5974,6 +6023,9 @@ msgid "Restore stage"
 msgstr ""
 
 msgid "Add a program stage"
+msgstr ""
+
+msgid "Reorder stages"
 msgstr ""
 
 msgid "Access Level"
@@ -6030,6 +6082,9 @@ msgstr ""
 msgid ""
 "Relationship name seen from receiving entity is required when bidirectional "
 "is checked"
+msgstr ""
+
+msgid "View resource"
 msgstr ""
 
 msgid "SQL view results"
