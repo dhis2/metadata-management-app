@@ -25,6 +25,9 @@ const trackerProgramBaseSchema = z.object({
         .optional(),
     featureType: z.enum(['NONE', 'POINT', 'POLYGON']).optional(),
     categoryCombo: modelReference.default({ ...DEFAULT_CATEGORY_COMBO }),
+    enrollmentCategoryCombo: modelReference.default({
+        ...DEFAULT_CATEGORY_COMBO,
+    }),
     trackedEntityType: object({
         id: z.string(),
         displayName: z.string().optional(),

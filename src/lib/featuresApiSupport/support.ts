@@ -4,6 +4,7 @@ export const FEATURES = Object.freeze({
     programRuleActionPriority: 'programRuleActionPriority',
     skipAnalytics: 'skipAnalytics',
     customTerminologyPlurals: 'customTerminologyPlurals',
+    enrollmentAOC: 'enrollmentAOC',
 } as const)
 
 const VERSION_SUPPORT = Object.freeze({
@@ -12,6 +13,7 @@ const VERSION_SUPPORT = Object.freeze({
     [FEATURES.programRuleActionPriority]: { minor: 43 },
     [FEATURES.skipAnalytics]: { minor: 43 },
     [FEATURES.customTerminologyPlurals]: { minor: 43, patch: 2 },
+    [FEATURES.enrollmentAOC]: { minor: 43 },
 } as Record<string, { minor: number; patch?: number }>)
 
 export const hasAPISupportForFeature = ({
