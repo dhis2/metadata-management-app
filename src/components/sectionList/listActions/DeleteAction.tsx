@@ -13,7 +13,11 @@ import {
     NoticeBox,
 } from '@dhis2/ui'
 import React, { useState } from 'react'
-import { useDeleteModelMutation, useSectionHandle } from '../../../lib'
+import {
+    isMaybeStillProcessingError,
+    useDeleteModelMutation,
+    useSectionHandle,
+} from '../../../lib'
 import { ModelSection } from '../../../types'
 import classes from './DeleteAction.module.css'
 
@@ -102,8 +106,10 @@ function ConfirmationDialog({
         { success: true }
     )
 
-    const errorReports =
-        deleteModelMutation.error?.details?.response?.errorReports
+    const { error } = deleteModelMutation
+    const modelType = sectionOrSectionFromHandle?.title ?? ''
+    const errorReports = error?.details?.response?.errorReports
+    const maybeStillProcessing = isMaybeStillProcessingError(error)
     return (
         <Modal dataTest="delete-confirmation-modal">
             <ModalTitle>
@@ -113,32 +119,50 @@ function ConfirmationDialog({
                 )}
             </ModalTitle>
 
-            {!!deleteModelMutation.error && (
+            {!!error && (
                 <ModalContent>
                     <NoticeBox
-                        error
-                        title={i18n.t(
-                            'Something went wrong deleting the {{modelType}}',
-                            { modelType: sectionOrSectionFromHandle?.title }
-                        )}
+                        warning={maybeStillProcessing}
+                        error={!maybeStillProcessing}
+                        title={
+                            maybeStillProcessing
+                                ? i18n.t(
+                                      'The operation may still be in progress'
+                                  )
+                                : i18n.t(
+                                      'Something went wrong deleting the {{modelType}}',
+                                      { modelType }
+                                  )
+                        }
                     >
-                        <div>
-                            {i18n.t(
-                                'Failed to delete {{modelType}} "{{displayName}}"! {{messages}}',
-                                {
-                                    displayName: modelDisplayName,
-                                    modelType:
-                                        sectionOrSectionFromHandle?.title ?? '',
-                                }
-                            )}
-                        </div>
+                        {maybeStillProcessing ? (
+                            <div>
+                                {i18n.t(
+                                    'The request timed out. The operation may still be processing in the background, refresh to confirm.'
+                                )}
+                            </div>
+                        ) : (
+                            <>
+                                <div>
+                                    {i18n.t(
+                                        'Failed to delete {{modelType}} "{{displayName}}"! {{messages}}',
+                                        {
+                                            displayName: modelDisplayName,
+                                            modelType,
+                                            messages:
+                                                error?.details?.message ?? '',
+                                        }
+                                    )}
+                                </div>
 
-                        {!!errorReports?.length && (
-                            <ul>
-                                {errorReports.map(({ message }) => (
-                                    <li key={message}>{message}</li>
-                                ))}
-                            </ul>
+                                {!!errorReports?.length && (
+                                    <ul>
+                                        {errorReports.map(({ message }) => (
+                                            <li key={message}>{message}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </>
                         )}
                     </NoticeBox>
                 </ModalContent>
