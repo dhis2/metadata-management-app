@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-08-21T06:59:01.635Z\n"
-"PO-Revision-Date: 2026-08-21T06:59:01.636Z\n"
+"POT-Creation-Date: 2026-09-25T09:47:26.770Z\n"
+"PO-Revision-Date: 2026-09-25T09:47:26.770Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -5767,9 +5767,6 @@ msgstr "Customization"
 msgid "Override default labels with program-specific terms."
 msgstr "Override default labels with program-specific terms."
 
-msgid "Custom label for \"Report date\""
-msgstr "Custom label for \"Report date\""
-
 msgid "Used as the label for the event date (report date) shown in the Capture app"
 msgstr "Used as the label for the event date (report date) shown in the Capture app"
 
@@ -5989,9 +5986,6 @@ msgstr "Save changes to this program before editing sections"
 
 msgid "Save changes to this program before editing the form"
 msgstr "Save changes to this program before editing the form"
-
-msgid "Custom label for event (plural)"
-msgstr "Custom label for event (plural)"
 
 msgid ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
@@ -6293,24 +6287,6 @@ msgstr "Add a program stage"
 
 msgid "Reorder stages"
 msgstr "Reorder stages"
-
-msgid "Custom label for \"Enrollment\" (plural)"
-msgstr "Custom label for \"Enrollment\" (plural)"
-
-msgid "Example use: See all enrollments"
-msgstr "Example use: See all enrollments"
-
-msgid "Custom label for \"Event\" (plural)"
-msgstr "Custom label for \"Event\" (plural)"
-
-msgid "Example use: See all events"
-msgstr "Example use: See all events"
-
-msgid "Custom label for \"Program stage\" (plural)"
-msgstr "Custom label for \"Program stage\" (plural)"
-
-msgid "Example use: See all program stages"
-msgstr "Example use: See all program stages"
 
 msgid "Access Level"
 msgstr "Access Level"

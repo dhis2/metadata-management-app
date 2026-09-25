@@ -13,10 +13,12 @@ import styles from './ExpressionBuilder.module.css'
 import { ExpressionList, ExpressionListInner } from './ExpressionList'
 import { ExpressionBuilderType } from './types'
 
+type VersionInfo = { minor: number; patch: number }
 export type InsertElementType = (s: string) => void
-type Element = {
+export type Element = {
     id: string
     displayName: string
+    versionSupport?: { minor: number; patched?: VersionInfo[] }
 }
 export type ElementType = {
     type: string
@@ -831,10 +833,27 @@ const PROGRAM_RULE_FUNCTION_ELEMENTS = [
         id: 'd2:modulus( <number> , <number> )',
         displayName: 'd2:modulus( <number> , <number> )',
     },
-    { id: 'd2:log( <number> )', displayName: 'd2:log( <number> )' },
+    {
+        id: 'd2:log( <number> )',
+        displayName: 'd2:log( <number> )',
+        versionSupport: {
+            minor: 44,
+            patched: [
+                { minor: 42, patch: 6 },
+                { minor: 43, patch: 2 },
+            ],
+        },
+    },
     {
         id: 'd2:exponent( <number> , <number> )',
         displayName: 'd2:exponent( <number> , <number> )',
+        versionSupport: {
+            minor: 44,
+            patched: [
+                { minor: 42, patch: 6 },
+                { minor: 43, patch: 2 },
+            ],
+        },
     },
     { id: 'd2:zing( <number> )', displayName: 'd2:zing( <number> )' },
     { id: 'd2:oizp( <number> )', displayName: 'd2:oizp( <number> )' },
@@ -1050,29 +1069,69 @@ const programRuleElementTypes = (isEventProgram: boolean): ElementType[] => [
     },
 ]
 
+const FEATURE_FILTER_TYPES = ['programRule']
+
+export const featureVersionFilter = (
+    type: ExpressionBuilderType,
+    elementList: ElementType[],
+    currentVersion: VersionInfo
+): ElementType[] => {
+    if (!FEATURE_FILTER_TYPES.includes(type)) {
+        return elementList
+    }
+    const elementListCopy: ElementType[] = []
+    for (const element of elementList) {
+        const elementCopy = { ...element }
+        if (elementCopy.elements) {
+            const filteredElements = elementCopy.elements.filter((e) => {
+                if (e?.versionSupport) {
+                    return (
+                        e?.versionSupport?.minor <=
+                            Number(currentVersion?.minor) ||
+                        e?.versionSupport?.patched?.some(
+                            (patch) =>
+                                patch.minor === currentVersion.minor &&
+                                patch.patch <= currentVersion.patch
+                        )
+                    )
+                }
+                return true
+            })
+            elementCopy.elements = filteredElements
+        }
+        elementListCopy.push(elementCopy)
+    }
+    return elementListCopy
+}
+
 export const getElementTypes = (
     type: ExpressionBuilderType,
     {
         aggregationType,
         isEventProgram = false,
+        currentVersion,
     }: {
         aggregationType: string | undefined
         isEventProgram?: boolean
+        currentVersion: VersionInfo
     }
 ): ElementType[] => {
+    let elementList = defaultElementTypes
     if (type === 'programIndicator') {
-        return aggregationType === 'COUNT'
-            ? programIndicatorElementTypesCount(isEventProgram)
-            : programIndicatorElementTypes(isEventProgram)
+        elementList =
+            aggregationType === 'COUNT'
+                ? programIndicatorElementTypesCount(isEventProgram)
+                : programIndicatorElementTypes(isEventProgram)
     }
     if (type === 'programRule') {
-        return programRuleElementTypes(isEventProgram)
+        elementList = programRuleElementTypes(isEventProgram)
     }
     if (type === 'indicator') {
-        return indicatorElementTypes
+        elementList = indicatorElementTypes
     }
     if (type === 'predictor') {
-        return predictorElementTypes
+        elementList = predictorElementTypes
     }
-    return defaultElementTypes
+
+    return featureVersionFilter(type, elementList, currentVersion)
 }

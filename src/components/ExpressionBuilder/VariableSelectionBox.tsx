@@ -1,3 +1,4 @@
+import { useConfig } from '@dhis2/app-runtime'
 import { IconChevronDown16, IconChevronRight16 } from '@dhis2/ui'
 import React, { useCallback, useState, RefObject } from 'react'
 import { useField } from 'react-final-form'
@@ -44,6 +45,12 @@ export const VariableSelectionBox = ({
     programType?: string
     type: ExpressionBuilderType
 }) => {
+    const {
+        serverVersion: { minor: minorVersion, patch: patchVersion } = {
+            minor: 0,
+            patch: 0,
+        },
+    } = useConfig()
     const { input: aggregationTypeInput } = useField<string>(
         'aggregationType',
         { subscription: { value: true } }
@@ -54,6 +61,10 @@ export const VariableSelectionBox = ({
     const elementTypes = getElementTypes(type, {
         aggregationType: aggregationTypeInput?.value,
         isEventProgram,
+        currentVersion: {
+            minor: Number(minorVersion),
+            patch: Number(patchVersion),
+        },
     })
     const [selectedElementType, setSelectedElementType] = useState<
         string | undefined
