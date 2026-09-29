@@ -32,11 +32,11 @@ function SymbolPickerModal({
     selected,
     onChange,
     onCancel,
-}: {
+}: Readonly<{
     selected: string
     onChange: ({ symbol }: { symbol: string }) => void
     onCancel: () => void
-}) {
+}>) {
     const { baseUrl } = useConfig()
     const [symbol, setSymbol] = useState(selected)
 
@@ -103,10 +103,10 @@ function SymbolPickerModal({
 export function SymbolPicker({
     symbol = '',
     onSymbolPick,
-}: {
+}: Readonly<{
     onSymbolPick: ({ symbol }: { symbol: string }) => void
     symbol?: string
-}) {
+}>) {
     const { baseUrl } = useConfig()
     const [showPicker, setShowPicker] = useState(false)
 

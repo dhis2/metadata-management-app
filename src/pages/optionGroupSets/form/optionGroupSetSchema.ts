@@ -7,7 +7,7 @@ import {
 
 /*  Note that this describes what we send to the server,
     and not what is stored in the form. */
-const { identifiable, referenceCollection, withDefaultListColumns, style } =
+const { identifiable, referenceCollection, withDefaultListColumns } =
     modelFormSchemas
 
 const optionGroupSetBaseSchema = z.object({
