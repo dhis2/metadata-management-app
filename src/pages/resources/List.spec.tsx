@@ -133,6 +133,36 @@ describe('Resources (documents) specific list tests', () => {
         expect(actionsMenu).not.toHaveTextContent('Edit')
     })
 
+    it('does not navigate to the edit page when clicking a file resource row', async () => {
+        const resource = testResources({
+            external: false,
+            access: testAccess({ write: true }),
+        })
+        const { screen } = await renderList({ elements: [resource] })
+        const tableRows = screen.getAllByTestId('section-list-row')
+
+        await userEvent.click(
+            within(tableRows[0]).getByText(resource.displayName)
+        )
+
+        expect(screen.getAllByTestId('section-list-row')).toHaveLength(1)
+    })
+
+    it('navigates to the edit page when clicking a URL resource row', async () => {
+        const resource = testResources({
+            external: true,
+            access: testAccess({ write: true }),
+        })
+        const { screen } = await renderList({ elements: [resource] })
+        const tableRows = screen.getAllByTestId('section-list-row')
+
+        await userEvent.click(
+            within(tableRows[0]).getByText(resource.displayName)
+        )
+
+        expect(screen.queryByTestId('section-list-row')).not.toBeInTheDocument()
+    })
+
     it('opens the resource data endpoint in a new tab from "View resource"', async () => {
         const openSpy = jest
             .spyOn(window, 'open')

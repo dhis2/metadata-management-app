@@ -20,18 +20,13 @@ import { DefaultListActionProps } from '../../../components/sectionList/listActi
 import { DeleteAction } from '../../../components/sectionList/listActions/DeleteAction'
 import { TooltipWrapper } from '../../../components/tooltip'
 import {
-    BaseListModel,
     TOOLTIPS,
     canDeleteModel,
     canEditModel,
     useLocationSearchState,
     useSchemaFromHandle,
 } from '../../../lib'
-
-// "external" is fetched as part of the section's default columns (sectionListViewsConfig)
-type ResourceListModel = BaseListModel & {
-    external?: boolean
-}
+import { isResourceEditable } from './resourceAccess'
 
 const useOpenResource = () => {
     const { baseUrl } = useConfig()
@@ -48,12 +43,10 @@ export const ResourceListActions = ({
     onDeleteSuccess,
 }: DefaultListActionProps) => {
     const schema = useSchemaFromHandle()
-    const resource = model as ResourceListModel
     const deletable = canDeleteModel(model)
     const editable = canEditModel(model)
     const shareable = schema.shareable
-    // Only URL (external) resources can be edited - uploaded files are not editable.
-    const showEdit = editable && !!resource.external
+    const showEdit = isResourceEditable(model)
 
     const [open, setOpen] = useState(false)
     const ref = useRef(null)
