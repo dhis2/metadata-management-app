@@ -46,6 +46,11 @@ export const OtherCardGroup = ({ showTitle }: { showTitle?: boolean }) => {
                     'Create, modify and view predefined legends for maps and other visualisations.'
                 )}
             </SummaryCard>
+            <SummaryCard section={SECTIONS_MAP.document}>
+                {i18n.t(
+                    'Upload documents or link to external URLs as resources that can be referenced from other apps.'
+                )}
+            </SummaryCard>
             <SummaryCard section={SECTIONS_MAP.locale}>
                 {i18n.t(
                     'Create and manage locales for database content. A locale is a combination of language and country.'

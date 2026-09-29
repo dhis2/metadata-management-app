@@ -153,27 +153,29 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'enrollmentLabel',
-                    label: i18n.t('Custom label for "enrollment"'),
+                    label: i18n.t('Custom label for "enrollment" (singular)'),
                 },
                 {
                     name: 'enrollmentsLabel',
-                    label: i18n.t('Custom label for "enrollment" (plural)'),
+                    label: i18n.t('Custom label for "enrollments" (plural)'),
                 },
                 {
                     name: 'eventLabel',
-                    label: i18n.t('Custom label for "event"'),
+                    label: i18n.t('Custom label for "event" (singular)'),
                 },
                 {
                     name: 'eventsLabel',
-                    label: i18n.t('Custom label for "event" (plural)'),
+                    label: i18n.t('Custom label for "events" (plural)'),
                 },
                 {
                     name: 'programStageLabel',
-                    label: i18n.t('Custom label for "program stage"'),
+                    label: i18n.t(
+                        'Custom label for "program stage" (singular)'
+                    ),
                 },
                 {
                     name: 'programStagesLabel',
-                    label: i18n.t('Custom label for "program stage" (plural)'),
+                    label: i18n.t('Custom label for "program stages" (plural)'),
                 },
                 {
                     name: 'followUpLabel',
@@ -181,28 +183,31 @@ export const TrackerProgramFormDescriptor = {
                 },
                 {
                     name: 'orgUnitLabel',
-                    label: i18n.t('Custom label for "registering unit"'),
+                    label: i18n.t('Custom label for "organisation unit"'),
                 },
                 {
                     name: 'relationshipLabel',
-                    label: i18n.t('Custom label for "relationship"'),
+                    label: i18n.t('Custom label for "relationship" (singular)'),
                 },
                 {
                     name: 'relationshipsLabel',
-                    label: i18n.t('Custom label for "relationship" (plural)'),
+                    label: i18n.t('Custom label for "relationships" (plural)'),
                 },
-                { name: 'noteLabel', label: i18n.t('Custom label for "note"') },
+                {
+                    name: 'noteLabel',
+                    label: i18n.t('Custom label for "note" (singular)'),
+                },
                 {
                     name: 'notesLabel',
-                    label: i18n.t('Custom label for "note" (plural)'),
+                    label: i18n.t('Custom label for "notes" (plural)'),
                 },
                 {
                     name: 'trackedEntityAttributeLabel',
-                    label: i18n.t('Custom label for "attribute"'),
+                    label: i18n.t('Custom label for "attribute" (singular)'),
                 },
                 {
                     name: 'trackedEntityAttributesLabel',
-                    label: i18n.t('Custom label for "attribute" (plural)'),
+                    label: i18n.t('Custom label for "attributes" (plural)'),
                 },
             ],
         },

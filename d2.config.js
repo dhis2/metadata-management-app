@@ -205,6 +205,10 @@ const config = {
             name: 'Analytics table hooks',
             url: '#/analyticsTableHooks',
         },
+        {
+            name: 'Resources',
+            url: '#/resources',
+        },
     ],
 }
 

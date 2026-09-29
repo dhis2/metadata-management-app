@@ -56,6 +56,15 @@ const validEventFields: Set<string> = new Set([
     'name',
     'shortName',
     'description',
+    'executionDateLabel',
+    'dueDateLabel',
+    'eventLabel',
+    'eventsLabel',
+    'orgUnitLabel',
+    'relationshipLabel',
+    'relationshipsLabel',
+    'noteLabel',
+    'notesLabel',
 ])
 
 /**

@@ -1,3 +1,24 @@
+# [0.179.0](https://github.com/dhis2/metadata-management-app/compare/v0.178.0...v0.179.0) (2026-09-15)
+
+
+### Features
+
+* add bulk delete action to section list toolbar [DHIS2-22045] ([#1031](https://github.com/dhis2/metadata-management-app/issues/1031)) ([bf07fc9](https://github.com/dhis2/metadata-management-app/commit/bf07fc9dee8adbef6372a3cc3abd763a044374c3))
+
+# [0.178.0](https://github.com/dhis2/metadata-management-app/compare/v0.177.0...v0.178.0) (2026-09-14)
+
+
+### Features
+
+* custom terminology labels for event programs ([#1033](https://github.com/dhis2/metadata-management-app/issues/1033)) ([60f2037](https://github.com/dhis2/metadata-management-app/commit/60f203721451504944df91657835d517139c3c05))
+
+# [0.177.0](https://github.com/dhis2/metadata-management-app/compare/v0.176.4...v0.177.0) (2026-09-11)
+
+
+### Features
+
+* add resources (documents) list view ([#1036](https://github.com/dhis2/metadata-management-app/issues/1036)) ([fe15d46](https://github.com/dhis2/metadata-management-app/commit/fe15d46c86502888529b43e0142b14a09c3be2d6))
+
 ## [0.176.4](https://github.com/dhis2/metadata-management-app/compare/v0.176.3...v0.176.4) (2026-09-03)
 
 
