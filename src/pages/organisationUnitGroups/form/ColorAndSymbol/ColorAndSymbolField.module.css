@@ -1,4 +1,9 @@
 .container {
     display: flex;
     gap: var(--spacers-dp4);
+    /* reset <fieldset> default browser chrome */
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
 }

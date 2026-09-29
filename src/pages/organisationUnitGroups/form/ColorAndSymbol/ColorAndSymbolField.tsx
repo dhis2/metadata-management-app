@@ -27,9 +27,8 @@ export const ColorAndSymbolField = () => {
             dataTest="formfields-colorandsymbol"
             label={i18n.t('Visual configuration')}
         >
-            <div
+            <fieldset
                 className={classes.container}
-                role="group"
                 aria-label={i18n.t('Color and symbol')}
             >
                 <ColorPicker
@@ -40,7 +39,7 @@ export const ColorAndSymbolField = () => {
                     symbol={symbolInput.value}
                     onSymbolPick={onSymbolPick}
                 />
-            </div>
+            </fieldset>
         </Field>
     )
 }

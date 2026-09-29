@@ -52,6 +52,10 @@
 .symbolContainer {
     cursor: pointer;
     padding: var(--spacers-dp4);
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: inherit;
 }
 
 .active,

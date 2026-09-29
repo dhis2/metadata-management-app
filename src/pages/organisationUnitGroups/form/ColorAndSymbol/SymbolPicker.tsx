@@ -51,9 +51,9 @@ function SymbolPickerModal({
                     aria-label={i18n.t('Available symbols')}
                 >
                     {SYMBOL_FILENAMES.map((filename) => (
-                        <div
+                        <button
                             key={filename}
-                            role="button"
+                            type="button"
                             aria-pressed={filename === symbol}
                             className={cx(classes.symbolContainer, {
                                 [classes.active]: filename === symbol,
@@ -67,7 +67,7 @@ function SymbolPickerModal({
                                 src={getSymbolUrl(baseUrl, filename)}
                                 loading="lazy"
                             />
-                        </div>
+                        </button>
                     ))}
                 </div>
             </ModalContent>
