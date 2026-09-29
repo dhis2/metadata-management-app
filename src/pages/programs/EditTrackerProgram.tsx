@@ -46,6 +46,7 @@ const PLURAL_LABEL_FIELD_FILTERS = [
     'notesLabel',
     'trackedEntityAttributesLabel',
 ] as const
+const ENABLE_CHANGE_LOG_FIELD_FILTERS = ['enableChangeLog'] as const
 
 const fieldFilters = [
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
@@ -95,6 +96,7 @@ const fieldFilters = [
     'minAttributesRequiredToSearch',
     'maxTeiCountToReturn',
     'accessLevel',
+    ...ENABLE_CHANGE_LOG_FIELD_FILTERS,
 ] as const
 
 export type ProgramsFromFilters = PickWithFieldFilters<
@@ -279,14 +281,21 @@ export const EditTrackerProgram = () => {
     const showPluralLabels = useFeatureAvailable(
         FEATURES.customTerminologyPlurals
     )
+    const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
 
     const requestedFields = useMemo(() => {
-        if (showPluralLabels) {
+        const excluded: string[] = []
+        if (!showPluralLabels) {
+            excluded.push(...PLURAL_LABEL_FIELD_FILTERS)
+        }
+        if (!showEnableChangeLog) {
+            excluded.push(...ENABLE_CHANGE_LOG_FIELD_FILTERS)
+        }
+        if (excluded.length === 0) {
             return fieldFilters.concat()
         }
-        const pluralFilters: readonly string[] = PLURAL_LABEL_FIELD_FILTERS
-        return fieldFilters.filter((f) => !pluralFilters.includes(f))
-    }, [showPluralLabels])
+        return fieldFilters.filter((f) => !excluded.includes(f))
+    }, [showPluralLabels, showEnableChangeLog])
 
     const program = useQuery({
         queryFn: queryFn<ProgramValues>,

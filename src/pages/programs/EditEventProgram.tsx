@@ -20,10 +20,12 @@ import {
     createJsonPatchOperations,
     ATTRIBUTE_VALUES_FIELD_FILTERS,
     DEFAULT_FIELD_FILTERS,
+    FEATURES,
     parseErrorResponse,
     SectionedFormProvider,
     SECTIONS_MAP,
     useBoundResourceQueryFn,
+    useFeatureAvailable,
     useOnSubmitEdit,
 } from '../../lib'
 import { EnhancedOnSubmit } from '../../lib/form/useOnSubmit'
@@ -43,6 +45,7 @@ const PLURAL_LABEL_FIELD_FILTERS = [
     'relationshipsLabel',
     'notesLabel',
 ] as const
+const ENABLE_CHANGE_LOG_FIELD_FILTERS = ['enableChangeLog'] as const
 
 const fieldFilters = [
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
@@ -69,6 +72,7 @@ const fieldFilters = [
     'expiryPeriodType',
     'completeEventsExpiryDays',
     'openDaysAfterCoEndDate',
+    ...ENABLE_CHANGE_LOG_FIELD_FILTERS,
 ] as const
 
 export type ProgramsFromFilters = PickWithFieldFilters<
@@ -268,6 +272,15 @@ export const useOnSubmitProgramEdit = (modelId: string) => {
 export const EditEventProgram = () => {
     const queryFn = useBoundResourceQueryFn()
     const modelId = useParams().id as string
+    const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
+
+    const requestedFields = useMemo(() => {
+        if (showEnableChangeLog) {
+            return fieldFilters.concat()
+        }
+        const excluded: readonly string[] = ENABLE_CHANGE_LOG_FIELD_FILTERS
+        return fieldFilters.filter((f) => !excluded.includes(f))
+    }, [showEnableChangeLog])
 
     const program = useQuery({
         queryFn: queryFn<ProgramValues>,
@@ -276,7 +289,7 @@ export const EditEventProgram = () => {
                 resource: 'programs',
                 id: modelId,
                 params: {
-                    fields: fieldFilters.concat(),
+                    fields: requestedFields,
                 },
             },
         ] as const,

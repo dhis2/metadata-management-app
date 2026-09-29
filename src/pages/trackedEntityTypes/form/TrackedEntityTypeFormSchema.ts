@@ -29,6 +29,7 @@ const trackedEntityTypeBaseSchema = z.object({
         })
         .default({}),
     allowAuditLog: z.boolean().default(false),
+    enableChangeLog: z.boolean().default(false),
     minAttributesRequiredToSearch: z
         .number()
         .min(

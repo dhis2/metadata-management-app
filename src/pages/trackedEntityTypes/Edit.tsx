@@ -28,6 +28,7 @@ import {
     validateTrackedEntityType,
 } from './form'
 const PLURAL_LABEL_FIELD_FILTERS = ['trackedEntityTypesLabel'] as const
+const ENABLE_CHANGE_LOG_FIELD_FILTERS = ['enableChangeLog'] as const
 
 const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
@@ -38,6 +39,7 @@ const fieldFilters = [
     'description',
     'style[color,icon]',
     'allowAuditLog',
+    ...ENABLE_CHANGE_LOG_FIELD_FILTERS,
     'minAttributesRequiredToSearch',
     'maxTeiCountToReturn',
     'featureType',
@@ -69,14 +71,21 @@ export const Component = () => {
     const showPluralLabels = useFeatureAvailable(
         FEATURES.customTerminologyPlurals
     )
+    const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
 
     const requestedFields = useMemo(() => {
-        if (showPluralLabels) {
+        const excluded: string[] = []
+        if (!showPluralLabels) {
+            excluded.push(...PLURAL_LABEL_FIELD_FILTERS)
+        }
+        if (!showEnableChangeLog) {
+            excluded.push(...ENABLE_CHANGE_LOG_FIELD_FILTERS)
+        }
+        if (excluded.length === 0) {
             return fieldFilters.concat()
         }
-        const pluralFilters: readonly string[] = PLURAL_LABEL_FIELD_FILTERS
-        return fieldFilters.filter((f) => !pluralFilters.includes(f))
-    }, [showPluralLabels])
+        return fieldFilters.filter((f) => !excluded.includes(f))
+    }, [showPluralLabels, showEnableChangeLog])
 
     const query = {
         resource: 'trackedEntityTypes',
