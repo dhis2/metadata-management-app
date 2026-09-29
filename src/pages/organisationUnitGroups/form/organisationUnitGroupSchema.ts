@@ -7,7 +7,7 @@ import {
 
 /*  Note that this describes what we send to the server,
     and not what is stored in the form. */
-const { identifiable, withDefaultListColumns, withAttributeValues } =
+const { identifiable, withDefaultListColumns, withAttributeValues, style } =
     modelFormSchemas
 
 const organisationUnitGroupBaseSchema = z.object({

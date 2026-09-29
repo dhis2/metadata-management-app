@@ -4,7 +4,7 @@ import React from 'react'
 import { useField } from 'react-final-form'
 import { ColorAndIconPicker } from '../../ColorAndIconPicker'
 
-export function ColorAndIconField() {
+export const ColorAndIconField = () => {
     const { input: colorInput } = useField('style.color', {
         validateFields: [],
     })

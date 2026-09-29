@@ -94,6 +94,7 @@ const ExternalAppLinks = React.memo(
     ({ filterValue }: { filterValue: string }) => {
         const userAuthorities = useCurrentUserAuthorities()
         const config = useConfig()
+        console.log('con fig', config)
         const globalShellEnabled =
             useSystemSettingsStore(
                 (state) => state.systemSettings?.globalShellEnabled
