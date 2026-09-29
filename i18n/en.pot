@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-14T08:59:16.484Z\n"
-"PO-Revision-Date: 2026-09-14T08:59:16.484Z\n"
+"POT-Creation-Date: 2026-09-29T08:19:12.891Z\n"
+"PO-Revision-Date: 2026-09-29T08:19:12.891Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -4285,6 +4285,27 @@ msgstr ""
 
 msgid "Choose the groups to include in this organisation unit group set."
 msgstr "Choose the groups to include in this organisation unit group set."
+
+msgid "Color and symbol"
+msgstr "Color and symbol"
+
+msgid "Choose a symbol"
+msgstr "Choose a symbol"
+
+msgid "Available symbols"
+msgstr "Available symbols"
+
+msgid "Choose symbol"
+msgstr "Choose symbol"
+
+msgid "Remove symbol"
+msgstr "Remove symbol"
+
+msgid "Symbol"
+msgstr "Symbol"
+
+msgid "Symbol: none selected"
+msgstr "Symbol: none selected"
 
 msgid "Set up the basic information for this organisation unit group."
 msgstr "Set up the basic information for this organisation unit group."

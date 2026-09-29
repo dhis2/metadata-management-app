@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    padding: var(--spacers-dp4) var(--spacers-dp4) var(--spacers-dp4)
+        var(--spacers-dp8);
+    border-radius: 3px;
+    border: 1px solid var(--colors-grey500);
+    background: var(--colors-white);
+    cursor: pointer;
+    align-items: center;
+}
+
+.label {
+    font-size: 13px;
+    color: var(--colors-grey600);
+    margin-inline-end: 6px;
+}
+
+.symbolSwatch {
+    height: 24px;
+    width: 24px;
+    margin-inline-end: var(--spacers-dp4);
+    flex-shrink: 0;
+}
+
+.swatchImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.emptyIcon {
+    display: block;
+    fill: var(--colors-grey400);
+    width: 100%;
+    height: 100%;
+}
+
+.openCloseIconContainer {
+    display: flex;
+    align-items: center;
+}
+
+.symbolsContainer {
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: var(--spacers-dp8);
+    padding: var(--spacers-dp8);
+}
+
+.symbolContainer {
+    cursor: pointer;
+    padding: var(--spacers-dp4);
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+}
+
+.active,
+.symbolContainer.active:hover {
+    outline: var(--colors-teal500) solid 3px;
+}
+
+.symbolContainer:hover {
+    outline: var(--colors-grey600) solid 3px;
+}
+
+.symbolImage {
+    display: block;
+    height: 24px;
+    width: 24px;
+}
