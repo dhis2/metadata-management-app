@@ -10,11 +10,30 @@ import {
     StandardFormSectionTitle,
 } from '../../../../components'
 import { ModelSingleSelectRefreshableFormField } from '../../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
-import { SECTIONS_MAP } from '../../../../lib'
+import {
+    DEFAULT_CATEGORYCOMBO_SELECT_OPTION,
+    FEATURES,
+    SECTIONS_MAP,
+    useFeatureAvailable,
+} from '../../../../lib'
+import { DisplayableModel } from '../../../../types/models'
 import styles from './EnrollmentSettingsFormContents.module.css'
+
+const CATEGORY_COMBOS_QUERY = {
+    resource: 'categoryCombos',
+    params: {
+        filter: ['dataDimensionType:eq:ATTRIBUTE'],
+        fields: ['id', 'displayName', 'name'],
+    },
+}
+
+const addDefaultCategoryComboTransform = <TCatCombo extends DisplayableModel>(
+    catCombos: TCatCombo[]
+) => [DEFAULT_CATEGORYCOMBO_SELECT_OPTION, ...catCombos]
 
 export const EnrollmentSettingsFormContents = React.memo(
     function EnrollmentSettingsFormContents({ name }: { name: string }) {
+        const showEnrollmentAOC = useFeatureAvailable(FEATURES.enrollmentAOC)
         const {
             input: displayIncidentDateInput,
             meta: displayIncidentDateMate,
@@ -126,6 +145,20 @@ export const EnrollmentSettingsFormContents = React.memo(
                         )}
                     />
                 </StandardFormField>
+
+                {showEnrollmentAOC && (
+                    <StandardFormField>
+                        <ModelSingleSelectRefreshableFormField
+                            inputWidth={'400px'}
+                            name="enrollmentCategoryCombo"
+                            dataTest="formfields-enrollmentcategorycombo"
+                            label={i18n.t('Enrollment category combination')}
+                            query={CATEGORY_COMBOS_QUERY}
+                            transform={addDefaultCategoryComboTransform}
+                            section={SECTIONS_MAP.categoryCombo}
+                        />
+                    </StandardFormField>
+                )}
             </SectionedFormSection>
         )
     }
