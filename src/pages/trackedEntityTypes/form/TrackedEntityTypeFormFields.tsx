@@ -42,6 +42,9 @@ export function TrackedEntityTypeFormFields() {
         FEATURES.customTerminologyPlurals
     )
     const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
+    const allowAuditLogLabel = showEnableChangeLog
+        ? i18n.t('Record access to tracked entities')
+        : i18n.t('Enable tracked entity instance audit log')
 
     return (
         <SectionedFormSections>
@@ -89,7 +92,7 @@ export function TrackedEntityTypeFormFields() {
                 )}
 
                 <StandardFormField>
-                    <AllowAuditLogField />
+                    <AllowAuditLogField label={allowAuditLogLabel} />
                 </StandardFormField>
 
                 <StandardFormField>

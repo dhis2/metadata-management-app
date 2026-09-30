@@ -98,7 +98,7 @@ const trackerProgramBaseSchema = z.object({
     accessLevel: z
         .enum(['OPEN', 'AUDITED', 'PROTECTED', 'CLOSED'])
         .default('OPEN'),
-    enableChangeLog: z.boolean().default(false),
+    enableChangeLog: z.boolean().optional(),
 })
 
 export const trackerProgramFormSchema = identifiable

@@ -45,7 +45,7 @@ const PLURAL_LABEL_FIELD_FILTERS = [
     'relationshipsLabel',
     'notesLabel',
 ] as const
-const ENABLE_CHANGE_LOG_FIELD_FILTERS = ['enableChangeLog'] as const
+const ENABLE_CHANGE_LOG_FIELD = 'enableChangeLog'
 
 const fieldFilters = [
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
@@ -72,7 +72,7 @@ const fieldFilters = [
     'expiryPeriodType',
     'completeEventsExpiryDays',
     'openDaysAfterCoEndDate',
-    ...ENABLE_CHANGE_LOG_FIELD_FILTERS,
+    ENABLE_CHANGE_LOG_FIELD,
 ] as const
 
 export type ProgramsFromFilters = PickWithFieldFilters<
@@ -278,8 +278,7 @@ export const EditEventProgram = () => {
         if (showEnableChangeLog) {
             return fieldFilters.concat()
         }
-        const excluded: readonly string[] = ENABLE_CHANGE_LOG_FIELD_FILTERS
-        return fieldFilters.filter((f) => !excluded.includes(f))
+        return fieldFilters.filter((f) => f !== ENABLE_CHANGE_LOG_FIELD)
     }, [showEnableChangeLog])
 
     const program = useQuery({

@@ -46,7 +46,7 @@ const PLURAL_LABEL_FIELD_FILTERS = [
     'notesLabel',
     'trackedEntityAttributesLabel',
 ] as const
-const ENABLE_CHANGE_LOG_FIELD_FILTERS = ['enableChangeLog'] as const
+const ENABLE_CHANGE_LOG_FIELD = 'enableChangeLog'
 
 const fieldFilters = [
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
@@ -96,7 +96,7 @@ const fieldFilters = [
     'minAttributesRequiredToSearch',
     'maxTeiCountToReturn',
     'accessLevel',
-    ...ENABLE_CHANGE_LOG_FIELD_FILTERS,
+    ENABLE_CHANGE_LOG_FIELD,
 ] as const
 
 export type ProgramsFromFilters = PickWithFieldFilters<
@@ -289,7 +289,7 @@ export const EditTrackerProgram = () => {
             excluded.push(...PLURAL_LABEL_FIELD_FILTERS)
         }
         if (!showEnableChangeLog) {
-            excluded.push(...ENABLE_CHANGE_LOG_FIELD_FILTERS)
+            excluded.push(ENABLE_CHANGE_LOG_FIELD)
         }
         if (excluded.length === 0) {
             return fieldFilters.concat()

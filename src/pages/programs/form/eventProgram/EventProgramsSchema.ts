@@ -91,7 +91,7 @@ const eventProgramBaseSchema = z.object({
         .default(Program.expiryPeriodType.DAILY),
     completeEventsExpiryDays: z.coerce.number().int().min(0).default(1),
     openDaysAfterCoEndDate: z.coerce.number().min(0).default(0),
-    enableChangeLog: z.boolean().default(false),
+    enableChangeLog: z.boolean().optional(),
 })
 
 export const eventProgramFormSchema = identifiable

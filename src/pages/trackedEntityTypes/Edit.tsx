@@ -28,7 +28,7 @@ import {
     validateTrackedEntityType,
 } from './form'
 const PLURAL_LABEL_FIELD_FILTERS = ['trackedEntityTypesLabel'] as const
-const ENABLE_CHANGE_LOG_FIELD_FILTERS = ['enableChangeLog'] as const
+const ENABLE_CHANGE_LOG_FIELD = 'enableChangeLog'
 
 const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
@@ -39,7 +39,7 @@ const fieldFilters = [
     'description',
     'style[color,icon]',
     'allowAuditLog',
-    ...ENABLE_CHANGE_LOG_FIELD_FILTERS,
+    ENABLE_CHANGE_LOG_FIELD,
     'minAttributesRequiredToSearch',
     'maxTeiCountToReturn',
     'featureType',
@@ -79,7 +79,7 @@ export const Component = () => {
             excluded.push(...PLURAL_LABEL_FIELD_FILTERS)
         }
         if (!showEnableChangeLog) {
-            excluded.push(...ENABLE_CHANGE_LOG_FIELD_FILTERS)
+            excluded.push(ENABLE_CHANGE_LOG_FIELD)
         }
         if (excluded.length === 0) {
             return fieldFilters.concat()
