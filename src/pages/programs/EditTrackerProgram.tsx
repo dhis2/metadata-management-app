@@ -48,6 +48,10 @@ const PLURAL_LABEL_FIELD_FILTERS = [
 ] as const
 const ENABLE_CHANGE_LOG_FIELD = 'enableChangeLog'
 
+const ENROLLMENT_AOC_FIELD_FILTERS = [
+    'enrollmentCategoryCombo[id,displayName]',
+] as const
+
 const fieldFilters = [
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
     ...DEFAULT_FIELD_FILTERS,
@@ -60,6 +64,7 @@ const fieldFilters = [
     'featureType',
     'relatedProgram[id,displayName]',
     'categoryCombo[id,displayName]',
+    'enrollmentCategoryCombo[id,displayName]',
     'lastUpdated',
     'dataEntryForm',
     'trackedEntityType[id,displayName,name,trackedEntityTypeAttributes[trackedEntityAttribute[id,displayName,unique,valueType],mandatory,searchable,displayInList]]',
@@ -282,20 +287,25 @@ export const EditTrackerProgram = () => {
         FEATURES.customTerminologyPlurals
     )
     const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
+    const showEnrollmentAOC = useFeatureAvailable(FEATURES.enrollmentAOC)
 
     const requestedFields = useMemo(() => {
-        const excluded: string[] = []
-        if (!showPluralLabels) {
-            excluded.push(...PLURAL_LABEL_FIELD_FILTERS)
-        }
-        if (!showEnableChangeLog) {
-            excluded.push(ENABLE_CHANGE_LOG_FIELD)
-        }
-        if (excluded.length === 0) {
-            return fieldFilters.concat()
-        }
-        return fieldFilters.filter((f) => !excluded.includes(f))
-    }, [showPluralLabels, showEnableChangeLog])
+        const pluralFilters: readonly string[] = PLURAL_LABEL_FIELD_FILTERS
+        const enrollmentAOCFilters: readonly string[] =
+            ENROLLMENT_AOC_FIELD_FILTERS
+        return fieldFilters.filter((f) => {
+            if (!showPluralLabels && pluralFilters.includes(f)) {
+                return false
+            }
+            if (!showEnableChangeLog && f === ENABLE_CHANGE_LOG_FIELD) {
+                return false
+            }
+            if (!showEnrollmentAOC && enrollmentAOCFilters.includes(f)) {
+                return false
+            }
+            return true
+        })
+    }, [showPluralLabels, showEnableChangeLog, showEnrollmentAOC])
 
     const program = useQuery({
         queryFn: queryFn<ProgramValues>,

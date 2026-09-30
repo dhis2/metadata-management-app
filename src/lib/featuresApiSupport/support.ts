@@ -5,6 +5,7 @@ export const FEATURES = Object.freeze({
     skipAnalytics: 'skipAnalytics',
     customTerminologyPlurals: 'customTerminologyPlurals',
     enableChangeLog: 'enableChangeLog',
+    enrollmentAOC: 'enrollmentAOC',
 } as const)
 
 const VERSION_SUPPORT = Object.freeze({
@@ -14,6 +15,7 @@ const VERSION_SUPPORT = Object.freeze({
     [FEATURES.skipAnalytics]: { minor: 43 },
     [FEATURES.customTerminologyPlurals]: { minor: 43, patch: 2 },
     [FEATURES.enableChangeLog]: { minor: 43 },
+    [FEATURES.enrollmentAOC]: { minor: 43 },
 } as Record<string, { minor: number; patch?: number }>)
 
 export const hasAPISupportForFeature = ({

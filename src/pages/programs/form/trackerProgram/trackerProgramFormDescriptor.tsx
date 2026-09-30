@@ -100,6 +100,10 @@ export const TrackerProgramFormDescriptor = {
                         'Do not create overdue events when automatically creating program stage events'
                     ),
                 },
+                {
+                    name: 'enrollmentCategoryCombo',
+                    label: i18n.t('Enrollment category combination'),
+                },
             ],
         },
         {
