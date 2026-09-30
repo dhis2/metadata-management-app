@@ -150,6 +150,7 @@ const NewProgramDialog = ({ onClose }: { onClose: () => void }) => {
 const ProgramToolbar = ({
     selectedModels,
     onDeselectAll,
+    refetch,
     downloadable = true,
 }: DefaultToolbarProps) => {
     const [downloadDialogOpen, setDownloadDialogOpen] = useState(false)
@@ -176,6 +177,7 @@ const ProgramToolbar = ({
                     selectedModels={selectedModels}
                     onDeselectAll={onDeselectAll}
                     downloadButtonElement={DownloadButtonElement}
+                    refetch={refetch}
                 />
             ) : (
                 <DataTableToolbar className={css.listHeaderNormal}>
