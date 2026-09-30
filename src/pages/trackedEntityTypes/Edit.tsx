@@ -74,17 +74,16 @@ export const Component = () => {
     const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
 
     const requestedFields = useMemo(() => {
-        const excluded: string[] = []
-        if (!showPluralLabels) {
-            excluded.push(...PLURAL_LABEL_FIELD_FILTERS)
-        }
-        if (!showEnableChangeLog) {
-            excluded.push(ENABLE_CHANGE_LOG_FIELD)
-        }
-        if (excluded.length === 0) {
-            return fieldFilters.concat()
-        }
-        return fieldFilters.filter((f) => !excluded.includes(f))
+        const pluralFilters: readonly string[] = PLURAL_LABEL_FIELD_FILTERS
+        return fieldFilters.filter((f) => {
+            if (!showPluralLabels && pluralFilters.includes(f)) {
+                return false
+            }
+            if (!showEnableChangeLog && f === ENABLE_CHANGE_LOG_FIELD) {
+                return false
+            }
+            return true
+        })
     }, [showPluralLabels, showEnableChangeLog])
 
     const query = {
