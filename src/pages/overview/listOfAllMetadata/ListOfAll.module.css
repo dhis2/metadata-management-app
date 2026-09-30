@@ -19,6 +19,8 @@
 
 .expandCell {
     padding: 0 !important;
+    /* logical, not padding-left, so the inset follows the writing direction */
+    padding-inline-start: var(--spacers-dp4) !important;
 }
 
 .expandButton {
@@ -29,25 +31,106 @@
     color: var(--colors-grey900) !important;
 }
 
+.schemaRow tr {
+    padding-inline: var(--spacers-dp8);
+}
+
+/* the group row is a section header, not a data row: it spans the whole
+ * table so it no longer lines up under Name / Last updated / Public access
+ * as though it had values for them */
 .schemaRow td {
-    background: var(--colors-grey100);
+    background: var(--colors-grey050);
+    padding-block: var(--spacers-dp8);
     font-weight: 500;
+}
+
+.schemaRowClickable td {
+    cursor: pointer;
+}
+
+.schemaRowClickable:hover td {
+    background: var(--colors-grey200);
+}
+
+.schemaRowEmpty td {
+    color: var(--colors-grey700);
+    font-weight: 400;
+    cursor: default;
 }
 
 .schemaNameCell {
     padding-inline-start: var(--spacers-dp4) !important;
 }
 
-.schemaCount {
-    color: var(--colors-grey600);
-    font-weight: 400;
+.count {
+    display: inline-block;
+    min-width: 20px;
+    margin-inline-start: var(--spacers-dp4);
+    border: 1px solid transparent;
+    border-radius: 9px;
+    padding: 2px 6px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
 }
 
-.loadMoreCell {
-    text-align: center;
+.countBadge {
+    background: var(--colors-blue100);
+    color: var(--colors-blue800);
+}
+
+.countZero {
+    border-color: var(--colors-grey300);
+    background: var(--colors-grey050);
+    color: var(--colors-grey600);
+}
+
+/* matches .listRow in SectionList.module.css so item rows sit at the same
+ * density as every other object list page */
+.listRow td {
+    padding-block: var(--spacers-dp4);
+}
+
+.listRow.active td {
+    background-color: var(--colors-grey200);
+}
+
+.listRow.clickable td {
     cursor: pointer;
 }
 
-.loadMoreCell:hover {
-    background: var(--colors-grey200) !important;
+.listRow.clickable:hover .listRowText {
+    text-decoration: underline;
+}
+
+.listRowText {
+    min-width: 0;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.itemNameCell {
+    padding-inline-start: var(--spacers-dp16) !important;
+}
+
+/* scoped to td so it outweighs the cell colour DHIS2 injects at runtime -
+ * a bare .loadMoreCell ties on specificity and loses on order.
+ * underlined at rest, not just on hover, so it reads as the action it is */
+.loadMoreRow td {
+    padding-block: var(--spacers-dp8);
+    color: var(--colors-grey800);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.loadMoreRow:hover td {
+    background: var(--colors-grey200);
+}
+
+/* lines up with the item names above it rather than centring across the
+ * whole table */
+.loadMoreCell {
+    padding-inline-start: var(--spacers-dp16) !important;
 }
