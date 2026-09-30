@@ -2,7 +2,7 @@ import { CheckboxFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field } from 'react-final-form'
 
-export function AllowAuditLogField({ label }: { label: string }) {
+export function AllowAuditLogField({ label }: Readonly<{ label: string }>) {
     return (
         <Field
             component={CheckboxFieldFF}
