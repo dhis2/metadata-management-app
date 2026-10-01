@@ -16,7 +16,7 @@ import {
     ValueTypeField,
 } from '../../../components'
 import { FEATURES, SECTIONS_MAP, useFeatureAvailable } from '../../../lib'
-import { TrackedEntityAttribute } from '../../../types/generated'
+import { ValueType } from '../../../types/generated'
 import {
     BlockedSearchOperatorsField,
     FieldMaskField,
@@ -55,12 +55,12 @@ export const TrackedEntityAttributeFormFields = ({
     const isUnique = uniqueInput.value
     const isOrgunitScope = orgunitScopeInput.value
     const isGenerated = generatedInput.value
-    const showTrackedEntityType =
-        valueType === TrackedEntityAttribute.valueType.TRACKER_ASSOCIATE
+    // TRACKER_ASSOCIATE is no longer in the ValueType enum but can still exist in stored data.
+    const TRACKER_ASSOCIATE = 'TRACKER_ASSOCIATE' as ValueType
+    const showTrackedEntityType = valueType === TRACKER_ASSOCIATE
 
     const uniqueDisabled =
-        valueType === TrackedEntityAttribute.valueType.TRACKER_ASSOCIATE ||
-        valueType === TrackedEntityAttribute.valueType.USERNAME
+        valueType === TRACKER_ASSOCIATE || valueType === ValueType.USERNAME
 
     const isSearchPerformanceSectionAvailable = useFeatureAvailable(
         FEATURES.searchPerformance

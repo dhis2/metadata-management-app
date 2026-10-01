@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { getDefaultsOld, modelFormSchemas } from '../../../lib'
 import { UserSchema } from '../../../lib/form/modelFormSchemas'
 import { createFormValidate } from '../../../lib/form/validate'
-import { ProgramIndicator } from '../../../types/generated'
+import { AggregationType, AnalyticsType } from '../../../types/generated'
 
 const {
     identifiable,
@@ -15,8 +15,8 @@ const {
 
 const programIndicatorsBaseSchema = z.object({
     program: modelReference,
-    aggregationType: z.nativeEnum(ProgramIndicator.aggregationType).optional(),
-    analyticsType: z.nativeEnum(ProgramIndicator.analyticsType),
+    aggregationType: z.nativeEnum(AggregationType).optional(),
+    analyticsType: z.nativeEnum(AnalyticsType),
     displayInForm: z.boolean().default(false),
     description: z.string().optional(),
     legendSets: referenceCollection.default([]),

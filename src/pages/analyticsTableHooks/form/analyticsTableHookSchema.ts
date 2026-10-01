@@ -3,7 +3,10 @@ import { createFormValidate, modelFormSchemas } from '../../../lib'
 import { getDefaults } from '../../../lib/zod/getDefaults'
 import {
     AnalyticsTableHook,
+    AnalyticsTablePhase,
+    AnalyticsTableType,
     PickWithFieldFilters,
+    ResourceTableType,
 } from '../../../types/generated'
 import { fieldFilters } from './fieldFilters'
 
@@ -11,13 +14,9 @@ const { withDefaultListColumns, identifiable } = modelFormSchemas
 
 const analyticsTableHookBaseSchema = z.object({
     sql: z.string(),
-    analyticsTableType: z
-        .nativeEnum(AnalyticsTableHook.analyticsTableType)
-        .optional(),
-    phase: z.nativeEnum(AnalyticsTableHook.phase),
-    resourceTableType: z
-        .nativeEnum(AnalyticsTableHook.resourceTableType)
-        .optional(),
+    analyticsTableType: z.nativeEnum(AnalyticsTableType).optional(),
+    phase: z.nativeEnum(AnalyticsTablePhase),
+    resourceTableType: z.nativeEnum(ResourceTableType).optional(),
 })
 
 export const analyticsTableHookFormSchema = identifiable.merge(

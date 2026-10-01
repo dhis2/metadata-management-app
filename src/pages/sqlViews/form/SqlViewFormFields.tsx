@@ -17,7 +17,7 @@ import {
     useSchema,
     getConstantTranslation,
 } from '../../../lib'
-import { SqlView } from '../../../types/generated'
+import { SqlViewType } from '../../../types/generated'
 import { QueryDefinitionField } from './QueryDefinitionField'
 
 const section = SCHEMA_SECTIONS.sqlView
@@ -97,7 +97,7 @@ export function SqlViewFormFields() {
                                 { nsSeparator: '~:~' }
                             )}
                             type="radio"
-                            value={SqlView.type.VIEW}
+                            value={SqlViewType.VIEW}
                             disabled={isEdit}
                         />
                         <Field<string | undefined>
@@ -108,7 +108,7 @@ export function SqlViewFormFields() {
                                 { nsSeparator: '~:~' }
                             )}
                             type="radio"
-                            value={SqlView.type.MATERIALIZED_VIEW}
+                            value={SqlViewType.MATERIALIZED_VIEW}
                             disabled={isEdit}
                         />
                         <Field<string | undefined>
@@ -119,14 +119,14 @@ export function SqlViewFormFields() {
                                 { nsSeparator: '~:~' }
                             )}
                             type="radio"
-                            value={SqlView.type.QUERY}
+                            value={SqlViewType.QUERY}
                             disabled={isEdit}
                         />
                     </FieldGroup>
                 </StandardFormField>
                 <StandardFormField>
                     <QueryDefinitionField
-                        isQuery={typeInput.value === SqlView.type.QUERY}
+                        isQuery={typeInput.value === SqlViewType.QUERY}
                     />
                 </StandardFormField>
             </StandardFormSection>
