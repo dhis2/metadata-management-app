@@ -1,4 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
+import { url as urlValidator } from '@dhis2/ui'
 import { z } from 'zod'
 import { modelFormSchemas, createFormValidate } from '../../../lib'
 import { getDefaults } from '../../../lib/zod/getDefaults'
@@ -14,17 +15,6 @@ export const resourceTypeOptions = [
     { value: ResourceType.FILE, label: i18n.t('File') },
     { value: ResourceType.URL, label: i18n.t('URL') },
 ]
-
-// zod's url() accepts any scheme URL can parse (e.g. javascript:), so also
-// restrict to the protocols that make sense for a linked resource
-const ALLOWED_URL_PROTOCOLS = new Set(['http:', 'https:', 'ftp:'])
-
-const isValidResourceUrl = (value: string) => {
-    if (!z.string().url().safeParse(value).success) {
-        return false
-    }
-    return ALLOWED_URL_PROTOCOLS.has(new URL(value).protocol)
-}
 
 // mirrors FileResourceBlocklist in dhis2-core, which rejects these uploads
 const BLOCKED_FILE_CONTENT_TYPES = new Set([
@@ -92,16 +82,13 @@ const refineResourceTypeFields = (
     ctx: z.RefinementCtx
 ) => {
     if (values.resourceType === ResourceType.URL) {
-        if (!values.url) {
+        const urlError = values.url
+            ? urlValidator(values.url)
+            : i18n.t('A URL is required')
+        if (urlError) {
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,
-                message: i18n.t('A URL is required'),
-                path: ['url'],
-            })
-        } else if (!isValidResourceUrl(values.url)) {
-            ctx.addIssue({
-                code: z.ZodIssueCode.custom,
-                message: i18n.t('Enter a valid URL'),
+                message: urlError,
                 path: ['url'],
             })
         }

@@ -274,7 +274,7 @@ describe('Resources form tests', () => {
             expect(createDocumentMock).not.toHaveBeenCalled()
             uiAssertions.expectFieldToHaveError(
                 'formfields-url',
-                'Enter a valid URL',
+                'Please provide a valid url',
                 screen
             )
         })

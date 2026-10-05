@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-10-05T08:56:00.303Z\n"
-"PO-Revision-Date: 2026-10-05T08:56:00.303Z\n"
+"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
+"PO-Revision-Date: 2026-10-05T09:04:48.203Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -6420,9 +6420,6 @@ msgstr "Use the file as an attachment"
 
 msgid "A URL is required"
 msgstr "A URL is required"
-
-msgid "Enter a valid URL"
-msgstr "Enter a valid URL"
 
 msgid "A file is required"
 msgstr "A file is required"
