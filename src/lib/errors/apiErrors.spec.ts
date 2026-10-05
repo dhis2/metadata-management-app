@@ -42,4 +42,27 @@ describe('parseErrorResponse', () => {
             })
         }
     )
+
+    it('keeps the http status for web messages without a response', () => {
+        const rejection = new FetchError({
+            type: 'unknown',
+            message: 'Not Found',
+            details: {
+                httpStatus: 'Not Found',
+                httpStatusCode: 404,
+                status: 'ERROR',
+                message:
+                    'IndicatorGroup with id uFcn6Gs8rTC could not be found.',
+                errorCode: 'E1005',
+            },
+        })
+
+        const result = parseErrorResponse(rejection)
+
+        expect(result).toMatchObject({
+            httpStatus: 'Not Found',
+            httpStatusCode: 404,
+            message: 'IndicatorGroup with id uFcn6Gs8rTC could not be found.',
+        })
+    })
 })

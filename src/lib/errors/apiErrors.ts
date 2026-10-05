@@ -146,5 +146,17 @@ export const parseErrorResponse = (errorResponse: unknown): ApiErrorReport => {
             })
         }
     }
+
+    const webMessage = webMessageSchema
+        .omit({ response: true })
+        .safeParse(error)
+    if (webMessage.success) {
+        return createErrorReport({
+            message: webMessage.data.message,
+            httpStatus: webMessage.data.httpStatus,
+            httpStatusCode: webMessage.data.httpStatusCode,
+            original: webMessage.data,
+        })
+    }
     return createFallbackError(error)
 }
