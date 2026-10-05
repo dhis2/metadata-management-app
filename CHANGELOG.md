@@ -1,3 +1,10 @@
+## [0.180.1](https://github.com/dhis2/metadata-management-app/compare/v0.180.0...v0.180.1) (2026-10-05)
+
+
+### Bug Fixes
+
+* disable section reordering for data set clone [DHIS2-21270] ([#1045](https://github.com/dhis2/metadata-management-app/issues/1045)) ([6802483](https://github.com/dhis2/metadata-management-app/commit/6802483ab52291b7fa016a7adb094bf89831597d))
+
 # [0.180.0](https://github.com/dhis2/metadata-management-app/compare/v0.179.1...v0.180.0) (2026-10-05)
 
 
