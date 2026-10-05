@@ -38,15 +38,19 @@ export const BulkDeleteDialog = ({
 
     const mutation = useBulkDeleteMutation(schema.plural, {
         onSuccess: (results) => {
-            const failed = results.filter(
-                (result) => result.status === 'rejected'
-            )
-            if (failed.length === 0) {
+            const merged = failedResults
+                ? failedResults.map(
+                      (previous) =>
+                          results.find((result) => result.id === previous.id) ??
+                          previous
+                  )
+                : results
+            if (merged.every((result) => result.status === 'fulfilled')) {
                 showSuccessAlert()
                 onDeleteSuccess()
                 onClose()
             } else {
-                setFailedResults(results)
+                setFailedResults(merged)
             }
         },
     })
@@ -56,6 +60,8 @@ export const BulkDeleteDialog = ({
             <BulkDeleteErrorsDialog
                 schema={schema}
                 results={failedResults}
+                retrying={mutation.isLoading}
+                onRetry={(ids) => mutation.mutate({ ids })}
                 onClose={() => {
                     onDeleteSuccess()
                     onClose()

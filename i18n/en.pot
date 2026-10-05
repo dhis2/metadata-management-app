@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-17T09:48:53.184Z\n"
-"PO-Revision-Date: 2026-09-17T09:48:53.184Z\n"
+"POT-Creation-Date: 2026-10-05T08:31:01.928Z\n"
+"PO-Revision-Date: 2026-10-05T08:31:01.928Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -1001,11 +1001,26 @@ msgstr ""
 "Are you sure you want to delete these {{number}} items? This cannot be "
 "undone."
 
+msgid "Errors copied to clipboard"
+msgstr "Errors copied to clipboard"
+
 msgid "{{failedCount}} of {{total}} items could not be deleted"
 msgstr "{{failedCount}} of {{total}} items could not be deleted"
 
+msgid "Copy errors"
+msgstr "Copy errors"
+
+msgid "Retry failed items"
+msgstr "Retry failed items"
+
 msgid "Close"
 msgstr "Close"
+
+msgid "Open in a new tab"
+msgstr "Open in a new tab"
+
+msgid "Open"
+msgstr "Open"
 
 msgid "Successfully updated sharing for {{number}} items"
 msgstr "Successfully updated sharing for {{number}} items"
@@ -1039,6 +1054,15 @@ msgstr "Update sharing for {{number}} items"
 
 msgid "Update sharing"
 msgstr "Update sharing"
+
+msgid "You do not have permission to delete this item"
+msgstr "You do not have permission to delete this item"
+
+msgid "Not found, it may already have been deleted"
+msgstr "Not found, it may already have been deleted"
+
+msgid "Cannot be deleted"
+msgstr "Cannot be deleted"
 
 msgid "Created by"
 msgstr "Created by"
@@ -5701,9 +5725,6 @@ msgstr "Role access"
 
 msgid "Save the program first to set up sharing."
 msgstr "Save the program first to set up sharing."
-
-msgid "Open"
-msgstr "Open"
 
 msgid "Users can open tracked entities in their search or capture scope."
 msgstr "Users can open tracked entities in their search or capture scope."
