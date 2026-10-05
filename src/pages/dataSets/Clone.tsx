@@ -25,18 +25,23 @@ import {
     useCreateModel,
     useNavigateWithSearchState,
 } from '../../lib'
-// import { toProgramRuleActionApiPayload } from './form/actions/transformers'
-// import type { ProgramRuleActionListItem } from './form/actions/types'
 import { fieldFilters, DataSetValues } from './Edit'
-import { fieldFilters as sectionFieldFilters } from './form/dataEntryForm/sectionForm/DataSetSectionForm'
+import {
+    fieldFilters as sectionFieldFilters,
+    SectionFormValues,
+} from './form/dataEntryForm/sectionForm/DataSetSectionForm'
 import { DataSetFormContents } from './form/DataSetFormContents'
 import { validate } from './form/dataSetFormSchema'
 import { DataSetFormDescriptor } from './form/formDescriptor'
-// import { ProgramRuleFormFields } from './form/ProgramRuleFormFields'
-// import { validate } from './form/programRuleSchema'
 import { dataSetValueFormatter } from './New'
 
 const section = SECTIONS_MAP.dataSet
+
+// cloning fetches expanded section broader section than normal Edit page
+type ClonedSection = Omit<SectionFormValues, 'dataSet'>
+type ClonedDataSetValues = Omit<DataSetValues, 'sections'> & {
+    sections: ClonedSection[]
+}
 
 export const Component = () => {
     const queryFn = useBoundResourceQueryFn()
@@ -55,7 +60,7 @@ export const Component = () => {
     }
     const dataSetQuery = useQuery({
         queryKey: [query],
-        queryFn: queryFn<DataSetValues>,
+        queryFn: queryFn<ClonedDataSetValues>,
     })
 
     const createDataSet = useCreateModel(section.namePlural)
@@ -92,14 +97,18 @@ export const Component = () => {
                   }
                 : undefined
 
-            const dataSetValuesWithoutFormInfo = omit(allValues, [
+            const dataSetValuesWithoutFormInfoEtc = omit(allValues, [
                 'sections',
                 'dataEntryForm',
+                'created',
+                'createdBy',
+                'lastUpdated',
+                'lastUpdatedBy',
             ])
 
             // save the data set (without sections or custom form)
             const dataSetResponse = await createDataSet(
-                dataSetValuesWithoutFormInfo
+                dataSetValuesWithoutFormInfoEtc
             )
             if (dataSetResponse.error) {
                 return createFormError(dataSetResponse.error)
@@ -127,10 +136,14 @@ export const Component = () => {
             let dataEntryFormFailed = false
             if (newDataSetId && dataSetSections?.length) {
                 const sectionsResults = await Promise.allSettled(
-                    dataSetSections.map((section) =>
+                    dataSetSections.map((section, index) =>
                         createDataSetSection({
-                            ...omit(section, 'id'),
+                            ...omit(section, ['id']),
                             dataSet: { id: newDataSetId },
+                            code: section.code
+                                ? `${newDataSetId}_${section.code}`
+                                : null,
+                            sortOrder: index,
                         })
                     )
                 )

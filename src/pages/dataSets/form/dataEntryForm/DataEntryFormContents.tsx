@@ -125,6 +125,7 @@ export const DataEntryFromContents = React.memo(function FormFormContents({
                 onFormTypeChange={setSelectedFormType}
                 selectedFormType={selectedFormType}
                 modelId={modelId}
+                isClone={isClone}
             >
                 {selectedFormType === FormType.DEFAULT && (
                     <div className={classes.basicFormDetails}>

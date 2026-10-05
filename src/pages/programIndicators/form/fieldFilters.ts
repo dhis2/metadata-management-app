@@ -1,10 +1,14 @@
-import { DEFAULT_FIELD_FILTERS } from '../../../lib'
+import {
+    ATTRIBUTE_VALUES_FIELD_FILTERS,
+    DEFAULT_FIELD_FILTERS,
+} from '../../../lib'
 import {
     PickWithFieldFilters,
     ProgramIndicator,
 } from '../../../types/generated'
 export const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
+    ...ATTRIBUTE_VALUES_FIELD_FILTERS,
     'name',
     'shortName',
     'code',

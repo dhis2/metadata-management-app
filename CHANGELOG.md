@@ -1,3 +1,11 @@
+## [0.179.1](https://github.com/dhis2/metadata-management-app/compare/v0.179.0...v0.179.1) (2026-09-29)
+
+
+### Bug Fixes
+
+* data set cloning fixes [DHIS2-21720] ([#1040](https://github.com/dhis2/metadata-management-app/issues/1040)) ([75e080d](https://github.com/dhis2/metadata-management-app/commit/75e080d2785f197c609c038f2d8dc34090b45ae4))
+* load program indicator custom attribute values on edit ([#1038](https://github.com/dhis2/metadata-management-app/issues/1038)) ([58ffb7e](https://github.com/dhis2/metadata-management-app/commit/58ffb7efd3d591ae3a94d1fa308b08ee2497c669))
+
 # [0.179.0](https://github.com/dhis2/metadata-management-app/compare/v0.178.0...v0.179.0) (2026-09-15)
 
 
