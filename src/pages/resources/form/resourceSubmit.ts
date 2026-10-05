@@ -37,7 +37,7 @@ export const buildResourceDocumentPayload = async (
               type: 'EXTERNAL_URL',
               external: true,
               attachment: false,
-              url: values.url,
+              url: values.url?.trim(),
           }
         : {
               type: 'UPLOAD_FILE',

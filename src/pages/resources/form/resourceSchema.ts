@@ -15,6 +15,17 @@ export const resourceTypeOptions = [
     { value: ResourceType.URL, label: i18n.t('URL') },
 ]
 
+// zod's url() accepts any scheme URL can parse (e.g. javascript:), so also
+// restrict to the protocols that make sense for a linked resource
+const ALLOWED_URL_PROTOCOLS = ['http:', 'https:', 'ftp:']
+
+const isValidResourceUrl = (value: string) => {
+    if (!z.string().url().safeParse(value).success) {
+        return false
+    }
+    return ALLOWED_URL_PROTOCOLS.includes(new URL(value).protocol)
+}
+
 const resourceBaseSchema = z
     .object({
         code: z.string().trim().nullable().optional(),
@@ -36,7 +47,7 @@ const refineResourceTypeFields = (
                 message: i18n.t('A URL is required'),
                 path: ['url'],
             })
-        } else if (!z.string().url().safeParse(values.url).success) {
+        } else if (!isValidResourceUrl(values.url)) {
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,
                 message: i18n.t('Enter a valid URL'),

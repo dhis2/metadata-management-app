@@ -208,7 +208,7 @@ describe('Resources form tests', () => {
             )
         })
 
-        it('should trim leading and trailing whitespace from the name before saving', async () => {
+        it('should trim leading and trailing whitespace from the name and url before saving', async () => {
             const { screen } = await renderForm()
             const aName = faker.company.name()
 
@@ -218,7 +218,7 @@ describe('Resources form tests', () => {
             await uiActions.pickOptionFromSelect(typeField, 1, screen)
             await uiActions.enterInputFieldValue(
                 'url',
-                'https://www.dhis2.org',
+                '  https://www.dhis2.org  ',
                 screen
             )
 
@@ -226,8 +226,33 @@ describe('Resources form tests', () => {
 
             expect(createDocumentMock).toHaveBeenCalledWith(
                 expect.objectContaining({
-                    data: expect.objectContaining({ name: aName }),
+                    data: expect.objectContaining({
+                        name: aName,
+                        url: 'https://www.dhis2.org',
+                    }),
                 })
+            )
+        })
+
+        it('should not submit a URL resource with a non-web url scheme', async () => {
+            const { screen } = await renderForm()
+            await uiActions.enterName(faker.company.name(), screen)
+
+            const typeField = screen.getByTestId('formfields-resourceType')
+            await uiActions.pickOptionFromSelect(typeField, 1, screen)
+            await uiActions.enterInputFieldValue(
+                'url',
+                'javascript:alert(1)',
+                screen
+            )
+
+            await uiActions.submitAndCloseForm(screen)
+
+            expect(createDocumentMock).not.toHaveBeenCalled()
+            uiAssertions.expectFieldToHaveError(
+                'formfields-url',
+                'Enter a valid URL',
+                screen
             )
         })
     })
