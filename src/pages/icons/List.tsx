@@ -191,6 +191,7 @@ export const Component = () => {
                 <DefaultToolbar
                     selectedModels={new Set()}
                     onDeselectAll={() => {}}
+                    refetch={refetch}
                     downloadable={false}
                 />
 
