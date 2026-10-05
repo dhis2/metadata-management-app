@@ -1167,7 +1167,7 @@ export const modelListViewsConfig = {
         columns: {
             default: [
                 DESCRIPTORS.name,
-                { label: i18n.t('External'), path: 'external' },
+                { label: i18n.t('Type'), path: 'external' },
                 'createdBy',
                 'created',
             ],

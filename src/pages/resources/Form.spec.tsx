@@ -178,6 +178,29 @@ describe('Resources form tests', () => {
             )
         })
 
+        it('should not submit a file resource with a blocked file type', async () => {
+            const { screen } = await renderForm()
+            await uiActions.enterName(faker.company.name(), screen)
+
+            const file = new File(['<html></html>'], 'page.html', {
+                type: 'text/html',
+            })
+            const fileInput = screen
+                .getByTestId('formfields-file')
+                .querySelector('input[type="file"]') as HTMLInputElement
+            await userEvent.upload(fileInput, file)
+
+            await uiActions.submitAndCloseForm(screen)
+
+            expect(createFileResourceMock).not.toHaveBeenCalled()
+            expect(createDocumentMock).not.toHaveBeenCalled()
+            uiAssertions.expectFieldToHaveError(
+                'formfields-file',
+                'This file type is not allowed',
+                screen
+            )
+        })
+
         it('should create the document directly for a URL resource', async () => {
             const { screen } = await renderForm()
             const aName = faker.company.name()

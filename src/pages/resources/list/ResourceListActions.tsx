@@ -46,7 +46,7 @@ export const ResourceListActions = ({
     const deletable = canDeleteModel(model)
     const editable = canEditModel(model)
     const shareable = schema.shareable
-    const showEdit = isResourceEditable(model)
+    const resourceEditable = isResourceEditable(model)
 
     const [open, setOpen] = useState(false)
     const ref = useRef(null)
@@ -101,19 +101,31 @@ export const ResourceListActions = ({
                                 }}
                                 dataTest="row-actions-view-resource"
                             />
-                            {showEdit && (
+                            <TooltipWrapper
+                                condition={!resourceEditable}
+                                content={
+                                    editable
+                                        ? i18n.t(
+                                              'File resources cannot be edited. Delete it and add a new resource instead.'
+                                          )
+                                        : TOOLTIPS.noEditAccess
+                                }
+                            >
                                 <MenuItem
                                     dense
+                                    disabled={!resourceEditable}
                                     label={i18n.t('Edit')}
                                     icon={<IconEdit16 />}
-                                    href={editHref}
+                                    href={
+                                        resourceEditable ? editHref : undefined
+                                    }
                                     onClick={(_, e) => {
                                         handleEditClick(e)
                                         setOpen(false)
                                     }}
                                     dataTest="row-actions-edit"
                                 />
-                            )}
+                            </TooltipWrapper>
                             <MenuItem
                                 dense
                                 label={i18n.t('Show details')}

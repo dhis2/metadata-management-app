@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-10-05T08:47:02.273Z\n"
-"PO-Revision-Date: 2026-10-05T08:47:02.273Z\n"
+"POT-Creation-Date: 2026-10-05T08:56:00.303Z\n"
+"PO-Revision-Date: 2026-10-05T08:56:00.303Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -1253,6 +1253,12 @@ msgstr "Update view"
 msgid "None"
 msgstr "None"
 
+msgid "URL"
+msgstr "URL"
+
+msgid "File"
+msgstr "File"
+
 msgid "No value"
 msgstr "No value"
 
@@ -1786,12 +1792,6 @@ msgstr "Reference"
 
 msgid "Age"
 msgstr "Age"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "File"
-msgstr "File"
 
 msgid "Image"
 msgstr "Image"
@@ -2603,8 +2603,8 @@ msgstr "Key"
 msgid "Keywords"
 msgstr "Keywords"
 
-msgid "External"
-msgstr "External"
+msgid "Type"
+msgstr "Type"
 
 msgid "Which resource table"
 msgstr "Which resource table"
@@ -5138,9 +5138,6 @@ msgstr "After end of reporting period"
 msgid "Offset"
 msgstr "Offset"
 
-msgid "Type"
-msgstr "Type"
-
 msgid "Boundary target"
 msgstr "Boundary target"
 
@@ -5683,6 +5680,9 @@ msgstr "Edit access"
 
 msgid "Public (All users)"
 msgstr "Public (All users)"
+
+msgid "External"
+msgstr "External"
 
 msgid "Group"
 msgstr "Group"
@@ -6403,6 +6403,9 @@ msgstr "File resources cannot be edited. Only resources with a URL can be modifi
 msgid "Resource created successfully"
 msgstr "Resource created successfully"
 
+msgid "Web and executable files are not allowed ({{extensions}})"
+msgstr "Web and executable files are not allowed ({{extensions}})"
+
 msgid "Change file"
 msgstr "Change file"
 
@@ -6424,8 +6427,14 @@ msgstr "Enter a valid URL"
 msgid "A file is required"
 msgstr "A file is required"
 
+msgid "This file type is not allowed"
+msgstr "This file type is not allowed"
+
 msgid "View resource"
 msgstr "View resource"
+
+msgid "File resources cannot be edited. Delete it and add a new resource instead."
+msgstr "File resources cannot be edited. Delete it and add a new resource instead."
 
 msgid "SQL view results"
 msgstr "SQL view results"

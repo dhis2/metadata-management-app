@@ -8,6 +8,7 @@ import {
 } from '@dhis2/ui'
 import React from 'react'
 import { useField } from 'react-final-form'
+import { BLOCKED_FILE_EXTENSIONS } from './resourceSchema'
 
 export function ResourceFileField() {
     const { input, meta } = useField<File | null | undefined>('file')
@@ -36,6 +37,15 @@ export function ResourceFileField() {
             required
             error={hasError}
             validationText={hasError ? meta.error : undefined}
+            helpText={i18n.t(
+                'Web and executable files are not allowed ({{extensions}})',
+                {
+                    extensions: Array.from(
+                        BLOCKED_FILE_EXTENSIONS,
+                        (ext) => `.${ext}`
+                    ).join(', '),
+                }
+            )}
         >
             <FileInput
                 accept=""

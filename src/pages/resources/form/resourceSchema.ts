@@ -17,13 +17,64 @@ export const resourceTypeOptions = [
 
 // zod's url() accepts any scheme URL can parse (e.g. javascript:), so also
 // restrict to the protocols that make sense for a linked resource
-const ALLOWED_URL_PROTOCOLS = ['http:', 'https:', 'ftp:']
+const ALLOWED_URL_PROTOCOLS = new Set(['http:', 'https:', 'ftp:'])
 
 const isValidResourceUrl = (value: string) => {
     if (!z.string().url().safeParse(value).success) {
         return false
     }
-    return ALLOWED_URL_PROTOCOLS.includes(new URL(value).protocol)
+    return ALLOWED_URL_PROTOCOLS.has(new URL(value).protocol)
+}
+
+// mirrors FileResourceBlocklist in dhis2-core, which rejects these uploads
+const BLOCKED_FILE_CONTENT_TYPES = new Set([
+    'text/html',
+    'text/css',
+    'text/javascript',
+    'font/otf',
+    'application/x-shockwave-flash',
+    'application/vnd.debian.binary-package',
+    'application/x-rpm',
+    'application/java-archive',
+    'application/x-ms-dos-executable',
+    'application/vnd.microsoft.portable-executable',
+    'application/vnd.apple.installer+xml',
+    'application/vnd.mozilla.xul+xml',
+    'application/x-httpd-php',
+    'application/x-sh',
+    'application/x-csh',
+])
+
+export const BLOCKED_FILE_EXTENSIONS = new Set([
+    'html',
+    'htm',
+    'css',
+    'js',
+    'mjs',
+    'otf',
+    'swf',
+    'deb',
+    'rpm',
+    'jar',
+    'jsp',
+    'exe',
+    'msi',
+    'mpkg',
+    'xul',
+    'php',
+    'bin',
+    'sh',
+    'csh',
+    'bat',
+])
+
+export const isAllowedResourceFile = (file: File) => {
+    const name = file.name.toLowerCase()
+    const extension = name.includes('.') ? name.split('.').pop() : ''
+    return (
+        !BLOCKED_FILE_EXTENSIONS.has(extension ?? '') &&
+        !BLOCKED_FILE_CONTENT_TYPES.has(file.type.toLowerCase())
+    )
 }
 
 const resourceBaseSchema = z
@@ -56,15 +107,20 @@ const refineResourceTypeFields = (
         }
     }
 
-    if (
-        values.resourceType === ResourceType.FILE &&
-        !(values.file instanceof File)
-    ) {
-        ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: i18n.t('A file is required'),
-            path: ['file'],
-        })
+    if (values.resourceType === ResourceType.FILE) {
+        if (!(values.file instanceof File)) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: i18n.t('A file is required'),
+                path: ['file'],
+            })
+        } else if (!isAllowedResourceFile(values.file)) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: i18n.t('This file type is not allowed'),
+                path: ['file'],
+            })
+        }
     }
 }
 
