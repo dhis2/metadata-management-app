@@ -1,3 +1,11 @@
+# [0.180.0](https://github.com/dhis2/metadata-management-app/compare/v0.179.1...v0.180.0) (2026-10-05)
+
+
+### Features
+
+* [DHIS2-21796] Add enrollment category combination field ([#1041](https://github.com/dhis2/metadata-management-app/issues/1041)) ([f9b99f9](https://github.com/dhis2/metadata-management-app/commit/f9b99f90e2cc9322ab934f11384f1e3c31dcd91a))
+* refresh list on bulk delete ([#1047](https://github.com/dhis2/metadata-management-app/issues/1047)) ([7941670](https://github.com/dhis2/metadata-management-app/commit/7941670c21035504417b861bc9d020f7286a6abe))
+
 ## [0.179.1](https://github.com/dhis2/metadata-management-app/compare/v0.179.0...v0.179.1) (2026-09-29)
 
 
