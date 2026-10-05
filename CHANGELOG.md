@@ -1,3 +1,10 @@
+## [0.180.2](https://github.com/dhis2/metadata-management-app/compare/v0.180.1...v0.180.2) (2026-10-05)
+
+
+### Bug Fixes
+
+* remove provided elsewhere events [DHIS2-22096] ([#1043](https://github.com/dhis2/metadata-management-app/issues/1043)) ([a4ed243](https://github.com/dhis2/metadata-management-app/commit/a4ed243b6c6e3aa29a3eb4c80dc5a373c31ae306))
+
 ## [0.180.1](https://github.com/dhis2/metadata-management-app/compare/v0.180.0...v0.180.1) (2026-10-05)
 
 
