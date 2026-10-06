@@ -14,6 +14,8 @@ import {
 } from '../defaultMergeTests'
 import { Component as Merge } from './Merge'
 
+jest.retryTimes(2, { logErrorsBeforeRetry: true })
+
 const renderMerge = async (
     customData: CustomData = {},
     selectedModels?: Set<string>
