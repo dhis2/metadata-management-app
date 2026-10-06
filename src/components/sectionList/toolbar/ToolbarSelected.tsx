@@ -1,6 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
 import { Button, DataTableToolbar } from '@dhis2/ui'
-import { useQueryClient } from '@tanstack/react-query'
 import React from 'react'
 import {
     isSchemaSection,
@@ -18,16 +17,17 @@ export type ToolbarSelectedProps = {
     selectedModels: Set<string>
     onDeselectAll: () => void
     downloadButtonElement: JSX.Element | null
+    refetch: () => void
 }
 
 export const ToolbarSelected = ({
     selectedModels,
     onDeselectAll,
     downloadButtonElement,
+    refetch,
 }: ToolbarSelectedProps) => {
     const [sharingDialogOpen, setSharingDialogOpen] = React.useState(false)
     const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false)
-    const queryClient = useQueryClient()
     const section = useSectionHandle()
     const maybeSchema = useSchemaOrUndefined(
         section && isSchemaSection(section) ? section.name : undefined
@@ -39,9 +39,7 @@ export const ToolbarSelected = ({
         !!section && isSchemaSection(section) && !section.cannotBulkDelete
     const handleClose = () => setSharingDialogOpen(false)
     const handleDeleteSuccess = () => {
-        if (maybeSchema) {
-            queryClient.invalidateQueries({ queryKey: [maybeSchema.plural] })
-        }
+        refetch()
         onDeselectAll()
     }
     const searchStateWithSelectedModels = useLocationState({

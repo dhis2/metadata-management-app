@@ -166,11 +166,13 @@ export const SectionListWrapper = ({
             <ToolbarComponent
                 selectedModels={selectedModels}
                 onDeselectAll={clearAll}
+                refetch={refetch}
             />
         ) : (
             <DefaultToolbar
                 selectedModels={selectedModels}
                 onDeselectAll={clearAll}
+                refetch={refetch}
             />
         )
 

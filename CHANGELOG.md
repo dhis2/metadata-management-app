@@ -1,3 +1,32 @@
+# [0.181.0](https://github.com/dhis2/metadata-management-app/compare/v0.180.2...v0.181.0) (2026-10-06)
+
+
+### Features
+
+* add d2:log and d2:exponent to program rule expression builder [DHIS2-21809] [DHIS2-21983] ([#1025](https://github.com/dhis2/metadata-management-app/issues/1025)) ([31c5fed](https://github.com/dhis2/metadata-management-app/commit/31c5fed1678ce5bcbc87419e43b0cca714fcdc79))
+
+## [0.180.2](https://github.com/dhis2/metadata-management-app/compare/v0.180.1...v0.180.2) (2026-10-05)
+
+
+### Bug Fixes
+
+* remove provided elsewhere events [DHIS2-22096] ([#1043](https://github.com/dhis2/metadata-management-app/issues/1043)) ([a4ed243](https://github.com/dhis2/metadata-management-app/commit/a4ed243b6c6e3aa29a3eb4c80dc5a373c31ae306))
+
+## [0.180.1](https://github.com/dhis2/metadata-management-app/compare/v0.180.0...v0.180.1) (2026-10-05)
+
+
+### Bug Fixes
+
+* disable section reordering for data set clone [DHIS2-21270] ([#1045](https://github.com/dhis2/metadata-management-app/issues/1045)) ([6802483](https://github.com/dhis2/metadata-management-app/commit/6802483ab52291b7fa016a7adb094bf89831597d))
+
+# [0.180.0](https://github.com/dhis2/metadata-management-app/compare/v0.179.1...v0.180.0) (2026-10-05)
+
+
+### Features
+
+* [DHIS2-21796] Add enrollment category combination field ([#1041](https://github.com/dhis2/metadata-management-app/issues/1041)) ([f9b99f9](https://github.com/dhis2/metadata-management-app/commit/f9b99f90e2cc9322ab934f11384f1e3c31dcd91a))
+* refresh list on bulk delete ([#1047](https://github.com/dhis2/metadata-management-app/issues/1047)) ([7941670](https://github.com/dhis2/metadata-management-app/commit/7941670c21035504417b861bc9d020f7286a6abe))
+
 ## [0.179.1](https://github.com/dhis2/metadata-management-app/compare/v0.179.0...v0.179.1) (2026-09-29)
 
 

@@ -62,7 +62,7 @@ const fieldFilters = [
     'relationshipLabel',
     'noteLabel',
     ...PLURAL_LABEL_FIELD_FILTERS,
-    'programStages[id,name,displayName,executionDateLabel,enableUserAssignment,blockEntryForm,preGenerateUID,validationStrategy,notificationTemplates[id,name,displayName,access],dataEntryForm[id,displayName,htmlCode],programStageDataElements[id,dataElement[id,displayName,valueType,optionSet],compulsory,allowProvidedElsewhere,displayInReports,allowFutureDate,skipAnalytics,skipSynchronization,renderType,sortOrder],programStageSections[id,displayName,dataElements[id]]]',
+    'programStages[id,name,displayName,executionDateLabel,enableUserAssignment,blockEntryForm,preGenerateUID,validationStrategy,notificationTemplates[id,name,displayName,access],dataEntryForm[id,displayName,htmlCode],programStageDataElements[id,dataElement[id,displayName,valueType,optionSet],compulsory,displayInReports,allowFutureDate,skipAnalytics,skipSynchronization,renderType,sortOrder],programStageSections[id,displayName,dataElements[id]]]',
     'organisationUnits[id,displayName,path]',
     'sharing',
     'expiryDays',
