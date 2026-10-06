@@ -130,6 +130,34 @@ export const EventProgramFormDescriptor = {
                     name: 'programStages[0].executionDateLabel',
                     label: i18n.t('Custom label for "report date"'),
                 },
+                {
+                    name: 'eventLabel',
+                    label: i18n.t('Custom label for "event" (singular)'),
+                },
+                {
+                    name: 'eventsLabel',
+                    label: i18n.t('Custom label for "events" (plural)'),
+                },
+                {
+                    name: 'orgUnitLabel',
+                    label: i18n.t('Custom label for "organisation unit"'),
+                },
+                {
+                    name: 'relationshipLabel',
+                    label: i18n.t('Custom label for "relationship" (singular)'),
+                },
+                {
+                    name: 'relationshipsLabel',
+                    label: i18n.t('Custom label for "relationships" (plural)'),
+                },
+                {
+                    name: 'noteLabel',
+                    label: i18n.t('Custom label for "note" (singular)'),
+                },
+                {
+                    name: 'notesLabel',
+                    label: i18n.t('Custom label for "notes" (plural)'),
+                },
             ],
         },
     ],

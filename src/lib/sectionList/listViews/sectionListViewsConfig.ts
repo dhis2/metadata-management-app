@@ -1163,4 +1163,24 @@ export const modelListViewsConfig = {
             overrideDefaultAvailable: true,
         },
     },
+    document: {
+        columns: {
+            default: [
+                DESCRIPTORS.name,
+                { label: i18n.t('External'), path: 'external' },
+                'createdBy',
+                'created',
+            ],
+            available: [
+                'code',
+                'href',
+                'id',
+                'lastUpdated',
+                'lastUpdatedBy',
+                { label: i18n.t('URL'), path: 'url' },
+            ],
+            overrideDefaultAvailable: true,
+        },
+        filters: {},
+    },
 } satisfies SectionListViewConfig<SectionName>
