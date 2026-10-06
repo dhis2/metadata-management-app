@@ -72,7 +72,7 @@ const resourceBaseSchema = z
         code: z.string().trim().nullable().optional(),
         resourceType: z.nativeEnum(ResourceType),
         url: z.string().trim().optional(),
-        attachment: z.boolean(),
+        attachment: z.boolean().optional(),
         file: z.any().optional(),
     })
     .merge(identifiable)

@@ -370,6 +370,29 @@ describe('Resources form tests', () => {
             )
         })
 
+        it('should allow editing a URL resource without an attachment value', async () => {
+            const resource = testResources({
+                external: true,
+                url: 'https://www.dhis2.org',
+            })
+            delete (resource as { attachment?: boolean }).attachment
+            const { screen } = await renderForm(resource)
+
+            const newName = faker.company.name()
+            await uiActions.enterName(newName, screen)
+            await uiActions.submitAndCloseForm(screen)
+
+            expect(updateDocumentMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    data: expect.objectContaining({
+                        name: newName,
+                        type: 'EXTERNAL_URL',
+                        url: resource.url,
+                    }),
+                })
+            )
+        })
+
         it('should default the resource type select to URL', async () => {
             const resource = testResources({
                 external: true,
