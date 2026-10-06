@@ -393,6 +393,31 @@ describe('Resources form tests', () => {
             )
         })
 
+        it('should send the sharing back when editing a URL resource', async () => {
+            const sharing = {
+                owner: 'ownerId',
+                public: 'rw------',
+                users: {},
+                userGroups: {},
+            }
+            const resource = testResources({
+                external: true,
+                url: 'https://www.dhis2.org',
+                attachment: false,
+                sharing,
+            })
+            const { screen } = await renderForm(resource)
+
+            await uiActions.enterName(faker.company.name(), screen)
+            await uiActions.submitAndCloseForm(screen)
+
+            expect(updateDocumentMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    data: expect.objectContaining({ sharing }),
+                })
+            )
+        })
+
         it('should default the resource type select to URL', async () => {
             const resource = testResources({
                 external: true,

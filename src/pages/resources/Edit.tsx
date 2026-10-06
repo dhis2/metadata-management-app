@@ -28,6 +28,7 @@ const fieldFilters = [
     'url',
     'external',
     'attachment',
+    'sharing',
 ] as const
 
 export type ResourceEditFormValues = PickWithFieldFilters<

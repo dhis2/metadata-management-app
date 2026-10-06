@@ -10,6 +10,7 @@ export type ResourceSubmitValues = {
     attachment?: boolean
     file?: File | null
     attributeValues?: Array<{ attribute: { id: string }; value: string }>
+    sharing?: Record<string, unknown>
 }
 
 const uploadResourceFile = async (
@@ -25,24 +26,29 @@ const uploadResourceFile = async (
     return uploadResponse.response.fileResource.id
 }
 
+// Documents can only be updated with a full PUT, so everything that was loaded
+// (e.g. sharing) is sent back, with the form-controlled fields overridden
 export const buildResourceDocumentPayload = async (
     dataEngine: ReturnType<typeof useDataEngine>,
     values: ResourceSubmitValues
-) => ({
-    name: values.name,
-    code: values.code || undefined,
-    attributeValues: values.attributeValues,
-    ...(values.resourceType === ResourceType.URL
-        ? {
-              type: 'EXTERNAL_URL',
-              external: true,
-              attachment: false,
-              url: values.url?.trim(),
-          }
-        : {
-              type: 'UPLOAD_FILE',
-              external: false,
-              attachment: !!values.attachment,
-              url: await uploadResourceFile(dataEngine, values.file as File),
-          }),
-})
+) => {
+    const { resourceType, file, ...rest } = values
+
+    return {
+        ...rest,
+        code: values.code || undefined,
+        ...(resourceType === ResourceType.URL
+            ? {
+                  type: 'EXTERNAL_URL',
+                  external: true,
+                  attachment: false,
+                  url: values.url?.trim(),
+              }
+            : {
+                  type: 'UPLOAD_FILE',
+                  external: false,
+                  attachment: !!values.attachment,
+                  url: await uploadResourceFile(dataEngine, file as File),
+              }),
+    }
+}
