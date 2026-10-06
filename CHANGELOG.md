@@ -1,3 +1,10 @@
+# [0.181.0](https://github.com/dhis2/metadata-management-app/compare/v0.180.2...v0.181.0) (2026-10-06)
+
+
+### Features
+
+* add d2:log and d2:exponent to program rule expression builder [DHIS2-21809] [DHIS2-21983] ([#1025](https://github.com/dhis2/metadata-management-app/issues/1025)) ([31c5fed](https://github.com/dhis2/metadata-management-app/commit/31c5fed1678ce5bcbc87419e43b0cca714fcdc79))
+
 ## [0.180.2](https://github.com/dhis2/metadata-management-app/compare/v0.180.1...v0.180.2) (2026-10-05)
 
 
