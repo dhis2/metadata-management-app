@@ -5,7 +5,11 @@ import {
     getDefaultsOld,
     modelFormSchemas,
 } from '../../../lib'
-import { DataElement } from '../../../types/generated'
+import {
+    AggregationType,
+    DataElementDomain,
+    ValueType,
+} from '../../../types/generated'
 
 const {
     identifiable,
@@ -27,13 +31,11 @@ const dataElementBaseSchema = z.object({
             icon: z.string().optional(),
         })
         .default({}),
-    domainType: z.nativeEnum(DataElement.domainType),
-    valueType: z
-        .nativeEnum(DataElement.valueType)
-        .default(DataElement.valueType.NUMBER),
+    domainType: z.nativeEnum(DataElementDomain),
+    valueType: z.nativeEnum(ValueType).default(ValueType.NUMBER),
     aggregationType: z
-        .nativeEnum(DataElement.aggregationType)
-        .default(DataElement.aggregationType.NONE),
+        .nativeEnum(AggregationType)
+        .default(AggregationType.NONE),
     categoryCombo: z
         .object({ id: z.string(), displayName: z.string().optional() })
         .default(DEFAULT_CATEGORY_COMBO),

@@ -1,6 +1,6 @@
-import type { ErrorReportLegacy } from './generated'
-// Some of the generated models are wrong, or outdated
-// The import summaries and error reports changed in 2.41
+import type { ErrorReport as GeneratedErrorReport } from './generated'
+
+// The import summary response shape is not described by the generated schema.
 export type ImportSummary = {
     httpStatus: string
     httpStatusCode: number
@@ -17,8 +17,11 @@ export type ImportResponse = {
 }
 
 export type ErrorReport = Pick<
-    ErrorReportLegacy,
-    'errorCode' | 'errorProperties' | 'errorKlass' | 'mainKlass' | 'message'
-> & {
-    args: string[]
-}
+    GeneratedErrorReport,
+    | 'errorCode'
+    | 'errorProperties'
+    | 'errorKlass'
+    | 'mainKlass'
+    | 'message'
+    | 'args'
+>

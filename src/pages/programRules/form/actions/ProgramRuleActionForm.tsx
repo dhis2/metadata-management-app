@@ -29,7 +29,7 @@ import {
     useFeatureAvailable,
 } from '../../../../lib/featuresApiSupport'
 import { useClearFormFields } from '../../../../lib/form/useClearFormFields'
-import { ProgramRuleAction } from '../../../../types/generated'
+import { ProgramRuleActionType } from '../../../../types/generated'
 import { PriorityField } from '../../fields'
 import { ActionTypeFieldsContent } from './ActionTypeFieldsContent'
 import { ACTION_FIELDS_TO_CLEAR, ACTION_TYPE_OPTIONS } from './constants'
@@ -315,10 +315,8 @@ function ProgramRuleActionFormBody({
                 <StandardFormSectionDescription>
                     {i18n.t('Configure the program rule action.')}
                 </StandardFormSectionDescription>
-                {(actionType ===
-                    ProgramRuleAction.programRuleActionType.SCHEDULEMESSAGE ||
-                    actionType ===
-                        ProgramRuleAction.programRuleActionType.SENDMESSAGE) &&
+                {(actionType === ProgramRuleActionType.SCHEDULEMESSAGE ||
+                    actionType === ProgramRuleActionType.SENDMESSAGE) &&
                     !isEdit && (
                         <NoticeBox
                             title={i18n.t(

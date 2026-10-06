@@ -4,13 +4,13 @@ import React, { useEffect } from 'react'
 import { Field, useField, useForm } from 'react-final-form'
 import { HorizontalFieldGroup, StandardFormField } from '../../../components'
 import { getConstantTranslation, SECTIONS_MAP, useSchema } from '../../../lib'
-import { AnalyticsTableHook } from '../../../types/generated'
+import { AnalyticsTablePhase } from '../../../types/generated'
 
 const validateResourceTableType = (
     value: string | undefined,
     { phase }: { phase?: string }
 ) => {
-    if (phase === AnalyticsTableHook.phase.RESOURCE_TABLE_POPULATED && !value) {
+    if (phase === AnalyticsTablePhase.RESOURCE_TABLE_POPULATED && !value) {
         return i18n.t('Required')
     }
 }
@@ -19,10 +19,7 @@ const validateAnalyticsTableType = (
     value: string | undefined,
     { phase }: { phase?: string }
 ) => {
-    if (
-        phase === AnalyticsTableHook.phase.ANALYTICS_TABLE_POPULATED &&
-        !value
-    ) {
+    if (phase === AnalyticsTablePhase.ANALYTICS_TABLE_POPULATED && !value) {
         return i18n.t('Required')
     }
 }
@@ -53,12 +50,10 @@ export function PhaseField() {
         if (!phaseMeta.dirty) {
             return
         }
-        if (
-            selectedPhase === AnalyticsTableHook.phase.RESOURCE_TABLE_POPULATED
-        ) {
+        if (selectedPhase === AnalyticsTablePhase.RESOURCE_TABLE_POPULATED) {
             form.change('analyticsTableType', undefined)
         } else if (
-            selectedPhase === AnalyticsTableHook.phase.ANALYTICS_TABLE_POPULATED
+            selectedPhase === AnalyticsTablePhase.ANALYTICS_TABLE_POPULATED
         ) {
             form.change('resourceTableType', undefined)
         }
@@ -107,9 +102,9 @@ export function PhaseField() {
         })) ?? []
 
     const showResourceTableField =
-        selectedPhase === AnalyticsTableHook.phase.RESOURCE_TABLE_POPULATED
+        selectedPhase === AnalyticsTablePhase.RESOURCE_TABLE_POPULATED
     const showAnalyticsTableField =
-        selectedPhase === AnalyticsTableHook.phase.ANALYTICS_TABLE_POPULATED
+        selectedPhase === AnalyticsTablePhase.ANALYTICS_TABLE_POPULATED
 
     return (
         <>

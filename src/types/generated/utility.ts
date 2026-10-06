@@ -12,7 +12,7 @@ export type ModelCollection<T = IdentifiableObject> = Array<T>
 type ModelReference = IdentifiableObject | ModelCollection
 
 export type ModelCollectionResponse<
-    T extends IdentifiableObject = IdentifiableObject,
+    T = IdentifiableObject,
     PagedListName extends string = 'result'
 > = PagedResponse<T, PagedListName>
 
