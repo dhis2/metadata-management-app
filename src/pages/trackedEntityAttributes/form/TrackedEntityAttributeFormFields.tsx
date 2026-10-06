@@ -55,7 +55,8 @@ export const TrackedEntityAttributeFormFields = ({
     const isUnique = uniqueInput.value
     const isOrgunitScope = orgunitScopeInput.value
     const isGenerated = generatedInput.value
-    // TRACKER_ASSOCIATE is no longer in the ValueType enum but can still exist in stored data.
+    // TRACKER_ASSOCIATE was removed from ValueType in DHIS2 2.43 but may
+    // still exist in older data, so keep the check via string cast.
     const TRACKER_ASSOCIATE = 'TRACKER_ASSOCIATE' as ValueType
     const showTrackedEntityType = valueType === TRACKER_ASSOCIATE
 
