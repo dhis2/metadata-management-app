@@ -116,7 +116,7 @@ describe('Resources (documents) specific list tests', () => {
         expect(actionsMenu).toHaveTextContent('Edit')
     })
 
-    it('does not offer "Edit" for uploaded-file resources', async () => {
+    it('shows a disabled "Edit" for uploaded-file resources', async () => {
         const { screen } = await renderList({
             elements: [
                 testResources({
@@ -130,7 +130,53 @@ describe('Resources (documents) specific list tests', () => {
             tableRows[0],
             screen
         )
-        expect(actionsMenu).not.toHaveTextContent('Edit')
+        const editItem = within(actionsMenu).getByText('Edit').closest('li')
+        expect(editItem).toHaveClass('disabled')
+
+        await userEvent.click(within(actionsMenu).getByText('Edit'))
+        expect(screen.getAllByTestId('section-list-row')).toHaveLength(1)
+    })
+
+    it('shows the resource type as URL or File in the list', async () => {
+        const urlResource = testResources({ external: true })
+        const fileResource = testResources({ external: false })
+        const { screen } = await renderList({
+            elements: [urlResource, fileResource],
+        })
+        const tableRows = screen.getAllByTestId('section-list-row')
+
+        expect(within(tableRows[0]).getByText('URL')).toBeVisible()
+        expect(within(tableRows[1]).getByText('File')).toBeVisible()
+    })
+
+    it('does not navigate to the edit page when clicking a file resource row', async () => {
+        const resource = testResources({
+            external: false,
+            access: testAccess({ write: true }),
+        })
+        const { screen } = await renderList({ elements: [resource] })
+        const tableRows = screen.getAllByTestId('section-list-row')
+
+        await userEvent.click(
+            within(tableRows[0]).getByText(resource.displayName)
+        )
+
+        expect(screen.getAllByTestId('section-list-row')).toHaveLength(1)
+    })
+
+    it('navigates to the edit page when clicking a URL resource row', async () => {
+        const resource = testResources({
+            external: true,
+            access: testAccess({ write: true }),
+        })
+        const { screen } = await renderList({ elements: [resource] })
+        const tableRows = screen.getAllByTestId('section-list-row')
+
+        await userEvent.click(
+            within(tableRows[0]).getByText(resource.displayName)
+        )
+
+        expect(screen.queryByTestId('section-list-row')).not.toBeInTheDocument()
     })
 
     it('opens the resource data endpoint in a new tab from "View resource"', async () => {
