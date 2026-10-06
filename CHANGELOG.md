@@ -1,3 +1,75 @@
+# [0.182.0](https://github.com/dhis2/metadata-management-app/compare/v0.181.0...v0.182.0) (2026-10-06)
+
+
+### Features
+
+* resources add and edit form ([#1037](https://github.com/dhis2/metadata-management-app/issues/1037)) ([6415ed0](https://github.com/dhis2/metadata-management-app/commit/6415ed0a2a7b81a11b3de18e399ce5e0e05914a7))
+
+# [0.181.0](https://github.com/dhis2/metadata-management-app/compare/v0.180.2...v0.181.0) (2026-10-06)
+
+
+### Features
+
+* add d2:log and d2:exponent to program rule expression builder [DHIS2-21809] [DHIS2-21983] ([#1025](https://github.com/dhis2/metadata-management-app/issues/1025)) ([31c5fed](https://github.com/dhis2/metadata-management-app/commit/31c5fed1678ce5bcbc87419e43b0cca714fcdc79))
+
+## [0.180.2](https://github.com/dhis2/metadata-management-app/compare/v0.180.1...v0.180.2) (2026-10-05)
+
+
+### Bug Fixes
+
+* remove provided elsewhere events [DHIS2-22096] ([#1043](https://github.com/dhis2/metadata-management-app/issues/1043)) ([a4ed243](https://github.com/dhis2/metadata-management-app/commit/a4ed243b6c6e3aa29a3eb4c80dc5a373c31ae306))
+
+## [0.180.1](https://github.com/dhis2/metadata-management-app/compare/v0.180.0...v0.180.1) (2026-10-05)
+
+
+### Bug Fixes
+
+* disable section reordering for data set clone [DHIS2-21270] ([#1045](https://github.com/dhis2/metadata-management-app/issues/1045)) ([6802483](https://github.com/dhis2/metadata-management-app/commit/6802483ab52291b7fa016a7adb094bf89831597d))
+
+# [0.180.0](https://github.com/dhis2/metadata-management-app/compare/v0.179.1...v0.180.0) (2026-10-05)
+
+
+### Features
+
+* [DHIS2-21796] Add enrollment category combination field ([#1041](https://github.com/dhis2/metadata-management-app/issues/1041)) ([f9b99f9](https://github.com/dhis2/metadata-management-app/commit/f9b99f90e2cc9322ab934f11384f1e3c31dcd91a))
+* refresh list on bulk delete ([#1047](https://github.com/dhis2/metadata-management-app/issues/1047)) ([7941670](https://github.com/dhis2/metadata-management-app/commit/7941670c21035504417b861bc9d020f7286a6abe))
+
+## [0.179.1](https://github.com/dhis2/metadata-management-app/compare/v0.179.0...v0.179.1) (2026-09-29)
+
+
+### Bug Fixes
+
+* data set cloning fixes [DHIS2-21720] ([#1040](https://github.com/dhis2/metadata-management-app/issues/1040)) ([75e080d](https://github.com/dhis2/metadata-management-app/commit/75e080d2785f197c609c038f2d8dc34090b45ae4))
+* load program indicator custom attribute values on edit ([#1038](https://github.com/dhis2/metadata-management-app/issues/1038)) ([58ffb7e](https://github.com/dhis2/metadata-management-app/commit/58ffb7efd3d591ae3a94d1fa308b08ee2497c669))
+
+# [0.179.0](https://github.com/dhis2/metadata-management-app/compare/v0.178.0...v0.179.0) (2026-09-15)
+
+
+### Features
+
+* add bulk delete action to section list toolbar [DHIS2-22045] ([#1031](https://github.com/dhis2/metadata-management-app/issues/1031)) ([bf07fc9](https://github.com/dhis2/metadata-management-app/commit/bf07fc9dee8adbef6372a3cc3abd763a044374c3))
+
+# [0.178.0](https://github.com/dhis2/metadata-management-app/compare/v0.177.0...v0.178.0) (2026-09-14)
+
+
+### Features
+
+* custom terminology labels for event programs ([#1033](https://github.com/dhis2/metadata-management-app/issues/1033)) ([60f2037](https://github.com/dhis2/metadata-management-app/commit/60f203721451504944df91657835d517139c3c05))
+
+# [0.177.0](https://github.com/dhis2/metadata-management-app/compare/v0.176.4...v0.177.0) (2026-09-11)
+
+
+### Features
+
+* add resources (documents) list view ([#1036](https://github.com/dhis2/metadata-management-app/issues/1036)) ([fe15d46](https://github.com/dhis2/metadata-management-app/commit/fe15d46c86502888529b43e0142b14a09c3be2d6))
+
+## [0.176.4](https://github.com/dhis2/metadata-management-app/compare/v0.176.3...v0.176.4) (2026-09-03)
+
+
+### Bug Fixes
+
+* program sharing form state [DHIS2-22022] ([#1029](https://github.com/dhis2/metadata-management-app/issues/1029)) ([de72cf7](https://github.com/dhis2/metadata-management-app/commit/de72cf7b8a68f6617b4dfde02a8c70864f6847f1))
+
 ## [0.176.3](https://github.com/dhis2/metadata-management-app/compare/v0.176.2...v0.176.3) (2026-08-25)
 
 

@@ -34,6 +34,7 @@ type SectionListWrapperProps = {
     refetch: () => void
     ActionsComponent?: React.ComponentType<DefaultListActionProps>
     ToolbarComponent?: React.ComponentType<DefaultToolbarProps>
+    isRowClickable?: (model: BaseListModel) => boolean
 }
 export const DefaultSectionListMessage = ({
     error,
@@ -60,6 +61,7 @@ export const SectionListWrapper = ({
     refetch,
     ActionsComponent,
     ToolbarComponent,
+    isRowClickable = canEditModel,
 }: SectionListWrapperProps) => {
     const { columns: headerColumns } = useModelListView()
     const schema = useSchemaFromHandle()
@@ -110,7 +112,7 @@ export const SectionListWrapper = ({
 
     const handleRowClick = useCallback(
         (model: BaseListModel) => {
-            if (!canEditModel(model)) {
+            if (!isRowClickable(model)) {
                 return
             }
             navigate(model.id, {
@@ -118,7 +120,7 @@ export const SectionListWrapper = ({
                 state: preservedSearchState,
             })
         },
-        [navigate, preservedSearchState]
+        [navigate, preservedSearchState, isRowClickable]
     )
 
     /* Note that SectionListRow is memoed, to prevent re-rendering
@@ -164,11 +166,13 @@ export const SectionListWrapper = ({
             <ToolbarComponent
                 selectedModels={selectedModels}
                 onDeselectAll={clearAll}
+                refetch={refetch}
             />
         ) : (
             <DefaultToolbar
                 selectedModels={selectedModels}
                 onDeselectAll={clearAll}
+                refetch={refetch}
             />
         )
 
@@ -194,6 +198,7 @@ export const SectionListWrapper = ({
                             onClick={handleRowClick}
                             selected={selectedModels.has(model.id)}
                             active={model.id === detailsId}
+                            clickable={isRowClickable(model)}
                             renderColumnValue={renderColumnValue}
                             renderActions={renderActions}
                         />

@@ -1,5 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import { Button } from '@dhis2/ui'
+import { useQueryClient } from '@tanstack/react-query'
 import {
     ColumnDef,
     ExpandedState,
@@ -162,6 +163,12 @@ export const OrganisationUnitList = () => {
     const [identifiableFilter] = useSectionListFilter('identifiable')
     const [filters, setFilters] = useSectionListFilters()
     const systemOrgUnits = useSystemOrgUnits()
+    const queryClient = useQueryClient()
+    const refetchOrgUnits = useCallback(() => {
+        queryClient.invalidateQueries({
+            queryKey: [{ resource: 'organisationUnits' }],
+        })
+    }, [queryClient])
 
     const initialExpandedState = useMemo(() => {
         return Object.fromEntries(systemOrgUnits.map((ou) => [ou.id, true]))
@@ -332,6 +339,7 @@ export const OrganisationUnitList = () => {
                     onDeselectAll={() => {
                         table.resetRowSelection(true)
                     }}
+                    refetch={refetchOrgUnits}
                 />
                 <SectionList
                     headerColumns={table

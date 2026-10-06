@@ -375,6 +375,14 @@ export const SCHEMA_SECTIONS = {
         titlePlural: i18n.t('Icons'),
         parentSectionKey: 'other',
     },
+    document: {
+        name: SchemaName.document,
+        namePlural: 'documents',
+        routeName: 'resources',
+        title: i18n.t('Resource'),
+        titlePlural: i18n.t('Resources'),
+        parentSectionKey: 'other',
+    },
     predictorGroup: {
         name: SchemaName.predictorGroup,
         namePlural: 'predictorGroups',
