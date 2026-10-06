@@ -1,6 +1,6 @@
 import { BaseListModel, canEditModel } from '../../../lib'
 
-export type ResourceListModel = BaseListModel & {
+type ResourceListModel = BaseListModel & {
     external?: boolean
 }
 

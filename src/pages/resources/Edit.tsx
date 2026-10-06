@@ -31,7 +31,7 @@ const fieldFilters = [
     'sharing',
 ] as const
 
-export type ResourceEditFormValues = PickWithFieldFilters<
+type ResourceEditFormValues = PickWithFieldFilters<
     Document,
     typeof fieldFilters
 > & { id: string; resourceType?: ResourceType; file?: File | null }

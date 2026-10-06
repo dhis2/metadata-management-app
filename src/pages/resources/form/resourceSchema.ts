@@ -58,7 +58,7 @@ export const BLOCKED_FILE_EXTENSIONS = new Set([
     'bat',
 ])
 
-export const isAllowedResourceFile = (file: File) => {
+const isAllowedResourceFile = (file: File) => {
     const name = file.name.toLowerCase()
     const extension = name.includes('.') ? name.split('.').pop() : ''
     return (
