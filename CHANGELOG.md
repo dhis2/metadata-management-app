@@ -1,3 +1,10 @@
+# [0.182.0](https://github.com/dhis2/metadata-management-app/compare/v0.181.0...v0.182.0) (2026-10-06)
+
+
+### Features
+
+* resources add and edit form ([#1037](https://github.com/dhis2/metadata-management-app/issues/1037)) ([6415ed0](https://github.com/dhis2/metadata-management-app/commit/6415ed0a2a7b81a11b3de18e399ce5e0e05914a7))
+
 # [0.181.0](https://github.com/dhis2/metadata-management-app/compare/v0.180.2...v0.181.0) (2026-10-06)
 
 
