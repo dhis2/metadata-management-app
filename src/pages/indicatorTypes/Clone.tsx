@@ -4,13 +4,13 @@ import React, { useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { FormBase } from '../../components'
 import { DefaultCloneFormContents } from '../../components/form/DefaultFormContents'
-import { DEFAULT_FIELD_FILTERS, SECTIONS_MAP, useOnSubmitNew } from '../../lib'
+import { DEFAULT_IDENTIFIABLE, SECTIONS_MAP, useOnSubmitNew } from '../../lib'
 import { useBoundResourceQueryFn } from '../../lib/query/useBoundQueryFn'
 import { IndicatorTypesFormValues } from './Edit'
 import { validate } from './form'
 import { IndicatorTypesFormFields } from './form/IndicatorTypesFormFields'
 
-const fieldFilters = [...DEFAULT_FIELD_FILTERS, 'name', 'factor'] as const
+const fieldFilters = [...DEFAULT_IDENTIFIABLE, 'factor'] as const
 
 const section = SECTIONS_MAP.indicatorType
 type IndicatorTypesCloneFormValues = IndicatorTypesFormValues

@@ -1,9 +1,6 @@
 import { z } from 'zod'
-import {
-    getDefaultsOld,
-    createFormValidate,
-    modelFormSchemas,
-} from '../../../lib'
+import { createFormValidate, modelFormSchemas } from '../../../lib'
+import { getDefaults } from '../../../lib/zod/getDefaults'
 
 const { identifiable, withDefaultListColumns } = modelFormSchemas
 
@@ -20,6 +17,6 @@ export const indicatorTypeListSchema = indicatorTypeBaseSchema
     .merge(withDefaultListColumns)
     .extend({ name: z.string() })
 
-export const initialValues = getDefaultsOld(indicatorTypeFormSchema)
+export const initialValues = getDefaults(indicatorTypeFormSchema)
 
 export const validate = createFormValidate(indicatorTypeFormSchema)
