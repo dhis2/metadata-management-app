@@ -76,6 +76,7 @@ const TRANSLATED_PROPERTY: Record<string, string> = {
     zeroIsSignificant: i18n.t('Zero is significant'),
     displayDescription: i18n.t('Description'),
     allowAuditLog: i18n.t('Enable tracked entity instance audit log'),
+    enableChangeLog: i18n.t('Record change history'),
     featureType: i18n.t('Feature type'),
     programType: i18n.t('Program type'),
     maxTeiCountToReturn: i18n.t(

@@ -587,6 +587,11 @@ export const modelListViewsConfig = {
             available: [
                 'displayDescription',
                 'allowAuditLog',
+                {
+                    label: i18n.t('Record change history'),
+                    path: 'enableChangeLog',
+                    minApiVersion: 43,
+                },
                 'favorite',
                 'featureType',
                 DESCRIPTORS.formName,
@@ -748,6 +753,11 @@ export const modelListViewsConfig = {
                 {
                     label: i18n.t('Display front page list'),
                     path: 'displayFrontPageList',
+                },
+                {
+                    label: i18n.t('Record change history'),
+                    path: 'enableChangeLog',
+                    minApiVersion: 43,
                 },
                 'favorite',
                 { label: i18n.t('Form name'), path: 'formName' },

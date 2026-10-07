@@ -25,6 +25,7 @@ import {
     AttributesTransferField,
     AttributesConfigurationField,
     AllowAuditLogField,
+    EnableChangeLogField,
     MinAttributesRequiredField,
     MaxTeiCountField,
     TrackedEntityTypesLabelField,
@@ -40,6 +41,10 @@ export function TrackedEntityTypeFormFields() {
     const showPluralLabels = useFeatureAvailable(
         FEATURES.customTerminologyPlurals
     )
+    const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
+    const allowAuditLogLabel = showEnableChangeLog
+        ? i18n.t('Record access to tracked entities')
+        : i18n.t('Enable tracked entity instance audit log')
 
     return (
         <SectionedFormSections>
@@ -80,8 +85,14 @@ export function TrackedEntityTypeFormFields() {
                     <FeatureTypeField />
                 </StandardFormField>
 
+                {showEnableChangeLog && (
+                    <StandardFormField>
+                        <EnableChangeLogField />
+                    </StandardFormField>
+                )}
+
                 <StandardFormField>
-                    <AllowAuditLogField />
+                    <AllowAuditLogField label={allowAuditLogLabel} />
                 </StandardFormField>
 
                 <StandardFormField>
