@@ -38,6 +38,11 @@ export type ListItem = {
 
 type ActiveModel = { model: ListItem; schema: Schema }
 
+/* the route each schema's objects live on is needed to make item rows
+ * navigate like they do on the individual list pages, so the sidebar link
+ * is carried alongside the schema rather than discarded */
+type SchemaLink = { schema: Schema; to: string }
+
 const detailFields = [
     'id',
     'displayName',
@@ -103,7 +108,7 @@ export const ListOfAll = () => {
         [string, 'asc' | 'desc'] | undefined
     >(['lastUpdated', 'desc'])
 
-    const allSchemaList = useMemo(
+    const allSchemaList = useMemo<SchemaLink[]>(
         () =>
             sidebarLinks
                 .flatMap(({ links }) => links)
@@ -112,8 +117,11 @@ export const ListOfAll = () => {
                     ({ section }) =>
                         !excludedMetadataTypes.includes(section.name)
                 )
-                .map(({ section }) => schemas[section.name as SchemaName])
-                .filter((s): s is Schema => !!s),
+                .map(({ section, to }) => ({
+                    schema: schemas[section.name as SchemaName],
+                    to,
+                }))
+                .filter((s): s is SchemaLink => !!s.schema),
         [sidebarLinks, schemas]
     )
 
@@ -121,8 +129,8 @@ export const ListOfAll = () => {
         () =>
             selectedSchemas.length === 0
                 ? allSchemaList
-                : allSchemaList.filter((s) =>
-                      selectedSchemas.includes(s.singular)
+                : allSchemaList.filter(({ schema }) =>
+                      selectedSchemas.includes(schema.singular)
                   ),
         [allSchemaList, selectedSchemas]
     )
@@ -163,11 +171,11 @@ export const ListOfAll = () => {
                             setSelectedSchemas(selected)
                         }
                     >
-                        {allSchemaList.map((s) => (
+                        {allSchemaList.map(({ schema }) => (
                             <MultiSelectOption
-                                key={s.singular}
-                                label={s.displayName}
-                                value={s.singular}
+                                key={schema.singular}
+                                label={schema.displayName}
+                                value={schema.singular}
                             />
                         ))}
                     </MultiSelect>
@@ -214,10 +222,12 @@ export const ListOfAll = () => {
                         </DataTableRow>
                     </TableHead>
                     <TableBody>
-                        {schemaList.map((schema) => (
+                        {schemaList.map(({ schema, to }) => (
                             <MetadataTypeList
                                 key={schema.singular}
                                 schema={schema}
+                                to={to}
+                                activeId={detailsModel?.model.id}
                                 engine={engine}
                                 filter={filter}
                                 sortOrder={sortOrder}
