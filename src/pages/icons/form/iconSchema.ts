@@ -14,17 +14,22 @@ export type IconModel = {
 }
 
 export const iconFormSchema = z.object({
-    key: z.string().min(1, 'Required'),
+    key: z.string(),
     description: z.string().optional(),
     keywords: z.string().optional(),
+    file: z.any(),
+})
+
+export const initialValues = getDefaults(iconFormSchema)
+
+export const validatingIconFormSchema = iconFormSchema.extend({
+    key: z.string().min(1, 'Required'),
     file: z.any().refine((v) => v instanceof File, {
         message: 'An icon image is required',
     }),
 })
 
-export const initialValues = getDefaults(iconFormSchema)
-
-export const validate = createFormValidate(iconFormSchema)
+export const validate = createFormValidate(validatingIconFormSchema)
 
 export const keywordsToString = (keywords?: string[]) =>
     keywords?.join(', ') ?? ''
