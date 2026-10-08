@@ -12,6 +12,7 @@ import {
 } from '../../lib'
 import { createFormError } from '../../lib/form/createFormError'
 import { useCreateModel } from '../../lib/form/useCreateModel'
+import { SubmitAction } from '../../lib/form/useOnSubmit'
 import {
     useSetSystemOrganisationUnits,
     useSystemOrgUnitsStore,
@@ -34,37 +35,47 @@ export const useOnSaveOrgUnits = () => {
     const setSystemOrganisationUnits = useSetSystemOrganisationUnits()
 
     return useMemo(
-        () => async (values: Partial<OrgUnitFormValues>) => {
-            const { dataSets, programs, ...restFields } = values
+        () =>
+            async (
+                values: Partial<OrgUnitFormValues>,
+                _form: unknown,
+                options?: { submitAction?: SubmitAction }
+            ) => {
+                const { dataSets, programs, ...restFields } = values
 
-            const { data, error } = await createModel(
-                trimTrimmableFields(restFields)
-            )
-            if (error) {
-                return createFormError(error)
-            }
-            const orgId = (data as { response: { uid: string } }).response.uid
-
-            await updateDataSetsAndPrograms(
-                orgId,
-                { dataSets, programs },
-                {
-                    dataSetsDirty: Boolean(dataSets?.length),
-                    programsDirty: Boolean(programs?.length),
+                const { data, error } = await createModel(
+                    trimTrimmableFields(restFields)
+                )
+                if (error) {
+                    return createFormError(error)
                 }
-            )
+                const orgId = (data as { response: { uid: string } }).response
+                    .uid
 
-            if (hasNoSystemOrgUnits) {
-                setSystemOrganisationUnits([
-                    { id: orgId, path: `/${orgId}`, level: 1 },
-                ])
-            }
+                await updateDataSetsAndPrograms(
+                    orgId,
+                    { dataSets, programs },
+                    {
+                        dataSetsDirty: Boolean(dataSets?.length),
+                        programsDirty: Boolean(programs?.length),
+                    }
+                )
 
-            queryClient.invalidateQueries({
-                queryKey: [{ resource: section.namePlural }],
-            })
-            navigate(`/${getSectionPath(section)}`)
-        },
+                if (hasNoSystemOrgUnits) {
+                    setSystemOrganisationUnits([
+                        { id: orgId, path: `/${orgId}`, level: 1 },
+                    ])
+                }
+
+                queryClient.invalidateQueries({
+                    queryKey: [{ resource: section.namePlural }],
+                })
+                if (options?.submitAction === 'save') {
+                    navigate(`/${getSectionPath(section)}/${orgId}`)
+                } else {
+                    navigate(`/${getSectionPath(section)}`)
+                }
+            },
         [
             createModel,
             navigate,

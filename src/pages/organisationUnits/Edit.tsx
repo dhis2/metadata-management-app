@@ -16,6 +16,7 @@ import {
 } from '../../lib'
 import { createFormError } from '../../lib/form/createFormError'
 import { createJsonPatchOperations } from '../../lib/form/createJsonPatchOperations'
+import { SubmitAction } from '../../lib/form/useOnSubmit'
 import { useBoundResourceQueryFn } from '../../lib/query/useBoundQueryFn'
 import { OrganisationUnit, PickWithFieldFilters } from '../../types/generated'
 import { OrganisationUnitFormField, validate } from './form'
@@ -69,8 +70,11 @@ export const useOnEditOrgUnits = (modelId: string) => {
         () =>
             async (
                 values: OrgUnitFormValues,
-                form: FormApi<OrgUnitFormValues>
+                form: FormApi<OrgUnitFormValues>,
+                options?: { submitAction?: SubmitAction }
             ) => {
+                const shouldNavigate = options?.submitAction !== 'save'
+
                 const {
                     dataSets: dataSetsDirty,
                     programs: programsDirty,
@@ -93,7 +97,9 @@ export const useOnEditOrgUnits = (modelId: string) => {
                     saveAlert.show({
                         message: i18n.t('No changes to be saved'),
                     })
-                    navigate(`/${getSectionPath(section)}`)
+                    if (shouldNavigate) {
+                        navigate(`/${getSectionPath(section)}`)
+                    }
                     return
                 }
 
@@ -112,7 +118,9 @@ export const useOnEditOrgUnits = (modelId: string) => {
                 queryClient.invalidateQueries({
                     queryKey: [{ resource: section.namePlural }],
                 })
-                navigate(`/${getSectionPath(section)}`)
+                if (shouldNavigate) {
+                    navigate(`/${getSectionPath(section)}`)
+                }
             },
         [
             patchDirtyFields,
