@@ -45,7 +45,14 @@ export const useOnSaveOrgUnits = () => {
             }
             const orgId = (data as { response: { uid: string } }).response.uid
 
-            await updateDataSetsAndPrograms(orgId, { dataSets, programs })
+            await updateDataSetsAndPrograms(
+                orgId,
+                { dataSets, programs },
+                {
+                    dataSetsDirty: Boolean(dataSets?.length),
+                    programsDirty: Boolean(programs?.length),
+                }
+            )
 
             if (hasNoSystemOrgUnits) {
                 setSystemOrganisationUnits([

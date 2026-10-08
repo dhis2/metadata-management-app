@@ -104,7 +104,10 @@ export const useOnEditOrgUnits = (modelId: string) => {
                     return createFormError(error)
                 }
 
-                await updateDataSetsAndPrograms(modelId, values)
+                await updateDataSetsAndPrograms(modelId, values, {
+                    dataSetsDirty,
+                    programsDirty,
+                })
 
                 queryClient.invalidateQueries({
                     queryKey: [{ resource: section.namePlural }],
