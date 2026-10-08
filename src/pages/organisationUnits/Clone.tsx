@@ -29,8 +29,6 @@ const fieldFilters = [
     'geometry',
     'dataSets[id,displayName]',
     'programs[id,displayName]',
-    'level',
-    'path',
     'parent[id,path,displayName]',
 ] as const
 
