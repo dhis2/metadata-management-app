@@ -1,16 +1,16 @@
 # Translators:
 # 晓东 林 <13981924470@126.com>, 2026
 # Transifex Bot <>, 2026
-# Viktor Varland <viktor@dhis2.org>, 2026
 # Philip Larsen Donnelly, 2026
 # easylin <lin_xd@126.com>, 2026
+# Viktor Varland <viktor@dhis2.org>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-09-14T08:59:16.484Z\n"
+"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: easylin <lin_xd@126.com>, 2026\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -979,18 +979,18 @@ msgid "Data view only"
 msgstr "仅查看数据"
 
 msgid "Successfully deleted {{number}} items"
-msgstr ""
+msgstr "已成功删除{{number}} 项"
 
 msgid "Some items could not be deleted"
-msgstr ""
+msgstr "某些项目无法删除"
 
 msgid "Delete {{number}} items"
-msgstr ""
+msgstr "删除{{number}} 中的项目"
 
 msgid ""
 "Are you sure you want to delete these {{number}} items? This cannot be "
 "undone."
-msgstr ""
+msgstr "您确定要删除这些{{number}} 项目吗？此操作无法撤销。"
 
 msgid "Successfully updated sharing for {{number}} items"
 msgstr "成功更新{{number}} 项目的共享"
@@ -1240,6 +1240,12 @@ msgstr "更新视图"
 
 msgid "None"
 msgstr "None"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "File"
+msgstr "文件"
 
 msgid "No value"
 msgstr "无值"
@@ -1774,12 +1780,6 @@ msgstr "引用"
 
 msgid "Age"
 msgstr "年龄"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "File"
-msgstr "文件"
 
 msgid "Image"
 msgstr "图片"
@@ -2591,8 +2591,8 @@ msgstr "键值"
 msgid "Keywords"
 msgstr "关键词"
 
-msgid "External"
-msgstr "外部"
+msgid "Type"
+msgstr "类型"
 
 msgid "Which resource table"
 msgstr "哪个资源表"
@@ -4921,9 +4921,6 @@ msgstr "上报期间结束后"
 msgid "Offset"
 msgstr "偏移"
 
-msgid "Type"
-msgstr "类型"
-
 msgid "Boundary target"
 msgstr "边界目标"
 
@@ -5456,6 +5453,9 @@ msgstr "编辑访问"
 msgid "Public (All users)"
 msgstr "公众（所有用户）"
 
+msgid "External"
+msgstr "外部"
+
 msgid "Group"
 msgstr "组"
 
@@ -5571,19 +5571,19 @@ msgid ""
 msgstr "用作“Capture”应用中显示的活动日期（报告日期）的标签"
 
 msgid "Custom label for \"event\" (singular)"
-msgstr ""
+msgstr "“event”（单数）的自定义标签"
 
 msgid "Example use: Schedule a new event"
 msgstr "使用示例安排新事件"
 
 msgid "Custom label for \"events\" (plural)"
-msgstr ""
+msgstr "“events”（复数）的自定义标签"
 
 msgid "Example use: See all events"
 msgstr "使用示例：查看所有活动"
 
 msgid "Custom label for \"organisation unit\""
-msgstr ""
+msgstr "“组织单位”的自定义标签"
 
 msgid ""
 "Used to customize the label for the organisation unit that registers the "
@@ -5591,20 +5591,20 @@ msgid ""
 msgstr "用于自定义登记注册或事件的组织单位的标签"
 
 msgid "Custom label for \"relationship\" (singular)"
-msgstr ""
+msgstr "“关系”（单数）的自定义标签"
 
 msgid ""
 "Used to customize the label for a relationship between tracked entities"
 msgstr "用于自定义受监控实体之间关系的标签"
 
 msgid "Custom label for \"relationships\" (plural)"
-msgstr ""
+msgstr "“关系”（复数）的自定义标签"
 
 msgid "Example use: See all relationships"
 msgstr "使用示例：查看所有关系"
 
 msgid "Custom label for \"note\" (singular)"
-msgstr ""
+msgstr "“note”（单数）的自定义标签"
 
 msgid ""
 "Used to customize the label for a note or comment added to an enrollment or "
@@ -5612,7 +5612,7 @@ msgid ""
 msgstr "用于自定义添加到报名或活动中的备注或评论的标签"
 
 msgid "Custom label for \"notes\" (plural)"
-msgstr ""
+msgstr "“笔记”（复数）的自定义标签"
 
 msgid "Example use: See all notes"
 msgstr "使用示例：查看所有笔记"
@@ -5981,6 +5981,9 @@ msgid ""
 "events"
 msgstr "自动创建项目阶段事件时，不创建逾期事件"
 
+msgid "Enrollment category combination"
+msgstr "招生类别组合"
+
 msgid "Mandatory tracked entity attributes are not included in this form."
 msgstr "本表格不包含强制跟踪实体属性。"
 
@@ -6002,25 +6005,25 @@ msgid "Used as the default registration date for enrollments"
 msgstr "用作注册的默认注册日期"
 
 msgid "Custom label for \"enrollment\" (singular)"
-msgstr ""
+msgstr "“enrollment”（单数）的自定义标签"
 
 msgid "Example use: See all data in this enrollment"
 msgstr "使用示例：查看本次注册的所有数据"
 
 msgid "Custom label for \"enrollments\" (plural)"
-msgstr ""
+msgstr "“enrollments”（复数）的自定义标签"
 
 msgid "Example use: See all enrollments"
 msgstr "使用示例：查看所有报名记录"
 
 msgid "Custom label for \"program stage\" (singular)"
-msgstr ""
+msgstr "“程序阶段”（单数）的自定义标签"
 
 msgid "Example use: See all data in this program stage"
 msgstr "使用示例：查看本程序阶段的所有数据"
 
 msgid "Custom label for \"program stages\" (plural)"
-msgstr ""
+msgstr "“程序阶段”（复数）的自定义标签"
 
 msgid "Example use: See all program stages"
 msgstr "使用示例：查看所有项目阶段"
@@ -6032,13 +6035,13 @@ msgid "Used to customize the label for a follow-up event or activity"
 msgstr "用于自定义后续活动或项目的标签"
 
 msgid "Custom label for \"attribute\" (singular)"
-msgstr ""
+msgstr "“attribute”（单数）的自定义标签"
 
 msgid "Used to customize the label for a tracked entity attribute"
 msgstr "用于自定义受跟踪实体属性的标签"
 
 msgid "Custom label for \"attributes\" (plural)"
-msgstr ""
+msgstr "“attributes”（复数）的自定义标签"
 
 msgid "Example use: See all attributes"
 msgstr "使用示例：查看所有属性"
@@ -6129,8 +6132,49 @@ msgid ""
 "is checked"
 msgstr "选中双向时，需要从接收实体看到关系名称"
 
+msgid "Resource saved successfully"
+msgstr ""
+
+msgid "File resources"
+msgstr ""
+
+msgid ""
+"File resources cannot be edited. Only resources with a URL can be modified."
+msgstr ""
+
+msgid "Resource created successfully"
+msgstr ""
+
+msgid "Web and executable files are not allowed ({{extensions}})"
+msgstr ""
+
+msgid "Change file"
+msgstr ""
+
+msgid "Upload file"
+msgstr ""
+
+msgid "Resource type"
+msgstr ""
+
+msgid "Use the file as an attachment"
+msgstr ""
+
+msgid "A URL is required"
+msgstr ""
+
+msgid "A file is required"
+msgstr ""
+
+msgid "This file type is not allowed"
+msgstr ""
+
 msgid "View resource"
 msgstr "查看资源"
+
+msgid ""
+"File resources cannot be edited. Delete it and add a new resource instead."
+msgstr ""
 
 msgid "SQL view results"
 msgstr "SQL 视图结果"
