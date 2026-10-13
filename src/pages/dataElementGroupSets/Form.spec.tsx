@@ -1,6 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { render, within } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { render, waitFor, within } from '@testing-library/react'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/dataElementGroupSets.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
@@ -260,33 +259,35 @@ describe('Data element group sets form tests', () => {
             const attributeInput = within(
                 screen.getByTestId(`attribute-${attributes[0].id}`)
             ).getByRole('textbox') as HTMLInputElement
-            await userEvent.type(attributeInput, anAttribute)
+            await uiActions.pasteIntoInput(attributeInput, anAttribute)
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        code: aCode,
-                        description: aDescription,
-                        dataElementGroups: [
-                            expect.objectContaining({
-                                id: dataElementGroups[1].id,
-                            }),
-                        ],
-                        compulsory: true,
-                        dataDimension: true,
-                        attributeValues: [
-                            {
-                                attribute: expect.objectContaining({
-                                    id: attributes[0].id,
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            code: aCode,
+                            description: aDescription,
+                            dataElementGroups: [
+                                expect.objectContaining({
+                                    id: dataElementGroups[1].id,
                                 }),
-                                value: anAttribute,
-                            },
-                        ],
-                    }),
-                })
+                            ],
+                            compulsory: true,
+                            dataDimension: true,
+                            attributeValues: [
+                                {
+                                    attribute: expect.objectContaining({
+                                        id: attributes[0].id,
+                                    }),
+                                    value: anAttribute,
+                                },
+                            ],
+                        }),
+                    })
+                )
             )
         })
     })
@@ -403,7 +404,12 @@ describe('Data element group sets form tests', () => {
         })
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

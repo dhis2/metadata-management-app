@@ -126,6 +126,7 @@ export const randomLongString = (length: number) => {
 }
 
 const stringMap = {
+    id: randomDhis2Id,
     lastUpdated: () => mockIsoDateTime(),
 }
 

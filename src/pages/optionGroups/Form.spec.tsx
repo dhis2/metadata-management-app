@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { act, render, within } from '@testing-library/react'
+import { act, render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/optionGroups.json'
@@ -33,6 +33,7 @@ describe('OptionGroups form tests', () => {
     const updateMock = jest.fn()
 
     beforeEach(() => {
+        jest.resetAllMocks()
         const portalRoot = document.createElement('div')
         portalRoot.setAttribute('id', FOOTER_ID)
         document.body.appendChild(portalRoot)
@@ -76,17 +77,19 @@ describe('OptionGroups form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
             uiAssertions.expectFieldToHaveError(
                 'formfields-shortName',
                 'Required',
                 screen
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should show error if name too long', async () => {
@@ -191,18 +194,20 @@ describe('OptionGroups form tests', () => {
                 screen
             )
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        code: aCode,
-                        optionSet: expect.objectContaining({
-                            id: optionSets[0].id,
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            code: aCode,
+                            optionSet: expect.objectContaining({
+                                id: optionSets[0].id,
+                            }),
                         }),
-                    }),
-                })
-            )
+                    })
+                )
+            })
         })
 
         it('shows options transfer field when an option set is selected', async () => {
@@ -279,14 +284,16 @@ describe('OptionGroups form tests', () => {
 
         it('submits updated name', async () => {
             const { screen, optionGroup } = await renderForm()
-            const newName = faker.word.words()
+            const newName = `${optionGroup.name} updated`
             await uiActions.enterName(newName, screen)
             await uiActions.submitForm(screen)
-            expect(updateMock).toHaveBeenCalledWith({
-                data: [{ op: 'replace', path: '/name', value: newName }],
-                id: optionGroup.id,
-                params: undefined,
-                resource: 'optionGroups',
+            await waitFor(() => {
+                expect(updateMock).toHaveBeenCalledWith({
+                    data: [{ op: 'replace', path: '/name', value: newName }],
+                    id: optionGroup.id,
+                    params: undefined,
+                    resource: 'optionGroups',
+                })
             })
         })
     })

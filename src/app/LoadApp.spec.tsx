@@ -42,6 +42,10 @@ describe('LoadApp', () => {
     }
 
     beforeEach(async () => {
+        setSchemaMock.mockClear()
+        setSystemSettingsMock.mockClear()
+        setUserMock.mockClear()
+        setOrgUnitsMock.mockClear()
         ;(useSetSchemas as jest.Mock).mockImplementation(() => setSchemaMock)
         ;(useSetSystemSettings as jest.Mock).mockImplementation(
             () => setSystemSettingsMock

@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/indicatorTypes.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
@@ -88,12 +88,14 @@ describe('Indicator types form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
         it('should show an error if name field is too long', async () => {
             const { screen } = await renderForm()
@@ -128,15 +130,17 @@ describe('Indicator types form tests', () => {
                 screen,
                 { type: 'spinbutton' }
             )
-            uiAssertions.expectInputFieldToHaveWarning(
-                `formfields-factor`,
-                'An indicator type with this factor already exists',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectInputFieldToHaveWarning(
+                    `formfields-factor`,
+                    'An indicator type with this factor already exists',
+                    screen
+                )
             )
 
             await uiActions.enterName(faker.company.name(), screen)
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalled()
+            await waitFor(() => expect(createMock).toHaveBeenCalled())
         })
     })
     describe('New', () => {
@@ -211,7 +215,7 @@ describe('Indicator types form tests', () => {
                 type: 'spinbutton',
             })
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledTimes(1)
+            await waitFor(() => expect(createMock).toHaveBeenCalledTimes(1))
             expect(createMock).toHaveBeenLastCalledWith(
                 expect.objectContaining({
                     id: undefined,
@@ -236,6 +240,8 @@ describe('Indicator types form tests', () => {
             ) => {
                 const indicatorType = testIndicatorType({
                     id,
+                    // zod-mock can exceed the schema max for factor
+                    factor: faker.number.int({ min: 1, max: 100 }),
                 })
                 const screen = render(
                     <TestComponentWithRouter
@@ -310,7 +316,7 @@ describe('Indicator types form tests', () => {
             })
 
             await uiActions.submitForm(screen)
-            expect(updateMock).toHaveBeenCalledTimes(1)
+            await waitFor(() => expect(updateMock).toHaveBeenCalledTimes(1))
             expect(updateMock).toHaveBeenLastCalledWith(
                 expect.objectContaining({
                     id: indicatorType.id,
@@ -322,7 +328,12 @@ describe('Indicator types form tests', () => {
         })
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

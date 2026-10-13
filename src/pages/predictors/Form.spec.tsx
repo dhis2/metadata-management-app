@@ -22,7 +22,6 @@ import { Component as Edit } from './Edit'
 import { Component as New } from './New'
 import resetAllMocks = jest.resetAllMocks
 
-jest.retryTimes(2, { logErrorsBeforeRetry: true })
 jest.setTimeout(40 * 1000) // set timeout to 40 seconds for these tests
 
 const section = SECTIONS_MAP.predictor
@@ -149,13 +148,14 @@ describe('Predictors form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
+            await waitFor(() => {
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
+            })
             expect(createMock).not.toHaveBeenCalled()
-
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
-            )
             uiAssertions.expectFieldToHaveError(
                 'formfields-shortName',
                 'Required',
@@ -263,7 +263,8 @@ describe('Predictors form tests', () => {
                 screen
             )
 
-            const error = within(editModal).getByTestId(
+            // shown once the async expression validation has responded
+            const error = await within(editModal).findByTestId(
                 `expression-builder-modal-input-validation`
             )
             expect(error).toBeVisible()
@@ -671,7 +672,7 @@ describe('Predictors form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledTimes(1)
+            await waitFor(() => expect(createMock).toHaveBeenCalledTimes(1))
             expect(createMock).toHaveBeenLastCalledWith(
                 expect.objectContaining({
                     data: expect.objectContaining({
@@ -1031,26 +1032,28 @@ describe('Predictors form tests', () => {
                 useDefaultCategoryOptionCombo: true,
             })
 
-            expect(
-                screen.queryByTestId('formfields-outputCombo-validation')
-            ).not.toBeInTheDocument()
-
             const newName = faker.internet.userName()
             await uiActions.enterName(newName, screen)
             await uiActions.submitForm(screen)
 
-            expect(updateMock).toHaveBeenCalledWith({
-                data: [
-                    {
-                        op: 'replace',
-                        path: '/name',
-                        value: newName,
-                    },
-                ],
-                id: predictor.id,
-                params: undefined,
-                resource: 'predictors',
+            await waitFor(() => {
+                expect(updateMock).toHaveBeenCalledWith({
+                    data: [
+                        {
+                            op: 'replace',
+                            path: '/name',
+                            value: newName,
+                        },
+                    ],
+                    id: predictor.id,
+                    params: undefined,
+                    resource: 'predictors',
+                })
             })
+            // checked after submitting, when required errors would show
+            expect(
+                screen.queryByTestId('formfields-outputCombo-validation')
+            ).not.toBeInTheDocument()
         })
 
         it('should submit the data successfully when a field is changed', async () => {
@@ -1061,23 +1064,31 @@ describe('Predictors form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(updateMock).toHaveBeenCalledWith({
-                data: [
-                    {
-                        op: 'replace',
-                        path: '/name',
-                        value: newName,
-                    },
-                ],
-                id: predictor.id,
-                params: undefined,
-                resource: 'predictors',
+            await waitFor(() => {
+                expect(updateMock).toHaveBeenCalledWith({
+                    data: [
+                        {
+                            op: 'replace',
+                            path: '/name',
+                            value: newName,
+                        },
+                    ],
+                    id: predictor.id,
+                    params: undefined,
+                    resource: 'predictors',
+                })
             })
         })
 
         it('should do nothing when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            // leaving the form shows the submit has completed
+            await waitFor(() => {
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            })
             expect(updateMock).not.toHaveBeenCalled()
         })
 

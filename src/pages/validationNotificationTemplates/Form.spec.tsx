@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { render, within } from '@testing-library/react'
+import { render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/attributeSchema.json'
@@ -377,7 +377,7 @@ describe('Validation Notification form tests', () => {
                 aMessage,
                 screen
             )
-            uiActions.pickRadioField(
+            await uiActions.pickRadioField(
                 'notificationType',
                 notificationTypeOptions[notificationOptionIndex].label,
                 screen
@@ -397,26 +397,31 @@ describe('Validation Notification form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        code: aCode,
-                        validationRules: [
-                            expect.objectContaining({
-                                id: validationRules[1].id,
-                            }),
-                        ],
-                        subjectTemplate: aSubject,
-                        messageTemplate: aMessage,
-                        sendStrategy:
-                            notificationTypeOptions[notificationOptionIndex].id,
-                        recipientUserGroups: [
-                            expect.objectContaining({ id: userGroups[1].id }),
-                        ],
-                        notifyUsersInHierarchyOnly: true,
-                    }),
-                })
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            code: aCode,
+                            validationRules: [
+                                expect.objectContaining({
+                                    id: validationRules[1].id,
+                                }),
+                            ],
+                            subjectTemplate: aSubject,
+                            messageTemplate: aMessage,
+                            sendStrategy:
+                                notificationTypeOptions[notificationOptionIndex]
+                                    .id,
+                            recipientUserGroups: [
+                                expect.objectContaining({
+                                    id: userGroups[1].id,
+                                }),
+                            ],
+                            notifyUsersInHierarchyOnly: true,
+                        }),
+                    })
+                )
             )
         })
     })
@@ -563,7 +568,12 @@ describe('Validation Notification form tests', () => {
         })
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

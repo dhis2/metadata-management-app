@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { act, render, within } from '@testing-library/react'
+import { act, render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/relationshipTypes.json'
@@ -101,12 +101,14 @@ describe('Relationship types form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
             uiAssertions.expectFieldToHaveError(
                 'formfields-fromToName',
                 'Required',
@@ -176,12 +178,14 @@ describe('Relationship types form tests', () => {
             const { screen } = await renderForm()
             await uiActions.enterName('Test Name', screen)
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-fromToName',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-fromToName',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should require toFromName field when bidirectional is checked', async () => {
@@ -204,12 +208,14 @@ describe('Relationship types form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-toFromName',
-                'Relationship name seen from receiving entity is required when bidirectional is checked',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-toFromName',
+                    'Relationship name seen from receiving entity is required when bidirectional is checked',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should show an error if fromToName field is too long', async () => {
@@ -299,16 +305,19 @@ describe('Relationship types form tests', () => {
             // Flush the useEffect so LINK_ONLY_SECTIONS check runs and NewItemForm stays undefined
             await act(async () => {})
 
-            const programField = screen.getByTestId('from-program-selector')
-            const addNewButton = within(programField).getAllByRole('button')[1]
-            await userEvent.click(addNewButton)
+            try {
+                const programField = screen.getByTestId('from-program-selector')
+                const addNewButton =
+                    within(programField).getAllByRole('button')[1]
+                await userEvent.click(addNewButton)
 
-            expect(windowOpenSpy).toHaveBeenCalledWith(
-                expect.stringContaining('/programs/new'),
-                '_blank'
-            )
-
-            windowOpenSpy.mockRestore()
+                expect(windowOpenSpy).toHaveBeenCalledWith(
+                    expect.stringContaining('/programs/new'),
+                    '_blank'
+                )
+            } finally {
+                windowOpenSpy.mockRestore()
+            }
         })
     })
 
@@ -439,29 +448,31 @@ describe('Relationship types form tests', () => {
             )
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        code: aCode,
-                        description: aDescription,
-                        fromToName: aFromToName,
-                        bidirectional: false,
-                        fromConstraint: expect.objectContaining({
-                            relationshipEntity: 'PROGRAM_INSTANCE',
-                            program: expect.objectContaining({
-                                id: programs[0].id,
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            code: aCode,
+                            description: aDescription,
+                            fromToName: aFromToName,
+                            bidirectional: false,
+                            fromConstraint: expect.objectContaining({
+                                relationshipEntity: 'PROGRAM_INSTANCE',
+                                program: expect.objectContaining({
+                                    id: programs[0].id,
+                                }),
+                            }),
+                            toConstraint: expect.objectContaining({
+                                relationshipEntity: 'PROGRAM_INSTANCE',
+                                program: expect.objectContaining({
+                                    id: programs[0].id,
+                                }),
                             }),
                         }),
-                        toConstraint: expect.objectContaining({
-                            relationshipEntity: 'PROGRAM_INSTANCE',
-                            program: expect.objectContaining({
-                                id: programs[0].id,
-                            }),
-                        }),
-                    }),
-                })
-            )
+                    })
+                )
+            })
         })
     })
 
@@ -471,7 +482,20 @@ describe('Relationship types form tests', () => {
             (routeOptions) => {
                 const attributes = [testCustomAttribute({ mandatory: false })]
                 const programs = [testProgram(), testProgram()]
-                const relationshipType = testRelationshipType()
+                const constraint = {
+                    relationshipEntity: 'PROGRAM_INSTANCE',
+                    program: {
+                        id: programs[0].id,
+                        displayName: programs[0].displayName,
+                    },
+                }
+                const relationshipType = testRelationshipType({
+                    name: faker.company.name(),
+                    bidirectional: false,
+                    toFromName: undefined,
+                    fromConstraint: constraint,
+                    toConstraint: constraint,
+                })
                 const id = relationshipType.id
 
                 const screen = render(
@@ -536,7 +560,12 @@ describe('Relationship types form tests', () => {
 
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
 

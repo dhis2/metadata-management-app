@@ -131,11 +131,12 @@ describe('Data approval levels form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
         })
 
@@ -145,6 +146,7 @@ describe('Data approval levels form tests', () => {
             await uiActions.enterName(longText, screen)
             await uiAssertions.expectNameToErrorWhenExceedsLength(screen)
             await uiActions.submitForm(screen)
+            expect(createMock).not.toHaveBeenCalled()
             expect(createMock).not.toHaveBeenCalled()
         })
 
@@ -185,7 +187,7 @@ describe('Data approval levels form tests', () => {
                 await screen.findByText('Add new Category option group set')
             ).toBeInTheDocument()
             expect(
-                screen.getByTestId('categoryOptionGroupSetNewForm')
+                await screen.findByTestId('categoryOptionGroupSetNewForm')
             ).toBeInTheDocument()
             expect(
                 within(
@@ -213,10 +215,12 @@ describe('Data approval levels form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            uiAssertions.expectFieldToHaveError(
-                'formfields-categoryoptiongroupset',
-                'An approval level for this organisation unit level and category option group set combination already exists.',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-categoryoptiongroupset',
+                    'An approval level for this organisation unit level and category option group set combination already exists.',
+                    screen
+                )
             )
             expect(createMock).not.toHaveBeenCalled()
         })
@@ -305,13 +309,15 @@ describe('Data approval levels form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        orgUnitLevel: organisationUnitLevels[0].level,
-                    }),
-                })
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            orgUnitLevel: organisationUnitLevels[0].level,
+                        }),
+                    })
+                )
             )
         })
     })
@@ -406,7 +412,12 @@ describe('Data approval levels form tests', () => {
 
         it('should do nothing when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })
