@@ -991,9 +991,6 @@ msgstr "Data view only"
 msgid "Successfully deleted {{number}} items"
 msgstr "Successfully deleted {{number}} items"
 
-msgid "Some items could not be deleted"
-msgstr "Some items could not be deleted"
-
 msgid "Delete {{number}} items"
 msgstr "Delete {{number}} items"
 
@@ -1003,6 +1000,24 @@ msgid ""
 msgstr ""
 "Are you sure you want to delete these {{number}} items? This cannot be "
 "undone."
+
+msgid "Errors copied to clipboard"
+msgstr "Errors copied to clipboard"
+
+msgid "{{failedCount}} of {{total}} items could not be deleted"
+msgstr "{{failedCount}} of {{total}} items could not be deleted"
+
+msgid "Copy as list"
+msgstr "Copy as list"
+
+msgid "Close"
+msgstr "Close"
+
+msgid "Open in a new tab"
+msgstr "Open in a new tab"
+
+msgid "Open"
+msgstr "Open"
 
 msgid "Successfully updated sharing for {{number}} items"
 msgstr "Successfully updated sharing for {{number}} items"
@@ -1036,6 +1051,18 @@ msgstr "Update sharing for {{number}} items"
 
 msgid "Update sharing"
 msgstr "Update sharing"
+
+msgid "You do not have permission to delete this item"
+msgstr "You do not have permission to delete this item"
+
+msgid "Not found, it may already have been deleted"
+msgstr "Not found, it may already have been deleted"
+
+msgid "In use by other metadata or data"
+msgstr "In use by other metadata or data"
+
+msgid "Cannot be deleted"
+msgstr "Cannot be deleted"
 
 msgid "Created by"
 msgstr "Created by"
@@ -3443,9 +3470,6 @@ msgstr "Override data element category combination"
 msgid "No data elements selected"
 msgstr "No data elements selected"
 
-msgid "Close"
-msgstr "Close"
-
 msgid "Should not exceed {{maxLength}} characters"
 msgstr "Should not exceed {{maxLength}} characters"
 
@@ -5722,9 +5746,6 @@ msgstr "Role access"
 
 msgid "Save the program first to set up sharing."
 msgstr "Save the program first to set up sharing."
-
-msgid "Open"
-msgstr "Open"
 
 msgid "Users can open tracked entities in their search or capture scope."
 msgstr "Users can open tracked entities in their search or capture scope."
