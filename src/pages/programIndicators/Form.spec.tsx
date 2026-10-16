@@ -619,6 +619,16 @@ describe('Program indicator form tests', () => {
         })
     })
     describe('New', () => {
+        const eventPeriodBoundaries = [
+            {
+                analyticsPeriodBoundaryType: 'AFTER_START_OF_REPORTING_PERIOD',
+                boundaryTarget: 'EVENT_DATE',
+            },
+            {
+                analyticsPeriodBoundaryType: 'BEFORE_START_OF_REPORTING_PERIOD',
+                boundaryTarget: 'EVENT_DATE',
+            },
+        ]
         const renderForm = generateRenderer(
             { section, mockSchema },
             (
@@ -897,7 +907,7 @@ describe('Program indicator form tests', () => {
                         attributeValues: [],
                         expression: undefined,
                         filter: undefined,
-                        analyticsPeriodBoundaries: [],
+                        analyticsPeriodBoundaries: eventPeriodBoundaries,
                     }),
                 })
             )
@@ -990,7 +1000,7 @@ describe('Program indicator form tests', () => {
                         attributeValues: [],
                         expression: anExpression,
                         filter: aFilter,
-                        analyticsPeriodBoundaries: [],
+                        analyticsPeriodBoundaries: eventPeriodBoundaries,
                     }),
                 })
             )
@@ -1076,6 +1086,7 @@ describe('Program indicator form tests', () => {
                         expression: undefined,
                         filter: undefined,
                         analyticsPeriodBoundaries: [
+                            ...eventPeriodBoundaries,
                             {
                                 boundaryTarget: 'INCIDENT_DATE',
                                 analyticsPeriodBoundaryType:
@@ -1083,6 +1094,122 @@ describe('Program indicator form tests', () => {
                                 offsetPeriodType: periodTypes[0],
                                 offsetPeriods: 5,
                             },
+                        ],
+                    }),
+                })
+            )
+        })
+        it('should reset analytics period boundaries when toggling the analytics type', async () => {
+            const programWithoutRegistration = testProgram({
+                programType: 'WITHOUT_REGISTRATION' as ProgramType,
+            })
+            const aName = faker.internet.userName()
+            const aShortName = faker.internet.userName()
+
+            const periodTypes = ['Daily', 'Monthly', 'Yearly']
+            const { screen } = await renderForm({
+                customTestData: {
+                    programs: (type: any, params: any) => {
+                        if (params.id === programWithoutRegistration.id) {
+                            return {
+                                programStages: [],
+                            }
+                        }
+                        return Promise.resolve({
+                            programs: [
+                                programWithoutRegistration,
+                                testProgram(),
+                            ],
+                        })
+                    },
+                    periodTypes: () => ({
+                        periodTypes: periodTypes.map((pt) => ({ name: pt })),
+                    }),
+                },
+            })
+
+            await uiActions.enterName(aName, screen)
+            await uiActions.enterInputFieldValue(
+                'shortName',
+                aShortName,
+                screen
+            )
+            const programOptions = await uiActions.openSingleSelect(
+                screen.getByTestId('programs-field'),
+                screen
+            )
+            await userEvent.click(programOptions[0])
+            await uiActions.closeSingleSelectIfOpen(
+                screen.getByTestId('programs-field'),
+                screen
+            )
+
+            await uiActions.pickRadioField(
+                'analyticsType',
+                'Event: Uses data from all events within a program stage',
+                screen
+            )
+            const eventBoundaries = screen.getAllByTestId(
+                'analytics-period-boundary'
+            )
+            expect(eventBoundaries).toHaveLength(2)
+            eventBoundaries.forEach((boundary: HTMLElement) =>
+                expect(boundary).toHaveTextContent('Event date')
+            )
+
+            await uiActions.pickRadioField(
+                'analyticsType',
+                'Enrollment: Uses data combined from the latest events across the enrollment',
+                screen
+            )
+            expect(
+                screen.getByTestId('analytics-type-change-modal')
+            ).toBeVisible()
+            await userEvent.click(
+                screen.getByTestId('analytics-type-change-cancel')
+            )
+            expect(
+                screen.queryByTestId('analytics-type-change-modal')
+            ).not.toBeInTheDocument()
+            screen
+                .getAllByTestId('analytics-period-boundary')
+                .forEach((boundary: HTMLElement) =>
+                    expect(boundary).toHaveTextContent('Event date')
+                )
+
+            await uiActions.pickRadioField(
+                'analyticsType',
+                'Enrollment: Uses data combined from the latest events across the enrollment',
+                screen
+            )
+            await userEvent.click(
+                screen.getByTestId('analytics-type-change-continue')
+            )
+            const enrollmentBoundaries = screen.getAllByTestId(
+                'analytics-period-boundary'
+            )
+            expect(enrollmentBoundaries).toHaveLength(2)
+            enrollmentBoundaries.forEach((boundary: HTMLElement) =>
+                expect(boundary).toHaveTextContent('Enrollment date')
+            )
+
+            await uiActions.submitForm(screen)
+            expect(createMock).toHaveBeenCalledTimes(1)
+            expect(createMock).toHaveBeenLastCalledWith(
+                expect.objectContaining({
+                    data: expect.objectContaining({
+                        analyticsType: 'ENROLLMENT',
+                        analyticsPeriodBoundaries: [
+                            expect.objectContaining({
+                                boundaryTarget: 'ENROLLMENT_DATE',
+                                analyticsPeriodBoundaryType:
+                                    'AFTER_START_OF_REPORTING_PERIOD',
+                            }),
+                            expect.objectContaining({
+                                boundaryTarget: 'ENROLLMENT_DATE',
+                                analyticsPeriodBoundaryType:
+                                    'BEFORE_START_OF_REPORTING_PERIOD',
+                            }),
                         ],
                     }),
                 })
@@ -1182,7 +1309,7 @@ describe('Program indicator form tests', () => {
                         attributeValues: [],
                         expression: undefined,
                         filter: undefined,
-                        analyticsPeriodBoundaries: [],
+                        analyticsPeriodBoundaries: eventPeriodBoundaries,
                     }),
                 })
             )
@@ -1268,7 +1395,7 @@ describe('Program indicator form tests', () => {
                         attributeValues: [],
                         expression: undefined,
                         filter: undefined,
-                        analyticsPeriodBoundaries: [],
+                        analyticsPeriodBoundaries: eventPeriodBoundaries,
                     }),
                 })
             )
@@ -1359,7 +1486,7 @@ describe('Program indicator form tests', () => {
                         ],
                         expression: undefined,
                         filter: undefined,
-                        analyticsPeriodBoundaries: [],
+                        analyticsPeriodBoundaries: eventPeriodBoundaries,
                     }),
                 })
             )
@@ -1864,6 +1991,53 @@ describe('Program indicator form tests', () => {
                 'href',
                 `/${section.namePlural}`
             )
+        })
+        it('should show a confirmation modal when changing the analytics type and keep the values on cancel', async () => {
+            const { screen } = await renderForm({
+                programIndicatorOverwrites: {
+                    analyticsType: 'EVENT',
+                    orgUnitField: null,
+                },
+            })
+
+            await uiActions.pickRadioField(
+                'analyticsType',
+                'Enrollment: Uses data combined from the latest events across the enrollment',
+                screen
+            )
+            expect(
+                screen.getByTestId('analytics-type-change-modal')
+            ).toBeVisible()
+
+            await userEvent.click(
+                screen.getByTestId('analytics-type-change-cancel')
+            )
+            expect(
+                screen.queryByTestId('analytics-type-change-modal')
+            ).not.toBeInTheDocument()
+
+            uiAssertions.expectRadioFieldToExist(
+                'analyticsType',
+                [
+                    {
+                        label: PROGRAM_INDICATOR_SPECIFIC_TRANSLATIONS.EVENT,
+                        checked: true,
+                    },
+                    {
+                        label: PROGRAM_INDICATOR_SPECIFIC_TRANSLATIONS.ENROLLMENT,
+                        checked: false,
+                    },
+                ],
+                screen
+            )
+            const boundariesList = screen.getAllByTestId(
+                'analytics-period-boundary'
+            )
+            expect(boundariesList).toHaveLength(1)
+            expect(boundariesList[0]).toHaveTextContent('Incident date')
+
+            await uiActions.submitForm(screen)
+            expect(updateMock).not.toHaveBeenCalled()
         })
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm({
