@@ -12,19 +12,19 @@
 # Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2026
 # Marta Vila <marta@dhis2.org>, 2026
 # Carlos Tejo Alonso, 2026
-# Prabhjot Singh, 2026
 # Philip Larsen Donnelly, 2026
 # Alejandra Avila <alejandra@dhis2.org>, 2026
 # Bruno Raimbault, 2026
 # Janeth Cruz, 2026
 # Milagros Rodríguez, 2026
 # Sergio Valenzuela <sergio.valenzuela@ehas.org>, 2026
+# Prabhjot Singh, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-09-14T08:59:16.484Z\n"
+"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
 "Language-Team: Spanish (https://app.transifex.com/hisp-uio/teams/100509/es/)\n"
@@ -1255,6 +1255,12 @@ msgstr "Actualizar vista"
 msgid "None"
 msgstr "Ninguno"
 
+msgid "URL"
+msgstr "URL"
+
+msgid "File"
+msgstr "Archivo"
+
 msgid "No value"
 msgstr "Sin valor"
 
@@ -1788,12 +1794,6 @@ msgstr "Referencia"
 
 msgid "Age"
 msgstr "Edad"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "File"
-msgstr "Archivo"
 
 msgid "Image"
 msgstr "Imagen (PNG)"
@@ -2605,8 +2605,8 @@ msgstr "Clave"
 msgid "Keywords"
 msgstr ""
 
-msgid "External"
-msgstr "Exterior"
+msgid "Type"
+msgstr "Tipo"
 
 msgid "Which resource table"
 msgstr ""
@@ -4147,6 +4147,27 @@ msgstr ""
 msgid "Choose the groups to include in this organisation unit group set."
 msgstr ""
 
+msgid "Color and symbol"
+msgstr ""
+
+msgid "Choose a symbol"
+msgstr ""
+
+msgid "Available symbols"
+msgstr ""
+
+msgid "Choose symbol"
+msgstr ""
+
+msgid "Remove symbol"
+msgstr ""
+
+msgid "Symbol"
+msgstr "Símbolo"
+
+msgid "Symbol: none selected"
+msgstr ""
+
 msgid "Set up the basic information for this organisation unit group."
 msgstr ""
 
@@ -4894,9 +4915,6 @@ msgstr ""
 msgid "Offset"
 msgstr ""
 
-msgid "Type"
-msgstr "Tipo"
-
 msgid "Boundary target"
 msgstr ""
 
@@ -5429,6 +5447,9 @@ msgstr ""
 msgid "Public (All users)"
 msgstr ""
 
+msgid "External"
+msgstr "Exterior"
+
 msgid "Group"
 msgstr "Grupo"
 
@@ -5954,6 +5975,9 @@ msgid ""
 "events"
 msgstr ""
 
+msgid "Enrollment category combination"
+msgstr ""
+
 msgid "Mandatory tracked entity attributes are not included in this form."
 msgstr ""
 
@@ -6102,8 +6126,49 @@ msgid ""
 "is checked"
 msgstr ""
 
+msgid "Resource saved successfully"
+msgstr ""
+
+msgid "File resources"
+msgstr ""
+
+msgid ""
+"File resources cannot be edited. Only resources with a URL can be modified."
+msgstr ""
+
+msgid "Resource created successfully"
+msgstr ""
+
+msgid "Web and executable files are not allowed ({{extensions}})"
+msgstr ""
+
+msgid "Change file"
+msgstr ""
+
+msgid "Upload file"
+msgstr "Subir archivo"
+
+msgid "Resource type"
+msgstr ""
+
+msgid "Use the file as an attachment"
+msgstr ""
+
+msgid "A URL is required"
+msgstr ""
+
+msgid "A file is required"
+msgstr ""
+
+msgid "This file type is not allowed"
+msgstr ""
+
 msgid "View resource"
 msgstr "Ver recursos"
+
+msgid ""
+"File resources cannot be edited. Delete it and add a new resource instead."
+msgstr ""
 
 msgid "SQL view results"
 msgstr ""

@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-09-14T08:59:16.484Z\n"
+"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: Éva Tamási, 2026\n"
 "Language-Team: Ukrainian (https://app.transifex.com/hisp-uio/teams/100509/uk/)\n"
@@ -1241,6 +1241,12 @@ msgstr ""
 msgid "None"
 msgstr "Немає"
 
+msgid "URL"
+msgstr "URL-адреса"
+
+msgid "File"
+msgstr "Файл"
+
 msgid "No value"
 msgstr "Відсутнє значення"
 
@@ -1774,12 +1780,6 @@ msgstr "Посилання"
 
 msgid "Age"
 msgstr ""
-
-msgid "URL"
-msgstr "URL-адреса"
-
-msgid "File"
-msgstr "Файл"
 
 msgid "Image"
 msgstr ""
@@ -2591,8 +2591,8 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
-msgid "External"
-msgstr ""
+msgid "Type"
+msgstr "Тип"
 
 msgid "Which resource table"
 msgstr ""
@@ -4133,6 +4133,27 @@ msgstr ""
 msgid "Choose the groups to include in this organisation unit group set."
 msgstr ""
 
+msgid "Color and symbol"
+msgstr ""
+
+msgid "Choose a symbol"
+msgstr ""
+
+msgid "Available symbols"
+msgstr ""
+
+msgid "Choose symbol"
+msgstr ""
+
+msgid "Remove symbol"
+msgstr ""
+
+msgid "Symbol"
+msgstr ""
+
+msgid "Symbol: none selected"
+msgstr ""
+
 msgid "Set up the basic information for this organisation unit group."
 msgstr ""
 
@@ -4856,9 +4877,6 @@ msgstr ""
 msgid "Offset"
 msgstr ""
 
-msgid "Type"
-msgstr "Тип"
-
 msgid "Boundary target"
 msgstr ""
 
@@ -5391,6 +5409,9 @@ msgstr ""
 msgid "Public (All users)"
 msgstr ""
 
+msgid "External"
+msgstr ""
+
 msgid "Group"
 msgstr "Група"
 
@@ -5916,6 +5937,9 @@ msgid ""
 "events"
 msgstr ""
 
+msgid "Enrollment category combination"
+msgstr ""
+
 msgid "Mandatory tracked entity attributes are not included in this form."
 msgstr ""
 
@@ -6064,7 +6088,48 @@ msgid ""
 "is checked"
 msgstr ""
 
+msgid "Resource saved successfully"
+msgstr ""
+
+msgid "File resources"
+msgstr ""
+
+msgid ""
+"File resources cannot be edited. Only resources with a URL can be modified."
+msgstr ""
+
+msgid "Resource created successfully"
+msgstr ""
+
+msgid "Web and executable files are not allowed ({{extensions}})"
+msgstr ""
+
+msgid "Change file"
+msgstr ""
+
+msgid "Upload file"
+msgstr "Вивантажити файл"
+
+msgid "Resource type"
+msgstr ""
+
+msgid "Use the file as an attachment"
+msgstr ""
+
+msgid "A URL is required"
+msgstr ""
+
+msgid "A file is required"
+msgstr ""
+
+msgid "This file type is not allowed"
+msgstr ""
+
 msgid "View resource"
+msgstr ""
+
+msgid ""
+"File resources cannot be edited. Delete it and add a new resource instead."
 msgstr ""
 
 msgid "SQL view results"
