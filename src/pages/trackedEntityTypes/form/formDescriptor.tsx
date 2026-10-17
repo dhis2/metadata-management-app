@@ -37,8 +37,12 @@ export const TrackedEntityTypeFormDescriptor = {
                     label: i18n.t('Color and icon'),
                 },
                 {
+                    name: 'enableChangeLog',
+                    label: i18n.t('Record change history for attribute values'),
+                },
+                {
                     name: 'allowAuditLog',
-                    label: i18n.t('Enable tracked entity instance audit log'),
+                    label: i18n.t('Record access to tracked entities'),
                 },
                 {
                     name: 'minAttributesRequiredToSearch',

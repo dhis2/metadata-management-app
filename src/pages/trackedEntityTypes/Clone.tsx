@@ -14,8 +14,10 @@ import {
 import {
     ATTRIBUTE_VALUES_FIELD_FILTERS,
     DEFAULT_FIELD_FILTERS,
+    FEATURES,
     SectionedFormProvider,
     SECTIONS_MAP,
+    useFeatureAvailable,
     useOnSubmitNew,
     useBoundResourceQueryFn,
 } from '../../lib'
@@ -26,6 +28,8 @@ import {
     validateTrackedEntityType,
 } from './form'
 
+const ENABLE_CHANGE_LOG_FIELD = 'enableChangeLog'
+
 const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
     ...ATTRIBUTE_VALUES_FIELD_FILTERS,
@@ -34,6 +38,7 @@ const fieldFilters = [
     'description',
     'style[color,icon]',
     'allowAuditLog',
+    ENABLE_CHANGE_LOG_FIELD,
     'minAttributesRequiredToSearch',
     'maxTeiCountToReturn',
     'featureType',
@@ -51,12 +56,20 @@ export const Component = () => {
     const queryFn = useBoundResourceQueryFn()
     const [searchParams] = useSearchParams()
     const clonedModelId = searchParams.get('clonedId') as string
+    const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
+
+    const requestedFields = useMemo(() => {
+        if (showEnableChangeLog) {
+            return fieldFilters.concat()
+        }
+        return fieldFilters.filter((f) => f !== ENABLE_CHANGE_LOG_FIELD)
+    }, [showEnableChangeLog])
 
     const query = {
         resource: 'trackedEntityTypes',
         id: clonedModelId,
         params: {
-            fields: fieldFilters.concat(),
+            fields: requestedFields,
         },
     }
     const trackedEntityTypeQuery = useQuery({

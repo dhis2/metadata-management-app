@@ -23,7 +23,9 @@ import {
 import { ModelSingleSelectRefreshableFormField } from '../../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
 import {
     DEFAULT_CATEGORYCOMBO_SELECT_OPTION,
+    FEATURES,
     selectedLocale,
+    useFeatureAvailable,
     useSchemaSectionHandleOrThrow,
     SECTIONS_MAP,
 } from '../../../../lib'
@@ -31,6 +33,7 @@ import { DisplayableModel } from '../../../../types/models'
 import {
     CompleteEventsExpiryDaysField,
     DisplayFrontPageListField,
+    EnableChangeLogField,
     ExpiryDaysWithPeriodTypeField,
     OpenDaysAfterCoEndDateField,
 } from '../fields'
@@ -62,6 +65,7 @@ export const SetupFormContents = React.memo(function SetupFormContents({
     const form = useForm()
     const { fromServerDate } = useTimeZoneConversion()
     const schemaSection = useSchemaSectionHandleOrThrow()
+    const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
 
     useEffect(() => {
         if (
@@ -253,6 +257,11 @@ export const SetupFormContents = React.memo(function SetupFormContents({
             {isTrackerProgram && (
                 <StandardFormField>
                     <DisplayFrontPageListField />
+                </StandardFormField>
+            )}
+            {showEnableChangeLog && (
+                <StandardFormField>
+                    <EnableChangeLogField />
                 </StandardFormField>
             )}
         </SectionedFormSection>

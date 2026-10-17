@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
-"PO-Revision-Date: 2026-10-05T09:04:48.203Z\n"
+"POT-Creation-Date: 2026-10-17T17:55:55.361Z\n"
+"PO-Revision-Date: 2026-10-17T17:55:55.361Z\n"
 
 msgid "schemas"
 msgstr "schemas"
@@ -2240,8 +2240,8 @@ msgstr "Owner"
 msgid "Zero is significant"
 msgstr "Zero is significant"
 
-msgid "Enable tracked entity instance audit log"
-msgstr "Enable tracked entity instance audit log"
+msgid "Record access to tracked entities"
+msgstr "Record access to tracked entities"
 
 msgid "Program type"
 msgstr "Program type"
@@ -2435,6 +2435,9 @@ msgstr "Cache strategy"
 msgid "SQL query"
 msgstr "SQL query"
 
+msgid "Record change history for attribute values"
+msgstr "Record change history for attribute values"
+
 msgid "Unique"
 msgstr "Unique"
 
@@ -2456,8 +2459,11 @@ msgstr "Access level"
 msgid "Completed events expiry days"
 msgstr "Completed events expiry days"
 
-msgid "Display front page list"
-msgstr "Display front page list"
+msgid "Start page in web Capture app"
+msgstr "Start page in web Capture app"
+
+msgid "Record change history for event data values"
+msgstr "Record change history for event data values"
 
 msgid "Mandatory"
 msgstr "Mandatory"
@@ -5897,9 +5903,6 @@ msgstr "Close data entry a number of days after event category combination end d
 msgid "Access and Sharing"
 msgstr "Access and Sharing"
 
-msgid "Start page in web Capture app"
-msgstr "Start page in web Capture app"
-
 msgid "Search form"
 msgstr "Search form"
 
@@ -6009,9 +6012,6 @@ msgstr "Configure data items"
 
 msgid "Data elements can be collected in different ways with different options."
 msgstr "Data elements can be collected in different ways with different options."
-
-msgid "Allow provided elsewhere"
-msgstr "Allow provided elsewhere"
 
 msgid "Display in reports"
 msgstr "Display in reports"

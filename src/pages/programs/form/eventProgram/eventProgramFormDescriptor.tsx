@@ -55,6 +55,12 @@ export const EventProgramFormDescriptor = {
                         'Maximum number of search results to display'
                     ),
                 },
+                {
+                    name: 'enableChangeLog',
+                    label: i18n.t(
+                        'Record change history for event data values'
+                    ),
+                },
             ],
         },
         {
