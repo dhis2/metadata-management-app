@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-09-14T08:59:16.484Z\n"
+"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: easylin <lin_xd@126.com>, 2026\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/hisp-uio/teams/100509/zh_CN/)\n"
@@ -47,13 +47,13 @@ msgid "The page you are looking for does not exist."
 msgstr "您要查找的页面不存在。"
 
 msgid "Cloning not available yet."
-msgstr ""
+msgstr "克隆功能目前尚不可用。"
 
 msgid "{{-sectionName}} cannot be cloned."
-msgstr ""
+msgstr "{{-sectionName}} 无法克隆。"
 
 msgid "Edit: {{objectName}}"
-msgstr ""
+msgstr "编辑：{{objectName}}"
 
 msgid "Edit"
 msgstr "编辑"
@@ -65,10 +65,10 @@ msgid "Merge {{modelName}}"
 msgstr "合并{{modelName}}"
 
 msgid "Move organisation units"
-msgstr ""
+msgstr "移动组织单位"
 
 msgid "Clone {{modelName}}"
-msgstr ""
+msgstr "克隆{{modelName}}"
 
 msgid "Metadata Integrity Checks"
 msgstr "元数据完整性检查"
@@ -83,7 +83,7 @@ msgid "Metadata Overview"
 msgstr "元数据概述"
 
 msgid "All metadata"
-msgstr ""
+msgstr "所有元数据"
 
 msgid "No menu items found for"
 msgstr "未找到以下菜单项"
@@ -104,7 +104,7 @@ msgid "Color"
 msgstr "颜色"
 
 msgid "Color: none selected"
-msgstr ""
+msgstr "颜色：未选择"
 
 msgid "Remove color"
 msgstr "去除颜色"
@@ -113,7 +113,7 @@ msgid "Icon"
 msgstr "图标"
 
 msgid "Icon: none selected"
-msgstr ""
+msgstr "图标：未选择"
 
 msgid "Choose an icon"
 msgstr "选择图标"
@@ -170,7 +170,7 @@ msgid "Valid expression"
 msgstr "有效表达式"
 
 msgid "Add operators, variables or program data from the right sidebar"
-msgstr ""
+msgstr "从右侧边栏添加运算符、变量或程序数据"
 
 msgid "Apply"
 msgstr "应用"
@@ -594,7 +594,7 @@ msgid "Show error details"
 msgstr "显示错误详情"
 
 msgid "Name: {{- displayName}} (Translated)"
-msgstr ""
+msgstr "名称：{{- displayName}} （译文）"
 
 msgid ""
 "Translatable fields appear in the default language in this form, not in your"
@@ -608,12 +608,12 @@ msgid "Set up information for the attributes assigned to {{modelName}}."
 msgstr "设置分配给{{modelName}} 的属性信息。"
 
 msgid "Cloning {{- clonedModelName}}"
-msgstr ""
+msgstr "克隆{{- clonedModelName}}"
 
 msgid ""
 "All values from the original {{-sectionName}} are included. Values that must"
 " be unique need to be updated."
-msgstr ""
+msgstr "原始{{-sectionName}} 中的所有值均已包含在内。必须唯一的值需要进行更新。"
 
 msgid "The default way to aggregate in analytics."
 msgstr "分析中的默认聚合方式。"
@@ -649,16 +649,16 @@ msgid "Do not collect location data"
 msgstr "不收集位置数据"
 
 msgid "Available groups"
-msgstr ""
+msgstr "可选组别"
 
 msgid "Selected groups"
-msgstr ""
+msgstr "选定组别"
 
 msgid "Filter available groups"
-msgstr ""
+msgstr "筛选可用群组"
 
 msgid "Filter selected groups"
-msgstr ""
+msgstr "筛选选定的组"
 
 msgid ""
 "This name is already in use. Consider updating the name to avoid a "
@@ -759,10 +759,10 @@ msgid "Change to {{newValue}}"
 msgstr "改为{{newValue}}"
 
 msgid "Failed to load data"
-msgstr ""
+msgstr "无法加载数据"
 
 msgid "Failed to load custom attributes"
-msgstr ""
+msgstr "无法加载自定义属性"
 
 msgid "New section"
 msgstr "新章节"
@@ -798,19 +798,19 @@ msgid "Delete"
 msgstr "删除"
 
 msgid "New program stages order saved successfully"
-msgstr ""
+msgstr "新程序的订单已成功保存"
 
 msgid "New sections order saved successfully"
 msgstr "成功保存新章节订单"
 
 msgid "Error saving new program stages order."
-msgstr ""
+msgstr "保存新程序阶段顺序时发生错误。"
 
 msgid "Error saving new sections order."
 msgstr "保存新章节订单出错。"
 
 msgid "Reorder program stages"
-msgstr ""
+msgstr "重新排序程序阶段"
 
 msgid "Reorder form sections"
 msgstr "重新排序表格部分"
@@ -819,7 +819,7 @@ msgid "(marked for deletion)"
 msgstr "(标记为删除)"
 
 msgid "Save program stage ordering"
-msgstr ""
+msgstr "保存程序阶段顺序"
 
 msgid "Save section ordering"
 msgstr "保存分段订购"
@@ -840,10 +840,10 @@ msgid "Form type based on current setup"
 msgstr "基于当前设置的表格类型"
 
 msgid "Web: {{webFormType}}"
-msgstr ""
+msgstr "网站：{{webFormType}}"
 
 msgid "Android: {{androidFormType}}"
-msgstr ""
+msgstr "Android：{{androidFormType}}"
 
 msgid ""
 "Organise data items into sections for easier entry. Section forms are used "
@@ -869,10 +869,10 @@ msgid "Confirmation code does not match"
 msgstr "确认代码不匹配"
 
 msgid "Delete the source data values"
-msgstr ""
+msgstr "删除源数据值"
 
 msgid "At least one source must be specified to merge"
-msgstr ""
+msgstr "必须指定至少一个来源才能进行合并"
 
 msgid "Target must be specified to merge"
 msgstr "必须指定目标才能合并"
@@ -914,22 +914,22 @@ msgid "Loading..."
 msgstr "载入....."
 
 msgid "Add new {{name}}"
-msgstr ""
+msgstr "添加新内容{{name}}"
 
 msgid "Saving this {{name}} won't apply unsaved changes in the form below."
-msgstr ""
+msgstr "保存此{{name}} 后，下方的表单中未保存的更改将不会被应用。"
 
 msgid "Available {{name}}"
-msgstr ""
+msgstr "有货{{name}}"
 
 msgid "Selected {{name}}"
-msgstr ""
+msgstr "已选中{{name}}"
 
 msgid "Filter available {{name}}"
-msgstr ""
+msgstr "筛选条件可用{{name}}"
 
 msgid "Filter selected {{name}}"
-msgstr ""
+msgstr "已选择筛选条件{{name}}"
 
 msgid "Filter available items"
 msgstr "筛选可用项目"
@@ -977,18 +977,18 @@ msgid "Data view only"
 msgstr "仅查看数据"
 
 msgid "Successfully deleted {{number}} items"
-msgstr ""
+msgstr "已成功删除{{number}} 项"
 
 msgid "Some items could not be deleted"
-msgstr ""
+msgstr "某些项目无法删除"
 
 msgid "Delete {{number}} items"
-msgstr ""
+msgstr "删除{{number}} 中的项目"
 
 msgid ""
 "Are you sure you want to delete these {{number}} items? This cannot be "
 "undone."
-msgstr ""
+msgstr "您确定要删除这些{{number}} 项目吗？此操作无法撤销。"
 
 msgid "Successfully updated sharing for {{number}} items"
 msgstr "成功更新{{number}} 项目的共享"
@@ -1180,7 +1180,7 @@ msgid "Successfully deleted {{modelType}} \"{{displayName}}\""
 msgstr "成功删除{{modelType}} \"{{displayName}}\""
 
 msgid "Are you sure that you want to delete \"{{- displayName}}\"?"
-msgstr ""
+msgstr "您确定要删除“{{- displayName}} ”吗？"
 
 msgid "Something went wrong deleting the {{modelType}}"
 msgstr "删除{{modelType}}"
@@ -1239,6 +1239,12 @@ msgstr "更新视图"
 msgid "None"
 msgstr "没有"
 
+msgid "URL"
+msgstr "URL"
+
+msgid "File"
+msgstr "文件"
+
 msgid "No value"
 msgstr "没有值"
 
@@ -1273,7 +1279,7 @@ msgid "Merge..."
 msgstr "合并..."
 
 msgid "Move..."
-msgstr ""
+msgstr "移动……"
 
 msgid "Choose a Locale to translate from the menu above"
 msgstr "从上面的菜单中选择要翻译的地区"
@@ -1309,10 +1315,10 @@ msgid "Feature type"
 msgstr "特征类型"
 
 msgid "Allow events to be assigned to users"
-msgstr ""
+msgstr "允许将活动分配给用户"
 
 msgid "Allow multiple events in this stage"
-msgstr ""
+msgstr "允许在此阶段安排多个活动"
 
 msgid "Standard interval days"
 msgstr "标准间隔天数"
@@ -1327,49 +1333,49 @@ msgid "Validation strategy"
 msgstr "验证策略"
 
 msgid "Generate offline event IDs"
-msgstr ""
+msgstr "生成离线事件 ID"
 
 msgid "Ask user to create a new event after completion"
-msgstr ""
+msgstr "完成后提示用户创建新活动"
 
 msgid "Ask user to complete enrollment after completion"
-msgstr ""
+msgstr "完成后提示用户完成注册"
 
 msgid "Block data entry after completion"
-msgstr ""
+msgstr "完成后阻止数据录入"
 
 msgid "Create an event in this stage on enrollment"
-msgstr ""
+msgstr "在该阶段注册时创建一个事件"
 
 msgid "Open data entry form after enrollment"
 msgstr "注册后打开数据输入表单"
 
 msgid "Date to use for created event report date"
-msgstr ""
+msgstr "用于生成事件报告的日期"
 
 msgid "Scheduled days from reference date"
-msgstr ""
+msgstr "从基准日起的计划天数"
 
 msgid "Reference date for scheduling"
-msgstr ""
+msgstr "排程的基准日期"
 
 msgid "Hide scheduled date"
-msgstr ""
+msgstr "隐藏计划日期"
 
 msgid "Custom label for \"report date\""
-msgstr ""
+msgstr "“报告日期”的自定义标签"
 
 msgid "Custom label for \"due date\""
-msgstr ""
+msgstr "“到期日”的自定义标签"
 
 msgid "Custom label for \"program stage\""
-msgstr ""
+msgstr "“程序阶段”的自定义标签"
 
 msgid "Custom label for \"event\""
-msgstr ""
+msgstr "“事件”的自定义标签"
 
 msgid "Custom label for \"event\" (plural)"
-msgstr ""
+msgstr "“event”（复数）的自定义标签"
 
 msgid "Categories"
 msgstr "分类"
@@ -1573,7 +1579,7 @@ msgid "Icons"
 msgstr "图标"
 
 msgid "Resource"
-msgstr ""
+msgstr "资源"
 
 msgid "Resources"
 msgstr "资源管理"
@@ -1585,25 +1591,25 @@ msgid "Predictor groups"
 msgstr "指标组"
 
 msgid "Categories overview"
-msgstr ""
+msgstr "分类概览"
 
 msgid "Data elements overview"
-msgstr ""
+msgstr "数据元素概述"
 
 msgid "Data sets overview"
-msgstr ""
+msgstr "数据集概述"
 
 msgid "Indicators and Predictors"
 msgstr "指标和预测"
 
 msgid "Organisation units overview"
-msgstr ""
+msgstr "组织单位概览"
 
 msgid "Programs overview"
-msgstr ""
+msgstr "项目概述"
 
 msgid "Option sets overview"
-msgstr ""
+msgstr "选项集概述"
 
 msgid "Validation"
 msgstr "验证"
@@ -1633,7 +1639,7 @@ msgid "You do not have access to edit this item."
 msgstr "您无权编辑此项目。"
 
 msgid "You do not have access to clone this item."
-msgstr ""
+msgstr "您无权克隆此项目。"
 
 msgid "You do not have access to delete this item."
 msgstr "您无权删除此项目。"
@@ -1772,12 +1778,6 @@ msgstr "引用"
 
 msgid "Age"
 msgstr "年龄"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "File"
-msgstr "文件"
 
 msgid "Image"
 msgstr "图片"
@@ -2047,28 +2047,28 @@ msgid "Analytics tables"
 msgstr "Analytics tables"
 
 msgid "Data value"
-msgstr ""
+msgstr "数据值"
 
 msgid "Completeness"
-msgstr ""
+msgstr "完备性"
 
 msgid "Completeness target"
 msgstr "完成目标"
 
 msgid "Organisation unit target"
-msgstr ""
+msgstr "组织单位目标"
 
 msgid "Validation result"
 msgstr "验证结果"
 
 msgid "Ownership"
-msgstr ""
+msgstr "所有权"
 
 msgid "Tracked entity instance events"
-msgstr ""
+msgstr "受监控的实体实例事件"
 
 msgid "Tracked entity instance enrollments"
-msgstr ""
+msgstr "已跟踪的实体实例注册情况"
 
 msgid "Organisation unit structure"
 msgstr "组织机构结构"
@@ -2077,7 +2077,7 @@ msgid "Data set organisation unit category"
 msgstr "数据集组织机构类别"
 
 msgid "Category option combo name"
-msgstr ""
+msgstr "类别下拉菜单名称"
 
 msgid "Data element group set structure"
 msgstr "数据元组集结构"
@@ -2101,16 +2101,16 @@ msgid "Date period structure"
 msgstr "日期期间结构"
 
 msgid "Data element category option combo"
-msgstr ""
+msgstr "数据元素类别下拉菜单"
 
 msgid "Data approval remap level"
-msgstr ""
+msgstr "数据审批重新映射级别"
 
 msgid "Data approval min level"
-msgstr ""
+msgstr "数据审批最低级别"
 
 msgid "Tracked entity instance relationship count"
-msgstr ""
+msgstr "受监控实体的实例关系计数"
 
 msgid "Data element in newest event in program stage"
 msgstr "计划阶段最新事件中的数据元素"
@@ -2143,7 +2143,7 @@ msgid "Analytics type"
 msgstr "分析类型"
 
 msgid "Analytics table type"
-msgstr ""
+msgstr "分析表类型"
 
 msgid "Bidirectional"
 msgstr "双向的"
@@ -2191,7 +2191,7 @@ msgid "Ignore data approval"
 msgstr "忽略数据审核"
 
 msgid "Phase"
-msgstr ""
+msgstr "相"
 
 msgid "Source type"
 msgstr "源类型"
@@ -2212,7 +2212,7 @@ msgid "SQL"
 msgstr "SQL"
 
 msgid "Resource table type"
-msgstr ""
+msgstr "资源表类型"
 
 msgid "Relationship name seen from receiving entity"
 msgstr "从接受方看关系名称"
@@ -2290,16 +2290,16 @@ msgid "Program stage label (Plural)"
 msgstr "节目阶段标签（复数）"
 
 msgid "Name (Plural)"
-msgstr ""
+msgstr "名称（复数）"
 
 msgid "Note label (Plural)"
-msgstr ""
+msgstr "注释标签（复数）"
 
 msgid "Relationship label (Plural)"
-msgstr ""
+msgstr "关系标签（复数）"
 
 msgid "Tracked entity attribute label (Plural)"
-msgstr ""
+msgstr "受追踪实体的属性标签（复数）"
 
 msgid "Unknown error"
 msgstr "未知错误"
@@ -2308,7 +2308,7 @@ msgid "Unknown"
 msgstr "未知"
 
 msgid "Leading and trailing spaces will be removed when saving"
-msgstr ""
+msgstr "保存时将删除首尾空格"
 
 msgid "{{label}} (required)"
 msgstr "{{label}} (必填)"
@@ -2326,13 +2326,13 @@ msgid "Created successfully"
 msgstr "创建成功"
 
 msgid "Group assignment failed. Other values have been saved/updated"
-msgstr ""
+msgstr "分组分配失败。其他值已保存/更新"
 
 msgid "Created successfully, but failed to update groups"
-msgstr ""
+msgstr "创建成功，但未能更新组"
 
 msgid "This field requires a unique value, please choose another one."
-msgstr ""
+msgstr "该字段必须填写唯一值，请选择另一个。"
 
 msgid "Please provide a positive integer"
 msgstr "提供一个正整数"
@@ -2350,10 +2350,10 @@ msgid "Please provide valid unit interval (0-1)."
 msgstr "请提供有效的单位间隔（0-1）。"
 
 msgid "Please provide a positive number for age"
-msgstr ""
+msgstr "请输入一个正整数作为年龄"
 
 msgid "Please provide a single letter (A-Z)"
-msgstr ""
+msgstr "请输入一个字母（A-Z）"
 
 msgid "Must be checked"
 msgstr "必须检查"
@@ -2587,25 +2587,25 @@ msgid "Key"
 msgstr "键值"
 
 msgid "Keywords"
-msgstr ""
+msgstr "关键词"
 
-msgid "External"
-msgstr "外部"
+msgid "Type"
+msgstr "类型"
 
 msgid "Which resource table"
-msgstr ""
+msgstr "哪个资源表"
 
 msgid "Which analytics table"
-msgstr ""
+msgstr "是哪张分析表"
 
 msgid "An analytics table hook with this table and SQL already exists."
-msgstr ""
+msgstr "一个包含此表和 SQL 语句的分析表挂钩已经存在。"
 
 msgid "Basic information"
 msgstr "基本信息"
 
 msgid "Set up the basic information for this analytics table hook."
-msgstr ""
+msgstr "设置此分析表挂钩的基本信息。"
 
 msgid "Data and options"
 msgstr "数据和选项"
@@ -2664,25 +2664,25 @@ msgid "Configure how this attribute wil be collected, analyzed, and stored."
 msgstr "配置如何收集、分析和存储该属性。"
 
 msgid "Mandatory: all objects must have a value for this attribute"
-msgstr ""
+msgstr "必填：所有对象都必须为该属性设置值"
 
 msgid "Unique values only"
 msgstr "仅唯一值"
 
 msgid "Category options of source and target categories do not match"
-msgstr ""
+msgstr "源类别和目标类别的类别选项不匹配"
 
 msgid "Categories must have unique, non-overlapping category combos"
-msgstr ""
+msgstr "类别必须具有唯一且不重叠的类别组合"
 
 msgid "Configure category merge"
-msgstr ""
+msgstr "配置类别合并"
 
 msgid "The category merge operation is complete."
-msgstr ""
+msgstr "类别合并操作已完成。"
 
 msgid "All selected categories were merged successfully."
-msgstr ""
+msgstr "所有选中的类别已成功合并。"
 
 msgid "Set up the basic information for this category."
 msgstr "为该类别设置基本信息。"
@@ -2704,46 +2704,52 @@ msgid ""
 "                the target category. One or many source categories\n"
 "                can be specified"
 msgstr ""
+"合并操作将把源类别合并到\n"
+"                目标类别中。可以指定一个或多个源类别\n"
+"                。"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the category metadata associations to the\n"
 "                source categories over to the target category."
 msgstr ""
+"应仅指定一个目标。合并操作将\n"
+"                将源类别中的所有类别元数据关联\n"
+"                转移到目标类别中。"
 
 msgid "Categories to be merged (source)"
-msgstr ""
+msgstr "待合并的分类（来源）"
 
 msgid "Select categories to merge"
-msgstr ""
+msgstr "选择要合并的类别"
 
 msgid "Category to merge into (target)"
-msgstr ""
+msgstr "要合并到的类别（目标）"
 
 msgid "Select category to merge into"
-msgstr ""
+msgstr "选择要合并到的类别"
 
 msgid "No categories available. Remove one from source."
-msgstr ""
+msgstr "没有可用分类。请从源文件中删除一个。"
 
 msgid "Merge settings"
 msgstr "合并设置"
 
 msgid ""
 "What should happen to the source categories after the merge is complete?"
-msgstr ""
+msgstr "合并完成后，源类别应如何处理？"
 
 msgid "Categories of source and target category combinations do not match"
-msgstr ""
+msgstr "源类别与目标类别的组合不匹配"
 
 msgid "Configure category combinations merge"
-msgstr ""
+msgstr "配置类别组合合并"
 
 msgid "The category combinations merge operation is complete."
-msgstr ""
+msgstr "类别组合合并操作已完成。"
 
 msgid "All selected category combinations were merged successfully."
-msgstr ""
+msgstr "所有选定的类别组合均已成功合并。"
 
 msgid "More than 4 Categories"
 msgstr "超过 4 个类别"
@@ -2758,6 +2764,8 @@ msgid ""
 "One or more Category combinations with the same categories already exist in the system.\n"
 "        It is strongly discouraged to have more than one Category combination with the same categories."
 msgstr ""
+"系统中已存在一个或多个包含相同分类的“分类组合”。\n"
+"        强烈建议不要创建多个包含相同分类的“分类组合”。"
 
 msgid "Set up the basic information for this category combination."
 msgstr "为该类别组合设置基本信息。"
@@ -2789,41 +2797,47 @@ msgid ""
 "                the target category combination. One or many source category combinations\n"
 "                can be specified"
 msgstr ""
+"合并操作将把源类别组合合并到\n"
+"                目标类别组合中。可以指定一个或多个源类别组合\n"
+"                。"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the category combinations metadata associations to the\n"
 "                source category combinations over to the target category combination."
 msgstr ""
+"应仅指定一个目标。合并操作将\n"
+"                将源类别组合的所有元数据关联\n"
+"                转移到目标类别组合上。"
 
 msgid "Category combinations to be merged (source)"
-msgstr ""
+msgstr "待合并的类别组合（来源）"
 
 msgid "Select category combinations to merge"
-msgstr ""
+msgstr "选择要合并的类别组合"
 
 msgid "Category combination to merge into (target)"
-msgstr ""
+msgstr "要合并到的类别组合（目标）"
 
 msgid "Select category combination to merge into"
-msgstr ""
+msgstr "选择要合并到的类别组合"
 
 msgid "No category combinations available. Remove one from source."
-msgstr ""
+msgstr "没有可用的类别组合。请从源中删除一个。"
 
 msgid ""
 "What should happen to the source category combinations after the merge is "
 "complete?"
-msgstr ""
+msgstr "合并完成后，源类别组合应如何处理？"
 
 msgid "Configure category option combination merge"
-msgstr ""
+msgstr "配置类别选项组合合并"
 
 msgid "The category option combination merge operation is complete."
-msgstr ""
+msgstr "类别选项组合合并操作已完成。"
 
 msgid "All selected category option combinations were merged successfully."
-msgstr ""
+msgstr "所有选定的类别选项组合均已成功合并。"
 
 msgid "Set up the basic information for this category option combination."
 msgstr "设置该类别选项组合的基本信息。"
@@ -2833,40 +2847,46 @@ msgid ""
 "                the target category option combination. One or many source category option combinations\n"
 "                can be specified"
 msgstr ""
+"合并操作将把源类别选项组合合并到\n"
+"                目标类别选项组合中。可以指定一个或多个源类别选项组合\n"
+"                。"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the category option combination metadata associations to the\n"
 "                source category option combinations over to the target category option combination."
 msgstr ""
+"应仅指定一个目标。合并操作将\n"
+"                将所有类别选项组合元数据关联从\n"
+"                源类别选项组合转移到目标类别选项组合。"
 
 msgid "Category option combinations to be merged (source)"
-msgstr ""
+msgstr "待合并的类别选项组合（来源）"
 
 msgid "Select category option combinations to merge"
-msgstr ""
+msgstr "选择要合并的类别选项组合"
 
 msgid "Category option combination to merge into (target)"
-msgstr ""
+msgstr "要合并到的类别选项组合（目标）"
 
 msgid "Select category option combination to merge into"
-msgstr ""
+msgstr "选择要合并到的类别选项组合"
 
 msgid "No category option combinations available. Remove one from source."
-msgstr ""
+msgstr "没有可用的分类选项组合。请从源中删除一个。"
 
 msgid ""
 "What should happen to the data values recorded for the source category "
 "option combinations?"
-msgstr ""
+msgstr "针对源类别选项组合所记录的数据值，应如何处理？"
 
 msgid ""
 "Where source and target have the same data value, the most recently updated "
 "is kept."
-msgstr ""
+msgstr "当源和目标的数据值相同时，将保留最新更新的那个。"
 
 msgid "Move data values to the target category option combination"
-msgstr ""
+msgstr "将数据值移至目标类别选项组合"
 
 msgid "Set up the basic information for this category option group set."
 msgstr "为该类别选项组设置基本信息。"
@@ -2925,7 +2945,7 @@ msgid "Groups"
 msgstr "组"
 
 msgid "Choose the groups this category option belongs to."
-msgstr ""
+msgstr "选择该“类别”选项所属的组。"
 
 msgid "Form name should not exceed 230 characters"
 msgstr "表格名称不得超过 230 个字符"
@@ -2983,12 +3003,12 @@ msgstr "请输入数字"
 msgid ""
 "An approval level for this organisation unit level and category option group"
 " set combination already exists."
-msgstr ""
+msgstr "该组织单位级别与类别选项组设置的组合已存在相应的审批级别。"
 
 msgid ""
 "Compulsory: all data elements must belong to at least one group in this "
 "group set."
-msgstr ""
+msgstr "必填：所有数据元素必须属于该组集中的至少一个组。"
 
 msgid "Set up the information for this data element group set."
 msgstr "为该数据元素组设置信息。"
@@ -3004,13 +3024,13 @@ msgid "Choose the data elements to include in this data element group."
 msgstr "选择要包含在该数据元素组中的数据元素。"
 
 msgid "Configure data element merge"
-msgstr ""
+msgstr "配置数据元素合并"
 
 msgid "The data element merge operation is complete."
-msgstr ""
+msgstr "数据元素合并操作已完成。"
 
 msgid "All selected data elements were merged successfully."
-msgstr ""
+msgstr "所有选定的数据元素均已成功合并。"
 
 msgid "Aggregation level(s)"
 msgstr "汇总级别"
@@ -3100,45 +3120,51 @@ msgid ""
 msgstr "默认情况下，聚合从分配的最低组织单位开始。您可以选择不同的级别来覆盖这一点。选择较高的级别意味着较低级别的数据将不包括在汇总中。"
 
 msgid "Choose the groups this data element belongs to."
-msgstr ""
+msgstr "选择该数据元素所属的组。"
 
 msgid ""
 "The merge operation will merge the source data elements into\n"
 "                the target data element. One or many source data elements\n"
 "                can be specified"
 msgstr ""
+"合并操作将把源数据元素合并到\n"
+"                目标数据元素中。可以指定一个或多个源数据元素\n"
+"                。"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the data element metadata associations to the\n"
 "                source data elements over to the target data element."
 msgstr ""
+"应仅指定一个目标。合并操作将\n"
+"                将源数据元素的所有数据元素元数据关联\n"
+"                转移到目标数据元素上。"
 
 msgid "Data elements to be merged (source)"
-msgstr ""
+msgstr "待合并的数据元素（源）"
 
 msgid "Select data elements to merge"
-msgstr ""
+msgstr "选择要合并的数据元素"
 
 msgid "Data element to merge into (target)"
-msgstr ""
+msgstr "要合并到的数据元素（目标）"
 
 msgid "Select data element to merge into"
-msgstr ""
+msgstr "选择要合并到的数据元素"
 
 msgid "No data elements available. Remove one from source."
-msgstr ""
+msgstr "没有可用数据元素。请从源中删除一个。"
 
 msgid ""
 "What should happen to the source data elements after the merge is complete?"
-msgstr ""
+msgstr "合并完成后，源数据元素应如何处理？"
 
 msgid ""
 "What should happen to the data values recorded for the source data elements?"
-msgstr ""
+msgstr "对于源数据元素记录的数据值，应如何处理？"
 
 msgid "Move data values to the target data element"
-msgstr ""
+msgstr "将数据值移动到目标数据元素"
 
 msgid "Error"
 msgstr "错误"
@@ -3255,13 +3281,13 @@ msgid "Delivery channels"
 msgstr "交付渠道"
 
 msgid "Data set created but ID cannot be determined"
-msgstr ""
+msgstr "数据集已创建，但无法确定其ID"
 
 msgid "Data entry form failed to save"
-msgstr ""
+msgstr "数据录入表未能保存"
 
 msgid "Some data set sections failed to save"
-msgstr ""
+msgstr "某些数据集部分未能保存"
 
 msgid "Send complete notifications"
 msgstr "发送完整的通知"
@@ -3484,10 +3510,10 @@ msgid "Manage data elements"
 msgstr "管理数据元素"
 
 msgid "Save changes to this data set before editing sections"
-msgstr ""
+msgstr "在编辑各部分之前，请先保存此数据集的更改"
 
 msgid "Save changes to this data set before editing the form"
-msgstr ""
+msgstr "在编辑表单之前，请先保存此数据集的更改"
 
 msgid "Display options"
 msgstr "显示选项"
@@ -3584,7 +3610,7 @@ msgid "Content to display before a section"
 msgstr "在章节前显示的内容"
 
 msgid "Markdown formatting is supported"
-msgstr ""
+msgstr "支持 Markdown 格式"
 
 msgid "Content to display after a section"
 msgstr "在章节后显示的内容"
@@ -3680,46 +3706,46 @@ msgid "Advanced"
 msgstr "高级"
 
 msgid "Icon saved successfully"
-msgstr ""
+msgstr "图标已成功保存"
 
 msgid "Failed to load icon"
-msgstr ""
+msgstr "无法加载图标"
 
 msgid "Could not load icon \"{{key}}\""
-msgstr ""
+msgstr "无法加载图标“{{key}} ”"
 
 msgid "System icon"
-msgstr ""
+msgstr "系统图标"
 
 msgid "System icons cannot be edited. Only custom icons can be modified."
-msgstr ""
+msgstr "系统图标无法编辑。只有自定义图标可以修改。"
 
 msgid "Icon created successfully"
-msgstr ""
+msgstr "图标已成功创建"
 
 msgid "Icon file"
-msgstr ""
+msgstr "图标文件"
 
 msgid "Icon preview"
-msgstr ""
+msgstr "图标预览"
 
 msgid "Change icon"
 msgstr "改变图标"
 
 msgid "Upload icon"
-msgstr ""
+msgstr "上传图标"
 
 msgid "Key cannot be \"new\""
-msgstr ""
+msgstr "键不能是“new”"
 
 msgid "A unique identifier for this icon"
-msgstr ""
+msgstr "该图标的唯一标识符"
 
 msgid "Comma-separated list of keywords"
-msgstr ""
+msgstr "以逗号分隔的关键词列表"
 
 msgid "An icon with this key already exists"
-msgstr ""
+msgstr "已经存在一个带有此键的图标"
 
 msgid "Set up the basic information for this indicator group set."
 msgstr "设置该组指标的基本信息。"
@@ -3727,7 +3753,7 @@ msgstr "设置该组指标的基本信息。"
 msgid ""
 "Compulsory: all indicators must belong to at least one group in this group "
 "set."
-msgstr ""
+msgstr "必填：所有指标必须至少属于该指标集中的一个组。"
 
 msgid "Choose the indicators to include in this indicator group."
 msgstr "选择要纳入该指标组的指标。"
@@ -3834,7 +3860,7 @@ msgid ""
 msgstr "在数据录入和分析应用程序中选择图例对数值进行可视化分类。"
 
 msgid "Choose the groups this indicator belongs to."
-msgstr ""
+msgstr "选择该指标所属的组别。"
 
 msgid "Aggregate data export mapping"
 msgstr "汇总数据导出映射"
@@ -3921,13 +3947,13 @@ msgid ""
 msgstr "合并完成后，源指标会发生什么变化？"
 
 msgid "Set up the basic information for this legend."
-msgstr ""
+msgstr "设置此图例的基本信息。"
 
 msgid "Legend items"
-msgstr ""
+msgstr "传说级物品"
 
 msgid "Create legend items to define value ranges and associated colors."
-msgstr ""
+msgstr "创建图例项目，以定义数值范围及相应的颜色。"
 
 msgid "Start value"
 msgstr "开始值"
@@ -3936,50 +3962,50 @@ msgid "End value"
 msgstr "结束值"
 
 msgid "Items"
-msgstr ""
+msgstr "项目"
 
 msgid "Color scale"
 msgstr "色阶"
 
 msgid "End value must be greater than start value."
-msgstr ""
+msgstr "结束值必须大于开始值。"
 
 msgid "Legend items must not overlap."
-msgstr ""
+msgstr "图例中的项目不得重叠。"
 
 msgid "Legend items must not have gaps."
-msgstr ""
+msgstr "图例中的项目之间不得有间隙。"
 
 msgid "Generate a new legend..."
-msgstr ""
+msgstr "生成新的图例……"
 
 msgid "Legend generator"
-msgstr ""
+msgstr "图例生成器"
 
 msgid "Replace existing legend items"
-msgstr ""
+msgstr "替换现有的图例项目"
 
 msgid ""
 "Generating new legend items will replace all legend items in the table."
-msgstr ""
+msgstr "生成新的图例项目将替换表格中的所有图例项目。"
 
 msgid "Create legend items"
 msgstr "创建图例条目"
 
 msgid "Generate a legend"
-msgstr ""
+msgstr "生成图例"
 
 msgid "Generate legend items"
-msgstr ""
+msgstr "生成图例项目"
 
 msgid "Manually add legend items"
-msgstr ""
+msgstr "手动添加图例项目"
 
 msgid "Add legend item"
-msgstr ""
+msgstr "添加图例项目"
 
 msgid "Change color"
-msgstr ""
+msgstr "更改颜色"
 
 msgid "Exit without saving"
 msgstr "不保存退出"
@@ -4138,7 +4164,7 @@ msgstr "为该组织单位组设置基本信息。"
 msgid ""
 "Compulsory: all organisation units must belong to at least one group in this"
 " group set."
-msgstr ""
+msgstr "必填：所有组织单位必须属于该组集中的至少一个组。"
 
 msgid "Inherit parent organisation unit groups"
 msgstr "继承上级组织单位组"
@@ -4151,6 +4177,27 @@ msgstr "如果组织单位没有指定组，则使用最接近的父组。"
 msgid "Choose the groups to include in this organisation unit group set."
 msgstr "选择要包含在此组织单位组集中的组。"
 
+msgid "Color and symbol"
+msgstr ""
+
+msgid "Choose a symbol"
+msgstr ""
+
+msgid "Available symbols"
+msgstr ""
+
+msgid "Choose symbol"
+msgstr ""
+
+msgid "Remove symbol"
+msgstr ""
+
+msgid "Symbol"
+msgstr "符号"
+
+msgid "Symbol: none selected"
+msgstr ""
+
 msgid "Set up the basic information for this organisation unit group."
 msgstr "设置该组织单位组的基本信息。"
 
@@ -4161,19 +4208,19 @@ msgid "Error saving organisation unit levels"
 msgstr "错误保存组织单位级别"
 
 msgid "Configure organisation unit merge"
-msgstr ""
+msgstr "配置组织单位合并"
 
 msgid "The organisation unit merge operation is complete."
-msgstr ""
+msgstr "组织单位合并操作已完成。"
 
 msgid "All selected organisation units were merged successfully."
-msgstr ""
+msgstr "所有选定的组织单位已成功合并。"
 
 msgid "Organisation units successfully moved"
-msgstr ""
+msgstr "组织单位已成功迁移"
 
 msgid "There was an error moving organisation units: {{orgUnitNames}}"
-msgstr ""
+msgstr "移动组织单位时出现错误：{{orgUnitNames}}"
 
 msgid "Longitude"
 msgstr "经度"
@@ -4279,79 +4326,85 @@ msgid "Load more for {{orgUnitName}}"
 msgstr "加载更多{{orgUnitName}}"
 
 msgid "Move data approvals to the target organisation unit"
-msgstr ""
+msgstr "将数据审批转移到目标组织单位"
 
 msgid "Delete the source data approvals"
-msgstr ""
+msgstr "删除源数据审批"
 
 msgid "Move data values to the target organisation unit"
-msgstr ""
+msgstr "将数据值迁移到目标组织单位"
 
 msgid ""
 "The merge operation will merge the source organisation units into\n"
 "                the target organisation unit. One or many source organisation units\n"
 "                can be specified"
 msgstr ""
+"合并操作将把源组织单位合并到\n"
+"                目标组织单位中。可以指定一个或多个源组织单位\n"
+"                。"
 
 msgid ""
 "Only one target should be specified. The merge operation will\n"
 "                transfer all of the organisation unit metadata associations to the\n"
 "                source organisation units over to the target organisation unit."
 msgstr ""
+"应仅指定一个目标。合并操作将\n"
+"                将源组织单位的所有元数据关联\n"
+"                转移到目标组织单位。"
 
 msgid "Organisation units to be merged (source)"
-msgstr ""
+msgstr "待合并的组织单位（来源）"
 
 msgid "Select organisation units to merge"
-msgstr ""
+msgstr "选择要合并的组织单位"
 
 msgid "Organisation unit to merge into (target)"
-msgstr ""
+msgstr "将并入的组织单位（目标）"
 
 msgid "Select organisation unit to merge into"
-msgstr ""
+msgstr "选择要合并到的组织单位"
 
 msgid "No organisation units available. Remove one from source."
-msgstr ""
+msgstr "没有可用的组织单位。请从源中删除一个。"
 
 msgid ""
 "What should happen to the source organisation units after the merge is "
 "complete?"
-msgstr ""
+msgstr "合并完成后，源组织单位应如何处理？"
 
 msgid ""
 "What should happen to the data values recorded for the source organisation "
 "units?"
-msgstr ""
+msgstr "针对源组织单位记录的数据值应如何处理？"
 
 msgid ""
 "What should happen to the data approvals for the source organisation units?"
-msgstr ""
+msgstr "源组织单位的数据审批应如何处理？"
 
 msgid ""
 "Where source and target have the same data approval, the most recently "
 "updated is kept."
-msgstr ""
+msgstr "当源数据和目标数据具有相同的数据审批状态时，将保留最新更新的版本。"
 
 msgid ""
 "Choose the organisation units to move and their new position in the "
 "hierarchy. All descendants move with them."
-msgstr ""
+msgstr "选择要移动的组织单位及其在组织结构中的新位置。所有下属单位将随其一同移动。"
 
 msgid "Move"
 msgstr "移动"
 
 msgid "Can not move an organisation unit to one of its descendants."
-msgstr ""
+msgstr "无法将组织单位移动到其子单位之一。"
 
 msgid "Organisation units to move"
-msgstr ""
+msgstr "待搬迁的组织单位"
 
 msgid "Move into"
-msgstr ""
+msgstr "搬进"
 
 msgid "At least one org unit is required"
-msgstr ""
+msgstr "至少需要一个组织单位"
 
 msgid "Metadata management"
 msgstr "元数据管理"
@@ -4557,7 +4610,7 @@ msgstr "创建、修改和查看地图预定义的图例和其它可视化属性
 msgid ""
 "Upload documents or link to external URLs as resources that can be "
 "referenced from other apps."
-msgstr ""
+msgstr "将文档或外部 URL 作为资源上传，以便其他应用可以引用。"
 
 msgid ""
 "Create and manage locales for database content. A locale is a combination of"
@@ -4593,7 +4646,7 @@ msgstr "创建、修改和浏览项目，一个项目有多个项目阶段，并
 msgid ""
 "Create, modify and view program stages. Each stage is part of a program and "
 "can also be accessed through the program list."
-msgstr ""
+msgstr "创建、修改和查看程序阶段。每个阶段都是程序的一部分，也可以通过程序列表进行访问。"
 
 msgid ""
 "Create, modify and view tracked entity attributes. An attribute can be used "
@@ -4645,13 +4698,13 @@ msgid "Manage"
 msgstr "管理"
 
 msgid "Search metadata types"
-msgstr ""
+msgstr "搜索元数据类型"
 
 msgid "All metadata types"
-msgstr ""
+msgstr "所有元数据类型"
 
 msgid "Load more for {{schema}}"
-msgstr ""
+msgstr "加载更多，查看{{schema}}"
 
 msgid "Set up the basic information for this predictor group."
 msgstr "设置该预测组的基本信息。"
@@ -4723,7 +4776,7 @@ msgid "Output category combo"
 msgstr "输出类别组合"
 
 msgid "At least one organisation unit level is required"
-msgstr ""
+msgstr "至少需要一个组织单位级别"
 
 msgid "Program Disaggregation Form"
 msgstr "计划分类表"
@@ -4863,7 +4916,7 @@ msgstr "该操作无法撤销。"
 
 msgid ""
 "Are you sure you want to delete {{- displayName}} mapping configuration?"
-msgstr ""
+msgstr "您确定要删除{{- displayName}} 的映射配置吗？"
 
 msgid "Set up the basic information for this program indicator group."
 msgstr "设置该计划指标组的基本信息。"
@@ -4886,9 +4939,6 @@ msgstr "上报期间结束后"
 
 msgid "Offset"
 msgstr "偏移"
-
-msgid "Type"
-msgstr "类型"
 
 msgid "Boundary target"
 msgstr "边界目标"
@@ -4996,7 +5046,7 @@ msgid ""
 msgstr "名称只能包含字母、数字、空格、破折号、点和下划线"
 
 msgid "Program rule variable name contains forbidden words: and, or, not."
-msgstr ""
+msgstr "程序规则变量名称中包含禁用词：“and”、“or”、“not”。"
 
 msgid "Please enter a maximum of {{max}} characters"
 msgstr "请输入最多{{max}} 个字符"
@@ -5005,7 +5055,7 @@ msgid "A variable with this name already exists in this program."
 msgstr "该程序中已经存在使用此名称的变量。"
 
 msgid "Variable name cannot contain the words: and, or, not."
-msgstr ""
+msgstr "变量名中不能包含“and”、“or”、“not”这几个词。"
 
 msgid "Set up the basic information for this program rule variable."
 msgstr "设置该程序规则变量的基本信息。"
@@ -5025,10 +5075,10 @@ msgid "Program Rule Variable"
 msgstr "程序规则变量"
 
 msgid "Program rule created but ID cannot be determined"
-msgstr ""
+msgstr "已创建程序规则，但无法确定其 ID"
 
 msgid "Some program rule actions failed to save"
-msgstr ""
+msgstr "某些程序规则操作未能保存"
 
 msgid "Edit condition expression"
 msgstr "编辑条件表达式"
@@ -5040,7 +5090,7 @@ msgid "Expression can not be edited after saving"
 msgstr "保存后无法编辑表达式"
 
 msgid "Expression *"
-msgstr ""
+msgstr "表达式 *"
 
 msgid "Feedback widget"
 msgstr "反馈向导"
@@ -5057,7 +5107,7 @@ msgstr "保存后无法编辑信息模板"
 msgid ""
 "Enter a number to set run order. Lower numbers run first. Leave empty to use"
 " the default order."
-msgstr ""
+msgstr "输入一个数字来设置运行顺序。数字越小，运行越靠前。留空则使用默认顺序。"
 
 msgid "Program rule variable to assign to"
 msgstr "分配的项目规则变量"
@@ -5102,7 +5152,7 @@ msgid "This program rule action will not be editable after saving."
 msgstr "保存后将无法编辑此程序规则操作。"
 
 msgid "Action type"
-msgstr ""
+msgstr "操作类型"
 
 msgid "Save action"
 msgstr "保存操作"
@@ -5111,7 +5161,7 @@ msgid "Set up the actions that happen when the program rule runs."
 msgstr "设置程序规则运行时发生的操作。"
 
 msgid "Program rule must be saved before actions can be modified"
-msgstr ""
+msgstr "在修改操作之前，必须先保存程序规则"
 
 msgid "Action will be deleted when the program rule is saved."
 msgstr "保存程序规则时，该操作将被删除。"
@@ -5120,7 +5170,7 @@ msgid "Undo delete"
 msgstr "撤销删除"
 
 msgid "Priority: {{priority}}"
-msgstr ""
+msgstr "优先级：{{priority}}"
 
 msgid "Program rule must be saved before actions can be added"
 msgstr "必须先保存程序规则，才能添加操作"
@@ -5274,7 +5324,7 @@ msgid "Option group is required"
 msgstr "需要选项组"
 
 msgid "Select at least one: data element or tracked entity attribute"
-msgstr ""
+msgstr "请至少选择一项：数据元素或被追踪实体的属性"
 
 msgid "Static text is required"
 msgstr "需要静态文本"
@@ -5375,16 +5425,16 @@ msgid "Failed to apply program access rules"
 msgstr "未能应用程序访问规则"
 
 msgid "Failed to refresh access settings"
-msgstr ""
+msgstr "无法刷新访问设置"
 
 msgid "Program: {{name}}"
-msgstr ""
+msgstr "节目：{{name}}"
 
 msgid "Untitled"
 msgstr "无标题"
 
 msgid "Stage: {{name}}"
-msgstr ""
+msgstr "阶段：{{name}}"
 
 msgid "No data access"
 msgstr "无数据访问"
@@ -5421,6 +5471,9 @@ msgstr "编辑访问"
 
 msgid "Public (All users)"
 msgstr "公众（所有用户）"
+
+msgid "External"
+msgstr "外部"
 
 msgid "Group"
 msgstr "组"
@@ -5482,7 +5535,7 @@ msgid "Restore notification"
 msgstr "恢复通知"
 
 msgid "Notification type: Program"
-msgstr ""
+msgstr "通知类型：项目"
 
 msgid "Notification type: Stage | Stage: {{stageDisplayName}}"
 msgstr "通知类型：阶段 | 阶段：{{stageDisplayName}}"
@@ -5534,22 +5587,22 @@ msgstr "用程序专用术语覆盖默认标签。"
 
 msgid ""
 "Used as the label for the event date (report date) shown in the Capture app"
-msgstr ""
+msgstr "用作 Capture 应用中显示的事件日期（报告日期）的标签"
 
 msgid "Custom label for \"event\" (singular)"
-msgstr ""
+msgstr "“event”（单数）的自定义标签"
 
 msgid "Example use: Schedule a new event"
 msgstr "使用示例安排新事件"
 
 msgid "Custom label for \"events\" (plural)"
-msgstr ""
+msgstr "“events”（复数）的自定义标签"
 
 msgid "Example use: See all events"
-msgstr ""
+msgstr "使用示例：查看所有活动"
 
 msgid "Custom label for \"organisation unit\""
-msgstr ""
+msgstr "“组织单位”的自定义标签"
 
 msgid ""
 "Used to customize the label for the organisation unit that registers the "
@@ -5557,31 +5610,31 @@ msgid ""
 msgstr "用于自定义登记注册或事件的组织单位的标签"
 
 msgid "Custom label for \"relationship\" (singular)"
-msgstr ""
+msgstr "“关系”（单数）的自定义标签"
 
 msgid ""
 "Used to customize the label for a relationship between tracked entities"
-msgstr ""
+msgstr "用于自定义受监控实体之间关系的标签"
 
 msgid "Custom label for \"relationships\" (plural)"
-msgstr ""
+msgstr "“关系”（复数）的自定义标签"
 
 msgid "Example use: See all relationships"
-msgstr ""
+msgstr "使用示例：查看所有关系"
 
 msgid "Custom label for \"note\" (singular)"
-msgstr ""
+msgstr "“note”（单数）的自定义标签"
 
 msgid ""
 "Used to customize the label for a note or comment added to an enrollment or "
 "event"
-msgstr ""
+msgstr "用于自定义添加到报名或活动中的备注或评论的标签"
 
 msgid "Custom label for \"notes\" (plural)"
-msgstr ""
+msgstr "“笔记”（复数）的自定义标签"
 
 msgid "Example use: See all notes"
-msgstr ""
+msgstr "使用示例：查看所有笔记"
 
 msgid "Only integers are allowed"
 msgstr "只允许使用整数"
@@ -5590,7 +5643,7 @@ msgid "Program Settings"
 msgstr "程序设置"
 
 msgid "Set up how data is collected for events in this program."
-msgstr ""
+msgstr "设置本程序中事件的数据收集方式。"
 
 msgid "Related program"
 msgstr "相关项目"
@@ -5689,15 +5742,15 @@ msgid "Recipient data element"
 msgstr "收件人数据元素"
 
 msgid "Mandatory data elements are not included in this form."
-msgstr ""
+msgstr "此表格中未包含必填数据项。"
 
 msgid ""
 "The following data elements are marked as required but not assigned to any "
 "section:"
-msgstr ""
+msgstr "以下数据元素被标记为必填项，但未分配到任何部分："
 
 msgid "Set up automatic event creation and scheduling in this program stage."
-msgstr ""
+msgstr "在此程序阶段，设置自动创建和安排事件的功能。"
 
 msgid "Program stage data"
 msgstr "计划阶段数据"
@@ -5709,7 +5762,7 @@ msgid "Configure data collection for events in this program."
 msgstr "为本程序中的事件配置数据收集。"
 
 msgid "Add new data element"
-msgstr ""
+msgstr "添加新数据元素"
 
 msgid "Configure data items"
 msgstr "配置数据项"
@@ -5755,10 +5808,10 @@ msgid "Configure the basic information for this program stage."
 msgstr "配置该程序阶段的基本信息。"
 
 msgid "Data entry options"
-msgstr ""
+msgstr "数据录入选项"
 
 msgid "Set up how data is collected for events in this program stage."
-msgstr ""
+msgstr "设置本项目阶段中事件的数据收集方式。"
 
 msgid "Completion options"
 msgstr "完工选项"
@@ -5767,7 +5820,7 @@ msgid "Decide what should happen after a user completes this event."
 msgstr "决定用户完成此事件后应该发生什么。"
 
 msgid "Override default labels with program stage-specific terms."
-msgstr ""
+msgstr "使用程序阶段专用的术语覆盖默认标签。"
 
 msgid ""
 "Configure the form for data collection for events in this program stage."
@@ -5790,42 +5843,42 @@ msgid "Edit or rearrange the data elements"
 msgstr "编辑或重新排列数据元素"
 
 msgid "Save changes to this program before editing sections"
-msgstr ""
+msgstr "在编辑各部分之前，请先保存对该程序所做的更改"
 
 msgid "Save changes to this program before editing the form"
-msgstr ""
+msgstr "在编辑表单之前，请先保存对该程序所做的更改"
 
 msgid ""
 "Android Capture will disable all scheduling. Web Capture will allow manual "
 "scheduling, but scheduled dates will not be editable."
-msgstr ""
+msgstr "Android Capture 将禁用所有计划任务。Web Capture 允许手动安排计划任务，但已安排的日期无法编辑。"
 
 msgid ""
 "Days to add to the enrollment or incident date when scheduling events. 0 "
 "means same day. "
-msgstr ""
+msgstr "安排活动时，在注册日期或事件日期基础上增加的天数。0 表示当天。 "
 
 msgid ""
 "If set, this date sets the next scheduled date. Standard interval days is "
 "used if the date is empty."
-msgstr ""
+msgstr "如果设置了此日期，则该日期将作为下一次计划日期。如果该日期为空，则使用标准间隔天数。"
 
 msgid ""
 "If set, only one event per period is allowed. Report date will be a period "
 "instead of a date. Not supported by web Capture."
-msgstr ""
+msgstr "如果启用此设置，每个周期仅允许一个事件。报告日期将显示为周期而非具体日期。Web Capture 不支持此功能。"
 
 msgid "None (report date will be empty)"
-msgstr ""
+msgstr "无（报告日期将为空）"
 
 msgid "A program is required"
-msgstr ""
+msgstr "需要一个程序"
 
 msgid "View program"
-msgstr ""
+msgstr "查看节目"
 
 msgid "The number of days between repeated events."
-msgstr ""
+msgstr "两次重复事件之间相隔的天数。"
 
 msgid "Stage section"
 msgstr "舞台部分"
@@ -5858,7 +5911,7 @@ msgid "Mobile display"
 msgstr "移动显示屏"
 
 msgid "Creation and scheduling"
-msgstr ""
+msgstr "创建与排程"
 
 msgid "Program stage form"
 msgstr "计划阶段表"
@@ -5947,67 +6000,70 @@ msgid ""
 "events"
 msgstr "自动创建计划阶段事件时，不创建逾期事件"
 
+msgid "Enrollment category combination"
+msgstr "招生类别组合"
+
 msgid "Mandatory tracked entity attributes are not included in this form."
-msgstr ""
+msgstr "本表单中未包含必填的受监控实体属性。"
 
 msgid ""
 "The following attributes are marked as required but not assigned to any "
 "section:"
-msgstr ""
+msgstr "以下属性被标记为必填，但未分配到任何部分："
 
 msgid "Custom label for \"incident date\""
-msgstr ""
+msgstr "“事件日期”的自定义标签"
 
 msgid "Used as an additional registration date for enrollments"
 msgstr "作为注册的附加注册日期"
 
 msgid "Custom label for \"enrollment date\""
-msgstr ""
+msgstr "“注册日期”的自定义标签"
 
 msgid "Used as the default registration date for enrollments"
 msgstr "用作注册的默认注册日期"
 
 msgid "Custom label for \"enrollment\" (singular)"
-msgstr ""
+msgstr "“enrollment”（单数）的自定义标签"
 
 msgid "Example use: See all data in this enrollment"
 msgstr "使用示例：查看本次注册的所有数据"
 
 msgid "Custom label for \"enrollments\" (plural)"
-msgstr ""
+msgstr "“enrollments”（复数）的自定义标签"
 
 msgid "Example use: See all enrollments"
-msgstr ""
+msgstr "使用示例：查看所有注册信息"
 
 msgid "Custom label for \"program stage\" (singular)"
-msgstr ""
+msgstr "“程序阶段”（单数）的自定义标签"
 
 msgid "Example use: See all data in this program stage"
 msgstr "使用示例：查看本程序阶段的所有数据"
 
 msgid "Custom label for \"program stages\" (plural)"
-msgstr ""
+msgstr "“程序阶段”（复数）的自定义标签"
 
 msgid "Example use: See all program stages"
-msgstr ""
+msgstr "使用示例：查看所有项目阶段"
 
 msgid "Custom label for \"follow-up\""
-msgstr ""
+msgstr "“跟进”的自定义标签"
 
 msgid "Used to customize the label for a follow-up event or activity"
-msgstr ""
+msgstr "用于自定义后续活动或项目的标签"
 
 msgid "Custom label for \"attribute\" (singular)"
-msgstr ""
+msgstr "“attribute”（单数）的自定义标签"
 
 msgid "Used to customize the label for a tracked entity attribute"
-msgstr ""
+msgstr "用于自定义受监控实体属性的标签"
 
 msgid "Custom label for \"attributes\" (plural)"
-msgstr ""
+msgstr "“attributes”（复数）的自定义标签"
 
 msgid "Example use: See all attributes"
-msgstr ""
+msgstr "使用示例：查看所有属性"
 
 msgid "Program Stages"
 msgstr "项目阶段"
@@ -6037,7 +6093,7 @@ msgid "Add a program stage"
 msgstr "添加程序阶段"
 
 msgid "Reorder stages"
-msgstr ""
+msgstr "重新排序阶段"
 
 msgid "Access Level"
 msgstr "访问级别"
@@ -6095,14 +6151,55 @@ msgid ""
 "is checked"
 msgstr "选中双向时，需要从接收实体看到关系名称"
 
+msgid "Resource saved successfully"
+msgstr "资源已成功保存"
+
+msgid "File resources"
+msgstr "文件资源"
+
+msgid ""
+"File resources cannot be edited. Only resources with a URL can be modified."
+msgstr "文件资源无法编辑。只有带有 URL 的资源才能进行修改。"
+
+msgid "Resource created successfully"
+msgstr "资源已成功创建"
+
+msgid "Web and executable files are not allowed ({{extensions}})"
+msgstr "不允许上传网页和可执行文件（{{extensions}} ）"
+
+msgid "Change file"
+msgstr "更改文件"
+
+msgid "Upload file"
+msgstr "上传文件"
+
+msgid "Resource type"
+msgstr "资源类型"
+
+msgid "Use the file as an attachment"
+msgstr "将该文件作为附件使用"
+
+msgid "A URL is required"
+msgstr "必须提供一个 URL"
+
+msgid "A file is required"
+msgstr "需要提供一个文件"
+
+msgid "This file type is not allowed"
+msgstr "不允许使用此文件类型"
+
 msgid "View resource"
-msgstr ""
+msgstr "查看资源"
+
+msgid ""
+"File resources cannot be edited. Delete it and add a new resource instead."
+msgstr "文件资源无法编辑。请将其删除，然后添加一个新的资源。"
 
 msgid "SQL view results"
-msgstr ""
+msgstr "SQL 视图结果"
 
 msgid "Excel (.xlsx)"
-msgstr ""
+msgstr "Excel (.xlsx)"
 
 msgid "CSV (.csv)"
 msgstr "CSV (.csv)"
@@ -6114,111 +6211,111 @@ msgid "HTML (.html)"
 msgstr "HTML (.html)"
 
 msgid "XML (.xml)"
-msgstr ""
+msgstr "XML (.xml)"
 
 msgid "JSON (.json)"
-msgstr ""
+msgstr "JSON (.json)"
 
 msgid "Could not load SQL view"
-msgstr ""
+msgstr "无法加载 SQL 视图"
 
 msgid ""
 "The SQL view metadata could not be loaded. Please go back and try again."
-msgstr ""
+msgstr "无法加载 SQL 视图元数据。请返回并重试。"
 
 msgid "Refresh data"
-msgstr ""
+msgstr "刷新数据"
 
 msgid "Variables required"
-msgstr ""
+msgstr "必需的变量"
 
 msgid "Provide variables and run"
-msgstr ""
+msgstr "提供变量并运行"
 
 msgid "No results available yet"
-msgstr ""
+msgstr "目前尚无结果"
 
 msgid "Could not load results"
-msgstr ""
+msgstr "无法加载结果"
 
 msgid ""
 "Check that the SQL uses only SELECT statements and does not query restricted"
 " tables."
-msgstr ""
+msgstr "请确认该 SQL 仅使用 SELECT 语句，且未查询受限表。"
 
 msgid "No rows returned"
-msgstr ""
+msgstr "未返回任何行"
 
 msgid "The query ran successfully but returned no rows."
-msgstr ""
+msgstr "该查询执行成功，但未返回任何行。"
 
 msgid "Current user id"
-msgstr ""
+msgstr "当前用户 ID"
 
 msgid "Current username"
-msgstr ""
+msgstr "当前用户名"
 
 msgid "SQL query *"
-msgstr ""
+msgstr "SQL 查询 *"
 
 msgid ""
 "Only SELECT statements allowed. Sensitive tables, including user "
 "information, cannot be queried."
-msgstr ""
+msgstr "仅允许执行 SELECT 语句。包含用户信息的敏感表无法被查询。"
 
 msgid "Set up the basic information for this SQL view."
-msgstr ""
+msgstr "设置此 SQL 视图的基本信息。"
 
 msgid "Controls how long results are cached on the server before re-execution"
-msgstr ""
+msgstr "控制结果在服务器上被缓存多长时间后才会重新执行"
 
 msgid "SQL definition"
-msgstr ""
+msgstr "SQL 定义"
 
 msgid "Choose the type of SQL view and define the query."
-msgstr ""
+msgstr "选择 SQL 视图的类型并定义查询。"
 
 msgid "SQL type cannot be changed after creation."
-msgstr ""
+msgstr "SQL 类型在创建后无法更改。"
 
 msgid ""
 "View: SQL query is stored in the database; results are generated each time."
-msgstr ""
+msgstr "观点：SQL 查询存储在数据库中；每次都会生成结果。"
 
 msgid "Materialized view: SQL query is stored, and results are cached."
-msgstr ""
+msgstr "物化视图：存储了 SQL 查询，并将结果缓存起来。"
 
 msgid ""
 "Query only: Neither query nor results stored in the database. Supports "
 "inline $(variable) references."
-msgstr ""
+msgstr "仅查询：既不在数据库中存储查询语句，也不存储查询结果。支持内联 $(变量) 引用。"
 
 msgid "Query variables"
-msgstr ""
+msgstr "查询变量"
 
 msgid "Run query"
-msgstr ""
+msgstr "运行查询"
 
 msgid "Create or update view"
-msgstr ""
+msgstr "创建或更新视图"
 
 msgid "SQL view created or updated."
-msgstr ""
+msgstr "创建或更新了 SQL 视图。"
 
 msgid "An unknown error occurred."
 msgstr "出现未知错误。"
 
 msgid "Could not run SQL view: {{error}}"
-msgstr ""
+msgstr "无法运行 SQL 视图：{{error}}"
 
 msgid "Materialized view data refreshed."
-msgstr ""
+msgstr "物化视图数据已刷新。"
 
 msgid "Could not refresh materialized view: {{error}}"
-msgstr ""
+msgstr "无法刷新物化视图：{{error}}"
 
 msgid "View results"
-msgstr ""
+msgstr "查看结果"
 
 msgid "SW | Starts with"
 msgstr "SW 开头"
@@ -6356,7 +6453,7 @@ msgstr "最小搜索字符数"
 msgid ""
 "After changing the tracked entity type attributes, you may need to update "
 "the following program(s): {{programNames}}."
-msgstr ""
+msgstr "修改了受监控实体类型的属性后，您可能需要更新以下程序：{{programNames}} 。"
 
 msgid "Choose which attributes to show, require, and make searchable."
 msgstr "选择要显示、要求和可搜索的属性。"
@@ -6507,4 +6604,4 @@ msgstr "跳过表单验证"
 
 msgctxt ")"
 msgid "Key may only contain letters, numbers, hyphens (-) and underscores ("
-msgstr ""
+msgstr "密钥中只能包含字母、数字、连字符 (-) 和下划线 (_)"
