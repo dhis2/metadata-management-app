@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
+"POT-Creation-Date: 2026-10-17T17:55:55.361Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: Philip Larsen Donnelly, 2026\n"
 "Language-Team: Persian (Afghanistan) (https://app.transifex.com/hisp-uio/teams/100509/fa_AF/)\n"
@@ -2222,7 +2222,7 @@ msgstr "صاحب"
 msgid "Zero is significant"
 msgstr ""
 
-msgid "Enable tracked entity instance audit log"
+msgid "Record access to tracked entities"
 msgstr ""
 
 msgid "Program type"
@@ -2417,6 +2417,9 @@ msgstr "استراتیژی ذخیره"
 msgid "SQL query"
 msgstr "SQL query"
 
+msgid "Record change history for attribute values"
+msgstr ""
+
 msgid "Unique"
 msgstr "یکتا"
 
@@ -2438,8 +2441,11 @@ msgstr ""
 msgid "Completed events expiry days"
 msgstr ""
 
-msgid "Display front page list"
-msgstr "نمایش لیست صفحه پیش رو"
+msgid "Start page in web Capture app"
+msgstr ""
+
+msgid "Record change history for event data values"
+msgstr ""
 
 msgid "Mandatory"
 msgstr "شاخص"
@@ -5615,9 +5621,6 @@ msgstr ""
 msgid "Access and Sharing"
 msgstr ""
 
-msgid "Start page in web Capture app"
-msgstr ""
-
 msgid "Search form"
 msgstr ""
 
@@ -5724,9 +5727,6 @@ msgstr ""
 msgid ""
 "Data elements can be collected in different ways with different options."
 msgstr ""
-
-msgid "Allow provided elsewhere"
-msgstr "ارایه اجازه جاهای دیگر"
 
 msgid "Display in reports"
 msgstr "نمایش رز گزارشات"

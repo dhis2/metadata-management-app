@@ -21,7 +21,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
+"POT-Creation-Date: 2026-10-17T17:55:55.361Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
 "Language-Team: Portuguese (https://app.transifex.com/hisp-uio/teams/100509/pt/)\n"
@@ -2241,8 +2241,8 @@ msgstr "Proprietário"
 msgid "Zero is significant"
 msgstr ""
 
-msgid "Enable tracked entity instance audit log"
-msgstr "Habilitar registro de auditoria de instância de entidade rastreada"
+msgid "Record access to tracked entities"
+msgstr ""
 
 msgid "Program type"
 msgstr "Tipo de programa "
@@ -2437,6 +2437,9 @@ msgstr "Estratégia de cache"
 msgid "SQL query"
 msgstr "Consulta SQL"
 
+msgid "Record change history for attribute values"
+msgstr ""
+
 msgid "Unique"
 msgstr "Único"
 
@@ -2458,8 +2461,11 @@ msgstr "Niveis de acesso "
 msgid "Completed events expiry days"
 msgstr "Eventos completados dias expirados "
 
-msgid "Display front page list"
-msgstr "Exibir lista de páginas iniciais"
+msgid "Start page in web Capture app"
+msgstr ""
+
+msgid "Record change history for event data values"
+msgstr ""
 
 msgid "Mandatory"
 msgstr "Obrigatório"
@@ -5645,9 +5651,6 @@ msgstr ""
 msgid "Access and Sharing"
 msgstr ""
 
-msgid "Start page in web Capture app"
-msgstr ""
-
 msgid "Search form"
 msgstr ""
 
@@ -5754,9 +5757,6 @@ msgstr ""
 msgid ""
 "Data elements can be collected in different ways with different options."
 msgstr ""
-
-msgid "Allow provided elsewhere"
-msgstr "Permitido fornecimento em outro lugar"
 
 msgid "Display in reports"
 msgstr "Mostrar em relatórios"
