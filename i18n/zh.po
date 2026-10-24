@@ -1,16 +1,16 @@
 # Translators:
-# 晓东 林 <13981924470@126.com>, 2026
 # Transifex Bot <>, 2026
 # Philip Larsen Donnelly, 2026
 # easylin <lin_xd@126.com>, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
+# 晓东 林 <13981924470@126.com>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
+"POT-Creation-Date: 2026-10-17T17:55:55.361Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
+"Last-Translator: 晓东 林 <13981924470@126.com>, 2026\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -2228,8 +2228,8 @@ msgstr "所有者"
 msgid "Zero is significant"
 msgstr "零具有重要意义"
 
-msgid "Enable tracked entity instance audit log"
-msgstr "激活跟踪随访实体实例审计日志"
+msgid "Record access to tracked entities"
+msgstr ""
 
 msgid "Program type"
 msgstr "项目类型"
@@ -2423,6 +2423,9 @@ msgstr "缓冲策略"
 msgid "SQL query"
 msgstr "SQL查询"
 
+msgid "Record change history for attribute values"
+msgstr ""
+
 msgid "Unique"
 msgstr "唯一"
 
@@ -2444,8 +2447,11 @@ msgstr "访问等级"
 msgid "Completed events expiry days"
 msgstr "完成的事件有效期限"
 
-msgid "Display front page list"
-msgstr "显示前面页列表"
+msgid "Start page in web Capture app"
+msgstr "网络捕捉应用程序的起始页"
+
+msgid "Record change history for event data values"
+msgstr ""
 
 msgid "Mandatory"
 msgstr "强制"
@@ -4179,6 +4185,27 @@ msgstr "当组织单位没有指定组时，使用最接近的父组。"
 msgid "Choose the groups to include in this organisation unit group set."
 msgstr "选择要包含在此组织单位组集中的组。"
 
+msgid "Color and symbol"
+msgstr ""
+
+msgid "Choose a symbol"
+msgstr ""
+
+msgid "Available symbols"
+msgstr ""
+
+msgid "Choose symbol"
+msgstr ""
+
+msgid "Remove symbol"
+msgstr ""
+
+msgid "Symbol"
+msgstr "符号"
+
+msgid "Symbol: none selected"
+msgstr ""
+
 msgid "Set up the basic information for this organisation unit group."
 msgstr "设置该组织单位组的基本信息。"
 
@@ -5642,9 +5669,6 @@ msgstr "在事件类别组合结束日期若干天后关闭数据输入"
 msgid "Access and Sharing"
 msgstr "访问和共享"
 
-msgid "Start page in web Capture app"
-msgstr "网络捕捉应用程序的起始页"
-
 msgid "Search form"
 msgstr "搜索表格"
 
@@ -5751,9 +5775,6 @@ msgstr "配置数据项"
 msgid ""
 "Data elements can be collected in different ways with different options."
 msgstr "数据元素可以通过不同的方式和不同的选项收集。"
-
-msgid "Allow provided elsewhere"
-msgstr "其它地方允许提供的"
 
 msgid "Display in reports"
 msgstr "报表中显示"
@@ -6152,7 +6173,7 @@ msgid "Change file"
 msgstr ""
 
 msgid "Upload file"
-msgstr ""
+msgstr "上传文件"
 
 msgid "Resource type"
 msgstr ""

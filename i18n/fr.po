@@ -15,15 +15,15 @@
 # Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2026
 # a270031086f2a0d3514bc0cb507b48f6, 2026
 # Philip Larsen Donnelly, 2026
-# Esther Tokouli, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
+# Esther Tokouli, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
+"POT-Creation-Date: 2026-10-17T17:55:55.361Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
+"Last-Translator: Esther Tokouli, 2026\n"
 "Language-Team: French (https://app.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -850,12 +850,13 @@ msgstr "Supprimer"
 
 msgid "New program stages order saved successfully"
 msgstr ""
+"L'ordre des nouvelles étapes du programme a été enregistrée avec succès"
 
 msgid "New sections order saved successfully"
 msgstr "L'ordre des nouvelles sections a été enregistré avec succès"
 
 msgid "Error saving new program stages order."
-msgstr ""
+msgstr "Erreur d'enregistrement de l'ordre des nouvelles étapes de programme."
 
 msgid "Error saving new sections order."
 msgstr "Erreur d'enregistrement de l'ordre des nouvelles sections."
@@ -2301,8 +2302,8 @@ msgstr "Propriétaire"
 msgid "Zero is significant"
 msgstr "Le zéro est pertinent "
 
-msgid "Enable tracked entity instance audit log"
-msgstr "Activer le journal d'audit pour l'instance d'entité suivie"
+msgid "Record access to tracked entities"
+msgstr ""
 
 msgid "Program type"
 msgstr "Type de programme"
@@ -2500,6 +2501,9 @@ msgstr "Stratégie de mise en cache"
 msgid "SQL query"
 msgstr "Requête SQL"
 
+msgid "Record change history for attribute values"
+msgstr ""
+
 msgid "Unique"
 msgstr "Unique"
 
@@ -2521,8 +2525,11 @@ msgstr "Niveau d'accès"
 msgid "Completed events expiry days"
 msgstr "Jours d'expiration des événements terminés"
 
-msgid "Display front page list"
-msgstr "Afficher la liste de la page d'accueil"
+msgid "Start page in web Capture app"
+msgstr ""
+
+msgid "Record change history for event data values"
+msgstr ""
 
 msgid "Mandatory"
 msgstr "Obligatoire"
@@ -6105,9 +6112,6 @@ msgstr ""
 msgid "Access and Sharing"
 msgstr ""
 
-msgid "Start page in web Capture app"
-msgstr ""
-
 msgid "Search form"
 msgstr ""
 
@@ -6214,9 +6218,6 @@ msgstr ""
 msgid ""
 "Data elements can be collected in different ways with different options."
 msgstr ""
-
-msgid "Allow provided elsewhere"
-msgstr "Autoriser fourni ailleurs"
 
 msgid "Display in reports"
 msgstr "Afficher dans les rapports"

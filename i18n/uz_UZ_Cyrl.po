@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
+"POT-Creation-Date: 2026-10-17T17:55:55.361Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: Khurshid Ibatov <x.ibatov@dtsj.uz>, 2026\n"
 "Language-Team: Uzbek (Cyrillic) (https://app.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
@@ -2223,8 +2223,8 @@ msgstr "Эгаси, тегишлилик"
 msgid "Zero is significant"
 msgstr ""
 
-msgid "Enable tracked entity instance audit log"
-msgstr "Кузатувдаги объъект намуналарини текшириш учун аудит журналини ёқиш"
+msgid "Record access to tracked entities"
+msgstr ""
 
 msgid "Program type"
 msgstr "Дастур тури"
@@ -2418,6 +2418,9 @@ msgstr "Кешлаш стратегияси"
 msgid "SQL query"
 msgstr "SQL сўрови"
 
+msgid "Record change history for attribute values"
+msgstr ""
+
 msgid "Unique"
 msgstr "Ноёб"
 
@@ -2439,8 +2442,11 @@ msgstr "Кириш мумкин бўлган босқичлар"
 msgid "Completed events expiry days"
 msgstr "Якунланган ҳодиса/тадбирларнинг тугаш кунлари"
 
-msgid "Display front page list"
-msgstr "Дастлабки саҳифалар рўйхатини экранда кўрсатиш"
+msgid "Start page in web Capture app"
+msgstr ""
+
+msgid "Record change history for event data values"
+msgstr ""
 
 msgid "Mandatory"
 msgstr "Мажбурий"
@@ -5633,9 +5639,6 @@ msgstr ""
 msgid "Access and Sharing"
 msgstr ""
 
-msgid "Start page in web Capture app"
-msgstr ""
-
 msgid "Search form"
 msgstr ""
 
@@ -5742,9 +5745,6 @@ msgstr ""
 msgid ""
 "Data elements can be collected in different ways with different options."
 msgstr ""
-
-msgid "Allow provided elsewhere"
-msgstr "Бошқа жойларга тақдим этишга рухсат бериш"
 
 msgid "Display in reports"
 msgstr "Ҳисоботни экранда кўрсатиш"

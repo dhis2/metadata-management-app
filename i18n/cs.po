@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-10-05T09:04:48.203Z\n"
+"POT-Creation-Date: 2026-10-17T17:55:55.361Z\n"
 "PO-Revision-Date: 2025-09-23 13:28+0000\n"
 "Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2026\n"
 "Language-Team: Czech (https://app.transifex.com/hisp-uio/teams/100509/cs/)\n"
@@ -2231,8 +2231,8 @@ msgstr "Majitel"
 msgid "Zero is significant"
 msgstr "Nula je významná"
 
-msgid "Enable tracked entity instance audit log"
-msgstr "Povolit protokol auditu instance trasované entity"
+msgid "Record access to tracked entities"
+msgstr ""
 
 msgid "Program type"
 msgstr "Typ programu"
@@ -2427,6 +2427,9 @@ msgstr "Strategie mezipaměti"
 msgid "SQL query"
 msgstr "SQL dotaz"
 
+msgid "Record change history for attribute values"
+msgstr ""
+
 msgid "Unique"
 msgstr "Unikátní"
 
@@ -2448,8 +2451,11 @@ msgstr "Úroveň přístupu"
 msgid "Completed events expiry days"
 msgstr "Dny vypršení platnosti dokončených událostí"
 
-msgid "Display front page list"
-msgstr "Zobrazit seznam titulních stránek"
+msgid "Start page in web Capture app"
+msgstr ""
+
+msgid "Record change history for event data values"
+msgstr ""
 
 msgid "Mandatory"
 msgstr "Povinné"
@@ -5736,9 +5742,6 @@ msgstr ""
 msgid "Access and Sharing"
 msgstr ""
 
-msgid "Start page in web Capture app"
-msgstr ""
-
 msgid "Search form"
 msgstr ""
 
@@ -5845,9 +5848,6 @@ msgstr ""
 msgid ""
 "Data elements can be collected in different ways with different options."
 msgstr ""
-
-msgid "Allow provided elsewhere"
-msgstr "Povolit poskytované jinde"
 
 msgid "Display in reports"
 msgstr "Zobrazit ve Zprávách"
