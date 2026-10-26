@@ -26,9 +26,9 @@ Reuse category options when you can. For example, two categories can share the c
 3. Fill in **Name**, **Short name**, **Code**, **Form name**, **Description**, **Start date**, and **End date**. Only **Name** is required. See [Common metadata object fields](#mm_common_metadata_fields).
 4. Choose the organisation units where the category option is available.
 
-   > **Tip**
-   >
-   > To choose all organisation units of an organisation unit level or an organisation unit group, such as "Chiefdom" or "Urban", choose the **Organisation unit level** or the **Organisation unit group** and click **Select**.
+    > **Tip**
+    >
+    > To choose all organisation units of an organisation unit level or an organisation unit group, such as "Chiefdom" or "Urban", choose the **Organisation unit level** or the **Organisation unit group** and click **Select**.
 
 5. Click **Save**.
 
@@ -40,8 +40,8 @@ Create a category after you create all of its category options.
 2. Click **New**.
 3. Fill in **Name**, **Short name**, **Code**, and **Description**. See [Common metadata object fields](#mm_common_metadata_fields).
 4. Choose a **Data dimension type**:
-   * **Disaggregation**: Use the category to split data elements into components.
-   * **Attribute**: Use the category to add attributes to data recorded through a data set.
+    - **Disaggregation**: Use the category to split data elements into components.
+    - **Attribute**: Use the category to add attributes to data recorded through a data set.
 5. (Optional) Choose **Data dimension** to make the category available as a dimension in analytics apps.
 6. Assign the category options to the category.
 7. Click **Save**.

@@ -39,35 +39,35 @@ For background on data elements, see [About data elements](#mm_about_data_elemen
 
     Table: Value types
 
-    | Value type | Description |
-    | --- | --- |
-    | Text | Textual value. The maximum number of allowed characters per value is 50,000. |
-    | Long text | Textual value. Renders as a text area with no length constraint in forms. |
-    | Text with multiple values | Textual value with more than one value. The app shows this value type only for an option set that uses it. |
-    | Letter | A single letter. |
-    | Phone number | Phone number. |
-    | Email | Email address. |
-    | Yes/No | Boolean values rendered as menus in data entry. |
-    | Yes only | Boolean values rendered as checkboxes in data entry. |
-    | Date | Dates rendered as calendar widget in data entry. |
-    | Date and time | Combination of the **Date** and **Time** value types. |
-    | Time | Time rendered as hours and minutes in HH:MM format. |
-    | Number | Any real numeric value with a single decimal point. |
-    | Unit interval | Any real number greater than or equal to 0 and less than or equal to 1. |
-    | Percentage | Any real number greater than or equal to 0 and less than or equal to 100. |
-    | Integer | Any whole number (positive and negative), including zero. |
-    | Positive integer | Any whole number greater than (but not including) zero. |
-    | Negative integer | Any whole number less than (but not including) zero. |
-    | Positive or Zero integer | Any whole number greater than or equal to zero. |
-    | Username | DHIS2 user. Renders as a dialog for searching for and choosing a user. |
-    | Coordinate | A point coordinate specified as longitude and latitude in decimal degrees. Specify all coordinates in the format `[-19.23, 56.42]`. |
-    | Organisation unit | Organisation units rendered as a hierarchy tree widget. If the user has search organisation units assigned, the tree shows these instead of the assigned organisation units. |
-    | Reference | Stores a reference (UID) to another DHIS2 object, allowing a data value to link to a specific record elsewhere in the system. |
-    | Age | Dates rendered as calendar widget or by entering number of years, months and days, which calculates the date value based on the current date. |
-    | URL | Enables manual entry of a URL. |
-    | File | A file resource where you can store external files, for example documents and photos. |
-    | Image | A file resource where you can store photos. Unlike **File**, the **Image** type can show the uploaded image directly in forms. |
-    | GeoJSON | Stores geographic geometry data in GeoJSON format, for example boundary polygons or catchment areas for organisation units. |
+    | Value type                | Description                                                                                                                                                                  |
+    | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | Text                      | Textual value. The maximum number of allowed characters per value is 50,000.                                                                                                 |
+    | Long text                 | Textual value. Renders as a text area with no length constraint in forms.                                                                                                    |
+    | Text with multiple values | Textual value with more than one value. The app shows this value type only for an option set that uses it.                                                                   |
+    | Letter                    | A single letter.                                                                                                                                                             |
+    | Phone number              | Phone number.                                                                                                                                                                |
+    | Email                     | Email address.                                                                                                                                                               |
+    | Yes/No                    | Boolean values rendered as menus in data entry.                                                                                                                              |
+    | Yes only                  | Boolean values rendered as checkboxes in data entry.                                                                                                                         |
+    | Date                      | Dates rendered as calendar widget in data entry.                                                                                                                             |
+    | Date and time             | Combination of the **Date** and **Time** value types.                                                                                                                        |
+    | Time                      | Time rendered as hours and minutes in HH:MM format.                                                                                                                          |
+    | Number                    | Any real numeric value with a single decimal point.                                                                                                                          |
+    | Unit interval             | Any real number greater than or equal to 0 and less than or equal to 1.                                                                                                      |
+    | Percentage                | Any real number greater than or equal to 0 and less than or equal to 100.                                                                                                    |
+    | Integer                   | Any whole number (positive and negative), including zero.                                                                                                                    |
+    | Positive integer          | Any whole number greater than (but not including) zero.                                                                                                                      |
+    | Negative integer          | Any whole number less than (but not including) zero.                                                                                                                         |
+    | Positive or Zero integer  | Any whole number greater than or equal to zero.                                                                                                                              |
+    | Username                  | DHIS2 user. Renders as a dialog for searching for and choosing a user.                                                                                                       |
+    | Coordinate                | A point coordinate specified as longitude and latitude in decimal degrees. Specify all coordinates in the format `[-19.23, 56.42]`.                                          |
+    | Organisation unit         | Organisation units rendered as a hierarchy tree widget. If the user has search organisation units assigned, the tree shows these instead of the assigned organisation units. |
+    | Reference                 | Stores a reference (UID) to another DHIS2 object, allowing a data value to link to a specific record elsewhere in the system.                                                |
+    | Age                       | Dates rendered as calendar widget or by entering number of years, months and days, which calculates the date value based on the current date.                                |
+    | URL                       | Enables manual entry of a URL.                                                                                                                                               |
+    | File                      | A file resource where you can store external files, for example documents and photos.                                                                                        |
+    | Image                     | A file resource where you can store photos. Unlike **File**, the **Image** type can show the uploaded image directly in forms.                                               |
+    | GeoJSON                   | Stores geographic geometry data in GeoJSON format, for example boundary polygons or catchment areas for organisation units.                                                  |
 
 12. Choose an **Aggregation type**. This is the default aggregation operation for the data element.
 
@@ -79,32 +79,32 @@ For background on data elements, see [About data elements](#mm_about_data_elemen
 
     Table: Aggregation operators
 
-    | Aggregation operator | Over periods | Over the organisation unit hierarchy |
-    | --- | --- | --- |
-    | Sum | Sum | Sum |
-    | Average | Average | Average |
-    | Average (sum in org unit) | Average | Sum |
-    | Count | Count of values | Count of values |
-    | Min | Minimum | Minimum |
-    | Max | Maximum | Maximum |
-    | Min (sum in org unit) | Minimum | Sum |
-    | Max (sum in org unit) | Maximum | Sum |
-    | First value (sum in org unit hierarchy) | Earliest value within the 10 years up to the end of the period | Sum |
-    | First value (average in org unit hierarchy) | Earliest value within the 10 years up to the end of the period | Average |
-    | First value (first in org unit hierarchy) | Earliest value within the 10 years up to the end of the period | Earliest value |
-    | Last value (sum in org unit hierarchy) | Most recent value up to the end of the period, looking back up to 10 years | Sum |
-    | Last value (average in org unit) | Most recent value up to the end of the period, looking back up to 10 years | Average |
-    | Last value (last in org unit hierarchy) | Most recent value up to the end of the period, looking back up to 10 years | Most recent value |
-    | Last value in period (sum in org unit hierarchy) | Most recent value, counting only periods inside the requested period | Sum |
-    | Last value in period (average in org unit hierarchy) | Most recent value, counting only periods inside the requested period | Average |
-    | Standard deviation | Standard deviation (population-based) | Standard deviation |
-    | Variance | Variance (population-based) | Variance |
-    | None | No aggregation | No aggregation |
+    | Aggregation operator                                 | Over periods                                                               | Over the organisation unit hierarchy |
+    | ---------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------ |
+    | Sum                                                  | Sum                                                                        | Sum                                  |
+    | Average                                              | Average                                                                    | Average                              |
+    | Average (sum in org unit)                            | Average                                                                    | Sum                                  |
+    | Count                                                | Count of values                                                            | Count of values                      |
+    | Min                                                  | Minimum                                                                    | Minimum                              |
+    | Max                                                  | Maximum                                                                    | Maximum                              |
+    | Min (sum in org unit)                                | Minimum                                                                    | Sum                                  |
+    | Max (sum in org unit)                                | Maximum                                                                    | Sum                                  |
+    | First value (sum in org unit hierarchy)              | Earliest value within the 10 years up to the end of the period             | Sum                                  |
+    | First value (average in org unit hierarchy)          | Earliest value within the 10 years up to the end of the period             | Average                              |
+    | First value (first in org unit hierarchy)            | Earliest value within the 10 years up to the end of the period             | Earliest value                       |
+    | Last value (sum in org unit hierarchy)               | Most recent value up to the end of the period, looking back up to 10 years | Sum                                  |
+    | Last value (average in org unit)                     | Most recent value up to the end of the period, looking back up to 10 years | Average                              |
+    | Last value (last in org unit hierarchy)              | Most recent value up to the end of the period, looking back up to 10 years | Most recent value                    |
+    | Last value in period (sum in org unit hierarchy)     | Most recent value, counting only periods inside the requested period       | Sum                                  |
+    | Last value in period (average in org unit hierarchy) | Most recent value, counting only periods inside the requested period       | Average                              |
+    | Standard deviation                                   | Standard deviation (population-based)                                      | Standard deviation                   |
+    | Variance                                             | Variance (population-based)                                                | Variance                             |
+    | None                                                 | No aggregation                                                             | No aggregation                       |
 
     Two more entries are not aggregation behaviors:
 
-    * **Default**: DHIS2 uses the aggregation type that follows from the value type of the data element.
-    * **Custom**: The aggregation comes from somewhere other than the operators in the table.
+    - **Default**: DHIS2 uses the aggregation type that follows from the value type of the data element.
+    - **Custom**: The aggregation comes from somewhere other than the operators in the table.
 
     For background on aggregation operators, with a worked example, see [How aggregation operators work](#understanding_aggregation_operators).
 
@@ -161,8 +161,8 @@ All source data elements must have the same value type and the same domain type 
 4. In **Data elements to be merged (source)**, choose the data elements that DHIS2 removes.
 5. In **Data element to merge into (target)**, choose the data element to keep.
 6. Under **Merge settings**, make two choices:
-   * Choose whether DHIS2 deletes the source data elements or keeps them. The default is to delete them.
-   * Choose **Move data values to the target data element** or **Delete the source data values**. The default is to move them. If the source and the target both have a data value, DHIS2 keeps the value that was updated most recently.
+    - Choose whether DHIS2 deletes the source data elements or keeps them. The default is to delete them.
+    - Choose **Move data values to the target data element** or **Delete the source data values**. The default is to move them. If the source and the target both have a data value, DHIS2 keeps the value that was updated most recently.
 7. Under **Merging cannot be undone**, enter the confirmation code that the app shows.
 8. Click **Merge**. The app shows **Merge complete**.
 

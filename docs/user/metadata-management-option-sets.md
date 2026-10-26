@@ -14,10 +14,10 @@ In the **Metadata Management** app, you manage these option set objects:
 
 Table: Option set objects in the Metadata Management app
 
-| Object type | Available functions |
-| --- | --- |
-| Option set | Create, edit, share, delete, show details, and translate |
-| Option group | Create, edit, clone, share, delete, show details, and translate |
+| Object type      | Available functions                                             |
+| ---------------- | --------------------------------------------------------------- |
+| Option set       | Create, edit, share, delete, show details, and translate        |
+| Option group     | Create, edit, clone, share, delete, show details, and translate |
 | Option group set | Create, edit, clone, share, delete, show details, and translate |
 
 For **Show details**, **Sharing settings**, **Translate**, **Delete**, and **Clone**, see [Common actions](#mm_common_actions). Option sets do not support **Clone**. None of the object types on this page support **Merge**.
@@ -40,22 +40,22 @@ For **Show details**, **Sharing settings**, **Translate**, **Delete**, and **Clo
 4. Choose a **Value type**. You cannot change the value type after you create the option set.
 5. Click **Save**. The form stays open so that you can add options. You cannot add options before you save the option set.
 6. Under **Options**, add each option that you need:
-   1. Click **Add option**. The **New option** panel opens.
-   2. Enter a **Name** and a **Code**. Both are required.
-   3. (Optional) Enter a **Description**. Under **Visual configuration**, choose a **Color** and an **Icon**. Data capture apps use them for this option.
-   4. Click **Save option**. The option appears in the list.
+    1. Click **Add option**. The **New option** panel opens.
+    2. Enter a **Name** and a **Code**. Both are required.
+    3. (Optional) Enter a **Description**. Under **Visual configuration**, choose a **Color** and an **Icon**. Data capture apps use them for this option.
+    4. Click **Save option**. The option appears in the list.
 7. (Optional) Put the options in order:
-   * Click **Sort by name (A-Z)**, **Sort by name (Z-A)**, **Sort by code (asc)**, or **Sort by code (desc)**.
-   * To move one option, use the up arrow and down arrow buttons in its row.
+    - Click **Sort by name (A-Z)**, **Sort by name (Z-A)**, **Sort by code (asc)**, or **Sort by code (desc)**.
+    - To move one option, use the up arrow and down arrow buttons in its row.
 8. Click **Save**.
 
 DHIS2 creates and updates each option when you click **Save option**. Saving an option does not save other changes to the option set. The order of the options, and the removal of options, apply when you click **Save** in the option set form.
 
 To change or remove an option, click the options menu of the option in the list:
 
-* Choose **Edit** to change the option. You cannot change its **Code**.
-* Choose **Translate** to translate the option.
-* Choose **Delete** to remove the option. The row shows **Will be removed on save** until you click **Save**. Click **Restore option** to keep the option.
+- Choose **Edit** to change the option. You cannot change its **Code**.
+- Choose **Translate** to translate the option.
+- Choose **Delete** to remove the option. The row shows **Will be removed on save** until you click **Save**. Click **Restore option** to keep the option.
 
 To find an option in a long list, enter text in **Search by name or code**. The sort buttons are disabled while a filter is active.
 

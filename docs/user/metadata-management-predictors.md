@@ -37,11 +37,11 @@ You need the `F_PREDICTOR_ADD` authority to create a predictor.
 
     2. Enter the generator expression. Type it, or use the panels at the right of the expression field to add items at the cursor:
 
-        * **Data elements** for aggregate data.
-        * **Program data** for program data elements, attributes, or program indicators.
-        * **Org unit counts** for organisation unit counts.
-        * **Constants** for constants.
-        * **Reporting rates** for reporting rates.
+        - **Data elements** for aggregate data.
+        - **Program data** for program data elements, attributes, or program indicators.
+        - **Org unit counts** for organisation unit counts.
+        - **Constants** for constants.
+        - **Reporting rates** for reporting rates.
 
         To use sampled data from past periods, enclose each item in an aggregate function. For the aggregate functions, the other functions that you can use, and examples of generator expressions, see [Generator expressions](#mm_predictor_generator_expressions).
 
@@ -49,11 +49,11 @@ You need the `F_PREDICTOR_ADD` authority to create a predictor.
     4. In **Description**, enter a description of the generator. This field is required.
     5. Choose a **Missing value strategy**. This sets whether DHIS2 evaluates the generator expression at all when some of the data that it references is missing.
 
-        | Option | Description |
-        | --- | --- |
-        | Skip if any value is missing | DHIS2 does not evaluate the expression if any of the values that make it up are missing, so DHIS2 predicts no value. |
-        | Skip if all values are missing | DHIS2 does not evaluate the expression only if *every* value that makes it up is missing. If at least one value is present, the expression runs and DHIS2 treats the missing values as zero. This is the default option. |
-        | Never skip | DHIS2 always evaluates the expression, and treats every missing value as zero. |
+        | Option                         | Description                                                                                                                                                                                                              |
+        | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+        | Skip if any value is missing   | DHIS2 does not evaluate the expression if any of the values that make it up are missing, so DHIS2 predicts no value.                                                                                                     |
+        | Skip if all values are missing | DHIS2 does not evaluate the expression only if _every_ value that makes it up is missing. If at least one value is present, the expression runs and DHIS2 treats the missing values as zero. This is the default option. |
+        | Never skip                     | DHIS2 always evaluates the expression, and treats every missing value as zero.                                                                                                                                           |
 
         For how the strategy affects missing values inside the expression, see [Missing values in generator expressions](#mm_predictor_missing_values).
 

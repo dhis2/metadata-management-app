@@ -16,9 +16,9 @@ The **Data approval** section of the sidebar has two pages. The following table 
 
 Table: Data approval objects in the Metadata Management app
 
-| Object type | Available functions |
-|---|---|
-| Data approval level | Create, edit, clone, and delete |
+| Object type            | Available functions             |
+| ---------------------- | ------------------------------- |
+| Data approval level    | Create, edit, clone, and delete |
 | Data approval workflow | Create, edit, clone, and delete |
 
 For **Clone** and **Delete**, see [Common actions](#mm_common_actions).

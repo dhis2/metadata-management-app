@@ -47,35 +47,35 @@ The following table lists the fields of each tab.
 
 Table: Data set fields
 
-| Tab | Field | Purpose |
-| --- | --- | --- |
-| Setup | **Name**, **Short name** | The name of the data set, and a shorter name for places with little space. Both are required. The short name must be unique. |
-| Setup | **Code** | An optional unique identifier. |
-| Setup | **Description** | A description of the data set. The maximum length is 2000 characters. |
-| Setup | **Visual configuration** | The **Color** and **Icon** of the data set. |
-| Data | **Configure data elements** | The data elements of the data set. The list offers only data elements with the domain type aggregate. To change the category combination of a data element for this data set, see [Override the category combination of a data element](#mm_override_dataelement_catcombo_in_dataset). |
-| Data | **Category combination** | An optional category combination for the whole data set, under the heading **Data set attribution**. The menu lists category combinations with the data dimension type **Attribute**. For more information, see [Use a category combination for a data set](#mm_use_category_combo_for_data_set). |
-| Data | **Indicators** | Indicators that DHIS2 calculates and shows in the data entry form. The sections of a section form can use only the indicators that you choose here. |
-| Periods | **Period type** | How often users collect data. The default is **Monthly**. If you change the period type of a data set that has data, the app asks you to confirm. Data that users entered before the change does not show in the **Data Entry** app, and this can lead to duplicate data entry. |
-| Periods | **Allow data entry in future periods** | Choose the checkbox, then enter the **Number of future periods** that users can enter data for. |
-| Periods | **Close data entry a certain number of days after period end (expiry days)** | Choose the checkbox, then enter the **Number of days** after the end of a period. After this number of days, users cannot enter or edit data. If the checkbox is clear, the value is 0 and users can always edit. |
-| Periods | **Close data entry after "category combination" category option end date** | Shows only when the data set has a category combination that is not the default. Choose the checkbox to close data entry after the end date of the category options. |
-| Periods | **Add a period entry rule** | Under the heading **Limit data entry by period**. Opens the **Add period entry rule** dialog, where you choose a **Year** and a **Period**, and enter an **Opening date** and a **Closing date**. The closing date must be after the opening date. Click **Edit** or **Remove** next to a rule to change or remove it. |
-| Validation | **Approval workflow** | An optional data approval workflow. The menu lists the workflows that use the category combination of the data set, and the workflows that have no category combination. See [Assign a workflow to a data set](#mm_assign_approval_workflow). |
-| Validation | **Completing requires passing validation** | Users cannot complete the data entry form if validation rule violations exist. |
-| Validation | **Completing requires all empty values to have a comment** | Users cannot complete the data entry form until each empty value has a comment. |
-| Validation | **Completing requires compulsory fields to have a value** | Users cannot complete the data entry form until every compulsory data element has a value. See [Edit compulsory data elements in a data set](#mm_edit_compulsory_dataelement_in_dataset). |
-| Validation | **If one category combination field has a value, require all for that category combination to have a value** | Users must fill in all fields of a category combination if they fill in one of them. |
-| Validation | **Number of days after period to qualify for on time submission** | The number of days after the end of a period in which a report counts as on time in reporting rates. Enter 0 to ignore. The default is 15. |
-| Validation | **Compulsory data elements** | The data elements that are compulsory. See [Edit compulsory data elements in a data set](#mm_edit_compulsory_dataelement_in_dataset). |
-| Organisation Units | Organisation unit tree | The organisation units that can collect data with the data set. |
-| Form | **Basic form**, **Section form**, **Custom form** | The form type. See [Manage section forms](#mm_manage_section_form) and [Manage custom forms](#mm_manage_customform). |
-| Form | **Display options** | See [Display options](#mm_data_set_display_options). The panel is available in DHIS2 v42 and later. |
-| Advanced | **Do not save this data set to offline storage** | Makes the data set available only when the user is connected to the internet. |
-| Advanced | **Include data element descriptions in offline storage** | Saves the descriptions of the data elements with the data set in offline storage. |
-| Advanced | **Use this data set with the Java mobile client** | Has no effect. DHIS2 no longer includes the Java mobile service. |
-| Advanced | **Send complete notifications** | Sends a notification when users complete the data set. Choose a **Recipient user group**, and optionally choose **Send notification to completing user**. For notifications with more options, see [Create or edit a data set notification](#mm_create_data_set_notification). |
-| Advanced | **Legends** | Legends that color the values in the **Data Entry** and analytics apps. |
+| Tab                | Field                                                                                                        | Purpose                                                                                                                                                                                                                                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Setup              | **Name**, **Short name**                                                                                     | The name of the data set, and a shorter name for places with little space. Both are required. The short name must be unique.                                                                                                                                                                                           |
+| Setup              | **Code**                                                                                                     | An optional unique identifier.                                                                                                                                                                                                                                                                                         |
+| Setup              | **Description**                                                                                              | A description of the data set. The maximum length is 2000 characters.                                                                                                                                                                                                                                                  |
+| Setup              | **Visual configuration**                                                                                     | The **Color** and **Icon** of the data set.                                                                                                                                                                                                                                                                            |
+| Data               | **Configure data elements**                                                                                  | The data elements of the data set. The list offers only data elements with the domain type aggregate. To change the category combination of a data element for this data set, see [Override the category combination of a data element](#mm_override_dataelement_catcombo_in_dataset).                                 |
+| Data               | **Category combination**                                                                                     | An optional category combination for the whole data set, under the heading **Data set attribution**. The menu lists category combinations with the data dimension type **Attribute**. For more information, see [Use a category combination for a data set](#mm_use_category_combo_for_data_set).                      |
+| Data               | **Indicators**                                                                                               | Indicators that DHIS2 calculates and shows in the data entry form. The sections of a section form can use only the indicators that you choose here.                                                                                                                                                                    |
+| Periods            | **Period type**                                                                                              | How often users collect data. The default is **Monthly**. If you change the period type of a data set that has data, the app asks you to confirm. Data that users entered before the change does not show in the **Data Entry** app, and this can lead to duplicate data entry.                                        |
+| Periods            | **Allow data entry in future periods**                                                                       | Choose the checkbox, then enter the **Number of future periods** that users can enter data for.                                                                                                                                                                                                                        |
+| Periods            | **Close data entry a certain number of days after period end (expiry days)**                                 | Choose the checkbox, then enter the **Number of days** after the end of a period. After this number of days, users cannot enter or edit data. If the checkbox is clear, the value is 0 and users can always edit.                                                                                                      |
+| Periods            | **Close data entry after "category combination" category option end date**                                   | Shows only when the data set has a category combination that is not the default. Choose the checkbox to close data entry after the end date of the category options.                                                                                                                                                   |
+| Periods            | **Add a period entry rule**                                                                                  | Under the heading **Limit data entry by period**. Opens the **Add period entry rule** dialog, where you choose a **Year** and a **Period**, and enter an **Opening date** and a **Closing date**. The closing date must be after the opening date. Click **Edit** or **Remove** next to a rule to change or remove it. |
+| Validation         | **Approval workflow**                                                                                        | An optional data approval workflow. The menu lists the workflows that use the category combination of the data set, and the workflows that have no category combination. See [Assign a workflow to a data set](#mm_assign_approval_workflow).                                                                          |
+| Validation         | **Completing requires passing validation**                                                                   | Users cannot complete the data entry form if validation rule violations exist.                                                                                                                                                                                                                                         |
+| Validation         | **Completing requires all empty values to have a comment**                                                   | Users cannot complete the data entry form until each empty value has a comment.                                                                                                                                                                                                                                        |
+| Validation         | **Completing requires compulsory fields to have a value**                                                    | Users cannot complete the data entry form until every compulsory data element has a value. See [Edit compulsory data elements in a data set](#mm_edit_compulsory_dataelement_in_dataset).                                                                                                                              |
+| Validation         | **If one category combination field has a value, require all for that category combination to have a value** | Users must fill in all fields of a category combination if they fill in one of them.                                                                                                                                                                                                                                   |
+| Validation         | **Number of days after period to qualify for on time submission**                                            | The number of days after the end of a period in which a report counts as on time in reporting rates. Enter 0 to ignore. The default is 15.                                                                                                                                                                             |
+| Validation         | **Compulsory data elements**                                                                                 | The data elements that are compulsory. See [Edit compulsory data elements in a data set](#mm_edit_compulsory_dataelement_in_dataset).                                                                                                                                                                                  |
+| Organisation Units | Organisation unit tree                                                                                       | The organisation units that can collect data with the data set.                                                                                                                                                                                                                                                        |
+| Form               | **Basic form**, **Section form**, **Custom form**                                                            | The form type. See [Manage section forms](#mm_manage_section_form) and [Manage custom forms](#mm_manage_customform).                                                                                                                                                                                                   |
+| Form               | **Display options**                                                                                          | See [Display options](#mm_data_set_display_options). The panel is available in DHIS2 v42 and later.                                                                                                                                                                                                                    |
+| Advanced           | **Do not save this data set to offline storage**                                                             | Makes the data set available only when the user is connected to the internet.                                                                                                                                                                                                                                          |
+| Advanced           | **Include data element descriptions in offline storage**                                                     | Saves the descriptions of the data elements with the data set in offline storage.                                                                                                                                                                                                                                      |
+| Advanced           | **Use this data set with the Java mobile client**                                                            | Has no effect. DHIS2 no longer includes the Java mobile service.                                                                                                                                                                                                                                                       |
+| Advanced           | **Send complete notifications**                                                                              | Sends a notification when users complete the data set. Choose a **Recipient user group**, and optionally choose **Send notification to completing user**. For notifications with more options, see [Create or edit a data set notification](#mm_create_data_set_notification).                                         |
+| Advanced           | **Legends**                                                                                                  | Legends that color the values in the **Data Entry** and analytics apps.                                                                                                                                                                                                                                                |
 
 > **Note**
 >
@@ -102,16 +102,16 @@ The **Message subject** and **Message body** accept these variables. Each button
 
 Table: Variables for data set notifications
 
-| Button | Inserted text |
-| --- | --- |
-| **Data set name** | `V{data_set_name}` |
-| **Current date** | `V{current_date}` |
-| **Data set description** | `V{data_description}` |
-| **Complete registration organisation unit** | `V{registration_ou}` |
-| **Complete registration period** | `V{registration_period}` |
-| **Complete registration user** | `V{registration_user}` |
-| **Complete registration time** | `V{registration_time}` |
-| **Complete registration att opt combo** | `V{att_opt_combo}` |
+| Button                                      | Inserted text            |
+| ------------------------------------------- | ------------------------ |
+| **Data set name**                           | `V{data_set_name}`       |
+| **Current date**                            | `V{current_date}`        |
+| **Data set description**                    | `V{data_description}`    |
+| **Complete registration organisation unit** | `V{registration_ou}`     |
+| **Complete registration period**            | `V{registration_period}` |
+| **Complete registration user**              | `V{registration_user}`   |
+| **Complete registration time**              | `V{registration_time}`   |
+| **Complete registration att opt combo**     | `V{att_opt_combo}`       |
 
 ## Override the category combination of a data element { #mm_override_dataelement_catcombo_in_dataset }
 
@@ -153,22 +153,22 @@ A section form divides the data elements of a data set into sections. Each secti
 
 The **Display options** panel is on the **Form** tab, under the form type tabs. It is available when your instance runs DHIS2 v42 or later. It applies to the form as a whole and has these options:
 
-* **Show title / subtitle**: Shows a title and a subtitle above the form during data entry. Enter the text in **Title** and **Subtitle**. Each field has a maximum of 500 characters. Under **Position**, choose **Line start**, **Center**, or **Line end**. This option applies to all form types.
-* **Section layout**: Applies to section forms only. Choose **Single page: Show all sections on one page** or **Tabs: Show one tab for each section**. If you choose tabs, also choose **Horizontal tabs** or **Vertical tabs**.
-* **Use a vertical layout for multi-organisation unit forms**: Applies to section forms only. The option applies only to section forms with multiple organisation units.
+- **Show title / subtitle**: Shows a title and a subtitle above the form during data entry. Enter the text in **Title** and **Subtitle**. Each field has a maximum of 500 characters. Under **Position**, choose **Line start**, **Center**, or **Line end**. This option applies to all form types.
+- **Section layout**: Applies to section forms only. Choose **Single page: Show all sections on one page** or **Tabs: Show one tab for each section**. If you choose tabs, also choose **Horizontal tabs** or **Vertical tabs**.
+- **Use a vertical layout for multi-organisation unit forms**: Applies to section forms only. The option applies only to section forms with multiple organisation units.
 
 Each section also has display settings. They are in the **Display options** panel of the section, with the description **Customize how this section looks in the form.**
 
 ![Customize how this section looks in the form panel, showing Row totals, Column totals, Disable automatic grouping of data elements, Display mode options, and Content before/after a section fields](resources/images/metadata-management/section-edit-display-options.png)
 
-* **Row totals**: Adds a total column at the end of each row.
-* **Column totals**: Adds a total row at the end of the section.
-* **Disable automatic grouping of data elements**: Keeps the data elements in the order that you assigned them, instead of grouping them by category combination.
-* **Display mode**: Controls how the table of the section arranges data elements and categories. Choose one option:
-  * **Default: data elements as rows, categories as columns**
-  * **Pivot: categories as rows, data elements as columns**
-  * **Move a category to rows: default mode with one category moved to rows**. With this option, choose the category in **Category to move to rows**. The field shows only when the data elements of the section have more than one category.
-* **Content to display before a section** and **Content to display after a section**: Text that the form shows before or after the section. The fields support Markdown formatting.
+- **Row totals**: Adds a total column at the end of each row.
+- **Column totals**: Adds a total row at the end of the section.
+- **Disable automatic grouping of data elements**: Keeps the data elements in the order that you assigned them, instead of grouping them by category combination.
+- **Display mode**: Controls how the table of the section arranges data elements and categories. Choose one option:
+    - **Default: data elements as rows, categories as columns**
+    - **Pivot: categories as rows, data elements as columns**
+    - **Move a category to rows: default mode with one category moved to rows**. With this option, choose the category in **Category to move to rows**. The field shows only when the data elements of the section have more than one category.
+- **Content to display before a section** and **Content to display after a section**: Text that the form shows before or after the section. The fields support Markdown formatting.
 
 ### Create a section form
 
@@ -262,18 +262,18 @@ Custom forms support JavaScript for advanced interactions and validation. Add sc
 
 #### Events
 
-| Event | Description |
-| --- | --- |
-| `dhis2.de.event.formLoaded` | Fired after the form loads. |
-| `dhis2.de.event.dataValuesLoaded` | Fired after the data values load into the form. |
-| `dhis2.de.event.formReady` | Fired when the form is ready for data entry. |
-| `dhis2.de.event.dataValueSaved` | Fired after a data value has been saved successfully. |
+| Event                             | Description                                           |
+| --------------------------------- | ----------------------------------------------------- |
+| `dhis2.de.event.formLoaded`       | Fired after the form loads.                           |
+| `dhis2.de.event.dataValuesLoaded` | Fired after the data values load into the form.       |
+| `dhis2.de.event.formReady`        | Fired when the form is ready for data entry.          |
+| `dhis2.de.event.dataValueSaved`   | Fired after a data value has been saved successfully. |
 
 #### Functions
 
-| Function | Description |
-| --- | --- |
-| `dhis2.de.on( event, fn )` | Registers `fn` as the handler for an event. It first removes the existing handler for that event. |
-| `dhis2.de.getCurrentOrganisationUnit()` | Returns the ID of the current organisation unit. |
+| Function                                | Description                                                                                       |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `dhis2.de.on( event, fn )`              | Registers `fn` as the handler for an event. It first removes the existing handler for that event. |
+| `dhis2.de.getCurrentOrganisationUnit()` | Returns the ID of the current organisation unit.                                                  |
 
 For **Show details**, **Sharing settings**, **Translate**, **Delete**, and **Clone**, see [Common actions](#mm_common_actions). Note the extra risk for deleting a data set: DHIS2 also deletes the data entry forms and section forms of the data set. For more information, see [Delete](#mm_common_actions_delete).

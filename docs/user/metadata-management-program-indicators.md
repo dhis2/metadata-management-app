@@ -31,23 +31,25 @@ The form has these sections: **Basic information**, **Configuration**, **Express
 2. To create a program indicator, click **New**. To edit one, click the options menu of the program indicator and choose **Edit**.
 3. Under **Basic information**, fill in **Name**, **Short name**, **Code**, and **Description**. **Name** and **Short name** are required. See [Common metadata object fields](#mm_common_metadata_fields). Under **Visual configuration**, you can choose a color and an icon.
 4. Under **Configuration**, set the following fields:
-   * **Program**: choose the program. This field is required.
-   * **Aggregation type**: (Optional) choose an aggregation type.
-   * **Data source**: choose **Event** or **Enrollment**. This field is required.
-   * **Organisation unit field**: (Optional) choose the organisation unit that DHIS2 assigns to the values. The app shows this field only when it applies to the program and data source that you chose.
-   * **Decimal places in output**: (Optional) choose a number from 0 to 5, or **\<No value\>**.
+    - **Program**: choose the program. This field is required.
+    - **Aggregation type**: (Optional) choose an aggregation type.
+    - **Data source**: choose **Event** or **Enrollment**. This field is required.
+    - **Organisation unit field**: (Optional) choose the organisation unit that DHIS2 assigns to the values. The app shows this field only when it applies to the program and data source that you chose.
+    - **Decimal places in output**: (Optional) choose a number from 0 to 5, or **\<No value\>**.
 
-   ![The Configuration section of a program indicator, with the fields Program, Aggregation type, Data source, Organisation unit field, and Decimal places in output](resources/images/metadata-management/mma-pi-configuration.png)
+    ![The Configuration section of a program indicator, with the fields Program, Aggregation type, Data source, Organisation unit field, and Decimal places in output](resources/images/metadata-management/mma-pi-configuration.png)
+
 5. Under **Expression**, click **Set up expression**. If the program indicator already has an expression, the button is **Edit expression**. Then create the expression. See [Create an expression or a filter](#mmp_program_indicator_expression_dialog).
 6. Under **Filter**, click **Set up filter**. If the program indicator already has a filter, the button is **Edit filter**. Then create the filter in the same way. To remove the filter, click **Clear filter**.
 7. (Optional) Under **Period boundaries**, click **Add a period boundary**. Fill in the fields of the dialog and click **Add analytics period boundary**. To change a boundary, click **Edit** and then **Update analytics period boundary**. To delete a boundary, click **Remove**. See [About program indicators](#mmp_about_program_indicators).
 8. (Optional) Under **Advanced options**, set these fields:
-   * **Show in data entry forms**: choose this checkbox to show the program indicator in data entry forms. If you clear the checkbox, data capture apps never show the program indicator.
-   * **Category option combination for aggregate data export**: enter the ID of a category option combination.
-   * **Attribute option combination for aggregate data export**: enter the ID of an attribute option combination.
-   * **Data element for aggregate data export**: enter the ID of a data element. This field is available in DHIS2 v42 and later.
+    - **Show in data entry forms**: choose this checkbox to show the program indicator in data entry forms. If you clear the checkbox, data capture apps never show the program indicator.
+    - **Category option combination for aggregate data export**: enter the ID of a category option combination.
+    - **Attribute option combination for aggregate data export**: enter the ID of an attribute option combination.
+    - **Data element for aggregate data export**: enter the ID of a data element. This field is available in DHIS2 v42 and later.
 
-   ![The Period boundaries section with two boundaries, and the start of the Advanced options section](resources/images/metadata-management/mma-pi-period-boundaries.png)
+    ![The Period boundaries section with two boundaries, and the start of the Advanced options section](resources/images/metadata-management/mma-pi-period-boundaries.png)
+
 9. (Optional) Under **Legends**, assign legend sets with the transfer list. See [Use a transfer list](#mm_transfer_list_component). Under **Attributes**, enter values for any custom attributes.
 10. Click **Save and close**. To stay on the form, click **Save**.
 
@@ -64,13 +66,13 @@ The sidebar has these types:
 
 Table: Sidebar of the program indicator expression editor
 
-| Sidebar type | What it inserts |
-| --- | --- |
-| **Operators** | The arithmetic operators `+`, `-`, `*`, `/`, `%`, parentheses, the comparison operators `>`, `>=`, `<`, `<=`, `==`, `!=`, the logical operators `!`, `&&`, `||`, and `days`, `if(`, `isNull(`, `isNotNull(`, `firstNonNull(`, `greatest(`, `least(`, `log(`, `log10(`. |
-| **Variables** | The `V{...}` variables. See the table of variables in this chapter. |
+| Sidebar type     | What it inserts                                                                                                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Operators**    | The arithmetic operators `+`, `-`, `*`, `/`, `%`, parentheses, the comparison operators `>`, `>=`, `<`, `<=`, `==`, `!=`, the logical operators `!`, `&&`, `                     |     | `, and `days`, `if(`, `isNull(`, `isNotNull(`, `firstNonNull(`, `greatest(`, `least(`, `log(`, `log10(`. |
+| **Variables**    | The `V{...}` variables. See the table of variables in this chapter.                                                                                                              |
 | **Program data** | A data element of a program stage, inserted as `#{programStageUid.dataElementUid}`. Choose the program stage first. For an event program the app chooses the only program stage. |
-| **Attributes** | A tracked entity attribute of the program, inserted as `A{attributeUid}`. |
-| **Constants** | A constant, inserted as `C{constantUid}`. |
+| **Attributes**   | A tracked entity attribute of the program, inserted as `A{attributeUid}`.                                                                                                        |
+| **Constants**    | A constant, inserted as `C{constantUid}`.                                                                                                                                        |
 
 If you have not chosen a program in the **Configuration** section, the **Program data** and **Attributes** types show **Program has not been selected**. Choose the program first.
 

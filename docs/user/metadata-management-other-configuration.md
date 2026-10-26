@@ -21,9 +21,9 @@ In the **Metadata Management** app, you manage these attribute objects:
 
 Table: Attribute objects in the Metadata Management app
 
-| Object type | Available functions |
-|---|---|
-| Attribute | Create, edit, clone, share, delete, show details, and translate |
+| Object type | Available functions                                             |
+| ----------- | --------------------------------------------------------------- |
+| Attribute   | Create, edit, clone, share, delete, show details, and translate |
 
 ### Create or edit an attribute
 
@@ -36,8 +36,8 @@ To create an attribute, you need the `F_ATTRIBUTE_PUBLIC_ADD` or `F_ATTRIBUTE_PR
 5. If you did not choose an option set, choose a **Value type**.
 6. (Optional) In **Display order**, enter a number to set the position of the attribute in lists and forms. Attributes without a number are shown afterwards.
 7. Choose the options that you need, and choose the object types in **Applies to**:
-   * **Mandatory: all objects must have a value for this attribute**: Every object of the chosen types must have a value for the attribute.
-   * **Unique values only**: DHIS2 makes sure that no two objects of the same type have the same value.
+    - **Mandatory: all objects must have a value for this attribute**: Every object of the chosen types must have a value for the attribute.
+    - **Unique values only**: DHIS2 makes sure that no two objects of the same type have the same value.
 8. Click **Save and close**. The attribute is available for the object types that you chose in **Applies to**.
 
 If the value that you enter for an attribute in an object form does not match its value type, the app does not save the object. It shows a **Validation errors** notice with a message for the value type, for example **Please provide a round number without decimals** for an **Integer** attribute. The field of a number value type does not accept letters.
@@ -56,9 +56,9 @@ In the **Metadata Management** app, you manage these constant objects:
 
 Table: Constant objects in the Metadata Management app
 
-| Object type | Available functions |
-|---|---|
-| Constant | Create, edit, clone, share, delete, show details, and translate |
+| Object type | Available functions                                             |
+| ----------- | --------------------------------------------------------------- |
+| Constant    | Create, edit, clone, share, delete, show details, and translate |
 
 ### Create or edit a constant { #mm_create_constant }
 
@@ -83,9 +83,9 @@ In the **Metadata Management** app, you manage these legend objects:
 
 Table: Legend objects in the Metadata Management app
 
-| Object type | Available functions |
-|---|---|
-| Legend | Create, edit, clone, share, delete, show details, and translate |
+| Object type | Available functions                                             |
+| ----------- | --------------------------------------------------------------- |
+| Legend      | Create, edit, clone, share, delete, show details, and translate |
 
 ### Create or edit a legend { #mm_create_legend }
 
@@ -102,12 +102,12 @@ To create a legend, you need the `F_LEGEND_SET_PUBLIC_ADD` or `F_LEGEND_SET_PRIV
 3. Fill in **Name** and **Code**. Only **Name** is required.
 4. Create the legend items. In the **Generate a legend** panel:
 
-   1. Enter a **Start value** and an **End value**. The defaults are 0 and 100.
-   2. Enter the number of **Items**, from 3 to 9. The default is 5.
-   3. Click the **Color scale** menu and choose a color scale.
-   4. Click **Generate legend items**.
+    1. Enter a **Start value** and an **End value**. The defaults are 0 and 100.
+    2. Enter the number of **Items**, from 3 to 9. The default is 5.
+    3. Click the **Color scale** menu and choose a color scale.
+    4. Click **Generate legend items**.
 
-   The app divides the range into items of equal size. It names each item with its range, for example `0 - 20`, and gives each item a color from the color scale. The app lists the items in order of their start values.
+    The app divides the range into items of equal size. It names each item with its range, for example `0 - 20`, and gives each item a color from the color scale. The app lists the items in order of their start values.
 
 5. (Optional) Add a legend item by hand. Click **Add legend item**. The app adds an item that starts where the last item ends and covers 10 units. In the item row, change **Name**, **Start value**, and **End value**.
 6. (Optional) Change an item. To change its color, click the color swatch (**Change color**) and choose a color in the color picker. To remove the item, click the **Delete** button (trash icon) at the end of its row.
@@ -131,7 +131,7 @@ For **Show details**, **Sharing settings**, **Translate**, **Delete**, and **Clo
 
 ### See also { #mm_see_also_legend }
 
-  - [Using the GIS app](#using_gis)
+- [Using the GIS app](#using_gis)
 
 ## Manage external map layers { #mm_manage_external_maplayer }
 
@@ -149,9 +149,9 @@ In the **Metadata Management** app, you manage these SQL view objects:
 
 Table: SQL view objects in the Metadata Management app
 
-| Object type | Available functions |
-|---|---|
-| SQL view | Create, edit, clone, share, delete, show details, view results, create or update the view, and refresh data (materialized views only) |
+| Object type | Available functions                                                                                                                   |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| SQL view    | Create, edit, clone, share, delete, show details, view results, create or update the view, and refresh data (materialized views only) |
 
 ### Create or edit a SQL view
 
@@ -164,9 +164,9 @@ To create a SQL view, you need the `F_SQLVIEW_PUBLIC_ADD` or `F_SQLVIEW_PRIVATE_
 3. Fill in **Name** and **Description**. **Name** is required. DHIS2 uses the name of the SQL view to name the table that it creates when you create the view. The description explains what the SQL view does.
 4. Choose a **Cache strategy**. This field is required. It controls how long DHIS2 caches results on the server before it runs the query again. The default is **Respect system setting**. The other choices are **No cache**, **Cache for 1 minute**, **Cache for 5 minutes**, **Cache for 10 minutes**, **Cache for 15 minutes**, **Cache for 30 minutes**, **Cache for one hour**, **Cache until 6am tomorrow**, and **Cache for two weeks**.
 5. Choose an **SQL type**. You cannot change the type after you create the SQL view.
-   * **View**: DHIS2 stores the SQL query in the database and generates the results each time.
-   * **Materialized view**: DHIS2 stores the SQL query in the database and caches the results in the database.
-   * **Query only**: DHIS2 stores neither the query nor the results in the database.
+    - **View**: DHIS2 stores the SQL query in the database and generates the results each time.
+    - **Materialized view**: DHIS2 stores the SQL query in the database and caches the results in the database.
+    - **Query only**: DHIS2 stores neither the query nor the results in the database.
 6. In **SQL query**, enter the SQL view definition. DHIS2 allows only SQL `SELECT` statements. Some sensitive tables, such as user information, are not accessible.
 7. Click **Save and close**. If you created a **View** or a **Materialized view**, you must also create the view. See [Run and view a SQL view](#mm_run_sql_view).
 
@@ -200,8 +200,8 @@ For **Show details**, **Sharing settings**, **Delete**, and **Clone**, see [Comm
 >
 > If you have a view which depends on another view, be careful about how the
 > views are named. When analytics is run on the DHIS2 server, all views are
-> dropped and then recreated: they are dropped in *reverse* alphabetical order
-> and recreated in *regular* alphabetical order. So a view must come *after*
+> dropped and then recreated: they are dropped in _reverse_ alphabetical order
+> and recreated in _regular_ alphabetical order. So a view must come _after_
 > the view it depends on alphabetically. For example, "ViewB" can safely depend
 > on "ViewA". If you name them the other way round, analytics may fail because
 > the dependency will not exist yet when the dependent view is recreated.
@@ -216,8 +216,8 @@ In the **Metadata Management** app, you manage these analytics table hook object
 
 Table: Analytics table hook objects in the Metadata Management app
 
-| Object type | Available functions |
-|---|---|
+| Object type          | Available functions                           |
+| -------------------- | --------------------------------------------- |
 | Analytics table hook | Create, edit, clone, delete, and show details |
 
 ### Create or edit an analytics table hook
@@ -246,9 +246,9 @@ In the **Metadata Management** app, you manage these locale objects:
 
 Table: Locale objects in the Metadata Management app
 
-| Object type | Available functions |
-|---|---|
-| Locale | Create, delete, and show details |
+| Object type | Available functions              |
+| ----------- | -------------------------------- |
+| Locale      | Create, delete, and show details |
 
 ### Create a locale
 
@@ -274,8 +274,8 @@ When you delete a locale, the translations that you entered in that locale stay 
 
 The legacy Maintenance app had a separate **Metadata group editor** screen for adding objects to groups in bulk. The **Metadata Management** app does not have an equivalent screen, and one is not planned. Instead, you edit group membership from either side of the relationship.
 
-* To put one object into several groups, open the edit form of the object and use the **Groups** section. The section has a transfer list with the **Available groups** and **Selected groups** lists. For example, the **Groups** section in [Create or edit a data element](#mm_create_data_element) puts one data element into as many data element groups as you need, without leaving the data element. The **Groups** section is available for data elements, indicators, and category options.
-* To put several objects into one group, open the edit form of the group and assign the members there. For example, [Create or edit a data element group](#mm_create_data_element_group) assigns any number of data elements to a single group in one pass.
+- To put one object into several groups, open the edit form of the object and use the **Groups** section. The section has a transfer list with the **Available groups** and **Selected groups** lists. For example, the **Groups** section in [Create or edit a data element](#mm_create_data_element) puts one data element into as many data element groups as you need, without leaving the data element. The **Groups** section is available for data elements, indicators, and category options.
+- To put several objects into one group, open the edit form of the group and assign the members there. For example, [Create or edit a data element group](#mm_create_data_element_group) assigns any number of data elements to a single group in one pass.
 
 The other grouped object types in this chapter have no **Groups** section in the form of the member. Assign their members from the form of the group: indicator groups, category option groups, option groups, predictor groups, validation rule groups, and organisation unit groups. Group sets work in the same way. Open the form of the group set and assign groups to it.
 

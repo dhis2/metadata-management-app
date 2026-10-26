@@ -38,8 +38,8 @@ If your instance is empty, the form shows the message **Creating first organisat
 
 The form has these fields that the steps do not cover:
 
-* **Image**: Click **Upload an image** to add a picture. The app accepts JPG, PNG, or GIF files of up to 10 MB.
-* **Reference assignment**: Assign the organisation unit to data sets and programs. This section shows only when the system setting **Allow assigning object to related objects during add or update** is on. You find it under **Access** in the **System Settings** app.
+- **Image**: Click **Upload an image** to add a picture. The app accepts JPG, PNG, or GIF files of up to 10 MB.
+- **Reference assignment**: Assign the organisation unit to data sets and programs. This section shows only when the system setting **Allow assigning object to related objects during add or update** is on. You find it under **Access** in the **System Settings** app.
 
 In the **Location** section, you can enter the coordinates of a point in two fields. The app labels both fields **Longitude**. Enter the longitude in the first field and the latitude in the second field. If the organisation unit already has another geometry type, such as a polygon, the app shows the message that the coordinates are not editable. You cannot edit polygons in this app.
 
@@ -62,9 +62,9 @@ For background on organisation unit group sets, see [Organisation unit groups an
 2. Click **New**.
 3. Fill in **Name**, **Short name**, **Code**, and **Description**. See [Common metadata object fields](#mm_common_metadata_fields). **Name** and **Short name** are required.
 4. (Optional) Choose any of these checkboxes:
-   * **Compulsory: all organisation units must belong to at least one group in this group set.** Every organisation unit must be a member of a group in this group set.
-   * **Show as data dimension in analytics apps**: The group set is available as a dimension in analytics apps.
-   * **Inherit parent organisation unit groups**: When an organisation unit has no group assigned, the app uses the group of the closest parent.
+    - **Compulsory: all organisation units must belong to at least one group in this group set.** Every organisation unit must be a member of a group in this group set.
+    - **Show as data dimension in analytics apps**: The group set is available as a dimension in analytics apps.
+    - **Inherit parent organisation unit groups**: When an organisation unit has no group assigned, the app uses the group of the closest parent.
 5. Under **Organisation unit groups**, choose the groups to include in the group set.
 6. Click **Save**.
 
@@ -88,8 +88,8 @@ You can move organisation units within the hierarchy by changing their parent. A
 
 There are two ways to open the move screen:
 
-* In the **Organisation units** list, choose the checkbox of each organisation unit that you want to move, and then click **Move...** in the toolbar above the list. The move screen opens with these organisation units already chosen.
-* In the sidebar, click **Organisation units** > **Hierarchy operations**. The move screen opens with no organisation units chosen.
+- In the **Organisation units** list, choose the checkbox of each organisation unit that you want to move, and then click **Move...** in the toolbar above the list. The move screen opens with these organisation units already chosen.
+- In the sidebar, click **Organisation units** > **Hierarchy operations**. The move screen opens with no organisation units chosen.
 
 ![The Move organisation units page, showing the Organisation units to move tree on the left and the Move into tree on the right](resources/images/metadata-management/move-organisation-units.jpg)
 
@@ -132,9 +132,9 @@ Merging combines two or more duplicate organisation units into one. DHIS2 transf
 
 The **Merge settings** are:
 
-* **Delete** or **Keep** the source organisation units after the merge. The app deletes them by default. The choices show the number of sources, for example **Delete 2 source organisation units**.
-* **Move data values to the target organisation unit** or **Delete the source data values**. The app moves them by default. If the source and the target both have the same data value, DHIS2 keeps the value that was updated most recently.
-* **Move data approvals to the target organisation unit** or **Delete the source data approvals**. The app moves them by default. If the source and the target both have the same data approval, DHIS2 keeps the one that was updated most recently.
+- **Delete** or **Keep** the source organisation units after the merge. The app deletes them by default. The choices show the number of sources, for example **Delete 2 source organisation units**.
+- **Move data values to the target organisation unit** or **Delete the source data values**. The app moves them by default. If the source and the target both have the same data value, DHIS2 keeps the value that was updated most recently.
+- **Move data approvals to the target organisation unit** or **Delete the source data approvals**. The app moves them by default. If the source and the target both have the same data approval, DHIS2 keeps the one that was updated most recently.
 
 When the merge ends, the app shows **Merge complete**. Click **Back to list** to return to the list. For the steps that all merge screens share, see [Merge](#mm_common_actions_merge).
 
@@ -148,9 +148,8 @@ The **Delete** action works as described in [Delete](#mm_common_actions_delete).
 
 DHIS2 refuses to delete an organisation unit in these cases:
 
-* The organisation unit has children. Delete or move the children first.
-* The organisation unit has data values, or has had them. DHIS2 keeps a change history of data values, so deleting the data values does not remove the block.
-* The organisation unit is the self-registration organisation unit in the system settings.
+- The organisation unit has children. Delete or move the children first.
+- The organisation unit has data values, or has had them. DHIS2 keeps a change history of data values, so deleting the data values does not remove the block.
+- The organisation unit is the self-registration organisation unit in the system settings.
 
 DHIS2 deletes an organisation unit that is a member of organisation unit groups, and removes it from the groups. When you delete an organisation unit that is assigned to users, DHIS2 removes it from their assigned organisation units.
-
