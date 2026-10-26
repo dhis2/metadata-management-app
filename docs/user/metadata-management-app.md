@@ -30,7 +30,7 @@ In the **Metadata Management** app you configure these metadata objects:
 >
 > The functions that you can use depend on the access permissions of your user role.
 
-The sidebar of the app also has **Programs** and **Data approval** sections. This chapter does not cover them. For programs, see [Configure programs (Metadata Management app)](#mmp_configure_programs). If your instance does not have the **Metadata Management** app, see [Configure programs in the Maintenance app](#configure_programs_in_maintenance_app). For data approval, see [Data approval overview](#data_approval_overview).
+The sidebar of the app also has **Programs** and **Data approval** sections. This chapter does not cover them. For programs, see [Configure programs (Metadata Management app)](#mmp_configure_programs). If your instance does not have the **Metadata Management** app, see [Configure programs in the Maintenance app](#configure_programs_in_maintenance_app). For data approval, see [Manage data approval](#mm_manage_data_approval).
 
 > **Note**
 >
@@ -123,6 +123,7 @@ These pages explain how the metadata objects work and list the expression syntax
 - [Understanding data elements and data sets](#understanding_data_elements_and_data_sets)
 - [Understanding indicators, predictors, and expressions](#understanding_indicators_predictors_and_expressions)
 - [Understanding organisation units](#understanding_organisation_units)
+- [Understanding data approval](#understanding_data_approval)
 - [Understanding validation rules](#understanding_validation_rules)
 - [Understanding option sets, attributes, constants, legends, and merging](#understanding_shared_metadata_concepts)
 - [Understanding programs, tracker configuration, and program disaggregation](#understanding_programs_and_tracker)
