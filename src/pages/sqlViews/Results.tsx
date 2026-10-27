@@ -17,7 +17,7 @@ import { useQuery } from '@tanstack/react-query'
 import React, { useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useBoundResourceQueryFn } from '../../lib'
-import { SqlView } from '../../types/generated'
+import { SqlViewType } from '../../types/generated'
 import {
     getRunActionLabel,
     useRefreshMaterializedView,
@@ -32,7 +32,7 @@ import css from './Results.module.css'
 type SqlViewMeta = {
     id: string
     displayName: string
-    type: SqlView.type
+    type: SqlViewType
     sqlQuery: string
 }
 
@@ -108,7 +108,7 @@ export const SqlViewResults = ({ id }: SqlViewResultsProps) => {
         [sqlView?.sqlQuery]
     )
 
-    const isQueryType = sqlView?.type === SqlView.type.QUERY
+    const isQueryType = sqlView?.type === SqlViewType.QUERY
     const needsVariables = isQueryType && userDefinedVariables.length > 0
     const allVariablesProvided =
         !needsVariables ||
@@ -134,7 +134,7 @@ export const SqlViewResults = ({ id }: SqlViewResultsProps) => {
         if (!sqlView) {
             return
         }
-        if (sqlView.type === SqlView.type.QUERY) {
+        if (sqlView.type === SqlViewType.QUERY) {
             if (needsVariables) {
                 setShowVariableModal(true)
             } else {
@@ -220,7 +220,7 @@ export const SqlViewResults = ({ id }: SqlViewResultsProps) => {
                     >
                         {getRunActionLabel(sqlView.type)}
                     </Button>
-                    {sqlView.type === SqlView.type.MATERIALIZED_VIEW && (
+                    {sqlView.type === SqlViewType.MATERIALIZED_VIEW && (
                         <Button
                             small
                             loading={refreshRunning || dataQuery.isFetching}

@@ -73,7 +73,7 @@ export const Component = () => {
         enabled: !!templateId,
     })
 
-    const onSubmit = useOnSubmitEdit({
+    const onSubmit = useOnSubmitEdit<DataSetNotificationResult>({
         modelId: templateId as string,
         section,
     })

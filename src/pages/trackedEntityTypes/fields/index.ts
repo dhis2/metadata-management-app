@@ -1,6 +1,7 @@
 export { AttributesTransferField } from './AttributesTransferField'
 export { AttributesConfigurationField } from './AttributesConfigurationField'
 export { AllowAuditLogField } from './AllowAuditLogField'
+export { EnableChangeLogField } from './EnableChangeLogField'
 export { MinAttributesRequiredField } from './MinAttributesRequiredField'
 export { MaxTeiCountField } from './MaxTeiCountField'
 export { TrackedEntityTypesLabelField } from './TrackedEntityTypesLabelField'

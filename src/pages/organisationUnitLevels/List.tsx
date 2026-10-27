@@ -15,6 +15,7 @@ export const Component = () => {
                 <DefaultToolbar
                     selectedModels={new Set()}
                     onDeselectAll={() => {}}
+                    refetch={() => {}}
                     downloadable={false}
                 />
                 <ListRows onTranslationClick={setTranslationDialogModel} />

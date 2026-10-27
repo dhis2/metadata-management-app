@@ -1,4 +1,5 @@
 import { render, waitFor } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import { FOOTER_ID } from '../../app/layout/Layout'
 import { SECTIONS_MAP } from '../../lib'
@@ -8,11 +9,39 @@ import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
 import { uiActions } from '../../testUtils/uiActions'
 import { Component as Clone } from './Clone'
 
+const mockOnFormTypeChange = jest.fn()
+
 // Contents of the form are mocked here to focus on testing core clone functionality,
-// particularly, the saving of the new data set, sections, and custom form
-jest.mock('./form/DataSetFormContents', () => ({
-    DataSetFormContents: () => null,
-}))
+// particularly, the saving of the new data set, sections, and custom form.
+// The real TabbedFormTypePicker is rendered (fed by the same `clonedId` search
+// param the real form contents use) so clone-mode tab disabling can be tested.
+jest.mock('./form/DataSetFormContents', () => {
+    const ReactActual = jest.requireActual('react')
+    const { useSearchParams } = jest.requireActual('react-router-dom')
+    const { FormType, TabbedFormTypePicker } = jest.requireActual(
+        '../../components/formCreators/TabbedFormTypePicker'
+    )
+
+    return {
+        DataSetFormContents: () => {
+            const [searchParams] = useSearchParams()
+            const isClone = !!searchParams.get('clonedId')
+            return ReactActual.createElement(
+                TabbedFormTypePicker,
+                {
+                    selectedFormType: FormType.SECTION,
+                    onFormTypeChange: mockOnFormTypeChange,
+                    sectionsLength: 1,
+                    hasDataEntryForm: false,
+                    hasDataToDisplay: false,
+                    modelId: 'existing-id',
+                    isClone,
+                },
+                ReactActual.createElement('div')
+            )
+        },
+    }
+})
 
 const section = SECTIONS_MAP.dataSet
 
@@ -26,14 +55,21 @@ describe('Data set clone tests', () => {
     const sectionAId = randomDhis2Id()
     const sectionBId = randomDhis2Id()
     const originalFormId = randomDhis2Id()
+    const sectionACode = 'SECTION_A_CODE'
 
     const clonedDataSet = () => ({
         id: clonedId,
         name: 'Source data set',
         displayName: 'Source data set',
+        created: '2020-01-01T00:00:00.000',
         attributeValues: [],
         sections: [
-            { id: sectionAId, displayName: 'Section A', description: 'a' },
+            {
+                id: sectionAId,
+                displayName: 'Section A',
+                description: 'a',
+                code: sectionACode,
+            },
             { id: sectionBId, displayName: 'Section B', description: 'b' },
         ],
         dataEntryForm: {
@@ -120,6 +156,7 @@ describe('Data set clone tests', () => {
         expect(payload.name).toEqual('Source data set')
         expect(payload.sections).toBeUndefined()
         expect(payload.dataEntryForm).toBeUndefined()
+        expect(payload.created).toBeUndefined()
     })
 
     it('re-creates each section against the new data set id', async () => {
@@ -137,14 +174,23 @@ describe('Data set clone tests', () => {
                 expect.objectContaining({
                     displayName: 'Section A',
                     dataSet: { id: newDataSetId },
+                    code: `${newDataSetId}_${sectionACode}`,
+                    sortOrder: 0,
                 }),
                 expect.objectContaining({
                     displayName: 'Section B',
                     dataSet: { id: newDataSetId },
+                    code: null,
+                    sortOrder: 1,
                 }),
             ])
         )
         payloads.forEach((payload) => expect(payload.id).toBeUndefined())
+
+        const sectionBPayload = payloads.find(
+            (payload) => payload.displayName === 'Section B'
+        )
+        expect(sectionBPayload.code).toBeNull()
     })
 
     it('re-creates the custom form against the new data set with a fresh id', async () => {
@@ -187,5 +233,22 @@ describe('Data set clone tests', () => {
 
         const cancelButton = screen.getByTestId('form-cancel-link')
         expect(cancelButton).toHaveAttribute('href', '/dataSets')
+    })
+
+    it('does not allow toggling between form types in clone mode', async () => {
+        const { screen } = await renderClonePage()
+        await waitForFormToLoad(screen)
+
+        const tabs: HTMLElement[] = screen.getAllByRole('tab')
+        expect(tabs).toHaveLength(3)
+        tabs.forEach((tab) =>
+            expect(tab).toHaveAttribute('aria-disabled', 'true')
+        )
+
+        for (const tab of tabs) {
+            await userEvent.click(tab)
+        }
+
+        expect(mockOnFormTypeChange).not.toHaveBeenCalled()
     })
 })

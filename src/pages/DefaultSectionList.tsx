@@ -25,12 +25,14 @@ export type DefaultSectionListProps = {
     order?: string
     ActionsComponent?: React.ComponentType<DefaultListActionProps>
     ToolbarComponent?: React.ComponentType<DefaultToolbarProps>
+    isRowClickable?: (model: BaseListModel) => boolean
 }
 export const DefaultSectionList = ({
     filters,
     order,
     ActionsComponent,
     ToolbarComponent,
+    isRowClickable,
 }: DefaultSectionListProps) => {
     const section = useModelSectionHandleOrThrow()
     const { columns } = useModelListView()
@@ -76,6 +78,7 @@ export const DefaultSectionList = ({
                 refetch={refetch}
                 ActionsComponent={ActionsComponent}
                 ToolbarComponent={ToolbarComponent}
+                isRowClickable={isRowClickable}
             />
         </div>
     )

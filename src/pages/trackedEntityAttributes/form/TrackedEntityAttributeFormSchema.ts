@@ -5,8 +5,10 @@ import {
     modelFormSchemas,
 } from '../../../lib'
 import {
+    AggregationType,
     PickWithFieldFilters,
     TrackedEntityAttribute,
+    ValueType,
 } from '../../../types/generated'
 import { fieldFilters } from './fieldFilters'
 
@@ -21,9 +23,7 @@ const trackedEntityAttributeBaseSchema = z.object({
     optionSet: modelReference
         .extend({ displayName: z.string().optional() })
         .optional(),
-    valueType: z
-        .nativeEnum(TrackedEntityAttribute.valueType)
-        .default(TrackedEntityAttribute.valueType.TEXT),
+    valueType: z.nativeEnum(ValueType).default(ValueType.TEXT),
     trackedEntityType: modelReference
         .extend({ displayName: z.string().optional() })
         .optional(),
@@ -43,8 +43,8 @@ const trackedEntityAttributeBaseSchema = z.object({
     blockedSearchOperators: z.array(z.enum(['SW', 'EW', 'LIKE'])).default([]),
     minCharactersToSearch: z.number().int().min(0).default(0),
     aggregationType: z
-        .nativeEnum(TrackedEntityAttribute.aggregationType)
-        .default(TrackedEntityAttribute.aggregationType.NONE),
+        .nativeEnum(AggregationType)
+        .default(AggregationType.NONE),
     legendSets: z
         .array(modelReference.extend({ displayName: z.string().optional() }))
         .default([]),

@@ -17,11 +17,7 @@ import { RemoveIndexSignature, Section } from '../../../types'
 import { LoadingSpinner } from '../../loading/LoadingSpinner'
 import { FormBaseProvider, useFormBaseContextValue } from './FormBaseContext'
 
-type MaybeModelWithAttributes = {
-    id?: string
-    name?: string
-    section?: Section
-    modelName?: string
+type MaybeModelWithAttributes = Record<string, unknown> & {
     attributeValues?: PartialAttributeValue[]
 }
 

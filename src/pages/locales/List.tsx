@@ -141,6 +141,7 @@ every item when interacting with a row */
                 <DefaultToolbar
                     selectedModels={new Set()}
                     onDeselectAll={() => {}}
+                    refetch={refetch}
                     downloadable={false}
                 />
                 <SectionList headerColumns={headerColumns}>

@@ -3,52 +3,43 @@ import { FieldGroup, RadioFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field, useField } from 'react-final-form'
 import { getConstantTranslation } from '../../../lib'
-import { ProgramRuleVariable } from '../../../types/generated'
+import { ProgramRuleVariableSourceType } from '../../../types/generated'
 
 const SOURCE_TYPES = [
     {
-        value: ProgramRuleVariable.programRuleVariableSourceType
-            .DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE,
+        value: ProgramRuleVariableSourceType.DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE,
         label: getConstantTranslation(
-            ProgramRuleVariable.programRuleVariableSourceType
-                .DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE
+            ProgramRuleVariableSourceType.DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE
         ),
     },
     {
-        value: ProgramRuleVariable.programRuleVariableSourceType
-            .DATAELEMENT_NEWEST_EVENT_PROGRAM,
+        value: ProgramRuleVariableSourceType.DATAELEMENT_NEWEST_EVENT_PROGRAM,
         label: getConstantTranslation(
-            ProgramRuleVariable.programRuleVariableSourceType
-                .DATAELEMENT_NEWEST_EVENT_PROGRAM
+            ProgramRuleVariableSourceType.DATAELEMENT_NEWEST_EVENT_PROGRAM
         ),
     },
     {
-        value: ProgramRuleVariable.programRuleVariableSourceType
-            .DATAELEMENT_CURRENT_EVENT,
+        value: ProgramRuleVariableSourceType.DATAELEMENT_CURRENT_EVENT,
         label: getConstantTranslation(
-            ProgramRuleVariable.programRuleVariableSourceType
-                .DATAELEMENT_CURRENT_EVENT
+            ProgramRuleVariableSourceType.DATAELEMENT_CURRENT_EVENT
         ),
     },
     {
-        value: ProgramRuleVariable.programRuleVariableSourceType
-            .DATAELEMENT_PREVIOUS_EVENT,
+        value: ProgramRuleVariableSourceType.DATAELEMENT_PREVIOUS_EVENT,
         label: getConstantTranslation(
-            ProgramRuleVariable.programRuleVariableSourceType
-                .DATAELEMENT_PREVIOUS_EVENT
+            ProgramRuleVariableSourceType.DATAELEMENT_PREVIOUS_EVENT
         ),
     },
     {
-        value: ProgramRuleVariable.programRuleVariableSourceType
-            .CALCULATED_VALUE,
+        value: ProgramRuleVariableSourceType.CALCULATED_VALUE,
         label: getConstantTranslation(
-            ProgramRuleVariable.programRuleVariableSourceType.CALCULATED_VALUE
+            ProgramRuleVariableSourceType.CALCULATED_VALUE
         ),
     },
     {
-        value: ProgramRuleVariable.programRuleVariableSourceType.TEI_ATTRIBUTE,
+        value: ProgramRuleVariableSourceType.TEI_ATTRIBUTE,
         label: getConstantTranslation(
-            ProgramRuleVariable.programRuleVariableSourceType.TEI_ATTRIBUTE
+            ProgramRuleVariableSourceType.TEI_ATTRIBUTE
         ),
     },
 ]

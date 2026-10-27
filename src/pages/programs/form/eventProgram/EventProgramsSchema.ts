@@ -32,6 +32,13 @@ const eventProgramBaseSchema = z.object({
         })
         .optional(),
     incidentDateLabel: z.string().optional(),
+    eventLabel: z.string().optional(),
+    eventsLabel: z.string().optional(),
+    orgUnitLabel: z.string().optional(),
+    relationshipLabel: z.string().optional(),
+    relationshipsLabel: z.string().optional(),
+    noteLabel: z.string().optional(),
+    notesLabel: z.string().optional(),
     programStages: z
         .array(
             z.object({
@@ -84,6 +91,7 @@ const eventProgramBaseSchema = z.object({
         .default(Program.expiryPeriodType.DAILY),
     completeEventsExpiryDays: z.coerce.number().int().min(0).default(1),
     openDaysAfterCoEndDate: z.coerce.number().min(0).default(0),
+    enableChangeLog: z.boolean().optional(),
 })
 
 export const eventProgramFormSchema = identifiable

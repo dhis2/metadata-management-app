@@ -1,8 +1,8 @@
-import { ProgramRuleAction } from '../../../../types/generated'
+import { ProgramRuleActionType } from '../../../../types/generated'
 import { VALIDATION_MESSAGES } from './constants'
 import type { ProgramRuleActionFormValues } from './types'
 
-const { programRuleActionType } = ProgramRuleAction
+const programRuleActionType = ProgramRuleActionType
 
 type ValidationErrors = Partial<
     Record<keyof ProgramRuleActionFormValues, string>

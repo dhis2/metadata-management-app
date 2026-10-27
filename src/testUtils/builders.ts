@@ -78,6 +78,7 @@ import {
     stageListSchema,
 } from '../pages/programs/form'
 import { relationshipTypeListSchema } from '../pages/relationshipTypes/form/RelationshipTypeFormSchema'
+import { resourceListSchema } from '../pages/resources/list/resourceSchema'
 import { sqlViewListSchema } from '../pages/sqlViews/form/sqlViewSchema'
 import { trackedEntityAttributeListSchema } from '../pages/trackedEntityAttributes/form/TrackedEntityAttributeFormSchema'
 import { trackedEntityTypeListSchema } from '../pages/trackedEntityTypes/form'
@@ -91,12 +92,12 @@ import {
 } from '../pages/validationRuleGroups/form/validationRuleGroupsSchema'
 import { validationRuleListSchema } from '../pages/validationRules/form/validationRuleSchema'
 import {
-    CategoryMapping,
-    DataElement,
-    OptionMapping,
     OrganisationUnit,
-    Program,
+    ProgramCategoryMapping,
+    ProgramCategoryOptionMapping,
     ProgramTrackedEntityAttribute,
+    ProgramType,
+    ValueType,
 } from '../types/generated'
 
 const { withDefaultListColumns } = modelFormSchemas
@@ -437,7 +438,7 @@ export const testCategoryMapping = ({
     id = randomDhis2Id(),
     categoryId = randomDhis2Id(),
     mappingName = faker.company.name(),
-    optionMappings = [] as OptionMapping[],
+    optionMappings = [] as ProgramCategoryOptionMapping[],
 } = {}) => ({
     id,
     categoryId,
@@ -461,6 +462,11 @@ export const testFormProgramIndicatorGroup = (
 
 export const testSqlViews = (overwrites: Record<any, any> = {}) => ({
     ...generateMock(sqlViewListSchema, { stringMap }),
+    ...overwrites,
+})
+
+export const testResources = (overwrites: Record<any, any> = {}) => ({
+    ...generateMock(resourceListSchema, { stringMap }),
     ...overwrites,
 })
 
@@ -514,11 +520,11 @@ export const testCustomAttribute = ({
 export const testProgram = ({
     id = randomDhis2Id(),
     name = faker.person.fullName(),
-    categoryMappings = [] as CategoryMapping[],
+    categoryMappings = [] as ProgramCategoryMapping[],
     programType = randomValueIn([
         'WITH_REGISTRATION',
         'WITHOUT_REGISTRATION',
-    ]) as Program.programType,
+    ]) as ProgramType,
     programTrackedEntityAttributes = [] as ProgramTrackedEntityAttribute[],
 } = {}) => ({
     id,
@@ -623,7 +629,7 @@ export const testPredictorGroup = (overwrites: Record<any, any> = {}) => ({
 export const testOptionSet = ({
     id = randomDhis2Id(),
     displayName = faker.person.fullName(),
-    valueType = randomValueIn(Object.keys(DataElement.valueType)),
+    valueType = randomValueIn(Object.keys(ValueType)),
 } = {}) => ({
     id,
     displayName,

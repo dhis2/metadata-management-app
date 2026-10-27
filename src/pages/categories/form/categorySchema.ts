@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { createFormValidate, modelFormSchemas } from '../../../lib'
 import { getDefaults } from '../../../lib/zod/getDefaults'
-import { Category } from '../../../types/generated'
+import { DataDimensionType } from '../../../types/generated'
 
 /*  Note that this describes what we send to the server,
     and not what is stored in the form. */
@@ -13,7 +13,7 @@ const {
 } = modelFormSchemas
 
 const categoryBaseSchema = z.object({
-    dataDimensionType: z.nativeEnum(Category.dataDimensionType),
+    dataDimensionType: z.nativeEnum(DataDimensionType),
 })
 
 export const categoryFormSchema = identifiable

@@ -667,6 +667,8 @@ export const generateDefaultListMultiActionsTests = ({
     generateRandomElement,
     customData,
 }: TestConfig) => {
+    const bulkDeleteMock = jest.fn()
+
     const renderList = generateRenderer(
         { section, mockSchema },
         (
@@ -703,6 +705,10 @@ export const generateDefaultListMultiActionsTests = ({
                                     pager,
                                 }
                             }
+                            if (type === 'delete') {
+                                bulkDeleteMock(params)
+                                return { statusCode: 204 }
+                            }
                         },
                         'sharing/search': () => ({
                             userGroups: sharingUserGroups,
@@ -721,6 +727,9 @@ export const generateDefaultListMultiActionsTests = ({
     )
 
     describe(`${section.name} default multiple actions tests`, () => {
+        beforeEach(() => {
+            bulkDeleteMock.mockClear()
+        })
         it('should display the multiple actions banner when 1 or more items are selected on deselect all ', async () => {
             const { screen } = await renderList()
             const tableRows = screen.getAllByTestId('section-list-row')
@@ -840,6 +849,44 @@ export const generateDefaultListMultiActionsTests = ({
                     })
                 )
             }
+        })
+        it('should delete multiple selected items after confirmation', async () => {
+            const { screen, elements } = await renderList()
+            const tableRows = screen.getAllByTestId('section-list-row')
+
+            await userEvent.click(
+                within(tableRows[0]).getByTestId('section-list-row-checkbox')
+            )
+            await userEvent.click(
+                within(tableRows[1]).getByTestId('section-list-row-checkbox')
+            )
+            const toolbar = await screen.findByTestId('multi-actions-toolbar')
+
+            const deleteDialog = await uiActions.openModal(
+                within(toolbar).getByTestId('bulk-delete-button'),
+                'bulk-delete-dialog',
+                screen
+            )
+            expect(deleteDialog).toHaveTextContent('Delete 2 items')
+
+            await userEvent.click(
+                within(deleteDialog).getByTestId('bulk-delete-confirm-button')
+            )
+
+            await waitFor(() => {
+                expect(bulkDeleteMock).toHaveBeenCalledTimes(2)
+            })
+            expect(bulkDeleteMock).toHaveBeenCalledWith(
+                expect.objectContaining({ id: elements[0].id })
+            )
+            expect(bulkDeleteMock).toHaveBeenCalledWith(
+                expect.objectContaining({ id: elements[1].id })
+            )
+            await waitFor(() => {
+                expect(
+                    screen.queryByTestId('bulk-delete-dialog')
+                ).not.toBeInTheDocument()
+            })
         })
         it.skip('should download multiple items', async () => {
             const { screen, elements } = await renderList()

@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Field as FieldRFF, useField } from 'react-final-form'
 import { Option, SearchableSingleSelect } from '../../../components'
 import { required, useBoundResourceQueryFn } from '../../../lib'
-import { ProgramRuleVariable } from '../../../types/generated'
+import { ProgramRuleVariableSourceType } from '../../../types/generated'
 
 type Program = {
     programStages?: Array<{
@@ -59,8 +59,7 @@ export function DataElementField() {
 
         if (
             sourceType ===
-                ProgramRuleVariable.programRuleVariableSourceType
-                    .DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE &&
+                ProgramRuleVariableSourceType.DATAELEMENT_NEWEST_EVENT_PROGRAM_STAGE &&
             programStage?.id
         ) {
             const stage = stages.find((s) => s.id === programStage.id)

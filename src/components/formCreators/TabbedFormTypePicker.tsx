@@ -21,6 +21,7 @@ export const TabbedFormTypePicker = React.memo(function FormFormContents({
     hasDataEntryForm,
     hasDataToDisplay,
     modelId,
+    isClone = false,
     children,
 }: {
     selectedFormType: FormType
@@ -29,6 +30,7 @@ export const TabbedFormTypePicker = React.memo(function FormFormContents({
     hasDataEntryForm: boolean
     hasDataToDisplay: boolean
     modelId?: string
+    isClone?: boolean
     children: React.ReactNode
 }) {
     const isCreatingNew = !modelId
@@ -75,6 +77,7 @@ export const TabbedFormTypePicker = React.memo(function FormFormContents({
                             onFormTypeChange(FormType.DEFAULT)
                         }}
                         selected={selectedFormType === FormType.DEFAULT}
+                        disabled={isClone}
                     >
                         <div className={classes.formTypeTab}>
                             {i18n.t('Basic form')}
@@ -95,7 +98,7 @@ export const TabbedFormTypePicker = React.memo(function FormFormContents({
                             event.preventDefault()
                             onFormTypeChange(FormType.SECTION)
                         }}
-                        disabled={isCreatingNew}
+                        disabled={isCreatingNew || isClone}
                         selected={selectedFormType === FormType.SECTION}
                     >
                         <TooltipWrapper
@@ -122,7 +125,7 @@ export const TabbedFormTypePicker = React.memo(function FormFormContents({
                             event.preventDefault()
                             onFormTypeChange(FormType.CUSTOM)
                         }}
-                        disabled={isCreatingNew}
+                        disabled={isCreatingNew || isClone}
                         selected={selectedFormType === FormType.CUSTOM}
                     >
                         <TooltipWrapper

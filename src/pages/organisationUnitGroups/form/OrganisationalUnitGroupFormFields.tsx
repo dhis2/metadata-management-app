@@ -11,6 +11,7 @@ import {
     StandardFormSectionTitle,
 } from '../../../components'
 import { SECTIONS_MAP } from '../../../lib'
+import { ColorAndSymbolField } from './ColorAndSymbol/ColorAndSymbolField'
 
 export const OrganisationalUnitGroupFormFields = () => {
     const section = SECTIONS_MAP.organisationUnitGroup
@@ -29,6 +30,9 @@ export const OrganisationalUnitGroupFormFields = () => {
                 <DefaultIdentifiableFields section={section} />
                 <StandardFormField>
                     <DescriptionField />
+                </StandardFormField>
+                <StandardFormField>
+                    <ColorAndSymbolField />
                 </StandardFormField>
             </StandardFormSection>
             <StandardFormSection>

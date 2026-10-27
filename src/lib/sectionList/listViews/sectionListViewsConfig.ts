@@ -587,6 +587,11 @@ export const modelListViewsConfig = {
             available: [
                 'displayDescription',
                 'allowAuditLog',
+                {
+                    label: i18n.t('Record change history for attribute values'),
+                    path: 'enableChangeLog',
+                    minApiVersion: 43,
+                },
                 'favorite',
                 'featureType',
                 DESCRIPTORS.formName,
@@ -746,8 +751,15 @@ export const modelListViewsConfig = {
                 'created',
                 'description',
                 {
-                    label: i18n.t('Display front page list'),
+                    label: i18n.t('Start page in web Capture app'),
                     path: 'displayFrontPageList',
+                },
+                {
+                    label: i18n.t(
+                        'Record change history for event data values'
+                    ),
+                    path: 'enableChangeLog',
+                    minApiVersion: 43,
                 },
                 'favorite',
                 { label: i18n.t('Form name'), path: 'formName' },
@@ -1162,5 +1174,25 @@ export const modelListViewsConfig = {
             available: [],
             overrideDefaultAvailable: true,
         },
+    },
+    document: {
+        columns: {
+            default: [
+                DESCRIPTORS.name,
+                { label: i18n.t('Type'), path: 'external' },
+                'createdBy',
+                'created',
+            ],
+            available: [
+                'code',
+                'href',
+                'id',
+                'lastUpdated',
+                'lastUpdatedBy',
+                { label: i18n.t('URL'), path: 'url' },
+            ],
+            overrideDefaultAvailable: true,
+        },
+        filters: {},
     },
 } satisfies SectionListViewConfig<SectionName>

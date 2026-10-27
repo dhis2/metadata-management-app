@@ -8,12 +8,14 @@ import { ToolbarSelected } from './ToolbarSelected'
 export type DefaultToolbarProps = {
     selectedModels: Set<string>
     onDeselectAll: () => void
+    refetch: () => void
     downloadable?: boolean
 }
 
 export const DefaultToolbar = ({
     selectedModels,
     onDeselectAll,
+    refetch,
     downloadable = true,
 }: DefaultToolbarProps) => {
     const [downloadDialogOpen, setDownloadDialogOpen] = useState(false)
@@ -33,6 +35,7 @@ export const DefaultToolbar = ({
                     selectedModels={selectedModels}
                     onDeselectAll={onDeselectAll}
                     downloadButtonElement={DownloadButtonElement}
+                    refetch={refetch}
                 />
             ) : (
                 <ToolbarNormal downloadButtonElement={DownloadButtonElement} />

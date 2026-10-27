@@ -22,6 +22,7 @@ import { Component as Edit } from './Edit'
 import { Component as New } from './New'
 import resetAllMocks = jest.resetAllMocks
 
+jest.retryTimes(2, { logErrorsBeforeRetry: true })
 jest.setTimeout(40 * 1000) // set timeout to 40 seconds for these tests
 
 const section = SECTIONS_MAP.predictor

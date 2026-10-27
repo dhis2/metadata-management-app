@@ -10,6 +10,7 @@ export interface SectionBase {
     minApiVersion?: number
     maxApiVersion?: number
     clonable?: boolean
+    cannotBulkDelete?: boolean
     learnMoreUrl?: string
 }
 

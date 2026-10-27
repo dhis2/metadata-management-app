@@ -29,6 +29,11 @@ export const ModelValueRenderer = ({
         return <PublicAccessValue value={value} />
     }
 
+    // only documents (resources) have a top-level external property
+    if (path === 'external' && typeof value === 'boolean') {
+        return <TextValue value={value ? i18n.t('URL') : i18n.t('File')} />
+    }
+
     if (path === 'programType') {
         if (value === 'WITH_REGISTRATION') {
             return <TextValue value={i18n.t('Tracker program')} />

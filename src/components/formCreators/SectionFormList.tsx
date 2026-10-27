@@ -194,7 +194,9 @@ export function SectionFormSectionsList<TValues extends Section, TExtraProps>({
                             secondary
                             small
                             onClick={() => setOrderSectionsFormOpen(true)}
-                            disabled={sectionFieldArray.value?.length <= 1}
+                            disabled={
+                                isClone || sectionFieldArray.value?.length <= 1
+                            }
                         >
                             {i18n.t('Reorder sections')}
                         </Button>
@@ -283,6 +285,7 @@ export const ListInFormItem = ({
                             onClick={() => {
                                 navigator.clipboard.writeText(item.id)
                             }}
+                            disabled={isClone}
                         />
                         <MoreDropdownDivider />
                         <MoreDropdownItem

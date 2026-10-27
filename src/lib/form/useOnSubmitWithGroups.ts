@@ -2,10 +2,12 @@ import { useAlert } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { useMemo } from 'react'
 import { ModelSection } from '../../types'
-import { IdentifiableObject } from '../../types/generated'
 import { useNavigateWithSearchState } from '../routeUtils'
 import { createFormError } from './createFormError'
-import { createJsonPatchOperations } from './createJsonPatchOperations'
+import {
+    createJsonPatchOperations,
+    ModelWithAttributeValues,
+} from './createJsonPatchOperations'
 import { useCreateModel } from './useCreateModel'
 import {
     EnhancedOnSubmit,
@@ -41,7 +43,7 @@ type UseOnSubmitEditWithGroupsOptions = {
 }
 
 export const useOnSubmitEditWithGroups = <
-    TFormValues extends IdentifiableObject
+    TFormValues extends ModelWithAttributeValues = ModelWithAttributeValues
 >({
     section,
     modelId,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProgramRuleAction } from '../../../../types/generated'
+import { ProgramRuleActionType } from '../../../../types/generated'
 import {
     type ActionFieldsRenderer,
     assign,
@@ -21,7 +21,7 @@ import {
     warningOnComplete,
 } from './actionContent'
 
-const ACTION_TYPE = ProgramRuleAction.programRuleActionType
+const ACTION_TYPE = ProgramRuleActionType
 
 const ACTION_FIELDS_MAP: Partial<Record<string, ActionFieldsRenderer>> = {
     [ACTION_TYPE.DISPLAYTEXT]: displayText,

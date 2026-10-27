@@ -75,7 +75,7 @@ const TRANSLATED_PROPERTY: Record<string, string> = {
     validationRuleGroup: i18n.t('Validation rule group'),
     zeroIsSignificant: i18n.t('Zero is significant'),
     displayDescription: i18n.t('Description'),
-    allowAuditLog: i18n.t('Enable tracked entity instance audit log'),
+    allowAuditLog: i18n.t('Record access to tracked entities'),
     featureType: i18n.t('Feature type'),
     programType: i18n.t('Program type'),
     maxTeiCountToReturn: i18n.t(

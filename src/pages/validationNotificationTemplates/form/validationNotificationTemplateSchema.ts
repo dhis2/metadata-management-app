@@ -5,7 +5,7 @@ import {
     createFormValidate,
     modelFormSchemas,
 } from '../../../lib'
-import { ValidationNotificationTemplate } from '../../../types/generated'
+import { SendStrategy } from '../../../types/generated'
 
 /*  Note that this describes what we send to the server,
     and not what is stored in the form. */
@@ -15,9 +15,7 @@ const { identifiable, referenceCollection, withDefaultListColumns } =
 const validationNotificationTemplateBaseSchema = z.object({
     code: z.string().trim().optional(),
     notifyUsersInHierarchyOnly: z.boolean().optional(),
-    sendStrategy: z
-        .nativeEnum(ValidationNotificationTemplate.sendStrategy)
-        .optional(),
+    sendStrategy: z.nativeEnum(SendStrategy).optional(),
 })
 
 export const validationNotificationTemplateFormSchema = identifiable

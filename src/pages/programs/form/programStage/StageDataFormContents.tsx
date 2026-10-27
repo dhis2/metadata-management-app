@@ -192,13 +192,6 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
                             >
                                 {i18n.t('Required')}
                             </TableCellHead>
-                            {!isTrackerProgram && (
-                                <TableCellHead
-                                    className={stageDataFormCss.stickyHead}
-                                >
-                                    {i18n.t('Allow provided elsewhere')}
-                                </TableCellHead>
-                            )}
                             <TableCellHead
                                 className={stageDataFormCss.stickyHead}
                             >
@@ -252,15 +245,6 @@ export const StageDataFormContents = React.memo(function StageDataFormContents({
                                             type="checkbox"
                                         />
                                     </TableCell>
-                                    {!isTrackerProgram && (
-                                        <TableCell>
-                                            <FieldRFF
-                                                component={CheckboxFieldFF}
-                                                name={`${fieldName}[${index}].allowProvidedElsewhere`}
-                                                type="checkbox"
-                                            />
-                                        </TableCell>
-                                    )}
                                     <TableCell>
                                         <FieldRFF
                                             component={CheckboxFieldFF}
