@@ -1,3 +1,5 @@
+import i18n from '@dhis2/d2-i18n'
+import { IconQuestion16 } from '@dhis2/ui-icons'
 import React from 'react'
 import { Link, To, useLocation, useMatches, matchPath } from 'react-router-dom'
 import { useToWithSearchState } from '../../lib'
@@ -9,16 +11,23 @@ const BreadcrumbSeparator = () => <span className={css.separator}>/</span>
 type BreadcrumbItemProps = {
     label: string
     to: To
+    learnMoreUrl?: string
 }
 
-export const BreadcrumbItem = ({ label, to }: BreadcrumbItemProps) => {
+export const BreadcrumbItem = ({
+    label,
+    to,
+    learnMoreUrl,
+}: BreadcrumbItemProps) => {
     const resolvedTo = useToWithSearchState(to)
     const currentLoc = useLocation()
 
     if (resolvedTo.pathname) {
         const match = matchPath(resolvedTo.pathname, currentLoc.pathname)
         if (match?.pattern.end) {
-            return <BreadCrumbEndItem label={label} />
+            return (
+                <BreadCrumbEndItem label={label} learnMoreUrl={learnMoreUrl} />
+            )
         }
     }
 
@@ -35,8 +44,28 @@ export const BreadcrumbItem = ({ label, to }: BreadcrumbItemProps) => {
 
 /** Component that is used for "End links", where the current route is the end of the path
  * and thus should not be a link */
-export const BreadCrumbEndItem = ({ label }: { label: string }) => (
-    <span className={css.breadcrumbItem}>{label}</span>
+export const BreadCrumbEndItem = ({
+    label,
+    learnMoreUrl,
+}: {
+    label: string
+    learnMoreUrl?: string
+}) => (
+    <span className={css.breadcrumbItem}>
+        {label}
+        {learnMoreUrl && (
+            <a
+                className={css.learnMoreIconLink}
+                href={learnMoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <span aria-label={i18n.t('Learn more')}>
+                    <IconQuestion16 />
+                </span>
+            </a>
+        )}
+    </span>
 )
 
 export const Breadcrumbs = () => {
