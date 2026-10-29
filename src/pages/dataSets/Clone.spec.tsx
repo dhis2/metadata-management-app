@@ -223,6 +223,12 @@ describe('Data set clone tests', () => {
         await uiActions.submitForm(screen)
 
         await waitFor(() => expect(createDataSetMock).toHaveBeenCalledTimes(1))
+        // the form unmounts on navigation, after sections/custom form are saved
+        await waitFor(() =>
+            expect(
+                screen.queryByTestId('form-save-button')
+            ).not.toBeInTheDocument()
+        )
         expect(createSectionMock).not.toHaveBeenCalled()
         expect(createCustomFormMock).not.toHaveBeenCalled()
     })

@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { render, within } from '@testing-library/react'
+import { render, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/sqlView.json'
@@ -111,12 +111,14 @@ describe('SQL Views form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should show query variable buttons only when type is QUERY', async () => {
@@ -207,15 +209,17 @@ describe('SQL Views form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        description: aDescription,
-                        type: SqlViewType.VIEW,
-                        sqlQuery: aSqlQuery,
-                    }),
-                })
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            description: aDescription,
+                            type: SqlViewType.VIEW,
+                            sqlQuery: aSqlQuery,
+                        }),
+                    })
+                )
             )
         })
     })
@@ -318,7 +322,12 @@ describe('SQL Views form tests', () => {
 
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

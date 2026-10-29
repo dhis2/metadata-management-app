@@ -33,7 +33,7 @@ export const enterVariableValue = async (
 ) => {
     const field = screen.getByTestId(`variable-input-${varName}`)
     const input = within(field).getByRole('textbox') as HTMLInputElement
-    await userEvent.type(input, value)
+    await uiActions.pasteIntoInput(input, value)
 }
 
 const mockMeta = (overwrites: Record<string, unknown> = {}) =>
@@ -107,37 +107,41 @@ describe('SqlViewResults', () => {
                     sqlViews: () => Promise.reject(error404),
                 },
             })
-            expect(screen.getByText('Could not load SQL view')).toBeVisible()
+            expect(
+                await screen.findByText('Could not load SQL view')
+            ).toBeVisible()
         })
     })
 
     describe('header', () => {
         it('shows the SQL view display name', async () => {
             const { screen } = await renderResults()
-            expect(screen.getByText('My Test SQL View')).toBeVisible()
+            expect(await screen.findByText('My Test SQL View')).toBeVisible()
         })
 
         it('shows "Create or update view" run button for VIEW type', async () => {
             const { screen } = await renderResults()
-            expect(screen.getByTestId('results-run-button')).toHaveTextContent(
-                'Create or update view'
-            )
+            expect(
+                await screen.findByTestId('results-run-button')
+            ).toHaveTextContent('Create or update view')
         })
 
         it('shows "Create or update view" run button for MATERIALIZED_VIEW type', async () => {
             const { screen } = await renderResults({
                 meta: mockMeta({ type: SqlViewType.MATERIALIZED_VIEW }),
             })
-            expect(screen.getByTestId('results-run-button')).toHaveTextContent(
-                'Create or update view'
-            )
+            expect(
+                await screen.findByTestId('results-run-button')
+            ).toHaveTextContent('Create or update view')
         })
 
         it('shows "Refresh data" button for MATERIALIZED_VIEW type', async () => {
             const { screen } = await renderResults({
                 meta: mockMeta({ type: SqlViewType.MATERIALIZED_VIEW }),
             })
-            expect(screen.getByTestId('results-refresh-button')).toBeVisible()
+            expect(
+                await screen.findByTestId('results-refresh-button')
+            ).toBeVisible()
         })
 
         it('does not show "Refresh data" button for VIEW type', async () => {
@@ -160,26 +164,26 @@ describe('SqlViewResults', () => {
             const { screen } = await renderResults({
                 meta: mockMeta({ type: SqlViewType.QUERY }),
             })
-            expect(screen.getByTestId('results-run-button')).toHaveTextContent(
-                'Run query'
-            )
+            expect(
+                await screen.findByTestId('results-run-button')
+            ).toHaveTextContent('Run query')
         })
     })
 
     describe('data table', () => {
         it('renders table headers and rows from the API response', async () => {
             const { screen } = await renderResults()
-            expect(screen.getByText('name')).toBeVisible()
-            expect(screen.getByText('uid')).toBeVisible()
-            expect(screen.getByText('Element A')).toBeVisible()
-            expect(screen.getByText('abc123')).toBeVisible()
+            expect(await screen.findByText('name')).toBeVisible()
+            expect(await screen.findByText('uid')).toBeVisible()
+            expect(await screen.findByText('Element A')).toBeVisible()
+            expect(await screen.findByText('abc123')).toBeVisible()
         })
 
         it('shows a notice when the query returns no rows', async () => {
             const { screen } = await renderResults({
                 grid: mockGrid({ rows: [] }),
             })
-            expect(screen.getByText('No rows returned')).toBeVisible()
+            expect(await screen.findByText('No rows returned')).toBeVisible()
         })
     })
 
@@ -193,7 +197,9 @@ describe('SqlViewResults', () => {
                         ),
                 },
             })
-            expect(screen.getByText('No results available yet')).toBeVisible()
+            expect(
+                await screen.findByText('No results available yet')
+            ).toBeVisible()
         })
 
         it('shows "Could not load results" for a general data error', async () => {
@@ -205,7 +211,9 @@ describe('SqlViewResults', () => {
                         ),
                 },
             })
-            expect(screen.getByText('Could not load results')).toBeVisible()
+            expect(
+                await screen.findByText('Could not load results')
+            ).toBeVisible()
         })
     })
 

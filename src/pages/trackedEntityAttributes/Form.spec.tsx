@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { act, render, within } from '@testing-library/react'
+import { act, render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import optionSetSchemaMock from '../../__mocks__/schema/optionSet.json'
@@ -19,8 +19,6 @@ import { uiAssertions } from '../../testUtils/uiAssertions'
 import { Component as Edit } from './Edit'
 import { Component as New } from './New'
 
-jest.retryTimes(2, { logErrorsBeforeRetry: true })
-
 const section = SECTIONS_MAP.trackedEntityAttribute
 const mockSchema = schemaMock
 
@@ -33,6 +31,8 @@ describe('TrackedEntityAttributes form tests', () => {
     const updateMock = jest.fn()
 
     beforeEach(() => {
+        createMock.mockClear()
+        updateMock.mockClear()
         const portalRoot = document.createElement('div')
         portalRoot.setAttribute('id', FOOTER_ID)
         document.body.appendChild(portalRoot)
@@ -109,17 +109,19 @@ describe('TrackedEntityAttributes form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
-            )
+            await waitFor(() => {
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
+            })
             uiAssertions.expectFieldToHaveError(
                 'formfields-shortName',
                 'Required',
                 screen
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should show error if name too long', async () => {
@@ -149,7 +151,9 @@ describe('TrackedEntityAttributes form tests', () => {
             expect(
                 await screen.findByText('Add new Option set')
             ).toBeInTheDocument()
-            expect(screen.getByTestId('optionSetNewForm')).toBeInTheDocument()
+            expect(
+                await screen.findByTestId('optionSetNewForm')
+            ).toBeInTheDocument()
             expect(
                 within(screen.getByTestId('optionSetNewForm')).getByTestId(
                     'form-submit-button'
@@ -249,17 +253,19 @@ describe('TrackedEntityAttributes form tests', () => {
                 screen
             )
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        formName: aFormName,
-                        shortName: aShortName,
-                        code: aCode,
-                        description: aDescription,
-                    }),
-                })
-            )
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            formName: aFormName,
+                            shortName: aShortName,
+                            code: aCode,
+                            description: aDescription,
+                        }),
+                    })
+                )
+            })
         })
 
         it('submits with value type and aggregation type', async () => {
@@ -273,16 +279,18 @@ describe('TrackedEntityAttributes form tests', () => {
                 screen
             )
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        valueType: 'TEXT',
-                        aggregationType: 'NONE',
-                    }),
-                })
-            )
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            valueType: 'TEXT',
+                            aggregationType: 'NONE',
+                        }),
+                    })
+                )
+            })
         })
     })
 
@@ -363,7 +371,10 @@ describe('TrackedEntityAttributes form tests', () => {
         )
 
         it('renders with prefilled values', async () => {
-            const { screen, trackedEntityAttribute } = await renderForm()
+            // the list schema used by the builder has no name, so set one
+            const { screen, trackedEntityAttribute } = await renderForm({
+                trackedEntityAttributeOverwrites: { name: faker.word.words() },
+            })
             uiAssertions.expectNameFieldExist(
                 trackedEntityAttribute.name,
                 screen
@@ -390,21 +401,25 @@ describe('TrackedEntityAttributes form tests', () => {
         })
 
         it('submits updated name', async () => {
+            const oldName = faker.word.words()
             const { screen, trackedEntityAttribute } = await renderForm({
                 trackedEntityAttributeOverwrites: {
-                    name: faker.word.words(),
+                    name: oldName,
                     valueType: 'TEXT',
                     aggregationType: 'NONE',
                 },
             })
-            const newName = faker.word.words()
+            // derived from the old name so the two can never be equal
+            const newName = `${oldName} updated`
             await uiActions.enterName(newName, screen)
             await uiActions.submitForm(screen)
-            expect(updateMock).toHaveBeenCalledWith({
-                data: [{ op: 'replace', path: '/name', value: newName }],
-                id: trackedEntityAttribute.id,
-                params: undefined,
-                resource: 'trackedEntityAttributes',
+            await waitFor(() => {
+                expect(updateMock).toHaveBeenCalledWith({
+                    data: [{ op: 'replace', path: '/name', value: newName }],
+                    id: trackedEntityAttribute.id,
+                    params: undefined,
+                    resource: 'trackedEntityAttributes',
+                })
             })
         })
     })

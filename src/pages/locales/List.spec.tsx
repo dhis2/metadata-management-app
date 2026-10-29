@@ -26,11 +26,7 @@ import { Component } from './List'
 const section = SECTIONS_MAP.locale
 const ComponentToTest = Component
 
-jest.spyOn(console, 'warn').mockImplementation((value) => {
-    if (!value.match(/No server timezone/)) {
-        console.warn(value)
-    }
-})
+const originalWarn = console.warn
 
 describe('Locales list tests', () => {
     const getElementsMock = jest.fn()
@@ -74,6 +70,12 @@ describe('Locales list tests', () => {
 
     beforeEach(() => {
         jest.resetAllMocks()
+        // resetAllMocks wipes spy implementations, so re-apply the filter
+        jest.spyOn(console, 'warn').mockImplementation((value, ...rest) => {
+            if (!String(value).match(/No server timezone/)) {
+                originalWarn(value, ...rest)
+            }
+        })
     })
 
     it('should display all the item', async () => {
@@ -218,7 +220,7 @@ describe('Locales list tests', () => {
         const identifiableFilterInput = within(
             screen.getByTestId('input-search-name')
         ).getByRole('textbox')
-        await userEvent.type(identifiableFilterInput, filterText)
+        await uiActions.pasteIntoInput(identifiableFilterInput, filterText)
         const tableRowsUpdated = screen.getAllByTestId('section-list-row')
         expect(tableRowsUpdated).toHaveLength(1)
     })
@@ -228,7 +230,7 @@ describe('Locales list tests', () => {
         const identifiableFilterInput = within(
             screen.getByTestId('input-search-name')
         ).getByRole('textbox')
-        await userEvent.type(identifiableFilterInput, 'lalala')
+        await uiActions.pasteIntoInput(identifiableFilterInput, 'lalala')
         const tableRowsUpdated = screen.queryAllByTestId('section-list-row')
         expect(tableRowsUpdated).toHaveLength(0)
 

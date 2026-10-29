@@ -2,6 +2,14 @@ import { RenderResult, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 type inputFieldValueTypeOptions = { type?: string; supressTab?: boolean }
+
+// paste the whole value at once: typing fires validation on every keystroke,
+// which is slow for long strings and can trigger intermediate async work
+const pasteIntoInput = async (input: HTMLElement, text: string) => {
+    await userEvent.click(input)
+    await userEvent.paste(text)
+}
+
 const enterInputFieldValue = async (
     fieldName: string,
     text: string,
@@ -12,7 +20,7 @@ const enterInputFieldValue = async (
     const field = screen.getByTestId(`formfields-${fieldName}`)
     const input = within(field).getByRole(type ?? 'textbox') as HTMLInputElement
     await clearInputField(fieldName, screen, type ?? 'textbox')
-    await userEvent.type(input, text)
+    await pasteIntoInput(input, text)
 
     if (!supressTab) {
         await userEvent.tab()
@@ -25,7 +33,7 @@ const enterExpressionInModal = async (
 ) => {
     expect(modal).toBeVisible()
     const input = within(modal).getAllByRole('textbox')[0] as HTMLInputElement
-    await userEvent.type(input, anExpression)
+    await pasteIntoInput(input, anExpression)
     await userEvent.click(
         screen.getByTestId('expression-builder-modal-validate-button')
     )
@@ -50,9 +58,12 @@ const applyNewExpressionWithinModal = async (
         anExpression,
         screen
     )
-    await userEvent.click(
-        within(editNumeratorModal).getByTestId('apply-expression-button')
+    const applyButton = within(editNumeratorModal).getByTestId(
+        'apply-expression-button'
     )
+    // apply stays disabled until the expression has been validated
+    await waitFor(() => expect(applyButton).toBeEnabled())
+    await userEvent.click(applyButton)
 }
 const clearInputField = async (
     fieldName: string,
@@ -89,6 +100,18 @@ const openSingleSelect = async (
         'dhis2-uicore-select-menu-menuwrapper'
     )
     expect(optionsWrapper).toBeVisible()
+    // model selects show a loader in the menu until their options are fetched,
+    // and some fields only fill their options in an effect after loading
+    await waitFor(() => {
+        expect(
+            within(optionsWrapper).queryByTestId('dhis2-uicore-circularloader')
+        ).not.toBeInTheDocument()
+        expect(
+            within(optionsWrapper).getAllByTestId(
+                'dhis2-uicore-singleselectoption'
+            ).length
+        ).toBeGreaterThan(0)
+    })
     return within(optionsWrapper).getAllByTestId(
         'dhis2-uicore-singleselectoption'
     )
@@ -180,7 +203,7 @@ const pickOptionInTransfer = async (
     const transfer = screen.getByTestId(transferTestId)
     expect(transfer).toBeVisible()
     const lhs = within(transfer).getByTestId(`${transferTestId}-leftside`)
-    const lhsOptionToPick = within(lhs).getByText(optionText, {
+    const lhsOptionToPick = await within(lhs).findByText(optionText, {
         selector: '[data-test="dhis2-uicore-transferoption"]',
     })
     await userEvent.dblClick(lhsOptionToPick)
@@ -241,6 +264,7 @@ export const openListElementActionsMenu = async (
 }
 
 export const uiActions = {
+    pasteIntoInput,
     openModal,
     openSingleSelect,
     closeSingleSelectIfOpen,

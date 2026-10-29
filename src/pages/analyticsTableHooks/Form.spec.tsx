@@ -114,12 +114,14 @@ describe('Analytics table hooks form tests', () => {
         it('should not submit when required fields are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should show an error if name is a duplicate', async () => {
@@ -164,12 +166,14 @@ describe('Analytics table hooks form tests', () => {
             await uiActions.pickRadioField('phase', 'Resource tables', screen)
             await uiActions.enterInputFieldValue('sql', 'SELECT 1', screen)
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-resourceTableType',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-resourceTableType',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should require analyticsTableType when phase is Analytics tables', async () => {
@@ -179,12 +183,14 @@ describe('Analytics table hooks form tests', () => {
             await uiActions.pickRadioField('phase', 'Analytics tables', screen)
             await uiActions.enterInputFieldValue('sql', 'SELECT 1', screen)
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-analyticsTableType',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-analyticsTableType',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should submit with Resource tables phase', async () => {
@@ -250,12 +256,14 @@ describe('Analytics table hooks form tests', () => {
             await uiActions.enterInputFieldValue('sql', sql, screen)
             await uiActions.submitForm(screen)
 
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-sql',
-                'An analytics table hook with this table and SQL already exists.',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-sql',
+                    'An analytics table hook with this table and SQL already exists.',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should clear resourceTableType when switching phase to Analytics tables', async () => {
@@ -374,7 +382,12 @@ describe('Analytics table hooks form tests', () => {
 
         it('should do nothing when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

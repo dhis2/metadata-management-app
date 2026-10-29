@@ -102,17 +102,19 @@ describe('Categories form tests', () => {
         it('should not submit when a required values is missing ', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
             uiAssertions.expectFieldToHaveError(
                 'formfields-shortName',
                 'Required',
                 screen
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should show an error if name field is too long', async () => {
@@ -414,7 +416,12 @@ describe('Categories form tests', () => {
 
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

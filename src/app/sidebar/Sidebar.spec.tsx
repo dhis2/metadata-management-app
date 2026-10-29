@@ -79,7 +79,7 @@ describe('Sidebar', () => {
             'Programs',
             'Option sets',
             'Validations',
-            'Data Approval',
+            'Data approval',
             'Other',
             'Metadata Integrity Checks',
             'Import Metadata',
@@ -87,7 +87,7 @@ describe('Sidebar', () => {
         ]
 
         topLevelCategories.forEach((title) =>
-            expect(queryByText(title)).toBeDefined()
+            expect(queryByText(title)).toBeInTheDocument()
         )
     })
     it('should open external app link with legacy url if global shell is enabled', async () => {

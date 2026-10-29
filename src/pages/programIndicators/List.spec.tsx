@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker'
 import {
     render,
+    waitFor,
     waitForElementToBeRemoved,
     within,
 } from '@testing-library/react'
@@ -110,14 +111,16 @@ describe('Program indicators additional tests', () => {
         expect(programOptions[1]).toHaveTextContent(programs[0].displayName)
         expect(programOptions[2]).toHaveTextContent(programs[1].displayName)
         await userEvent.click(programOptions[1])
-        expect(getElementsMock).toHaveBeenLastCalledWith(
-            expect.objectContaining({
-                params: expect.objectContaining({
-                    filter: expect.arrayContaining([
-                        `program.id:in:[${programs[0].id}]`,
-                    ]),
-                }),
-            })
-        )
+        await waitFor(() => {
+            expect(getElementsMock).toHaveBeenLastCalledWith(
+                expect.objectContaining({
+                    params: expect.objectContaining({
+                        filter: expect.arrayContaining([
+                            `program.id:in:[${programs[0].id}]`,
+                        ]),
+                    }),
+                })
+            )
+        })
     })
 })

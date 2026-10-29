@@ -94,12 +94,14 @@ describe('Category combos form tests', () => {
         it('should not submit when a required values is missing ', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should show an error if name field is too long', async () => {
@@ -350,7 +352,7 @@ describe('Category combos form tests', () => {
         it('should submit the data and return to the list view on success when a field is changed', async () => {
             const { screen, categoryCombo } = await renderForm()
 
-            const newCode = faker.word.words()
+            const newCode = faker.string.alphanumeric(10)
             await uiActions.enterCode(newCode, screen)
             await uiActions.submitForm(screen)
 
@@ -368,7 +370,12 @@ describe('Category combos form tests', () => {
 
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

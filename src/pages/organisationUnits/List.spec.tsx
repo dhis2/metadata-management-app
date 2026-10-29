@@ -16,8 +16,6 @@ import TestComponentWithRouter from '../../testUtils/TestComponentWithRouter'
 import type { OrganisationUnit } from '../../types/generated'
 import { Component as OrgUnitsList } from './List'
 
-jest.retryTimes(2, { logErrorsBeforeRetry: true })
-
 const deleteOrgUnitMock = jest.fn()
 const renderList = async ({
     rootOrgUnits = [testOrgUnit()] as Partial<OrganisationUnit>[],
@@ -117,10 +115,14 @@ const renderList = async ({
 
 describe('Organisation unit list', () => {
     const originalWarn = console.warn
-    jest.spyOn(console, 'warn').mockImplementation((value) => {
-        if (!value.match(/No server timezone/)) {
-            originalWarn(value)
+    jest.spyOn(console, 'warn').mockImplementation((value, ...rest) => {
+        if (typeof value !== 'string' || !value.match(/No server timezone/)) {
+            originalWarn(value, ...rest)
         }
+    })
+
+    beforeEach(() => {
+        deleteOrgUnitMock.mockClear()
     })
 
     it('should show every org unit in the right order', async () => {
@@ -264,15 +266,23 @@ describe('Organisation unit list', () => {
             within(rootOrg2Row).getByTestId('row-expand-icon')
         await userEvent.click(rootOrg2RowExpandIcon)
 
-        const tableRowsRefreshed = await screen.findAllByTestId(
+        await waitFor(() => {
+            expect(
+                screen.getAllByTestId('dhis2-uicore-datatablerow')
+            ).toHaveLength(5)
+        })
+        const tableRowsRefreshed = screen.getAllByTestId(
             'dhis2-uicore-datatablerow'
         )
-        expect(tableRowsRefreshed.length).toBe(5)
 
-        expect(tableRows[1]).toHaveTextContent(rootOrg1.displayName!)
-        expect(tableRows[2]).toHaveTextContent(root1Level2Child1.displayName!)
-        expect(tableRows[3]).toHaveTextContent(root1Level2Child2.displayName!)
-        expect(tableRows[4]).toHaveTextContent(rootOrg2.displayName!)
+        expect(tableRowsRefreshed[1]).toHaveTextContent(rootOrg1.displayName!)
+        expect(tableRowsRefreshed[2]).toHaveTextContent(
+            root1Level2Child1.displayName!
+        )
+        expect(tableRowsRefreshed[3]).toHaveTextContent(
+            root1Level2Child2.displayName!
+        )
+        expect(tableRowsRefreshed[4]).toHaveTextContent(rootOrg2.displayName!)
     })
 
     it('should expand a node tree', async () => {
@@ -425,11 +435,6 @@ describe('Organisation unit list', () => {
             otherOrgUnits: [child1, child2],
         })
 
-        const setOrganisationUnitsSpy = jest.spyOn(
-            useSystemOrgUnitsStore.getState(),
-            'setOrganisationUnits'
-        )
-
         const tableRows = screen.getAllByTestId('dhis2-uicore-datatablerow')
         expect(tableRows.length).toBe(4)
 
@@ -457,8 +462,15 @@ describe('Organisation unit list', () => {
                 expect.objectContaining({ id: child1.id })
             )
         })
-        expect(setOrganisationUnitsSpy).not.toHaveBeenCalled()
-        setOrganisationUnitsSpy.mockRestore()
+        // modal closes in the same handler that would reset the system org units
+        await waitFor(() => {
+            expect(
+                screen.queryByTestId('delete-confirmation-modal')
+            ).not.toBeInTheDocument()
+        })
+        expect(useSystemOrgUnitsStore.getState().organisationUnits).toEqual([
+            rootOrg,
+        ])
     })
 
     it('resets system organisation units when root org unit is deleted', async () => {
@@ -472,11 +484,6 @@ describe('Organisation unit list', () => {
             rootOrgUnits: [rootOrg],
             otherOrgUnits: [],
         })
-
-        const setOrganisationUnitsSpy = jest.spyOn(
-            useSystemOrgUnitsStore.getState(),
-            'setOrganisationUnits'
-        )
 
         const tableRows = screen.getAllByTestId('dhis2-uicore-datatablerow')
         expect(tableRows.length).toBe(2)
@@ -505,8 +512,11 @@ describe('Organisation unit list', () => {
                 expect.objectContaining({ id: rootOrg.id })
             )
         })
-        expect(setOrganisationUnitsSpy).toHaveBeenLastCalledWith([])
-        setOrganisationUnitsSpy.mockRestore()
+        await waitFor(() => {
+            expect(useSystemOrgUnitsStore.getState().organisationUnits).toEqual(
+                []
+            )
+        })
     })
 
     it('has a link to an org unit edit page in the row actions menu', async () => {
@@ -591,6 +601,10 @@ describe('Organisation unit list', () => {
 
         const detailsPanel = await screen.findByTestId('details-panel')
         expect(detailsPanel).toBeVisible()
+        // the panel shell renders before its content has been fetched
+        await waitFor(() => {
+            expect(detailsPanel).toHaveTextContent(child1.id!)
+        })
         expect(detailsPanel).toHaveTextContent(child1.displayName!)
         expect(detailsPanel).toHaveTextContent(child1.code!)
         expect(detailsPanel).toHaveTextContent(child1.id!)
@@ -641,6 +655,10 @@ describe('Organisation unit list', () => {
 
         const detailsPanel = await screen.findByTestId('details-panel')
         expect(detailsPanel).toBeVisible()
+        // the panel shell renders before its content has been fetched
+        await waitFor(() => {
+            expect(detailsPanel).toHaveTextContent(child1.id!)
+        })
         expect(detailsPanel).toHaveTextContent(child1.displayName!)
         expect(detailsPanel).toHaveTextContent(child1.code!)
         expect(detailsPanel).toHaveTextContent(child1.id!)

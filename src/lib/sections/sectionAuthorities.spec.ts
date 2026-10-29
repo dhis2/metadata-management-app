@@ -213,7 +213,7 @@ describe('sectionAuthorities', () => {
                 )
                 expect(isAllowed).toBe(true)
             })
-            it('predicate function should return true when user has required authorites for child section that is not the same as parentKeyName', async () => {
+            it('predicate function should return false when user has required authorites for child section that is not the same as parentKeyName', async () => {
                 setMockedAuthorities(
                     new Set(['F_DATAELEMENTGROUP_CREATE_PUBLIC'])
                 )
@@ -289,6 +289,7 @@ describe('sectionAuthorities', () => {
             expect(isSectionAuthorized).toBe(false)
         })
         it('should return false if user does not have required authorities, even if keyRequiredAddToView is false', () => {
+            setMockedKeyRequireAddToView(false)
             const { result } = renderHook(() =>
                 useCanCreateModelInSection(SECTIONS_MAP.category)
             )
