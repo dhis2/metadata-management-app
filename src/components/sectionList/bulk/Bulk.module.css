@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacers-dp16);
+    margin-top: var(--spacers-dp16);
 }
 
 .sharingEntitySelect {
@@ -68,4 +69,107 @@
 
 .actionAccessAdd {
     color: var(--colors-green700);
+}
+
+.errorActions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacers-dp8);
+    width: 100%;
+}
+
+.errorList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.errorRowHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacers-dp8);
+    position: relative;
+    padding-inline-end: var(--spacers-dp8);
+}
+
+.errorList > li + li .errorRowHeader::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: var(--spacers-dp32);
+    inset-inline-end: 0;
+    border-top: 1px solid var(--colors-grey200);
+}
+
+.errorRowHeader:hover {
+    background-color: var(--colors-grey050);
+}
+
+.errorRowToggle {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacers-dp8);
+    flex-grow: 1;
+    min-width: 0;
+    padding: var(--spacers-dp12) var(--spacers-dp8);
+    background: none;
+    border: none;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: start;
+    cursor: pointer;
+}
+
+.errorRowToggle:focus-visible {
+    outline: 2px solid var(--colors-blue500);
+    outline-offset: -2px;
+}
+
+.errorRowChevron {
+    display: flex;
+    flex-shrink: 0;
+    margin-block-start: 2px;
+    color: var(--colors-grey600);
+}
+
+.errorRowText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.errorRowDisplayName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--colors-grey900);
+}
+
+.errorRowSummary {
+    font-size: 13px;
+    line-height: 16px;
+    color: var(--colors-grey700);
+}
+
+.errorRowLink {
+    flex-shrink: 0;
+}
+
+.errorRowDetails {
+    margin: 0 var(--spacers-dp8) var(--spacers-dp12) var(--spacers-dp32);
+    background-color: var(--colors-white);
+    border: 1px solid var(--colors-grey300);
+    overflow: auto;
+    padding: var(--spacers-dp8);
+    max-height: 400px;
+    white-space: pre-wrap;
+    font-size: 12px;
+    line-height: 1.2;
+    font-family: Menlo, Courier, monospace;
 }
