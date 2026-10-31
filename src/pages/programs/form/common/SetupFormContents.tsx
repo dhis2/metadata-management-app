@@ -156,7 +156,7 @@ export const SetupFormContents = React.memo(function SetupFormContents({
             </StandardFormField>
             {!isTrackerProgram && (
                 <StandardFormField>
-                    <FeatureTypeField />
+                    <FeatureTypeField name="programStages[0].featureType" />
                 </StandardFormField>
             )}
             <StandardFormField>

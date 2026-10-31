@@ -6,15 +6,21 @@ import { HorizontalFieldGroup } from '../../form/helpers'
 
 export function FeatureTypeField({
     helpText,
+    name = 'featureType',
 }: {
     helpText?: string
+    name?: string
 } = {}) {
-    const noneField = useField('featureType', { type: 'radio', value: 'NONE' })
-    const pointField = useField('featureType', {
+    const noneField = useField(name, {
+        type: 'radio',
+        value: 'NONE',
+        format: (value) => value || 'NONE',
+    })
+    const pointField = useField(name, {
         type: 'radio',
         value: 'POINT',
     })
-    const polygonField = useField('featureType', {
+    const polygonField = useField(name, {
         type: 'radio',
         value: 'POLYGON',
     })
