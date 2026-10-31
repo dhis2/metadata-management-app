@@ -11,7 +11,11 @@ export function FeatureTypeField({
     helpText?: string
     name?: string
 } = {}) {
-    const noneField = useField(name, { type: 'radio', value: 'NONE' })
+    const noneField = useField(name, {
+        type: 'radio',
+        value: 'NONE',
+        format: (value) => value || 'NONE',
+    })
     const pointField = useField(name, {
         type: 'radio',
         value: 'POINT',

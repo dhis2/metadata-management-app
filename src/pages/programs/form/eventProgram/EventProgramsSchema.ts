@@ -49,7 +49,9 @@ const eventProgramBaseSchema = z.object({
                 enableUserAssignment: z.boolean().optional(),
                 blockEntryForm: z.boolean().optional(),
                 preGenerateUID: z.boolean().optional(),
-                featureType: z.enum(['NONE', 'POINT', 'POLYGON']).optional(),
+                featureType: z
+                    .enum(['NONE', 'POINT', 'POLYGON'])
+                    .default('NONE'),
                 validationStrategy: z
                     .enum(['ON_COMPLETE', 'ON_UPDATE_AND_INSERT'])
                     .default('ON_UPDATE_AND_INSERT'),
@@ -79,6 +81,7 @@ const eventProgramBaseSchema = z.object({
                 notificationTemplates: [],
                 programStageDataElements: [],
                 programStageSections: [],
+                featureType: 'NONE',
                 validationStrategy: 'ON_UPDATE_AND_INSERT',
             },
         ]),
