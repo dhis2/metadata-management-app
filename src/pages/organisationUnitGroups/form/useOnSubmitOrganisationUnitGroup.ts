@@ -28,8 +28,8 @@ export const useOnSubmitOrganisationUnitGroup = ({
             const { initialValues, dirtyFields } = form.getState()
             const { organisationUnits, ...otherValues } = values
             const diff = computeCollectionDiff(
-                initialValues.organisationUnits,
-                organisationUnits
+                initialValues.organisationUnits ?? [],
+                organisationUnits ?? []
             )
             const membersChanged =
                 diff.additions.length > 0 || diff.deletions.length > 0
