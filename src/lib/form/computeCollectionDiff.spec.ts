@@ -42,9 +42,7 @@ describe('computeCollectionDiff', () => {
     })
 
     it('does not mutate inputs or send extra member properties', () => {
-        const initial = Object.freeze([
-            Object.freeze({ id: 'a', path: '/a' }),
-        ])
+        const initial = Object.freeze([Object.freeze({ id: 'a', path: '/a' })])
         const current = Object.freeze([
             Object.freeze({ id: 'b', path: '/b' }),
             Object.freeze({ id: 'b', path: '/b' }),
