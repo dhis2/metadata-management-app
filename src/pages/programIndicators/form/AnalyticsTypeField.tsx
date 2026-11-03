@@ -86,7 +86,7 @@ export const AnalyticsTypeField = () => {
             },
             {
                 analyticsPeriodBoundaryType:
-                    AnalyticsPeriodBoundaryType.BEFORE_START_OF_REPORTING_PERIOD,
+                    AnalyticsPeriodBoundaryType.BEFORE_END_OF_REPORTING_PERIOD,
                 boundaryTarget: DEFAULT_BOUNDARY_TARGET[analyticsType],
             },
         ])

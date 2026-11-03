@@ -625,7 +625,7 @@ describe('Program indicator form tests', () => {
                 boundaryTarget: 'EVENT_DATE',
             },
             {
-                analyticsPeriodBoundaryType: 'BEFORE_START_OF_REPORTING_PERIOD',
+                analyticsPeriodBoundaryType: 'BEFORE_END_OF_REPORTING_PERIOD',
                 boundaryTarget: 'EVENT_DATE',
             },
         ]
@@ -1208,7 +1208,7 @@ describe('Program indicator form tests', () => {
                             expect.objectContaining({
                                 boundaryTarget: 'ENROLLMENT_DATE',
                                 analyticsPeriodBoundaryType:
-                                    'BEFORE_START_OF_REPORTING_PERIOD',
+                                    'BEFORE_END_OF_REPORTING_PERIOD',
                             }),
                         ],
                     }),
