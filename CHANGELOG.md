@@ -1,3 +1,11 @@
+## [0.184.2](https://github.com/dhis2/metadata-management-app/compare/v0.184.1...v0.184.2) (2026-11-04)
+
+
+### Bug Fixes
+
+* docs lint in Metadata Management user guide ([#1058](https://github.com/dhis2/metadata-management-app/issues/1058)) ([cf1e26e](https://github.com/dhis2/metadata-management-app/commit/cf1e26e4734e1dbe40f77aab32d0852318f93186))
+* organisation unit saving [DHIS2-22216] ([#1049](https://github.com/dhis2/metadata-management-app/issues/1049)) ([d1ca2c1](https://github.com/dhis2/metadata-management-app/commit/d1ca2c1389e73982148d80a5c9210a0d7b32005b))
+
 ## [0.184.1](https://github.com/dhis2/metadata-management-app/compare/v0.184.0...v0.184.1) (2026-10-23)
 
 
