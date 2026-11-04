@@ -7,11 +7,14 @@ import {
     IconChevronRight16,
 } from '@dhis2/ui'
 import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
+import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
     ActionShowDetails,
     ListActions,
 } from '../../../components/sectionList/listActions'
+import { DateValue } from '../../../components/sectionList/modelValue/DateValue'
 import { PublicAccessValue } from '../../../components/sectionList/modelValue/PublicAccess'
 import { SectionListLoader } from '../../../components/sectionList/SectionListLoader'
 import {
@@ -19,6 +22,7 @@ import {
     SectionListError,
 } from '../../../components/sectionList/SectionListMessages'
 import {
+    canEditModel,
     modelListViewsConfig,
     Schema,
     shouldFilterOutDefaultForSection,
@@ -37,6 +41,8 @@ const PAGE_SIZE = 5
 
 export const MetadataTypeList = ({
     schema,
+    to,
+    activeId,
     engine,
     filter,
     sortOrder,
@@ -45,6 +51,8 @@ export const MetadataTypeList = ({
     onDeleteSuccess,
 }: {
     schema: Schema
+    to: string
+    activeId: string | undefined
     engine: DataEngine
     filter: string | undefined
     sortOrder: [string, 'asc' | 'desc'] | undefined
@@ -53,6 +61,7 @@ export const MetadataTypeList = ({
     onDeleteSuccess: (model: ListItem) => void
 }) => {
     const [isExpanded, setIsExpanded] = useState(false)
+    const navigate = useNavigate()
 
     const appliedFilter = filter ? [`identifiable:token:${filter}`] : []
     const defaultFilters = shouldFilterOutDefaultForSection(
@@ -113,33 +122,72 @@ export const MetadataTypeList = ({
         }
     }, [total])
     const queryClient = useQueryClient()
+    const isEmpty = total === 0
+
+    /* the chevron deliberately has no onClick of its own - its native click
+     * bubbles to the row handler, so mouse and keyboard both go through one
+     * path and the row cannot double-toggle */
+    const toggleExpanded = () => setIsExpanded((prev) => !prev)
+
+    const handleItemClick = (item: ListItem) => {
+        if (!canEditModel(item)) {
+            return
+        }
+        navigate(`/${to}/${item.id}`)
+    }
 
     return (
         <>
-            <DataTableRow className={css.schemaRow}>
-                <DataTableCell width="32px" className={css.expandCell}>
-                    <Button
-                        className={css.expandButton}
-                        secondary
-                        small
-                        type="button"
-                        icon={
-                            isExpanded ? (
-                                <IconChevronDown16 />
-                            ) : (
-                                <IconChevronRight16 />
-                            )
-                        }
-                        onClick={() => setIsExpanded((prev) => !prev)}
-                    />
-                </DataTableCell>
-                <DataTableCell colSpan="3" className={css.schemaNameCell}>
-                    {schema.displayName}
-                    {total !== undefined && (
-                        <span className={css.schemaCount}> ({total})</span>
+            <DataTableRow
+                className={cx(css.schemaRow, {
+                    [css.schemaRowEmpty]: isEmpty,
+                    [css.schemaRowClickable]: !isEmpty,
+                })}
+            >
+                <DataTableCell
+                    width="32px"
+                    className={css.expandCell}
+                    onClick={isEmpty ? undefined : toggleExpanded}
+                >
+                    {/* no chevron at all when there is nothing to expand - a
+                     * disabled button would imply the row does something */}
+                    {!isEmpty && (
+                        <Button
+                            className={css.expandButton}
+                            secondary
+                            small
+                            type="button"
+                            aria-expanded={isExpanded}
+                            aria-label={i18n.t('Show {{schema}}', {
+                                schema: schema.displayName,
+                            })}
+                            icon={
+                                isExpanded ? (
+                                    <IconChevronDown16 />
+                                ) : (
+                                    <IconChevronRight16 />
+                                )
+                            }
+                        />
                     )}
                 </DataTableCell>
-                <DataTableCell />
+                <DataTableCell
+                    colSpan="4"
+                    className={css.schemaNameCell}
+                    onClick={isEmpty ? undefined : toggleExpanded}
+                >
+                    {schema.displayName}
+                    {total !== undefined && (
+                        <span
+                            className={cx(css.count, {
+                                [css.countBadge]: total > 0,
+                                [css.countZero]: total === 0,
+                            })}
+                        >
+                            {total}
+                        </span>
+                    )}
+                </DataTableCell>
             </DataTableRow>
 
             {isExpanded && isFetching && hasNoItems ? (
@@ -152,13 +200,29 @@ export const MetadataTypeList = ({
             {isExpanded &&
                 items.map((item, idx) => (
                     <React.Fragment key={item.id}>
-                        <DataTableRow>
+                        <DataTableRow
+                            className={cx(css.listRow, {
+                                [css.active]: activeId === item.id,
+                                [css.clickable]: canEditModel(item),
+                            })}
+                        >
                             <DataTableCell width="32px" />
-                            <DataTableCell>{item.displayName}</DataTableCell>
-                            <DataTableCell>
-                                {item.lastUpdated ?? ''}
+                            <DataTableCell
+                                className={css.itemNameCell}
+                                onClick={() => handleItemClick(item)}
+                            >
+                                <span className={css.listRowText}>
+                                    {item.displayName}
+                                </span>
                             </DataTableCell>
-                            <DataTableCell>
+                            <DataTableCell
+                                onClick={() => handleItemClick(item)}
+                            >
+                                <DateValue value={item.lastUpdated} />
+                            </DataTableCell>
+                            <DataTableCell
+                                onClick={() => handleItemClick(item)}
+                            >
                                 {item.sharing?.public && (
                                     <PublicAccessValue
                                         value={item.sharing.public}
@@ -201,12 +265,15 @@ export const MetadataTypeList = ({
                         {idx === items.length - 1 &&
                         !isFetching &&
                         hasNextPage ? (
-                            <DataTableRow>
+                            <DataTableRow className={css.loadMoreRow}>
                                 <DataTableCell
-                                    colSpan="100"
+                                    width="32px"
+                                    onClick={() => fetchNextPage()}
+                                />
+                                <DataTableCell
+                                    colSpan="4"
                                     className={css.loadMoreCell}
                                     onClick={() => fetchNextPage()}
-                                    align={'center'}
                                 >
                                     {i18n.t('Load more for {{schema}}', {
                                         schema: schema.displayName,
