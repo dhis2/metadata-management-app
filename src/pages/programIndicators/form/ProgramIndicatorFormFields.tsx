@@ -1,12 +1,6 @@
 import { useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import {
-    CheckboxFieldFF,
-    FieldGroup,
-    InputFieldFF,
-    RadioFieldFF,
-    SingleSelectFieldFF,
-} from '@dhis2/ui'
+import { CheckboxFieldFF, InputFieldFF, SingleSelectFieldFF } from '@dhis2/ui'
 import React from 'react'
 import { Field as FieldRFF, useField } from 'react-final-form'
 import {
@@ -25,8 +19,6 @@ import {
 import { PaddedContainer } from '../../../components/ExpressionBuilder/PaddedContainer'
 import { ModelSingleSelectRefreshableFormField } from '../../../components/metadataFormControls/ModelSingleSelect/ModelSingleSelectRefreshableField'
 import {
-    // Used directly to avoid key collision with PROGRAM_NOTIFICATION_TRIGGER.ENROLLMENT in allConstantTranslations
-    ANALYTICS_TYPE,
     getConstantTranslation,
     SECTIONS_MAP,
     useSchema,
@@ -34,6 +26,7 @@ import {
     useSyncSelectedSectionWithScroll,
 } from '../../../lib'
 import { AnalyticsPeriodBoundariesField } from './AnalyticsPeriodBoundariesField'
+import { AnalyticsTypeField } from './AnalyticsTypeField'
 import { ProgramIndicatorFormDescriptor } from './formDescriptor'
 import { OrgUnitField } from './OrgUnitField'
 
@@ -50,14 +43,7 @@ export const ProgramIndicatorsFormFields = () => {
         parse: (v) => (v !== undefined && v !== '' ? parseInt(v) : v),
     })
     const { input: programInput } = useField('program')
-    const eventField = useField('analyticsType', {
-        type: 'radio',
-        value: 'EVENT',
-    })
-    const enrollmentField = useField('analyticsType', {
-        type: 'radio',
-        value: 'ENROLLMENT',
-    })
+
     useSyncSelectedSectionWithScroll()
     const programFilters = [
         'id,displayName,programType,programTrackedEntityAttributes[trackedEntityAttribute[id,displayName,valueType]]',
@@ -134,26 +120,7 @@ export const ProgramIndicatorsFormFields = () => {
                     />
                 </StandardFormField>
                 <StandardFormField dataTest="analytics-type-field">
-                    <FieldGroup
-                        label={i18n.t('Data source')}
-                        required
-                        dataTest="formfields-analyticsType"
-                    >
-                        <RadioFieldFF
-                            label={`${ANALYTICS_TYPE.EVENT}: ${i18n.t(
-                                'Uses data from all events within a program stage'
-                            )}`}
-                            input={eventField.input}
-                            meta={eventField.meta}
-                        />
-                        <RadioFieldFF
-                            label={`${ANALYTICS_TYPE.ENROLLMENT}: ${i18n.t(
-                                'Uses data combined from the latest events across the enrollment'
-                            )}`}
-                            input={enrollmentField.input}
-                            meta={enrollmentField.meta}
-                        />
-                    </FieldGroup>
+                    <AnalyticsTypeField />
                 </StandardFormField>
                 <StandardFormField>
                     <OrgUnitField />
