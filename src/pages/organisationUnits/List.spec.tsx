@@ -473,11 +473,6 @@ describe('Organisation unit list', () => {
             otherOrgUnits: [],
         })
 
-        const setOrganisationUnitsSpy = jest.spyOn(
-            useSystemOrgUnitsStore.getState(),
-            'setOrganisationUnits'
-        )
-
         const tableRows = screen.getAllByTestId('dhis2-uicore-datatablerow')
         expect(tableRows.length).toBe(2)
 
@@ -505,8 +500,11 @@ describe('Organisation unit list', () => {
                 expect.objectContaining({ id: rootOrg.id })
             )
         })
-        expect(setOrganisationUnitsSpy).toHaveBeenLastCalledWith([])
-        setOrganisationUnitsSpy.mockRestore()
+        await waitFor(() => {
+            expect(useSystemOrgUnitsStore.getState().organisationUnits).toEqual(
+                []
+            )
+        })
     })
 
     it('has a link to an org unit edit page in the row actions menu', async () => {
