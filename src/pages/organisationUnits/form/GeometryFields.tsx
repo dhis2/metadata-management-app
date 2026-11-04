@@ -18,7 +18,7 @@ export function GeometryFields() {
     }) => {
         const geometry = {
             type: 'Point',
-            coordinates: [longitude || undefined, latitude || undefined],
+            coordinates: [longitude ?? undefined, latitude ?? undefined],
         }
         input.onChange(geometry)
         input.onBlur()
@@ -48,8 +48,8 @@ export function GeometryFields() {
                     name="longitude"
                     type="number"
                     value={input.value.coordinates?.[0]?.toString()}
-                    min="-90"
-                    max="90"
+                    min="-180"
+                    max="180"
                     step="any"
                 />
                 <InputField
@@ -60,12 +60,12 @@ export function GeometryFields() {
                         })
                     }
                     inputWidth="400px"
-                    label={i18n.t('Longitude')}
+                    label={i18n.t('Latitude')}
                     name="latitude"
                     type="number"
                     value={input.value?.coordinates?.[1]?.toString()}
-                    min="-180"
-                    max="180"
+                    min="-90"
+                    max="90"
                     step="any"
                 />
             </Field>
