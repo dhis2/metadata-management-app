@@ -71,13 +71,13 @@ export const organisationUnitFormSchema = identifiable
                     .length(2)
                     .refine(
                         (coord) =>
-                            coord[0] >= -90 &&
-                            coord[0] <= 90 &&
-                            coord[1] >= -180 &&
-                            coord[1] <= 180,
+                            coord[0] >= -180 &&
+                            coord[0] <= 180 &&
+                            coord[1] >= -90 &&
+                            coord[1] <= 90,
                         {
                             message: i18n.t(
-                                'Longitude should be between -90 and 90. Latitude should be between -180 and 180'
+                                'Longitude should be between -180 and 180. Latitude should be between -90 and 90'
                             ),
                         }
                     ),
