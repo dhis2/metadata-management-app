@@ -1,3 +1,10 @@
+## [0.184.3](https://github.com/dhis2/metadata-management-app/compare/v0.184.2...v0.184.3) (2026-11-04)
+
+
+### Bug Fixes
+
+* default pi boundaries [DHIS2-22231] ([#1054](https://github.com/dhis2/metadata-management-app/issues/1054)) ([608867f](https://github.com/dhis2/metadata-management-app/commit/608867f5952a07beccf274e7534fff6e795b7932))
+
 ## [0.184.2](https://github.com/dhis2/metadata-management-app/compare/v0.184.1...v0.184.2) (2026-11-04)
 
 
