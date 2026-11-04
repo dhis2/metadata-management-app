@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { act, render, within } from '@testing-library/react'
+import { act, render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/attributeSchema.json'
@@ -197,7 +197,7 @@ describe('Attributes form tests', () => {
                 await screen.findByText('Add new Option set')
             ).toBeInTheDocument()
 
-            const drawerForm = screen.getByTestId('optionSetNewForm')
+            const drawerForm = await screen.findByTestId('optionSetNewForm')
             const submitButton =
                 within(drawerForm).getByTestId('form-submit-button')
             expect(submitButton).toHaveTextContent('Save and close')
@@ -206,16 +206,18 @@ describe('Attributes form tests', () => {
                 .getByTestId('formfields-name')
                 .querySelector('input') as HTMLInputElement
             const optName = faker.animal.bird()
-            await userEvent.type(nameInput, optName)
+            await uiActions.pasteIntoInput(nameInput, optName)
 
             await userEvent.click(submitButton)
 
             // check that the appropriate resource (optionSet) was called with entered optionSet form values
-            expect(optionSetCreateMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({ name: optName }),
-                    resource: 'optionSets',
-                })
+            await waitFor(() =>
+                expect(optionSetCreateMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({ name: optName }),
+                        resource: 'optionSets',
+                    })
+                )
             )
         })
     })
@@ -396,7 +398,7 @@ describe('Attributes form tests', () => {
             )
             expect(
                 screen.queryByText(
-                    'Disabled as the value type must match the value type of the selected option set'
+                    'Disabled as the value type must match the value type of the selected option set.'
                 )
             ).toBeNull()
         })
@@ -453,7 +455,7 @@ describe('Attributes form tests', () => {
             )
             expect(
                 screen.queryByText(
-                    'Disabled as the value type must match the value type of the selected option set'
+                    'Disabled as the value type must match the value type of the selected option set.'
                 )
             ).toBeNull()
         })
@@ -513,21 +515,23 @@ describe('Attributes form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        code: aCode,
-                        description: aDescription,
-                        optionSet: expect.objectContaining({
-                            id: optionSets[1].id,
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            code: aCode,
+                            description: aDescription,
+                            optionSet: expect.objectContaining({
+                                id: optionSets[1].id,
+                            }),
+                            sortOrder: aSortOrder,
+                            ...selectedObjectAttributes,
+                            mandatory: true,
+                            unique: true,
                         }),
-                        sortOrder: aSortOrder,
-                        ...selectedObjectAttributes,
-                        mandatory: true,
-                        unique: true,
-                    }),
-                })
+                    })
+                )
             )
         })
     })
@@ -540,16 +544,18 @@ describe('Attributes form tests', () => {
                     testOptionSet(),
                     testOptionSet(),
                 ]
+                // MULTI_TEXT would be reset by the option set without valueType
+                const valueTypes = VALUE_TYPES_OPTIONS.filter(
+                    (o) => o.value !== 'MULTI_TEXT'
+                )
                 const attribute = testAttribute({
                     optionSet: {
                         id: optionSets[1].id,
                         displayName: optionSets[1].displayName,
                     },
                     valueType:
-                        VALUE_TYPES_OPTIONS[
-                            Math.floor(
-                                Math.random() * VALUE_TYPES_OPTIONS.length
-                            )
+                        valueTypes[
+                            Math.floor(Math.random() * valueTypes.length)
                         ]?.value,
                 })
 
@@ -563,6 +569,10 @@ describe('Attributes form tests', () => {
                             attributes: (type: any, params: any) => {
                                 if (type === 'create') {
                                     createMock(params)
+                                    return { statusCode: 204 }
+                                }
+                                if (type === 'json-patch') {
+                                    updateMock(params)
                                     return { statusCode: 204 }
                                 }
                                 if (type === 'read') {
@@ -650,7 +660,12 @@ describe('Attributes form tests', () => {
         })
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

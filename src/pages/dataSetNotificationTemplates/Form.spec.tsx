@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { render, within } from '@testing-library/react'
+import { render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/dataSetNotificationTemplatesSchema.json'
@@ -106,11 +106,12 @@ describe('DataSetNotificationTemplate form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
             uiAssertions.expectFieldToHaveError(
                 'formfields-messageTemplate',
@@ -118,6 +119,7 @@ describe('DataSetNotificationTemplate form tests', () => {
                 screen,
                 { skipClassCheck: true }
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should show error if name too long', async () => {
@@ -528,26 +530,28 @@ describe('DataSetNotificationTemplate form tests', () => {
                 screen
             )
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        code: aCode,
-                        dataSets: [
-                            expect.objectContaining({
-                                id: dataSets[1].id,
-                            }),
-                        ],
-                        subjectTemplate: aSubject,
-                        messageTemplate: aMessage,
-                        sendStrategy: undefined,
-                        notificationRecipient: 'USER_GROUP',
-                        recipientUserGroup: {
-                            id: userGroups[userGroupsSelectIndex].id,
-                        },
-                        notifyUsersInHierarchyOnly: true,
-                    }),
-                })
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            code: aCode,
+                            dataSets: [
+                                expect.objectContaining({
+                                    id: dataSets[1].id,
+                                }),
+                            ],
+                            subjectTemplate: aSubject,
+                            messageTemplate: aMessage,
+                            sendStrategy: undefined,
+                            notificationRecipient: 'USER_GROUP',
+                            recipientUserGroup: {
+                                id: userGroups[userGroupsSelectIndex].id,
+                            },
+                            notifyUsersInHierarchyOnly: true,
+                        }),
+                    })
+                )
             )
         })
     })
@@ -669,6 +673,14 @@ describe('DataSetNotificationTemplate form tests', () => {
                 screen
             )
 
+            // selected label shows "Loading..." until the userGroups query resolves
+            await waitFor(() =>
+                expect(
+                    within(
+                        screen.getByTestId('formfields-recipientUserGroup')
+                    ).getByTestId('dhis2-uicore-select-input')
+                ).toHaveTextContent(userGroups[0].displayName)
+            )
             await uiAssertions.expectSelectToExistWithOptions(
                 screen.getByTestId('formfields-recipientUserGroup'),
                 {
@@ -693,12 +705,14 @@ describe('DataSetNotificationTemplate form tests', () => {
             const newCode = faker.word.words()
             await uiActions.enterCode(newCode, screen)
             await uiActions.submitForm(screen)
-            expect(updateMock).toHaveBeenCalledWith({
-                data: [{ op: 'replace', path: '/code', value: newCode }],
-                id: dataSetNotificationTemplate.id,
-                params: undefined,
-                resource: 'dataSetNotificationTemplates',
-            })
+            await waitFor(() =>
+                expect(updateMock).toHaveBeenCalledWith({
+                    data: [{ op: 'replace', path: '/code', value: newCode }],
+                    id: dataSetNotificationTemplate.id,
+                    params: undefined,
+                    resource: 'dataSetNotificationTemplates',
+                })
+            )
         })
 
         it('should have a cancel button with a link back to the list view', async () => {
@@ -712,7 +726,12 @@ describe('DataSetNotificationTemplate form tests', () => {
         })
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

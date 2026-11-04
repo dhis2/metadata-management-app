@@ -166,7 +166,7 @@ describe('Icons list', () => {
         await waitFor(() => expect(getIconsMock).toHaveBeenCalled())
         const searchInputWrapper = screen.getByTestId('input-search-name')
         const searchInput = within(searchInputWrapper).getByRole('textbox')
-        await userEvent.type(searchInput, 'health')
+        await uiActions.pasteIntoInput(searchInput, 'health')
 
         await waitFor(() => {
             expect(getIconsMock).toHaveBeenLastCalledWith(
@@ -183,7 +183,7 @@ describe('Icons list', () => {
         const searchInput = within(searchInputWrapper).getByRole(
             'textbox'
         ) as HTMLInputElement
-        await userEvent.type(searchInput, 'lalala')
+        await uiActions.pasteIntoInput(searchInput, 'lalala')
         expect(searchInput).toHaveValue('lalala')
 
         await userEvent.click(screen.getByTestId('clear-all-filters-button'))

@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { render, within } from '@testing-library/react'
+import { render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/trackedEntityTypes.json'
@@ -28,7 +28,7 @@ jest.mock('use-debounce', () => ({
 
 const testTrackedEntityAttribute = (overwrites: Record<any, any> = {}) => ({
     id: randomDhis2Id(),
-    displayName: faker.person.firstName(),
+    displayName: `${faker.person.firstName()} ${randomDhis2Id()}`,
     valueType: 'TEXT',
     ...overwrites,
 })
@@ -109,17 +109,19 @@ describe('Tracked entity types form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
+            await waitFor(() => {
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-shortName',
+                    'Required',
+                    screen
+                )
+            })
             expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
-            )
-            uiAssertions.expectFieldToHaveError(
-                'formfields-shortName',
-                'Required',
-                screen
-            )
         })
 
         it('should show an error if name field is too long', async () => {
@@ -295,21 +297,23 @@ describe('Tracked entity types form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        description: aDescription,
-                        allowAuditLog: true,
-                        featureType: undefined,
-                        minAttributesRequiredToSearch: 1,
-                        maxTeiCountToReturn: 0,
-                        style: {},
-                        trackedEntityTypeAttributes: [],
-                        attributeValues: [],
-                    }),
-                })
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            description: aDescription,
+                            allowAuditLog: true,
+                            featureType: undefined,
+                            minAttributesRequiredToSearch: 1,
+                            maxTeiCountToReturn: 0,
+                            style: {},
+                            trackedEntityTypeAttributes: [],
+                            attributeValues: [],
+                        }),
+                    })
+                )
             )
         })
 
@@ -331,25 +335,33 @@ describe('Tracked entity types form tests', () => {
                 screen.getByTestId('formfields-minattributesrequiredtosearch')
             ).getByRole('spinbutton')
             await userEvent.clear(minAttributesInput)
-            await userEvent.type(minAttributesInput, minAttributes.toString())
+            await uiActions.pasteIntoInput(
+                minAttributesInput,
+                minAttributes.toString()
+            )
 
             const maxTeiCountInput = within(
                 screen.getByTestId('formfields-maxteicount')
             ).getByRole('spinbutton')
             await userEvent.clear(maxTeiCountInput)
-            await userEvent.type(maxTeiCountInput, maxTeiCount.toString())
+            await uiActions.pasteIntoInput(
+                maxTeiCountInput,
+                maxTeiCount.toString()
+            )
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        minAttributesRequiredToSearch: minAttributes,
-                        maxTeiCountToReturn: maxTeiCount,
-                    }),
-                })
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            minAttributesRequiredToSearch: minAttributes,
+                            maxTeiCountToReturn: maxTeiCount,
+                        }),
+                    })
+                )
             )
         })
 
@@ -371,7 +383,7 @@ describe('Tracked entity types form tests', () => {
             const leftside = within(transferField).getByTestId(
                 'dhis2-uicore-transfer-leftside'
             )
-            const optionToPick = within(leftside).getByText(
+            const optionToPick = await within(leftside).findByText(
                 trackedEntityAttributes[0].displayName,
                 {
                     selector: '[data-test="dhis2-uicore-transferoption"]',
@@ -385,25 +397,26 @@ describe('Tracked entity types form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        trackedEntityTypeAttributes: [
-                            expect.objectContaining({
-                                trackedEntityAttribute: expect.objectContaining(
-                                    {
-                                        id: trackedEntityAttributes[0].id,
-                                    }
-                                ),
-                                mandatory: false,
-                                searchable: false,
-                                displayInList: false,
-                            }),
-                        ],
-                    }),
-                })
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            trackedEntityTypeAttributes: [
+                                expect.objectContaining({
+                                    trackedEntityAttribute:
+                                        expect.objectContaining({
+                                            id: trackedEntityAttributes[0].id,
+                                        }),
+                                    mandatory: false,
+                                    searchable: false,
+                                    displayInList: false,
+                                }),
+                            ],
+                        }),
+                    })
+                )
             )
         })
 
@@ -422,24 +435,26 @@ describe('Tracked entity types form tests', () => {
             const attributeInput = within(
                 screen.getByTestId(`attribute-${attributes[0].id}`)
             ).getByRole('textbox') as HTMLInputElement
-            await userEvent.type(attributeInput, anAttribute)
+            await uiActions.pasteIntoInput(attributeInput, anAttribute)
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        attributeValues: [
-                            {
-                                attribute: expect.objectContaining({
-                                    id: attributes[0].id,
-                                }),
-                                value: anAttribute,
-                            },
-                        ],
-                    }),
-                })
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            attributeValues: [
+                                {
+                                    attribute: expect.objectContaining({
+                                        id: attributes[0].id,
+                                    }),
+                                    value: anAttribute,
+                                },
+                            ],
+                        }),
+                    })
+                )
             )
         })
     })
@@ -594,7 +609,12 @@ describe('Tracked entity types form tests', () => {
 
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
 
@@ -606,18 +626,20 @@ describe('Tracked entity types form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(updateMock).toHaveBeenCalledWith({
-                data: [
-                    {
-                        op: 'replace',
-                        path: '/name',
-                        value: newName,
-                    },
-                ],
-                id: trackedEntityType.id,
-                params: undefined,
-                resource: 'trackedEntityTypes',
-            })
+            await waitFor(() =>
+                expect(updateMock).toHaveBeenCalledWith({
+                    data: [
+                        {
+                            op: 'replace',
+                            path: '/name',
+                            value: newName,
+                        },
+                    ],
+                    id: trackedEntityType.id,
+                    params: undefined,
+                    resource: 'trackedEntityTypes',
+                })
+            )
         })
 
         it('should submit when allowAuditLog is toggled', async () => {
@@ -627,18 +649,20 @@ describe('Tracked entity types form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(updateMock).toHaveBeenCalledWith({
-                data: [
-                    {
-                        op: 'replace',
-                        path: '/allowAuditLog',
-                        value: false,
-                    },
-                ],
-                id: trackedEntityType.id,
-                params: undefined,
-                resource: 'trackedEntityTypes',
-            })
+            await waitFor(() =>
+                expect(updateMock).toHaveBeenCalledWith({
+                    data: [
+                        {
+                            op: 'replace',
+                            path: '/allowAuditLog',
+                            value: false,
+                        },
+                    ],
+                    id: trackedEntityType.id,
+                    params: undefined,
+                    resource: 'trackedEntityTypes',
+                })
+            )
         })
 
         it('should submit when numeric fields are changed', async () => {
@@ -649,25 +673,27 @@ describe('Tracked entity types form tests', () => {
                 screen.getByTestId('formfields-minattributesrequiredtosearch')
             ).getByRole('spinbutton')
             await userEvent.clear(minAttributesInput)
-            await userEvent.type(
+            await uiActions.pasteIntoInput(
                 minAttributesInput,
                 newMinAttributes.toString()
             )
 
             await uiActions.submitForm(screen)
 
-            expect(updateMock).toHaveBeenCalledWith({
-                data: [
-                    {
-                        op: 'replace',
-                        path: '/minAttributesRequiredToSearch',
-                        value: newMinAttributes,
-                    },
-                ],
-                id: trackedEntityType.id,
-                params: undefined,
-                resource: 'trackedEntityTypes',
-            })
+            await waitFor(() =>
+                expect(updateMock).toHaveBeenCalledWith({
+                    data: [
+                        {
+                            op: 'replace',
+                            path: '/minAttributesRequiredToSearch',
+                            value: newMinAttributes,
+                        },
+                    ],
+                    id: trackedEntityType.id,
+                    params: undefined,
+                    resource: 'trackedEntityTypes',
+                })
+            )
         })
     })
 })

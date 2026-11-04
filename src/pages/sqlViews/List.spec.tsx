@@ -193,7 +193,6 @@ describe('SQL views specific action tests', () => {
             screen
         )
         await userEvent.click(within(actionsMenu).getByText('View results'))
-        screen.debug(undefined, 10000)
         await waitFor(() => {
             expect(screen.getByTestId('sql-view-results')).toBeVisible()
         })

@@ -134,12 +134,14 @@ describe('Data approval workflows form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
 
         it('should show an error if name field is too long', async () => {
@@ -187,7 +189,7 @@ describe('Data approval workflows form tests', () => {
                 await screen.findByText('Add new Category combination')
             ).toBeInTheDocument()
             expect(
-                screen.getByTestId('categoryComboNewForm')
+                await screen.findByTestId('categoryComboNewForm')
             ).toBeInTheDocument()
             expect(
                 within(screen.getByTestId('categoryComboNewForm')).getByTestId(
@@ -295,16 +297,18 @@ describe('Data approval workflows form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        periodType: periodTypes[2],
-                        categoryCombo: expect.objectContaining({
-                            id: DEFAULT_CATEGORYCOMBO_SELECT_OPTION.id,
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            periodType: periodTypes[2],
+                            categoryCombo: expect.objectContaining({
+                                id: DEFAULT_CATEGORYCOMBO_SELECT_OPTION.id,
+                            }),
                         }),
-                    }),
-                })
+                    })
+                )
             )
         })
     })
@@ -407,7 +411,12 @@ describe('Data approval workflows form tests', () => {
 
         it('should do nothing when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

@@ -36,8 +36,6 @@ import { Component as Edit } from './Edit'
 import { Component as New } from './New'
 import resetAllMocks = jest.resetAllMocks
 
-jest.retryTimes(2, { logErrorsBeforeRetry: true })
-
 const section = SECTIONS_MAP.dataElement
 const mockSchema = schemaMock
 jest.mock('use-debounce', () => ({
@@ -121,17 +119,19 @@ describe('Data elements form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
-            )
+            await waitFor(() => {
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
+            })
             uiAssertions.expectFieldToHaveError(
                 'formfields-shortName',
                 'Required',
                 screen
             )
+            expect(createMock).not.toHaveBeenCalled()
         })
         it('should show an error if name field is too long', async () => {
             const { screen } = await renderForm()
@@ -245,11 +245,13 @@ describe('Data elements form tests', () => {
             })
             await uiActions.enterName(`  ${existingName}  `, screen)
             await userEvent.click(screen.getByTestId('formfields-name-label'))
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
-                screen
-            )
+            await waitFor(() => {
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
+                    screen
+                )
+            })
             await uiActions.submitForm(screen)
             expect(createMock).not.toHaveBeenCalled()
         })
@@ -266,11 +268,13 @@ describe('Data elements form tests', () => {
             await userEvent.click(
                 screen.getByTestId('formfields-shortName-label')
             )
-            uiAssertions.expectFieldToHaveError(
-                'formfields-shortName',
-                'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
-                screen
-            )
+            await waitFor(() => {
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-shortName',
+                    'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
+                    screen
+                )
+            })
             await uiActions.submitForm(screen)
             expect(createMock).not.toHaveBeenCalled()
         })
@@ -281,11 +285,13 @@ describe('Data elements form tests', () => {
             })
             await uiActions.enterCode(`  ${existingCode}  `, screen)
             await userEvent.click(screen.getByTestId('formfields-code-label'))
-            uiAssertions.expectFieldToHaveError(
-                'formfields-code',
-                'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
-                screen
-            )
+            await waitFor(() => {
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-code',
+                    'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
+                    screen
+                )
+            })
             await uiActions.submitForm(screen)
             expect(createMock).not.toHaveBeenCalled()
         })
@@ -314,21 +320,29 @@ describe('Data elements form tests', () => {
             expect(catComboSelectInput).toHaveClass('disabled')
 
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        categoryCombo: expect.objectContaining({
-                            id: DEFAULT_CATEGORYCOMBO_SELECT_OPTION.id,
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            categoryCombo: expect.objectContaining({
+                                id: DEFAULT_CATEGORYCOMBO_SELECT_OPTION.id,
+                            }),
                         }),
-                    }),
-                })
-            )
+                    })
+                )
+            })
         })
         it('should change aggregation type to NONE and disable if value type is of certain type', async () => {
             const { screen } = await renderForm()
             const aName = faker.animal.bird()
             const aShortName = faker.person.firstName()
-            const aValueType = randomValueIn([...DISABLING_VALUE_TYPES])
+            // MULTI_TEXT needs an option set and TRACKER_ASSOCIATE is not in the mocked schema, so neither is selectable here
+            const aValueType = randomValueIn(
+                DISABLING_VALUE_TYPES.filter(
+                    (type) =>
+                        type !== 'MULTI_TEXT' && type !== 'TRACKER_ASSOCIATE'
+                )
+            )
 
             await uiActions.enterName(aName, screen)
             await uiActions.enterInputFieldValue(
@@ -368,13 +382,15 @@ describe('Data elements form tests', () => {
             })
 
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        aggregationType: 'NONE',
-                    }),
-                })
-            )
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            aggregationType: 'NONE',
+                        }),
+                    })
+                )
+            })
         })
         it('should not have multi text as a value type by default', async () => {
             const { screen } = await renderForm()
@@ -509,16 +525,18 @@ describe('Data elements form tests', () => {
             )
 
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        valueType: optionSets[0].valueType,
-                        optionSet: expect.objectContaining({
-                            id: optionSets[0].id,
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            valueType: optionSets[0].valueType,
+                            optionSet: expect.objectContaining({
+                                id: optionSets[0].id,
+                            }),
                         }),
-                    }),
-                })
-            )
+                    })
+                )
+            })
         })
     })
     describe('New', () => {
@@ -770,30 +788,32 @@ describe('Data elements form tests', () => {
             )
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        code: aCode,
-                        formName: aFormName,
-                        description: aDescription,
-                        url: aUrl,
-                        fieldMask: aFieldMask,
-                        zeroIsSignificant: true,
-                        domainType: 'AGGREGATE',
-                        valueType: 'LONG_TEXT',
-                        categoryCombo: expect.objectContaining({
-                            id: DEFAULT_CATEGORY_COMBO.id,
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            code: aCode,
+                            formName: aFormName,
+                            description: aDescription,
+                            url: aUrl,
+                            fieldMask: aFieldMask,
+                            zeroIsSignificant: true,
+                            domainType: 'AGGREGATE',
+                            valueType: 'LONG_TEXT',
+                            categoryCombo: expect.objectContaining({
+                                id: DEFAULT_CATEGORY_COMBO.id,
+                            }),
+                            optionSet: undefined,
+                            commentOptionSet: undefined,
+                            legendSets: [],
+                            aggregationLevels: [],
+                            attributeValues: [],
                         }),
-                        optionSet: undefined,
-                        commentOptionSet: undefined,
-                        legendSets: [],
-                        aggregationLevels: [],
-                        attributeValues: [],
-                    }),
-                })
-            )
+                    })
+                )
+            })
         })
         it('should submit the disaggregation and option sets', async () => {
             const { screen, categoryCombos, optionSets } = await renderForm()
@@ -825,32 +845,34 @@ describe('Data elements form tests', () => {
             )
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        code: undefined,
-                        formName: undefined,
-                        description: undefined,
-                        url: undefined,
-                        fieldMask: undefined,
-                        zeroIsSignificant: false,
-                        domainType: 'AGGREGATE',
-                        valueType: 'NUMBER',
-                        categoryCombo: expect.objectContaining({
-                            id: categoryCombos[0].id,
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            code: undefined,
+                            formName: undefined,
+                            description: undefined,
+                            url: undefined,
+                            fieldMask: undefined,
+                            zeroIsSignificant: false,
+                            domainType: 'AGGREGATE',
+                            valueType: 'NUMBER',
+                            categoryCombo: expect.objectContaining({
+                                id: categoryCombos[0].id,
+                            }),
+                            optionSet: undefined,
+                            commentOptionSet: expect.objectContaining({
+                                id: optionSets[1].id,
+                            }),
+                            legendSets: [],
+                            aggregationLevels: [],
+                            attributeValues: [],
                         }),
-                        optionSet: undefined,
-                        commentOptionSet: expect.objectContaining({
-                            id: optionSets[1].id,
-                        }),
-                        legendSets: [],
-                        aggregationLevels: [],
-                        attributeValues: [],
-                    }),
-                })
-            )
+                    })
+                )
+            })
         })
         it('should submit the legend set and aggregation levels', async () => {
             const { screen, legendSets, organisationUnitLevels } =
@@ -879,35 +901,39 @@ describe('Data elements form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        code: undefined,
-                        formName: undefined,
-                        description: undefined,
-                        url: undefined,
-                        fieldMask: undefined,
-                        zeroIsSignificant: false,
-                        domainType: 'AGGREGATE',
-                        valueType: 'NUMBER',
-                        categoryCombo: expect.objectContaining({
-                            id: DEFAULT_CATEGORY_COMBO.id,
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            code: undefined,
+                            formName: undefined,
+                            description: undefined,
+                            url: undefined,
+                            fieldMask: undefined,
+                            zeroIsSignificant: false,
+                            domainType: 'AGGREGATE',
+                            valueType: 'NUMBER',
+                            categoryCombo: expect.objectContaining({
+                                id: DEFAULT_CATEGORY_COMBO.id,
+                            }),
+                            optionSet: undefined,
+                            commentOptionSet: undefined,
+                            legendSets: [
+                                expect.objectContaining({
+                                    id: legendSets[1].id,
+                                }),
+                            ],
+                            aggregationLevels: [
+                                organisationUnitLevels[1].level,
+                                organisationUnitLevels[2].level,
+                            ],
+                            attributeValues: [],
                         }),
-                        optionSet: undefined,
-                        commentOptionSet: undefined,
-                        legendSets: [
-                            expect.objectContaining({ id: legendSets[1].id }),
-                        ],
-                        aggregationLevels: [
-                            organisationUnitLevels[1].level,
-                            organisationUnitLevels[2].level,
-                        ],
-                        attributeValues: [],
-                    }),
-                })
-            )
+                    })
+                )
+            })
         })
         it('should submit the attributes', async () => {
             const { screen, attributes } = await renderForm()
@@ -925,40 +951,42 @@ describe('Data elements form tests', () => {
             const attributeInput = within(
                 screen.getByTestId(`attribute-${attributes[0].id}`)
             ).getByRole('textbox') as HTMLInputElement
-            await userEvent.type(attributeInput, anAttribute)
+            await uiActions.pasteIntoInput(attributeInput, anAttribute)
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        shortName: aShortName,
-                        code: undefined,
-                        formName: undefined,
-                        description: undefined,
-                        url: undefined,
-                        fieldMask: undefined,
-                        zeroIsSignificant: false,
-                        domainType: 'AGGREGATE',
-                        valueType: 'NUMBER',
-                        categoryCombo: expect.objectContaining({
-                            id: DEFAULT_CATEGORY_COMBO.id,
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            shortName: aShortName,
+                            code: undefined,
+                            formName: undefined,
+                            description: undefined,
+                            url: undefined,
+                            fieldMask: undefined,
+                            zeroIsSignificant: false,
+                            domainType: 'AGGREGATE',
+                            valueType: 'NUMBER',
+                            categoryCombo: expect.objectContaining({
+                                id: DEFAULT_CATEGORY_COMBO.id,
+                            }),
+                            optionSet: undefined,
+                            commentOptionSet: undefined,
+                            legendSets: [],
+                            aggregationLevels: [],
+                            attributeValues: [
+                                {
+                                    attribute: expect.objectContaining({
+                                        id: attributes[0].id,
+                                    }),
+                                    value: anAttribute,
+                                },
+                            ],
                         }),
-                        optionSet: undefined,
-                        commentOptionSet: undefined,
-                        legendSets: [],
-                        aggregationLevels: [],
-                        attributeValues: [
-                            {
-                                attribute: expect.objectContaining({
-                                    id: attributes[0].id,
-                                }),
-                                value: anAttribute,
-                            },
-                        ],
-                    }),
-                })
-            )
+                    })
+                )
+            })
         })
         it('should let user select value type without showing warning modal', async () => {
             const { screen } = await renderForm()
@@ -1241,7 +1269,13 @@ describe('Data elements form tests', () => {
                     optionSet: null,
                 },
             })
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            // leaving the form shows the submit has completed
+            await waitFor(() => {
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            })
             expect(updateMock).not.toHaveBeenCalled()
         })
         it('should have multi text as a value type if data element has option set with that value type', async () => {
@@ -1291,7 +1325,7 @@ describe('Data elements form tests', () => {
             )!
             await userEvent.click(valueTypeOption)
 
-            expect(screen.getByText(warningText)).toBeInTheDocument()
+            expect(await screen.findByText(warningText)).toBeInTheDocument()
 
             // click confirm
             await userEvent.click(
@@ -1379,7 +1413,7 @@ describe('Data elements form tests', () => {
                 screen
             )
 
-            expect(screen.getByText(warningText)).toBeInTheDocument()
+            expect(await screen.findByText(warningText)).toBeInTheDocument()
 
             // click confirm
             await userEvent.click(
@@ -1430,7 +1464,7 @@ describe('Data elements form tests', () => {
                 screen
             )
 
-            expect(screen.getByText(warningText)).toBeInTheDocument()
+            expect(await screen.findByText(warningText)).toBeInTheDocument()
 
             // click confirm
             await userEvent.click(

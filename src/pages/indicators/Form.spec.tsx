@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { act, render, within } from '@testing-library/react'
+import { act, render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/indicators.json'
@@ -130,13 +130,15 @@ describe('Indicators form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
 
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
             uiAssertions.expectFieldToHaveError(
                 'formfields-shortName',
                 'Required',
@@ -207,10 +209,12 @@ describe('Indicators form tests', () => {
             })
             await uiActions.enterCode(`  ${existingCode}  `, screen)
             await userEvent.click(screen.getByTestId('formfields-code-label'))
-            uiAssertions.expectFieldToHaveError(
-                'formfields-code',
-                'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-code',
+                    'This field requires a unique value, please choose another one. Leading and trailing spaces will be removed when saving',
+                    screen
+                )
             )
             await uiActions.submitForm(screen)
             expect(createMock).not.toHaveBeenCalled()
@@ -237,11 +241,13 @@ describe('Indicators form tests', () => {
                 screen
             )
 
-            const error = within(editModal).getByTestId(
+            const error = await within(editModal).findByTestId(
                 `expression-builder-modal-input-validation`
             )
             expect(error).toBeVisible()
-            expect(error).toHaveTextContent('Invalid expression')
+            await waitFor(() =>
+                expect(error).toHaveTextContent('Invalid expression')
+            )
 
             expect(
                 within(editModal).getByTestId('apply-expression-button')
@@ -269,9 +275,11 @@ describe('Indicators form tests', () => {
                 screen
             )
 
-            expect(
-                within(editModal).getByTestId('apply-expression-button')
-            ).toBeEnabled()
+            await waitFor(() =>
+                expect(
+                    within(editModal).getByTestId('apply-expression-button')
+                ).toBeEnabled()
+            )
             await userEvent.click(
                 within(editModal).getByTestId('cancel-expression-button')
             )
@@ -289,7 +297,7 @@ describe('Indicators form tests', () => {
 
             const anExpression = faker.finance.routingNumber()
             await userEvent.click(
-                screen.getByTestId('edit-numerator-expression-button')
+                screen.getByTestId('edit-denominator-expression-button')
             )
             const editModal = await screen.findByTestId(
                 `expression-builder-modal`
@@ -300,11 +308,13 @@ describe('Indicators form tests', () => {
                 screen
             )
 
-            const error = within(editModal).getByTestId(
+            const error = await within(editModal).findByTestId(
                 `expression-builder-modal-input-validation`
             )
             expect(error).toBeVisible()
-            expect(error).toHaveTextContent('Invalid expression')
+            await waitFor(() =>
+                expect(error).toHaveTextContent('Invalid expression')
+            )
 
             expect(
                 within(editModal).getByTestId('apply-expression-button')
@@ -332,9 +342,11 @@ describe('Indicators form tests', () => {
                 screen
             )
 
-            expect(
-                within(editModal).getByTestId('apply-expression-button')
-            ).toBeEnabled()
+            await waitFor(() =>
+                expect(
+                    within(editModal).getByTestId('apply-expression-button')
+                ).toBeEnabled()
+            )
             await userEvent.click(
                 within(editModal).getByTestId('cancel-expression-button')
             )
@@ -359,7 +371,7 @@ describe('Indicators form tests', () => {
             const { screen } = await renderForm()
             await uiActions.pickOptionFromSelect(
                 screen.getByTestId('decimals-field'),
-                7,
+                6,
                 screen
             )
             await uiActions.submitForm(screen)
@@ -389,7 +401,7 @@ describe('Indicators form tests', () => {
                 await screen.findByText('Add new Indicator type')
             ).toBeInTheDocument()
             expect(
-                screen.getByTestId('indicatorTypeNewForm')
+                await screen.findByTestId('indicatorTypeNewForm')
             ).toBeInTheDocument()
             expect(
                 within(screen.getByTestId('indicatorTypeNewForm')).getByTestId(
@@ -638,7 +650,7 @@ describe('Indicators form tests', () => {
             )
 
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledTimes(1)
+            await waitFor(() => expect(createMock).toHaveBeenCalledTimes(1))
             expect(createMock).toHaveBeenLastCalledWith(
                 expect.objectContaining({
                     data: expect.objectContaining({
@@ -729,7 +741,7 @@ describe('Indicators form tests', () => {
             )
 
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledTimes(1)
+            await waitFor(() => expect(createMock).toHaveBeenCalledTimes(1))
             expect(createMock).toHaveBeenLastCalledWith(
                 expect.objectContaining({
                     data: expect.objectContaining({
@@ -807,7 +819,7 @@ describe('Indicators form tests', () => {
             )
 
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledTimes(1)
+            await waitFor(() => expect(createMock).toHaveBeenCalledTimes(1))
             expect(createMock).toHaveBeenLastCalledWith(
                 expect.objectContaining({
                     data: expect.objectContaining({
@@ -885,10 +897,10 @@ describe('Indicators form tests', () => {
             const attributeInput = within(
                 screen.getByTestId(`attribute-${attributes[0].id}`)
             ).getByRole('textbox') as HTMLInputElement
-            await userEvent.type(attributeInput, anAttribute)
+            await uiActions.pasteIntoInput(attributeInput, anAttribute)
 
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledTimes(1)
+            await waitFor(() => expect(createMock).toHaveBeenCalledTimes(1))
             expect(createMock).toHaveBeenLastCalledWith(
                 expect.objectContaining({
                     data: expect.objectContaining({
@@ -1082,9 +1094,11 @@ describe('Indicators form tests', () => {
                 screen
             )
 
-            expect(
-                screen.getByTestId('numerator-expression-description')
-            ).toHaveTextContent('A description')
+            await waitFor(() =>
+                expect(
+                    screen.getByTestId('numerator-expression-description')
+                ).toHaveTextContent('A description')
+            )
 
             uiAssertions.expectTextAreaFieldToExist(
                 'numerator',
@@ -1092,9 +1106,11 @@ describe('Indicators form tests', () => {
                 screen
             )
 
-            expect(
-                screen.getByTestId('denominator-expression-description')
-            ).toHaveTextContent('A description')
+            await waitFor(() =>
+                expect(
+                    screen.getByTestId('denominator-expression-description')
+                ).toHaveTextContent('A description')
+            )
 
             uiAssertions.expectTextAreaFieldToExist(
                 'denominator',
@@ -1150,23 +1166,30 @@ describe('Indicators form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(updateMock).toHaveBeenCalledWith({
-                data: [
-                    {
-                        op: 'replace',
-                        path: '/name',
-                        value: newName,
-                    },
-                ],
-                id: indicator.id,
-                params: undefined,
-                resource: 'indicators',
-            })
+            await waitFor(() =>
+                expect(updateMock).toHaveBeenCalledWith({
+                    data: [
+                        {
+                            op: 'replace',
+                            path: '/name',
+                            value: newName,
+                        },
+                    ],
+                    id: indicator.id,
+                    params: undefined,
+                    resource: 'indicators',
+                })
+            )
         })
 
         it('should do nothing when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
 
@@ -1190,12 +1213,14 @@ describe('Indicators form tests', () => {
                 screen
             )
             await uiActions.submitForm(screen)
-            expect(updateMock).toHaveBeenCalledWith({
-                data: [{ op: 'replace', path: '/decimals', value: 0 }],
-                id: indicator.id,
-                params: undefined,
-                resource: 'indicators',
-            })
+            await waitFor(() =>
+                expect(updateMock).toHaveBeenCalledWith({
+                    data: [{ op: 'replace', path: '/decimals', value: 0 }],
+                    id: indicator.id,
+                    params: undefined,
+                    resource: 'indicators',
+                })
+            )
         })
 
         it('displays 0 decimals correctly', async () => {

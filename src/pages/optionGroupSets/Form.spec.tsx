@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { act, render, within } from '@testing-library/react'
+import { act, render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/optionGroupSetsSchema.json'
@@ -277,7 +277,7 @@ describe('Option group sets form tests', () => {
             )
             expect(
                 screen.queryByText(
-                    'You must select an option set before you can select options.'
+                    'Choose an option set to start adding option groups.'
                 )
             ).toBeNull()
         })
@@ -312,19 +312,21 @@ describe('Option group sets form tests', () => {
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        code: aCode,
-                        description: aDescription,
-                        optionSet: expect.objectContaining({
-                            id: optionSets[2].id,
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            code: aCode,
+                            description: aDescription,
+                            optionSet: expect.objectContaining({
+                                id: optionSets[2].id,
+                            }),
+                            dataDimension: true,
                         }),
-                        dataDimension: true,
-                    }),
-                })
-            )
+                    })
+                )
+            })
         })
     })
     describe('Edit', () => {
@@ -368,6 +370,10 @@ describe('Option group sets form tests', () => {
                                     createMock(params)
                                     return { statusCode: 204 }
                                 }
+                                if (type === 'json-patch') {
+                                    updateMock(params)
+                                    return { statusCode: 204 }
+                                }
                                 if (type === 'read') {
                                     if (params?.id) {
                                         return {
@@ -398,7 +404,6 @@ describe('Option group sets form tests', () => {
         it('contain all needed field prefilled', async () => {
             const { screen, optionGroups, optionSets, optionGroupSet } =
                 await renderForm()
-            screen.debug()
 
             uiAssertions.expectNameFieldExist(optionGroupSet.name, screen)
             uiAssertions.expectCodeFieldExist(optionGroupSet.code, screen)
@@ -442,7 +447,12 @@ describe('Option group sets form tests', () => {
         })
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

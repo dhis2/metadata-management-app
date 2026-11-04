@@ -183,19 +183,24 @@ describe('Resources (documents) specific list tests', () => {
         const openSpy = jest
             .spyOn(window, 'open')
             .mockImplementation(() => null)
-        const resource = testResources()
-        const { screen } = await renderList({ elements: [resource] })
-        const tableRows = screen.getAllByTestId('section-list-row')
-        const actionsMenu = await uiActions.openListElementActionsMenu(
-            tableRows[0],
-            screen
-        )
-        await userEvent.click(within(actionsMenu).getByText('View resource'))
-        expect(openSpy).toHaveBeenCalledWith(
-            `http://dhis2-imaginary-test-server/api/documents/${resource.id}/data`,
-            '_blank',
-            'noopener,noreferrer'
-        )
-        openSpy.mockRestore()
+        try {
+            const resource = testResources()
+            const { screen } = await renderList({ elements: [resource] })
+            const tableRows = screen.getAllByTestId('section-list-row')
+            const actionsMenu = await uiActions.openListElementActionsMenu(
+                tableRows[0],
+                screen
+            )
+            await userEvent.click(
+                within(actionsMenu).getByText('View resource')
+            )
+            expect(openSpy).toHaveBeenCalledWith(
+                `http://dhis2-imaginary-test-server/api/documents/${resource.id}/data`,
+                '_blank',
+                'noopener,noreferrer'
+            )
+        } finally {
+            openSpy.mockRestore()
+        }
     })
 })

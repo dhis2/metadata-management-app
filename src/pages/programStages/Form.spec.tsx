@@ -1,4 +1,4 @@
-import { render, within } from '@testing-library/react'
+import { render, waitFor, within } from '@testing-library/react'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/programStages.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
@@ -111,12 +111,14 @@ describe('Program Stage form tests', () => {
         it('does not submit when the required program and name are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
             uiAssertions.expectFieldToHaveError(
                 PROGRAM_FIELD,
                 'A program is required',
@@ -136,16 +138,18 @@ describe('Program Stage form tests', () => {
             )
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        program: expect.objectContaining({
-                            id: programs[0].id,
+            await waitFor(() => {
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            program: expect.objectContaining({
+                                id: programs[0].id,
+                            }),
                         }),
-                    }),
-                })
-            )
+                    })
+                )
+            })
         })
 
         it('has a cancel link back to the list view', async () => {

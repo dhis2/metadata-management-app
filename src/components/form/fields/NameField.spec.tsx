@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker'
+import { waitFor } from '@testing-library/react'
 import React from 'react'
 import indicatorsSchemaMock from '../../../__mocks__/schema/indicators.json'
 import { SECTIONS_MAP } from '../../../lib'
@@ -60,10 +61,12 @@ describe('NameField', () => {
 
         await uiActions.enterName(`  ${existingName}  `, screen)
 
-        uiAssertions.expectInputFieldToHaveWarning(
-            'formfields-name',
-            'This name is already in use. Consider updating the name to avoid a duplication. Leading and trailing spaces will be removed when saving',
-            screen
+        await waitFor(() =>
+            uiAssertions.expectInputFieldToHaveWarning(
+                'formfields-name',
+                'This name is already in use. Consider updating the name to avoid a duplication. Leading and trailing spaces will be removed when saving',
+                screen
+            )
         )
     })
 
@@ -92,10 +95,12 @@ describe('NameField', () => {
 
         await uiActions.enterName(existingName, screen)
 
-        uiAssertions.expectInputFieldToHaveWarning(
-            'formfields-name',
-            'This name is already in use. Consider updating the name to avoid a duplication.',
-            screen
+        await waitFor(() =>
+            uiAssertions.expectInputFieldToHaveWarning(
+                'formfields-name',
+                'This name is already in use. Consider updating the name to avoid a duplication.',
+                screen
+            )
         )
     })
 

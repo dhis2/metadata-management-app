@@ -251,12 +251,14 @@ const expectInputToErrorWhenExceedsLength = async (
     options?: { skipClassCheck: boolean }
 ) => {
     await userEvent.click(screen.getByTestId(`formfields-${fieldName}-label`))
-    expectInputFieldToHaveError(
-        `formfields-${fieldName}`,
-        `Please enter a maximum of ${maxLength} characters`,
-        screen,
-        options
-    )
+    await waitFor(() => {
+        expectInputFieldToHaveError(
+            `formfields-${fieldName}`,
+            `Please enter a maximum of ${maxLength} characters`,
+            screen,
+            options
+        )
+    })
 }
 
 const expectInputToErrorWhenDuplicate = async (
@@ -266,11 +268,13 @@ const expectInputToErrorWhenDuplicate = async (
 ) => {
     await uiActions.enterInputFieldValue(fieldName, duplicateText, screen)
     await userEvent.click(screen.getByTestId(`formfields-${fieldName}-label`))
-    expectInputFieldToHaveError(
-        `formfields-${fieldName}`,
-        'This field requires a unique value, please choose another one.',
-        screen
-    )
+    await waitFor(() => {
+        expectInputFieldToHaveError(
+            `formfields-${fieldName}`,
+            'This field requires a unique value, please choose another one.',
+            screen
+        )
+    })
 }
 
 const expectColorAndIconFieldToExist = (screen: RenderResult) => {

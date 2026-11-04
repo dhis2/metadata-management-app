@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/programIndicatorGroupsSchema.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
@@ -24,8 +24,6 @@ const mockSchema = schemaMock
 jest.mock('use-debounce', () => ({
     useDebouncedCallback: (fn: any) => fn,
 }))
-
-jest.retryTimes(2, { logErrorsBeforeRetry: true })
 
 describe('Program indicator groups form tests', () => {
     const createMock = jest.fn()
@@ -107,12 +105,14 @@ describe('Program indicator groups form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitForm(screen)
+            await waitFor(() => {
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-name',
+                    'Required',
+                    screen
+                )
+            })
             expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-name',
-                'Required',
-                screen
-            )
         })
         it('should show an error if name field is too long', async () => {
             const { screen } = await renderForm()
@@ -218,7 +218,7 @@ describe('Program indicator groups form tests', () => {
             const { screen, programIndicators } = await renderForm()
             uiAssertions.expectNameFieldExist('', screen)
             uiAssertions.expectCodeFieldExist('', screen)
-            uiAssertions.expectTransferFieldToExistWithOptions(
+            await uiAssertions.expectTransferFieldToExistWithOptions(
                 'program-indicators-transfer',
                 { lhs: programIndicators, rhs: [] },
                 screen
@@ -246,7 +246,7 @@ describe('Program indicator groups form tests', () => {
                 screen
             )
             await uiActions.submitForm(screen)
-            expect(createMock).toHaveBeenCalledTimes(1)
+            await waitFor(() => expect(createMock).toHaveBeenCalledTimes(1))
             expect(createMock).toHaveBeenLastCalledWith(
                 expect.objectContaining({
                     id: undefined,
@@ -384,7 +384,7 @@ describe('Program indicator groups form tests', () => {
                 screen
             )
             await uiActions.submitForm(screen)
-            expect(updateMock).toHaveBeenCalledTimes(1)
+            await waitFor(() => expect(updateMock).toHaveBeenCalledTimes(1))
             const patchPayload = updateMock.mock.calls[0][0]
             expect(patchPayload).toEqual(
                 expect.objectContaining({
@@ -417,7 +417,13 @@ describe('Program indicator groups form tests', () => {
         })
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            // leaving the form shows the submit has completed
+            await waitFor(() => {
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            })
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

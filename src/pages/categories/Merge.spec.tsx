@@ -7,6 +7,7 @@ import TestComponentWithRouter, {
     CustomData,
 } from '../../testUtils/TestComponentWithRouter'
 import {
+    enterMatchingConfirmationCode,
     generateDefaultMergeTests,
     getMergeButton,
     pickFirstSource,
@@ -50,7 +51,7 @@ generateDefaultMergeTests({
     renderMerge,
 })
 
-describe('data element merge additional tests', () => {
+describe('category merge additional tests', () => {
     it('disables merge button and hides ConfirmationField when source and target have different category options', async () => {
         const cat1 = testCategory({
             categoryOptions: [{ id: 'co-1' }],
@@ -74,6 +75,11 @@ describe('data element merge additional tests', () => {
         await pickFirstSource(screen)
         await pickTarget(screen)
 
+        await waitFor(() =>
+            expect(
+                screen.queryByText(/merging cannot be undone/i)
+            ).not.toBeInTheDocument()
+        )
         await waitFor(() => expect(getMergeButton(screen)).toBeDisabled())
         await userEvent.hover(getMergeButton(screen))
         expect(
@@ -81,11 +87,6 @@ describe('data element merge additional tests', () => {
                 'Category options of source and target categories do not match'
             )
         ).toBeInTheDocument()
-        await waitFor(() =>
-            expect(
-                screen.queryByText(/merging cannot be undone/i)
-            ).not.toBeInTheDocument()
-        )
     })
     it('disables merge button and hides ConfirmationField when source and target have overlapping category combos', async () => {
         const cat1 = testCategory({
@@ -110,6 +111,11 @@ describe('data element merge additional tests', () => {
         await pickFirstSource(screen)
         await pickTarget(screen)
 
+        await waitFor(() =>
+            expect(
+                screen.queryByText(/merging cannot be undone/i)
+            ).not.toBeInTheDocument()
+        )
         await waitFor(() => expect(getMergeButton(screen)).toBeDisabled())
         await userEvent.hover(getMergeButton(screen))
         expect(
@@ -117,11 +123,6 @@ describe('data element merge additional tests', () => {
                 'Categories must have unique, non-overlapping category combos'
             )
         ).toBeInTheDocument()
-        await waitFor(() =>
-            expect(
-                screen.queryByText(/merging cannot be undone/i)
-            ).not.toBeInTheDocument()
-        )
     })
     it('prompts for confirmation when source and target have matching category options and category combos', async () => {
         const cat1 = testCategory({
@@ -153,6 +154,8 @@ describe('data element merge additional tests', () => {
                 screen.queryByText(/merging cannot be undone/i)
             ).toBeInTheDocument()
         )
+        await enterMatchingConfirmationCode(screen)
+        await waitFor(() => expect(getMergeButton(screen)).toBeEnabled())
     })
     it('prompts for confirmation when source and target have matching category options and some categories are missing category combos', async () => {
         const cat1 = testCategory({
@@ -184,5 +187,7 @@ describe('data element merge additional tests', () => {
                 screen.queryByText(/merging cannot be undone/i)
             ).toBeInTheDocument()
         )
+        await enterMatchingConfirmationCode(screen)
+        await waitFor(() => expect(getMergeButton(screen)).toBeEnabled())
     })
 })

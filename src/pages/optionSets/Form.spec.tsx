@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/optionSet.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
@@ -293,7 +293,12 @@ describe('Option sets form tests', () => {
         const renderForm = generateRenderer(
             { section, mockSchema },
             (routeOptions) => {
-                const optionSet = testOptionSet()
+                const optionSet = {
+                    ...testOptionSet(),
+                    name: faker.word.words(),
+                    code: faker.science.chemicalElement().symbol,
+                    options: [],
+                }
 
                 const attributes = [testCustomAttribute({ mandatory: false })]
                 const id = optionSet.id
@@ -306,6 +311,10 @@ describe('Option sets form tests', () => {
                             optionSets: (type: any, params: any) => {
                                 if (type === 'create') {
                                     createMock(params)
+                                    return { statusCode: 204 }
+                                }
+                                if (type === 'json-patch') {
+                                    updateMock(params)
                                     return { statusCode: 204 }
                                 }
                                 if (type === 'read') {
@@ -365,7 +374,12 @@ describe('Option sets form tests', () => {
         })
         it('should do nothing and return to the list view on success when no field is changed', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
     })

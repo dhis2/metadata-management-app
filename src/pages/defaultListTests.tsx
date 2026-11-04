@@ -1,5 +1,5 @@
 import { FetchError } from '@dhis2/app-runtime'
-import { render, waitFor, within } from '@testing-library/react'
+import { fireEvent, render, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import { getSchemaProperty } from '../components/sectionList/modelValue/ModelValue'
@@ -174,89 +174,98 @@ export const generateDefaultListItemsTests = ({
                 screen
             )
             await userEvent.click(pages[0])
-            expect(getElementsMock).toHaveBeenCalledTimes(2)
-            expect(getElementsMock).toHaveBeenLastCalledWith(
-                expect.objectContaining({
-                    params: expect.objectContaining({
-                        page: 1,
-                        pageSize: 5,
-                    }),
-                })
-            )
+            await waitFor(() => {
+                expect(getElementsMock).toHaveBeenCalledTimes(2)
+                expect(getElementsMock).toHaveBeenLastCalledWith(
+                    expect.objectContaining({
+                        params: expect.objectContaining({
+                            page: 1,
+                            pageSize: 5,
+                        }),
+                    })
+                )
+            })
             await userEvent.click(
-                screen.getByTestId('section-list-pagination-actions-page-next')
+                await screen.findByTestId(
+                    'section-list-pagination-actions-page-next'
+                )
             )
-            expect(getElementsMock).toHaveBeenLastCalledWith(
-                expect.objectContaining({
-                    params: expect.objectContaining({
-                        page: 2,
-                        pageSize: 5,
-                    }),
-                })
-            )
+            await waitFor(() => {
+                expect(getElementsMock).toHaveBeenLastCalledWith(
+                    expect.objectContaining({
+                        params: expect.objectContaining({
+                            page: 2,
+                            pageSize: 5,
+                        }),
+                    })
+                )
+            })
             await userEvent.click(
-                screen.getByTestId(
+                await screen.findByTestId(
                     'section-list-pagination-actions-page-previous'
                 )
             )
-            expect(getElementsMock).toHaveBeenLastCalledWith(
-                expect.objectContaining({
-                    params: expect.objectContaining({
-                        page: 1,
-                        pageSize: 5,
-                    }),
-                })
-            )
-        })
-        it('can sort the results by columns using a non case sensitive manner', async () => {
-            const { screen } = await renderList()
-
-            const tableHeaders = screen.getAllByTestId(
-                'dhis2-uicore-datatablecellhead'
-            )
-            const sectionName =
-                section.name as keyof typeof modelListViewsConfig
-            const configs = modelListViewsConfig[sectionName] as Record<
-                string,
-                any
-            >
-            const columnsToRender =
-                configs?.columns?.default ??
-                defaultModelViewConfig.columns.default
-            for (const [index, column] of columnsToRender.entries()) {
-                const columnDescriptor = toModelPropertyDescriptor(column)
-                const columnProperties = getSchemaProperty(
-                    mockSchema as Schema,
-                    columnDescriptor.path
+            await waitFor(() => {
+                expect(getElementsMock).toHaveBeenLastCalledWith(
+                    expect.objectContaining({
+                        params: expect.objectContaining({
+                            page: 1,
+                            pageSize: 5,
+                        }),
+                    })
                 )
-                if (columnProperties?.sortable) {
-                    await userEvent.click(
-                        within(tableHeaders[index + 1]).getByTestId(
-                            'dhis2-uicore-tableheadercellaction'
-                        )
-                    )
-                    expect(getElementsMock).toHaveBeenLastCalledWith(
-                        expect.objectContaining({
-                            params: expect.objectContaining({
-                                order: `${columnDescriptor.path}:iasc`,
-                            }),
-                        })
-                    )
-                    await userEvent.click(
-                        within(tableHeaders[index + 1]).getByTestId(
-                            'dhis2-uicore-tableheadercellaction'
-                        )
-                    )
-                    expect(getElementsMock).toHaveBeenLastCalledWith(
-                        expect.objectContaining({
-                            params: expect.objectContaining({
-                                order: `${columnDescriptor.path}:idesc`,
-                            }),
-                        })
-                    )
-                }
-            }
+            })
         })
+        const sortConfigs = modelListViewsConfig[
+            section.name as keyof typeof modelListViewsConfig
+        ] as Record<string, any>
+        const sortableColumns = (
+            (sortConfigs?.columns?.default ??
+                defaultModelViewConfig.columns.default) as ModelPropertyConfig[]
+        )
+            .map((column, index) => ({
+                index,
+                path: toModelPropertyDescriptor(column).path,
+            }))
+            .filter(
+                ({ path }) =>
+                    getSchemaProperty(mockSchema as Schema, path)?.sortable
+            )
+        // one test per column, as each column needs its own sequence of clicks
+        if (sortableColumns.length > 0) {
+            it.each(sortableColumns)(
+                'can sort the results by $path using a non case sensitive manner',
+                async ({ index, path }) => {
+                    const { screen } = await renderList()
+                    const sortButton = within(
+                        screen.getAllByTestId('dhis2-uicore-datatablecellhead')[
+                            index + 1
+                        ]
+                    ).getByTestId('dhis2-uicore-tableheadercellaction')
+
+                    await userEvent.click(sortButton)
+                    await waitFor(() => {
+                        expect(getElementsMock).toHaveBeenLastCalledWith(
+                            expect.objectContaining({
+                                params: expect.objectContaining({
+                                    order: `${path}:iasc`,
+                                }),
+                            })
+                        )
+                    })
+                    await userEvent.click(sortButton)
+                    await waitFor(() => {
+                        expect(getElementsMock).toHaveBeenLastCalledWith(
+                            expect.objectContaining({
+                                params: expect.objectContaining({
+                                    order: `${path}:idesc`,
+                                }),
+                            })
+                        )
+                    })
+                }
+            )
+        }
         it('should display error when an API call fails', async () => {
             const customTestData = {
                 [section.namePlural]: (type: any) => {
@@ -642,19 +651,22 @@ export const generateDefaultListRowActionsTests = ({
                             value: translation,
                         },
                     ]
-                    await userEvent.type(input, translation)
+                    // a single synchronous change event, so the loop needs no await
+                    fireEvent.change(input, { target: { value: translation } })
                 }
                 await userEvent.click(
                     within(translationModal).getByTestId(
                         'submit-translations-button'
                     )
                 )
-                expect(updateTranslationsMock).toHaveBeenCalledWith(
-                    expect.objectContaining({
-                        id: `${element.id}/translations`,
-                        data: { translations: expectedTranslations },
-                    })
-                )
+                await waitFor(() => {
+                    expect(updateTranslationsMock).toHaveBeenCalledWith(
+                        expect.objectContaining({
+                            id: `${element.id}/translations`,
+                            data: { translations: expectedTranslations },
+                        })
+                    )
+                })
             }
         })
     })
@@ -994,19 +1006,18 @@ export const generateDefaultListFiltersTests = ({
             const identifiableFilterInput = within(
                 within(filtersWrapper).getByTestId('input-search-name')
             ).getByRole('textbox')
-            await userEvent.type(identifiableFilterInput, filterText)
+            await uiActions.pasteIntoInput(identifiableFilterInput, filterText)
             await waitFor(() => {
-                expect(getElementsMock).toHaveBeenCalledTimes(2)
+                expect(getElementsMock).toHaveBeenLastCalledWith(
+                    expect.objectContaining({
+                        params: expect.objectContaining({
+                            filter: expect.arrayContaining([
+                                'identifiable:token:abc',
+                            ]),
+                        }),
+                    })
+                )
             })
-            expect(getElementsMock).toHaveBeenLastCalledWith(
-                expect.objectContaining({
-                    params: expect.objectContaining({
-                        filter: expect.arrayContaining([
-                            'identifiable:token:abc',
-                        ]),
-                    }),
-                })
-            )
         })
 
         it('can clear identifiable filter with clear all filters button', async () => {
@@ -1015,9 +1026,17 @@ export const generateDefaultListFiltersTests = ({
             const identifiableFilterInput = within(
                 within(filtersWrapper).getByTestId('input-search-name')
             ).getByRole('textbox')
-            await userEvent.type(identifiableFilterInput, 'lalala')
+            await uiActions.pasteIntoInput(identifiableFilterInput, 'lalala')
             await waitFor(() => {
-                expect(getElementsMock).toHaveBeenCalledTimes(2)
+                expect(getElementsMock).toHaveBeenLastCalledWith(
+                    expect.objectContaining({
+                        params: expect.objectContaining({
+                            filter: expect.arrayContaining([
+                                'identifiable:token:lalala',
+                            ]),
+                        }),
+                    })
+                )
             })
 
             const clearFiltersButton = within(filtersWrapper).getByTestId(
@@ -1026,18 +1045,16 @@ export const generateDefaultListFiltersTests = ({
             await userEvent.click(clearFiltersButton)
             await waitFor(() => {
                 expect(identifiableFilterInput).toHaveValue('')
+                expect(getElementsMock).toHaveBeenLastCalledWith(
+                    expect.objectContaining({
+                        params: expect.objectContaining({
+                            filter: expect.not.arrayContaining([
+                                'identifiable:token:lalala',
+                            ]),
+                        }),
+                    })
+                )
             })
-
-            expect(getElementsMock).toHaveBeenCalledTimes(3)
-            expect(getElementsMock).toHaveBeenLastCalledWith(
-                expect.objectContaining({
-                    params: expect.objectContaining({
-                        filter: expect.not.arrayContaining([
-                            'identifiable:token:abc',
-                        ]),
-                    }),
-                })
-            )
         })
         it('should display the default filters', async () => {
             const { screen } = await renderList()

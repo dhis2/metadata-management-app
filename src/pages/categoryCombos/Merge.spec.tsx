@@ -7,14 +7,13 @@ import TestComponentWithRouter, {
     CustomData,
 } from '../../testUtils/TestComponentWithRouter'
 import {
+    enterMatchingConfirmationCode,
     generateDefaultMergeTests,
     getMergeButton,
     pickFirstSource,
     pickTarget,
 } from '../defaultMergeTests'
 import { Component as Merge } from './Merge'
-
-jest.retryTimes(2, { logErrorsBeforeRetry: true })
 
 const renderMerge = async (
     customData: CustomData = {},
@@ -73,6 +72,12 @@ describe('category combination merge additional tests', () => {
         await pickFirstSource(screen)
         await pickTarget(screen)
 
+        // the confirmation field disappears once the categories have been compared
+        await waitFor(() =>
+            expect(
+                screen.queryByText(/merging cannot be undone/i)
+            ).not.toBeInTheDocument()
+        )
         await waitFor(() => expect(getMergeButton(screen)).toBeDisabled())
         await userEvent.hover(getMergeButton(screen))
         expect(
@@ -80,11 +85,6 @@ describe('category combination merge additional tests', () => {
                 'Categories of source and target category combinations do not match'
             )
         ).toBeInTheDocument()
-        await waitFor(() =>
-            expect(
-                screen.queryByText(/merging cannot be undone/i)
-            ).not.toBeInTheDocument()
-        )
     })
 
     it('prompts for confirmation when source and target categories match', async () => {
@@ -109,5 +109,12 @@ describe('category combination merge additional tests', () => {
                 screen.queryByText(/merging cannot be undone/i)
             ).toBeInTheDocument()
         )
+        // the field shows before the categories are compared, so also check
+        // that the merge becomes possible, which a mismatch would prevent
+        await enterMatchingConfirmationCode(screen)
+        await waitFor(() => expect(getMergeButton(screen)).toBeEnabled())
+        expect(
+            screen.getByText(/merging cannot be undone/i)
+        ).toBeInTheDocument()
     })
 })

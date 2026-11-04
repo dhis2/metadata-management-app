@@ -229,12 +229,14 @@ describe('Program Rule Variable form tests', () => {
                 const invalidName = 'Test@Name#123'
                 await uiActions.enterName(invalidName, screen)
                 await uiActions.submitForm(screen)
-                expect(createMock).not.toHaveBeenCalled()
-                uiAssertions.expectFieldToHaveError(
-                    'formfields-name',
-                    'Name can only contain letters, numbers, space, dash, dot and underscore',
-                    screen
+                await waitFor(() =>
+                    uiAssertions.expectFieldToHaveError(
+                        'formfields-name',
+                        'Name can only contain letters, numbers, space, dash, dot and underscore',
+                        screen
+                    )
                 )
+                expect(createMock).not.toHaveBeenCalled()
             })
 
             it('should show an error if name contains forbidden word "and"', async () => {
@@ -242,12 +244,14 @@ describe('Program Rule Variable form tests', () => {
                 const forbiddenName = 'Test and Variable'
                 await uiActions.enterName(forbiddenName, screen)
                 await uiActions.submitForm(screen)
-                expect(createMock).not.toHaveBeenCalled()
-                uiAssertions.expectFieldToHaveError(
-                    'formfields-name',
-                    'Program rule variable name contains forbidden words: and, or, not.',
-                    screen
+                await waitFor(() =>
+                    uiAssertions.expectFieldToHaveError(
+                        'formfields-name',
+                        'Program rule variable name contains forbidden words: and, or, not.',
+                        screen
+                    )
                 )
+                expect(createMock).not.toHaveBeenCalled()
             })
 
             it('should show an error if name contains forbidden word "or"', async () => {
@@ -255,12 +259,14 @@ describe('Program Rule Variable form tests', () => {
                 const forbiddenName = 'Test or Variable'
                 await uiActions.enterName(forbiddenName, screen)
                 await uiActions.submitForm(screen)
-                expect(createMock).not.toHaveBeenCalled()
-                uiAssertions.expectFieldToHaveError(
-                    'formfields-name',
-                    'Program rule variable name contains forbidden words: and, or, not.',
-                    screen
+                await waitFor(() =>
+                    uiAssertions.expectFieldToHaveError(
+                        'formfields-name',
+                        'Program rule variable name contains forbidden words: and, or, not.',
+                        screen
+                    )
                 )
+                expect(createMock).not.toHaveBeenCalled()
             })
 
             it('should show an error if name contains forbidden word "not"', async () => {
@@ -268,12 +274,14 @@ describe('Program Rule Variable form tests', () => {
                 const forbiddenName = 'Test not Variable'
                 await uiActions.enterName(forbiddenName, screen)
                 await uiActions.submitForm(screen)
-                expect(createMock).not.toHaveBeenCalled()
-                uiAssertions.expectFieldToHaveError(
-                    'formfields-name',
-                    'Program rule variable name contains forbidden words: and, or, not.',
-                    screen
+                await waitFor(() =>
+                    uiAssertions.expectFieldToHaveError(
+                        'formfields-name',
+                        'Program rule variable name contains forbidden words: and, or, not.',
+                        screen
+                    )
                 )
+                expect(createMock).not.toHaveBeenCalled()
             })
 
             it('should show an error if name field is a duplicate', async () => {
@@ -287,11 +295,13 @@ describe('Program Rule Variable form tests', () => {
                 await userEvent.click(
                     screen.getByTestId('formfields-name-label')
                 )
-                uiAssertions.expectFieldToHaveError(
-                    'formfields-name',
-                    'A variable with this name already exists in this program.',
-                    screen,
-                    { skipClassCheck: true }
+                await waitFor(() =>
+                    uiAssertions.expectFieldToHaveError(
+                        'formfields-name',
+                        'A variable with this name already exists in this program.',
+                        screen,
+                        { skipClassCheck: true }
+                    )
                 )
                 await uiActions.submitForm(screen)
                 expect(createMock).not.toHaveBeenCalled()
@@ -302,18 +312,20 @@ describe('Program Rule Variable form tests', () => {
             it('should not submit when required values are missing', async () => {
                 const { screen } = await renderForm()
                 await uiActions.submitForm(screen)
-                expect(createMock).not.toHaveBeenCalled()
 
-                uiAssertions.expectFieldToHaveError(
-                    'formfields-name',
-                    'Required',
-                    screen
-                )
-                uiAssertions.expectFieldToHaveError(
-                    'program-field',
-                    'Required',
-                    screen
-                )
+                await waitFor(() => {
+                    uiAssertions.expectFieldToHaveError(
+                        'formfields-name',
+                        'Required',
+                        screen
+                    )
+                    uiAssertions.expectFieldToHaveError(
+                        'program-field',
+                        'Required',
+                        screen
+                    )
+                })
+                expect(createMock).not.toHaveBeenCalled()
             })
         })
 
@@ -325,23 +337,25 @@ describe('Program Rule Variable form tests', () => {
                     .spyOn(window, 'open')
                     .mockImplementation(() => null)
 
-                // Flush the useEffect so LINK_ONLY_SECTIONS check runs and NewItemForm stays undefined
-                await act(async () => {})
+                try {
+                    // Flush the useEffect so LINK_ONLY_SECTIONS check runs and NewItemForm stays undefined
+                    await act(async () => {})
 
-                const programField = screen.getByTestId('program-field')
-                const addNewButton =
-                    within(programField).getAllByRole('button')[1]
-                await userEvent.click(addNewButton)
+                    const programField = screen.getByTestId('program-field')
+                    const addNewButton =
+                        within(programField).getAllByRole('button')[1]
+                    await userEvent.click(addNewButton)
 
-                expect(windowOpenSpy).toHaveBeenCalledWith(
-                    expect.stringContaining('/programs/new'),
-                    '_blank'
-                )
-                expect(
-                    screen.queryByText('Add new Program')
-                ).not.toBeInTheDocument()
-
-                windowOpenSpy.mockRestore()
+                    expect(windowOpenSpy).toHaveBeenCalledWith(
+                        expect.stringContaining('/programs/new'),
+                        '_blank'
+                    )
+                    expect(
+                        screen.queryByText('Add new Program')
+                    ).not.toBeInTheDocument()
+                } finally {
+                    windowOpenSpy.mockRestore()
+                }
             })
         })
     })
@@ -746,7 +760,9 @@ describe('Program Rule Variable form tests', () => {
                 const expectedCall = expect.objectContaining({
                     data: expect.objectContaining(expectedData),
                 })
-                expect(createMock).toHaveBeenCalledWith(expectedCall)
+                await waitFor(() =>
+                    expect(createMock).toHaveBeenCalledWith(expectedCall)
+                )
             })
 
             it('should submit form with CALCULATED_VALUE source type', async () => {
@@ -780,7 +796,9 @@ describe('Program Rule Variable form tests', () => {
                 const expectedCall = expect.objectContaining({
                     data: expect.objectContaining(expectedData),
                 })
-                expect(createMock).toHaveBeenCalledWith(expectedCall)
+                await waitFor(() =>
+                    expect(createMock).toHaveBeenCalledWith(expectedCall)
+                )
             })
 
             it('should submit form with TEI_ATTRIBUTE source type', async () => {
@@ -831,7 +849,9 @@ describe('Program Rule Variable form tests', () => {
                 const expectedCall = expect.objectContaining({
                     data: expect.objectContaining(expectedData),
                 })
-                expect(createMock).toHaveBeenCalledWith(expectedCall)
+                await waitFor(() =>
+                    expect(createMock).toHaveBeenCalledWith(expectedCall)
+                )
             })
         })
 

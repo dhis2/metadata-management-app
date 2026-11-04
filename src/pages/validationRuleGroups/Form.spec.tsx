@@ -1,6 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { render, within } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { render, waitFor, within } from '@testing-library/react'
 import React from 'react'
 import schemaMock from '../../__mocks__/schema/validationRuleGroups.json'
 import { FOOTER_ID } from '../../app/layout/Layout'
@@ -240,30 +239,32 @@ describe('Validation Rule Groups form tests', () => {
             const attributeInput = within(
                 screen.getByTestId(`attribute-${attributes[0].id}`)
             ).getByRole('textbox') as HTMLInputElement
-            await userEvent.type(attributeInput, anAttribute)
+            await uiActions.pasteIntoInput(attributeInput, anAttribute)
 
             await uiActions.submitForm(screen)
 
-            expect(createMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    data: expect.objectContaining({
-                        name: aName,
-                        code: aCode,
-                        validationRules: [
-                            expect.objectContaining({
-                                id: validationRules[1].id,
-                            }),
-                        ],
-                        attributeValues: [
-                            {
-                                attribute: expect.objectContaining({
-                                    id: attributes[0].id,
+            await waitFor(() =>
+                expect(createMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        data: expect.objectContaining({
+                            name: aName,
+                            code: aCode,
+                            validationRules: [
+                                expect.objectContaining({
+                                    id: validationRules[1].id,
                                 }),
-                                value: anAttribute,
-                            },
-                        ],
-                    }),
-                })
+                            ],
+                            attributeValues: [
+                                {
+                                    attribute: expect.objectContaining({
+                                        id: attributes[0].id,
+                                    }),
+                                    value: anAttribute,
+                                },
+                            ],
+                        }),
+                    })
+                )
             )
         })
 
@@ -302,7 +303,7 @@ describe('Validation Rule Groups form tests', () => {
                                 pager: {},
                             }),
                             validationRuleGroups: (type: any, params: any) => {
-                                if (type === 'update') {
+                                if (type === 'json-patch') {
                                     updateMock(params)
                                     return { statusCode: 204 }
                                 }
@@ -347,7 +348,12 @@ describe('Validation Rule Groups form tests', () => {
 
         it('does not submit when no changes are made', async () => {
             const { screen } = await renderForm()
-            await uiActions.submitForm(screen)
+            await uiActions.submitAndCloseForm(screen)
+            await waitFor(() =>
+                expect(
+                    screen.queryByTestId('formfields-name')
+                ).not.toBeInTheDocument()
+            )
             expect(updateMock).not.toHaveBeenCalled()
         })
 

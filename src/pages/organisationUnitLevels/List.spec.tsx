@@ -2,6 +2,7 @@ import { FetchError } from '@dhis2/app-runtime'
 import { faker } from '@faker-js/faker'
 import {
     render,
+    waitFor,
     waitForElementToBeRemoved,
     within,
 } from '@testing-library/react'
@@ -28,7 +29,7 @@ import { Component } from './List'
 describe('Organisation unit list tests', () => {
     const originalWarn = console.warn
     jest.spyOn(console, 'warn').mockImplementation((value) => {
-        if (!value.match(/No server timezone/)) {
+        if (typeof value === 'string' && !value.match(/No server timezone/)) {
             originalWarn(value)
         }
     })
@@ -93,7 +94,10 @@ describe('Organisation unit list tests', () => {
         elements.forEach((element, index) => {
             expect(tableRows[index]).toHaveTextContent(element.displayName)
             if (element.offlineLevels) {
-                expect(tableRows[index]).toHaveTextContent(
+                const offlineLevelsCell = within(
+                    tableRows[index]
+                ).getAllByTestId('dhis2-uicore-datatablecell')[2]
+                expect(offlineLevelsCell).toHaveTextContent(
                     element.offlineLevels.toString()
                 )
             }
@@ -118,7 +122,7 @@ describe('Organisation unit list tests', () => {
             within(nameCell).getByTestId('dhis2-uicore-input')
         ).getByRole('textbox')
         await userEvent.clear(nameInput)
-        await userEvent.type(nameInput, newName)
+        await uiActions.pasteIntoInput(nameInput, newName)
         const availableOfflineLevels = await uiActions.openSingleSelect(
             within(orgUnitLevel).getByTestId('dhis2-uicore-singleselect'),
             screen
@@ -137,7 +141,9 @@ describe('Organisation unit list tests', () => {
             name: newName,
             offlineLevels: 3,
         }
-        expect(updateOrgUnitLevelsMock).toHaveBeenCalledTimes(1)
+        await waitFor(() =>
+            expect(updateOrgUnitLevelsMock).toHaveBeenCalledTimes(1)
+        )
         expect(updateOrgUnitLevelsMock).toHaveBeenCalledWith(
             expect.objectContaining({
                 data: {

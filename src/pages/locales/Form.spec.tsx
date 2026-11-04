@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import React from 'react'
 import { FOOTER_ID } from '../../app/layout/Layout'
 import { SECTIONS_MAP } from '../../lib'
@@ -74,12 +74,14 @@ describe('Locales form tests', () => {
         it('should not submit when required values are missing', async () => {
             const { screen } = await renderForm()
             await uiActions.submitAndCloseForm(screen)
-            expect(createMock).not.toHaveBeenCalled()
-            uiAssertions.expectFieldToHaveError(
-                'formfields-language',
-                'Required',
-                screen
+            await waitFor(() =>
+                uiAssertions.expectFieldToHaveError(
+                    'formfields-language',
+                    'Required',
+                    screen
+                )
             )
+            expect(createMock).not.toHaveBeenCalled()
             uiAssertions.expectFieldToHaveError(
                 'formfields-country',
                 'Required',
@@ -131,7 +133,7 @@ describe('Locales form tests', () => {
                 screen
             )
             await uiActions.submitAndCloseForm(screen)
-            expect(createMock).toHaveBeenCalledTimes(1)
+            await waitFor(() => expect(createMock).toHaveBeenCalledTimes(1))
             expect(createMock).toHaveBeenLastCalledWith(
                 expect.objectContaining({
                     id: undefined,

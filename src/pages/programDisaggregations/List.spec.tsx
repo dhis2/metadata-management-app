@@ -50,6 +50,9 @@ const renderList = async ({
 }
 
 describe('Program Indicators list', () => {
+    beforeEach(() => {
+        deleteOrgUnitMock.mockClear()
+    })
     it('should show every program indicator', async () => {
         const programsWithMapping1 = testProgram({
             categoryMappings: [testCategoryMapping()],
@@ -190,12 +193,12 @@ describe('Program Indicators list', () => {
         expect(programs[0]).toHaveTextContent(
             programWithoutMapping1.displayName
         )
-        expect(programs[0]).not.toBeDisabled()
+        expect(programs[0]).not.toHaveClass('disabled')
         expect(programs[1]).toHaveTextContent(programWithMapping.displayName)
-        expect(programs[1]).not.toBeDisabled()
+        expect(programs[1]).toHaveClass('disabled')
         expect(programs[2]).toHaveTextContent(
             programWithoutMapping2.displayName
         )
-        expect(programs[2]).not.toBeDisabled()
+        expect(programs[2]).not.toHaveClass('disabled')
     })
 })
