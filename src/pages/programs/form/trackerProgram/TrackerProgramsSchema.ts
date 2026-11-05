@@ -23,7 +23,7 @@ const trackerProgramBaseSchema = z.object({
         .number()
         .int(i18n.t('Only integers are allowed'))
         .optional(),
-    featureType: z.enum(['NONE', 'POINT', 'POLYGON']).optional(),
+    featureType: z.enum(['NONE', 'POINT', 'POLYGON']).default('NONE'),
     categoryCombo: modelReference.default({ ...DEFAULT_CATEGORY_COMBO }),
     enrollmentCategoryCombo: modelReference.default({
         ...DEFAULT_CATEGORY_COMBO,

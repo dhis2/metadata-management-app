@@ -19,7 +19,10 @@ export const EventProgramFormDescriptor = {
                     label: i18n.t('Visual configuration'),
                 },
                 { name: 'version', label: i18n.t('Version') },
-                { name: 'featureType', label: i18n.t('Feature type') },
+                {
+                    name: 'programStages[0].featureType',
+                    label: i18n.t('Feature type'),
+                },
                 { name: 'relatedProgram', label: i18n.t('Related program') },
                 {
                     name: 'categoryCombo',
