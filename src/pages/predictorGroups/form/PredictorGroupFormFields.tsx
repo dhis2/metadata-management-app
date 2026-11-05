@@ -54,6 +54,7 @@ export const PredictorGroupFormFields = () => {
                         transferSection={SECTIONS_MAP.predictor}
                         filterUnassignedTo="predictorGroups"
                         maxSelections={Infinity}
+                        dataTest="predictors-transfer"
                     />
                 </StandardFormField>
             </StandardFormSection>
