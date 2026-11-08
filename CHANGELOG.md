@@ -1,3 +1,10 @@
+## [0.184.4](https://github.com/dhis2/metadata-management-app/compare/v0.184.3...v0.184.4) (2026-11-08)
+
+
+### Bug Fixes
+
+* [DHIS2-22279] Use location type on program stage for event programs ([#1055](https://github.com/dhis2/metadata-management-app/issues/1055)) ([b336313](https://github.com/dhis2/metadata-management-app/commit/b336313a6281ce7bdf1df054e1e5fb1c9b794c72))
+
 ## [0.184.3](https://github.com/dhis2/metadata-management-app/compare/v0.184.2...v0.184.3) (2026-11-04)
 
 
