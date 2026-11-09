@@ -1,3 +1,10 @@
+# [0.185.0](https://github.com/dhis2/metadata-management-app/compare/v0.184.4...v0.185.0) (2026-11-09)
+
+
+### Features
+
+* delete error details modal ([#1039](https://github.com/dhis2/metadata-management-app/issues/1039)) ([fb23007](https://github.com/dhis2/metadata-management-app/commit/fb230077d850fd3f6b264784f8adeb4eddafc815))
+
 ## [0.184.4](https://github.com/dhis2/metadata-management-app/compare/v0.184.3...v0.184.4) (2026-11-08)
 
 
