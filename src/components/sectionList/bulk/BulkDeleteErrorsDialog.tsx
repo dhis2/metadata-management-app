@@ -14,9 +14,13 @@ import {
     ModalTitle,
     Tooltip,
 } from '@dhis2/ui'
+import { useQuery } from '@tanstack/react-query'
 import React, { useId, useState } from 'react'
-import { Schema, useModelMultiSelectQuery } from '../../../lib'
-import { PartialLoadedDisplayableModel } from '../../../types/models'
+import { Schema, useBoundResourceQueryFn } from '../../../lib'
+import {
+    PagedResponse,
+    PartialLoadedDisplayableModel,
+} from '../../../types/models'
 import { LinkButton } from '../../LinkButton'
 import css from './Bulk.module.css'
 import {
@@ -63,19 +67,32 @@ export const BulkDeleteErrorsDialog = ({
         (result): result is FailedResult => result.status === 'failed'
     )
 
-    const { selected } =
-        useModelMultiSelectQuery<PartialLoadedDisplayableModel>({
-            query: {
+    const failedIds = failed.map(({ id }) => id)
+    const queryFn = useBoundResourceQueryFn()
+    const { data: displayNamesData } = useQuery({
+        queryKey: [
+            {
                 resource: schema.plural,
-                params: { fields: ['id', 'displayName'] },
+                params: {
+                    fields: ['id', 'displayName'],
+                    filter: [`id:in:[${failedIds.join(',')}]`],
+                    paging: false,
+                },
             },
-            selected: failed.map(({ id }) => ({ id })),
-        })
+        ] as const,
+        queryFn: queryFn<PagedResponse<PartialLoadedDisplayableModel, string>>,
+        enabled: failedIds.length > 0,
+    })
+    const displayNames = new Map(
+        displayNamesData?.[schema.plural]?.map((model) => [
+            model.id,
+            model.displayName,
+        ])
+    )
 
     const failedItems: FailedItem[] = failed.map(({ id, error }) => ({
         id,
-        displayName:
-            selected.find((model) => model.id === id)?.displayName ?? id,
+        displayName: displayNames.get(id) ?? id,
         summary: getBulkDeleteErrorSummary(error),
         details: getBulkDeleteErrorDetails(error),
     }))
@@ -92,7 +109,11 @@ export const BulkDeleteErrorsDialog = ({
     }
 
     return (
-        <Modal large onClose={onClose} dataTest="bulk-delete-errors-dialog">
+        <Modal
+            large
+            onClose={retrying ? undefined : onClose}
+            dataTest="bulk-delete-errors-dialog"
+        >
             <ModalTitle>
                 {i18n.t(
                     '{{failedCount}} of {{total}} items could not be deleted',
@@ -121,7 +142,7 @@ export const BulkDeleteErrorsDialog = ({
                             secondary
                             icon={<IconSync16 />}
                             loading={retrying}
-                            onClick={() => onRetry(failed.map(({ id }) => id))}
+                            onClick={() => onRetry(failedIds)}
                             dataTest="bulk-delete-errors-retry-button"
                         >
                             {i18n.t('Retry')}
