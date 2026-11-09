@@ -1,13 +1,17 @@
 import { useDataEngine } from '@dhis2/app-runtime'
 import { useMutation, UseMutationOptions } from '@tanstack/react-query'
-import { ImportSummary } from '../../../types'
+import { ApiErrorReport, parseErrorResponse } from '../../../lib'
 
 type MutationFnArgs = {
     ids: string[]
 }
 
+export type BulkDeleteResult =
+    | { id: string; status: 'deleted' }
+    | { id: string; status: 'failed'; error: ApiErrorReport }
+
 type Options = Omit<
-    UseMutationOptions<ImportSummary[], unknown, MutationFnArgs>,
+    UseMutationOptions<BulkDeleteResult[], unknown, MutationFnArgs>,
     'mutationFn'
 >
 
@@ -21,14 +25,22 @@ export function useBulkDeleteMutation(
         ...options,
         mutationFn: ({ ids }: MutationFnArgs) =>
             Promise.all(
-                ids.map(
-                    (id) =>
-                        engine.mutate({
+                ids.map(async (id): Promise<BulkDeleteResult> => {
+                    try {
+                        await engine.mutate({
                             resource: schemaResource,
                             id,
                             type: 'delete',
-                        }) as Promise<ImportSummary>
-                )
+                        })
+                        return { id, status: 'deleted' }
+                    } catch (error) {
+                        return {
+                            id,
+                            status: 'failed',
+                            error: parseErrorResponse(error),
+                        }
+                    }
+                })
             ),
     })
 }

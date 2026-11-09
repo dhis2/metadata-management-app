@@ -8,15 +8,27 @@ import {
     ModalContent,
     ModalTitle,
 } from '@dhis2/ui'
-import React from 'react'
+import React, { useState } from 'react'
 import { useSchemaFromHandle } from '../../../lib'
-import { useBulkDeleteMutation } from './useBulkDeleteMutation'
+import { BulkDeleteErrorsDialog } from './BulkDeleteErrorsDialog'
+import {
+    BulkDeleteResult,
+    useBulkDeleteMutation,
+} from './useBulkDeleteMutation'
 
 type BulkDeleteDialogProps = {
     selectedModels: Set<string>
     onClose: () => void
     onDeleteSuccess: () => void
 }
+
+const mergeRetryResults = (
+    previous: BulkDeleteResult[],
+    retried: BulkDeleteResult[]
+) =>
+    previous.map(
+        (result) => retried.find(({ id }) => id === result.id) ?? result
+    )
 
 export const BulkDeleteDialog = ({
     selectedModels,
@@ -25,28 +37,46 @@ export const BulkDeleteDialog = ({
 }: BulkDeleteDialogProps) => {
     const schema = useSchemaFromHandle()
     const number = selectedModels.size
+    const [results, setResults] = useState<BulkDeleteResult[]>()
 
     const { show: showSuccessAlert } = useAlert(
         i18n.t('Successfully deleted {{number}} items', { number }),
         { success: true }
     )
-    const { show: showErrorAlert } = useAlert(
-        i18n.t('Some items could not be deleted'),
-        { critical: true }
-    )
+
+    const closeAfterDelete = () => {
+        onDeleteSuccess()
+        onClose()
+    }
 
     const mutation = useBulkDeleteMutation(schema.plural, {
-        onSuccess: () => {
-            showSuccessAlert()
-            onDeleteSuccess()
-            onClose()
-        },
-        onError: () => {
-            showErrorAlert()
-            onDeleteSuccess()
-            onClose()
+        onSuccess: (latestResults) => {
+            const allResults = results
+                ? mergeRetryResults(results, latestResults)
+                : latestResults
+            const allDeleted = allResults.every(
+                ({ status }) => status === 'deleted'
+            )
+            if (allDeleted) {
+                showSuccessAlert()
+                closeAfterDelete()
+            } else {
+                setResults(allResults)
+            }
         },
     })
+
+    if (results) {
+        return (
+            <BulkDeleteErrorsDialog
+                schema={schema}
+                results={results}
+                retrying={mutation.isLoading}
+                onRetry={(ids) => mutation.mutate({ ids })}
+                onClose={closeAfterDelete}
+            />
+        )
+    }
 
     return (
         <Modal onClose={onClose} dataTest="bulk-delete-dialog">
