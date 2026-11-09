@@ -1,0 +1,18 @@
+# d2-style uses this file instead of .gitignore when it exists, so it repeats
+# the .gitignore entries below.
+# DHIS2 Platform
+node_modules
+.d2
+src/locales
+build
+cypress.env.json
+.vscode
+.env.development.local
+.env.test.local
+.env.production.local
+cypress/screenshots/*
+coverage/
+cypress.env.json
+
+# User docs are formatted by the docs team, not checked here
+docs/

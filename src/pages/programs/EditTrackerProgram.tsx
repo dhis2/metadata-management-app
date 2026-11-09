@@ -46,6 +46,7 @@ const PLURAL_LABEL_FIELD_FILTERS = [
     'notesLabel',
     'trackedEntityAttributesLabel',
 ] as const
+const ENABLE_CHANGE_LOG_FIELD_FILTERS = ['enableChangeLog'] as const
 
 const ENROLLMENT_AOC_FIELD_FILTERS = [
     'enrollmentCategoryCombo[id,displayName]',
@@ -100,6 +101,7 @@ const fieldFilters = [
     'minAttributesRequiredToSearch',
     'maxTeiCountToReturn',
     'accessLevel',
+    ...ENABLE_CHANGE_LOG_FIELD_FILTERS,
 ] as const
 
 export type ProgramsFromFilters = PickWithFieldFilters<
@@ -284,14 +286,20 @@ export const EditTrackerProgram = () => {
     const showPluralLabels = useFeatureAvailable(
         FEATURES.customTerminologyPlurals
     )
+    const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
     const showEnrollmentAOC = useFeatureAvailable(FEATURES.enrollmentAOC)
 
     const requestedFields = useMemo(() => {
         const pluralFilters: readonly string[] = PLURAL_LABEL_FIELD_FILTERS
+        const enableChangeLogFilters: readonly string[] =
+            ENABLE_CHANGE_LOG_FIELD_FILTERS
         const enrollmentAOCFilters: readonly string[] =
             ENROLLMENT_AOC_FIELD_FILTERS
         return fieldFilters.filter((f) => {
             if (!showPluralLabels && pluralFilters.includes(f)) {
+                return false
+            }
+            if (!showEnableChangeLog && enableChangeLogFilters.includes(f)) {
                 return false
             }
             if (!showEnrollmentAOC && enrollmentAOCFilters.includes(f)) {
@@ -299,7 +307,7 @@ export const EditTrackerProgram = () => {
             }
             return true
         })
-    }, [showPluralLabels, showEnrollmentAOC])
+    }, [showPluralLabels, showEnableChangeLog, showEnrollmentAOC])
 
     const program = useQuery({
         queryFn: queryFn<ProgramValues>,

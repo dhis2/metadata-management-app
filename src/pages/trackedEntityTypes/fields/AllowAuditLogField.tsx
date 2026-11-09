@@ -10,7 +10,7 @@ export function AllowAuditLogField() {
             type="checkbox"
             name="allowAuditLog"
             dataTest="formfields-allowAuditLog"
-            label={i18n.t('Enable tracked entity instance audit log')}
+            label={i18n.t('Record access to tracked entities')}
             validateFields={[]}
         />
     )

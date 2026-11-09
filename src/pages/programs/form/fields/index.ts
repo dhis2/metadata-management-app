@@ -1,4 +1,5 @@
 export { CompleteEventsExpiryDaysField } from './CompleteEventsExpiryDaysField'
 export { DisplayFrontPageListField } from './DisplayFrontPageListField'
+export { EnableChangeLogField } from './EnableChangeLogField'
 export { ExpiryDaysWithPeriodTypeField } from './ExpiryDaysWithPeriodTypeField'
 export { OpenDaysAfterCoEndDateField } from './OpenDaysAfterCoEndDateField'
