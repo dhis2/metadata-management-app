@@ -1,3 +1,32 @@
+# [0.185.0](https://github.com/dhis2/metadata-management-app/compare/v0.184.4...v0.185.0) (2026-11-09)
+
+
+### Features
+
+* delete error details modal ([#1039](https://github.com/dhis2/metadata-management-app/issues/1039)) ([fb23007](https://github.com/dhis2/metadata-management-app/commit/fb230077d850fd3f6b264784f8adeb4eddafc815))
+
+## [0.184.4](https://github.com/dhis2/metadata-management-app/compare/v0.184.3...v0.184.4) (2026-11-08)
+
+
+### Bug Fixes
+
+* [DHIS2-22279] Use location type on program stage for event programs ([#1055](https://github.com/dhis2/metadata-management-app/issues/1055)) ([b336313](https://github.com/dhis2/metadata-management-app/commit/b336313a6281ce7bdf1df054e1e5fb1c9b794c72))
+
+## [0.184.3](https://github.com/dhis2/metadata-management-app/compare/v0.184.2...v0.184.3) (2026-11-04)
+
+
+### Bug Fixes
+
+* default pi boundaries [DHIS2-22231] ([#1054](https://github.com/dhis2/metadata-management-app/issues/1054)) ([608867f](https://github.com/dhis2/metadata-management-app/commit/608867f5952a07beccf274e7534fff6e795b7932))
+
+## [0.184.2](https://github.com/dhis2/metadata-management-app/compare/v0.184.1...v0.184.2) (2026-11-04)
+
+
+### Bug Fixes
+
+* docs lint in Metadata Management user guide ([#1058](https://github.com/dhis2/metadata-management-app/issues/1058)) ([cf1e26e](https://github.com/dhis2/metadata-management-app/commit/cf1e26e4734e1dbe40f77aab32d0852318f93186))
+* organisation unit saving [DHIS2-22216] ([#1049](https://github.com/dhis2/metadata-management-app/issues/1049)) ([d1ca2c1](https://github.com/dhis2/metadata-management-app/commit/d1ca2c1389e73982148d80a5c9210a0d7b32005b))
+
 ## [0.184.1](https://github.com/dhis2/metadata-management-app/compare/v0.184.0...v0.184.1) (2026-10-23)
 
 
