@@ -6,7 +6,6 @@ import {
     ATTRIBUTE_VALUES_FIELD_FILTERS,
     DEFAULT_FIELD_FILTERS,
     SECTIONS_MAP,
-    useOnSubmitEdit,
 } from '../../lib'
 import { useBoundResourceQueryFn } from '../../lib/query/useBoundQueryFn'
 import {
@@ -15,6 +14,7 @@ import {
 } from '../../types/generated'
 import { validate } from './form'
 import { OrganisationalUnitGroupFormFields } from './form/OrganisationalUnitGroupFormFields'
+import { useOnSubmitOrganisationUnitGroup } from './form/useOnSubmitOrganisationUnitGroup'
 
 const fieldFilters = [
     ...DEFAULT_FIELD_FILTERS,
@@ -52,7 +52,7 @@ export const Component = () => {
 
     return (
         <FormBase
-            onSubmit={useOnSubmitEdit({ section, modelId })}
+            onSubmit={useOnSubmitOrganisationUnitGroup({ section, modelId })}
             initialValues={organisationUnitGroupQuery.data}
             validate={validate}
         >
