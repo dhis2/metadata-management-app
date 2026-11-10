@@ -64,3 +64,8 @@
 .cardActions a {
     text-decoration: none;
 }
+
+.learnMoreIconLink {
+    margin-left: auto;
+    place-self: center;
+}
