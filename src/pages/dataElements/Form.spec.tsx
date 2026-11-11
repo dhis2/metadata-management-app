@@ -328,7 +328,13 @@ describe('Data elements form tests', () => {
             const { screen } = await renderForm()
             const aName = faker.animal.bird()
             const aShortName = faker.person.firstName()
-            const aValueType = randomValueIn([...DISABLING_VALUE_TYPES])
+            // MULTI_TEXT needs an option set and TRACKER_ASSOCIATE is not in the mocked schema, so neither is selectable here
+            const aValueType = randomValueIn(
+                DISABLING_VALUE_TYPES.filter(
+                    (type) =>
+                        type !== 'MULTI_TEXT' && type !== 'TRACKER_ASSOCIATE'
+                )
+            )
 
             await uiActions.enterName(aName, screen)
             await uiActions.enterInputFieldValue(
