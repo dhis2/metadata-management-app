@@ -990,19 +990,19 @@ msgid ""
 msgstr "您确定要删除这些{{number}} 项目吗？此操作无法撤销。"
 
 msgid "Errors copied to clipboard"
-msgstr ""
+msgstr "已复制到剪贴板的错误"
 
 msgid "{{failedCount}} of {{total}} items could not be deleted"
-msgstr ""
+msgstr "{{failedCount}} 无法删除{{total}} 项"
 
 msgid "Copy as list"
-msgstr ""
+msgstr "复制为列表"
 
 msgid "Close"
 msgstr "关闭"
 
 msgid "Open in a new tab"
-msgstr ""
+msgstr "在新标签页中打开"
 
 msgid "Open"
 msgstr "打开"
@@ -1041,16 +1041,16 @@ msgid "Update sharing"
 msgstr "更新共享"
 
 msgid "You do not have permission to delete this item"
-msgstr ""
+msgstr "您无权删除此项目"
 
 msgid "Not found, it may already have been deleted"
-msgstr ""
+msgstr "未找到，可能已被删除"
 
 msgid "In use by other metadata or data"
-msgstr ""
+msgstr "已被其他元数据或数据使用"
 
 msgid "Cannot be deleted"
-msgstr ""
+msgstr "无法删除"
 
 msgid "Created by"
 msgstr "创建人"

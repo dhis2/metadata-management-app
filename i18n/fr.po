@@ -5843,10 +5843,10 @@ msgid "Option to hide is required"
 msgstr "L'option permettant de masquer est requise"
 
 msgid "Key label is required"
-msgstr ""
+msgstr "L'étiquette clé est requise"
 
 msgid "Message template is required"
-msgstr ""
+msgstr "Un modèle de message est requis"
 
 msgid "Option group is required"
 msgstr ""
