@@ -44,7 +44,7 @@ export function AggregationTypeFieldByValueType({
 }: {
     readonly section?: Section
 }) {
-    const { change } = useForm()
+    const { change, blur } = useForm()
     const fieldName = 'aggregationType'
     const valueTypeField = useField('valueType')
     const aggregationTypeField = useField(fieldName)
@@ -55,10 +55,11 @@ export function AggregationTypeFieldByValueType({
 
     useEffect(() => {
         const currentValue = aggregationTypeField.input.value
-        if (disabled && currentValue && currentValue !== 'NONE') {
+        if (disabled && currentValue !== 'NONE') {
             change(fieldName, 'NONE')
+            blur(fieldName)
         }
-    }, [change, disabled, fieldName, aggregationTypeField.input.value])
+    }, [change, blur, disabled, fieldName, aggregationTypeField.input.value])
 
     const schemaSection = useGivenShemaOrSchemaSectionHandleOrThrow({ section })
     const schema = useSchema(schemaSection.name)
@@ -75,16 +76,28 @@ export function AggregationTypeFieldByValueType({
 
     return (
         <FieldRFF
-            disabled={disabled}
-            component={SingleSelectFieldFF}
-            dataTest="formfields-aggregationType"
-            inputWidth={'400px'}
             name={fieldName}
-            label={i18n.t('Aggregation type')}
-            helpText={helpText}
-            options={options}
             validateFields={[]}
             validate={required}
+            render={({ input, meta }) => (
+                <SingleSelectFieldFF
+                    input={{
+                        ...input,
+                        onChange: (value: string) => {
+                            input.onChange(value)
+                            input.onBlur()
+                        },
+                    }}
+                    meta={meta}
+                    disabled={disabled}
+                    dataTest="formfields-aggregationType"
+                    inputWidth={'400px'}
+                    label={i18n.t('Aggregation type')}
+                    helpText={helpText}
+                    options={options}
+                    required
+                />
+            )}
         />
     )
 }
