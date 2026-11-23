@@ -5453,14 +5453,14 @@ msgstr "Tracked entity attribute to display error next to"
 msgid "Static text"
 msgstr "Static text"
 
-msgid "Expression to evaluate and display after static text."
-msgstr "Expression to evaluate and display after static text."
+msgid "Expression to evaluate and display after static text"
+msgstr "Expression to evaluate and display after static text"
 
 msgid "Key label"
 msgstr "Key label"
 
-msgid "Expression to evaluate and display as value."
-msgstr "Expression to evaluate and display as value."
+msgid "Expression to evaluate and display as value"
+msgstr "Expression to evaluate and display as value"
 
 msgid "Data element to hide"
 msgstr "Data element to hide"

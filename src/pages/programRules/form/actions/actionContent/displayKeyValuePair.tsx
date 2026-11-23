@@ -29,7 +29,7 @@ export function displayKeyValuePair(
                     programId={programId}
                     programType={programType}
                     label={i18n.t(
-                        'Expression to evaluate and display as value.'
+                        'Expression to evaluate and display as value'
                     )}
                 />
             </StandardFormField>
