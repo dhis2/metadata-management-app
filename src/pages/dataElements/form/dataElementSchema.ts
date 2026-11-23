@@ -33,9 +33,7 @@ const dataElementBaseSchema = z.object({
         .default({}),
     domainType: z.nativeEnum(DataElementDomain),
     valueType: z.nativeEnum(ValueType).default(ValueType.NUMBER),
-    aggregationType: z
-        .nativeEnum(AggregationType)
-        .default(AggregationType.NONE),
+    aggregationType: z.nativeEnum(AggregationType),
     categoryCombo: z
         .object({ id: z.string(), displayName: z.string().optional() })
         .default(DEFAULT_CATEGORY_COMBO),
