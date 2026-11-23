@@ -44,6 +44,17 @@ jest.mock('use-debounce', () => ({
     useDebouncedCallback: (fn: any) => fn,
 }))
 
+const pickAggregationType = async (
+    label: string,
+    screen: Parameters<typeof uiActions.pickOptionFromSelect>[2]
+) => {
+    const field = screen.getByTestId('formfields-aggregationType')
+    const options = await uiActions.openSingleSelect(field, screen)
+    const option = options.find((opt) => opt.textContent === label)!
+    await userEvent.click(option)
+    await uiActions.closeSingleSelectIfOpen(field, screen)
+}
+
 describe('Data elements form tests', () => {
     const createMock = jest.fn()
     const updateMock = jest.fn()
@@ -129,6 +140,11 @@ describe('Data elements form tests', () => {
             )
             uiAssertions.expectFieldToHaveError(
                 'formfields-shortName',
+                'Required',
+                screen
+            )
+            uiAssertions.expectFieldToHaveError(
+                'formfields-aggregationType',
                 'Required',
                 screen
             )
@@ -306,6 +322,7 @@ describe('Data elements form tests', () => {
                 screen
             )
             await uiActions.pickRadioField('domainType', 'Tracker', screen)
+            await pickAggregationType('Sum', screen)
             const catComboSelectInput = within(
                 screen.getByTestId('formfields-categorycombo')
             ).getByTestId('dhis2-uicore-select-input')
@@ -644,7 +661,7 @@ describe('Data elements form tests', () => {
                 screen.getByTestId('formfields-aggregationType')
             ).getByTestId('dhis2-uicore-select-input')
             expect(aggregationType).toBeVisible()
-            expect(aggregationType).toHaveTextContent('None')
+            expect(aggregationType.textContent).toBe('')
 
             await uiAssertions.expectSelectToExistWithOptions(
                 screen.getByTestId('formfields-categorycombo'),
@@ -783,6 +800,7 @@ describe('Data elements form tests', () => {
                         zeroIsSignificant: true,
                         domainType: 'AGGREGATE',
                         valueType: 'LONG_TEXT',
+                        aggregationType: 'NONE',
                         categoryCombo: expect.objectContaining({
                             id: DEFAULT_CATEGORY_COMBO.id,
                         }),
@@ -807,6 +825,7 @@ describe('Data elements form tests', () => {
                 screen
             )
             await uiActions.pickRadioField('domainType', 'Aggregate', screen)
+            await pickAggregationType('Sum', screen)
 
             await uiActions.pickOptionFromSelect(
                 screen.getByTestId('formfields-categorycombo'),
@@ -838,6 +857,7 @@ describe('Data elements form tests', () => {
                         zeroIsSignificant: false,
                         domainType: 'AGGREGATE',
                         valueType: 'NUMBER',
+                        aggregationType: 'SUM',
                         categoryCombo: expect.objectContaining({
                             id: categoryCombos[0].id,
                         }),
@@ -865,6 +885,7 @@ describe('Data elements form tests', () => {
                 screen
             )
             await uiActions.pickRadioField('domainType', 'Aggregate', screen)
+            await pickAggregationType('Sum', screen)
 
             await uiActions.pickOptionInTransfer(
                 'legendset-transfer',
@@ -892,6 +913,7 @@ describe('Data elements form tests', () => {
                         zeroIsSignificant: false,
                         domainType: 'AGGREGATE',
                         valueType: 'NUMBER',
+                        aggregationType: 'SUM',
                         categoryCombo: expect.objectContaining({
                             id: DEFAULT_CATEGORY_COMBO.id,
                         }),
@@ -922,6 +944,7 @@ describe('Data elements form tests', () => {
                 screen
             )
             await uiActions.pickRadioField('domainType', 'Aggregate', screen)
+            await pickAggregationType('Sum', screen)
             const attributeInput = within(
                 screen.getByTestId(`attribute-${attributes[0].id}`)
             ).getByRole('textbox') as HTMLInputElement
@@ -941,6 +964,7 @@ describe('Data elements form tests', () => {
                         zeroIsSignificant: false,
                         domainType: 'AGGREGATE',
                         valueType: 'NUMBER',
+                        aggregationType: 'SUM',
                         categoryCombo: expect.objectContaining({
                             id: DEFAULT_CATEGORY_COMBO.id,
                         }),
