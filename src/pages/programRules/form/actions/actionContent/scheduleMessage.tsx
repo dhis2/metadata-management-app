@@ -22,7 +22,7 @@ export function scheduleMessage(
                     programId={programId}
                     programType={programType}
                     disabled={isEdit}
-                    label={i18n.t('Date to send message.')}
+                    label={i18n.t('Date to send message')}
                     required
                 />
             </StandardFormField>

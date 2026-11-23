@@ -5453,14 +5453,14 @@ msgstr "Tracked entity attribute to display error next to"
 msgid "Static text"
 msgstr "Static text"
 
-msgid "Expression to evaluate and display after static text."
-msgstr "Expression to evaluate and display after static text."
+msgid "Expression to evaluate and display after static text"
+msgstr "Expression to evaluate and display after static text"
 
 msgid "Key label"
 msgstr "Key label"
 
-msgid "Expression to evaluate and display as value."
-msgstr "Expression to evaluate and display as value."
+msgid "Expression to evaluate and display as value"
+msgstr "Expression to evaluate and display as value"
 
 msgid "Data element to hide"
 msgstr "Data element to hide"
@@ -5480,8 +5480,14 @@ msgstr "Option group to hide"
 msgid "Program rule variable for scheduled date"
 msgstr "Program rule variable for scheduled date"
 
-msgid "Date to send message."
-msgstr "Date to send message."
+msgid "Date to send message"
+msgstr "Date to send message"
+
+msgid "Data element to make mandatory"
+msgstr "Data element to make mandatory"
+
+msgid "Tracked entity attribute to make mandatory"
+msgstr "Tracked entity attribute to make mandatory"
 
 msgid "Option group to show"
 msgstr "Option group to show"
@@ -5507,8 +5513,8 @@ msgstr "Hide option"
 msgid "Hide option group"
 msgstr "Hide option group"
 
-msgid "Hide program stage"
-msgstr "Hide program stage"
+msgid "Prevent adding new events to stage"
+msgstr "Prevent adding new events to stage"
 
 msgid "Hide section"
 msgstr "Hide section"
@@ -5522,8 +5528,8 @@ msgstr "Schedule message"
 msgid "Send message"
 msgstr "Send message"
 
-msgid "Set mandatory field"
-msgstr "Set mandatory field"
+msgid "Make field mandatory"
+msgstr "Make field mandatory"
 
 msgid "Show error"
 msgstr "Show error"
@@ -5608,14 +5614,14 @@ msgstr "Display key-value pair: {{content}} on {{location}}"
 msgid "Hide field: {{target}}"
 msgstr "Hide field: {{target}}"
 
-msgid "Set mandatory field: {{target}}"
-msgstr "Set mandatory field: {{target}}"
+msgid "Make field mandatory: {{target}}"
+msgstr "Make field mandatory: {{target}}"
 
 msgid "Hide section: {{section}}"
 msgstr "Hide section: {{section}}"
 
-msgid "Hide program stage: {{stage}}"
-msgstr "Hide program stage: {{stage}}"
+msgid "Prevent adding new events to stage: {{stage}}"
+msgstr "Prevent adding new events to stage: {{stage}}"
 
 msgid "Assign: {{data}} to field {{target}}"
 msgstr "Assign: {{data}} to field {{target}}"

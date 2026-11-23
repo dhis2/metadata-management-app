@@ -35,7 +35,7 @@ export const ACTION_TYPE_OPTIONS = [
         value: programRuleActionType.HIDEOPTIONGROUP,
     },
     {
-        label: i18n.t('Hide program stage'),
+        label: i18n.t('Prevent adding new events to stage'),
         value: programRuleActionType.HIDEPROGRAMSTAGE,
     },
     { label: i18n.t('Hide section'), value: programRuleActionType.HIDESECTION },
@@ -52,7 +52,7 @@ export const ACTION_TYPE_OPTIONS = [
         value: programRuleActionType.SENDMESSAGE,
     },
     {
-        label: i18n.t('Set mandatory field'),
+        label: i18n.t('Make field mandatory'),
         value: programRuleActionType.SETMANDATORYFIELD,
     },
     { label: i18n.t('Show error'), value: programRuleActionType.SHOWERROR },
