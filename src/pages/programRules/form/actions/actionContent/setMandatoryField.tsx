@@ -9,15 +9,13 @@ export function setMandatoryField(programId: string): ReactNode {
             <StandardFormField>
                 <DataElementField
                     programId={programId}
-                    label={i18n.t('Data element to display error next to')}
+                    label={i18n.t('Data element to make mandatory')}
                 />
             </StandardFormField>
             <StandardFormField>
                 <TrackedEntityAttributeField
                     programId={programId}
-                    label={i18n.t(
-                        'Tracked entity attribute to display error next to'
-                    )}
+                    label={i18n.t('Tracked entity attribute to make mandatory')}
                 />
             </StandardFormField>
         </>

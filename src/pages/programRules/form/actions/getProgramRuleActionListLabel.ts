@@ -102,7 +102,7 @@ export function getProgramRuleActionListLabel(
                 interpolation: { escapeValue: false },
             })
         case 'SETMANDATORYFIELD':
-            return i18n.t('Set mandatory field: {{target}}', {
+            return i18n.t('Make field mandatory: {{target}}', {
                 target: targetDeAndTea || '-',
                 nsSeparator: false,
                 interpolation: { escapeValue: false },
@@ -117,7 +117,7 @@ export function getProgramRuleActionListLabel(
                 interpolation: { escapeValue: false },
             })
         case 'HIDEPROGRAMSTAGE':
-            return i18n.t('Hide program stage: {{stage}}', {
+            return i18n.t('Prevent adding new events to stage: {{stage}}', {
                 stage: programStage?.displayName ?? programStage?.id ?? '-',
                 nsSeparator: false,
                 interpolation: { escapeValue: false },
