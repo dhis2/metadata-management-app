@@ -30,14 +30,11 @@ export const useOnSaveDataSetsAndPrograms = () => {
                 values: DataSetsAndPrograms,
                 { dataSetsDirty, programsDirty }: DirtyState
             ) => {
-                if (!allowReferenceAssignments) {
-                    return []
-                }
                 const fieldToSaveSeparately = []
-                if (dataSetsDirty) {
+                if (allowReferenceAssignments && dataSetsDirty) {
                     fieldToSaveSeparately.push('dataSets')
                 }
-                if (programsDirty) {
+                if (allowReferenceAssignments && programsDirty) {
                     fieldToSaveSeparately.push('programs')
                 }
 
