@@ -11,6 +11,7 @@ export interface SectionBase {
     maxApiVersion?: number
     clonable?: boolean
     cannotBulkDelete?: boolean
+    learnMoreUrl?: string
 }
 
 // SchemaSection is a section that can be mapped directly to a schema by the name

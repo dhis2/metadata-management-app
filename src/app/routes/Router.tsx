@@ -28,7 +28,7 @@ import {
     useBoundResourceQueryFn,
     useSectionHandle,
 } from '../../lib'
-import { OverviewSection } from '../../types'
+import { ModelSection, OverviewSection } from '../../types'
 import { Layout, BreadcrumbItem } from '../layout'
 import {
     SectionAuthorizedGuard,
@@ -205,6 +205,9 @@ const schemaSectionRoutes = Object.values(SECTIONS_MAP).map((section) => (
                         <BreadcrumbItem
                             label={section.titlePlural}
                             to={matchInfo.pathname}
+                            learnMoreUrl={
+                                (section as ModelSection).learnMoreUrl
+                            }
                         />
                     ),
                 } satisfies RouteHandle

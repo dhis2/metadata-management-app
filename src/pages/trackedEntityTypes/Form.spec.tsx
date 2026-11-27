@@ -226,7 +226,7 @@ describe('Tracked entity types form tests', () => {
                 [
                     { label: 'Point', checked: false },
                     { label: 'Polygon', checked: false },
-                    { label: 'Do not collect location data', checked: false },
+                    { label: 'Do not collect location data', checked: true },
                 ],
                 screen
             )
@@ -302,7 +302,7 @@ describe('Tracked entity types form tests', () => {
                         shortName: aShortName,
                         description: aDescription,
                         allowAuditLog: true,
-                        featureType: undefined,
+                        featureType: 'NONE',
                         minAttributesRequiredToSearch: 1,
                         maxTeiCountToReturn: 0,
                         style: {},
@@ -544,7 +544,9 @@ describe('Tracked entity types form tests', () => {
                     },
                     {
                         label: 'Do not collect location data',
-                        checked: trackedEntityType.featureType === 'NONE',
+                        checked:
+                            !trackedEntityType.featureType ||
+                            trackedEntityType.featureType === 'NONE',
                     },
                 ],
                 screen

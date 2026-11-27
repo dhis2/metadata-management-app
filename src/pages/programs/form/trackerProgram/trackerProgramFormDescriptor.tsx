@@ -57,6 +57,12 @@ export const TrackerProgramFormDescriptor = {
                     name: 'displayFrontPageList',
                     label: i18n.t('Start page in web Capture app'),
                 },
+                {
+                    name: 'enableChangeLog',
+                    label: i18n.t(
+                        'Record change history for event data values'
+                    ),
+                },
             ],
         },
         {

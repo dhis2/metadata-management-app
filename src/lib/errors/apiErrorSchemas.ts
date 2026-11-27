@@ -17,7 +17,10 @@ export const objectReportWebMessageResponseSchema = z
     .object({
         errorReports: z.array(errorReportSchema),
         klass: z.string(),
-        responseType: z.literal('ObjectReportWebMessageResponse'),
+        responseType: z.union([
+            z.literal('ObjectReportWebMessageResponse'),
+            z.literal('ObjectReport'),
+        ]),
         uid: z.string(),
     })
     .strict()

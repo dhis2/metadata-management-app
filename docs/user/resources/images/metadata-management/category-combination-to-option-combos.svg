@@ -1,0 +1,43 @@
+<svg viewBox="0 0 980 470" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" role="img" aria-label="A category combination is built from two categories and automatically generates one category option combination for every pairing of their options.">
+<rect x="0" y="0" width="980" height="470" fill="#FFFFFF"/>
+<defs>
+<marker id="arrBlue" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#147CD7"/></marker>
+<marker id="arrTeal" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#00897B"/></marker>
+</defs>
+<rect x="40" y="20" width="430" height="90" rx="10" fill="#E3F2FD" stroke="#147CD7" stroke-width="1.8"/><text x="56" y="44" font-size="14" font-weight="700" fill="#093371" text-anchor="start" style="">Category  ·  HIV Service</text><rect x="56" y="62" width="120" height="30" rx="15" fill="#FFFFFF" stroke="#147CD7" stroke-width="1.3"/><text x="116.0" y="82" font-size="12.5" font-weight="600" fill="#212934" text-anchor="middle" style="">Other</text><rect x="186" y="62" width="120" height="30" rx="15" fill="#FFFFFF" stroke="#147CD7" stroke-width="1.3"/><text x="246.0" y="82" font-size="12.5" font-weight="600" fill="#212934" text-anchor="middle" style="">PMTCT</text><rect x="316" y="62" width="120" height="30" rx="15" fill="#FFFFFF" stroke="#147CD7" stroke-width="1.3"/><text x="376.0" y="82" font-size="12.5" font-weight="600" fill="#212934" text-anchor="middle" style="">TB</text>
+<rect x="510" y="20" width="430" height="90" rx="10" fill="#E3F2FD" stroke="#147CD7" stroke-width="1.8"/><text x="526" y="44" font-size="14" font-weight="700" fill="#093371" text-anchor="start" style="">Category  ·  Gender</text><rect x="526" y="62" width="120" height="30" rx="15" fill="#FFFFFF" stroke="#147CD7" stroke-width="1.3"/><text x="586.0" y="82" font-size="12.5" font-weight="600" fill="#212934" text-anchor="middle" style="">Male</text><rect x="656" y="62" width="120" height="30" rx="15" fill="#FFFFFF" stroke="#147CD7" stroke-width="1.3"/><text x="716.0" y="82" font-size="12.5" font-weight="600" fill="#212934" text-anchor="middle" style="">Female</text>
+<rect x="300" y="165" width="380" height="64" rx="12" fill="#093371" stroke="#093371" stroke-width="0"/>
+<text x="490.0" y="192" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle" style="">Category combination</text>
+<text x="490.0" y="212" font-size="13" font-weight="600" fill="#CFE3FB" text-anchor="middle" style="">HIV Service × Gender</text>
+<line x1="255.0" y1="110" x2="370" y2="165" stroke="#147CD7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+<line x1="725.0" y1="110" x2="610" y2="165" stroke="#147CD7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+<text x="294" y="141.5" font-size="11.5" font-weight="600" fill="#4A5768" text-anchor="end" style="">assigned to</text>
+<rect x="246.0" y="300" width="148" height="52" rx="10" fill="#E0F2F1" stroke="#00897B" stroke-width="1.6"/>
+<text x="320.0" y="322" font-size="12.5" font-weight="700" fill="#00332B" text-anchor="middle" style="">Other, Male</text>
+<text x="320.0" y="339" font-size="9.5" font-weight="600" fill="#00897B" text-anchor="middle" style="">category option combo</text>
+<line x1="490.0" y1="229" x2="320.0" y2="300" stroke="#00897B" stroke-width="1.4" marker-end="url(#arrTeal)" stroke-dasharray="4 3"/>
+<rect x="416.0" y="300" width="148" height="52" rx="10" fill="#E0F2F1" stroke="#00897B" stroke-width="1.6"/>
+<text x="490.0" y="322" font-size="12.5" font-weight="700" fill="#00332B" text-anchor="middle" style="">PMTCT, Male</text>
+<text x="490.0" y="339" font-size="9.5" font-weight="600" fill="#00897B" text-anchor="middle" style="">category option combo</text>
+<line x1="490.0" y1="229" x2="490.0" y2="300" stroke="#00897B" stroke-width="1.4" marker-end="url(#arrTeal)" stroke-dasharray="4 3"/>
+<rect x="586.0" y="300" width="148" height="52" rx="10" fill="#E0F2F1" stroke="#00897B" stroke-width="1.6"/>
+<text x="660.0" y="322" font-size="12.5" font-weight="700" fill="#00332B" text-anchor="middle" style="">TB, Male</text>
+<text x="660.0" y="339" font-size="9.5" font-weight="600" fill="#00897B" text-anchor="middle" style="">category option combo</text>
+<line x1="490.0" y1="229" x2="660.0" y2="300" stroke="#00897B" stroke-width="1.4" marker-end="url(#arrTeal)" stroke-dasharray="4 3"/>
+<rect x="246.0" y="372" width="148" height="52" rx="10" fill="#E0F2F1" stroke="#00897B" stroke-width="1.6"/>
+<text x="320.0" y="394" font-size="12.5" font-weight="700" fill="#00332B" text-anchor="middle" style="">Other, Female</text>
+<text x="320.0" y="411" font-size="9.5" font-weight="600" fill="#00897B" text-anchor="middle" style="">category option combo</text>
+<line x1="490.0" y1="229" x2="320.0" y2="372" stroke="#00897B" stroke-width="1.4" marker-end="url(#arrTeal)" stroke-dasharray="4 3"/>
+<rect x="416.0" y="372" width="148" height="52" rx="10" fill="#E0F2F1" stroke="#00897B" stroke-width="1.6"/>
+<text x="490.0" y="394" font-size="12.5" font-weight="700" fill="#00332B" text-anchor="middle" style="">PMTCT, Female</text>
+<text x="490.0" y="411" font-size="9.5" font-weight="600" fill="#00897B" text-anchor="middle" style="">category option combo</text>
+<line x1="490.0" y1="229" x2="490.0" y2="372" stroke="#00897B" stroke-width="1.4" marker-end="url(#arrTeal)" stroke-dasharray="4 3"/>
+<rect x="586.0" y="372" width="148" height="52" rx="10" fill="#E0F2F1" stroke="#00897B" stroke-width="1.6"/>
+<text x="660.0" y="394" font-size="12.5" font-weight="700" fill="#00332B" text-anchor="middle" style="">TB, Female</text>
+<text x="660.0" y="411" font-size="9.5" font-weight="600" fill="#00897B" text-anchor="middle" style="">category option combo</text>
+<line x1="490.0" y1="229" x2="660.0" y2="372" stroke="#00897B" stroke-width="1.4" marker-end="url(#arrTeal)" stroke-dasharray="4 3"/>
+<line x1="246.0" y1="450" x2="280.0" y2="450" stroke="#00897B" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrTeal)"/>
+<text x="288.0" y="454" font-size="12" font-weight="500" fill="#4A5768" text-anchor="start" style="">generated automatically for every pairing of the two categories’ options — not created directly</text>
+<text x="698" y="191.0" font-size="11.5" font-weight="600" fill="#4A5768" text-anchor="start" style="">3 options × 2 options</text>
+<text x="698" y="209.0" font-size="11.5" font-weight="600" fill="#4A5768" text-anchor="start" style="">= 6 category option combinations</text>
+</svg>

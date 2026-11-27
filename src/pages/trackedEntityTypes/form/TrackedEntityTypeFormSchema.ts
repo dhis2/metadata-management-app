@@ -29,6 +29,7 @@ const trackedEntityTypeBaseSchema = z.object({
         })
         .default({}),
     allowAuditLog: z.boolean().default(false),
+    enableChangeLog: z.boolean().optional(),
     minAttributesRequiredToSearch: z
         .number()
         .min(
@@ -43,7 +44,7 @@ const trackedEntityTypeBaseSchema = z.object({
             'Maximum number of tracked entity instances to return must be 0 or greater'
         )
         .default(0),
-    featureType: z.enum(['NONE', 'POINT', 'POLYGON']).optional(),
+    featureType: z.enum(['NONE', 'POINT', 'POLYGON']).default('NONE'),
     trackedEntityTypeAttributes: z
         .array(
             z.object({

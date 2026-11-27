@@ -19,7 +19,10 @@ export const EventProgramFormDescriptor = {
                     label: i18n.t('Visual configuration'),
                 },
                 { name: 'version', label: i18n.t('Version') },
-                { name: 'featureType', label: i18n.t('Feature type') },
+                {
+                    name: 'programStages[0].featureType',
+                    label: i18n.t('Feature type'),
+                },
                 { name: 'relatedProgram', label: i18n.t('Related program') },
                 {
                     name: 'categoryCombo',
@@ -53,6 +56,12 @@ export const EventProgramFormDescriptor = {
                     name: 'maxTeiCountToReturn',
                     label: i18n.t(
                         'Maximum number of search results to display'
+                    ),
+                },
+                {
+                    name: 'enableChangeLog',
+                    label: i18n.t(
+                        'Record change history for event data values'
                     ),
                 },
             ],

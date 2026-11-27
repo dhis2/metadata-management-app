@@ -25,6 +25,7 @@ import {
     AttributesTransferField,
     AttributesConfigurationField,
     AllowAuditLogField,
+    EnableChangeLogField,
     MinAttributesRequiredField,
     MaxTeiCountField,
     TrackedEntityTypesLabelField,
@@ -40,6 +41,7 @@ export function TrackedEntityTypeFormFields() {
     const showPluralLabels = useFeatureAvailable(
         FEATURES.customTerminologyPlurals
     )
+    const showEnableChangeLog = useFeatureAvailable(FEATURES.enableChangeLog)
 
     return (
         <SectionedFormSections>
@@ -79,6 +81,12 @@ export function TrackedEntityTypeFormFields() {
                 <StandardFormField>
                     <FeatureTypeField />
                 </StandardFormField>
+
+                {showEnableChangeLog && (
+                    <StandardFormField>
+                        <EnableChangeLogField />
+                    </StandardFormField>
+                )}
 
                 <StandardFormField>
                     <AllowAuditLogField />

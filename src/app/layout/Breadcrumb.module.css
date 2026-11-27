@@ -45,3 +45,11 @@ span.breadcrumbItemLink {
     color: var(--colors-grey800);
     padding: 0 4px;
 }
+
+.learnMoreIconLink {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 4px;
+    vertical-align: middle;
+    color: var(--colors-grey700);
+}
